@@ -1,0 +1,2802 @@
+[
+  {
+    "id": "mamelodi-sundowns",
+    "name": "Pretoria Brazilians FC",
+    "shortName": "PBR",
+    "city": "Pretoria",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Loftus Arena",
+    "stadiumCapacity": 51762,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Mpho Maluleke",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Sudáfrica",
+        "value": 1680000
+      },
+      {
+        "name": "Themba Shabalala",
+        "position": "POR",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Oupa Maluleke",
+        "position": "DFC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lungelo Mofokeng",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Vasco Teixeira",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Radebe",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Teboho Jali",
+        "position": "LB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Tshepo Zulu",
+        "position": "RB",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Bruno Cardoso",
+        "position": "MCD",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Mpho Radebe",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Themba Radebe",
+        "position": "MC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Sarr",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Lebo Ngcobo",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Peter Diop",
+        "position": "MCO",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Mpho Sithole",
+        "position": "EI",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mpho Zulu",
+        "position": "ED",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sipho Maluleke",
+        "position": "DC",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sipho Shabalala",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Sithole",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Victor Boateng",
+        "position": "MP",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "orlando-pirates",
+    "name": "Buccaneers FC",
+    "shortName": "BUC",
+    "city": "Johannesburgo",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Orlando Arena",
+    "stadiumCapacity": 40000,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Tshepo Baloyi",
+        "position": "POR",
+        "age": 31,
+        "overall": 77,
+        "nationality": "Sudáfrica",
+        "value": 1680000
+      },
+      {
+        "name": "Mandla Radebe",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Thabo Modise",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lebo Hlatshwayo",
+        "position": "DFC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Márcio Pereira",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Ibrahima Sène",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Lucky Mokwena",
+        "position": "LB",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Baloyi",
+        "position": "RB",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Keagan Maluleke",
+        "position": "MCD",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Chinedu Koné",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Victor Boateng",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Mpho Ngcobo",
+        "position": "MC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sibusiso Mokwena",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Dlamini",
+        "position": "MCO",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mandla Maluleke",
+        "position": "EI",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Duarte Pereira",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Ndiaye",
+        "position": "DC",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Teboho Radebe",
+        "position": "DC",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Moses Adeyemi",
+        "position": "DC",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Sipho Shabalala",
+        "position": "MP",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "kaizer-chiefs",
+    "name": "Amakhosi FC",
+    "shortName": "AMK",
+    "city": "Johannesburgo",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "FNB Arena",
+    "stadiumCapacity": 87436,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Thabo Mthembu",
+        "position": "POR",
+        "age": 30,
+        "overall": 77,
+        "nationality": "Sudáfrica",
+        "value": 1680000
+      },
+      {
+        "name": "Keagan Khumalo",
+        "position": "POR",
+        "age": 33,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Njabulo Modise",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kagiso Mofokeng",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sibusiso Radebe",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sizwe Jali",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Khumalo",
+        "position": "LB",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Mthembu",
+        "position": "RB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Radebe",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Thabo Mabaso",
+        "position": "MCD",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Thabo Baloyi",
+        "position": "MC",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Themba Mabena",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Thabo Khumalo",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Zulu",
+        "position": "MCO",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sibusiso Mokwena",
+        "position": "EI",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Bongani Shabalala",
+        "position": "ED",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Sarr",
+        "position": "DC",
+        "age": 32,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Radebe",
+        "position": "DC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kagiso Baloyi",
+        "position": "DC",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Teboho Radebe",
+        "position": "MP",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "supersport-united",
+    "name": "Matsatsantsa FC",
+    "shortName": "MSS",
+    "city": "Pretoria",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Moripe Arena",
+    "stadiumCapacity": 28900,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Tshepo Shabalala",
+        "position": "POR",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Modou Cissé",
+        "position": "POR",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Senegal",
+        "value": 224000
+      },
+      {
+        "name": "Sipho Tshabalala",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mabena",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lucky Sithole",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Maluleke",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Sipho Radebe",
+        "position": "LB",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Mthembu",
+        "position": "RB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Mabena",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mpho Tshabalala",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lebo Dlamini",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sibusiso Nkosi",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Aliou Sène",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Ouattara",
+        "position": "MCO",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Pape Ndiaye",
+        "position": "EI",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Senegal",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Moreira",
+        "position": "ED",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Sizwe Tshabalala",
+        "position": "DC",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sizwe Jali",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Mthembu",
+        "position": "DC",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Gabriel Nascimento",
+        "position": "MP",
+        "age": 24,
+        "overall": 66,
+        "nationality": "Brasil",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "sekhukhune-united",
+    "name": "Limpopo Stars FC",
+    "shortName": "LMP",
+    "city": "Polokwane",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Peter Mokaba Arena",
+    "stadiumCapacity": 45500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Percy Khumalo",
+        "position": "POR",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Sudáfrica",
+        "value": 1680000
+      },
+      {
+        "name": "Márcio Carvalho",
+        "position": "POR",
+        "age": 27,
+        "overall": 68,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Lyle Khumalo",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Gabriel Ribeiro",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Lucky Zulu",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Aliou Diop",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Lebo Shabalala",
+        "position": "LB",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Tshabalala",
+        "position": "RB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sizwe Mokoena",
+        "position": "MCD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Khumalo",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Shabalala",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lebo Mokoena",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Ouattara",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Abdoulaye Diouf",
+        "position": "MCO",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Senegal",
+        "value": 840000
+      },
+      {
+        "name": "Mpho Mokwena",
+        "position": "EI",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Mabena",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Mpho Dlamini",
+        "position": "DC",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Luís Cardoso",
+        "position": "DC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Nkosi",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Siphelele Mofokeng",
+        "position": "MP",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "stellenbosch-fc",
+    "name": "Cape Winelands FC",
+    "shortName": "CWL",
+    "city": "Stellenbosch",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Athlone Arena",
+    "stadiumCapacity": 24000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Mandla Mabena",
+        "position": "POR",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lyle Mabena",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Vinícius Carvalho",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Percy Mabena",
+        "position": "DFC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Emeka Ndiaye",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Lucky Tshabalala",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Siphelele Mokoena",
+        "position": "LB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lamine Diop",
+        "position": "RB",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Mandla Maluleke",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Tshepo Mabaso",
+        "position": "MCD",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Mabaso",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Thabo Zulu",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kagiso Mabaso",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Baloyi",
+        "position": "MCO",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Márcio Barbosa",
+        "position": "EI",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Thabo Baloyi",
+        "position": "ED",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Oupa Radebe",
+        "position": "DC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Bongani Nkosi",
+        "position": "DC",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lungelo Baloyi",
+        "position": "DC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Mofokeng",
+        "position": "MP",
+        "age": 21,
+        "overall": 66,
+        "nationality": "Sudáfrica",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "amazulu",
+    "name": "Usuthu FC",
+    "shortName": "USH",
+    "city": "Durban",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Moses Mabhida Arena",
+    "stadiumCapacity": 55500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Nuno Fernandes",
+        "position": "POR",
+        "age": 26,
+        "overall": 76,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Bongani Jali",
+        "position": "POR",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Njabulo Ngcobo",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Mofokeng",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Matheus Ferreira",
+        "position": "DFC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Thabo Dlamini",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Kagiso Nkosi",
+        "position": "LB",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mpho Jali",
+        "position": "RB",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lyle Nkosi",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Shabalala",
+        "position": "MCD",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lungelo Khumalo",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Maluleke",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Thabo Mokoena",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Khumalo",
+        "position": "MCO",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Nkosi",
+        "position": "EI",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Aliou Diop",
+        "position": "ED",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Shabalala",
+        "position": "DC",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Sudáfrica",
+        "value": 1680000
+      },
+      {
+        "name": "Teboho Mabaso",
+        "position": "DC",
+        "age": 32,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Thabo Baloyi",
+        "position": "DC",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Mandla Jali",
+        "position": "MP",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "polokwane-city",
+    "name": "Polokwane Rise FC",
+    "shortName": "PKR",
+    "city": "Polokwane",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Mokaba Arena",
+    "stadiumCapacity": 18000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Thiago Martins",
+        "position": "POR",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Lucky Maluleke",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Oupa Radebe",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lyle Khumalo",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Keagan Khumalo",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Ngcobo",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Modise",
+        "position": "LB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Cheikh Mbaye",
+        "position": "RB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Mandla Sithole",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Radebe",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Ouattara",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Lucky Tshabalala",
+        "position": "MC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mofokeng",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lamine Diop",
+        "position": "MCO",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Sipho Mokwena",
+        "position": "EI",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Tshepo Dlamini",
+        "position": "ED",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Jali",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Bongani Maluleke",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Tshepo Nkosi",
+        "position": "DC",
+        "age": 19,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Almeida",
+        "position": "MP",
+        "age": 26,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "chippa-united",
+    "name": "Chilli Boys FC",
+    "shortName": "CLB",
+    "city": "Gqeberha",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Mandela Bay Arena",
+    "stadiumCapacity": 46000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Sibusiso Dlamini",
+        "position": "POR",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sizwe Radebe",
+        "position": "POR",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lucky Modise",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Khumalo",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Baloyi",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Mokoena",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Traoré",
+        "position": "LB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Lebo Modise",
+        "position": "RB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sizwe Hlatshwayo",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Aliou Sarr",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Senegal",
+        "value": 840000
+      },
+      {
+        "name": "Thabo Ngcobo",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Mokwena",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Leandro Oliveira",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Radebe",
+        "position": "MCO",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Sithole",
+        "position": "EI",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Moussa Cissé",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Percy Maluleke",
+        "position": "DC",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Oliveira",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Mandla Tshabalala",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mpho Nkosi",
+        "position": "MP",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "royal-am",
+    "name": "Thwihli Thwahla FC",
+    "shortName": "TTH",
+    "city": "Pietermaritzburg",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Chatsworth Arena",
+    "stadiumCapacity": 5000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Sipho Hlatshwayo",
+        "position": "POR",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Kagiso Sithole",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Percy Radebe",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Jesus",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Mpho Baloyi",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Percy Sithole",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sipho Mabaso",
+        "position": "LB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Thabo Hlatshwayo",
+        "position": "RB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Sipho Nkosi",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Baloyi",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Jesus",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Maluleke",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sizwe Nkosi",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Mthembu",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Nkosi",
+        "position": "EI",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Maluleke",
+        "position": "ED",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Emeka Traoré",
+        "position": "DC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Lucky Hlatshwayo",
+        "position": "DC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Mofokeng",
+        "position": "DC",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Sipho Mofokeng",
+        "position": "MP",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "ts-galaxy",
+    "name": "Rockets FC",
+    "shortName": "RKT",
+    "city": "Mbombela",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Mbombela Arena",
+    "stadiumCapacity": 43500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Emeka Ouattara",
+        "position": "POR",
+        "age": 33,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Victor Ndiaye",
+        "position": "POR",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Njabulo Mokoena",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lyle Mofokeng",
+        "position": "DFC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Ngcobo",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Radebe",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Mandla Maluleke",
+        "position": "LB",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Percy Mthembu",
+        "position": "RB",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Tshabalala",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Tshabalala",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Teboho Mofokeng",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mokwena",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lamine Sarr",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Lebo Baloyi",
+        "position": "MCO",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Tshepo Shabalala",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Percy Mokoena",
+        "position": "ED",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mabaso",
+        "position": "DC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Fernando Carvalho",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Tshabalala",
+        "position": "DC",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Kagiso Mabaso",
+        "position": "MP",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Sudáfrica",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "cape-town-city",
+    "name": "Citizens FC",
+    "shortName": "CTZ",
+    "city": "Ciudad del Cabo",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "DHL Arena",
+    "stadiumCapacity": 55000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Matheus Barbosa",
+        "position": "POR",
+        "age": 28,
+        "overall": 76,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Oupa Tshabalala",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Kingsley Boateng",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Mpho Zulu",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Caio Pereira",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Lungelo Hlatshwayo",
+        "position": "DFC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Njabulo Zulu",
+        "position": "LB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Mokoena",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mthembu",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Baloyi",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sibusiso Maluleke",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Moses Diop",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mabaso",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Thabo Jali",
+        "position": "MCO",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sibusiso Mofokeng",
+        "position": "EI",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Mokoena",
+        "position": "ED",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Njabulo Shabalala",
+        "position": "DC",
+        "age": 24,
+        "overall": 76,
+        "nationality": "Sudáfrica",
+        "value": 1680000
+      },
+      {
+        "name": "Njabulo Ngcobo",
+        "position": "DC",
+        "age": 32,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Ouattara",
+        "position": "DC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Cheikh Fall",
+        "position": "MP",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Senegal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "golden-arrows",
+    "name": "Abafana Bes FC",
+    "shortName": "ABE",
+    "city": "Durban",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Magogo Arena",
+    "stadiumCapacity": 12000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Lebo Mabena",
+        "position": "POR",
+        "age": 32,
+        "overall": 75,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Percy Jali",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Oupa Mofokeng",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Ousmane Mbaye",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Lucky Mthembu",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lyle Hlatshwayo",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Tshepo Hlatshwayo",
+        "position": "LB",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Hlatshwayo",
+        "position": "RB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lungelo Shabalala",
+        "position": "MCD",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Themba Nkosi",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mandla Tshabalala",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kagiso Mofokeng",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Tshepo Mokwena",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Khumalo",
+        "position": "MCO",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Mandla Mabaso",
+        "position": "EI",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Mandla Maluleke",
+        "position": "ED",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Khumalo",
+        "position": "DC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sibusiso Radebe",
+        "position": "DC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Eduardo Santos",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Lyle Shabalala",
+        "position": "MP",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "marumo-gallants",
+    "name": "Bahlabane FC",
+    "shortName": "BHL",
+    "city": "Polokwane",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Mokaba Arena",
+    "stadiumCapacity": 18000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Sizwe Mokwena",
+        "position": "POR",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Sudáfrica",
+        "value": 1680000
+      },
+      {
+        "name": "Sizwe Dlamini",
+        "position": "POR",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Thabo Mofokeng",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lungelo Jali",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Percy Modise",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mandla Maluleke",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sipho Modise",
+        "position": "LB",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lyle Nkosi",
+        "position": "RB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Tshepo Tshabalala",
+        "position": "MCD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Mandla Mokwena",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mthembu",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Bongani Ngcobo",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lebo Dlamini",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Kagiso Tshabalala",
+        "position": "MCO",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Mpho Mokoena",
+        "position": "EI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Jali",
+        "position": "ED",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Jali",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Siphelele Mabaso",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Sipho Radebe",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sizwe Modise",
+        "position": "MP",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "magesi-fc",
+    "name": "Dikwena FC",
+    "shortName": "DKW",
+    "city": "Polokwane",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Peter Mokaba Arena",
+    "stadiumCapacity": 45500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Keagan Mofokeng",
+        "position": "POR",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Lebo Mthembu",
+        "position": "POR",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lungelo Mthembu",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Carvalho",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Lebo Mofokeng",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Nkosi",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Aliou Diouf",
+        "position": "LB",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Senegal",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Dlamini",
+        "position": "RB",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Mofokeng",
+        "position": "MCD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kagiso Modise",
+        "position": "MCD",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lebo Dlamini",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Kagiso Maluleke",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Teboho Mabena",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Njabulo Khumalo",
+        "position": "MCO",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Santos",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Lyle Zulu",
+        "position": "ED",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Siphelele Khumalo",
+        "position": "DC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Sizwe Mthembu",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lebo Khumalo",
+        "position": "DC",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Keagan Ngcobo",
+        "position": "MP",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "richards-bay",
+    "name": "Bay Natives FC",
+    "shortName": "BYN",
+    "city": "Richards Bay",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Zwelithini Arena",
+    "stadiumCapacity": 12000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Bongani Mokwena",
+        "position": "POR",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Bongani Zulu",
+        "position": "POR",
+        "age": 33,
+        "overall": 66,
+        "nationality": "Sudáfrica",
+        "value": 112000
+      },
+      {
+        "name": "Victor Diop",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Cavalcante",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Diop",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Keagan Zulu",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Bongani Mabaso",
+        "position": "LB",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Lebo Sithole",
+        "position": "RB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      },
+      {
+        "name": "Percy Sithole",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Thiago Rodrigues",
+        "position": "MCD",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Nascimento",
+        "position": "MC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Sibusiso Mokoena",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Percy Mthembu",
+        "position": "MC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 840000
+      },
+      {
+        "name": "Eduardo Fernandes",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Themba Sithole",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Lucky Dlamini",
+        "position": "ED",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Themba Tshabalala",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Sizwe Khumalo",
+        "position": "DC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Moreira",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Percy Nkosi",
+        "position": "MP",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Sudáfrica",
+        "value": 224000
+      }
+    ]
+  }
+]

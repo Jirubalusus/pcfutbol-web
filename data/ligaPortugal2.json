@@ -1,0 +1,3152 @@
+[
+  {
+    "id": "academica-coimbra",
+    "name": "Estudantina FC",
+    "shortName": "EST",
+    "city": "Coimbra",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estádio Universitário",
+    "stadiumCapacity": 30210,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Sérgio Costa",
+        "position": "POR",
+        "age": 32,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Gustavo Fernandes",
+        "position": "POR",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Luís Marques",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Rodrigues",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Rafael Martins",
+        "position": "DFC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Almeida",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Marcos Sánchez",
+        "position": "LB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "España",
+        "value": 224000
+      },
+      {
+        "name": "Pedro Mendes",
+        "position": "RB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Théo Garcia",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Mendes",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Santos",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Ricardo Silva",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Mendes",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Pereira",
+        "position": "MCO",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Emeka Traoré",
+        "position": "EI",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Gonçalves",
+        "position": "ED",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Duarte Ribeiro",
+        "position": "DC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Ricardo Moreira",
+        "position": "DC",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Samuel Okafor",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Luís Ferreira",
+        "position": "MP",
+        "age": 31,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "leixoes",
+    "name": "Matosinhos SC",
+    "shortName": "MAT",
+    "city": "Matosinhos",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estádio do Mar",
+    "stadiumCapacity": 6230,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Daniel Gonçalves",
+        "position": "POR",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Dias",
+        "position": "POR",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "João Costa",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Marques",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Fernandes",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "André Fernandes",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Luís Silva",
+        "position": "LB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Francisco Teixeira",
+        "position": "RB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Ferreira",
+        "position": "MCD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Moreira",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Nicolas David",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Clément Thomas",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Victor Sarr",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Victor Ouattara",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Duarte Ferreira",
+        "position": "EI",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Dias",
+        "position": "ED",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Vasco Marques",
+        "position": "DC",
+        "age": 19,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Teixeira",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gabriel Martins",
+        "position": "DC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Victor Boateng",
+        "position": "MP",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "feirense",
+    "name": "Feira FC",
+    "shortName": "FER",
+    "city": "Santa Maria da Feira",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Marcolino Park",
+    "stadiumCapacity": 5500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Duarte Dias",
+        "position": "POR",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Luís Pereira",
+        "position": "POR",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Francisco Ribeiro",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Igor Souza",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Cardoso",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Ribeiro",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Dias",
+        "position": "LB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Sousa",
+        "position": "RB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Almeida",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Sousa",
+        "position": "MCD",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Moreira",
+        "position": "MC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Martins",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Marques",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Mendes",
+        "position": "MCO",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Fábio Gonçalves",
+        "position": "EI",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Cardoso",
+        "position": "ED",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Fernandes",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Gustavo Ferreira",
+        "position": "DC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Dias",
+        "position": "DC",
+        "age": 22,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Vasco Gonçalves",
+        "position": "MP",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "mafra",
+    "name": "Convento FC",
+    "shortName": "CVT",
+    "city": "Mafra",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Parque Municipal",
+    "stadiumCapacity": 1800,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Gustavo Almeida",
+        "position": "POR",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Duarte Oliveira",
+        "position": "POR",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Rúben Marques",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Pereira",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Duarte Costa",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Miguel Fernandes",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Rafael Fernandes",
+        "position": "LB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Jesus",
+        "position": "RB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Costa",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "João Sousa",
+        "position": "MCD",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Leandro Nascimento",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Nuno Santos",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Tiago Gonçalves",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Obi Adeyemi",
+        "position": "MCO",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "João Santos",
+        "position": "EI",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Luís Mendes",
+        "position": "ED",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Gonçalves",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Álvaro Gómez",
+        "position": "DC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Fernandes",
+        "position": "DC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Chinedu Okafor",
+        "position": "MP",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Nigeria",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "penafiel",
+    "name": "Tâmega FC",
+    "shortName": "TAM",
+    "city": "Penafiel",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Estádio Municipal",
+    "stadiumCapacity": 5314,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Nuno Ribeiro",
+        "position": "POR",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "André Gonçalves",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Rúben Rodrigues",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Fernandes",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Luís Gonçalves",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Almeida",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Ricardo Sousa",
+        "position": "LB",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Cardoso",
+        "position": "RB",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Dias",
+        "position": "MCD",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Diogo Costa",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Gonçalves",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Fernandes",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Luís Cardoso",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Teixeira",
+        "position": "MCO",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Ribeiro",
+        "position": "EI",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Hugo David",
+        "position": "ED",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Sousa",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Teixeira",
+        "position": "DC",
+        "age": 23,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Tiago Almeida",
+        "position": "DC",
+        "age": 19,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Dias",
+        "position": "MP",
+        "age": 23,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "oliveirense",
+    "name": "Oliveirense UD",
+    "shortName": "OLV",
+    "city": "Oliveira de Azeméis",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Estádio Municipal",
+    "stadiumCapacity": 5500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Bruno Ribeiro",
+        "position": "POR",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Ricardo Pereira",
+        "position": "POR",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      },
+      {
+        "name": "Rafael Almeida",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Tiago Silva",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Loïc Girard",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      },
+      {
+        "name": "Diogo Ribeiro",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Tiago Jesus",
+        "position": "LB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Silva",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Lucas Simon",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Cardoso",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Martins",
+        "position": "MC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Pereira",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Costa",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Héctor Pérez",
+        "position": "MCO",
+        "age": 25,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Moreira",
+        "position": "EI",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Fábio Ferreira",
+        "position": "ED",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Silva",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Gonçalves",
+        "position": "DC",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Tiago Teixeira",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Marques",
+        "position": "MP",
+        "age": 31,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "tondela",
+    "name": "Beira Alta FC",
+    "shortName": "BEI",
+    "city": "Tondela",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "João Cardoso Park",
+    "stadiumCapacity": 5000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Sérgio Marques",
+        "position": "POR",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Iván Navarro",
+        "position": "POR",
+        "age": 33,
+        "overall": 67,
+        "nationality": "España",
+        "value": 224000
+      },
+      {
+        "name": "João Rodrigues",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Silva",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Alexandre Girard",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Silva",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Rodrigues",
+        "position": "LB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Luís Cardoso",
+        "position": "RB",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Gonçalo Ribeiro",
+        "position": "MCD",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Mendes",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Iker Romero",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Martins",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Dias",
+        "position": "MC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ronaldo Gomes",
+        "position": "MCO",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Luís Rodrigues",
+        "position": "EI",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Silva",
+        "position": "ED",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "André Mendes",
+        "position": "DC",
+        "age": 32,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Luís Gonçalves",
+        "position": "DC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Pedro Barbosa",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "André Jesus",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "vilafranquense",
+    "name": "Leiria União",
+    "shortName": "LEU",
+    "city": "Leiria",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#000000"
+    },
+    "stadium": "Magalhães Arena",
+    "stadiumCapacity": 23888,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Pedro Gonçalves",
+        "position": "POR",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Fernando Oliveira",
+        "position": "POR",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "João Ferreira",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Fernando Martins",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Rodrigues",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Sousa",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Obi Boateng",
+        "position": "LB",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Alexandre Petit",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Ribeiro",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Ferreira",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Antoine Vincent",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Francia",
+        "value": 840000
+      },
+      {
+        "name": "Gonçalo Gonçalves",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Silva",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Adrián Gómez",
+        "position": "MCO",
+        "age": 31,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Tiago Dias",
+        "position": "EI",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Sérgio Ribeiro",
+        "position": "ED",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Martins",
+        "position": "DC",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Miguel Ribeiro",
+        "position": "DC",
+        "age": 32,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Cardoso",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Miguel Almeida",
+        "position": "MP",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "paredes",
+    "name": "Paredinha FC",
+    "shortName": "PRD",
+    "city": "Paredes",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Parque Municipal",
+    "stadiumCapacity": 5000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Francisco Gonçalves",
+        "position": "POR",
+        "age": 33,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Martins",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Diogo Dias",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Dias",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Silva",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Sousa",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Teixeira",
+        "position": "LB",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Tiago Santos",
+        "position": "RB",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Tiago Silva",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Marques",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Sérgio Martins",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Pereira",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Cardoso",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Santos",
+        "position": "MCO",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Luís Cardoso",
+        "position": "EI",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Víctor Díaz",
+        "position": "ED",
+        "age": 23,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Oliveira",
+        "position": "DC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Tiago Fernandes",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Tiago Ribeiro",
+        "position": "DC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Cardoso",
+        "position": "MP",
+        "age": 19,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "torreense",
+    "name": "Torres Vedras FC",
+    "shortName": "TOV",
+    "city": "Torres Vedras",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Manuel Marques Park",
+    "stadiumCapacity": 4500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Gonçalo Jesus",
+        "position": "POR",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Fernandes",
+        "position": "POR",
+        "age": 24,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      },
+      {
+        "name": "Rafael Jesus",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Ferreira",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "João Cardoso",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Marques",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Clément Bernard",
+        "position": "LB",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Luís Sousa",
+        "position": "RB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Luís Cardoso",
+        "position": "MCD",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Almeida",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "João Rodrigues",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Mendes",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Cardoso",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Tiago Rodrigues",
+        "position": "MCO",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Pedro Martins",
+        "position": "EI",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Cardoso",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Dias",
+        "position": "DC",
+        "age": 20,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Duarte Jesus",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Dias",
+        "position": "DC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "João Teixeira",
+        "position": "MP",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "lusitania-lourosa",
+    "name": "Lourosa FC",
+    "shortName": "LOU",
+    "city": "Lourosa",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Estádio Municipal",
+    "stadiumCapacity": 3000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Nuno Teixeira",
+        "position": "POR",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Silva",
+        "position": "POR",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      },
+      {
+        "name": "João Rodrigues",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Kelechi Koné",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Sarr",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Óscar Serrano",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Ribeiro",
+        "position": "LB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Vasco Jesus",
+        "position": "RB",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Bruno Gomes",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Gonçalves",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Mendes",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Vasco Dias",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Luís Fernandes",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Dias",
+        "position": "MCO",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Kelechi Mensah",
+        "position": "EI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Jesus",
+        "position": "ED",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Martins",
+        "position": "DC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Gustavo Santos",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Kingsley Mensah",
+        "position": "DC",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Rúben Teixeira",
+        "position": "MP",
+        "age": 23,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "felgueiras",
+    "name": "Felgueiras FC",
+    "shortName": "FLG",
+    "city": "Felgueiras",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Machado de Matos Park",
+    "stadiumCapacity": 3000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Sérgio Mendes",
+        "position": "POR",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Mario Jiménez",
+        "position": "POR",
+        "age": 29,
+        "overall": 66,
+        "nationality": "España",
+        "value": 112000
+      },
+      {
+        "name": "Francisco Cardoso",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Costa",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Vasco Gonçalves",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "André Ferreira",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Pablo Navarro",
+        "position": "LB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "André Dias",
+        "position": "RB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Nuno Moreira",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Fábio Ferreira",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Miguel Fernandes",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Santos",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Luís Marques",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Ribeiro",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Thomas Dubois",
+        "position": "EI",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Iván Serrano",
+        "position": "ED",
+        "age": 21,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Rodrigues",
+        "position": "DC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Ricardo Rodrigues",
+        "position": "DC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Nuno Almeida",
+        "position": "DC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Florian Garcia",
+        "position": "MP",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Francia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "portimonense",
+    "name": "Algarve SC",
+    "shortName": "ALG",
+    "city": "Portimão",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estádio do Algarve",
+    "stadiumCapacity": 6832,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Pedro Silva",
+        "position": "POR",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Sousa",
+        "position": "POR",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Ricardo Fernandes",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "André Fernandes",
+        "position": "DFC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "João Mendes",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Ferreira",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Mendes",
+        "position": "LB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Fernandes",
+        "position": "RB",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Obi Ndiaye",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Gonçalves",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Ribeiro",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Dias",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Loïc Girard",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Costa",
+        "position": "MCO",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Ricardo Martins",
+        "position": "EI",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Fábio Cardoso",
+        "position": "ED",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Pereira",
+        "position": "DC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Nuno Sousa",
+        "position": "DC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Cardoso",
+        "position": "DC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "João Moreira",
+        "position": "MP",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "moreirense",
+    "name": "Cónegos FC",
+    "shortName": "CON",
+    "city": "Moreira de Cónegos",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Parque Cónegos",
+    "stadiumCapacity": 6150,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Bruno Sousa",
+        "position": "POR",
+        "age": 33,
+        "overall": 77,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Gustavo Pereira",
+        "position": "POR",
+        "age": 27,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Fábio Oliveira",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Almeida",
+        "position": "DFC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Santos",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Fernandes",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Dias",
+        "position": "LB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Tiago Sousa",
+        "position": "RB",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "João Gomes",
+        "position": "MCD",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Mathieu Robert",
+        "position": "MCD",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Martins",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Santos",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Jiménez",
+        "position": "MC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Fernandes",
+        "position": "MCO",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Marcos López",
+        "position": "EI",
+        "age": 22,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Ferreira",
+        "position": "ED",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Moreira",
+        "position": "DC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Victor Adeyemi",
+        "position": "DC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "João Martins",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "André Fernandes",
+        "position": "MP",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "uniao-almeirim",
+    "name": "Almeirim FC",
+    "shortName": "ALM",
+    "city": "Almeirim",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Complexo Arena",
+    "stadiumCapacity": 2000,
+    "reputation": 1,
+    "players": [
+      {
+        "name": "Diogo Dias",
+        "position": "POR",
+        "age": 28,
+        "overall": 76,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Rafael Santos",
+        "position": "POR",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Duarte Fernandes",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Vasco Ferreira",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Costa",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gabriel Rodrigues",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Gonçalves",
+        "position": "LB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Boateng",
+        "position": "RB",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Rubén Martínez",
+        "position": "MCD",
+        "age": 31,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Duarte Ferreira",
+        "position": "MCD",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Tiago Moreira",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Santos",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Martins",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Cardoso",
+        "position": "MCO",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Miguel Rodrigues",
+        "position": "EI",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Hugo Bertrand",
+        "position": "ED",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Francia",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Marques",
+        "position": "DC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "André Costa",
+        "position": "DC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Ribeiro",
+        "position": "DC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Julien Girard",
+        "position": "MP",
+        "age": 20,
+        "overall": 68,
+        "nationality": "Francia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "vitoria-guimaraes-b",
+    "name": "Viseu Académico",
+    "shortName": "VIS",
+    "city": "Viseu",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Fontelo Park",
+    "stadiumCapacity": 6140,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Fábio Oliveira",
+        "position": "POR",
+        "age": 24,
+        "overall": 76,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Rúben Ribeiro",
+        "position": "POR",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Tiago Gonçalves",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Santos",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Ferreira",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Quentin Moreau",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      },
+      {
+        "name": "Miguel Ribeiro",
+        "position": "LB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Duarte Santos",
+        "position": "RB",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Moreira",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Barbosa",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Santos",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Fernandes",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Sousa",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Caio Costa",
+        "position": "MCO",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Nuno Jesus",
+        "position": "EI",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Tiago Sousa",
+        "position": "ED",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Moreira",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Mendes",
+        "position": "DC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "João Sousa",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Vasco Cardoso",
+        "position": "MP",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "chaves",
+    "name": "Flavienses GD",
+    "shortName": "FLA",
+    "city": "Chaves",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#D60000"
+    },
+    "stadium": "Municipal de Chaves",
+    "stadiumCapacity": 8369,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "André Jesus",
+        "position": "POR",
+        "age": 24,
+        "overall": 77,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Nuno Rodrigues",
+        "position": "POR",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Nuno Sousa",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Vasco Jesus",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Marques",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Ferreira",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Gustavo Rodrigues",
+        "position": "LB",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Pablo Pérez",
+        "position": "RB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "España",
+        "value": 224000
+      },
+      {
+        "name": "Sérgio Marques",
+        "position": "MCD",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Victor Diop",
+        "position": "MCD",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Rúben Dias",
+        "position": "MC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Gustavo Moreira",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Lucas Bertrand",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Dias",
+        "position": "MCO",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "André Marques",
+        "position": "EI",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Mendes",
+        "position": "ED",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Moreira",
+        "position": "DC",
+        "age": 23,
+        "overall": 76,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Adrien Vincent",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      },
+      {
+        "name": "Luís Oliveira",
+        "position": "DC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Moreira",
+        "position": "MP",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "maritimo",
+    "name": "Ilha Marítimo",
+    "shortName": "ILM",
+    "city": "Funchal",
+    "colors": {
+      "primary": "#006600",
+      "secondary": "#D60000"
+    },
+    "stadium": "Estádio Madeira",
+    "stadiumCapacity": 10932,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Victor Koné",
+        "position": "POR",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Ricardo Fernandes",
+        "position": "POR",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Luís Gonçalves",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gustavo Fernandes",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Gonçalo Martins",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Dias",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Jesus",
+        "position": "LB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Maxime Leroy",
+        "position": "RB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      },
+      {
+        "name": "Vasco Oliveira",
+        "position": "MCD",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Gonçalo Marques",
+        "position": "MCD",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Nuno Marques",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Rodrigues",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Gonçalo Moreira",
+        "position": "MC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Emeka Adeyemi",
+        "position": "MCO",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gonçalo Silva",
+        "position": "EI",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Chinedu Sarr",
+        "position": "ED",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Pedro Silva",
+        "position": "DC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Almeida",
+        "position": "DC",
+        "age": 19,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Sousa",
+        "position": "DC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Okafor",
+        "position": "MP",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  }
+]

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     
     <!-- PWA / Mobile App Meta Tags -->
-    <meta name="theme-color" content="#0f1419" />
+    <meta name="theme-color" content="#0c0f14" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="PC Gaffer" />
@@ -18,11 +18,11 @@
     <meta name="description" content="PC Gaffer - Football Manager Game" />
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/pcfutbol-web/manifest.json" />
+    <link rel="manifest" href="manifest.json" />
     
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/svg+xml" href="/pcfutbol-web/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="192x192" href="/pcfutbol-web/icons/icon-192x192.png" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png" />
     
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,16 +30,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
     
     <title>PC Gaffer</title>
-    <script type="module" crossorigin src="/pcfutbol-web/assets/index-6BZMPsmF.js"></script>
-    <link rel="stylesheet" crossorigin href="/pcfutbol-web/assets/index-0WeswzGZ.css">
+    <script type="module" crossorigin src="/assets/index-BDHe_PCq.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/three-pMndhuGY.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-three-DdjCKXML.js">
+    <link rel="modulepreload" crossorigin href="/assets/firebase-D6r2e15Z.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CnQNDTyB.css">
   </head>
   <body>
     <div id="root"></div>
     <script>
+      // Unregister old service workers to prevent stale cache issues
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/pcfutbol-web/sw.js');
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          regs.forEach(r => r.unregister());
         });
+        // Clear caches too
+        if ('caches' in window) {
+          caches.keys().then(names => names.forEach(n => caches.delete(n)));
+        }
       }
     </script>
   </body>

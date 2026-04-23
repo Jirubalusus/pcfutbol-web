@@ -1,0 +1,2802 @@
+[
+  {
+    "id": "fcsb",
+    "name": "Steaua Capitala FC",
+    "shortName": "STC",
+    "city": "Bucarest",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Arena Capitala",
+    "stadiumCapacity": 54000,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Vlad Munteanu",
+        "position": "POR",
+        "age": 27,
+        "overall": 78,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Răzvan Radu",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Florin Matei",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Kingsley Ouattara",
+        "position": "DFC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Andrei Stancu",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Moses Sarr",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Tudor Dinu",
+        "position": "LB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Marius Cristea",
+        "position": "RB",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Octavian Dumitrescu",
+        "position": "MCD",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Florin Cristea",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Vlad Dinu",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Moses Diop",
+        "position": "MC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Ciprian Stan",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Alexandru Tudor",
+        "position": "MCO",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Emeka Traoré",
+        "position": "EI",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Marius Enache",
+        "position": "ED",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Nicolae Vlad",
+        "position": "DC",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Sorin Enache",
+        "position": "DC",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Vlad Ionescu",
+        "position": "DC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Stancu",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Rumania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "cfr-cluj",
+    "name": "Feroviar FC",
+    "shortName": "FER",
+    "city": "Cluj-Napoca",
+    "colors": {
+      "primary": "#6B1B1B",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Arena Feroviară",
+    "stadiumCapacity": 23500,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Cristian Barbu",
+        "position": "POR",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Nicolae Popescu",
+        "position": "POR",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Nicolae Constantin",
+        "position": "DFC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Horațiu Stan",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Alexandru Popa",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Jović",
+        "position": "DFC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Mihai Stan",
+        "position": "LB",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Dumitrescu",
+        "position": "RB",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Filip Jović",
+        "position": "MCD",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Luka Đorđević",
+        "position": "MCD",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Tudor Cristea",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Rodrigues",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Florin Popescu",
+        "position": "MC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Ciprian Enache",
+        "position": "MCO",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Kelechi Boateng",
+        "position": "EI",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Mihai Tudor",
+        "position": "ED",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cosmin Vlad",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Constantin",
+        "position": "DC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Marin",
+        "position": "DC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Radu",
+        "position": "MP",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "universitatea-craiova",
+    "name": "Oltenia FC",
+    "shortName": "OLT",
+    "city": "Craiova",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Oblemenco Arena",
+    "stadiumCapacity": 30983,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Bogdan Dinu",
+        "position": "POR",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Octavian Constantin",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Sorin Barbu",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Boateng",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Radu",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Victor Mensah",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Jović",
+        "position": "LB",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Matei",
+        "position": "RB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Dinu",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Marius Munteanu",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Vlad Dumitrescu",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Dan Cristea",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Ionescu",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Enache",
+        "position": "MCO",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Răzvan Popescu",
+        "position": "EI",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Octavian Stoica",
+        "position": "ED",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Andrei Popa",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Octavian Marin",
+        "position": "DC",
+        "age": 20,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Fábio Almeida",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Ionuț Barbu",
+        "position": "MP",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "rapid-bucuresti",
+    "name": "Giulești FC",
+    "shortName": "GIU",
+    "city": "Bucarest",
+    "colors": {
+      "primary": "#6B1B1B",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Giulești Stadion",
+    "stadiumCapacity": 14047,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Marius Marin",
+        "position": "POR",
+        "age": 33,
+        "overall": 76,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Andrei Stoica",
+        "position": "POR",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Nuno Oliveira",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Stoica",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Radu",
+        "position": "DFC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cosmin Dinu",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Dumitrescu",
+        "position": "LB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Tudor",
+        "position": "RB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Tudor",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Bogdan Stoica",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cosmin Constantin",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Dumitrescu",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Popescu",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Ferreira",
+        "position": "MCO",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Popa",
+        "position": "EI",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Victor Ndiaye",
+        "position": "ED",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Mihai Constantin",
+        "position": "DC",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Loïc Michel",
+        "position": "DC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      },
+      {
+        "name": "Ionuț Cristea",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Olteanu",
+        "position": "MP",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "dinamo-bucuresti",
+    "name": "Red Dogs FC",
+    "shortName": "RDG",
+    "city": "Bucarest",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Dinamo Arena",
+    "stadiumCapacity": 54000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Florin Stancu",
+        "position": "POR",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Vlad Radu",
+        "position": "POR",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Dan Nistor",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Nicolae Nistor",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Vlad",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Octavian Dumitrescu",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Andrei Dinu",
+        "position": "LB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Florin Marin",
+        "position": "RB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Rúben Marques",
+        "position": "MCD",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Bogdan Barbu",
+        "position": "MCD",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Dan Stancu",
+        "position": "MC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Vlad Matei",
+        "position": "MC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Munteanu",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Răzvan Stancu",
+        "position": "MCO",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Marko Pavlović",
+        "position": "EI",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Florin Tudor",
+        "position": "ED",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Mihai Constantin",
+        "position": "DC",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Petar Jović",
+        "position": "DC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Andrei Stancu",
+        "position": "DC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Vlad Stan",
+        "position": "MP",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "farul-constanta",
+    "name": "Black Sea Coast FC",
+    "shortName": "BSC",
+    "city": "Constanza",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Coastal Arena",
+    "stadiumCapacity": 15520,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Sorin Matei",
+        "position": "POR",
+        "age": 24,
+        "overall": 77,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Sorin Enache",
+        "position": "POR",
+        "age": 27,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Octavian Dumitrescu",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Vlad Marin",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Ionuț Tudor",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Sorin Constantin",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Radu",
+        "position": "LB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Octavian Constantin",
+        "position": "RB",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Samuel Boateng",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Julien Petit",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Francia",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Barbu",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Alexandru Enache",
+        "position": "MC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Cristea",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Radu",
+        "position": "MCO",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Andrei Dumitrescu",
+        "position": "EI",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Đorđević",
+        "position": "ED",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Tudor Radu",
+        "position": "DC",
+        "age": 19,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Sorin Munteanu",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Dinu",
+        "position": "DC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Valentin Thomas",
+        "position": "MP",
+        "age": 24,
+        "overall": 66,
+        "nationality": "Francia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "sepsi-sfantu",
+    "name": "Szekely FC",
+    "shortName": "SZK",
+    "city": "Sfântu Gheorghe",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Sepsi Arena",
+    "stadiumCapacity": 8400,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Nicolae Tudor",
+        "position": "POR",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Rumania",
+        "value": 1680000
+      },
+      {
+        "name": "Florin Vlad",
+        "position": "POR",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "João Almeida",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Emeka Boateng",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ionuț Dinu",
+        "position": "DFC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Ionescu",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Stefan Đorđević",
+        "position": "LB",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Popescu",
+        "position": "RB",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Marko Pavlović",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Olteanu",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Tudor Stan",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Ricardo Almeida",
+        "position": "MC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Stancu",
+        "position": "MC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Sorin Cristea",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Florin Barbu",
+        "position": "EI",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Sorin Olteanu",
+        "position": "ED",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Mihai Radu",
+        "position": "DC",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Miloš Ivanović",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Florin Matei",
+        "position": "DC",
+        "age": 32,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Sérgio Cardoso",
+        "position": "MP",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "hermannstadt",
+    "name": "Transilvania FC",
+    "shortName": "TRN",
+    "city": "Sibiu",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Sibiu Arena",
+    "stadiumCapacity": 12425,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Vlad Munteanu",
+        "position": "POR",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Răzvan Tudor",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Sorin Marin",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Marius Popescu",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Ricardo Marques",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Radu",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Baptiste Bertrand",
+        "position": "LB",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Octavian Marin",
+        "position": "RB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Sorin Nistor",
+        "position": "MCD",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Florin Dinu",
+        "position": "MCD",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Ionuț Popescu",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Horațiu Stoica",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Olteanu",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Popa",
+        "position": "MCO",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Constantin",
+        "position": "EI",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Luís Silva",
+        "position": "ED",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Santos",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Barbu",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Mihai Nistor",
+        "position": "DC",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Thomas Laurent",
+        "position": "MP",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Francia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "petrolul-ploiesti",
+    "name": "Oil Wells FC",
+    "shortName": "OIL",
+    "city": "Ploiești",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Ilie Oană Arena",
+    "stadiumCapacity": 15073,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Nikola Jović",
+        "position": "POR",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Serbia",
+        "value": 1680000
+      },
+      {
+        "name": "Valentin Popescu",
+        "position": "POR",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Nicolae Barbu",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Horațiu Dinu",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Ciprian Ionescu",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Horațiu Popescu",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Marius Dumitrescu",
+        "position": "LB",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Stancu",
+        "position": "RB",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Mihai Ionescu",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Mihai Vlad",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Olteanu",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Ionuț Popa",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Popescu",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Mendes",
+        "position": "MCO",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Mihai Stan",
+        "position": "EI",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Emeka Koné",
+        "position": "ED",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Nistor",
+        "position": "DC",
+        "age": 32,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Ionuț Olteanu",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Ionescu",
+        "position": "DC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Octavian Marin",
+        "position": "MP",
+        "age": 21,
+        "overall": 66,
+        "nationality": "Rumania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "unirea-slobozia",
+    "name": "Ialomița FC",
+    "shortName": "IAL",
+    "city": "Slobozia",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Slobozia Arena",
+    "stadiumCapacity": 7000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Horațiu Stancu",
+        "position": "POR",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Popescu",
+        "position": "POR",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Horațiu Popa",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Octavian Popescu",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Théo Thomas",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Dan Matei",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Bogdan Constantin",
+        "position": "LB",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Bogdan Olteanu",
+        "position": "RB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Horațiu Munteanu",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Constantin",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Popa",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Popescu",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Dan Dumitrescu",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Teixeira",
+        "position": "MCO",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Octavian Popa",
+        "position": "EI",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Dumitrescu",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Koné",
+        "position": "DC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Alexandru Dinu",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Cristian Nistor",
+        "position": "DC",
+        "age": 19,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Ferreira",
+        "position": "MP",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "uta-arad",
+    "name": "Mureș FC",
+    "shortName": "MUR",
+    "city": "Arad",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Arad Arena",
+    "stadiumCapacity": 12500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Vlad Popa",
+        "position": "POR",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Pereira",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Marius Matei",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Kingsley Diop",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Răzvan Olteanu",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Vlad",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Florin Nistor",
+        "position": "LB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Stoica",
+        "position": "RB",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Enache",
+        "position": "MCD",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Constantin",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Munteanu",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Stancu",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Ionescu",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Tudor Radu",
+        "position": "MCO",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Raphaël Petit",
+        "position": "EI",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Kévin Bernard",
+        "position": "ED",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Ionescu",
+        "position": "DC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Mihai Tudor",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Barbu",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Stoica",
+        "position": "MP",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "otelul-galati",
+    "name": "Steel FC",
+    "shortName": "STL",
+    "city": "Galați",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Oțelul Arena",
+    "stadiumCapacity": 11000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Ionuț Nistor",
+        "position": "POR",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Dan Olteanu",
+        "position": "POR",
+        "age": 29,
+        "overall": 66,
+        "nationality": "Rumania",
+        "value": 112000
+      },
+      {
+        "name": "Horațiu Popescu",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Cristian Stancu",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Matei",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Horațiu Olteanu",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Olteanu",
+        "position": "LB",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Kelechi Koné",
+        "position": "RB",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Vlad",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Nistor",
+        "position": "MCD",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Ionuț Popa",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Kévin Bertrand",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Popa",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Ionuț Stoica",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Octavian Enache",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Popescu",
+        "position": "ED",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Nicolae Popa",
+        "position": "DC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Aleksandar Nikolić",
+        "position": "DC",
+        "age": 20,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Ionuț Munteanu",
+        "position": "DC",
+        "age": 20,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Dan Marin",
+        "position": "MP",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "politehnica-iasi",
+    "name": "Moldavia FC",
+    "shortName": "MLD",
+    "city": "Iași",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Emil Arena",
+    "stadiumCapacity": 11390,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Bogdan Dinu",
+        "position": "POR",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Quentin Bernard",
+        "position": "POR",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      },
+      {
+        "name": "Nicolae Stan",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Octavian Matei",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Bogdan Ionescu",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Cristian Stoica",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Mihai Munteanu",
+        "position": "LB",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Nikola Jović",
+        "position": "RB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksandar Petrović",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Marius Munteanu",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Santos",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Stefan Pavlović",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Antoine Morel",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Tudor",
+        "position": "MCO",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Sorin Constantin",
+        "position": "EI",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Ciprian Stancu",
+        "position": "ED",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Tudor Matei",
+        "position": "DC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Marius Tudor",
+        "position": "DC",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Sorin Ionescu",
+        "position": "DC",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Cristian Matei",
+        "position": "MP",
+        "age": 19,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "botosani",
+    "name": "Botoșani FC",
+    "shortName": "BTS",
+    "city": "Botoșani",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Municipal Arena",
+    "stadiumCapacity": 7782,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Valentin Dumitrescu",
+        "position": "POR",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Dan Enache",
+        "position": "POR",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Sorin Stancu",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Nikola Đorđević",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Valentin Popescu",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Marin",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Horațiu Stancu",
+        "position": "LB",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Vlad Dinu",
+        "position": "RB",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Aleksandar Radović",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Vlad Cristea",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Obi Boateng",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ionuț Popescu",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Julien Leroy",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Ivanović",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Tudor Tudor",
+        "position": "EI",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Marius Ionescu",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Valentin Vlad",
+        "position": "DC",
+        "age": 20,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cristian Munteanu",
+        "position": "DC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Dan Matei",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Constantin",
+        "position": "MP",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "csikszereda",
+    "name": "Harghita FC",
+    "shortName": "HRG",
+    "city": "Miercurea Ciuc",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#00853E"
+    },
+    "stadium": "Miercurea Arena",
+    "stadiumCapacity": 5600,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Tudor Dumitrescu",
+        "position": "POR",
+        "age": 33,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Răzvan Tudor",
+        "position": "POR",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Dinu",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Raphaël Girard",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Ribeiro",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Emeka Diop",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Marius Radu",
+        "position": "LB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Marius Enache",
+        "position": "RB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Nistor",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Stan",
+        "position": "MCD",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Dumitrescu",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cosmin Popescu",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Florin Matei",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Stoica",
+        "position": "MCO",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Nistor",
+        "position": "EI",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Florin Munteanu",
+        "position": "ED",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Munteanu",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Constantin",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Dan Popescu",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Bogdan Radu",
+        "position": "MP",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "metaloglobus",
+    "name": "Capital Metals FC",
+    "shortName": "CPM",
+    "city": "Bucarest",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Metaloglobus Arena",
+    "stadiumCapacity": 3000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Bogdan Dinu",
+        "position": "POR",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Marques",
+        "position": "POR",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Bogdan Cristea",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Barbu",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rumania",
+        "value": 224000
+      },
+      {
+        "name": "Nicolae Constantin",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Vlad",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Ciprian Stan",
+        "position": "LB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Ciprian Matei",
+        "position": "RB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Mihai Enache",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Cosmin Ionescu",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Ciprian Radu",
+        "position": "MC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Octavian Constantin",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Olteanu",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Răzvan Popescu",
+        "position": "MCO",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Gonçalves",
+        "position": "EI",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Alexandru Cristea",
+        "position": "ED",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Cristian Tudor",
+        "position": "DC",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Rumania",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Marques",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Marin",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Rumania",
+        "value": 420000
+      },
+      {
+        "name": "Dan Matei",
+        "position": "MP",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Rumania",
+        "value": 224000
+      }
+    ]
+  }
+]

@@ -1,0 +1,2802 @@
+[
+  {
+    "id": "malmo-ff",
+    "name": "Himmelblå FF",
+    "shortName": "HIM",
+    "city": "Malmö",
+    "colors": {
+      "primary": "#66B2FF",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Eleda Arena",
+    "stadiumCapacity": 24000,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Johan Andersson",
+        "position": "POR",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Bergström",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Jönsson",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Emil Åberg",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Mikael Sandberg",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Moses Koné",
+        "position": "DFC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Lars Bergström",
+        "position": "LB",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Svensson",
+        "position": "RB",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Lars Forsberg",
+        "position": "MCD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Lars Olsson",
+        "position": "MCD",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Alexander Öberg",
+        "position": "MC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Johan Eriksson",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Gustav Hedlund",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Emil Olsson",
+        "position": "MCO",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Márcio Almeida",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Nilsson",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Linus Åberg",
+        "position": "DC",
+        "age": 30,
+        "overall": 77,
+        "nationality": "Suecia",
+        "value": 1680000
+      },
+      {
+        "name": "Simon Jørgensen",
+        "position": "DC",
+        "age": 32,
+        "overall": 70,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Peter Ouattara",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Lindqvist",
+        "position": "MP",
+        "age": 22,
+        "overall": 66,
+        "nationality": "Suecia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "aik-fotboll",
+    "name": "Svartguld IF",
+    "shortName": "SGI",
+    "city": "Solna",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Huvudstad Arena",
+    "stadiumCapacity": 50000,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Daniel Larsson",
+        "position": "POR",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Suecia",
+        "value": 1680000
+      },
+      {
+        "name": "Emil Andersson",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Simon Hedlund",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Hansen",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lars Gustafsson",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Andersson",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Öberg",
+        "position": "LB",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Pernille Jørgensen",
+        "position": "RB",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Anders Olsson",
+        "position": "MCD",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Engen",
+        "position": "MCD",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Viktor Lindqvist",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Gustafsson",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Lars Sandberg",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Erik Karlsson",
+        "position": "MCO",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Márcio Gomes",
+        "position": "EI",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Anders Svensson",
+        "position": "ED",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Linus Eriksson",
+        "position": "DC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Filip Strömberg",
+        "position": "DC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Jonas Ødegård",
+        "position": "DC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Jönsson",
+        "position": "MP",
+        "age": 28,
+        "overall": 66,
+        "nationality": "Suecia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "hammarby-if",
+    "name": "Bajenbyen IF",
+    "shortName": "BAJ",
+    "city": "Estocolmo",
+    "colors": {
+      "primary": "#00854A",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Södermalm Arena",
+    "stadiumCapacity": 33000,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Anders Åberg",
+        "position": "POR",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Suecia",
+        "value": 1680000
+      },
+      {
+        "name": "Oskar Forsberg",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Bergström",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Gustafsson",
+        "position": "DFC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Boateng",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Forsberg",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Eirik Ødegård",
+        "position": "LB",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Erik Strömberg",
+        "position": "RB",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Filip Hedlund",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Simon Johansson",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Hedlund",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Mads Kristensen",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Nilsson",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Victor Traoré",
+        "position": "MCO",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gustav Andersson",
+        "position": "EI",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Filip Persson",
+        "position": "ED",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Emil Larsen",
+        "position": "DC",
+        "age": 23,
+        "overall": 76,
+        "nationality": "Dinamarca",
+        "value": 1680000
+      },
+      {
+        "name": "Alexander Andersson",
+        "position": "DC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Lindberg",
+        "position": "DC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Emil Svensson",
+        "position": "MP",
+        "age": 19,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "djurgarden-if",
+    "name": "Järnkamraterna IF",
+    "shortName": "JRN",
+    "city": "Estocolmo",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Djurgården Park",
+    "stadiumCapacity": 50000,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Niklas Gustafsson",
+        "position": "POR",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Suecia",
+        "value": 1680000
+      },
+      {
+        "name": "Márcio Barbosa",
+        "position": "POR",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Karl Andersson",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Viktor Persson",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Gustav Karlsson",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Öberg",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Rasmus Eriksen",
+        "position": "LB",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Anders Jönsson",
+        "position": "RB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Lars Lindqvist",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Åberg",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Johan Olsson",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Simon Hedlund",
+        "position": "MC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Emil Jönsson",
+        "position": "MC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Alexander Hedlund",
+        "position": "MCO",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Andreas Pedersen",
+        "position": "EI",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Hansen",
+        "position": "ED",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Simon Nilsson",
+        "position": "DC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Ebenezer Traoré",
+        "position": "DC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Jonas Strömberg",
+        "position": "DC",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Strömberg",
+        "position": "MP",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "ifk-goteborg",
+    "name": "Blåvitt IFK",
+    "shortName": "BLV",
+    "city": "Gotemburgo",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Gamla Ullevi Arena",
+    "stadiumCapacity": 18800,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Simon Johansson",
+        "position": "POR",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Magnus Pedersen",
+        "position": "POR",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Noruega",
+        "value": 112000
+      },
+      {
+        "name": "Tobias Nilsson",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Olsson",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Olsson",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Eduardo Barbosa",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Gustav Hedlund",
+        "position": "LB",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Lindberg",
+        "position": "RB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Emil Lindberg",
+        "position": "MCD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Persson",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Persson",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Svensson",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Gustafsson",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Gustafsson",
+        "position": "MCO",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Linus Gustafsson",
+        "position": "EI",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Lindberg",
+        "position": "ED",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Niklas Lindqvist",
+        "position": "DC",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Åberg",
+        "position": "DC",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Viktor Svensson",
+        "position": "DC",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Linus Lindberg",
+        "position": "MP",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "bk-hacken",
+    "name": "Gulkrage BK",
+    "shortName": "GKR",
+    "city": "Gotemburgo",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Bravida Park",
+    "stadiumCapacity": 6316,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Alexander Bergström",
+        "position": "POR",
+        "age": 28,
+        "overall": 77,
+        "nationality": "Suecia",
+        "value": 1680000
+      },
+      {
+        "name": "Erik Nilsson",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Bergström",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Andersson",
+        "position": "DFC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Anders Svensson",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Eduardo Ribeiro",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Larsson",
+        "position": "LB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Johan Strömberg",
+        "position": "RB",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Lindberg",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Erik Eriksson",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Larsson",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Mikael Nilsson",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Lars Sandberg",
+        "position": "MC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Obi Boateng",
+        "position": "MCO",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Linus Hedlund",
+        "position": "EI",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Tobias Olsson",
+        "position": "ED",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Johan Larsson",
+        "position": "DC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Nilsson",
+        "position": "DC",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Erik Larsson",
+        "position": "DC",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Karl Åberg",
+        "position": "MP",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "ifk-norrkoping",
+    "name": "Pekingen IFK",
+    "shortName": "PEK",
+    "city": "Norrköping",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Nordkust Arena",
+    "stadiumCapacity": 17000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Niklas Larsson",
+        "position": "POR",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Leandro Santos",
+        "position": "POR",
+        "age": 24,
+        "overall": 66,
+        "nationality": "Brasil",
+        "value": 112000
+      },
+      {
+        "name": "Alexander Bergström",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Erik Persson",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Simon Nilsson",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Lars Persson",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Jonas Lindqvist",
+        "position": "LB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Larsson",
+        "position": "RB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Andreas Myhre",
+        "position": "MCD",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Thiago Araújo",
+        "position": "MCD",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Victor Diop",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Strömberg",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Magnus Christensen",
+        "position": "MC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Karl Bergström",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Emil Strömberg",
+        "position": "EI",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Johan Bergström",
+        "position": "ED",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Anders Persson",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Andersson",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Linus Olsson",
+        "position": "DC",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Simon Åberg",
+        "position": "MP",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "mjallby-aif",
+    "name": "Strandby AIF",
+    "shortName": "STB",
+    "city": "Hällevik",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Strandvallen Arena",
+    "stadiumCapacity": 6500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Emil Persson",
+        "position": "POR",
+        "age": 24,
+        "overall": 77,
+        "nationality": "Suecia",
+        "value": 1680000
+      },
+      {
+        "name": "Mikael Eriksson",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Alexander Nilsson",
+        "position": "DFC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Fredrik Lindqvist",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Gustafsson",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Forsberg",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Laursen",
+        "position": "LB",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Dinamarca",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Jönsson",
+        "position": "RB",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Ouattara",
+        "position": "MCD",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Victor Traoré",
+        "position": "MCD",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Haugen",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Strömberg",
+        "position": "MC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Viktor Andersson",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Igor Santos",
+        "position": "MCO",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Lars Persson",
+        "position": "EI",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Linus Öberg",
+        "position": "ED",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Gustav Nilsson",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Linus Karlsson",
+        "position": "DC",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Daniel Johansson",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Lindberg",
+        "position": "MP",
+        "age": 22,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "elfsborg",
+    "name": "Gulmaktens IF",
+    "shortName": "GMI",
+    "city": "Borås",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Borås Park",
+    "stadiumCapacity": 16899,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Jonas Hedlund",
+        "position": "POR",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Andreas Christiansen",
+        "position": "POR",
+        "age": 27,
+        "overall": 66,
+        "nationality": "Dinamarca",
+        "value": 112000
+      },
+      {
+        "name": "Gustav Sandberg",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Strömberg",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Igor Araújo",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Emil Pedersen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Persson",
+        "position": "LB",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Vegard Ødegård",
+        "position": "RB",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Anders Lindqvist",
+        "position": "MCD",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Niklas Karlsson",
+        "position": "MCD",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Gustav Eriksson",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Johan Nilsson",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Anders Bergström",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "João Martins",
+        "position": "MCO",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Victor Sarr",
+        "position": "EI",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Laursen",
+        "position": "ED",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Lars Forsberg",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Olsson",
+        "position": "DC",
+        "age": 19,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Gustav Bergström",
+        "position": "DC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Lucas Barbosa",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Brasil",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "kalmar-ff",
+    "name": "Östkust FF",
+    "shortName": "OST",
+    "city": "Kalmar",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Guldfågeln Park",
+    "stadiumCapacity": 12182,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Mikael Forsberg",
+        "position": "POR",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Oskar Sandberg",
+        "position": "POR",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Forsberg",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Johan Eriksson",
+        "position": "DFC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Jönsson",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Erik Nilsson",
+        "position": "DFC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Filip Nilsson",
+        "position": "LB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Lindqvist",
+        "position": "RB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Jonas Sandberg",
+        "position": "MCD",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Fredrik Johansson",
+        "position": "MCD",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Sørensen",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Mats Johansen",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Linus Andersson",
+        "position": "MC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Mikael Lindberg",
+        "position": "MCO",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Erik Haugen",
+        "position": "EI",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Andersson",
+        "position": "ED",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Forsberg",
+        "position": "DC",
+        "age": 20,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Jönsson",
+        "position": "DC",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Gustav Lindqvist",
+        "position": "DC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Sebastian Pedersen",
+        "position": "MP",
+        "age": 22,
+        "overall": 66,
+        "nationality": "Noruega",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "halmstads-bk",
+    "name": "Blåvit BK",
+    "shortName": "HBK",
+    "city": "Halmstad",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Örjans Arena",
+    "stadiumCapacity": 15500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Daniel Öberg",
+        "position": "POR",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Gustav Eriksson",
+        "position": "POR",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Suecia",
+        "value": 112000
+      },
+      {
+        "name": "Felipe Barbosa",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Lars Karlsson",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Lars Larsson",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Igor Almeida",
+        "position": "DFC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Nilsson",
+        "position": "LB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Emil Andersson",
+        "position": "RB",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Johan Lindberg",
+        "position": "MCD",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Eduardo Souza",
+        "position": "MCD",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Forsberg",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Olsson",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Eriksson",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Linus Bergström",
+        "position": "MCO",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Niklas Nilsson",
+        "position": "EI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Bergström",
+        "position": "ED",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Forsberg",
+        "position": "DC",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Alexander Olsson",
+        "position": "DC",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Ebenezer Adeyemi",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Persson",
+        "position": "MP",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "goteborg-if",
+    "name": "Makrill IF",
+    "shortName": "MAK",
+    "city": "Gotemburgo",
+    "colors": {
+      "primary": "#00854A",
+      "secondary": "#000000"
+    },
+    "stadium": "Gamla Ullevi",
+    "stadiumCapacity": 18800,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Johan Bergström",
+        "position": "POR",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Gustav Åberg",
+        "position": "POR",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Oskar Lindberg",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Lars Åberg",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Anders Olsson",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Erik Lindqvist",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "João Nascimento",
+        "position": "LB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Linus Eriksson",
+        "position": "RB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Åberg",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Forsberg",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Ødegård",
+        "position": "MC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Mikael Larsson",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Anders Ødegård",
+        "position": "MC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Emil Gustafsson",
+        "position": "MCO",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Simon Sandberg",
+        "position": "EI",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Mikael Gustafsson",
+        "position": "ED",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Morten Christensen",
+        "position": "DC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Ndiaye",
+        "position": "DC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Anders Larsson",
+        "position": "DC",
+        "age": 20,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Lars Lindqvist",
+        "position": "MP",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Suecia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "brommapojkarna",
+    "name": "Västerort IF",
+    "shortName": "VOR",
+    "city": "Bromma",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#000000"
+    },
+    "stadium": "Grimsta Arena",
+    "stadiumCapacity": 9000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Tobias Lindberg",
+        "position": "POR",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Gustafsson",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Linus Olsson",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Gustafsson",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Andersson",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Tobias Johansson",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Larsson",
+        "position": "LB",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Öberg",
+        "position": "RB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Andersson",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Ribeiro",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Eriksson",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Jesper Pedersen",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Aron Haugen",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Johansson",
+        "position": "MCO",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Emil Svensson",
+        "position": "EI",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Pernille Jensen",
+        "position": "ED",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Lars Karlsson",
+        "position": "DC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Gustav Gustafsson",
+        "position": "DC",
+        "age": 23,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Oliver Madsen",
+        "position": "DC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Dinamarca",
+        "value": 224000
+      },
+      {
+        "name": "Simon Öberg",
+        "position": "MP",
+        "age": 24,
+        "overall": 66,
+        "nationality": "Suecia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "degerfors-if",
+    "name": "Brukorten IF",
+    "shortName": "BRU",
+    "city": "Degerfors",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stora Park",
+    "stadiumCapacity": 7500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Lars Lindberg",
+        "position": "POR",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Johan Gustafsson",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Simon Jönsson",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Filip Jönsson",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Pernille Lund",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Lars Svensson",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Håkon Hansen",
+        "position": "LB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lasse Laursen",
+        "position": "RB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Igor Rodrigues",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Oliver Jensen",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Öberg",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Mikael Johansson",
+        "position": "MC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Åberg",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Persson",
+        "position": "MCO",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Jesper Sørensen",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Gustafsson",
+        "position": "ED",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Karlsson",
+        "position": "DC",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Alexander Åberg",
+        "position": "DC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Svensson",
+        "position": "DC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Erik Sandberg",
+        "position": "MP",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Suecia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "oster-if",
+    "name": "Smålandsby IF",
+    "shortName": "SML",
+    "city": "Växjö",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Visma Park",
+    "stadiumCapacity": 12000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Oskar Jönsson",
+        "position": "POR",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Erik Karlsson",
+        "position": "POR",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Filip Lindberg",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Larsson",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Simon Jönsson",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Filip Forsberg",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Thiago Costa",
+        "position": "LB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Tobias Forsberg",
+        "position": "RB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Hedlund",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Moses Boateng",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Ndiaye",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Svensson",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Erik Forsberg",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Lindqvist",
+        "position": "MCO",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Erik Hedlund",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Åberg",
+        "position": "ED",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Gustafsson",
+        "position": "DC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Simon Forsberg",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Gustav Gustafsson",
+        "position": "DC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Obi Adeyemi",
+        "position": "MP",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "sirius-if",
+    "name": "Himmelsljus IK",
+    "shortName": "HIM",
+    "city": "Uppsala",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#000000"
+    },
+    "stadium": "Studenternas Arena",
+    "stadiumCapacity": 10000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Lars Bergström",
+        "position": "POR",
+        "age": 33,
+        "overall": 76,
+        "nationality": "Suecia",
+        "value": 1680000
+      },
+      {
+        "name": "Tobias Gustafsson",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Anders Eriksson",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Gustav Johansson",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Karl Lindqvist",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Persson",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Alexander Forsberg",
+        "position": "LB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Anders Olsson",
+        "position": "RB",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Andersson",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Mikael Olsson",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Tobias Sandberg",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Mikael Andersson",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Sandberg",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Svensson",
+        "position": "MCO",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Niklas Hedlund",
+        "position": "EI",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Lindqvist",
+        "position": "ED",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Bergström",
+        "position": "DC",
+        "age": 20,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Johansson",
+        "position": "DC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Emil Forsberg",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Jönsson",
+        "position": "MP",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      }
+    ]
+  }
+]

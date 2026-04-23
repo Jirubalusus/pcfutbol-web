@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "ulsan-hd",
+    "name": "Taehwa Tigers FC",
+    "shortName": "TTF",
+    "city": "Ulsan",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Taehwa Arena",
+    "stadiumCapacity": 44102,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Kingsley Sarr",
+        "position": "POR",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Igor Carvalho",
+        "position": "POR",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Seo-jun Moon",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jin-woo Park",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Tae-hyun Jang",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Dong-hyun Song",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jin-woo Kim",
+        "position": "LB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Kyung-min Jang",
+        "position": "RB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sang-ho Cho",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jin-woo Kang",
+        "position": "MCD",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Haru Nakamura",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Hong",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Eun-woo Lee",
+        "position": "MC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Lee",
+        "position": "MCO",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Seo-jun Kwon",
+        "position": "EI",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Chen Zhang",
+        "position": "ED",
+        "age": 25,
+        "overall": 73,
+        "nationality": "China",
+        "value": 840000
+      },
+      {
+        "name": "Sang-ho Kang",
+        "position": "DC",
+        "age": 19,
+        "overall": 77,
+        "nationality": "Corea del Sur",
+        "value": 1680000
+      },
+      {
+        "name": "Ji-woo Kang",
+        "position": "DC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Ji-woo Yoon",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Ji-ho Hwang",
+        "position": "MP",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "jeonbuk-motors",
+    "name": "Green Chariot FC",
+    "shortName": "GCH",
+    "city": "Jeonju",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Jeonju Arena",
+    "stadiumCapacity": 42477,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Daichi Kato",
+        "position": "POR",
+        "age": 30,
+        "overall": 77,
+        "nationality": "Japón",
+        "value": 1680000
+      },
+      {
+        "name": "Do-yun Jang",
+        "position": "POR",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Min-jun Hong",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Ji-woo Shin",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ji-ho Han",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Park",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jin-woo Kim",
+        "position": "LB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seung-ho Song",
+        "position": "RB",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Dong-hyun Hong",
+        "position": "MCD",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Jae-sung Ahn",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sung-min Hwang",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Chinedu Boateng",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Min-jun Kang",
+        "position": "MC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Min-jun Lee",
+        "position": "MCO",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Kyung-min Kang",
+        "position": "EI",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Dong-hyun Han",
+        "position": "ED",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Do-yun Shin",
+        "position": "DC",
+        "age": 20,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hiroshi Nakamura",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Japón",
+        "value": 224000
+      },
+      {
+        "name": "Young-soo Kang",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Joon-ho Han",
+        "position": "MP",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "fc-seoul",
+    "name": "Capital Reds FC",
+    "shortName": "CRD",
+    "city": "Seúl",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Capital Arena",
+    "stadiumCapacity": 66704,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Woo-jin Shin",
+        "position": "POR",
+        "age": 32,
+        "overall": 78,
+        "nationality": "Corea del Sur",
+        "value": 1680000
+      },
+      {
+        "name": "Chen Zhou",
+        "position": "POR",
+        "age": 33,
+        "overall": 66,
+        "nationality": "China",
+        "value": 112000
+      },
+      {
+        "name": "Lucas Pereira",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Dong-hyun Shin",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ryota Kobayashi",
+        "position": "DFC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Hyun-woo Ahn",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Lei Yang",
+        "position": "LB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "China",
+        "value": 420000
+      },
+      {
+        "name": "Min-jun Song",
+        "position": "RB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ryota Saito",
+        "position": "MCD",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Hyun-jun Song",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Jang",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Bo Liu",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "China",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-woo Choi",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ji-woo Kwon",
+        "position": "MCO",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Ahn",
+        "position": "EI",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ji-ho Lee",
+        "position": "ED",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Han",
+        "position": "DC",
+        "age": 32,
+        "overall": 77,
+        "nationality": "Corea del Sur",
+        "value": 1680000
+      },
+      {
+        "name": "Min-jun Oh",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Hiroshi Kato",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Japón",
+        "value": 224000
+      },
+      {
+        "name": "Hyun-jun Shin",
+        "position": "MP",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "pohang-steelers",
+    "name": "Pohang Forge FC",
+    "shortName": "PFG",
+    "city": "Pohang",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#D50000"
+    },
+    "stadium": "Steel Yard Arena",
+    "stadiumCapacity": 17443,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Do-yun Kang",
+        "position": "POR",
+        "age": 32,
+        "overall": 76,
+        "nationality": "Corea del Sur",
+        "value": 1680000
+      },
+      {
+        "name": "Kyung-min Park",
+        "position": "POR",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Do-yun Jung",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Seo-jun Lee",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Jae-sung Moon",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Okafor",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Seung-ho Lee",
+        "position": "LB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seo-jun Kwon",
+        "position": "RB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Eun-woo Moon",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Haru Yamamoto",
+        "position": "MCD",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Chan-hee Song",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Min-jun Hong",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Tae-hyun Oh",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Obi Adeyemi",
+        "position": "MCO",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ji-woo Song",
+        "position": "EI",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seo-jun Shin",
+        "position": "ED",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Hyun-woo Hwang",
+        "position": "DC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Jae-sung Song",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Han",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Shin",
+        "position": "MP",
+        "age": 27,
+        "overall": 66,
+        "nationality": "Corea del Sur",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "gangwon-fc",
+    "name": "Alpine Bears FC",
+    "shortName": "ALB",
+    "city": "Chuncheon",
+    "colors": {
+      "primary": "#FF7F00",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Chuncheon Arena",
+    "stadiumCapacity": 20000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Young-soo Seo",
+        "position": "POR",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Jin-woo Kang",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Seo-jun Kang",
+        "position": "DFC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Jang",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jae-sung Lim",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sang-ho Song",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "João Rodrigues",
+        "position": "LB",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Sang-ho Seo",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Márcio Costa",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-woo Kang",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Jung",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Eun-woo Kim",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jin-woo Lee",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Tae-hyun Lee",
+        "position": "MCO",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Wei Zhou",
+        "position": "EI",
+        "age": 21,
+        "overall": 70,
+        "nationality": "China",
+        "value": 420000
+      },
+      {
+        "name": "Woo-jin Han",
+        "position": "ED",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Kenta Saito",
+        "position": "DC",
+        "age": 22,
+        "overall": 76,
+        "nationality": "Japón",
+        "value": 1680000
+      },
+      {
+        "name": "Kenta Yamamoto",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Min-jun Yoon",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Chan-hee Moon",
+        "position": "MP",
+        "age": 19,
+        "overall": 67,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "suwon-fc",
+    "name": "Fortress City FC",
+    "shortName": "FCY",
+    "city": "Suwon",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Suwon Arena",
+    "stadiumCapacity": 11808,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Kingsley Okafor",
+        "position": "POR",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Adeyemi",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Hao Liu",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "China",
+        "value": 420000
+      },
+      {
+        "name": "Chan-hee Jang",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jae-sung Song",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Bo Chen",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "China",
+        "value": 420000
+      },
+      {
+        "name": "Ji-woo Lim",
+        "position": "LB",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Kyung-min Kim",
+        "position": "RB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sang-ho Seo",
+        "position": "MCD",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Seo-jun Jung",
+        "position": "MCD",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Ji-woo Seo",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Hao Zhao",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "China",
+        "value": 840000
+      },
+      {
+        "name": "Takumi Tanaka",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Tae-hyun Kang",
+        "position": "MCO",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Seung-ho Yoon",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sung-min Choi",
+        "position": "ED",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ji-woo Hong",
+        "position": "DC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Hyun-woo Choi",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Chinedu Okafor",
+        "position": "DC",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Dong-hyun Moon",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "daegu-fc",
+    "name": "Apsan FC",
+    "shortName": "APS",
+    "city": "Daegu",
+    "colors": {
+      "primary": "#002A5C",
+      "secondary": "#AACCEE"
+    },
+    "stadium": "DGB Park",
+    "stadiumCapacity": 12419,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Young-soo Lee",
+        "position": "POR",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Woo-jin Song",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Kyung-min Hwang",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Lei Wang",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "China",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-woo Cho",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-woo Kang",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ryoma Yamamoto",
+        "position": "LB",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Sung-min Lim",
+        "position": "RB",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Jae-sung Jung",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jae-sung Shin",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seo-jun Moon",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Tae-hyun Jung",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Hyun-woo Jang",
+        "position": "MC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Woo-jin Choi",
+        "position": "MCO",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Young-soo Seo",
+        "position": "EI",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Tae-hyun Song",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Kyung-min Oh",
+        "position": "DC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Hyun-woo Ahn",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Choi",
+        "position": "DC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Tae-hyun Yoon",
+        "position": "MP",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "gwangju-fc",
+    "name": "Honam Phoenix FC",
+    "shortName": "HPX",
+    "city": "Gwangju",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#D50000"
+    },
+    "stadium": "Gwangju Arena",
+    "stadiumCapacity": 7000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Eun-woo Song",
+        "position": "POR",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Sung-min Choi",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Sang-ho Ahn",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Woo-jin Lee",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Hyun-jun Cho",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sung-min Seo",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Dong-hyun Kang",
+        "position": "LB",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Kenta Yamamoto",
+        "position": "RB",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Martins",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Daichi Kato",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Chan-hee Kwon",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Peter Koné",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gabriel Monteiro",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Seo-jun Kang",
+        "position": "MCO",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Joon-ho Kang",
+        "position": "EI",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Hong",
+        "position": "ED",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ji-ho Lim",
+        "position": "DC",
+        "age": 32,
+        "overall": 75,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Chen Wu",
+        "position": "DC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "China",
+        "value": 420000
+      },
+      {
+        "name": "Kyung-min Seo",
+        "position": "DC",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Tae-hyun Kwon",
+        "position": "MP",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "jeju-sk",
+    "name": "Hallasan FC",
+    "shortName": "HAL",
+    "city": "Seogwipo",
+    "colors": {
+      "primary": "#FF7F00",
+      "secondary": "#000000"
+    },
+    "stadium": "Jeju Arena",
+    "stadiumCapacity": 29791,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Tae-hyun Lim",
+        "position": "POR",
+        "age": 33,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Yuma Kato",
+        "position": "POR",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Japón",
+        "value": 224000
+      },
+      {
+        "name": "Jae-sung Seo",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Hyun-woo Cho",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jin-woo Moon",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sang-ho Kang",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Kyung-min Lee",
+        "position": "LB",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Chan-hee Oh",
+        "position": "RB",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Lim",
+        "position": "MCD",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Joon-ho Hwang",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Joon-ho Hong",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Moon",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seung-ho Lim",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ryoma Ito",
+        "position": "MCO",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Jin-woo Yoon",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Lucas Monteiro",
+        "position": "ED",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Jin-woo Cho",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Sang-ho Hwang",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Wei Wang",
+        "position": "DC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "China",
+        "value": 840000
+      },
+      {
+        "name": "Igor Santos",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "daejeon-hana",
+    "name": "Daejeon Citizen FC",
+    "shortName": "DCT",
+    "city": "Daejeon",
+    "colors": {
+      "primary": "#6F2DA8",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Daejeon Arena",
+    "stadiumCapacity": 40535,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Shota Ito",
+        "position": "POR",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Japón",
+        "value": 1680000
+      },
+      {
+        "name": "Jun Liu",
+        "position": "POR",
+        "age": 25,
+        "overall": 67,
+        "nationality": "China",
+        "value": 224000
+      },
+      {
+        "name": "Chan-hee Jang",
+        "position": "DFC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ji-woo Jang",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ji-woo Jung",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Jin-woo Park",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seung-ho Jung",
+        "position": "LB",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Jae-sung Hong",
+        "position": "RB",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Hong",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Jang",
+        "position": "MCD",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Dong-hyun Hong",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Joon-ho Lee",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Joon-ho Jung",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seo-jun Jung",
+        "position": "MCO",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Dong-hyun Choi",
+        "position": "EI",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Moses Sarr",
+        "position": "ED",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Hiroshi Nakamura",
+        "position": "DC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Ji-ho Moon",
+        "position": "DC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Min-jun Han",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Eun-woo Shin",
+        "position": "MP",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "anyang",
+    "name": "Anyang Purples FC",
+    "shortName": "APR",
+    "city": "Anyang",
+    "colors": {
+      "primary": "#6B1B9A",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Anyang Arena",
+    "stadiumCapacity": 17143,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Seung-ho Shin",
+        "position": "POR",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Joon-ho Hwang",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Ji-ho Ahn",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Kyung-min Cho",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Lee",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Peter Boateng",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Young-soo Jung",
+        "position": "LB",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Tae-hyun Choi",
+        "position": "RB",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Seo-jun Ahn",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Seo-jun Kang",
+        "position": "MCD",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Joon-ho Seo",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Kwon",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Dong-hyun Han",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Seung-ho Seo",
+        "position": "MCO",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Seo-jun Kim",
+        "position": "EI",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Chinedu Traoré",
+        "position": "ED",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Jung",
+        "position": "DC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Thiago Ribeiro",
+        "position": "DC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Kyung-min Hwang",
+        "position": "DC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Haru Kobayashi",
+        "position": "MP",
+        "age": 21,
+        "overall": 66,
+        "nationality": "Japón",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "gimcheon-sangmu",
+    "name": "Gimcheon Military FC",
+    "shortName": "GML",
+    "city": "Gimcheon",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Gimcheon Arena",
+    "stadiumCapacity": 20000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Peter Mensah",
+        "position": "POR",
+        "age": 32,
+        "overall": 76,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Ji-woo Jang",
+        "position": "POR",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Corea del Sur",
+        "value": 112000
+      },
+      {
+        "name": "Chan-hee Park",
+        "position": "DFC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Kelechi Ouattara",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Seo-jun Jung",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Ming Li",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "China",
+        "value": 224000
+      },
+      {
+        "name": "Seo-jun Kang",
+        "position": "LB",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Seung-ho Lim",
+        "position": "RB",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Hyun-jun Hwang",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Yoon",
+        "position": "MCD",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Corea del Sur",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Hwang",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Ebenezer Koné",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Obi Adeyemi",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Tae-hyun Moon",
+        "position": "MCO",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Shota Nakamura",
+        "position": "EI",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Do-yun Kang",
+        "position": "ED",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Daichi Saito",
+        "position": "DC",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Tae-hyun Seo",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 224000
+      },
+      {
+        "name": "Eun-woo Yoon",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Corea del Sur",
+        "value": 840000
+      },
+      {
+        "name": "Chen Wang",
+        "position": "MP",
+        "age": 27,
+        "overall": 69,
+        "nationality": "China",
+        "value": 224000
+      }
+    ]
+  }
+]

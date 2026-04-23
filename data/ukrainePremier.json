@@ -1,0 +1,2802 @@
+[
+  {
+    "id": "shakhtar-donetsk",
+    "name": "Miners FC",
+    "shortName": "MIN",
+    "city": "Donetsk",
+    "colors": {
+      "primary": "#FF7F00",
+      "secondary": "#000000"
+    },
+    "stadium": "Miner Arena",
+    "stadiumCapacity": 34915,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Andriy Pylypenko",
+        "position": "POR",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Filip Ivanović",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Vitaliy Melnyk",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Denys Popovych",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Andriy Vasylchenko",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ruslan Popovych",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Roman Popovych",
+        "position": "LB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Pavlo Moroz",
+        "position": "RB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Vasyl Koval",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vasyl Pylypenko",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Moreira",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Vasyl Romanenko",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Lysenko",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Maksym Marchenko",
+        "position": "MCO",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Yuriy Shevchenko",
+        "position": "EI",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleh Shevchenko",
+        "position": "ED",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vitaliy Oliynyk",
+        "position": "DC",
+        "age": 21,
+        "overall": 76,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Mykola Popovych",
+        "position": "DC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Mykola Boyko",
+        "position": "DC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Vasylchenko",
+        "position": "MP",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "dynamo-kyiv",
+    "name": "Capital Dynamo FC",
+    "shortName": "CDY",
+    "city": "Kiev",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Olympic Arena",
+    "stadiumCapacity": 70050,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Volodymyr Bondarenko",
+        "position": "POR",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Pedro Almeida",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Luka Marković",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Mykola Savchenko",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Moreira",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Oliynyk",
+        "position": "DFC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Oliynyk",
+        "position": "LB",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleksandr Savchenko",
+        "position": "RB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Ihor Lytvynenko",
+        "position": "MCD",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Serhiy Savchenko",
+        "position": "MCD",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Kovalenko",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vitaliy Tkachenko",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Shevchenko",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Ouattara",
+        "position": "MCO",
+        "age": 26,
+        "overall": 76,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Yuriy Demchenko",
+        "position": "EI",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Denys Melnyk",
+        "position": "ED",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Rodrigues",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Bondarenko",
+        "position": "DC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Pavlo Savchenko",
+        "position": "DC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Daniel Jesus",
+        "position": "MP",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "oleksandriya",
+    "name": "Steppe Town FC",
+    "shortName": "STW",
+    "city": "Oleksandriya",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Nika Arena",
+    "stadiumCapacity": 7000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Pavlo Romanenko",
+        "position": "POR",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vitaliy Demchenko",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Oleksandr Lytvynenko",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Pavlo Savchenko",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Serhiy Kravchenko",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Artem Lytvynenko",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Volodymyr Tkachenko",
+        "position": "LB",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Savchenko",
+        "position": "RB",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ruslan Tkachenko",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Koval",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Jović",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Dmytro Demchenko",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ruslan Melnyk",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Serhiy Lytvynenko",
+        "position": "MCO",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Melnyk",
+        "position": "EI",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Pylypenko",
+        "position": "ED",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vitaliy Moroz",
+        "position": "DC",
+        "age": 32,
+        "overall": 76,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Oleksandr Koval",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Volodymyr Pylypenko",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Taras Bondarenko",
+        "position": "MP",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Ucrania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "kryvbas",
+    "name": "Ore Valley FC",
+    "shortName": "ORE",
+    "city": "Krivi Rig",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Ore Stadion",
+    "stadiumCapacity": 28738,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Chinedu Ndiaye",
+        "position": "POR",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Yevhen Romanenko",
+        "position": "POR",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Oleh Bondarenko",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Shevchenko",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Radović",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Dmytro Romanenko",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Pavlo Ponomarenko",
+        "position": "LB",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Dmytro Lysenko",
+        "position": "RB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Boyko",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Maksym Bondarenko",
+        "position": "MCD",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vitaliy Popovych",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Volodymyr Popovych",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Taras Marchenko",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleh Lytvynenko",
+        "position": "MCO",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Tkachenko",
+        "position": "EI",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Popovych",
+        "position": "ED",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Artem Kovalenko",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Moses Traoré",
+        "position": "DC",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Vasyl Kravchenko",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Melnyk",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "zorya-luhansk",
+    "name": "Dawn FC",
+    "shortName": "DWN",
+    "city": "Lugansk",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Dawn Arena",
+    "stadiumCapacity": 11893,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Oleh Shevchenko",
+        "position": "POR",
+        "age": 24,
+        "overall": 77,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Ruslan Romanenko",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Kingsley Diop",
+        "position": "DFC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Yevhen Melnyk",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Ruslan Shevchenko",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Volodymyr Melnyk",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Serhiy Romanenko",
+        "position": "LB",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleh Kovalenko",
+        "position": "RB",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Pylypenko",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Gabriel Moreira",
+        "position": "MCD",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Boateng",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Mykola Shevchenko",
+        "position": "MC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Moroz",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Popovych",
+        "position": "MCO",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vitaliy Boyko",
+        "position": "EI",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Romanenko",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Yevhen Popovych",
+        "position": "DC",
+        "age": 28,
+        "overall": 76,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Igor Barbosa",
+        "position": "DC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Andriy Demchenko",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Yevhen Lysenko",
+        "position": "MP",
+        "age": 19,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "vorskla-poltava",
+    "name": "Vorskla River FC",
+    "shortName": "VRS",
+    "city": "Poltava",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "River Stadion",
+    "stadiumCapacity": 23926,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Denys Pylypenko",
+        "position": "POR",
+        "age": 33,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Pavlo Boyko",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Ihor Melnyk",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Kelechi Boateng",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Oleksandr Bondarenko",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Andriy Savchenko",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Koval",
+        "position": "LB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Popovych",
+        "position": "RB",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Dmytro Oliynyk",
+        "position": "MCD",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Andriy Lysenko",
+        "position": "MCD",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Dmytro Vasylchenko",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Lysenko",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yuriy Lysenko",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Boateng",
+        "position": "MCO",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Okafor",
+        "position": "EI",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ruslan Marchenko",
+        "position": "ED",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Roman Tkachenko",
+        "position": "DC",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Demchenko",
+        "position": "DC",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Vasyl Moroz",
+        "position": "DC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Savchenko",
+        "position": "MP",
+        "age": 27,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "polissya",
+    "name": "Woodland FC",
+    "shortName": "WDL",
+    "city": "Zhytomyr",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Polissya Arena",
+    "stadiumCapacity": 5928,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Yevhen Moroz",
+        "position": "POR",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Denys Kovalenko",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Artem Popovych",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Roman Moroz",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Pavlo Lytvynenko",
+        "position": "DFC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Maksym Melnyk",
+        "position": "DFC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vitaliy Romanenko",
+        "position": "LB",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Pavlo Oliynyk",
+        "position": "RB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ruslan Shevchenko",
+        "position": "MCD",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Moreira",
+        "position": "MCD",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Gabriel Santos",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Vasyl Pylypenko",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleksandr Lysenko",
+        "position": "MC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleh Kravchenko",
+        "position": "MCO",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleh Melnyk",
+        "position": "EI",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Maksym Koval",
+        "position": "ED",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Filip Pavlović",
+        "position": "DC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Roman Lytvynenko",
+        "position": "DC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Popovych",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Maksym Tkachenko",
+        "position": "MP",
+        "age": 20,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "obolon-kyiv",
+    "name": "North Kyiv FC",
+    "shortName": "NKY",
+    "city": "Kiev",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "North Arena",
+    "stadiumCapacity": 5100,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Yuriy Marchenko",
+        "position": "POR",
+        "age": 33,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleh Popovych",
+        "position": "POR",
+        "age": 33,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      },
+      {
+        "name": "Vasyl Kravchenko",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yuriy Kovalenko",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Romanenko",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Roman Moroz",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Carvalho",
+        "position": "LB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Roman Boyko",
+        "position": "RB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Serhiy Melnyk",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Romanenko",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleh Lytvynenko",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "André Moreira",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Maksym Tkachenko",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Denys Demchenko",
+        "position": "MCO",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleksandr Melnyk",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Moroz",
+        "position": "ED",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Serhiy Savchenko",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Taras Savchenko",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yuriy Romanenko",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Pavlo Marchenko",
+        "position": "MP",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "chornomorets",
+    "name": "Black Sea FC",
+    "shortName": "BSC",
+    "city": "Odesa",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Black Sea Stadion",
+    "stadiumCapacity": 34164,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Gonçalo Martins",
+        "position": "POR",
+        "age": 33,
+        "overall": 74,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Vasyl Savchenko",
+        "position": "POR",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Vasyl Shevchenko",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Kelechi Ndiaye",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Roman Kovalenko",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Kelechi Ouattara",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Maksym Lysenko",
+        "position": "LB",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Igor Carvalho",
+        "position": "RB",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Ruslan Marchenko",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Denys Bondarenko",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Serhiy Demchenko",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Koval",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ihor Vasylchenko",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Dmytro Moroz",
+        "position": "MCO",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Ebenezer Mensah",
+        "position": "EI",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Chinedu Ouattara",
+        "position": "ED",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Artem Koval",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Emeka Traoré",
+        "position": "DC",
+        "age": 19,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Taras Lysenko",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vasyl Kravchenko",
+        "position": "MP",
+        "age": 27,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "rukh-lviv",
+    "name": "Galicia FC",
+    "shortName": "GAL",
+    "city": "Leópolis",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Ukraina Arena",
+    "stadiumCapacity": 28051,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Márcio Ribeiro",
+        "position": "POR",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Dmytro Lytvynenko",
+        "position": "POR",
+        "age": 29,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      },
+      {
+        "name": "Roman Lysenko",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Santos",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Igor Monteiro",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Volodymyr Shevchenko",
+        "position": "DFC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Denys Marchenko",
+        "position": "LB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Marques",
+        "position": "RB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Mykola Marchenko",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Andriy Kovalenko",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Maksym Moroz",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Taras Marchenko",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Jesus",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Denys Oliynyk",
+        "position": "MCO",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Jesus",
+        "position": "EI",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Maksym Ponomarenko",
+        "position": "ED",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Pereira",
+        "position": "DC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Ricardo Oliveira",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Samuel Boateng",
+        "position": "DC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Serhiy Ponomarenko",
+        "position": "MP",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "karpaty-lviv",
+    "name": "Carpathian FC",
+    "shortName": "CRP",
+    "city": "Leópolis",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Arena Carpathia",
+    "stadiumCapacity": 34915,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Vasyl Moroz",
+        "position": "POR",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Yevhen Kovalenko",
+        "position": "POR",
+        "age": 31,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      },
+      {
+        "name": "Ruslan Romanenko",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Denys Demchenko",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Yuriy Moroz",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Kravchenko",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Miloš Jović",
+        "position": "LB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Serhiy Lysenko",
+        "position": "RB",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Volodymyr Melnyk",
+        "position": "MCD",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Artem Vasylchenko",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Petar Jović",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Oleh Bondarenko",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Serhiy Kravchenko",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Andriy Kravchenko",
+        "position": "MCO",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Dmytro Tkachenko",
+        "position": "EI",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Andriy Moroz",
+        "position": "ED",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yevhen Pylypenko",
+        "position": "DC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Yevhen Romanenko",
+        "position": "DC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Yevhen Shevchenko",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Denys Koval",
+        "position": "MP",
+        "age": 31,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "lnz-cherkasy",
+    "name": "Dnipro Bend FC",
+    "shortName": "DBD",
+    "city": "Cherkasy",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Central Arena",
+    "stadiumCapacity": 10321,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Oleksandr Lytvynenko",
+        "position": "POR",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Martins",
+        "position": "POR",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Artem Kovalenko",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Artem Kravchenko",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ihor Shevchenko",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Roman Boyko",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Mykola Koval",
+        "position": "LB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Yuriy Koval",
+        "position": "RB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Bohdan Pylypenko",
+        "position": "MCD",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Pavlo Tkachenko",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Mykola Pylypenko",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Roman Bondarenko",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Pavlo Koval",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vasyl Oliynyk",
+        "position": "MCO",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Maksym Boyko",
+        "position": "EI",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Ponomarenko",
+        "position": "ED",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleh Shevchenko",
+        "position": "DC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Ihor Pylypenko",
+        "position": "DC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Caio Rodrigues",
+        "position": "DC",
+        "age": 32,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "André Almeida",
+        "position": "MP",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "epitsentr",
+    "name": "Podillya FC",
+    "shortName": "PDL",
+    "city": "Kamianets-Podilskyi",
+    "colors": {
+      "primary": "#FF7F00",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Podillya Arena",
+    "stadiumCapacity": 5000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Dmytro Oliynyk",
+        "position": "POR",
+        "age": 32,
+        "overall": 76,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Roman Vasylchenko",
+        "position": "POR",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Denys Oliynyk",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Artem Vasylchenko",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Denys Melnyk",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Costa",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Ihor Melnyk",
+        "position": "LB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Filip Pavlović",
+        "position": "RB",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Moroz",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Lytvynenko",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Volodymyr Vasylchenko",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Márcio Gomes",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Andriy Boyko",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Pavlo Romanenko",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Denys Pylypenko",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Denys Vasylchenko",
+        "position": "ED",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Roman Oliynyk",
+        "position": "DC",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Serhiy Romanenko",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Koval",
+        "position": "DC",
+        "age": 19,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Cardoso",
+        "position": "MP",
+        "age": 23,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "metalist-1925",
+    "name": "Kharkiv Metal FC",
+    "shortName": "KHM",
+    "city": "Járkov",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Metalist Arena",
+    "stadiumCapacity": 40003,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Ruslan Kravchenko",
+        "position": "POR",
+        "age": 32,
+        "overall": 77,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Dmytro Vasylchenko",
+        "position": "POR",
+        "age": 27,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      },
+      {
+        "name": "Bohdan Pylypenko",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Vasyl Vasylchenko",
+        "position": "DFC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Filip Radović",
+        "position": "DFC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Taras Ponomarenko",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ruslan Popovych",
+        "position": "LB",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Lytvynenko",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Denys Oliynyk",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Ferreira",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Vasyl Tkachenko",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Melnyk",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Nuno Almeida",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Denys Moroz",
+        "position": "MCO",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Ruslan Boyko",
+        "position": "EI",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Maksym Vasylchenko",
+        "position": "ED",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Mykola Melnyk",
+        "position": "DC",
+        "age": 27,
+        "overall": 76,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Taras Savchenko",
+        "position": "DC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Ponomarenko",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Okafor",
+        "position": "MP",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "veres-rivne",
+    "name": "Volyn Oaks FC",
+    "shortName": "VOK",
+    "city": "Rivne",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Avanhard Arena",
+    "stadiumCapacity": 12500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Artem Popovych",
+        "position": "POR",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Maksym Ponomarenko",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Dmytro Tkachenko",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Yuriy Popovych",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Márcio Nascimento",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Roman Boyko",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Ruslan Bondarenko",
+        "position": "LB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Bondarenko",
+        "position": "RB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Ruslan Koval",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Taras Kovalenko",
+        "position": "MCD",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Pavlo Ponomarenko",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Denys Lytvynenko",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Taras Tkachenko",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Vasco Silva",
+        "position": "MCO",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Ouattara",
+        "position": "EI",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Serhiy Pylypenko",
+        "position": "ED",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Taras Koval",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Mykola Oliynyk",
+        "position": "DC",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Miguel Dias",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 224000
+      },
+      {
+        "name": "Mykola Tkachenko",
+        "position": "MP",
+        "age": 23,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "inhulets",
+    "name": "Inhulets FC",
+    "shortName": "IHL",
+    "city": "Petrove",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Inhulets Stadion",
+    "stadiumCapacity": 1500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Aleksandar Nikolić",
+        "position": "POR",
+        "age": 26,
+        "overall": 76,
+        "nationality": "Serbia",
+        "value": 1680000
+      },
+      {
+        "name": "Oleksandr Kravchenko",
+        "position": "POR",
+        "age": 29,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      },
+      {
+        "name": "Kingsley Koné",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Mykola Kovalenko",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Shevchenko",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Artem Savchenko",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Aleksandar Stojanović",
+        "position": "LB",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Bohdan Kravchenko",
+        "position": "RB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Vitaliy Lytvynenko",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Duarte Silva",
+        "position": "MCD",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Taras Koval",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Artem Boyko",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ihor Shevchenko",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Savchenko",
+        "position": "MCO",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Dmytro Marchenko",
+        "position": "EI",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Mykola Romanenko",
+        "position": "ED",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ihor Vasylchenko",
+        "position": "DC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Oleksandr Lysenko",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Volodymyr Lytvynenko",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Oleksandr Melnyk",
+        "position": "MP",
+        "age": 20,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      }
+    ]
+  }
+]

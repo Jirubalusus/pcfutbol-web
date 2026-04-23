@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "ferencvaros",
+    "name": "Fradi FC",
+    "shortName": "FRA",
+    "city": "Budapest",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Groupama Stadion",
+    "stadiumCapacity": 23698,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Ádám Tóth",
+        "position": "POR",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Pedro Rodrigues",
+        "position": "POR",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Gergő Oláh",
+        "position": "DFC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Stefan Marković",
+        "position": "DFC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Leandro Carvalho",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Roland Varga",
+        "position": "DFC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Dávid Varga",
+        "position": "LB",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Attila Rácz",
+        "position": "RB",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Bence Simon",
+        "position": "MCD",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Moses Boateng",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gergő Németh",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Mitrović",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Balázs Nagy",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Zoltán Rácz",
+        "position": "MCO",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Bence Takács",
+        "position": "EI",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Igor Gomes",
+        "position": "ED",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Eduardo Almeida",
+        "position": "DC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "László Simon",
+        "position": "DC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Gabriel Rodrigues",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Péter Balogh",
+        "position": "MP",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "puskas-akademia",
+    "name": "Felcsút Academy FC",
+    "shortName": "PKA",
+    "city": "Felcsút",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Pancho Arena",
+    "stadiumCapacity": 3816,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Loïc Fournier",
+        "position": "POR",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Francia",
+        "value": 840000
+      },
+      {
+        "name": "Dávid Farkas",
+        "position": "POR",
+        "age": 29,
+        "overall": 66,
+        "nationality": "Hungría",
+        "value": 112000
+      },
+      {
+        "name": "Krisztián Varga",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Márk Molnár",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "László Fekete",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Kiss",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Zoltán Lakatos",
+        "position": "LB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Mihály Juhász",
+        "position": "RB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Balázs Fekete",
+        "position": "MCD",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Leandro Gomes",
+        "position": "MCD",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Kingsley Ndiaye",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ferenc Kiss",
+        "position": "MC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Roland Oláh",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Bence Kiss",
+        "position": "MCO",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Attila Lakatos",
+        "position": "EI",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Tamás Mészáros",
+        "position": "ED",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Obi Diop",
+        "position": "DC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Gergő Juhász",
+        "position": "DC",
+        "age": 19,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Peter Diop",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "József Farkas",
+        "position": "MP",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "ujpest",
+    "name": "Lilas FC",
+    "shortName": "LIL",
+    "city": "Budapest",
+    "colors": {
+      "primary": "#6B1B9A",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Szusza Stadion",
+    "stadiumCapacity": 13501,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Attila Farkas",
+        "position": "POR",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Marko Radović",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Ádám Németh",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dávid Fekete",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Ádám Simon",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Dániel Oláh",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Roland Kovács",
+        "position": "LB",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Dávid Farkas",
+        "position": "RB",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Zoltán Molnár",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dávid Balogh",
+        "position": "MCD",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Krisztián Tóth",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dávid Simon",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Ferenc Nagy",
+        "position": "MC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dániel Tóth",
+        "position": "MCO",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Attila Kovács",
+        "position": "EI",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Krisztián Takács",
+        "position": "ED",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Bence Takács",
+        "position": "DC",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Hungría",
+        "value": 1680000
+      },
+      {
+        "name": "Caio Costa",
+        "position": "DC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "József Horváth",
+        "position": "DC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Dávid Nagy",
+        "position": "MP",
+        "age": 19,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "debrecen",
+    "name": "Loki FC",
+    "shortName": "LOK",
+    "city": "Debrecen",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Nagyerdei Arena",
+    "stadiumCapacity": 20340,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Mihály Oláh",
+        "position": "POR",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "József Lakatos",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Viktor Molnár",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Balázs Simon",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Attila Rácz",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Balázs Kiss",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "József Simon",
+        "position": "LB",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Tamás Simon",
+        "position": "RB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Krisztián Oláh",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Diop",
+        "position": "MCD",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Zoltán Rácz",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Victor Boateng",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Mihály Fekete",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Nicolas Garcia",
+        "position": "MCO",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Francia",
+        "value": 840000
+      },
+      {
+        "name": "Tamás Balogh",
+        "position": "EI",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "István Kiss",
+        "position": "ED",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Péter Oláh",
+        "position": "DC",
+        "age": 28,
+        "overall": 76,
+        "nationality": "Hungría",
+        "value": 1680000
+      },
+      {
+        "name": "Gergő Szabó",
+        "position": "DC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dávid Németh",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Krisztián Varga",
+        "position": "MP",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "mol-fehervar",
+    "name": "Fehérvár Eagles FC",
+    "shortName": "FEA",
+    "city": "Székesfehérvár",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Sóstó Arena",
+    "stadiumCapacity": 14201,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Chinedu Mensah",
+        "position": "POR",
+        "age": 32,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Attila Molnár",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Tamás Takács",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Krisztián Rácz",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Alexandre Dubois",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Francia",
+        "value": 840000
+      },
+      {
+        "name": "Mihály Tóth",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Zoltán Takács",
+        "position": "LB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Bence Kiss",
+        "position": "RB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Ádám Tóth",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Mihály Molnár",
+        "position": "MCD",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Victor Mensah",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "István Juhász",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Bence Horváth",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Tamás Varga",
+        "position": "MCO",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Roland Papp",
+        "position": "EI",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Roland Lakatos",
+        "position": "ED",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Márk Juhász",
+        "position": "DC",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Petar Radović",
+        "position": "DC",
+        "age": 27,
+        "overall": 68,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Gábor Horváth",
+        "position": "DC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Ádám Varga",
+        "position": "MP",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "paks",
+    "name": "Atomvaros FC",
+    "shortName": "ATV",
+    "city": "Paks",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Fehérvári Arena",
+    "stadiumCapacity": 5000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Igor Ferreira",
+        "position": "POR",
+        "age": 32,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Ivan Đorđević",
+        "position": "POR",
+        "age": 33,
+        "overall": 67,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Moses Traoré",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Dušan Radović",
+        "position": "DFC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Maxime Dubois",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Rodrigues",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "László Mészáros",
+        "position": "LB",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Nagy",
+        "position": "RB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Attila Varga",
+        "position": "MCD",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Zoltán Rácz",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "József Varga",
+        "position": "MC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Zoltán Oláh",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Péter Oláh",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Mihály Papp",
+        "position": "MCO",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Gergő Varga",
+        "position": "EI",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Márk Kiss",
+        "position": "ED",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Ferenc Tóth",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Zoltán Takács",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dávid Takács",
+        "position": "DC",
+        "age": 20,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "József Nagy",
+        "position": "MP",
+        "age": 31,
+        "overall": 66,
+        "nationality": "Hungría",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "kisvarda",
+    "name": "Szabolcs FC",
+    "shortName": "SZB",
+    "city": "Kisvárda",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Várkerti Arena",
+    "stadiumCapacity": 2750,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Balázs Fekete",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Hungría",
+        "value": 1680000
+      },
+      {
+        "name": "Gergő Szabó",
+        "position": "POR",
+        "age": 33,
+        "overall": 67,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Tamás Simon",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Viktor Németh",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Balázs Juhász",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Mihály Varga",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Florian Martin",
+        "position": "LB",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Gábor Balogh",
+        "position": "RB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Varga",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Diogo Cavalcante",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Gábor Molnár",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Ferenc Oláh",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Tamás Lakatos",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "István Oláh",
+        "position": "MCO",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Gábor Juhász",
+        "position": "EI",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Balázs Takács",
+        "position": "ED",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Krisztián Papp",
+        "position": "DC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Mihály Lakatos",
+        "position": "DC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Horváth",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dávid Rácz",
+        "position": "MP",
+        "age": 31,
+        "overall": 66,
+        "nationality": "Hungría",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "mtk-budapest",
+    "name": "Kékek FC",
+    "shortName": "KEK",
+    "city": "Budapest",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Hidegkuti Arena",
+    "stadiumCapacity": 5322,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Tamás Tóth",
+        "position": "POR",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Gergő Farkas",
+        "position": "POR",
+        "age": 26,
+        "overall": 66,
+        "nationality": "Hungría",
+        "value": 112000
+      },
+      {
+        "name": "László Simon",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Gábor Mészáros",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Gergő Kovács",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Ferreira",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Roland Lakatos",
+        "position": "LB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Attila Horváth",
+        "position": "RB",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Tamás Farkas",
+        "position": "MCD",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Márk Horváth",
+        "position": "MCD",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Aleksandar Nikolić",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Ferenc Simon",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Roland Molnár",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Dušan Petrović",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Mihály Kovács",
+        "position": "EI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Balázs Papp",
+        "position": "ED",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Németh",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Ebenezer Okafor",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gábor Oláh",
+        "position": "DC",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Márk Balogh",
+        "position": "MP",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Hungría",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "diosgyor",
+    "name": "Borsod FC",
+    "shortName": "BOR",
+    "city": "Miskolc",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "DVTK Arena",
+    "stadiumCapacity": 15325,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Zoltán Nagy",
+        "position": "POR",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "István Németh",
+        "position": "POR",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Ferenc Nagy",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Gomes",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Dániel Tóth",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Gergő Papp",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Filip Ivanović",
+        "position": "LB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Tamás Juhász",
+        "position": "RB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Zoltán Kiss",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Miloš Petrović",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Gergő Kiss",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Petar Marković",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Igor Carvalho",
+        "position": "MC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Péter Papp",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Martins",
+        "position": "EI",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Márk Varga",
+        "position": "ED",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Souza",
+        "position": "DC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Balázs Papp",
+        "position": "DC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Ádám Horváth",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "László Kovács",
+        "position": "MP",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "nyiregyhaza",
+    "name": "Spartacus FC",
+    "shortName": "SPA",
+    "city": "Nyíregyháza",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Városi Arena",
+    "stadiumCapacity": 6350,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Krisztián Oláh",
+        "position": "POR",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Ádám Varga",
+        "position": "POR",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Luka Stojanović",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "József Farkas",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Péter Molnár",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Ádám Mészáros",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Attila Papp",
+        "position": "LB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Diop",
+        "position": "RB",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Dávid Mészáros",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Márk Varga",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dušan Jović",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Ferenc Papp",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Fernando Almeida",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Dávid Tóth",
+        "position": "MCO",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Lakatos",
+        "position": "EI",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "André Rodrigues",
+        "position": "ED",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Roland Papp",
+        "position": "DC",
+        "age": 20,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Márk Rácz",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Gábor Molnár",
+        "position": "DC",
+        "age": 19,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Márk Molnár",
+        "position": "MP",
+        "age": 19,
+        "overall": 67,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "gyor",
+    "name": "Rába FC",
+    "shortName": "RAB",
+    "city": "Győr",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "ETO Arena",
+    "stadiumCapacity": 15600,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Luka Marković",
+        "position": "POR",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "István Farkas",
+        "position": "POR",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Gábor Balogh",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Mihály Papp",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dániel Molnár",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Ferenc Papp",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "István Rácz",
+        "position": "LB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Dániel Rácz",
+        "position": "RB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Tamás Papp",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "István Kiss",
+        "position": "MCD",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "József Varga",
+        "position": "MC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Márk Fekete",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "József Molnár",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Ndiaye",
+        "position": "MCO",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gábor Fekete",
+        "position": "EI",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Peter Okafor",
+        "position": "ED",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Gábor Mészáros",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "László Farkas",
+        "position": "DC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Roland Juhász",
+        "position": "DC",
+        "age": 23,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Balázs Varga",
+        "position": "MP",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "zalaegerszeg",
+    "name": "Zala FC",
+    "shortName": "ZAL",
+    "city": "Zalaegerszeg",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "ZTE Arena",
+    "stadiumCapacity": 11200,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Dávid Varga",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Hungría",
+        "value": 1680000
+      },
+      {
+        "name": "Moses Traoré",
+        "position": "POR",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Ádám Farkas",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Dávid Juhász",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "László Németh",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Mihály Rácz",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Gábor Oláh",
+        "position": "LB",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Gábor Fekete",
+        "position": "RB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Roland Farkas",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Attila Szabó",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "István Lakatos",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "István Mészáros",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Viktor Kiss",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Bence Kovács",
+        "position": "MCO",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Roland Horváth",
+        "position": "EI",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Attila Oláh",
+        "position": "ED",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Hungría",
+        "value": 420000
+      },
+      {
+        "name": "Tamás Horváth",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Hungría",
+        "value": 840000
+      },
+      {
+        "name": "Mihály Fekete",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Gergő Oláh",
+        "position": "DC",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Hungría",
+        "value": 224000
+      },
+      {
+        "name": "Viktor Nagy",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Hungría",
+        "value": 112000
+      }
+    ]
+  }
+]
