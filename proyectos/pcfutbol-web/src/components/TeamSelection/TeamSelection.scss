@@ -255,10 +255,11 @@ $pcf-text: #bdc3c7;
   background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
   border-bottom: 2px solid $pcf-accent;
   flex-shrink: 0;
+}
 
-  .flag {
-    font-size: 2rem;
-  }
+.map-selection__country-flag {
+  width: 30px;
+  height: 30px;
 }
 
 .map-selection__leagues {
@@ -737,22 +738,10 @@ $pcf-text: #bdc3c7;
     }
 
     .league-country-flag {
+      width: 18px;
+      height: 18px;
       line-height: 1;
       flex-shrink: 0;
-
-      &--code {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 2.6rem;
-        padding: 0.22rem 0.45rem;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-      }
     }
   }
   

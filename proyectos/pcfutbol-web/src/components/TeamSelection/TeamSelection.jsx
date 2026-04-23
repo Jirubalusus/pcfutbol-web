@@ -63,6 +63,7 @@ import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import CountryFlag from './CountryFlag';
 import './TeamSelection.scss';
 import './WorldMap.scss';
 
@@ -1101,7 +1102,7 @@ export default function TeamSelection() {
               {selectedCountry ? (
                 <>
                   <div className="map-selection__title">
-                    <span className={`flag ${selectedCountry.flagVariant === 'code' ? 'flag--code' : ''}`.trim()}>{selectedCountry.flag}</span>
+                    <CountryFlag countryId={selectedCountry.id} countryName={selectedCountry.name} size="lg" className="map-selection__country-flag" />
                     {selectedCountry.name}
                   </div>
                   <div className="map-selection__leagues">
@@ -1202,7 +1203,7 @@ export default function TeamSelection() {
             <div className={teamsPanelClasses}>
               <div className="panel-header">
                 <span className="league-name">
-                  <span className={`league-country-flag ${selectedCountry?.flagVariant === 'code' ? 'league-country-flag--code' : ''}`.trim()}>{selectedCountry?.flag}</span> {LEAGUE_NAMES[selectedLeague]}
+                  <CountryFlag countryId={selectedCountry?.id} countryName={selectedCountry?.name} size="sm" className="league-country-flag" /> {LEAGUE_NAMES[selectedLeague]}
                   {selectedGroup && ` - ${getLeagueGroups(selectedLeague)?.[selectedGroup]?.name}`}
                 </span>
                 <span className="team-count">{t('teamSelection.teamsCount', { count: teams.length })}</span>

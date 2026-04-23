@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Globe as GlobeIcon } from 'lucide-react';
 import Globe from 'react-globe.gl';
 import './WorldMap.scss';
+import CountryFlag from './CountryFlag';
 
 // Merged country data: Europe + South America
 const COUNTRY_DATA = {
@@ -165,7 +166,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
+                  <CountryFlag countryId={country.id} countryName={country.name} className="countries-mobile__flag" />
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
@@ -181,7 +182,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
+                  <CountryFlag countryId={country.id} countryName={country.name} className="countries-mobile__flag" />
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
@@ -197,7 +198,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
+                  <CountryFlag countryId={country.id} countryName={country.name} className="countries-mobile__flag" />
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
