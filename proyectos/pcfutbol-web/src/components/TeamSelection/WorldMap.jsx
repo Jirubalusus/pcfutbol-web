@@ -3,9 +3,7 @@ import { Globe as GlobeIcon } from 'lucide-react';
 import Globe from 'react-globe.gl';
 import './WorldMap.scss';
 
-// Merged country data: Europe + South America
 const COUNTRY_DATA = {
-  // Europe
   spain: { lat: 40.0, lng: -4.0, name: 'España', code: 'ES', color: '#FF4444', continent: 'europe' },
   england: { lat: 53.0, lng: -1.5, name: 'Reino Unido', code: 'UK', color: '#4466FF', continent: 'europe' },
   germany: { lat: 51.0, lng: 10.0, name: 'Alemania', code: 'DE', color: '#FFCC00', continent: 'europe' },
@@ -22,7 +20,6 @@ const COUNTRY_DATA = {
   denmark: { lat: 56.0, lng: 10.0, name: 'Dinamarca', code: 'DK', color: '#C60C30', continent: 'europe' },
   croatia: { lat: 45.1, lng: 15.2, name: 'Croacia', code: 'HR', color: '#FF3333', continent: 'europe' },
   czech: { lat: 49.8, lng: 15.5, name: 'Chequia', code: 'CZ', color: '#11457E', continent: 'europe' },
-  // South America
   argentina: { lat: -34.6, lng: -58.4, name: 'Argentina', code: 'AR', color: '#75AADB', continent: 'southamerica' },
   brazil: { lat: -14.2, lng: -51.9, name: 'Brasil', code: 'BR', color: '#009739', continent: 'southamerica' },
   colombia: { lat: 4.6, lng: -74.1, name: 'Colombia', code: 'CO', color: '#FCD116', continent: 'southamerica' },
@@ -42,7 +39,6 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   const [size, setSize] = useState(400);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Responsive + mobile detection
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -53,12 +49,10 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
       } else if (width < 768) {
         setSize(Math.min(340, width * 0.55));
       } else if (width < 1200) {
-        // Medium desktop — use 55% of available left column width (~60% of screen)
         const availableWidth = width * 0.55;
-        const availableHeight = height - 160; // subtract header + progress bar
+        const availableHeight = height - 160;
         setSize(Math.min(520, availableWidth * 0.85, availableHeight * 0.8));
       } else {
-        // Large desktop — go big
         const availableWidth = width * 0.55;
         const availableHeight = height - 160;
         setSize(Math.min(620, availableWidth * 0.85, availableHeight * 0.8));
@@ -69,14 +63,12 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Center on Europe initially
   useEffect(() => {
     if (globeEl.current) {
       globeEl.current.pointOfView({ lat: 48, lng: 5, altitude: 2.0 }, 0);
     }
   }, []);
 
-  // Zoom to selected country
   useEffect(() => {
     if (globeEl.current && selectedCountry && COUNTRY_DATA[selectedCountry]) {
       const { lat, lng } = COUNTRY_DATA[selectedCountry];
@@ -84,7 +76,6 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     }
   }, [selectedCountry]);
 
-  // Build markers from all countries
   const markersData = useMemo(() => {
     return countries.map(c => {
       const data = COUNTRY_DATA[c.id];
@@ -93,7 +84,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         id: c.id,
         lat: data.lat,
         lng: data.lng,
-        name: c.name,
+        name: c.name || c.id,
         flag: c.flag,
         code: data.code,
         color: data.color,
@@ -105,16 +96,11 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   }, [countries, selectedCountry]);
 
   const handleClick = (d) => {
-    if (d?.id) {
-      onCountryClick(d.id);
-    }
+    if (d?.id) onCountryClick(d.id);
   };
 
-  // Mobile view: grouped country list
   if (isMobile) {
-    if (selectedCountry) {
-      return null;
-    }
+    if (selectedCountry) return null;
 
     const europeCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'europe');
     const saCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'southamerica');
@@ -132,7 +118,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className="countries-mobile__flag">{country.flag}</span>
+                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
                 </button>
@@ -148,7 +134,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className="countries-mobile__flag">{country.flag}</span>
+                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
                 </button>
@@ -160,7 +146,6 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     );
   }
 
-  // Desktop: 3D globe with all markers
   return (
     <div className="globe-wrapper">
       <Globe
@@ -169,8 +154,6 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         height={size}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
         backgroundColor="rgba(0,0,0,0)"
-
-        // Points
         pointsData={markersData}
         pointLat="lat"
         pointLng="lng"
@@ -185,23 +168,19 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
           </div>
         `}
         onPointClick={handleClick}
-
-        // Labels with country code
         labelsData={markersData}
         labelLat="lat"
         labelLng="lng"
         labelText="code"
         labelSize={1.8}
-        labelDotRadius={0}
-        labelColor={d => d.isSelected ? '#00FF88' : '#FFFFFF'}
+        labelDotRadius={0.18}
+        labelColor={() => '#FFFFFF'}
         labelResolution={2}
-        labelAltitude={0.02}
-        onLabelClick={handleClick}
-
-        atmosphereColor="lightskyblue"
-        atmosphereAltitude={0.15}
+        labelAltitude={d => d.isSelected ? 0.22 : 0.12}
+        atmosphereColor="#3a228a"
+        atmosphereAltitude={0.22}
       />
-      <p className="globe-hint">Arrastra para girar • Clic en un país</p>
+      <div className="globe-hint">Arrastra para girar · Clic en un país</div>
     </div>
   );
 }

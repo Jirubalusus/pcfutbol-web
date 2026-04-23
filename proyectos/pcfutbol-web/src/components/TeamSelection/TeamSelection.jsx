@@ -866,7 +866,7 @@ export default function TeamSelection() {
               {selectedCountry ? (
                 <>
                   <div className="map-selection__title">
-                    <span className="flag">{selectedCountry.flag}</span>
+                    <span className={`flag ${selectedCountry.flagVariant === 'code' ? 'flag--code' : ''}`.trim()}>{selectedCountry.flag}</span>
                     {selectedCountry.name}
                   </div>
                   <div className="map-selection__leagues">
@@ -1053,7 +1053,7 @@ export default function TeamSelection() {
                     </div>
                     <div className="team-title">
                       <h2>{selectedTeam.name}</h2>
-                      <p>{selectedTeam.city}, {selectedCountry?.name}</p>
+                      <p>{selectedTeam.city}{selectedCountry?.nameKey ? `, ${t(selectedCountry.nameKey)}` : ''}</p>
                     </div>
                   </div>
 
