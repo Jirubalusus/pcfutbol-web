@@ -53,48 +53,47 @@ import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import { Calendar, Plane, Home, Swords, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
-import CountryFlag from './CountryFlag';
 
 import './TeamSelection.scss';
 import './WorldMap.scss';
 
 const EUROPEAN_COUNTRIES = [
-  { id: 'spain', name: 'España', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
-  { id: 'england', name: 'Inglaterra', leagues: ['premierLeague', 'championship'] },
-  { id: 'italy', name: 'Italia', leagues: ['serieA', 'serieB'] },
-  { id: 'germany', name: 'Alemania', leagues: ['bundesliga', 'bundesliga2'] },
-  { id: 'france', name: 'Francia', leagues: ['ligue1', 'ligue2'] },
-  { id: 'netherlands', name: 'Países Bajos', leagues: ['eredivisie'] },
-  { id: 'portugal', name: 'Portugal', leagues: ['primeiraLiga'] },
-  { id: 'belgium', name: 'Bélgica', leagues: ['belgianPro'] },
-  { id: 'turkey', name: 'Turquía', leagues: ['superLig'] },
-  { id: 'scotland', name: 'Escocia', leagues: ['scottishPrem'] },
-  { id: 'switzerland', name: 'Suiza', leagues: ['swissSuperLeague'] },
-  { id: 'austria', name: 'Austria', leagues: ['austrianBundesliga'] },
-  { id: 'greece', name: 'Grecia', leagues: ['greekSuperLeague'] },
-  { id: 'denmark', name: 'Dinamarca', leagues: ['danishSuperliga'] },
-  { id: 'norway', name: 'Noruega', leagues: ['eliteserien'] },
-  { id: 'sweden', name: 'Suecia', leagues: ['allsvenskan'] },
-  { id: 'poland', name: 'Polonia', leagues: ['ekstraklasa'] },
-  { id: 'croatia', name: 'Croacia', leagues: ['croatianLeague'] },
-  { id: 'czech', name: 'Rep. Checa', leagues: ['czechLeague'] },
-  { id: 'russia', name: 'Rusia', leagues: ['russiaPremier'] },
-  { id: 'ukraine', name: 'Ucrania', leagues: ['ukrainePremier'] },
-  { id: 'romania', name: 'Rumanía', leagues: ['romaniaSuperliga'] },
-  { id: 'hungary', name: 'Hungría', leagues: ['hungaryNBI'] },
+  { id: 'spain', name: 'España', flag: 'ES', flagVariant: 'code', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
+  { id: 'england', name: 'Inglaterra', flag: 'ENG', flagVariant: 'code', leagues: ['premierLeague', 'championship'] },
+  { id: 'italy', name: 'Italia', flag: 'IT', flagVariant: 'code', leagues: ['serieA', 'serieB'] },
+  { id: 'germany', name: 'Alemania', flag: 'DE', flagVariant: 'code', leagues: ['bundesliga', 'bundesliga2'] },
+  { id: 'france', name: 'Francia', flag: 'FR', flagVariant: 'code', leagues: ['ligue1', 'ligue2'] },
+  { id: 'netherlands', name: 'Países Bajos', flag: 'NL', flagVariant: 'code', leagues: ['eredivisie'] },
+  { id: 'portugal', name: 'Portugal', flag: 'PT', flagVariant: 'code', leagues: ['primeiraLiga'] },
+  { id: 'belgium', name: 'Bélgica', flag: 'BE', flagVariant: 'code', leagues: ['belgianPro'] },
+  { id: 'turkey', name: 'Turquía', flag: 'TR', flagVariant: 'code', leagues: ['superLig'] },
+  { id: 'scotland', name: 'Escocia', flag: 'SCO', flagVariant: 'code', leagues: ['scottishPrem'] },
+  { id: 'switzerland', name: 'Suiza', flag: 'CH', flagVariant: 'code', leagues: ['swissSuperLeague'] },
+  { id: 'austria', name: 'Austria', flag: 'AT', flagVariant: 'code', leagues: ['austrianBundesliga'] },
+  { id: 'greece', name: 'Grecia', flag: 'GR', flagVariant: 'code', leagues: ['greekSuperLeague'] },
+  { id: 'denmark', name: 'Dinamarca', flag: 'DK', flagVariant: 'code', leagues: ['danishSuperliga'] },
+  { id: 'norway', name: 'Noruega', flag: 'NO', flagVariant: 'code', leagues: ['eliteserien'] },
+  { id: 'sweden', name: 'Suecia', flag: 'SE', flagVariant: 'code', leagues: ['allsvenskan'] },
+  { id: 'poland', name: 'Polonia', flag: 'PL', flagVariant: 'code', leagues: ['ekstraklasa'] },
+  { id: 'croatia', name: 'Croacia', flag: 'HR', flagVariant: 'code', leagues: ['croatianLeague'] },
+  { id: 'czech', name: 'Rep. Checa', flag: 'CZ', flagVariant: 'code', leagues: ['czechLeague'] },
+  { id: 'russia', name: 'Rusia', flag: 'RU', flagVariant: 'code', leagues: ['russiaPremier'] },
+  { id: 'ukraine', name: 'Ucrania', flag: 'UA', flagVariant: 'code', leagues: ['ukrainePremier'] },
+  { id: 'romania', name: 'Rumanía', flag: 'RO', flagVariant: 'code', leagues: ['romaniaSuperliga'] },
+  { id: 'hungary', name: 'Hungría', flag: 'HU', flagVariant: 'code', leagues: ['hungaryNBI'] },
 ];
 
 const SOUTH_AMERICAN_COUNTRIES = [
-  { id: 'argentina', name: 'Argentina', leagues: ['argentinaPrimera'] },
-  { id: 'brazil', name: 'Brasil', leagues: ['brasileiraoA'] },
-  { id: 'colombia', name: 'Colombia', leagues: ['colombiaPrimera'] },
-  { id: 'chile', name: 'Chile', leagues: ['chilePrimera'] },
-  { id: 'uruguay', name: 'Uruguay', leagues: ['uruguayPrimera'] },
-  { id: 'ecuador', name: 'Ecuador', leagues: ['ecuadorLigaPro'] },
-  { id: 'paraguay', name: 'Paraguay', leagues: ['paraguayPrimera'] },
-  { id: 'peru', name: 'Perú', leagues: ['peruLiga1'] },
-  { id: 'bolivia', name: 'Bolivia', leagues: ['boliviaPrimera'] },
-  { id: 'venezuela', name: 'Venezuela', leagues: ['venezuelaPrimera'] },
+  { id: 'argentina', name: 'Argentina', flag: 'AR', flagVariant: 'code', leagues: ['argentinaPrimera'] },
+  { id: 'brazil', name: 'Brasil', flag: 'BR', flagVariant: 'code', leagues: ['brasileiraoA'] },
+  { id: 'colombia', name: 'Colombia', flag: 'CO', flagVariant: 'code', leagues: ['colombiaPrimera'] },
+  { id: 'chile', name: 'Chile', flag: 'CL', flagVariant: 'code', leagues: ['chilePrimera'] },
+  { id: 'uruguay', name: 'Uruguay', flag: 'UY', flagVariant: 'code', leagues: ['uruguayPrimera'] },
+  { id: 'ecuador', name: 'Ecuador', flag: 'EC', flagVariant: 'code', leagues: ['ecuadorLigaPro'] },
+  { id: 'paraguay', name: 'Paraguay', flag: 'PY', flagVariant: 'code', leagues: ['paraguayPrimera'] },
+  { id: 'peru', name: 'Perú', flag: 'PE', flagVariant: 'code', leagues: ['peruLiga1'] },
+  { id: 'bolivia', name: 'Bolivia', flag: 'BO', flagVariant: 'code', leagues: ['boliviaPrimera'] },
+  { id: 'venezuela', name: 'Venezuela', flag: 'VE', flagVariant: 'code', leagues: ['venezuelaPrimera'] },
 ];
 
 const COUNTRIES = [...EUROPEAN_COUNTRIES, ...SOUTH_AMERICAN_COUNTRIES];
