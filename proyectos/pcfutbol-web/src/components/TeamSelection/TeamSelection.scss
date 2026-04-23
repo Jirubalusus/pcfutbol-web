@@ -1369,5 +1369,351 @@ $pcf-text: #bdc3c7;
   }
 }
 
-// Continent selector removed â€” unified globe shows all countries
+// Continent selector removed
+
+// ============================================================
+// COUNTRY PANEL LIST (Step 1 right panel)
+// ============================================================
+.countries-panel-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+
+  &__header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $pcf-gray;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.75rem 0.5rem 0.35rem;
+    margin-top: 0.25rem;
+    border-bottom: 1px solid rgba($pcf-accent, 0.15);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+
+    &:hover {
+      background: rgba($pcf-accent, 0.12);
+      border-color: rgba($pcf-accent, 0.3);
+    }
+  }
+
+  &__flag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: $pcf-white;
+    min-width: 28px;
+    text-align: center;
+  }
+
+  &__name {
+    flex: 1;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $pcf-white;
+  }
+
+  &__leagues {
+    font-size: 0.75rem;
+    color: $pcf-gray;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    color: rgba($pcf-gold, 0.6);
+    flex-shrink: 0;
+  }
+}
+
+// ============================================================
+// LEAGUE STEP (Step 2 - full-width centered league cards)
+// ============================================================
+.leagues-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0.75rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    .leagues-step__flag {
+      font-size: 1rem;
+      font-weight: 700;
+      color: $pcf-white;
+      background: rgba($pcf-accent, 0.15);
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid rgba($pcf-accent, 0.3);
+    }
+
+    h2 {
+      margin: 0;
+      color: $pcf-white;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 580px;
+  }
+
+  &__card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, rgba(42, 74, 106, 0.5) 0%, rgba(26, 58, 90, 0.5) 100%);
+    border: 2px solid rgba(74, 106, 138, 0.35);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+
+    &:hover:not(.disabled) {
+      background: linear-gradient(180deg, rgba(58, 90, 122, 0.7) 0%, rgba(42, 74, 106, 0.7) 100%);
+      border-color: $pcf-gold;
+      transform: translateX(4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    &.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__card-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, $pcf-green, $pcf-green-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba($pcf-green, 0.25);
+  }
+
+  &__card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  &__card-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: $pcf-white;
+  }
+
+  &__card-meta {
+    font-size: 0.8rem;
+    color: $pcf-gray;
+  }
+
+  &__card-tier {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: $pcf-gold;
+    background: rgba($pcf-gold, 0.12);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    width: fit-content;
+    margin-top: 0.2rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  &__card-arrow {
+    color: $pcf-gold;
+    flex-shrink: 0;
+  }
+}
+
+// ============================================================
+// PREMIUM OVR DISPLAY (Step 3 detail panel)
+// ============================================================
+.premium-ovr {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.2rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba($pcf-accent, 0.15);
+
+  &__circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba($pcf-green, 0.2), rgba($pcf-accent, 0.15));
+    border: 3px solid $pcf-green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba($pcf-green, 0.2);
+  }
+
+  &__number {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: $pcf-white;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: $pcf-green;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &__difficulty {
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__stars {
+    display: inline-flex;
+    gap: 1px;
+  }
+
+  &__budget {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $pcf-gold;
+  }
+}
+
+// ============================================================
+// COMPACT STATS GRID (Premium detail)
+// ============================================================
+.stats-grid.compact {
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  padding: 0.6rem;
+
+  .stat-card {
+    padding: 0.45rem 0.5rem;
+    flex-direction: row;
+    gap: 0.4rem;
+    align-items: center;
+
+    .icon {
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .label {
+      font-size: 0.6rem;
+    }
+
+    .value {
+      font-size: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+// ============================================================
+// SLIM PLAYER ROWS (Premium detail)
+// ============================================================
+.squad-preview.slim {
+  h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .player-row.slim {
+    grid-template-columns: 36px 1fr 36px;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+
+    .pos {
+      font-size: 0.75rem;
+    }
+
+    .name {
+      font-size: 0.8rem;
+    }
+
+    .ovr {
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+  }
+
+  .squad-total {
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    font-size: 0.75rem;
+  }
+}
+
+// ============================================================
+// PREMIUM TEAM DETAILS
+// ============================================================
+.team-details.premium {
+  .team-header {
+    padding: 1rem;
+
+    .badge-large {
+      width: 60px;
+      height: 60px;
+      font-size: 1.3rem;
+    }
+
+    .team-title h2 {
+      font-size: 1.25rem;
+    }
+
+    .team-title p {
+      font-size: 0.85rem;
+    }
+  }
+}
 

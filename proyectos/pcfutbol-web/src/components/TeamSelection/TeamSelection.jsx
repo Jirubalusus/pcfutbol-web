@@ -215,8 +215,8 @@ export default function TeamSelection() {
   // Determinar si la liga seleccionada tiene grupos
   const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
   
-  // Calcular el nÃºmero total de pasos (simplificado a 2)
-  const totalSteps = 2;
+  // Calcular el nÃºmero total de pasos (3 pasos: PaÃ­s â†' Liga â†' Equipo)
+  const totalSteps = 3;
   
   // Obtener equipos segÃºn liga y grupo (pre-calculando budget/reputation)
   const teams = useMemo(() => {
@@ -281,20 +281,19 @@ export default function TeamSelection() {
   
   const handleBack = () => {
     if (step === 1) {
-      // Si hay paÃ­s seleccionado, deseleccionarlo primero (especialmente Ãºtil en mÃ³vil)
-      if (selectedCountry) {
-        setSelectedCountry(null);
-      } else {
-        dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
-      }
+      dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
     } else if (step === 2) {
+      // Volver al mapa de paÃ­ses
+      setStep(1);
+      setSelectedCountry(null);
+    } else if (step === 3) {
       // Si estamos viendo equipos despuÃ©s de grupos, volver a grupos
       if (hasGroups && selectedGroup) {
         setSelectedGroup(null);
         setSelectedTeam(null);
       } else {
-        // Volver al paso 1 (mapa + ligas)
-        setStep(1);
+        // Volver a ligas
+        setStep(2);
         setSelectedLeague(null);
         setSelectedGroup(null);
         setSelectedTeam(null);
@@ -304,14 +303,13 @@ export default function TeamSelection() {
 
   const handleSelectCountry = (country) => {
     setSelectedCountry(country);
-    // Solo selecciona el paÃ­s, las ligas se muestran en el panel
-    // No avanza de paso
+    setStep(2); // Avanzar a selecciÃ³n de liga
   };
 
   const handleSelectLeague = (leagueId) => {
     setSelectedLeague(leagueId);
     setSelectedGroup(null);
-    setStep(2); // Ir a paso 2 (grupos o equipos)
+    setStep(3); // Ir a paso 3 (grupos o equipos)
   };
 
   const handleSelectGroup = (groupId) => {
@@ -789,26 +787,27 @@ export default function TeamSelection() {
     return Math.round(team.players.reduce((sum, p) => sum + p.overall, 0) / team.players.length);
   };
 
-  // Determinar quÃ© mostrar en cada paso (simplificado a 2 pasos)
+  // Determinar quÃ© mostrar en cada paso (3 pasos)
   const getCurrentStepContent = () => {
-    // PASO 1: Mapa con paÃ­ses + panel de ligas
+    // PASO 1: Mapa con paÃ­ses + lista de paÃ­ses
     if (step === 1) return 'countries';
-    
-    // PASO 2: Grupos (si aplica) o Equipos
-    if (step === 2) {
+
+    // PASO 2: SelecciÃ³n de liga/competiciÃ³n
+    if (step === 2) return 'leagues';
+
+    // PASO 3: Grupos (si aplica) o Equipos
+    if (step === 3) {
       if (hasGroups && !selectedGroup) return 'groups';
       return 'teams';
     }
-    
+
     return 'countries';
   };
-  
+
   const currentContent = getCurrentStepContent();
 
-  // Calcular paso visual para el progress bar (simplificado)
-  const getVisualStep = () => {
-    return step === 1 ? 1 : 2;
-  };
+  // Calcular paso visual para el progress bar
+  const getVisualStep = () => step;
   
   return (
     <div className="pcf-team-select">
@@ -816,7 +815,7 @@ export default function TeamSelection() {
       <div className="pcf-ts-header">
         <div className="header-left">
           <button className="btn-back" onClick={handleBack}>
-            â€¹ {step === 1 ? (selectedCountry ? 'PaÃ­ses' : 'MenÃº') : 'AtrÃ¡s'}
+            â€¹ {step === 1 ? 'MenÃº' : step === 2 ? 'PaÃ­ses' : 'Ligas'}
           </button>
         </div>
         <div className="header-center">
@@ -833,119 +832,118 @@ export default function TeamSelection() {
       <div className="pcf-ts-progress">
         <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
           <div className="step-num">1</div>
-          <div className="step-label">PAÃS / LIGA</div>
+          <div className="step-label">PAÍS</div>
         </div>
         <div className={`progress-line ${step >= 2 ? 'active' : ''}`}></div>
         <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
           <div className="step-num">2</div>
+          <div className="step-label">LIGA</div>
+        </div>
+        <div className={`progress-line ${step >= 3 ? 'active' : ''}`}></div>
+        <div className={`progress-step ${step >= 3 ? 'active' : ''}`}>
+          <div className="step-num">3</div>
           <div className="step-label">EQUIPO</div>
         </div>
       </div>
 
       {/* CONTENIDO */}
       <div className="pcf-ts-content">
-        {/* PAÃSES - Mapa interactivo */}
+        {/* ===== PASO 1: MAPA + LISTA DE PAÍSES ===== */}
         {currentContent === 'countries' && (
           <div className="map-selection">
-            {/* Row con mapa y panel */}
             <div className="map-selection__row">
-              {/* Globo unificado con todos los paÃ­ses */}
+              {/* Globo */}
               <div className="map-selection__map">
                 <WorldMap
                   countries={COUNTRIES}
                   selectedCountry={selectedCountry?.id}
                   onCountryClick={(countryId) => {
                     const country = COUNTRIES.find(c => c.id === countryId);
-                    if (country) setSelectedCountry(country);
+                    if (country) handleSelectCountry(country);
                   }}
                 />
               </div>
-              
-              {/* Panel de ligas del paÃ­s seleccionado */}
+
+              {/* Panel derecho: lista de países */}
               <div className="map-selection__panel">
-              {selectedCountry ? (
-                <>
-                  <div className="map-selection__title">
-                    <span className={`flag ${selectedCountry.flagVariant === 'code' ? 'flag--code' : ''}`.trim()}>{selectedCountry.flag}</span>
-                    {selectedCountry.name}
-                  </div>
-                  <div className="map-selection__leagues">
-                    {selectedCountry.leagues.map(leagueId => {
-                      const leagueTeams = getLeagueTeams(leagueId);
-                      const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
-                      const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
-                      const numGroups = groups ? Object.keys(groups).length : 0;
-                      
-                      return (
-                        <button
-                          key={leagueId}
-                          className={`map-selection__league ${leagueTeams.length === 0 ? 'disabled' : ''}`}
-                          onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
-                          disabled={leagueTeams.length === 0}
-                        >
-                          <div>
-                            <div className="map-selection__league-name">{LEAGUE_NAMES[leagueId]}</div>
-                            <div className="map-selection__league-info">
-                              {leagueTeams.length > 0 
-                                ? hasGroupsForLeague 
-                                  ? `${numGroups} grupos â€¢ ${leagueTeams.length} equipos`
-                                  : `${leagueTeams.length} equipos`
-                                : 'PrÃ³ximamente'
-                              }
-                            </div>
-                          </div>
-                          <span className="map-selection__league-arrow">
-                            {leagueTeams.length > 0 ? <ChevronRight size={14} /> : <Lock size={14} />}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </>
-              ) : (
-                <div className="map-selection__placeholder">
-                  <div className="map-selection__placeholder-icon"><Map size={32} /></div>
-                  <div className="map-selection__placeholder-text">
-                    Selecciona un paÃ­s en el mapa
-                  </div>
+                <div className="map-selection__title">
+                  <Map size={20} /> Selecciona un país
                 </div>
-              )}
+                <div className="countries-panel-list">
+                  <div className="countries-panel-list__header">Europa</div>
+                  {EUROPEAN_COUNTRIES.map(country => (
+                    <button
+                      key={country.id}
+                      className="countries-panel-list__item"
+                      onClick={() => handleSelectCountry(country)}
+                    >
+                      <span className="countries-panel-list__flag">{country.flag}</span>
+                      <span className="countries-panel-list__name">{country.name}</span>
+                      <span className="countries-panel-list__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
+                      <ChevronRight size={14} className="countries-panel-list__arrow" />
+                    </button>
+                  ))}
+                  <div className="countries-panel-list__header">Sudamérica</div>
+                  {SOUTH_AMERICAN_COUNTRIES.map(country => (
+                    <button
+                      key={country.id}
+                      className="countries-panel-list__item"
+                      onClick={() => handleSelectCountry(country)}
+                    >
+                      <span className="countries-panel-list__flag">{country.flag}</span>
+                      <span className="countries-panel-list__name">{country.name}</span>
+                      <span className="countries-panel-list__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
+                      <ChevronRight size={14} className="countries-panel-list__arrow" />
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-            </div>{/* Cierre map-selection__row */}
           </div>
         )}
 
-        {/* LIGAS */}
+        {/* ===== PASO 2: SELECCIÓN DE LIGA ===== */}
         {currentContent === 'leagues' && selectedCountry && (
-          <div className="leagues-grid">
-            <h2>{selectedCountry.flag} Ligas de {selectedCountry.name}</h2>
-            <div className="leagues-list">
+          <div className="leagues-step">
+            <div className="leagues-step__header">
+              <span className="leagues-step__flag">{selectedCountry.flag}</span>
+              <h2>Ligas de {selectedCountry.name}</h2>
+            </div>
+            <div className="leagues-step__grid">
               {selectedCountry.leagues.map(leagueId => {
                 const leagueTeams = getLeagueTeams(leagueId);
                 const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
                 const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
                 const numGroups = groups ? Object.keys(groups).length : 0;
-                
+                const tier = getLeagueTier(leagueId);
+
                 return (
                   <button
                     key={leagueId}
-                    className={`league-card ${leagueTeams.length === 0 ? 'disabled' : ''}`}
+                    className={`leagues-step__card ${leagueTeams.length === 0 ? 'disabled' : ''}`}
                     onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
                     disabled={leagueTeams.length === 0}
                   >
-                    <div className="league-icon"><FootballIcon size={20} /></div>
-                    <div className="info">
-                      <span className="name">{LEAGUE_NAMES[leagueId]}</span>
-                      <span className="meta">
-                        {leagueTeams.length > 0 
-                          ? hasGroupsForLeague 
-                            ? `${numGroups} grupos â€¢ ${leagueTeams.length} equipos`
-                            : `${leagueTeams.length} equipos disponibles`
-                          : 'PrÃ³ximamente'
+                    <div className="leagues-step__card-icon">
+                      <FootballIcon size={24} />
+                    </div>
+                    <div className="leagues-step__card-info">
+                      <span className="leagues-step__card-name">{LEAGUE_NAMES[leagueId]}</span>
+                      <span className="leagues-step__card-meta">
+                        {leagueTeams.length > 0
+                          ? hasGroupsForLeague
+                            ? `${numGroups} grupos · ${leagueTeams.length} equipos`
+                            : `${leagueTeams.length} equipos`
+                          : 'Próximamente'
                         }
                       </span>
+                      {tier && tier <= 3 && leagueTeams.length > 0 && (
+                        <span className="leagues-step__card-tier">Tier {tier}</span>
+                      )}
                     </div>
-                    <span className="arrow">{leagueTeams.length > 0 ? <ChevronRight size={14} /> : <Lock size={14} />}</span>
+                    <span className="leagues-step__card-arrow">
+                      {leagueTeams.length > 0 ? <ChevronRight size={18} /> : <Lock size={16} />}
+                    </span>
                   </button>
                 );
               })}
@@ -953,7 +951,7 @@ export default function TeamSelection() {
           </div>
         )}
 
-        {/* GRUPOS */}
+        {/* ===== PASO 3a: GRUPOS (si aplica) ===== */}
         {currentContent === 'groups' && selectedLeague && (
           <div className="groups-grid">
             <h2><ClipboardList size={20} /> {LEAGUE_NAMES[selectedLeague]} - Selecciona un grupo</h2>
@@ -968,17 +966,17 @@ export default function TeamSelection() {
                   <div className="info">
                     <span className="name">{group.name}</span>
                     <span className="meta">
-                      {group.region ? `${group.region} â€¢ ` : ''}{group.teams.length} equipos
+                      {group.region ? `${group.region} · ` : ''}{group.teams.length} equipos
                     </span>
                   </div>
-                  <span className="arrow">â†’</span>
+                  <span className="arrow">→</span>
                 </button>
               ))}
             </div>
           </div>
         )}
 
-        {/* EQUIPOS */}
+        {/* ===== PASO 3b: EQUIPOS + DETALLE PREMIUM ===== */}
         {currentContent === 'teams' && (
           <div className="teams-layout">
             {/* Panel izquierdo: Lista de equipos */}
@@ -990,7 +988,7 @@ export default function TeamSelection() {
                 </span>
                 <span className="team-count">{teams.length} equipos</span>
               </div>
-              
+
               <div className="search-box">
                 <input
                   type="text"
@@ -999,13 +997,13 @@ export default function TeamSelection() {
                   onChange={e => setSearchTerm(e.target.value)}
                 />
               </div>
-              
+
               <div className="teams-list">
                 {filteredTeams.map((team, idx) => {
                   const difficulty = getDifficulty(team);
                   const avgOvr = getAvgOverall(team);
                   const isSelected = selectedTeam?.id === team.id;
-                  
+
                   return (
                     <button
                       key={team.id}
@@ -1013,9 +1011,9 @@ export default function TeamSelection() {
                       onClick={() => handleSelectTeam(team)}
                     >
                       <span className="team-num">{idx + 1}</span>
-                      <div 
+                      <div
                         className="team-badge"
-                        style={{ 
+                        style={{
                           background: team.colors?.primary || '#1a3a5a',
                           color: team.colors?.secondary || '#fff'
                         }}
@@ -1035,15 +1033,15 @@ export default function TeamSelection() {
                 })}
               </div>
             </div>
-            
-            {/* Panel derecho: Detalles del equipo */}
+
+            {/* Panel derecho: Detalle premium */}
             <div className="details-panel">
               {selectedTeam ? (
-                <div className="team-details">
+                <div className="team-details premium">
                   {/* Header del equipo */}
-                  <div 
+                  <div
                     className="team-header"
-                    style={{ 
+                    style={{
                       '--primary': selectedTeam.colors?.primary || '#1a3a5a',
                       '--secondary': selectedTeam.colors?.secondary || '#fff'
                     }}
@@ -1053,55 +1051,61 @@ export default function TeamSelection() {
                     </div>
                     <div className="team-title">
                       <h2>{selectedTeam.name}</h2>
-                      <p>{selectedTeam.city}{selectedCountry?.nameKey ? `, ${t(selectedCountry.nameKey)}` : ''}</p>
+                      <p>{selectedTeam.city}{selectedCountry ? `, ${selectedCountry.name}` : ''}</p>
                     </div>
                   </div>
 
-                  {/* Stats */}
-                  <div className="stats-grid">
+                  {/* Overall grande */}
+                  <div className="premium-ovr">
+                    <div className="premium-ovr__circle">
+                      <span className="premium-ovr__number">{getAvgOverall(selectedTeam)}</span>
+                      <span className="premium-ovr__label">OVR</span>
+                    </div>
+                    <div className="premium-ovr__meta">
+                      <div className="premium-ovr__difficulty" style={{ color: getDifficulty(selectedTeam).color }}>
+                        {getDifficulty(selectedTeam).label}
+                        <span className="premium-ovr__stars">
+                          {Array.from({ length: getDifficulty(selectedTeam).stars }, (_, i) => <Star key={i} size={11} style={{fill:'currentColor'}} />)}
+                        </span>
+                      </div>
+                      <div className="premium-ovr__budget">{formatMoney(selectedTeam.budget)}</div>
+                    </div>
+                  </div>
+
+                  {/* Stats compactos */}
+                  <div className="stats-grid compact">
                     <div className="stat-card">
-                      <span className="icon"><Building2 size={16} /></span>
-                      <span className="label">Estadio</span>
+                      <span className="icon"><Building2 size={14} /></span>
                       <span className="value">{selectedTeam.stadium || 'Municipal'}</span>
+                      <span className="label">Estadio</span>
                     </div>
                     <div className="stat-card">
-                      <span className="icon"><Users size={16} /></span>
-                      <span className="label">Capacidad</span>
+                      <span className="icon"><Users size={14} /></span>
                       <span className="value">{(selectedTeam.stadiumCapacity || 15000).toLocaleString()}</span>
+                      <span className="label">Capacidad</span>
                     </div>
                     <div className="stat-card">
-                      <span className="icon"><DollarSign size={16} /></span>
-                      <span className="label">Presupuesto</span>
+                      <span className="icon"><DollarSign size={14} /></span>
                       <span className="value highlight">{formatMoney(selectedTeam.budget)}</span>
+                      <span className="label">Presupuesto</span>
                     </div>
                     <div className="stat-card">
-                      <span className="icon"><Star size={16} /></span>
-                      <span className="label">ReputaciÃ³n</span>
-                      <span className="value">{selectedTeam.reputation || 70}/100</span>
+                      <span className="icon"><Star size={14} /></span>
+                      <span className="value">{'\u2605'.repeat(selectedTeam.reputation || 1)}</span>
+                      <span className="label">Reputación</span>
                     </div>
                   </div>
 
-                  {/* Dificultad */}
-                  <div className="difficulty-bar">
-                    <span className="label">Dificultad:</span>
-                    <span 
-                      className="difficulty-value"
-                      style={{ color: getDifficulty(selectedTeam).color }}
-                    >
-                      {getDifficulty(selectedTeam).label} {Array.from({ length: getDifficulty(selectedTeam).stars }, (_, i) => <Star key={i} size={12} style={{fill:'currentColor'}} />)}
-                    </span>
-                  </div>
-
-                  {/* Plantilla destacada */}
+                  {/* Mejores jugadores - filas slim */}
                   {selectedTeam.players && selectedTeam.players.length > 0 && (
-                    <div className="squad-preview">
-                      <h3><Star size={16} /> Jugadores destacados</h3>
+                    <div className="squad-preview slim">
+                      <h3>Mejores jugadores</h3>
                       <div className="players-list">
                         {selectedTeam.players
                           .sort((a, b) => b.overall - a.overall)
-                          .slice(0, 5)
+                          .slice(0, 7)
                           .map((player, idx) => (
-                            <div key={idx} className="player-row">
+                            <div key={idx} className="player-row slim">
                               <span className="pos">{player.position}</span>
                               <span className="name">{player.name}</span>
                               <span className="ovr">{player.overall}</span>
@@ -1109,12 +1113,12 @@ export default function TeamSelection() {
                           ))}
                       </div>
                       <div className="squad-total">
-                        <ClipboardList size={14} /> {selectedTeam.players.length} jugadores en plantilla
+                        {selectedTeam.players.length} jugadores en plantilla
                       </div>
                     </div>
                   )}
 
-                  {/* BotÃ³n comenzar */}
+                  {/* Botón comenzar */}
                   <button className="btn-start" onClick={handleShowPreseason}>
                     <FootballIcon size={16} /> COMENZAR CON {selectedTeam.name?.toUpperCase()}
                   </button>
