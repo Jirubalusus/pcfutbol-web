@@ -28,7 +28,7 @@ import {
   getParaguayTeams, getPeruTeams, getBoliviaTeams, getVenezuelaTeams,
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams
 } from '../../data/teamsFirestore';
-import { ArrowLeft, Briefcase, Users, Star, Target, TrendingUp, Wallet, Shield } from 'lucide-react';
+import { ArrowLeft, Briefcase, Users, Target, TrendingUp, Wallet, Shield } from 'lucide-react';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import './ProManagerSetup.scss';
 
@@ -260,6 +260,14 @@ export default function ProManagerSetup() {
     dispatch({ type: 'SET_EUROPEAN_CALENDAR', payload: europeanCalendar });
   };
 
+  const activeOffer = selectedOffer || offers[0] || null;
+  const activeAvgOvr = activeOffer ? getAvgOverall(activeOffer.team) : 0;
+  const activeTier = activeOffer ? getLeagueTier(activeOffer.leagueId) : 0;
+  const activePlayerCount = activeOffer?.team.players?.length || 0;
+  const activeBudget = activeOffer ? formatMoney(activeOffer.team.budget) : '€0';
+  const activeDifficultyLabel = activeAvgOvr >= 78 ? 'Fácil' : activeAvgOvr >= 72 ? 'Normal' : activeAvgOvr >= 66 ? 'Difícil' : 'Extremo';
+  const activeDifficultyClass = activeAvgOvr >= 78 ? 'easy' : activeAvgOvr >= 72 ? 'normal' : activeAvgOvr >= 66 ? 'hard' : 'extreme';
+
   return (
     <div className="promanager-setup unified-screen">
       <div className="promanager-setup__bg">
@@ -290,71 +298,113 @@ export default function ProManagerSetup() {
             <p className="no-offers">{t('proManager.noOffers')}</p>
           )}
 
-          <div className="offers-grid">
-            {offers.map((offer, idx) => {
-              const avgOvr = getAvgOverall(offer.team);
-              const tier = getLeagueTier(offer.leagueId);
-              const playerCount = offer.team.players?.length || 0;
-              const isSelected = selectedOffer?.team?.id === offer.team.id;
-              const diffLabel = avgOvr >= 78 ? 'Fácil' : avgOvr >= 72 ? 'Normal' : avgOvr >= 66 ? 'Difícil' : 'Extremo';
-              const diffClass = avgOvr >= 78 ? 'easy' : avgOvr >= 72 ? 'normal' : avgOvr >= 66 ? 'hard' : 'extreme';
-              return (
-                <button
-                  key={offer.team.id + idx}
-                  className={`offer-card ${isSelected ? 'offer-card--selected' : ''}`}
-                  onClick={() => setSelectedOffer(offer)}
-                >
-                  <div className="offer-card__top">
-                    <div className="offer-card__identity">
-                      <TeamCrest teamId={offer.team.id} size={36} />
-                      <div className="offer-card__identity-text">
-                        <h3>{offer.team.name}</h3>
-                        <span className="league-name">{offer.leagueName}</span>
+          <div className="promanager-setup__board">
+            <div className="offers-grid">
+              {offers.map((offer, idx) => {
+                const avgOvr = getAvgOverall(offer.team);
+                const tier = getLeagueTier(offer.leagueId);
+                const playerCount = offer.team.players?.length || 0;
+                const isSelected = (selectedOffer || offers[0])?.team?.id === offer.team.id;
+                const diffLabel = avgOvr >= 78 ? 'Fácil' : avgOvr >= 72 ? 'Normal' : avgOvr >= 66 ? 'Difícil' : 'Extremo';
+                const diffClass = avgOvr >= 78 ? 'easy' : avgOvr >= 72 ? 'normal' : avgOvr >= 66 ? 'hard' : 'extreme';
+                const fillWidth = Math.max(16, Math.min(100, avgOvr));
+                return (
+                  <button
+                    key={offer.team.id + idx}
+                    className={`offer-card offer-card--${diffClass} ${isSelected ? 'offer-card--selected' : ''}`}
+                    onClick={() => setSelectedOffer(offer)}
+                  >
+                    <div className="offer-card__main">
+                      <div className="offer-card__identity">
+                        <TeamCrest teamId={offer.team.id} size={42} />
+                        <div className="offer-card__identity-text">
+                          <div className="offer-card__eyebrow">{offer.leagueName}</div>
+                          <h3>{offer.team.name}</h3>
+                          <div className="offer-card__objective">
+                            <Target size={13} />
+                            <span>{t(offer.objective.label, offer.objective.labelParams)}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="offer-card__columns">
+                        <div className="offer-card__metric">
+                          <span className="offer-card__metric-label">OVR</span>
+                          <strong>{avgOvr}</strong>
+                          <div className="offer-card__bar"><span style={{ width: `${fillWidth}%` }} /></div>
+                        </div>
+                        <div className="offer-card__metric">
+                          <span className="offer-card__metric-label">Plantilla</span>
+                          <strong>{playerCount}</strong>
+                          <div className="offer-card__bar"><span style={{ width: `${Math.max(18, Math.min(100, playerCount * 4))}%` }} /></div>
+                        </div>
+                        <div className="offer-card__metric">
+                          <span className="offer-card__metric-label">Presupuesto</span>
+                          <strong>{formatMoney(offer.team.budget)}</strong>
+                          <div className="offer-card__bar"><span style={{ width: `${Math.max(22, Math.min(100, (offer.team.budget || 0) / 4000000))}%` }} /></div>
+                        </div>
                       </div>
                     </div>
-                    <span className={`offer-card__diff offer-card__diff--${diffClass}`}>{diffLabel}</span>
-                  </div>
 
-                  <div className="offer-card__stats">
-                    <div className="stat-pill">
-                      <Shield size={13} />
-                      <span className="stat-value">{avgOvr}</span>
-                      <span className="stat-label">OVR</span>
+                    <div className="offer-card__side">
+                      <span className={`offer-card__diff offer-card__diff--${diffClass}`}>{diffLabel}</span>
+                      <div className="offer-card__rank">T{tier}</div>
                     </div>
-                    <div className="stat-pill">
-                      <Users size={13} />
-                      <span className="stat-value">{playerCount}</span>
-                      <span className="stat-label">Plantilla</span>
-                    </div>
-                    <div className="stat-pill stat-pill--money">
-                      <Wallet size={13} />
-                      <span className="stat-value">{formatMoney(offer.team.budget)}</span>
-                    </div>
-                    <div className="stat-pill">
-                      <TrendingUp size={13} />
-                      <span className="stat-value">Tier {tier}</span>
-                    </div>
-                  </div>
+                  </button>
+                );
+              })}
+            </div>
 
-                  <div className="offer-card__objective">
-                    <Target size={13} />
-                    <span>{t(offer.objective.label, offer.objective.labelParams)}</span>
+            {activeOffer && (
+              <aside className={`offer-preview offer-preview--${activeDifficultyClass}`}>
+                <div className="offer-preview__club">
+                  <TeamCrest teamId={activeOffer.team.id} size={54} />
+                  <div>
+                    <div className="offer-preview__eyebrow">{activeOffer.leagueName}</div>
+                    <h3>{activeOffer.team.name}</h3>
+                    <span className={`offer-card__diff offer-card__diff--${activeDifficultyClass}`}>{activeDifficultyLabel}</span>
                   </div>
+                </div>
+
+                <div className="offer-preview__objective">
+                  <Target size={14} />
+                  <span>{t(activeOffer.objective.label, activeOffer.objective.labelParams)}</span>
+                </div>
+
+                <div className="offer-preview__stats">
+                  <div className="preview-stat">
+                    <Shield size={14} />
+                    <span>OVR</span>
+                    <strong>{activeAvgOvr}</strong>
+                  </div>
+                  <div className="preview-stat">
+                    <Users size={14} />
+                    <span>Plantilla</span>
+                    <strong>{activePlayerCount}</strong>
+                  </div>
+                  <div className="preview-stat">
+                    <Wallet size={14} />
+                    <span>Presupuesto</span>
+                    <strong>{activeBudget}</strong>
+                  </div>
+                  <div className="preview-stat">
+                    <TrendingUp size={14} />
+                    <span>Tier</span>
+                    <strong>{activeTier}</strong>
+                  </div>
+                </div>
+
+                <button
+                  className="btn-start"
+                  onClick={handleStart}
+                  disabled={starting}
+                >
+                  <Briefcase size={20} />
+                  {starting ? t('common.loading') : t('proManager.startCareer')}
                 </button>
-              );
-            })}
+              </aside>
+            )}
           </div>
-
-          {selectedOffer && (
-            <button
-              className="btn-start"
-              onClick={handleStart}
-              disabled={starting}
-            >
-              <Briefcase size={20} />
-              {starting ? t('common.loading') : t('proManager.startCareer')}
-            </button>
-          )}
         </div>
       </div>
     </div>
