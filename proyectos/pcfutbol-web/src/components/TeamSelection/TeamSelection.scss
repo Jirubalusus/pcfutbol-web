@@ -31,7 +31,6 @@ $pcf-text: #bdc3c7;
   @media (max-width: 768px) {
     height: auto;
     min-height: 100vh;
-    min-height: 100dvh;
     max-height: none;
     overflow: visible;
     overflow-x: hidden;
@@ -82,6 +81,24 @@ $pcf-text: #bdc3c7;
     }
   }
   
+  .btn-back {
+    padding: 0.4rem 0.5rem;
+    background: transparent;
+    border: none;
+    color: $pcf-accent;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    -webkit-tap-highlight-color: transparent;
+    
+    &:active {
+      opacity: 0.6;
+    }
+  }
 }
 
 // ============================================================
@@ -128,7 +145,7 @@ $pcf-text: #bdc3c7;
       .step-num {
         background: linear-gradient(135deg, $pcf-green, $pcf-green-light);
         border-color: $pcf-green;
-        color: var(--color-text-primary);
+        color: white;
         box-shadow: 0 0 12px rgba($pcf-green, 0.5);
       }
       
@@ -190,7 +207,7 @@ $pcf-text: #bdc3c7;
 .map-selection__row {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   min-height: 0;
   overflow: hidden;
 
@@ -216,15 +233,6 @@ $pcf-text: #bdc3c7;
   @media (max-width: 900px) {
     padding: 0.5rem;
     min-height: 300px;
-  }
-
-  // On mobile, WorldMap returns null when country is selected → collapse
-  @media (max-width: 768px) {
-    min-height: 0;
-    &:empty {
-      display: none;
-      padding: 0;
-    }
   }
 }
 
@@ -255,11 +263,10 @@ $pcf-text: #bdc3c7;
   background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
   border-bottom: 2px solid $pcf-accent;
   flex-shrink: 0;
-}
 
-.map-selection__country-flag {
-  width: 30px;
-  height: 30px;
+  .flag {
+    font-size: 2rem;
+  }
 }
 
 .map-selection__leagues {
@@ -402,7 +409,7 @@ $pcf-text: #bdc3c7;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
+    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
     border: 2px solid #4a6a8a;
     border-radius: 6px;
     cursor: pointer;
@@ -411,7 +418,7 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     &:hover {
-      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
+      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
       border-color: $pcf-gold;
       transform: translateX(5px);
     }
@@ -489,7 +496,7 @@ $pcf-text: #bdc3c7;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
+    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
     border: 2px solid #4a6a8a;
     border-radius: 6px;
     cursor: pointer;
@@ -498,7 +505,7 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     &:hover:not(.disabled) {
-      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
+      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
       border-color: $pcf-gold;
       transform: translateX(5px);
     }
@@ -649,47 +656,10 @@ $pcf-text: #bdc3c7;
   grid-template-columns: 1fr 1fr;
   gap: 0;
   overflow: hidden;
-  min-height: 0;
   
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(0, 1fr);
-    min-height: 0;
-  }
-}
-
-.teams-mobile-tabs {
-  display: none;
-
-  @media (max-width: 900px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    padding: 0.65rem;
-    background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
-    border-bottom: 1px solid rgba($pcf-accent, 0.35);
-  }
-}
-
-.teams-mobile-tab {
-  border: 1px solid rgba($pcf-accent, 0.25);
-  background: rgba(0, 0, 0, 0.18);
-  color: $pcf-text;
-  border-radius: 10px;
-  padding: 0.75rem 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: all 0.2s ease;
-
-  &.active {
-    background: linear-gradient(180deg, rgba($pcf-green, 0.95) 0%, rgba($pcf-green-dark, 0.95) 100%);
-    color: var(--color-text-primary);
-    border-color: rgba($pcf-green-light, 0.8);
-    box-shadow: 0 0 0 1px rgba($pcf-green-light, 0.18);
-  }
-
-  &:disabled {
-    opacity: 0.45;
+    grid-template-rows: 1fr auto;
   }
 }
 
@@ -699,15 +669,10 @@ $pcf-text: #bdc3c7;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-height: 0;
   
   @media (max-width: 900px) {
     border-right: none;
     border-bottom: 1px solid $pcf-bg-light;
-
-    &.teams-panel--hidden-mobile {
-      display: none;
-    }
   }
   
   .panel-header {
@@ -720,13 +685,9 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     .league-name {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
       font-weight: 600;
       color: $pcf-gold;
       font-size: 0.9rem;
-      min-width: 0;
     }
     
     .team-count {
@@ -735,13 +696,6 @@ $pcf-text: #bdc3c7;
       background: $pcf-bg-dark;
       padding: 0.2rem 0.6rem;
       border-radius: 12px;
-    }
-
-    .league-country-flag {
-      width: 18px;
-      height: 18px;
-      line-height: 1;
-      flex-shrink: 0;
     }
   }
   
@@ -773,15 +727,12 @@ $pcf-text: #bdc3c7;
   
   .teams-list {
     flex: 1;
-    min-height: 0;
     overflow-y: auto;
     padding: 0;
-    -webkit-overflow-scrolling: touch;
     
     @media (max-width: 768px) {
-      overflow-y: auto;
+      overflow-y: visible;
       padding-bottom: 1rem;
-      -webkit-overflow-scrolling: touch;
     }
     
     &::-webkit-scrollbar {
@@ -858,7 +809,7 @@ $pcf-text: #bdc3c7;
       justify-content: center;
       font-weight: 700;
       font-size: 0.7rem;
-      border: 2px solid var(--color-text-tertiary);
+      border: 2px solid rgba(255,255,255,0.3);
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 
       @media (max-width: 768px) {
@@ -931,14 +882,6 @@ $pcf-text: #bdc3c7;
     max-height: none;
     overflow-y: auto;
     padding-bottom: 80px;
-
-    &.details-panel--hidden-mobile {
-      display: none;
-    }
-
-    &.details-panel--mobile-tab {
-      border-top: 1px solid rgba($pcf-accent, 0.2);
-    }
   }
 }
 
@@ -1127,7 +1070,7 @@ $pcf-text: #bdc3c7;
     background: linear-gradient(180deg, $pcf-green 0%, $pcf-green-dark 100%);
     border: none;
     border-radius: 8px;
-    color: var(--color-text-primary);
+    color: white;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -1226,7 +1169,7 @@ $pcf-text: #bdc3c7;
   padding: 32px;
   max-width: 1100px;
   width: 100%;
-  border: 1px solid var(--color-glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   max-height: 90vh;
   overflow-y: auto;
 
@@ -1246,7 +1189,7 @@ $pcf-text: #bdc3c7;
   margin-bottom: 24px;
   
   .header-icon { color: #0a84ff; }
-  h1 { font-size: 1.5rem; color: var(--color-text-primary); margin: 0; }
+  h1 { font-size: 1.5rem; color: #fff; margin: 0; }
   p { color: #8e8e93; margin: 4px 0 0; }
 }
 
@@ -1270,15 +1213,15 @@ $pcf-text: #bdc3c7;
 
 .preseason-card {
   padding: 20px;
-  background: var(--color-glass);
-  border: 2px solid var(--color-glass-border);
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.2s;
   
   &:hover {
-    background: var(--color-glass-border);
-    border-color: var(--color-glass-border);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
   }
   
   &.selected {
@@ -1292,14 +1235,35 @@ $pcf-text: #bdc3c7;
     gap: 12px;
     margin-bottom: 12px;
     
-    svg { color: #0a84ff; flex-shrink: 0; }
-    h3 { color: var(--color-text-primary); font-size: 1.1rem; margin: 0; }
-    .avg-ovr {
-      margin-left: auto;
+    svg { color: #0a84ff; }
+    h3 { color: #fff; font-size: 1.1rem; margin: 0; }
+  }
+  
+  .card-description {
+    color: #8e8e93;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  
+  .card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    
+    .difficulty {
       font-size: 0.8rem;
-      color: #8e8e93;
-      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 12px;
+      width: fit-content;
+      
+      &--high { background: rgba(255, 69, 58, 0.2); color: #ff453a; }
+      &--medium { background: rgba(255, 159, 10, 0.2); color: #ff9f0a; }
+      &--low { background: rgba(48, 209, 88, 0.2); color: #30d158; }
     }
+    
+    .earnings { font-size: 0.85rem; color: #30d158; }
   }
   
   .matches-preview {
@@ -1320,13 +1284,13 @@ $pcf-text: #bdc3c7;
         align-items: center;
         gap: 8px;
         padding: 8px 0;
-        border-bottom: 1px solid var(--color-glass);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         font-size: 0.85rem;
         flex-wrap: wrap;
         
         &:last-child { border-bottom: none; }
         .match-location { color: #8e8e93; }
-        .opponent-name { flex: 1; color: var(--color-text-primary); min-width: 60px; }
+        .opponent-name { flex: 1; color: #fff; min-width: 60px; }
         .opponent-ovr { color: #8e8e93; font-size: 0.75rem; }
         
         .presentation-badge {
@@ -1335,7 +1299,7 @@ $pcf-text: #bdc3c7;
           gap: 4px;
           padding: 2px 8px;
           background: rgba(255, 214, 10, 0.2);
-          color: var(--color-warning);
+          color: #ffd60a;
           border-radius: 10px;
           font-size: 0.7rem;
           flex-shrink: 0;
@@ -1365,15 +1329,15 @@ $pcf-text: #bdc3c7;
   
   .btn-back {
     padding: 14px 24px;
-    background: var(--color-glass-border);
-    border: 1px solid var(--color-glass-border);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    color: var(--color-text-primary);
+    color: #fff;
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
     
-    &:hover { background: var(--color-glass-border); }
+    &:hover { background: rgba(255, 255, 255, 0.15); }
   }
   
   .btn-confirm {
@@ -1383,10 +1347,10 @@ $pcf-text: #bdc3c7;
     justify-content: center;
     gap: 8px;
     padding: 14px 24px;
-    background: linear-gradient(135deg, var(--color-success), #28a745);
+    background: linear-gradient(135deg, #30d158, #28a745);
     border: none;
     border-radius: 12px;
-    color: var(--color-text-primary);
+    color: #fff;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
@@ -1398,18 +1362,6 @@ $pcf-text: #bdc3c7;
     }
     
     &:disabled { opacity: 0.5; cursor: not-allowed; }
-  }
-  
-  // Sticky en móvil
-  @media (max-width: 768px) {
-    position: sticky;
-    bottom: 0;
-    background: linear-gradient(to top, var(--color-bg-primary) 70%, transparent);
-    padding: 16px 0 8px;
-    margin: 0 -16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    z-index: 10;
   }
 }
 
