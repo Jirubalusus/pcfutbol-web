@@ -3,14 +3,14 @@
   vertical-align: middle;
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
 
   &--official {
     display: block;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     overflow: hidden;
     border-radius: inherit;
-    background: rgba(255, 255, 255, 0.02);
+    background: transparent;
   }
 }

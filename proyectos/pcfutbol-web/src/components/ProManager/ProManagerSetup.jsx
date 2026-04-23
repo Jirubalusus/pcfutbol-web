@@ -311,7 +311,9 @@ export default function ProManagerSetup() {
                   >
                     <div className="offer-card__main">
                       <div className="offer-card__identity">
-                        <TeamCrest teamId={offer.team.id} size={42} />
+                        <div className="offer-card__crest-wrap">
+                          <TeamCrest teamId={offer.team.id} size={42} />
+                        </div>
                         <div className="offer-card__identity-text">
                           <div className="offer-card__eyebrow">{offer.leagueName}</div>
                           <h3>{offer.team.name}</h3>
@@ -353,8 +355,10 @@ export default function ProManagerSetup() {
             {activeOffer && (
               <aside className={`offer-preview offer-preview--${activeDifficultyClass}`}>
                 <div className="offer-preview__club">
-                  <TeamCrest teamId={activeOffer.team.id} size={54} />
-                  <div>
+                  <div className="offer-preview__crest-wrap">
+                    <TeamCrest teamId={activeOffer.team.id} size={54} />
+                  </div>
+                  <div className="offer-preview__club-text">
                     <div className="offer-preview__eyebrow">{activeOffer.leagueName}</div>
                     <h3>{activeOffer.team.name}</h3>
                     <span className={`offer-card__diff offer-card__diff--${activeDifficultyClass}`}>{activeDifficultyLabel}</span>

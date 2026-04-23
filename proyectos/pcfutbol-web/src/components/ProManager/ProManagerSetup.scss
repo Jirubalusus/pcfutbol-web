@@ -8,8 +8,9 @@
   display: flex;
   flex-direction: column;
   background:
-    radial-gradient(circle at top center, rgba(35, 255, 140, 0.1) 0%, transparent 22%),
-    linear-gradient(180deg, #060a12 0%, #090f19 30%, #070b12 100%);
+    radial-gradient(circle at 18% 8%, rgba(37, 189, 255, 0.08) 0%, transparent 24%),
+    radial-gradient(circle at 82% 14%, rgba(255, 124, 64, 0.06) 0%, transparent 18%),
+    linear-gradient(180deg, #050911 0%, #070d16 28%, #040811 100%);
 
   &__bg {
     position: fixed;
@@ -22,9 +23,9 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 20% 0%, rgba(46, 204, 113, 0.08) 0%, transparent 22%),
-      radial-gradient(circle at 85% 25%, rgba(255, 145, 77, 0.06) 0%, transparent 18%),
-      linear-gradient(180deg, rgba(7, 10, 16, 0.88) 0%, rgba(5, 8, 14, 0.96) 100%);
+      radial-gradient(circle at 15% 0%, rgba(73, 255, 155, 0.06) 0%, transparent 20%),
+      radial-gradient(circle at 85% 18%, rgba(85, 182, 255, 0.06) 0%, transparent 18%),
+      linear-gradient(180deg, rgba(6, 10, 18, 0.76) 0%, rgba(4, 8, 14, 0.92) 100%);
   }
 
   &__particles {
@@ -35,7 +36,7 @@
       position: absolute;
       width: 3px;
       height: 3px;
-      background: rgba(73, 255, 155, 0.5);
+      background: rgba(85, 182, 255, 0.42);
       border-radius: 50%;
       opacity: 0;
       animation: pmFloatParticle 6s infinite;
@@ -53,11 +54,16 @@
   &__content {
     position: relative;
     z-index: 1;
-    width: min(1500px, 100%);
+    width: min(1760px, 100%);
     margin: 0 auto;
-    padding: 1.35rem 1.5rem 2rem;
-    padding-top: calc(env(safe-area-inset-top, 0px) + 1.2rem);
+    padding: 1.35rem 1.6rem 2.2rem;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1.15rem);
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1.75rem);
+
+    @media (min-width: 1280px) {
+      padding-left: 2.2rem;
+      padding-right: 2.2rem;
+    }
 
     @media (max-width: 900px) {
       padding: 1rem 0.9rem 1.2rem;
@@ -69,7 +75,7 @@
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    margin-bottom: 1.1rem;
+    margin-bottom: 1rem;
 
     .header-info {
       flex: 1;
@@ -80,21 +86,21 @@
         align-items: center;
         gap: 0.55rem;
         margin: 0;
-        font-size: clamp(1.6rem, 2vw, 2.4rem);
+        font-size: clamp(1.75rem, 1.8vw, 2.35rem);
         font-weight: 900;
         text-transform: uppercase;
         letter-spacing: 0.04em;
         color: #f4f7fb;
 
         svg {
-          color: #39ff88;
+          color: #49ff9b;
         }
       }
 
       p {
-        margin: 0.35rem 0 0;
-        color: rgba(199, 210, 221, 0.58);
-        font-size: 0.9rem;
+        margin: 0.32rem 0 0;
+        color: rgba(199, 210, 221, 0.56);
+        font-size: 0.88rem;
       }
     }
 
@@ -121,12 +127,17 @@
 
   &__board {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 330px;
+    grid-template-columns: minmax(0, 1.55fr) minmax(360px, 0.82fr);
     gap: 1rem;
     align-items: start;
 
-    @media (max-width: 1180px) {
-      grid-template-columns: minmax(0, 1fr) 300px;
+    @media (min-width: 1500px) {
+      grid-template-columns: minmax(0, 1.7fr) minmax(390px, 0.78fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 1120px) {
+      grid-template-columns: minmax(0, 1fr) 320px;
     }
 
     @media (max-width: 980px) {
@@ -137,7 +148,7 @@
   .offers-grid {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.75rem;
   }
 
   .offer-card {
@@ -145,11 +156,12 @@
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 1rem;
     width: 100%;
-    padding: 1rem 1.1rem;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 126px;
+    padding: 0.95rem 1.05rem;
+    border-radius: 18px;
+    border: 1px solid rgba(138, 160, 186, 0.16);
     background:
-      linear-gradient(90deg, rgba(13, 18, 28, 0.96) 0%, rgba(15, 22, 34, 0.98) 42%, rgba(9, 14, 22, 0.98) 100%);
+      linear-gradient(180deg, rgba(14, 20, 31, 0.98) 0%, rgba(12, 18, 28, 0.985) 100%);
     color: #eef3f8;
     text-align: left;
     cursor: pointer;
@@ -160,16 +172,24 @@
     &::before {
       content: '';
       position: absolute;
-      inset: 0;
-      width: 4px;
+      inset: 0 auto 0 0;
+      width: 3px;
       background: rgba(74, 222, 128, 0.55);
-      opacity: 0.75;
+      opacity: 0.85;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.035) 0%, transparent 20%, transparent 100%);
+      pointer-events: none;
     }
 
     &:hover {
       transform: translateY(-1px);
-      border-color: rgba(255, 255, 255, 0.14);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+      border-color: rgba(168, 188, 214, 0.24);
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.24);
     }
 
     &--easy::before,
@@ -203,9 +223,11 @@
 
     &--selected {
       border-color: currentColor;
-      box-shadow: 0 0 0 1px currentColor inset, 0 0 24px color-mix(in srgb, currentColor 20%, transparent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 62%, transparent) inset,
+        0 0 0 1px rgba(255,255,255,0.03),
+        0 0 22px color-mix(in srgb, currentColor 16%, transparent);
       background:
-        linear-gradient(90deg, rgba(14, 24, 24, 0.98) 0%, rgba(14, 22, 32, 0.98) 42%, rgba(9, 14, 22, 0.98) 100%);
+        linear-gradient(180deg, rgba(15, 23, 34, 0.99) 0%, rgba(12, 19, 29, 0.99) 100%);
     }
 
     &__main {
@@ -218,7 +240,7 @@
     &__identity {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.85rem;
       min-width: 0;
 
       &-text {
@@ -227,68 +249,99 @@
       }
 
       h3 {
-        margin: 0.1rem 0 0.3rem;
-        font-size: 1.12rem;
-        font-weight: 800;
+        margin: 0.1rem 0 0.25rem;
+        font-size: 1.24rem;
+        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 0.025em;
+        letter-spacing: 0.018em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #f8fbff;
+      }
+    }
+
+    &__crest-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.015) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      overflow: hidden;
+
+      .team-crest,
+      .team-crest--official {
+        max-width: 42px;
+        max-height: 42px;
+      }
+    }
+
+    &__eyebrow {
+      color: rgba(163, 177, 191, 0.56);
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__columns {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+
+      @media (max-width: 700px) {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+    }
+
+    &__metric {
+      min-width: 0;
+
+      strong {
+        display: block;
+        margin-top: 0.12rem;
+        font-size: 0.95rem;
+        color: #f7fbff;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
     }
 
-    &__eyebrow {
-      color: rgba(163, 177, 191, 0.56);
-      font-size: 0.66rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    &__columns {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
-
-      @media (max-width: 700px) {
-        grid-template-columns: 1fr;
-        gap: 0.55rem;
-      }
-    }
-
-    &__metric {
-      min-width: 0;
-      strong {
-        display: block;
-        margin-top: 0.12rem;
-        font-size: 0.98rem;
-        color: #f7fbff;
-      }
-    }
-
     &__metric-label {
       display: block;
-      font-size: 0.66rem;
+      font-size: 0.62rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(176, 188, 200, 0.48);
-      margin-bottom: 0.18rem;
+      margin-bottom: 0.16rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &__bar {
-      margin-top: 0.35rem;
+      margin-top: 0.34rem;
       width: 100%;
-      height: 6px;
+      height: 5px;
       border-radius: 999px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
 
       span {
         display: block;
         height: 100%;
         border-radius: inherit;
-        background: linear-gradient(90deg, rgba(255,255,255,0.22) 0%, currentColor 100%);
+        background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, currentColor 100%);
       }
     }
 
@@ -296,13 +349,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      width: fit-content;
+      width: min(100%, 460px);
       max-width: 100%;
-      padding: 0.28rem 0.5rem;
-      border-radius: 7px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.04);
-      color: rgba(227, 234, 240, 0.84);
+      padding: 0.32rem 0.54rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.035);
+      color: rgba(227, 234, 240, 0.82);
       font-size: 0.72rem;
 
       span {
@@ -322,37 +375,41 @@
       flex-direction: column;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 0.75rem;
-      min-width: 72px;
+      gap: 0.7rem;
+      min-width: 70px;
+      padding-top: 0.1rem;
     }
 
     &__diff {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 24px;
-      padding: 0.25rem 0.45rem;
+      min-height: 25px;
+      padding: 0.28rem 0.55rem;
       border-radius: 999px;
-      font-size: 0.62rem;
-      font-weight: 800;
+      font-size: 0.6rem;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       border: 1px solid currentColor;
       background: color-mix(in srgb, currentColor 12%, transparent);
       color: inherit;
+      white-space: nowrap;
     }
 
     &__rank {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1;
       color: currentColor;
       text-shadow: 0 0 18px color-mix(in srgb, currentColor 35%, transparent);
+      white-space: nowrap;
     }
 
     @media (max-width: 700px) {
       grid-template-columns: 1fr;
+      min-height: 0;
 
       &__side {
         flex-direction: row;
@@ -360,18 +417,28 @@
         justify-content: space-between;
         min-width: 0;
       }
+
+      &__identity h3 {
+        font-size: 1.04rem;
+      }
+
+      &__crest-wrap {
+        width: 48px;
+        height: 48px;
+      }
     }
   }
 
   .offer-preview {
     position: sticky;
     top: 1rem;
-    border-radius: 18px;
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 100%;
+    border-radius: 22px;
+    padding: 1.05rem;
+    border: 1px solid rgba(138, 160, 186, 0.16);
     background:
-      linear-gradient(180deg, rgba(13, 18, 28, 0.98) 0%, rgba(9, 14, 22, 0.99) 100%);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+      linear-gradient(180deg, rgba(12, 18, 28, 0.99) 0%, rgba(8, 12, 20, 0.995) 100%);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 
     &::before {
@@ -391,17 +458,45 @@
     &__club {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.9rem;
       margin-bottom: 1rem;
+      min-width: 0;
+    }
 
-      h3 {
-        margin: 0.18rem 0 0.35rem;
-        color: #f4f7fb;
-        font-size: 1.35rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 0.02em;
+    &__club-text {
+      min-width: 0;
+      flex: 1;
+    }
+
+    &__crest-wrap {
+      width: 74px;
+      height: 74px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.015) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+
+      .team-crest,
+      .team-crest--official {
+        max-width: 56px;
+        max-height: 56px;
       }
+    }
+
+    h3 {
+      margin: 0.18rem 0 0.35rem;
+      color: #f4f7fb;
+      font-size: 1.62rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &__eyebrow {
@@ -410,19 +505,38 @@
       letter-spacing: 0.16em;
       color: rgba(190, 202, 214, 0.55);
       font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__league {
+      margin: -0.15rem 0 1rem;
+      color: rgba(186, 198, 210, 0.52);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &__objective {
       display: flex;
       align-items: flex-start;
       gap: 0.45rem;
-      padding: 0.75rem 0.8rem;
+      padding: 0.78rem 0.8rem;
       margin-bottom: 1rem;
-      border-radius: 12px;
+      border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(255, 255, 255, 0.035);
       color: #dfe8ef;
       font-size: 0.84rem;
+
+      span {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
 
       svg {
         margin-top: 0.1rem;
@@ -448,27 +562,35 @@
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 0.45rem;
-    padding: 0.7rem 0.75rem;
-    border-radius: 12px;
+    padding: 0.78rem 0.8rem;
+    border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.03);
     color: #dae4eb;
+    min-width: 0;
 
     svg {
       color: currentColor;
       opacity: 0.9;
+      flex-shrink: 0;
     }
 
     span {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       color: rgba(190, 202, 214, 0.62);
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     strong {
       font-size: 0.88rem;
       color: #f8fbff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -478,10 +600,10 @@
     justify-content: center;
     gap: 0.55rem;
     width: 100%;
-    min-height: 50px;
-    padding: 0.95rem 1rem;
+    min-height: 52px;
+    padding: 0.98rem 1rem;
     border: none;
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
     background: linear-gradient(180deg, #47ff97 0%, #1bd66d 100%);
     color: #051109;
