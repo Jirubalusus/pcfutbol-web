@@ -1089,6 +1089,11 @@ export default function Formation() {
                 {/* ROL DEL JUGADOR */}
                 {selectedPlayer.role && (
                   <div className="player-role">
+                    <PositionRoleIcon
+                      position={selectedPlayer.position}
+                      size="md"
+                      title={selectedPlayer.position}
+                    />
                     <span className="role-icon">{selectedPlayer.role.icon}</span>
                     <span className="role-name">{selectedPlayer.role.name}</span>
                   </div>
