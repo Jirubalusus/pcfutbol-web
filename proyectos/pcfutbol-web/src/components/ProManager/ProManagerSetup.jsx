@@ -265,13 +265,8 @@ export default function ProManagerSetup() {
 
   return (
     <div className="promanager-setup unified-screen">
-      <div className="promanager-setup__bg">
+      <div className="promanager-setup__bg" aria-hidden="true">
         <div className="promanager-setup__gradient" />
-        <div className="promanager-setup__particles">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className={`particle particle--${i}`} />
-          ))}
-        </div>
       </div>
 
       <div className="promanager-setup__content">
@@ -281,7 +276,7 @@ export default function ProManagerSetup() {
           </button>
           <div className="header-info">
             <h1>
-              <Briefcase size={24} />
+              <Briefcase size={20} />
               {t('proManager.title')}
             </h1>
             <p>{t('proManager.chooseTeam')}</p>
@@ -294,58 +289,37 @@ export default function ProManagerSetup() {
           )}
 
           <div className="promanager-setup__board">
-            <div className="offers-grid">
+            <div className="offers-list" role="list">
+              <div className="offers-list__header" aria-hidden="true">
+                <span>{t('proManager.chooseTeam')}</span>
+                <span className="offers-list__count">{offers.length}</span>
+              </div>
               {offers.map((offer, idx) => {
                 const avgOvr = getAvgOverall(offer.team);
                 const tier = getLeagueTier(offer.leagueId);
-                const playerCount = offer.team.players?.length || 0;
                 const isSelected = (selectedOffer || offers[0])?.team?.id === offer.team.id;
-                const diffLabel = avgOvr >= 78 ? 'Fácil' : avgOvr >= 72 ? 'Normal' : avgOvr >= 66 ? 'Difícil' : 'Extremo';
                 const diffClass = avgOvr >= 78 ? 'easy' : avgOvr >= 72 ? 'normal' : avgOvr >= 66 ? 'hard' : 'extreme';
-                const fillWidth = Math.max(16, Math.min(100, avgOvr));
                 return (
                   <button
                     key={offer.team.id + idx}
-                    className={`offer-card offer-card--${diffClass} ${isSelected ? 'offer-card--selected' : ''}`}
+                    className={`offer-row offer-row--${diffClass}${isSelected ? ' offer-row--selected' : ''}`}
                     onClick={() => setSelectedOffer(offer)}
+                    role="listitem"
                   >
-                    <div className="offer-card__main">
-                      <div className="offer-card__identity">
-                        <div className="offer-card__crest-wrap">
-                          <TeamCrest teamId={offer.team.id} size={42} />
-                        </div>
-                        <div className="offer-card__identity-text">
-                          <div className="offer-card__eyebrow">{offer.leagueName}</div>
-                          <h3>{offer.team.name}</h3>
-                          <div className="offer-card__objective">
-                            <Target size={13} />
-                            <span>{t(offer.objective.label, offer.objective.labelParams)}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="offer-card__columns">
-                        <div className="offer-card__metric">
-                          <span className="offer-card__metric-label">OVR</span>
-                          <strong>{avgOvr}</strong>
-                          <div className="offer-card__bar"><span style={{ width: `${fillWidth}%` }} /></div>
-                        </div>
-                        <div className="offer-card__metric">
-                          <span className="offer-card__metric-label">Plantilla</span>
-                          <strong>{playerCount}</strong>
-                          <div className="offer-card__bar"><span style={{ width: `${Math.max(18, Math.min(100, playerCount * 4))}%` }} /></div>
-                        </div>
-                        <div className="offer-card__metric">
-                          <span className="offer-card__metric-label">Presupuesto</span>
-                          <strong>{formatMoney(offer.team.budget)}</strong>
-                          <div className="offer-card__bar"><span style={{ width: `${Math.max(22, Math.min(100, (offer.team.budget || 0) / 4000000))}%` }} /></div>
-                        </div>
-                      </div>
+                    <span className="offer-row__accent" aria-hidden="true" />
+                    <div className="offer-row__crest">
+                      <TeamCrest teamId={offer.team.id} size={28} />
                     </div>
-
-                    <div className="offer-card__side">
-                      <span className={`offer-card__diff offer-card__diff--${diffClass}`}>{diffLabel}</span>
-                      <div className="offer-card__rank">T{tier}</div>
+                    <div className="offer-row__body">
+                      <span className="offer-row__eyebrow">{offer.leagueName}</span>
+                      <span className="offer-row__name">{offer.team.name}</span>
+                    </div>
+                    <div className="offer-row__meta">
+                      <span className="offer-row__ovr">
+                        <b>{avgOvr}</b>
+                        <em>OVR</em>
+                      </span>
+                      <span className="offer-row__tier">T{tier}</span>
                     </div>
                   </button>
                 );
@@ -353,52 +327,53 @@ export default function ProManagerSetup() {
             </div>
 
             {activeOffer && (
-              <aside className={`offer-preview offer-preview--${activeDifficultyClass}`}>
-                <div className="offer-preview__club">
-                  <div className="offer-preview__crest-wrap">
-                    <TeamCrest teamId={activeOffer.team.id} size={54} />
+              <aside className={`offer-detail offer-detail--${activeDifficultyClass}`}>
+                <span className="offer-detail__accent" aria-hidden="true" />
+
+                <div className="offer-detail__head">
+                  <div className="offer-detail__crest">
+                    <TeamCrest teamId={activeOffer.team.id} size={56} />
                   </div>
-                  <div className="offer-preview__club-text">
-                    <div className="offer-preview__eyebrow">{activeOffer.leagueName}</div>
-                    <h3>{activeOffer.team.name}</h3>
-                    <span className={`offer-card__diff offer-card__diff--${activeDifficultyClass}`}>{activeDifficultyLabel}</span>
+                  <span className="offer-detail__eyebrow">{activeOffer.leagueName}</span>
+                  <h2 className="offer-detail__name">{activeOffer.team.name}</h2>
+                  <div className="offer-detail__tags">
+                    <span className={`offer-detail__diff offer-detail__diff--${activeDifficultyClass}`}>
+                      {activeDifficultyLabel}
+                    </span>
+                    <span className="offer-detail__tier">T{activeTier}</span>
                   </div>
                 </div>
 
-                <div className="offer-preview__objective">
-                  <Target size={14} />
+                <div className="offer-detail__objective">
+                  <Target size={13} />
                   <span>{t(activeOffer.objective.label, activeOffer.objective.labelParams)}</span>
                 </div>
 
-                <div className="offer-preview__stats">
-                  <div className="preview-stat">
-                    <Shield size={14} />
-                    <span>OVR</span>
-                    <strong>{activeAvgOvr}</strong>
+                <dl className="offer-detail__stats">
+                  <div className="offer-detail__stat">
+                    <dt><Shield size={12} /><span>OVR</span></dt>
+                    <dd>{activeAvgOvr}</dd>
                   </div>
-                  <div className="preview-stat">
-                    <Users size={14} />
-                    <span>Plantilla</span>
-                    <strong>{activePlayerCount}</strong>
+                  <div className="offer-detail__stat">
+                    <dt><Users size={12} /><span>Plantilla</span></dt>
+                    <dd>{activePlayerCount}</dd>
                   </div>
-                  <div className="preview-stat">
-                    <Wallet size={14} />
-                    <span>Presupuesto</span>
-                    <strong>{activeBudget}</strong>
+                  <div className="offer-detail__stat">
+                    <dt><Wallet size={12} /><span>Presupuesto</span></dt>
+                    <dd>{activeBudget}</dd>
                   </div>
-                  <div className="preview-stat">
-                    <TrendingUp size={14} />
-                    <span>Tier</span>
-                    <strong>{activeTier}</strong>
+                  <div className="offer-detail__stat">
+                    <dt><TrendingUp size={12} /><span>Tier</span></dt>
+                    <dd>T{activeTier}</dd>
                   </div>
-                </div>
+                </dl>
 
                 <button
                   className="btn-start"
                   onClick={handleStart}
                   disabled={starting}
                 >
-                  <Briefcase size={20} />
+                  <Briefcase size={18} />
                   {starting ? t('common.loading') : t('proManager.startCareer')}
                 </button>
               </aside>
