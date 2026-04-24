@@ -296,23 +296,6 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     { grassCondition, medicalPrevention, playerIsHome }
   );
   
-  // Stats del partido (tácticas afectan posesión, tiros, etc.)
-  // Derive card counts from events for consistency
-  const eventYellowsHome = events.filter(e => e.type === 'yellow_card' && e.team === 'home').length;
-  const eventYellowsAway = events.filter(e => e.type === 'yellow_card' && e.team === 'away').length;
-  const eventRedsHome = events.filter(e => e.type === 'red_card' && e.team === 'home').length;
-  const eventRedsAway = events.filter(e => e.type === 'red_card' && e.team === 'away').length;
-  const stats = generateMatchStats(
-    homeStrength,
-    awayStrength,
-    homeScore,
-    awayScore,
-    result,
-    homeTactic,
-    awayTactic,
-    { yellowCards: { home: eventYellowsHome, away: eventYellowsAway }, redCards: { home: eventRedsHome, away: eventRedsAway } }
-  );
-  
   // Knockout mode: if draw, resolve with extra time then penalties
   let extraTime = false;
   let penalties = null;
@@ -341,22 +324,37 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
 
     // If still draw after extra time → penalties
     if (finalHomeScore === finalAwayScore) {
-      const homeRating = homeStrength.rating || 70;
-      const awayRating = awayStrength.rating || 70;
-      // Better team has slight edge in penalties (55/45 max)
-      const homeAdvantage = 0.5 + Math.min(0.05, (homeRating - awayRating) / 200);
-      const homeWinsPens = Math.random() < homeAdvantage;
-      const winnerGoals = Math.floor(Math.random() * 3) + 4; // 4-6 goals
-      const loserGoals = winnerGoals - (Math.floor(Math.random() * 2) + 1); // 1-2 fewer
-      penalties = {
-        home: homeWinsPens ? winnerGoals : loserGoals,
-        away: homeWinsPens ? loserGoals : winnerGoals
-      };
+      penalties = generatePenaltyShootout(homeStrength, awayStrength);
     }
   }
 
   // ── MOTM (Man of the Match) calculation ──
   const finalEvents = normalizeDisciplinaryTimeline(events);
+  const reconciledGoals = countGoalsByTeam(finalEvents);
+  finalHomeScore = reconciledGoals.home;
+  finalAwayScore = reconciledGoals.away;
+  if (context.knockout) {
+    if (finalHomeScore === finalAwayScore && !penalties) {
+      penalties = generatePenaltyShootout(homeStrength, awayStrength);
+    } else if (finalHomeScore !== finalAwayScore) {
+      penalties = null;
+    }
+  }
+  const eventYellowsHome = finalEvents.filter(e => e.type === 'yellow_card' && e.team === 'home').length;
+  const eventYellowsAway = finalEvents.filter(e => e.type === 'yellow_card' && e.team === 'away').length;
+  const eventRedsHome = finalEvents.filter(e => e.type === 'red_card' && e.team === 'home').length;
+  const eventRedsAway = finalEvents.filter(e => e.type === 'red_card' && e.team === 'away').length;
+  const finalResult = finalHomeScore > finalAwayScore ? 1 : finalHomeScore < finalAwayScore ? -1 : 0;
+  const stats = generateMatchStats(
+    homeStrength,
+    awayStrength,
+    finalHomeScore,
+    finalAwayScore,
+    finalResult,
+    homeTactic,
+    awayTactic,
+    { yellowCards: { home: eventYellowsHome, away: eventYellowsAway }, redCards: { home: eventRedsHome, away: eventRedsAway } }
+  );
   const motm = calculateMOTM(finalEvents, finalHomeScore, finalAwayScore, homeTeamData, awayTeamData);
 
   return {
@@ -597,6 +595,19 @@ function weightedRandom(options) {
   return options[0].value;
 }
 
+function generatePenaltyShootout(homeStrength, awayStrength) {
+  const homeRating = homeStrength.rating || 70;
+  const awayRating = awayStrength.rating || 70;
+  const homeAdvantage = 0.5 + Math.min(0.05, (homeRating - awayRating) / 200);
+  const homeWinsPens = Math.random() < homeAdvantage;
+  const winnerGoals = Math.floor(Math.random() * 3) + 4;
+  const loserGoals = winnerGoals - (Math.floor(Math.random() * 2) + 1);
+  return {
+    home: homeWinsPens ? winnerGoals : loserGoals,
+    away: homeWinsPens ? loserGoals : winnerGoals
+  };
+}
+
 function getPlayerName(player) {
   return typeof player === 'object' ? player?.name : player;
 }
@@ -642,6 +653,14 @@ function sortEvents(events) {
   return [...events].sort((a, b) =>
     (a.minute || 0) - (b.minute || 0) || (priority[a.type] ?? 9) - (priority[b.type] ?? 9)
   );
+}
+
+function countGoalsByTeam(events) {
+  return events.reduce((score, event) => {
+    if (event.type === 'goal' && event.team === 'home') score.home++;
+    if (event.type === 'goal' && event.team === 'away') score.away++;
+    return score;
+  }, { home: 0, away: 0 });
 }
 
 function normalizeDisciplinaryTimeline(events) {
@@ -851,7 +870,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
         if (availablePlayers.length === 0) return;
         const injuredPlayer = availablePlayers[Math.floor(Math.random() * availablePlayers.length)];
         const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, injuredPlayer);
-        const minute = randomMinuteBetween(Math.max(10, lastRequiredEvent), 84);
+        const minute = randomMinuteBetween(Math.max(10, lastRequiredEvent + 1), 84);
         if (!minute) return;
         const severityRoll = Math.random();
         let weeksOut, severity;
@@ -959,7 +978,8 @@ function selectRandomPlayer(team, teamLabel = 'team', options = {}) {
     !p.suspended &&
     !options.sentOff?.has(getPlayerKey(teamLabel, p))
   );
-  const pool = available.length > 0 ? available : team.players;
+  if (available.length === 0) return { name: 'Unknown' };
+  const pool = available;
   // Prefer starters (first 11 or starter flag) — 85% chance starter, 15% sub
   const starters = pool.filter(p => p.starter || p.isStarter);
   const subs = pool.filter(p => !p.starter && !p.isStarter);
