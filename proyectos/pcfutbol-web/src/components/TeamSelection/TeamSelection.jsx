@@ -1090,6 +1090,10 @@ export default function TeamSelection() {
                   countries={COUNTRIES}
                   selectedCountry={selectedCountry?.id}
                   onCountryClick={(countryId) => {
+                    if (!countryId) {
+                      setSelectedCountry(null);
+                      return;
+                    }
                     const country = COUNTRIES.find(c => c.id === countryId);
                     if (country) setSelectedCountry(country);
                   }}

@@ -139,11 +139,11 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     }).filter(Boolean);
   }, [countries, selectedCountry, resolveName]);
 
-  const handleClick = (d) => {
-    if (d?.id) {
-      onCountryClick(d.id);
+  const handleGlobeClick = useCallback(() => {
+    if (selectedCountry) {
+      onCountryClick(null);
     }
-  };
+  }, [onCountryClick, selectedCountry]);
 
   // Create HTML element for each marker (must be before conditional returns to respect hook rules)
   const createMarkerElement = useCallback((d) => {
@@ -260,6 +260,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
 
         atmosphereColor="#2bffb0"
         atmosphereAltitude={selectedCountry ? 0.18 : 0.24}
+        onGlobeClick={handleGlobeClick}
       />
       </div>
       <p className="globe-hint">{t('teamSelection.globeHint')}</p>
