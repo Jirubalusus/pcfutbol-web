@@ -48,8 +48,9 @@ const getPlayerPositionLabels = (player) => {
   return getPlayerPositionCodes(player).map(pos => translatePosition(pos));
 };
 
-function PlayerPositionCell({ player, getPositionStyle, t }) {
-  const primaryPosition = getPlayerPrimaryPosition(player);
+function PlayerPositionCell({ player, getPositionStyle, t, displayPosition }) {
+  const actualPrimaryPosition = getPlayerPrimaryPosition(player);
+  const primaryPosition = displayPosition || actualPrimaryPosition;
   const labels = getPlayerPositionLabels(player);
   const hasMultiplePositions = labels.length > 1;
   const tooltip = hasMultiplePositions ? `${t('common.position')}: ${labels.join(', ')}` : '';
@@ -885,7 +886,7 @@ export default function Formation() {
                     );
                   })}
                   <span className="col-role"><PositionRoleIcon position={slotPos || player.position} /></span>
-                  <PlayerPositionCell player={player} getPositionStyle={getPositionStyle} t={t} />
+                  <PlayerPositionCell player={player} displayPosition={slotPos || player.position} getPositionStyle={getPositionStyle} t={t} />
                 </div>
               )})}
             </div>
