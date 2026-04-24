@@ -4,6 +4,51 @@
 import React, { useMemo } from 'react';
 import * as THREE from 'three';
 
+const GROUND_SIZE = 70;
+const GROUND_SEGMENTS = 34;
+const GROUND_Y = -0.05;
+
+function stableNoise(x, z) {
+  const n = Math.sin(x * 12.9898 + z * 78.233) * 43758.5453;
+  return n - Math.floor(n);
+}
+
+function StableGrassGround({ weather }) {
+  const geometry = useMemo(() => {
+    const geo = new THREE.PlaneGeometry(GROUND_SIZE, GROUND_SIZE, GROUND_SEGMENTS, GROUND_SEGMENTS);
+    const colors = [];
+    const pos = geo.attributes.position;
+
+    for (let i = 0; i < pos.count; i += 1) {
+      const x = pos.getX(i);
+      const z = pos.getY(i);
+      const color = new THREE.Color();
+
+      if (weather === 'snow') {
+        const lightness = 0.82 + stableNoise(x, z) * 0.08;
+        color.setHSL(0, 0, lightness);
+      } else {
+        const hue = 0.245 + stableNoise(x, z) * 0.025;
+        const saturation = 0.48 + stableNoise(x + 17, z - 11) * 0.12;
+        const lightness = 0.31 + stableNoise(x - 9, z + 23) * 0.06;
+        color.setHSL(hue, saturation, lightness);
+      }
+
+      colors.push(color.r, color.g, color.b);
+    }
+
+    geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+    return geo;
+  }, [weather]);
+
+  return (
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, GROUND_Y, 0]} receiveShadow renderOrder={0}>
+      <primitive object={geometry} attach="geometry" />
+      <meshToonMaterial vertexColors />
+    </mesh>
+  );
+}
+
 function CobblestonePattern({ position, radius, density = 12 }) {
   const stones = useMemo(() => {
     const result = [];
@@ -52,57 +97,6 @@ function CobblestonePattern({ position, radius, density = 12 }) {
         <meshToonMaterial color="#9E9E9E" />
       </instancedMesh>
     </group>
-  );
-}
-
-function GrassPatches({ bounds, weather }) {
-  const patches = useMemo(() => {
-    const result = [];
-    const baseColor = weather === 'snow' ? '#E0E0E0' : '#558B2F';
-    // Create varying grass color patches
-    for (let x = -bounds; x <= bounds; x += 2) {
-      for (let z = -bounds; z <= bounds; z += 2) {
-        // Skip road areas
-        if (Math.abs(x) < 2 && Math.abs(z) < 28) continue;
-        if (Math.abs(z) < 2 && Math.abs(x) < 28) continue;
-        // Skip plaza area
-        if (Math.sqrt(x * x + (z - 2) * (z - 2)) < 6) continue;
-
-        const hueShift = Math.random() * 0.03;
-        const lightShift = Math.random() * 0.15;
-        result.push({ x, z, hueShift, lightShift });
-      }
-    }
-    return result;
-  }, [bounds, weather]);
-
-  const meshRef = React.useRef();
-  const dummy = useMemo(() => new THREE.Object3D(), []);
-
-  React.useEffect(() => {
-    if (!meshRef.current) return;
-    patches.forEach((p, i) => {
-      dummy.position.set(p.x, -0.01, p.z);
-      dummy.scale.set(2 + Math.random() * 0.5, 0.02, 2 + Math.random() * 0.5);
-      dummy.rotation.set(0, Math.random() * 0.2, 0);
-      dummy.updateMatrix();
-      meshRef.current.setMatrixAt(i, dummy.matrix);
-      const c = weather === 'snow'
-        ? new THREE.Color().setHSL(0, 0, 0.85 + p.lightShift * 0.1)
-        : new THREE.Color().setHSL(0.25 + p.hueShift, 0.6, 0.3 + p.lightShift);
-      meshRef.current.setColorAt(i, c);
-    });
-    meshRef.current.instanceMatrix.needsUpdate = true;
-    if (meshRef.current.instanceColor) meshRef.current.instanceColor.needsUpdate = true;
-  }, [patches, dummy, weather]);
-
-  if (patches.length === 0) return null;
-
-  return (
-    <instancedMesh ref={meshRef} args={[null, null, patches.length]} receiveShadow>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshToonMaterial color={weather === 'snow' ? '#E0E0E0' : '#558B2F'} />
-    </instancedMesh>
   );
 }
 
@@ -181,20 +175,29 @@ function Sidewalk({ position, size }) {
 }
 
 export function CityGround({ cityLevel, teamColors, weather }) {
-  const grassColor = weather === 'snow' ? '#E0E0E0' : '#558B2F';
   const roadColor = '#424242';
   const roadWidth = 2.0 + cityLevel * 0.15;
+  const roadVariations = useMemo(() => (
+    Array.from({ length: 10 }).map((_, i) => ({
+      x: (stableNoise(i, roadWidth) - 0.5) * roadWidth * 0.8,
+      z: (stableNoise(i + 31, roadWidth) - 0.5) * 50,
+      width: 0.5 + stableNoise(i + 67, roadWidth),
+      depth: 0.3 + stableNoise(i + 97, roadWidth),
+    }))
+  ), [roadWidth]);
+  const cracks = useMemo(() => (
+    [[3, 8], [-4, -6], [8, 3]].map(([x, z], i) => ({
+      x,
+      z,
+      rotation: stableNoise(x, z) * Math.PI,
+      length: 1 + stableNoise(i + 13, cityLevel),
+    }))
+  ), [cityLevel]);
 
   return (
     <group>
-      {/* Main ground plane (grass base) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]} receiveShadow>
-        <planeGeometry args={[70, 70]} />
-        <meshToonMaterial color={grassColor} />
-      </mesh>
-
-      {/* Varied grass patches for texture */}
-      <GrassPatches bounds={28} weather={weather} />
+      {/* Main grass is one vertex-colored mesh. Keeping it as a single surface avoids z-fighting between patch tiles. */}
+      <StableGrassGround weather={weather} />
 
       {/* Central cobblestone plaza */}
       <CobblestonePattern position={[0, 0, 2]} radius={5 + cityLevel * 0.3} />
@@ -211,9 +214,9 @@ export function CityGround({ cityLevel, teamColors, weather }) {
         <meshToonMaterial color={roadColor} />
       </mesh>
       {/* Subtle road texture variation */}
-      {Array.from({ length: 10 }).map((_, i) => (
-        <mesh key={`rv${i}`} rotation={[-Math.PI / 2, 0, 0]} position={[(Math.random() - 0.5) * roadWidth * 0.8, 0.015, (Math.random() - 0.5) * 50]}>
-          <planeGeometry args={[0.5 + Math.random(), 0.3 + Math.random()]} />
+      {roadVariations.map((variation, i) => (
+        <mesh key={`rv${i}`} rotation={[-Math.PI / 2, 0, 0]} position={[variation.x, 0.015, variation.z]}>
+          <planeGeometry args={[variation.width, variation.depth]} />
           <meshToonMaterial color="#4E4E4E" />
         </mesh>
       ))}
@@ -275,26 +278,6 @@ export function CityGround({ cityLevel, teamColors, weather }) {
         </>
       )}
 
-      {/* Parking lot near stadium */}
-      <group position={[6, 0, -14]}>
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.015, 0]} receiveShadow>
-          <planeGeometry args={[5, 4]} />
-          <meshToonMaterial color="#616161" />
-        </mesh>
-        {/* Parking lines */}
-        {Array.from({ length: 6 }).map((_, i) => (
-          <mesh key={`pk${i}`} rotation={[-Math.PI / 2, 0, 0]} position={[-2 + i * 0.9, 0.02, 0]} receiveShadow>
-            <planeGeometry args={[0.04, 3]} />
-            <meshBasicMaterial color="#FFFFFF" />
-          </mesh>
-        ))}
-        {/* Handicap symbol area */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[2, 0.02, 0]}>
-          <planeGeometry args={[0.8, 0.8]} />
-          <meshBasicMaterial color="#1565C0" transparent opacity={0.5} />
-        </mesh>
-      </group>
-
       {/* Deterioration for low levels */}
       {cityLevel <= 1 && (
         <>
@@ -307,9 +290,9 @@ export function CityGround({ cityLevel, teamColors, weather }) {
             <meshToonMaterial color="#5D4037" />
           </mesh>
           {/* Cracks */}
-          {[[3, 8], [-4, -6], [8, 3]].map(([x, z], i) => (
-            <mesh key={`crack${i}`} rotation={[-Math.PI / 2, 0, Math.random()]} position={[x, 0.02, z]}>
-              <planeGeometry args={[0.05, 1 + Math.random()]} />
+          {cracks.map((crack, i) => (
+            <mesh key={`crack${i}`} rotation={[-Math.PI / 2, 0, crack.rotation]} position={[crack.x, 0.02, crack.z]}>
+              <planeGeometry args={[0.05, crack.length]} />
               <meshBasicMaterial color="#3E2723" />
             </mesh>
           ))}

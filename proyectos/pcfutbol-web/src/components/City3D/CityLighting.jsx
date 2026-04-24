@@ -281,9 +281,9 @@ export function CityLighting({ dayNight, weather }) {
       {weather === 'snow' && <SnowEffect />}
 
       {/* Ground-contact darkening (fake AO) - dark ring around buildings base area */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]}>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.006, 0]} renderOrder={2}>
         <ringGeometry args={[0, 30, 32]} />
-        <meshBasicMaterial color="#000000" transparent opacity={0.03} />
+        <meshBasicMaterial color="#000000" transparent opacity={0.03} depthWrite={false} />
       </mesh>
     </>
   );

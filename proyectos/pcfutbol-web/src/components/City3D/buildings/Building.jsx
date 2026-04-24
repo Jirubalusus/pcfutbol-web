@@ -788,7 +788,7 @@ function StadiumBuilding({ size, cityLevel, teamColors, visualData }) {
 
       {/* ═══ Parking lot ═══ */}
       <group position={[0, 0, OUT_Z + 4.0]}>
-        <mesh position={[0, 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <mesh position={[0, 0.055, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow renderOrder={3}>
           <planeGeometry args={[11, 3.2]} />
           <meshToonMaterial color="#455A64" />
         </mesh>
@@ -819,7 +819,7 @@ function StadiumBuilding({ size, cityLevel, teamColors, visualData }) {
           );
         })}
         {Array.from({ length: 8 }).map((_, i) => (
-          <mesh key={`pl${i}`} position={[-5.25 + i * 1.5, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <mesh key={`pl${i}`} position={[-5.25 + i * 1.5, 0.065, 0]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={4}>
             <planeGeometry args={[0.06, 2.8]} />
             <meshBasicMaterial color="#FFFFFF" />
           </mesh>
