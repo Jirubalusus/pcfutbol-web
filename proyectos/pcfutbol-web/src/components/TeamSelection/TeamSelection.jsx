@@ -436,29 +436,32 @@ export default function TeamSelection() {
   }, [teams, searchTerm]);
   
   const handleBack = () => {
-    if (step === 2 && isMobileTeamLayout && mobileTeamsView === 'details') {
+    if (step === 3 && isMobileTeamLayout && mobileTeamsView === 'details') {
       setMobileTeamsView('list');
       return;
     }
 
     if (step === 1) {
-      // Si hay país seleccionado, deseleccionarlo primero (especialmente útil en móvil)
-      if (selectedCountry) {
-        setSelectedCountry(null);
-      } else {
-        dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
-      }
+      dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
     } else if (step === 2) {
+      setStep(1);
+      setSelectedCountry(null);
+      setSelectedLeague(null);
+      setSelectedGroup(null);
+      setSelectedTeam(null);
+      setSearchTerm('');
+    } else if (step === 3) {
       // Si estamos viendo equipos después de grupos, volver a grupos
       if (hasGroups && selectedGroup) {
         setSelectedGroup(null);
         setSelectedTeam(null);
       } else {
-        // Volver al paso 1 (mapa + ligas)
-        setStep(1);
+        // Volver al paso de divisiones
+        setStep(2);
         setSelectedLeague(null);
         setSelectedGroup(null);
         setSelectedTeam(null);
+        setSearchTerm('');
       }
     }
   };
@@ -470,8 +473,11 @@ export default function TeamSelection() {
     }
     setSelectedCountry(country);
     setHoveredCountryId(null);
-    // Solo selecciona el país, las ligas se muestran en el panel
-    // No avanza de paso
+    setSelectedLeague(null);
+    setSelectedGroup(null);
+    setSelectedTeam(null);
+    setSearchTerm('');
+    setStep(2);
   };
 
   const handleCountryHoverStart = (countryId) => {
@@ -497,7 +503,8 @@ export default function TeamSelection() {
     setSelectedGroup(null);
     setSelectedTeam(null);
     setMobileTeamsView('list');
-    setStep(2); // Ir a paso 2 (grupos o equipos)
+    setSearchTerm('');
+    setStep(3); // Ir a paso 3 (grupos o equipos)
   };
 
   const handleSelectGroup = (groupId) => {
@@ -1056,13 +1063,14 @@ export default function TeamSelection() {
     return Math.round(team.players.reduce((sum, p) => sum + p.overall, 0) / team.players.length);
   };
 
-  // Determinar qué mostrar en cada paso (simplificado a 2 pasos)
+  // Determinar que mostrar en cada paso
   const getCurrentStepContent = () => {
-    // PASO 1: Mapa con países + panel de ligas
+    // PASO 1: Mapa con paises
     if (step === 1) return 'countries';
+    if (step === 2) return selectedCountry ? 'divisions' : 'countries';
     
-    // PASO 2: Grupos (si aplica) o Equipos
-    if (step === 2) {
+    // PASO 3: Grupos (si aplica) o equipos
+    if (step === 3) {
       if (hasGroups && !selectedGroup) return 'groups';
       return 'teams';
     }
@@ -1112,9 +1120,42 @@ export default function TeamSelection() {
     );
   };
 
-  // Calcular paso visual para el progress bar (simplificado)
+  const renderDivisionCard = (leagueId) => {
+    const leagueTeams = getLeagueTeams(leagueId);
+    const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
+    const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
+    const numGroups = groups ? Object.keys(groups).length : 0;
+    const leagueTier = getLeagueTier(leagueId);
+
+    return (
+      <button
+        key={leagueId}
+        className={`map-selection__division-card ${leagueTeams.length === 0 ? 'disabled' : ''}`}
+        onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
+        disabled={leagueTeams.length === 0}
+      >
+        <span className="map-selection__division-index">{String(leagueTier).padStart(2, '0')}</span>
+        <div className="map-selection__division-copy">
+          <div className="map-selection__division-name">{LEAGUE_NAMES[leagueId]}</div>
+          <div className="map-selection__division-info">
+            {leagueTeams.length > 0
+              ? hasGroupsForLeague
+                ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
+                : t('teamSelection.teamsCount', { count: leagueTeams.length })
+              : t('teamSelection.comingSoon')
+            }
+          </div>
+        </div>
+        <span className="map-selection__division-arrow">
+          {leagueTeams.length > 0 ? <ChevronRight size={18} /> : <Lock size={14} />}
+        </span>
+      </button>
+    );
+  };
+
+  // Calcular paso visual para el progress bar
   const getVisualStep = () => {
-    return step === 1 ? 1 : 2;
+    return step;
   };
   
   return (
@@ -1136,15 +1177,20 @@ export default function TeamSelection() {
         </div>
       </div>
 
-      {/* PROGRESS BAR - Solo 2 pasos: País/Liga y Equipo */}
+      {/* PROGRESS BAR - Pais, liga y equipo */}
       <div className="pcf-ts-progress">
         <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
           <div className="step-num">1</div>
-          <div className="step-label">{t('teamSelection.countryLeague')}</div>
+          <div className="step-label">{t('teamSelection.countries')}</div>
         </div>
         <div className={`progress-line ${step >= 2 ? 'active' : ''}`}></div>
         <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
           <div className="step-num">2</div>
+          <div className="step-label">{t('teamSelection.countryLeague')}</div>
+        </div>
+        <div className={`progress-line ${step >= 3 ? 'active' : ''}`}></div>
+        <div className={`progress-step ${step >= 3 ? 'active' : ''}`}>
+          <div className="step-num">3</div>
           <div className="step-label">{t('teamSelection.teamLabel')}</div>
         </div>
       </div>
@@ -1265,6 +1311,61 @@ export default function TeamSelection() {
               )}
             </div>
             </div>{/* Cierre map-selection__row */}
+          </div>
+        )}
+
+        {currentContent === 'divisions' && selectedCountry && (
+          <div className="country-divisions">
+            <div className="country-divisions__shell">
+              <div className="map-selection__country-stage country-divisions__stage">
+                <div className="map-selection__country-hero country-divisions__hero">
+                  <button
+                    type="button"
+                    className="map-selection__country-back"
+                    onClick={() => {
+                      setStep(1);
+                      setSelectedCountry(null);
+                      setHoveredCountryId(null);
+                    }}
+                  >
+                    <ArrowLeft size={15} />
+                    {t('teamSelection.countries')}
+                  </button>
+                  <div className="map-selection__country-identity">
+                    <CountryFlag
+                      countryId={selectedCountry.id}
+                      countryName={selectedCountryName}
+                      size="lg"
+                      className="map-selection__country-hero-flag"
+                    />
+                    <div className="map-selection__country-heading">
+                      <span className="map-selection__country-kicker">{t('teamSelection.countryLeague')}</span>
+                      <h2>{selectedCountryName}</h2>
+                    </div>
+                  </div>
+                  <div className="map-selection__country-stats">
+                    <div className="map-selection__country-stat">
+                      <span>{String(selectedCountryLeagueCount).padStart(2, '0')}</span>
+                      <small>{t('teamSelection.leaguesCount', { count: selectedCountryLeagueCount })}</small>
+                    </div>
+                    <div className="map-selection__country-stat">
+                      <span>{String(selectedCountryClubCount).padStart(2, '0')}</span>
+                      <small>{t('teamSelection.teamsCount', { count: selectedCountryClubCount })}</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="country-divisions__content">
+                  <div className="country-divisions__heading">
+                    <span>{t('teamSelection.countryLeague')}</span>
+                    <strong>{t('teamSelection.leaguesOf', { country: selectedCountryName })}</strong>
+                  </div>
+                  <div className="map-selection__divisions country-divisions__grid">
+                    {selectedCountry.leagues.map(renderDivisionCard)}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
