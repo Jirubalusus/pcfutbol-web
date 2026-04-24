@@ -269,7 +269,107 @@ export function getSeasonResult(table, teamId, leagueId = 'laliga') {
 /**
  * Genera opciones de pretemporada (3 paquetes de 5 amistosos)
  */
+function getTeamLevel(team) {
+  const players = Array.isArray(team?.players) ? team.players : [];
+  if (players.length > 0) {
+    const starters = [...players]
+      .sort((a, b) => (b.overall || 0) - (a.overall || 0))
+      .slice(0, Math.min(16, players.length));
+    const average = starters.reduce((sum, p) => sum + (p.overall || team.reputation || 60), 0) / starters.length;
+    return Math.round(average);
+  }
+  return Math.round(team?.reputation || 60);
+}
+
+function getMediaTier(level) {
+  if (level >= 84) return 'elite mundial';
+  if (level >= 78) return 'continental';
+  if (level >= 72) return 'primera linea';
+  if (level >= 66) return 'competitivo';
+  if (level >= 60) return 'regional fuerte';
+  return 'desarrollo';
+}
+
+function pickClosestOpponent(pool, targetLevel, usedIds) {
+  return pool
+    .filter(team => !usedIds.has(team.id))
+    .map(team => ({
+      team,
+      level: team.preseasonLevel || getTeamLevel(team),
+      score: Math.abs((team.preseasonLevel || getTeamLevel(team)) - targetLevel) + (Math.random() * 0.25)
+    }))
+    .sort((a, b) => a.score - b.score)[0] || null;
+}
+
+const PRESEASON_TOURS = [
+  {
+    id: 'regional',
+    name: 'Tour de Rodaje',
+    description: 'Rivales cercanos al nivel del club, con una progresion suave antes del partido de presentacion.',
+    identity: 'Base competitiva',
+    difficulty: 'low',
+    offsets: [-5, -3, -1, 1, 3]
+  },
+  {
+    id: 'balanced',
+    name: 'Circuito Continental',
+    description: 'Un calendario equilibrado para medir automatismos contra equipos de media y exigencia similar.',
+    identity: 'Preparacion premium',
+    difficulty: 'medium',
+    offsets: [-2, 0, 1, 3, 5]
+  },
+  {
+    id: 'prestige',
+    name: 'Gira de Prestigio',
+    description: 'Cinco citas de alto impacto mediatico, cerrando en casa contra el rival mas atractivo.',
+    identity: 'Maxima taquilla',
+    difficulty: 'high',
+    offsets: [0, 2, 3, 5, 7]
+  }
+];
+
 export function generatePreseasonOptions(allTeams, playerTeam, currentLeague) {
+  const playerLevel = getTeamLevel(playerTeam);
+  const tieredTeams = allTeams
+    .filter(t => t.id !== playerTeam.id && (t.players?.length > 0 || t.reputation))
+    .map(team => ({ ...team, preseasonLevel: getTeamLevel(team) }));
+
+  return PRESEASON_TOURS.map((tour) => {
+    const usedIds = new Set();
+    const rivals = [];
+
+    tour.offsets.forEach(offset => {
+      const picked = pickClosestOpponent(tieredTeams, playerLevel + offset, usedIds);
+      if (picked) {
+        usedIds.add(picked.team.id);
+        rivals.push({ ...picked.team, preseasonLevel: picked.level });
+      }
+    });
+
+    while (rivals.length < 5 && tieredTeams.length > 0) {
+      const fallback = pickClosestOpponent(tieredTeams, playerLevel, usedIds);
+      if (!fallback) break;
+      usedIds.add(fallback.team.id);
+      rivals.push({ ...fallback.team, preseasonLevel: fallback.level });
+    }
+
+    const orderedRivals = rivals
+      .slice(0, 5)
+      .sort((a, b) => (a.preseasonLevel || getTeamLevel(a)) - (b.preseasonLevel || getTeamLevel(b)));
+    const levels = orderedRivals.map(team => team.preseasonLevel || getTeamLevel(team));
+    const minLevel = levels.length ? Math.min(...levels) : playerLevel;
+    const maxLevel = levels.length ? Math.max(...levels) : playerLevel;
+
+    return {
+      ...tour,
+      teamLevel: playerLevel,
+      mediaTier: getMediaTier(playerLevel),
+      expectedOvrRange: `${minLevel}-${maxLevel}`,
+      potentialEarnings: tour.id === 'prestige' ? 'Alta' : tour.id === 'balanced' ? 'Media-alta' : 'Media',
+      matches: generateMatches(orderedRivals, playerTeam, tour)
+    };
+  });
+
   // Filtrar equipos disponibles (no el propio equipo)
   const availableTeams = allTeams.filter(t => t.id !== playerTeam.id && t.players?.length > 0);
   
@@ -314,7 +414,7 @@ export function generatePreseasonOptions(allTeams, playerTeam, currentLeague) {
  * Partidos 1-4: fuera de casa
  * Partido 5: en casa (presentación del equipo)
  */
-function generateMatches(opponents, playerTeam) {
+function generateMatches(opponents, playerTeam, tour = {}) {
   const matches = [];
   
   // Partidos 1-4: siempre fuera
@@ -330,7 +430,12 @@ function generateMatches(opponents, playerTeam) {
       isHome: false,
       opponent,
       played: false,
-      isPreseason: true
+      isPreseason: true,
+      tourId: tour.id,
+      tourName: tour.name,
+      tourIdentity: tour.identity,
+      difficulty: tour.difficulty,
+      opponentLevel: opponent?.preseasonLevel || getTeamLevel(opponent)
     });
   }
   
@@ -347,7 +452,12 @@ function generateMatches(opponents, playerTeam) {
     opponent: finalOpponent,
     played: false,
     isPreseason: true,
-    isPresentationMatch: true
+    isPresentationMatch: true,
+    tourId: tour.id,
+    tourName: tour.name,
+    tourIdentity: tour.identity,
+    difficulty: tour.difficulty,
+    opponentLevel: finalOpponent?.preseasonLevel || getTeamLevel(finalOpponent)
   });
   
   return matches;

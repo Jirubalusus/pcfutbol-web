@@ -27,8 +27,15 @@
   overflow-x: hidden;
   
   &--preseason {
-    max-width: 1100px;
-    width: calc(100% - 40px);
+    max-width: none;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    border: 0;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(52, 211, 153, 0.18), transparent 30%),
+      radial-gradient(circle at 88% 16%, rgba(59, 130, 246, 0.16), transparent 34%),
+      #070b12;
   }
 }
 
@@ -556,6 +563,246 @@
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+  }
+
+  .btn-skip {
+    padding: 14px 22px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(248, 113, 113, 0.38);
+    border-radius: 8px;
+    color: #fecaca;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(248, 113, 113, 0.12);
+    }
+  }
+}
+
+.preseason-page {
+  padding: 42px clamp(24px, 4vw, 64px);
+  color: var(--color-text-primary);
+
+  &__hero {
+    max-width: 1520px;
+    margin: 0 auto 24px;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+      linear-gradient(90deg, rgba(20, 184, 166, 0.16), rgba(37, 99, 235, 0.08));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  }
+
+  &__eyebrow,
+  &__title-row,
+  &__team-card {
+    display: flex;
+    align-items: center;
+  }
+
+  &__eyebrow {
+    gap: 8px;
+    margin-bottom: 18px;
+    color: #9debd3;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+
+  &__title-row {
+    justify-content: space-between;
+    gap: 32px;
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 4.4rem);
+      line-height: 0.95;
+      color: #fff;
+      letter-spacing: 0;
+    }
+
+    p {
+      max-width: 720px;
+      margin: 16px 0 0;
+      color: #b8c2d6;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+  }
+
+  &__team-card {
+    min-width: 240px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 18px;
+    border-radius: 8px;
+    background: rgba(3, 7, 18, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    span,
+    small {
+      color: #8ea0ba;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    strong {
+      color: #fff;
+      font-size: 1.25rem;
+      line-height: 1.15;
+    }
+  }
+
+  .preseason-options {
+    max-width: 1520px;
+    margin: 0 auto 24px;
+    gap: 18px;
+  }
+
+  .preseason-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 620px;
+    padding: 22px;
+    border-radius: 8px;
+    background: rgba(11, 18, 32, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+
+    &:hover {
+      border-color: rgba(45, 212, 191, 0.45);
+      background: rgba(15, 23, 42, 0.92);
+    }
+
+    &.selected {
+      border-color: #2dd4bf !important;
+      background: linear-gradient(180deg, rgba(20, 184, 166, 0.18), rgba(15, 23, 42, 0.9)) !important;
+      box-shadow: 0 22px 70px rgba(20, 184, 166, 0.18);
+    }
+  }
+
+  .card-header {
+    align-items: flex-start;
+    margin-bottom: 16px;
+
+    h3 {
+      margin-top: 4px;
+      font-size: 1.45rem;
+      letter-spacing: 0;
+    }
+  }
+
+  .tour-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    color: #9debd3;
+    background: rgba(45, 212, 191, 0.12);
+    border: 1px solid rgba(45, 212, 191, 0.22);
+    flex-shrink: 0;
+  }
+
+  .tour-kicker {
+    color: #9debd3;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .card-description {
+    min-height: 66px;
+    color: #b8c2d6;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .tour-metrics {
+    display: grid;
+    gap: 8px;
+    margin: 6px 0 18px;
+
+    span {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.82rem;
+    }
+
+    strong {
+      color: #fff;
+    }
+  }
+
+  .matches-preview {
+    margin-top: auto;
+
+    h4 {
+      display: none;
+    }
+
+    ul li {
+      align-items: center;
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .match-location {
+      min-width: 72px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #cbd5e1;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .opponent-name {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .opponent-ovr {
+      padding: 4px 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      color: #dbeafe;
+      font-weight: 800;
+    }
+  }
+
+  .preseason-actions {
+    max-width: 1520px;
+    margin: 0 auto;
+    justify-content: flex-end;
+    align-items: center;
+
+    .btn-confirm {
+      flex: 0 0 auto;
+      min-width: 260px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #14b8a6, #2563eb);
+    }
+
+    .btn-back {
+      border-radius: 8px;
     }
   }
 }

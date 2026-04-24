@@ -371,7 +371,7 @@ export default function TeamSelection() {
   const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
   
   // Calcular el número total de pasos (simplificado a 2)
-  const totalSteps = 2;
+  const totalSteps = 3;
   
   // Obtener equipos según liga y grupo (pre-calculando budget/reputation)
   const teams = useMemo(() => {
@@ -585,8 +585,9 @@ export default function TeamSelection() {
     setShowPreseason(true);
   };
   
-  const handleStartGame = async () => {
-    if (!selectedTeam || !selectedLeague || !selectedPreseason) return;
+  const handleStartGame = async (skipPreseason = false) => {
+    const preseasonPlan = skipPreseason ? { matches: [] } : selectedPreseason;
+    if (!selectedTeam || !selectedLeague || !preseasonPlan) return;
     
     // Obtener equipos de la liga/grupo para la competición
     let leagueTeams;
@@ -615,8 +616,8 @@ export default function TeamSelection() {
         group: selectedGroup,
         stadiumInfo,
         stadiumLevel,
-        preseasonMatches: selectedPreseason.matches,
-        preseasonPhase: true,
+        preseasonMatches: preseasonPlan.matches,
+        preseasonPhase: preseasonPlan.matches.length > 0,
         managerName
       } 
     });
@@ -1461,23 +1462,31 @@ export default function TeamSelection() {
         )}
       </div>
       
-      {/* Modal de Pretemporada */}
+      {/* Pantalla de Pretemporada */}
       {showPreseason && (
         <div className="preseason-modal-overlay">
-          <div className="preseason-modal">
-            <div className="preseason-header">
-              <Calendar size={32} className="header-icon" />
-              <div>
-                <h1>{t('teamSelection.preseasonTitle', { team: selectedTeam?.name })}</h1>
-                <p>{t('teamSelection.chooseFriendlyPackage')}</p>
+          <div className="preseason-modal preseason-page">
+            <div className="preseason-page__hero">
+              <div className="preseason-page__eyebrow">
+                <Calendar size={18} />
+                <span>Planificacion de pretemporada</span>
+              </div>
+              <div className="preseason-page__title-row">
+                <div>
+                  <h1>{t('teamSelection.preseasonTitle', { team: selectedTeam?.name })}</h1>
+                  <p>Elige una gira de 5 partidos ajustada al nivel competitivo y mediatico de tu club.</p>
+                </div>
+                <div className="preseason-page__team-card">
+                  <span>Club</span>
+                  <strong>{selectedTeam?.name}</strong>
+                  <small>{selectedTeam?.reputation || '--'} REP</small>
+                </div>
               </div>
             </div>
             
             <div className="preseason-options">
               {preseasonOptions.map(option => {
-                const avgOvr = option.matches.length > 0
-                  ? Math.round(option.matches.reduce((s, m) => s + (m.opponent?.reputation || 0), 0) / option.matches.length)
-                  : 0;
+                const difficultyLabel = option.difficulty === 'high' ? 'Alta' : option.difficulty === 'medium' ? 'Media' : 'Controlada';
                 return (
                   <div 
                     key={option.id}
@@ -1485,9 +1494,18 @@ export default function TeamSelection() {
                     onClick={() => setSelectedPreseason(option)}
                   >
                     <div className="card-header">
-                      <FootballIcon size={20} />
-                      <h3>{option.name}</h3>
-                      <span className="avg-ovr">{t('teamSelection.avgOvr')}: {avgOvr}</span>
+                      <div className="tour-icon"><FootballIcon size={22} /></div>
+                      <div>
+                        <span className="tour-kicker">{option.identity}</span>
+                        <h3>{option.name}</h3>
+                      </div>
+                    </div>
+                    <p className="card-description">{option.description}</p>
+
+                    <div className="tour-metrics">
+                      <span><strong>{option.expectedOvrRange}</strong> OVR rivales</span>
+                      <span><strong>{difficultyLabel}</strong> dificultad</span>
+                      <span><strong>{option.mediaTier}</strong> media</span>
                     </div>
                     
                     <div className="matches-preview">
@@ -1496,9 +1514,10 @@ export default function TeamSelection() {
                           <li key={idx}>
                             <span className="match-location">
                               {match.isHome ? <Home size={14} /> : <Plane size={14} />}
+                              {match.isHome ? 'Casa' : 'Fuera'}
                             </span>
                             <span className="opponent-name">{match.opponent?.name || 'TBD'}</span>
-                            <span className="opponent-ovr">{match.opponent?.reputation || '??'} OVR</span>
+                            <span className={`opponent-ovr difficulty--${match.difficulty}`}>{match.opponentLevel || match.opponent?.reputation || '??'} OVR</span>
                             {match.isPresentationMatch && (
                               <span className="presentation-badge">
                                 <Sparkles size={12} /> {t('teamSelection.presentation')}
@@ -1523,9 +1542,15 @@ export default function TeamSelection() {
               >
                 <ArrowLeft size={16} /> {t('common.back')}
               </button>
+              <button
+                className="btn-skip"
+                onClick={() => handleStartGame(true)}
+              >
+                Saltar pretemporada
+              </button>
               <button 
                 className="btn-confirm"
-                onClick={handleStartGame}
+                onClick={() => handleStartGame(false)}
                 disabled={!selectedPreseason}
               >
                 {t('teamSelection.startSeason')}

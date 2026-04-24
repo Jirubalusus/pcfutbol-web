@@ -614,8 +614,8 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     onComplete?.();
   };
 
-  const handleConfirm = (isGlory = false) => {
-    const preseasonData = isGlory ? { matches: [] } : selectedPreseason;
+  const handleConfirm = (isGlory = false, skipPreseason = false) => {
+    const preseasonData = (isGlory || skipPreseason) ? { matches: [] } : selectedPreseason;
     if (!preseasonData) return;
     
     // Calcular total de dinero (ingresos - salarios)
@@ -1745,66 +1745,73 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   // Fase 2: Selección de pretemporada
   return (
     <div className="season-end">
-      <div className="season-end__modal season-end__modal--preseason">
-        <div className="modal-header">
-          <Calendar size={32} className="header-icon" />
-          <div>
-            <h1>{t('seasonEnd.preseasonTitle', { season: state.currentSeason + 1 })}</h1>
-            <p>{t('seasonEnd.choosePlan')}</p>
+      <div className="season-end__modal season-end__modal--preseason preseason-page">
+        <div className="preseason-page__hero">
+          <div className="preseason-page__eyebrow">
+            <Calendar size={18} />
+            <span>Planificacion de pretemporada</span>
+          </div>
+          <div className="preseason-page__title-row">
+            <div>
+              <h1>{t('seasonEnd.preseasonTitle', { season: state.currentSeason + 1 })}</h1>
+              <p>Selecciona una gira completa de 5 partidos o salta directamente al inicio de liga.</p>
+            </div>
+            <div className="preseason-page__team-card">
+              <span>Equipo</span>
+              <strong>{state.team?.name}</strong>
+              <small>{state.team?.reputation || '--'} REP</small>
+            </div>
           </div>
         </div>
         
-        <p className="preseason-intro">
-          {t('seasonEnd.preseasonIntro')}
-        </p>
-        
         <div className="preseason-options">
-          {preseasonOptions.map(option => (
-            <div 
-              key={option.id}
-              className={`preseason-card ${selectedPreseason?.id === option.id ? 'selected' : ''}`}
-              onClick={() => handleSelectPreseason(option)}
-            >
-              <div className="card-header">
-                {option.id === 'prestige' && <Plane size={24} />}
-                {option.id === 'balanced' && <Swords size={24} />}
-                {option.id === 'regional' && <Home size={24} />}
-                <h3>{option.name}</h3>
-              </div>
-              
-              <p className="card-description">{option.description}</p>
-              
-              <div className="card-details">
-                <span className={`difficulty difficulty--${option.difficulty}`}>
-                  {t('seasonEnd.difficultyLabel')}: {option.difficulty === 'high' ? t('seasonEnd.difficultyHigh') : option.difficulty === 'medium' ? t('seasonEnd.difficultyMedium') : t('seasonEnd.difficultyLow')}
-                </span>
-                <span className="earnings">
-                  {t('seasonEnd.potentialEarnings')}: {option.potentialEarnings}
-                </span>
-              </div>
-              
-              <div className="matches-preview">
-                <h4>{t('seasonEnd.rivalsLabel')}</h4>
-                <ul>
-                  {option.matches.map((match, idx) => (
-                    <li key={idx}>
-                      <span className="match-location">
-                        {match.isHome ? <Home size={14} /> : <Plane size={14} />}
-                      </span>
-                      <span className="opponent-name">{match.opponent.name}</span>
-                      <span className="opponent-ovr">{match.opponent.reputation} OVR</span>
-                      {match.isPresentationMatch && (
-                        <span className="presentation-badge">
-                          <Sparkles size={12} /> {t('seasonEnd.presentationBadge')}
+          {preseasonOptions.map(option => {
+            const difficultyLabel = option.difficulty === 'high' ? 'Alta' : option.difficulty === 'medium' ? 'Media' : 'Controlada';
+            const TourIcon = option.id === 'prestige' ? Plane : option.id === 'balanced' ? Swords : Home;
+            return (
+              <div 
+                key={option.id}
+                className={`preseason-card ${selectedPreseason?.id === option.id ? 'selected' : ''}`}
+                onClick={() => handleSelectPreseason(option)}
+              >
+                <div className="card-header">
+                  <div className="tour-icon"><TourIcon size={22} /></div>
+                  <div>
+                    <span className="tour-kicker">{option.identity}</span>
+                    <h3>{option.name}</h3>
+                  </div>
+                </div>
+                
+                <p className="card-description">{option.description}</p>
+                
+                <div className="tour-metrics">
+                  <span><strong>{option.expectedOvrRange}</strong> OVR rivales</span>
+                  <span><strong>{difficultyLabel}</strong> dificultad</span>
+                  <span><strong>{option.potentialEarnings}</strong> taquilla</span>
+                </div>
+                
+                <div className="matches-preview">
+                  <ul>
+                    {option.matches.map((match, idx) => (
+                      <li key={idx}>
+                        <span className="match-location">
+                          {match.isHome ? <Home size={14} /> : <Plane size={14} />}
+                          {match.isHome ? 'Casa' : 'Fuera'}
                         </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                        <span className="opponent-name">{match.opponent.name}</span>
+                        <span className={`opponent-ovr difficulty--${match.difficulty}`}>{match.opponentLevel || match.opponent.reputation} OVR</span>
+                        {match.isPresentationMatch && (
+                          <span className="presentation-badge">
+                            <Sparkles size={12} /> {t('seasonEnd.presentationBadge')}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              
-            </div>
-          ))}
+            );
+          })}
         </div>
         
         <div className="preseason-actions">
@@ -1815,8 +1822,14 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <ArrowLeft size={16} /> {t('seasonEnd.backBtn')}
           </button>
           <button 
+            className="btn-skip"
+            onClick={() => handleConfirm(false, true)}
+          >
+            Saltar pretemporada
+          </button>
+          <button 
             className="btn-confirm"
-            onClick={handleConfirm}
+            onClick={() => handleConfirm(false, false)}
             disabled={!selectedPreseason}
           >
             {t('seasonEnd.startPreseason')}
