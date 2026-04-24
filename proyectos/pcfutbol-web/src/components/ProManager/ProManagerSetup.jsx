@@ -325,27 +325,29 @@ export default function ProManagerSetup() {
                       </span>
                       <span className="offer-row__name">{offer.team.name}</span>
                     </div>
-                    <div className="offer-row__stats" aria-hidden="true">
-                      <span className="offer-row__stat">
-                        <em>Pres.</em>
-                        <b>{budget}</b>
-                      </span>
-                      <span className="offer-row__stat">
-                        <em>Valor</em>
-                        <b>{squadValue}</b>
-                      </span>
-                      <span className="offer-row__stat">
-                        <em>Plant.</em>
-                        <b>{squadCount}</b>
-                      </span>
-                    </div>
-                    <div className="offer-row__meta">
-                      <span className="offer-row__rank">#{String(idx + 1).padStart(2, '0')}</span>
-                      <span className="offer-row__ovr">
-                        <b>{avgOvr}</b>
-                        <em>OVR</em>
-                      </span>
-                      <span className="offer-row__tier">T{tier}</span>
+                    <div className="offer-row__metrics">
+                      <div className="offer-row__stats" aria-hidden="true">
+                        <span className="offer-row__stat">
+                          <em>Pres.</em>
+                          <b>{budget}</b>
+                        </span>
+                        <span className="offer-row__stat">
+                          <em>Valor</em>
+                          <b>{squadValue}</b>
+                        </span>
+                        <span className="offer-row__stat">
+                          <em>Plant.</em>
+                          <b>{squadCount}</b>
+                        </span>
+                      </div>
+                      <div className="offer-row__meta">
+                        <span className="offer-row__rank">#{String(idx + 1).padStart(2, '0')}</span>
+                        <span className="offer-row__ovr">
+                          <b>{avgOvr}</b>
+                          <em>OVR</em>
+                        </span>
+                        <span className="offer-row__tier">T{tier}</span>
+                      </div>
                     </div>
                   </button>
                 );
