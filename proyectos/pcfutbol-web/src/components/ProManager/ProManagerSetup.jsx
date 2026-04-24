@@ -59,6 +59,10 @@ function getAvgOverall(team) {
   return Math.round(team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length);
 }
 
+function getSquadValue(team) {
+  return (team?.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
+}
+
 function formatMoney(amount) {
   if (!amount) return '€0';
   if (amount >= 1_000_000) return `€${(amount / 1_000_000).toFixed(1)}M`;
@@ -299,6 +303,10 @@ export default function ProManagerSetup() {
                 const tier = getLeagueTier(offer.leagueId);
                 const isSelected = (selectedOffer || offers[0])?.team?.id === offer.team.id;
                 const diffClass = avgOvr >= 78 ? 'easy' : avgOvr >= 72 ? 'normal' : avgOvr >= 66 ? 'hard' : 'extreme';
+                const difficultyLabel = avgOvr >= 78 ? 'Facil' : avgOvr >= 72 ? 'Normal' : avgOvr >= 66 ? 'Dificil' : 'Extremo';
+                const squadCount = offer.team.players?.length || 0;
+                const squadValue = formatMoney(getSquadValue(offer.team));
+                const budget = formatMoney(offer.team.budget);
                 return (
                   <button
                     key={offer.team.id + idx}
@@ -311,10 +319,28 @@ export default function ProManagerSetup() {
                       <TeamCrest teamId={offer.team.id} size={28} />
                     </div>
                     <div className="offer-row__body">
-                      <span className="offer-row__eyebrow">{offer.leagueName}</span>
+                      <span className="offer-row__eyebrow">
+                        <span className="offer-row__league">{offer.leagueName}</span>
+                        <span className="offer-row__difficulty">{difficultyLabel}</span>
+                      </span>
                       <span className="offer-row__name">{offer.team.name}</span>
                     </div>
+                    <div className="offer-row__stats" aria-hidden="true">
+                      <span className="offer-row__stat">
+                        <em>Pres.</em>
+                        <b>{budget}</b>
+                      </span>
+                      <span className="offer-row__stat">
+                        <em>Valor</em>
+                        <b>{squadValue}</b>
+                      </span>
+                      <span className="offer-row__stat">
+                        <em>Plant.</em>
+                        <b>{squadCount}</b>
+                      </span>
+                    </div>
                     <div className="offer-row__meta">
+                      <span className="offer-row__rank">#{String(idx + 1).padStart(2, '0')}</span>
                       <span className="offer-row__ovr">
                         <b>{avgOvr}</b>
                         <em>OVR</em>
