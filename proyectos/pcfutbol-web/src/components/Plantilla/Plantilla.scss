@@ -275,6 +275,90 @@ $blue: #0a84ff;
     border-radius: 0 0 6px 6px;
     overflow: hidden;
 
+    @media (max-width: 768px) {
+      .player-row {
+        grid-template-columns: 40px minmax(0, 1fr) 42px 88px 74px;
+        gap: 4px;
+        padding: 0.38rem 0.45rem;
+      }
+
+      .player-main {
+        gap: 0.35rem;
+      }
+
+      .player-main .pos-wrap {
+        margin-left: 0;
+      }
+
+      .player-main .pos {
+        width: 34px;
+        height: 20px;
+        font-size: 0.62rem;
+      }
+
+      .player-main .pos-secondary {
+        display: none;
+      }
+
+      .player-main .info {
+        min-width: 0;
+      }
+
+      .player-main .info .name-row {
+        gap: 0.25rem;
+        min-width: 0;
+      }
+
+      .player-main .info .name {
+        font-size: 0.76rem;
+      }
+
+      .player-main .info .meta {
+        display: none;
+      }
+
+      .player-main .info .player-tags {
+        display: none;
+      }
+
+      .player-main .info .tag-injury,
+      .player-main .info .tag-suspended,
+      .player-main .info .tag-yellows {
+        display: none;
+      }
+
+      .player-ovr-badge {
+        height: 24px;
+        font-size: 0.78rem;
+      }
+
+      .player-contract {
+        min-width: 0;
+      }
+
+      .player-contract .salary {
+        font-size: 0.72rem;
+        white-space: nowrap;
+      }
+
+      .player-contract .yearly {
+        display: none;
+      }
+
+      .player-status {
+        min-width: 0;
+      }
+
+      .player-status .contract {
+        font-size: 0.7rem;
+        white-space: nowrap;
+      }
+
+      .player-status .renew-icon {
+        display: none;
+      }
+    }
+
     .player-row {
       display: grid;
       grid-template-columns: 46px 1fr 36px 72px 60px;
