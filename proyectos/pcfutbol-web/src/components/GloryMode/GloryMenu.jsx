@@ -2,7 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
-import { Mountain, Play, BookOpen, ArrowLeft } from 'lucide-react';
+import {
+  ArrowLeft,
+  BookOpen,
+  ChevronRight,
+  Crown,
+  Layers3,
+  Mountain,
+  Play,
+  Shield,
+  Sparkles,
+  Trophy,
+} from 'lucide-react';
 import LoadingIndicator from '../common/LoadingIndicator';
 import GloryCollection from './GloryCollection';
 import { getUnlockedCards } from '../../game/gloryUnlocks';
@@ -14,7 +25,7 @@ import './GloryMode.scss';
 export default function GloryMenu() {
   const { user } = useAuth();
   const { state, dispatch } = useGame();
-  const [view, setView] = useState('menu'); // menu | collection
+  const [view, setView] = useState('menu');
   const [unlockedCards, setUnlockedCards] = useState([]);
   const [completedMilestones, setCompletedMilestones] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +35,6 @@ export default function GloryMenu() {
 
   const isGloryInMemory = state.gameMode === 'glory' && state.gameStarted;
 
-  // Load unlocks + check for save
   useEffect(() => {
     async function init() {
       if (!user?.uid) {
@@ -33,7 +43,6 @@ export default function GloryMenu() {
         return;
       }
       try {
-        // Load unlocks
         const unlockRef = doc(db, 'glory_unlocks', user.uid);
         const unlockSnap = await getDoc(unlockRef);
         if (unlockSnap.exists()) {
@@ -44,7 +53,6 @@ export default function GloryMenu() {
           setUnlockedCards(getUnlockedCards([]));
         }
 
-        // Check for save
         if (isGloryInMemory) {
           setHasSave(true);
           setSaveInfo({
@@ -68,7 +76,7 @@ export default function GloryMenu() {
       setLoading(false);
     }
     init();
-  }, [user?.uid]);
+  }, [user?.uid, isGloryInMemory, state.gloryData?.division, state.gloryData?.season]);
 
   const handleContinue = async () => {
     if (isGloryInMemory) {
@@ -118,61 +126,156 @@ export default function GloryMenu() {
   const divNames = {
     segundaRFEF: 'Segunda RFEF',
     primeraRFEF: 'Primera RFEF',
-    segunda: 'Segunda División',
+    segunda: 'Segunda Division',
     laliga: 'La Liga',
   };
+  const collectionProgress = Math.round((unlockedCards.length / 24) * 100);
+  const saveDivision = saveInfo ? (divNames[saveInfo.division] || saveInfo.division) : 'Segunda RFEF';
 
   return (
     <div className="glory-menu unified-screen">
-      <div className="glory-menu__content">
-        <button className="glory-menu__back" onClick={handleBack}>
-          <ArrowLeft size={18} /> Volver
-        </button>
-        <div className="glory-menu__icon">
-          <Mountain size={48} />
-        </div>
-        <h1 className="glory-menu__title">Camino a la Gloria</h1>
-        <p className="glory-menu__subtitle">
-          Crea tu club, empieza desde abajo y asciende hasta lo más alto
-        </p>
+      <div className="glory-menu__background" aria-hidden="true">
+        <div className="glory-menu__gradient" />
+        <div className="glory-menu__pattern" />
+      </div>
 
+      <header className="glory-menu__topbar">
+        <button className="glory-menu__back" onClick={handleBack} aria-label="Volver">
+          <ArrowLeft size={18} />
+          <span>Volver</span>
+        </button>
+        <div className="glory-menu__topline">
+          <span>Modo legado</span>
+          <strong>Club propio</strong>
+        </div>
+      </header>
+
+      <main className="glory-menu__content">
         {loading ? (
-          <div style={{ textAlign: 'center', padding: '2rem', display: 'flex', justifyContent: 'center' }}>
+          <div className="glory-menu__loading">
             <LoadingIndicator size="md" />
           </div>
         ) : (
-          <div className="glory-menu__buttons">
-            {hasSave && (
-              <button
-                className="glory-menu__btn glory-menu__btn--continue"
-                onClick={handleContinue}
-                disabled={loadingAction}
-              >
-                <Play size={18} />
-                Continuar Camino
-                {saveInfo && (
-                  <span className="glory-menu__btn-info">
-                    T{saveInfo.season} · {divNames[saveInfo.division] || saveInfo.division}
-                  </span>
+          <div className="glory-menu__grid">
+            <section className="glory-menu__hero">
+              <div className="glory-menu__hero-kicker">
+                <Mountain size={16} />
+                <span>Camino a la Gloria</span>
+              </div>
+              <h1>Funda un club y conviertelo en leyenda.</h1>
+              <p>
+                Empieza en Segunda RFEF con una plantilla desconocida, gana cartas,
+                supera temporadas y escala hasta la elite europea.
+              </p>
+
+              <div className="glory-menu__hero-stats" aria-label="Resumen del modo">
+                <div>
+                  <strong>4</strong>
+                  <span>Divisiones</span>
+                </div>
+                <div>
+                  <strong>24</strong>
+                  <span>Cartas</span>
+                </div>
+                <div>
+                  <strong>1</strong>
+                  <span>Objetivo</span>
+                </div>
+              </div>
+            </section>
+
+            <aside className="glory-menu__panel" aria-label="Acciones de Camino a la Gloria">
+              {hasSave ? (
+                <div className="glory-menu__save-card">
+                  <div className="glory-menu__save-icon">
+                    <Crown size={22} />
+                  </div>
+                  <div>
+                    <span className="glory-menu__eyebrow">Partida activa</span>
+                    <h2>Temporada {saveInfo?.season || 1}</h2>
+                    <p>{saveDivision}</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="glory-menu__save-card glory-menu__save-card--empty">
+                  <div className="glory-menu__save-icon">
+                    <Shield size={22} />
+                  </div>
+                  <div>
+                    <span className="glory-menu__eyebrow">Nuevo proyecto</span>
+                    <h2>Sin partida activa</h2>
+                    <p>Crea identidad, escudo y equipacion antes de debutar.</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="glory-menu__actions">
+                {hasSave && (
+                  <button
+                    className="glory-menu__btn glory-menu__btn--continue"
+                    onClick={handleContinue}
+                    disabled={loadingAction}
+                  >
+                    <span className="glory-menu__btn-icon"><Play size={18} /></span>
+                    <span>
+                      Continuar Camino
+                      <small>T{saveInfo?.season || 1} - {saveDivision}</small>
+                    </span>
+                    <ChevronRight size={18} />
+                  </button>
                 )}
-              </button>
-            )}
-            <button
-              className="glory-menu__btn glory-menu__btn--new"
-              onClick={handleNew}
-              disabled={loadingAction}
-            >
-              <Mountain size={18} /> {hasSave ? 'Nuevo Camino' : 'Iniciar Camino'}
-            </button>
-            <button
-              className="glory-menu__btn glory-menu__btn--collection"
-              onClick={() => setView('collection')}
-            >
-              <BookOpen size={18} /> Colección ({unlockedCards.length}/{24})
-            </button>
+                <button
+                  className="glory-menu__btn glory-menu__btn--new"
+                  onClick={handleNew}
+                  disabled={loadingAction}
+                >
+                  <span className="glory-menu__btn-icon"><Mountain size={18} /></span>
+                  <span>{hasSave ? 'Nuevo Camino' : 'Iniciar Camino'}</span>
+                  <ChevronRight size={18} />
+                </button>
+                <button
+                  className="glory-menu__btn glory-menu__btn--collection"
+                  onClick={() => setView('collection')}
+                >
+                  <span className="glory-menu__btn-icon"><BookOpen size={18} /></span>
+                  <span>
+                    Coleccion de cartas
+                    <small>{unlockedCards.length}/24 desbloqueadas</small>
+                  </span>
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            </aside>
+
+            <section className="glory-menu__feature-row" aria-label="Identidad del modo">
+              <div className="glory-menu__feature">
+                <div className="glory-menu__feature-icon"><Sparkles size={18} /></div>
+                <div>
+                  <h3>Roguelike deportivo</h3>
+                  <p>Decisiones y cartas modifican cada temporada sin romper la gestion clasica.</p>
+                </div>
+              </div>
+              <div className="glory-menu__feature">
+                <div className="glory-menu__feature-icon"><Layers3 size={18} /></div>
+                <div>
+                  <h3>Ascenso por etapas</h3>
+                  <p>La ruta mantiene su identidad: crecer desde abajo hasta competir con gigantes.</p>
+                </div>
+              </div>
+              <div className="glory-menu__feature glory-menu__feature--collection">
+                <div className="glory-menu__feature-icon"><Trophy size={18} /></div>
+                <div>
+                  <h3>Progreso permanente</h3>
+                  <p>{collectionProgress}% de la coleccion desbloqueada.</p>
+                  <div className="glory-menu__progress">
+                    <span style={{ width: `${collectionProgress}%` }} />
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 }
