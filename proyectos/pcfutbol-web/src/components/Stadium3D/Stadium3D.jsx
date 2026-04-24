@@ -708,34 +708,35 @@ function seededSequence(seed, count) {
 
 function DesignedSurroundings({ stadiumRadius = 80 }) {
   const district = useMemo(() => {
-    const jitter = seededSequence(8128, 80);
+    const jitter = seededSequence(8128, 96);
     const housePalette = ['#bfa98d', '#d1bea0', '#a9957e', '#c9b18f'];
     const roofs = ['#70362a', '#5d3528', '#7d4931'];
     const houses = [];
     const neighborhoodRows = [
-      { z: -205, xs: [-165, -140, -115, -90, 102, 128, 154, 180], rot: 0 },
-      { z: 206, xs: [-176, -150, -124, 104, 130, 156, 182], rot: Math.PI },
+      { z: -265, xs: [-168, -142, -116, -90, 92, 118, 144, 170], rot: 0 },
+      { z: 266, xs: [-170, -144, -118, -92, 94, 120, 146, 172], rot: Math.PI },
     ];
     let n = 0;
     neighborhoodRows.forEach((row) => {
       row.xs.forEach((x) => {
         houses.push({
           kind: 'house',
-          position: [x + (jitter[n++] - 0.5) * 4, 0, row.z + (jitter[n++] - 0.5) * 5],
+          position: [x + (jitter[n++] - 0.5) * 2.4, 0, row.z + (jitter[n++] - 0.5) * 2.2],
           color: housePalette[n % housePalette.length],
           roof: roofs[n % roofs.length],
-          height: 5.4 + jitter[n++] * 1.6,
-          width: 7.2 + jitter[n++] * 2,
-          depth: 7 + jitter[n++] * 2,
-          rotation: row.rot + (jitter[n++] - 0.5) * 0.12,
+          height: 5.4 + jitter[n++] * 1.4,
+          width: 7.2 + jitter[n++] * 1.6,
+          depth: 7 + jitter[n++] * 1.8,
+          rotation: row.rot + (jitter[n++] - 0.5) * 0.06,
         });
       });
     });
 
     const apartments = [
-      [-230, -130, 24, 12, 13], [-210, -100, 18, 11, 11], [-188, -128, 30, 13, 12],
-      [220, 118, 26, 13, 13], [242, 90, 20, 11, 12], [198, 145, 32, 14, 12],
-      [-230, 100, 20, 11, 13], [-205, 132, 28, 13, 12], [220, -145, 22, 12, 12],
+      [-236, -305, 24, 12, 13], [-212, -305, 18, 11, 11], [-188, -305, 30, 13, 12],
+      [188, -305, 22, 12, 12], [214, -305, 28, 13, 12], [240, -305, 20, 11, 12],
+      [-236, 306, 20, 11, 13], [-210, 306, 28, 13, 12], [-184, 306, 23, 12, 12],
+      [188, 306, 26, 13, 13], [216, 306, 32, 14, 12], [244, 306, 24, 12, 12],
     ].map(([x, z, height, width, depth], i) => ({
       kind: 'apt',
       position: [x, 0, z],
@@ -743,7 +744,7 @@ function DesignedSurroundings({ stadiumRadius = 80 }) {
       height,
       width,
       depth,
-      rotation: i % 2 === 0 ? Math.PI / 2 : 0,
+      rotation: z < 0 ? 0 : Math.PI,
     }));
 
     return { buildings: [...houses, ...apartments] };
@@ -751,16 +752,20 @@ function DesignedSurroundings({ stadiumRadius = 80 }) {
 
   const plazaOuter = stadiumRadius + 30;
   const plazaInner = stadiumRadius + 3;
-  const boulevard = stadiumRadius + 58;
+  const boulevard = stadiumRadius + 56;
   const serviceEdge = stadiumRadius + 92;
+  const approachLength = serviceEdge - plazaOuter;
+  const approachOffset = plazaOuter + approachLength / 2;
 
   return (
     <group>
-      {/* Intentional ground zoning: civic plaza, boulevard blocks, landscaped buffers. */}
-      <DistrictPlane position={[0, 0]} size={[420, 360]} y={Y_MID_GRASS} color="#7f8d65" />
-      <DistrictPlane position={[0, 0]} size={[300, 250]} y={Y_MID_GRASS + 0.01} color="#87936f" />
-      <DistrictPlane position={[0, -serviceEdge - 18]} size={[270, 62]} y={Y_MID_GRASS + 0.02} color="#6f7f59" />
-      <DistrictPlane position={[0, serviceEdge + 18]} size={[270, 62]} y={Y_MID_GRASS + 0.02} color="#6f7f59" />
+      {/* Intentional ground zoning: stadium campus, service blocks, residential strips, distant skyline. */}
+      <DistrictPlane position={[0, 0]} size={[470, 430]} y={Y_MID_GRASS} color="#7f8d65" />
+      <DistrictPlane position={[0, 0]} size={[310, 270]} y={Y_MID_GRASS + 0.01} color="#87936f" />
+      <DistrictPlane position={[0, -serviceEdge - 36]} size={[370, 76]} y={Y_MID_GRASS + 0.02} color="#6f7f59" />
+      <DistrictPlane position={[0, serviceEdge + 36]} size={[370, 76]} y={Y_MID_GRASS + 0.02} color="#6f7f59" />
+      <DistrictPlane position={[0, -serviceEdge - 105]} size={[520, 58]} y={Y_MID_GRASS + 0.015} color="#6a7659" />
+      <DistrictPlane position={[0, serviceEdge + 105]} size={[520, 58]} y={Y_MID_GRASS + 0.015} color="#6a7659" />
 
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PLAZA, 0]} receiveShadow>
         <ringGeometry args={[plazaInner, plazaOuter, 128]} />
@@ -776,23 +781,26 @@ function DesignedSurroundings({ stadiumRadius = 80 }) {
       <DistrictPlane position={[-boulevard, 0]} size={[18, 210]} y={Y_PLAZA + 0.01} color="#b8af9c" />
       <DistrictPlane position={[boulevard, 0]} size={[18, 210]} y={Y_PLAZA + 0.01} color="#b8af9c" />
 
+      <Road position={[0, -approachOffset]} size={[14, approachLength]} />
+      <Road position={[0, approachOffset]} size={[14, approachLength]} />
+      <Road position={[-approachOffset, 0]} size={[approachLength, 14]} />
+      <Road position={[approachOffset, 0]} size={[approachLength, 14]} />
       <Road position={[0, -serviceEdge]} size={[360, 13]} />
       <Road position={[0, serviceEdge]} size={[360, 13]} />
       <Road position={[-serviceEdge, 0]} size={[13, 310]} />
       <Road position={[serviceEdge, 0]} size={[13, 310]} />
-      <Road position={[0, 0]} size={[13, 205]} />
 
-      <ParkingLot position={[-78, -serviceEdge - 28]} columns={8} rows={3} size={[78, 35]} />
-      <ParkingLot position={[86, serviceEdge + 28]} columns={9} rows={3} size={[86, 35]} />
+      <ParkingLot position={[-88, -serviceEdge - 30]} columns={8} rows={3} size={[82, 35]} />
+      <ParkingLot position={[92, serviceEdge + 30]} columns={9} rows={3} size={[88, 35]} />
 
-      <DistrictPlane position={[84, -serviceEdge - 28]} size={[88, 36]} y={Y_PARKING} color="#786d5e" />
-      <ServicePavilion position={[58, -serviceEdge - 28]} width={24} depth={11} color="#6f7782" />
-      <ServicePavilion position={[92, -serviceEdge - 28]} width={18} depth={10} color="#596878" />
-      <ServicePavilion position={[120, -serviceEdge - 28]} width={13} depth={9} color="#75806c" />
+      <DistrictPlane position={[82, -serviceEdge - 30]} size={[96, 38]} y={Y_PARKING} color="#786d5e" />
+      <ServicePavilion position={[48, -serviceEdge - 30]} width={23} depth={11} color="#6f7782" />
+      <ServicePavilion position={[83, -serviceEdge - 30]} width={20} depth={10} color="#596878" />
+      <ServicePavilion position={[116, -serviceEdge - 30]} width={15} depth={9} color="#75806c" />
 
-      <DistrictPlane position={[-88, serviceEdge + 28]} size={[78, 36]} y={Y_PARKING} color="#9d8f73" />
-      <ServicePavilion position={[-112, serviceEdge + 28]} width={20} depth={10} color="#8b734e" />
-      <ServicePavilion position={[-78, serviceEdge + 28]} width={25} depth={12} color="#6f7c87" />
+      <DistrictPlane position={[-88, serviceEdge + 30]} size={[82, 38]} y={Y_PARKING} color="#9d8f73" />
+      <ServicePavilion position={[-116, serviceEdge + 30]} width={20} depth={10} color="#8b734e" />
+      <ServicePavilion position={[-78, serviceEdge + 30]} width={25} depth={12} color="#6f7c87" />
 
       {district.buildings.map((h, i) =>
         h.kind === 'house' ? (
@@ -806,211 +814,16 @@ function DesignedSurroundings({ stadiumRadius = 80 }) {
       <TreeRow points={[[-126, boulevard + 14], [126, boulevard + 14]]} count={11} scale={0.95} />
       <TreeRow points={[[-boulevard - 14, -92], [-boulevard - 14, 92]]} count={9} scale={0.9} />
       <TreeRow points={[[boulevard + 14, -92], [boulevard + 14, 92]]} count={9} scale={0.9} />
-      <TreeRow points={[[-150, -232], [-72, -232]]} count={5} scale={1.05} />
-      <TreeRow points={[[88, 232], [180, 232]]} count={6} scale={1.05} />
+      <TreeRow points={[[-178, -serviceEdge - 50], [178, -serviceEdge - 50]]} count={13} scale={1.02} />
+      <TreeRow points={[[-178, serviceEdge + 50], [178, serviceEdge + 50]]} count={13} scale={1.02} />
+      <TreeRow points={[[-186, -serviceEdge - 90], [186, -serviceEdge - 90]]} count={11} scale={0.9} />
+      <TreeRow points={[[-186, serviceEdge + 90], [186, serviceEdge + 90]]} count={11} scale={0.9} />
     </group>
   );
 }
 
 function Surroundings({ stadiumRadius = 80 }) {
   return <DesignedSurroundings stadiumRadius={stadiumRadius} />;
-
-  const houses = useMemo(() => {
-    const list = [];
-    const palette = ['#c4a67d', '#d6b89b', '#a89078', '#b89e80', '#d9c4a0', '#a38872'];
-    const roofs = ['#7a3a2a', '#8a4030', '#5c3024', '#6b3a28'];
-    const r1 = seededSequence(12345, 36 * 7);
-    let k = 0;
-    for (let i = 0; i < 36; i++) {
-      const angle = (i / 36) * Math.PI * 2 + r1[k++] * 0.12;
-      const r = 125 + r1[k++] * 55;
-      const x = Math.cos(angle) * r;
-      const z = Math.sin(angle) * r;
-      if (Math.abs(x) < stadiumRadius + 25 && Math.abs(z) < stadiumRadius + 25) {
-        k += 5;
-        continue;
-      }
-      list.push({
-        kind: 'house',
-        position: [x, 0, z],
-        color: palette[Math.floor(r1[k++] * palette.length)],
-        roof: roofs[Math.floor(r1[k++] * roofs.length)],
-        height: 5 + r1[k++] * 3,
-        width: 6 + r1[k++] * 4,
-        depth: 6 + r1[k++] * 4,
-        rotation: -angle + Math.PI / 2 + (r1[k - 1] - 0.5) * 0.4,
-      });
-    }
-    const aptColors = ['#8a95a8', '#a8b0c0', '#7a8494', '#9ea6b6', '#c8bfa8'];
-    const r2 = seededSequence(67890, 22 * 7);
-    let j = 0;
-    for (let i = 0; i < 22; i++) {
-      const angle = (i / 22) * Math.PI * 2 + r2[j++] * 0.2;
-      const r = 210 + r2[j++] * 70;
-      const x = Math.cos(angle) * r;
-      const z = Math.sin(angle) * r;
-      list.push({
-        kind: 'apt',
-        position: [x, 0, z],
-        color: aptColors[Math.floor(r2[j++] * aptColors.length)],
-        height: 14 + r2[j++] * 18,
-        width: 8 + r2[j++] * 6,
-        depth: 8 + r2[j++] * 6,
-        rotation: -angle + Math.PI / 2 + (r2[j++] - 0.5) * 0.3,
-      });
-    }
-    return list;
-  }, [stadiumRadius]);
-
-  const trees = useMemo(() => {
-    const list = [];
-    const r3 = seededSequence(24680, 60 * 3);
-    let j = 0;
-    for (let i = 0; i < 60; i++) {
-      const angle = r3[j++] * Math.PI * 2;
-      const r = stadiumRadius + 12 + r3[j++] * 140;
-      const x = Math.cos(angle) * r;
-      const z = Math.sin(angle) * r;
-      const scale = 0.7 + r3[j++] * 0.9;
-      if (Math.abs(x) < stadiumRadius + 8 && Math.abs(z) < stadiumRadius + 8) continue;
-      list.push({ position: [x, 0, z], scale });
-    }
-    return list;
-  }, [stadiumRadius]);
-
-  return (
-    <group>
-      {/* Perimeter concourse / plaza (asphalt ring around the stadium) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PLAZA, 0]} receiveShadow>
-        <ringGeometry args={[stadiumRadius + 2, stadiumRadius + 28, 96]} />
-        <meshStandardMaterial
-          color="#3a3d42"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-1}
-          polygonOffsetUnits={-1}
-        />
-      </mesh>
-      {/* Plaza tile pattern hints (lighter ring) — sits on top of the plaza,
-          separated in Y and pushed forward with polygonOffset so it never
-          z-fights with the asphalt ring below. */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PLAZA_BAND, 0]} receiveShadow>
-        <ringGeometry args={[stadiumRadius + 14, stadiumRadius + 16, 96]} />
-        <meshStandardMaterial
-          color="#6a6d72"
-          roughness={0.9}
-          polygonOffset
-          polygonOffsetFactor={-3}
-          polygonOffsetUnits={-3}
-        />
-      </mesh>
-      {/* Access road (wide asphalt strip) */}
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, Y_ROAD, -(stadiumRadius + 55)]}
-        receiveShadow
-      >
-        <planeGeometry args={[260, 12]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
-      </mesh>
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, Y_ROAD, stadiumRadius + 55]}
-        receiveShadow
-      >
-        <planeGeometry args={[260, 12]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
-      </mesh>
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[-(stadiumRadius + 55), Y_ROAD, 0]}
-        receiveShadow
-      >
-        <planeGeometry args={[12, 260]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
-      </mesh>
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[stadiumRadius + 55, Y_ROAD, 0]}
-        receiveShadow
-      >
-        <planeGeometry args={[12, 260]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
-      </mesh>
-
-      {/* Parking lot (north side) */}
-      <group position={[-60, Y_PARKING, -(stadiumRadius + 40)]}>
-        <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-          <planeGeometry args={[70, 30]} />
-          <meshStandardMaterial
-            color="#44474c"
-            roughness={0.95}
-            polygonOffset
-            polygonOffsetFactor={-2}
-            polygonOffsetUnits={-2}
-          />
-        </mesh>
-        {/* Parked car blobs */}
-        {Array.from({ length: 18 }).map((_, i) => {
-          const row = Math.floor(i / 9);
-          const col = i % 9;
-          const carColors = ['#c83c3c', '#3c6ec8', '#3ca85a', '#e0e0e0', '#2b2b2b', '#d8a83a'];
-          return (
-            <mesh
-              key={i}
-              position={[-30 + col * 7.5, 0.7, -10 + row * 20]}
-              castShadow
-            >
-              <boxGeometry args={[4.2, 1.4, 2]} />
-              <meshStandardMaterial
-                color={carColors[i % carColors.length]}
-                roughness={0.5}
-                metalness={0.3}
-              />
-            </mesh>
-          );
-        })}
-      </group>
-
-      {/* Houses and apartments */}
-      {houses.map((h, i) =>
-        h.kind === 'house' ? (
-          <House key={i} {...h} roofColor={h.roof} />
-        ) : (
-          <Apartment key={i} {...h} />
-        )
-      )}
-
-      {/* Trees around stadium + lining streets */}
-      {trees.map((t, i) => (
-        <Tree key={i} position={t.position} scale={t.scale} />
-      ))}
-    </group>
-  );
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
