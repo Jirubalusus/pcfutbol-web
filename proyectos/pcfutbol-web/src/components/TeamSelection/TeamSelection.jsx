@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
@@ -332,6 +332,7 @@ export default function TeamSelection() {
   const [selectedPreseason, setSelectedPreseason] = useState(null);
   const [preseasonOptions, setPreseasonOptions] = useState([]);
   const [hoveredCountryId, setHoveredCountryId] = useState(null);
+  const hoverClearTimerRef = useRef(null);
   const [isMobileTeamLayout, setIsMobileTeamLayout] = useState(() => {
     if (typeof window === 'undefined') return false;
     return window.innerWidth <= 900;
@@ -357,6 +358,14 @@ export default function TeamSelection() {
 
     return () => mediaQuery.removeEventListener('change', updateMobileLayout);
   }, [selectedTeam]);
+
+  useEffect(() => {
+    return () => {
+      if (hoverClearTimerRef.current) {
+        window.clearTimeout(hoverClearTimerRef.current);
+      }
+    };
+  }, []);
   
   // Determinar si la liga seleccionada tiene grupos
   const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
@@ -455,10 +464,32 @@ export default function TeamSelection() {
   };
 
   const handleSelectCountry = (country) => {
+    if (hoverClearTimerRef.current) {
+      window.clearTimeout(hoverClearTimerRef.current);
+      hoverClearTimerRef.current = null;
+    }
     setSelectedCountry(country);
     setHoveredCountryId(null);
     // Solo selecciona el país, las ligas se muestran en el panel
     // No avanza de paso
+  };
+
+  const handleCountryHoverStart = (countryId) => {
+    if (hoverClearTimerRef.current) {
+      window.clearTimeout(hoverClearTimerRef.current);
+      hoverClearTimerRef.current = null;
+    }
+    setHoveredCountryId(countryId);
+  };
+
+  const handleCountryHoverEnd = (countryId) => {
+    if (hoverClearTimerRef.current) {
+      window.clearTimeout(hoverClearTimerRef.current);
+    }
+    hoverClearTimerRef.current = window.setTimeout(() => {
+      setHoveredCountryId(currentId => (currentId === countryId ? null : currentId));
+      hoverClearTimerRef.current = null;
+    }, 90);
   };
 
   const handleSelectLeague = (leagueId) => {
@@ -1053,10 +1084,10 @@ export default function TeamSelection() {
         key={country.id}
         className={`map-selection__country-card ${hoveredCountryId === country.id ? 'is-hovered' : ''}`}
         onClick={() => handleSelectCountry(country)}
-        onMouseEnter={() => setHoveredCountryId(country.id)}
-        onMouseLeave={() => setHoveredCountryId(null)}
-        onFocus={() => setHoveredCountryId(country.id)}
-        onBlur={() => setHoveredCountryId(null)}
+        onMouseEnter={() => handleCountryHoverStart(country.id)}
+        onMouseLeave={() => handleCountryHoverEnd(country.id)}
+        onFocus={() => handleCountryHoverStart(country.id)}
+        onBlur={() => handleCountryHoverEnd(country.id)}
       >
         <CountryFlag
           countryId={country.id}
