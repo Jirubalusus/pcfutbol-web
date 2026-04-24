@@ -52,6 +52,8 @@ const COUNTRY_DATA = {
 };
 
 const MOBILE_BREAKPOINT = 768;
+const DEFAULT_VIEW = { lat: 34, lng: 3, altitude: 2.35 };
+const FOCUSED_VIEW_ALTITUDE = 2.12;
 
 export default function WorldMap({ countries, selectedCountry, onCountryClick }) {
   const { t } = useTranslation();
@@ -89,7 +91,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   // Center on Europe initially (slightly higher altitude for a more cinematic frame)
   useEffect(() => {
     if (globeEl.current) {
-      globeEl.current.pointOfView({ lat: 34, lng: 3, altitude: 2.35 }, 0);
+      globeEl.current.pointOfView(DEFAULT_VIEW, 0);
       // Subtle idle auto-rotation for premium feel
       const controls = globeEl.current.controls?.();
       if (controls) {
@@ -106,10 +108,11 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     const controls = globeEl.current.controls?.();
     if (selectedCountry && COUNTRY_DATA[selectedCountry]) {
       const { lat, lng } = COUNTRY_DATA[selectedCountry];
-      globeEl.current.pointOfView({ lat, lng, altitude: 1.75 }, 600);
+      globeEl.current.pointOfView({ lat, lng, altitude: FOCUSED_VIEW_ALTITUDE }, 650);
       if (controls) controls.autoRotate = false;
     } else if (controls) {
       controls.autoRotate = true;
+      globeEl.current.pointOfView(DEFAULT_VIEW, 650);
     }
   }, [selectedCountry]);
 
@@ -238,7 +241,8 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
 
   // Desktop: 3D globe with HTML markers
   return (
-    <div className="globe-wrapper">
+    <div className={`globe-wrapper ${selectedCountry ? 'globe-wrapper--focused' : ''}`}>
+      <div className="globe-scene">
       <Globe
         ref={globeEl}
         width={size}
@@ -255,8 +259,9 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         htmlTransitionDuration={300}
 
         atmosphereColor="#2bffb0"
-        atmosphereAltitude={0.28}
+        atmosphereAltitude={selectedCountry ? 0.18 : 0.24}
       />
+      </div>
       <p className="globe-hint">{t('teamSelection.globeHint')}</p>
     </div>
   );

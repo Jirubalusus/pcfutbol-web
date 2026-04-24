@@ -10,6 +10,7 @@
   position: relative;
   z-index: 2;
   isolation: isolate;
+  overflow: visible;
 
   // Wide, organic green halo — the "orb in space" backdrop
   &::before {
@@ -35,6 +36,41 @@
     z-index: 0;
     filter: blur(24px);
     animation: globeAura 12s ease-in-out infinite alternate;
+  }
+
+  &.globe-wrapper--focused {
+    &::before {
+      width: min(132%, 980px);
+      opacity: 0.8;
+      filter: blur(34px);
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(0, 230, 118, 0.19) 0%,
+        rgba(0, 205, 105, 0.13) 17%,
+        rgba(0, 165, 88, 0.07) 34%,
+        rgba(0, 110, 62, 0.028) 54%,
+        transparent 78%
+      );
+    }
+
+    &::after {
+      width: min(82%, 640px);
+      opacity: 0.72;
+      filter: blur(16px);
+    }
+  }
+
+  .globe-scene {
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+      overflow: visible !important;
+    }
   }
 
   // Tight luminous inner bloom — gives the globe a lit core
@@ -64,15 +100,19 @@
     cursor: grab !important;
     position: relative;
     z-index: 1;
+    border-radius: 50%;
+    -webkit-mask-image: radial-gradient(circle, #000 0 78%, rgba(0, 0, 0, 0.96) 86%, transparent 100%);
+    mask-image: radial-gradient(circle, #000 0 78%, rgba(0, 0, 0, 0.96) 86%, transparent 100%);
     &:active {
       cursor: grabbing !important;
     }
   }
 
   // The react-globe.gl wrapper div
-  > div:first-child {
+  .globe-scene > div:first-child {
     position: relative;
     z-index: 1;
+    overflow: visible !important;
   }
 }
 
