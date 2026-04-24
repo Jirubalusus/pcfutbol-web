@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
 import { GLORY_CARDS } from '../../game/gloryEngine';
 import { MILESTONES, STARTER_CARDS } from '../../game/gloryUnlocks';
 import {
@@ -19,59 +18,58 @@ const ICON_MAP = {
   UserPlus,
 };
 
-const TIER_LABELS = { S: 'LEGENDARIA', A: 'ÉPICA', B: 'RARA' };
+const TIER_LABELS = { S: 'LEGENDARIA', A: 'EPICA', B: 'RARA' };
 const TIER_CLASSES = { S: 'legendary', A: 'epic', B: 'rare' };
 
 export default function GloryCollection({ unlockedCards = [], completedMilestones = [], onBack }) {
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // Sort cards: S first, then A, then B
   const tierOrder = { S: 0, A: 1, B: 2 };
   const sortedCards = [...GLORY_CARDS].sort((a, b) => tierOrder[a.tier] - tierOrder[b.tier]);
 
   const isUnlocked = (cardId) => unlockedCards.includes(cardId);
   const isStarter = (cardId) => STARTER_CARDS.includes(cardId);
-
-  // Find milestone for a card
   const getMilestone = (cardId) => MILESTONES.find(m => m.cardId === cardId);
-  const isMilestoneCompleted = (milestoneId) => completedMilestones.includes(milestoneId);
-
   const totalUnlocked = sortedCards.filter(c => isUnlocked(c.id)).length;
-
-  const handleCardClick = (card) => {
-    setSelectedCard(card);
-  };
+  const progress = Math.round((totalUnlocked / sortedCards.length) * 100);
 
   const renderCardIcon = (card, unlocked) => {
-    if (!unlocked) return <Lock size={28} />;
+    if (!unlocked) return <Lock size={30} />;
     const IconComponent = ICON_MAP[card.icon];
-    if (!IconComponent) return <Star size={28} />;
-    return <IconComponent size={28} />;
+    if (!IconComponent) return <Star size={30} />;
+    return <IconComponent size={30} />;
   };
 
   return (
     <div className="glory-collection unified-screen">
       <div className="glory-collection__header">
-        <button className="glory-collection__back" onClick={onBack}>
+        <button className="glory-collection__back" onClick={onBack} aria-label="Volver">
           <ArrowLeft size={18} />
         </button>
-        <div>
-          <h2 className="glory-collection__title">Colección de Mejoras</h2>
-          <p className="glory-collection__subtitle">
-            {totalUnlocked}/{sortedCards.length} desbloqueadas
-          </p>
+        <div className="glory-collection__headline">
+          <span className="glory-collection__eyebrow">Vitrina permanente</span>
+          <h2 className="glory-collection__title">Coleccion de cartas</h2>
+          <p className="glory-collection__subtitle">{totalUnlocked}/{sortedCards.length} desbloqueadas</p>
         </div>
       </div>
 
-      {/* Progress bar */}
+      <section className="glory-collection__hero">
+        <div>
+          <span className="glory-collection__eyebrow">Progreso</span>
+          <h3>{progress}% completo</h3>
+          <p>Abre cada carta para ver su rareza y condicion de desbloqueo.</p>
+        </div>
+        <div className="glory-collection__hero-stats">
+          <span><Star size={16} /> {sortedCards.filter(c => c.tier === 'S' && isUnlocked(c.id)).length} legendarias</span>
+          <span><CheckCircle size={16} /> {totalUnlocked} activas</span>
+          <span><Lock size={16} /> {sortedCards.length - totalUnlocked} ocultas</span>
+        </div>
+      </section>
+
       <div className="glory-collection__progress">
-        <div
-          className="glory-collection__progress-fill"
-          style={{ width: `${(totalUnlocked / sortedCards.length) * 100}%` }}
-        />
+        <div className="glory-collection__progress-fill" style={{ width: `${progress}%` }} />
       </div>
 
-      {/* Grid */}
       <div className="glory-collection__grid">
         {sortedCards.map(card => {
           const unlocked = isUnlocked(card.id);
@@ -79,27 +77,21 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
             <button
               key={card.id}
               className={`glory-collection__cell glory-collection__cell--${TIER_CLASSES[card.tier]} ${unlocked ? 'glory-collection__cell--unlocked' : 'glory-collection__cell--locked'}`}
-              onClick={() => handleCardClick(card)}
+              onClick={() => setSelectedCard(card)}
             >
               <div className="glory-collection__cell-icon" style={unlocked ? { color: card.color } : undefined}>
                 {renderCardIcon(card, unlocked)}
               </div>
-              {unlocked && (
-                <span className="glory-collection__cell-name">{card.name}</span>
-              )}
-              {!unlocked && (
-                <span className="glory-collection__cell-name" style={{ color: 'rgba(255,255,255,0.3)' }}>???</span>
-              )}
+              <span className="glory-collection__cell-name">{unlocked ? card.name : '???'}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Card detail modal */}
       {selectedCard && (
         <div className="glory-collection__modal-overlay" onClick={() => setSelectedCard(null)}>
           <div className="glory-collection__modal" onClick={e => e.stopPropagation()}>
-            <button className="glory-collection__modal-close" onClick={() => setSelectedCard(null)}>
+            <button className="glory-collection__modal-close" onClick={() => setSelectedCard(null)} aria-label="Cerrar">
               <X size={18} />
             </button>
 
@@ -113,10 +105,9 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
                 </span>
                 <h3 className="glory-collection__modal-name">{selectedCard.name}</h3>
                 <p className="glory-collection__modal-desc">{selectedCard.description}</p>
-                {isStarter(selectedCard.id) && (
+                {isStarter(selectedCard.id) ? (
                   <span className="glory-collection__modal-starter">Desbloqueada de inicio</span>
-                )}
-                {!isStarter(selectedCard.id) && (
+                ) : (
                   <span className="glory-collection__modal-unlocked">
                     <CheckCircle size={14} /> Desbloqueada
                   </span>

@@ -7,12 +7,11 @@ import {
   BookOpen,
   ChevronRight,
   Crown,
-  Layers3,
   Mountain,
   Play,
   Shield,
-  Sparkles,
   Trophy,
+  Unlock,
 } from 'lucide-react';
 import LoadingIndicator from '../common/LoadingIndicator';
 import GloryCollection from './GloryCollection';
@@ -131,6 +130,7 @@ export default function GloryMenu() {
   };
   const collectionProgress = Math.round((unlockedCards.length / 24) * 100);
   const saveDivision = saveInfo ? (divNames[saveInfo.division] || saveInfo.division) : 'Segunda RFEF';
+  const lockedCards = Math.max(0, 24 - unlockedCards.length);
 
   return (
     <div className="glory-menu unified-screen">
@@ -162,11 +162,8 @@ export default function GloryMenu() {
                 <Mountain size={16} />
                 <span>Camino a la Gloria</span>
               </div>
-              <h1>Funda un club y conviertelo en leyenda.</h1>
-              <p>
-                Empieza en Segunda RFEF con una plantilla desconocida, gana cartas,
-                supera temporadas y escala hasta la elite europea.
-              </p>
+              <h1>De club anonimo a leyenda europea.</h1>
+              <p>Funda tu equipo, gana cartas y asciende hasta la cima.</p>
 
               <div className="glory-menu__hero-stats" aria-label="Resumen del modo">
                 <div>
@@ -204,7 +201,7 @@ export default function GloryMenu() {
                   <div>
                     <span className="glory-menu__eyebrow">Nuevo proyecto</span>
                     <h2>Sin partida activa</h2>
-                    <p>Crea identidad, escudo y equipacion antes de debutar.</p>
+                    <p>Crea escudo, equipacion y debuta.</p>
                   </div>
                 </div>
               )}
@@ -247,26 +244,45 @@ export default function GloryMenu() {
               </div>
             </aside>
 
+            <section className="glory-menu__collection-showcase" aria-label="Coleccion de cartas">
+              <div className="glory-menu__collection-copy">
+                <span className="glory-menu__eyebrow">Coleccion permanente</span>
+                <h2>{unlockedCards.length}/24 cartas</h2>
+                <p>Tu progreso visible: cada carta cambia una temporada y queda en la vitrina.</p>
+              </div>
+              <div className="glory-menu__collection-meter">
+                <div className="glory-menu__collection-ring" style={{ '--progress': `${collectionProgress}%` }}>
+                  <strong>{collectionProgress}%</strong>
+                  <span>completo</span>
+                </div>
+                <div className="glory-menu__collection-stats">
+                  <span><Unlock size={15} /> {unlockedCards.length} desbloqueadas</span>
+                  <span><Shield size={15} /> {lockedCards} pendientes</span>
+                  <span><Trophy size={15} /> 3 rarezas</span>
+                </div>
+              </div>
+              <button className="glory-menu__collection-cta" onClick={() => setView('collection')}>
+                Abrir coleccion <ChevronRight size={18} />
+              </button>
+            </section>
+
             <section className="glory-menu__feature-row" aria-label="Identidad del modo">
               <div className="glory-menu__feature">
-                <div className="glory-menu__feature-icon"><Sparkles size={18} /></div>
                 <div>
                   <h3>Roguelike deportivo</h3>
-                  <p>Decisiones y cartas modifican cada temporada sin romper la gestion clasica.</p>
+                  <p>Cartas, decisiones y gestion clasica.</p>
                 </div>
               </div>
               <div className="glory-menu__feature">
-                <div className="glory-menu__feature-icon"><Layers3 size={18} /></div>
                 <div>
                   <h3>Ascenso por etapas</h3>
-                  <p>La ruta mantiene su identidad: crecer desde abajo hasta competir con gigantes.</p>
+                  <p>Segunda RFEF, Primera RFEF, Segunda y elite.</p>
                 </div>
               </div>
               <div className="glory-menu__feature glory-menu__feature--collection">
-                <div className="glory-menu__feature-icon"><Trophy size={18} /></div>
                 <div>
-                  <h3>Progreso permanente</h3>
-                  <p>{collectionProgress}% de la coleccion desbloqueada.</p>
+                  <h3>Meta final</h3>
+                  <p>Levantar la Champions con tu propio club.</p>
                   <div className="glory-menu__progress">
                     <span style={{ width: `${collectionProgress}%` }} />
                   </div>

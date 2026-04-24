@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Star, Flame, Zap, Shield, Crown, Sword, Mountain, Anchor, Bird, Sun, Moon, Compass, Sparkles } from 'lucide-react';
+import { Star, Flame, Zap, Shield, Crown, Sword, Mountain, Anchor, Bird, Sun, Moon, Compass, Sparkles, Palette, Shapes } from 'lucide-react';
 
 const SHAPES = ['shield', 'circle', 'diamond', 'rounded'];
 const COLORS = ['#1a237e', '#b71c1c', '#1b5e20', '#e65100', '#4a148c', '#006064', '#263238', '#880e4f', '#f57f17', '#0d47a1', '#311b92', '#004d40'];
@@ -24,6 +24,21 @@ const SHAPE_LABELS = {
   circle: 'Circular',
   diamond: 'Diamante',
   rounded: 'Moderno',
+};
+
+const ICON_LABELS = {
+  star: 'Estrella',
+  flame: 'Fuego',
+  zap: 'Rayo',
+  shield: 'Defensa',
+  crown: 'Corona',
+  sword: 'Espada',
+  mountain: 'Cima',
+  anchor: 'Ancla',
+  bird: 'Ave',
+  sun: 'Sol',
+  moon: 'Luna',
+  compass: 'Brujula',
 };
 
 function BadgePreview({ badge, size = 100 }) {
@@ -70,14 +85,23 @@ export default function BadgeEditor({ value, onChange }) {
 
   return (
     <div className="badge-editor">
-      <div className="badge-editor__hero badge-editor__hero--minimal">
+      <div className="badge-editor__hero">
+        <div className="badge-editor__hero-copy">
+          <span className="badge-editor__eyebrow">Escudo del club</span>
+          <h4>Tu identidad, de un vistazo.</h4>
+          <p>Elige forma, colores y simbolo. La vista se actualiza al momento.</p>
+          <div className="badge-editor__specs">
+            <span><Shapes size={14} /> {SHAPE_LABELS[badge.shape]}</span>
+            <span><Palette size={14} /> Paleta activa</span>
+          </div>
+        </div>
         <div className="badge-editor__preview-stage">
           <div className="badge-editor__preview-frame">
             <div className="badge-editor__preview-meta">
-              <span className="badge-editor__preview-kicker">Vista principal</span>
+              <span className="badge-editor__preview-kicker">Vista oficial</span>
               <Sparkles size={14} />
             </div>
-            <BadgePreview badge={badge} size={132} />
+            <BadgePreview badge={badge} size={168} />
             <div className="badge-editor__preview-swatches">
               <span style={{ background: badge.color1 }} />
               <span style={{ background: badge.color2 }} />
@@ -168,7 +192,7 @@ export default function BadgeEditor({ value, onChange }) {
                 <span className="badge-editor__icon-wrap">
                   <Icon size={20} />
                 </span>
-                <span className="badge-editor__icon-name">{id}</span>
+                <span className="badge-editor__icon-name">{ICON_LABELS[id]}</span>
               </button>
             ))}
           </div>

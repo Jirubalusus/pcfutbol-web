@@ -89,13 +89,13 @@
     }
 
     .glory-menu__content {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 3rem 2.5rem;
-      max-width: 480px;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      max-width: 1180px;
       width: 100%;
     }
   }
@@ -129,7 +129,8 @@
 
   // GloryCollection — wider container for desktop
   .glory-collection.unified-screen {
-    max-width: 720px;
+    max-width: 1480px;
+    padding-inline: max(2rem, calc((100vw - 1480px) / 2));
 
     .glory-collection__header {
       .glory-collection__back {
@@ -156,8 +157,12 @@
     }
 
     .glory-collection__grid {
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 1rem;
+
+      @media (min-width: 1200px) {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+      }
     }
   }
 
