@@ -13,9 +13,60 @@ import PositionRoleIcon from '../common/PositionRoleIcon';
 import './Formation.scss';
 
 // Posiciones del campo para cada formación
-const getSecondaryPositionLabels = (player) => {
-  return getSecondaryPositions(player).map(pos => translatePosition(pos));
+const splitPositionCodes = (position) => {
+  if (!position) return [];
+  return String(position)
+    .split(',')
+    .map(pos => pos.trim())
+    .filter(Boolean)
+    .map(pos => posToEN(pos).replace(/\d+$/, '').toUpperCase())
+    .filter(Boolean);
 };
+
+const getPlayerPositionCodes = (player) => {
+  if (!player) return [];
+
+  const seen = new Set();
+  const positions = [];
+  const addPosition = (pos) => {
+    if (!pos || seen.has(pos)) return;
+    seen.add(pos);
+    positions.push(pos);
+  };
+
+  splitPositionCodes(player.position).forEach(addPosition);
+  getSecondaryPositions(player).forEach(addPosition);
+
+  return positions;
+};
+
+const getPlayerPrimaryPosition = (player) => {
+  return getPlayerPositionCodes(player)[0] || player?.position || '';
+};
+
+const getPlayerPositionLabels = (player) => {
+  return getPlayerPositionCodes(player).map(pos => translatePosition(pos));
+};
+
+function PlayerPositionCell({ player, getPositionStyle, t }) {
+  const primaryPosition = getPlayerPrimaryPosition(player);
+  const labels = getPlayerPositionLabels(player);
+  const hasMultiplePositions = labels.length > 1;
+  const tooltip = hasMultiplePositions ? `${t('common.position')}: ${labels.join(', ')}` : '';
+
+  return (
+    <span
+      className={`col-pos ${hasMultiplePositions ? 'has-multiple' : ''}`}
+      style={getPositionStyle(primaryPosition)}
+      title={tooltip}
+      data-tooltip={tooltip}
+      tabIndex={hasMultiplePositions ? 0 : undefined}
+    >
+      <span className="col-pos__primary">{translatePosition(primaryPosition)}</span>
+      {hasMultiplePositions && <span className="col-pos__marker" aria-label={tooltip}>*</span>}
+    </span>
+  );
+}
 
 const FORMATION_POSITIONS = {
   '4-3-3': [
@@ -834,20 +885,7 @@ export default function Formation() {
                     );
                   })}
                   <span className="col-role"><PositionRoleIcon position={slotPos || player.position} /></span>
-                  <span className="col-pos" style={getPositionStyle(slotPos || player.position)}>
-                    <span className="col-pos__primary">{translatePosition(slotPos || player.position)}</span>
-                    {(() => {
-                      const labels = getSecondaryPositionLabels(player);
-                      if (labels.length === 0) return null;
-                      return (
-                        <span className="col-pos__secondary" title={`${t('squad.alsoPlays')}: ${labels.join(', ')}`}>
-                          {labels.map(lbl => (
-                            <span key={lbl} className="col-pos__secondary-item">{lbl}</span>
-                          ))}
-                        </span>
-                      );
-                    })()}
-                  </span>
+                  <PlayerPositionCell player={player} getPositionStyle={getPositionStyle} t={t} />
                 </div>
               )})}
             </div>
@@ -907,20 +945,7 @@ export default function Formation() {
                     );
                   })}
                   <span className="col-role"><PositionRoleIcon position={player.position} /></span>
-                  <span className="col-pos" style={getPositionStyle(player.position)}>
-                    <span className="col-pos__primary">{translatePosition(player.position)}</span>
-                    {(() => {
-                      const labels = getSecondaryPositionLabels(player);
-                      if (labels.length === 0) return null;
-                      return (
-                        <span className="col-pos__secondary" title={`${t('squad.alsoPlays')}: ${labels.join(', ')}`}>
-                          {labels.map(lbl => (
-                            <span key={lbl} className="col-pos__secondary-item">{lbl}</span>
-                          ))}
-                        </span>
-                      );
-                    })()}
-                  </span>
+                  <PlayerPositionCell player={player} getPositionStyle={getPositionStyle} t={t} />
                 </div>
               )})}
             </div>
@@ -980,20 +1005,7 @@ export default function Formation() {
                     );
                   })}
                   <span className="col-role"><PositionRoleIcon position={player.position} /></span>
-                  <span className="col-pos" style={getPositionStyle(player.position)}>
-                    <span className="col-pos__primary">{translatePosition(player.position)}</span>
-                    {(() => {
-                      const labels = getSecondaryPositionLabels(player);
-                      if (labels.length === 0) return null;
-                      return (
-                        <span className="col-pos__secondary" title={`${t('squad.alsoPlays')}: ${labels.join(', ')}`}>
-                          {labels.map(lbl => (
-                            <span key={lbl} className="col-pos__secondary-item">{lbl}</span>
-                          ))}
-                        </span>
-                      );
-                    })()}
-                  </span>
+                  <PlayerPositionCell player={player} getPositionStyle={getPositionStyle} t={t} />
                 </div>
               )})}
             </div>
@@ -1109,7 +1121,11 @@ export default function Formation() {
                   </div>
                   <div className="info-item">
                     <span className="label">{t('common.position')}</span>
-                    <span className="value">{selectedPlayer.position}</span>
+                    <span className="value value--positions">
+                      {getPlayerPositionLabels(selectedPlayer).map(label => (
+                        <span key={label} className="position-chip">{label}</span>
+                      ))}
+                    </span>
                   </div>
                 </div>
               </div>
