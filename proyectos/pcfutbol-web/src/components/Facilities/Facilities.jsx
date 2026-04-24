@@ -290,7 +290,6 @@ export default function Facilities() {
     return specConfig.options.find(o => o.id === currentSpec) || null;
   };
   
-  const weeklyIncome = calculateWeeklyIncome();
   const youthAvgOvr = facilityStats.youth?.playersGenerated > 0 
     ? Math.round(facilityStats.youth.totalOvr / facilityStats.youth.playersGenerated) 
     : 0;
@@ -362,27 +361,11 @@ export default function Facilities() {
         </div>
       )}
 
-      {/* Header with summary */}
+      {/* Header */}
       <div className="facilities-v2__header">
         <div className="header-title">
           <h2><Wrench size={16} /> {t('facilities.title')}</h2>
           <p>{t('facilities.subtitle')}</p>
-        </div>
-        <div className="header-stats">
-          <div className="stat-box stat-box--income">
-            <span className="stat-icon"><Coins size={14} /></span>
-            <div className="stat-content">
-              <span className="stat-value">{formatMoney(weeklyIncome * 43)}</span>
-              <span className="stat-label">{t('facilities.incomePerSeason')}</span>
-            </div>
-          </div>
-          <div className="stat-box stat-box--budget">
-            <span className="stat-icon"><Building2 size={14} /></span>
-            <div className="stat-content">
-              <span className="stat-value">{formatMoney(state.money)}</span>
-              <span className="stat-label">{t('common.budget')}</span>
-            </div>
-          </div>
         </div>
       </div>
 
