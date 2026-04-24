@@ -8,6 +8,7 @@ import LeagueTable from '../LeagueTable/LeagueTable';
 import Cup from '../Cup/Cup';
 import Europe from '../Europe/Europe';
 import SouthAmerica from '../SouthAmerica/SouthAmerica';
+import { usePreloadTeamCrests } from '../TeamCrest/teamCrestCache';
 import { Globe, Trophy, Shield } from 'lucide-react';
 import './Competitions.scss';
 
@@ -30,6 +31,29 @@ export default function Competitions() {
     if (!state.saCompetitions) return null;
     return getPlayerSACompetition(state.saCompetitions, state.teamId);
   }, [state.saCompetitions, state.teamId]);
+
+  const competitionTeamIds = useMemo(() => {
+    const ids = new Set();
+
+    (state.leagueTable || []).forEach((team) => ids.add(team.teamId));
+
+    (state.cupCompetition?.rounds || []).forEach((round) => {
+      (round.matches || []).forEach((match) => {
+        if (match.homeTeam?.teamId) ids.add(match.homeTeam.teamId);
+        if (match.awayTeam?.teamId) ids.add(match.awayTeam.teamId);
+      });
+    });
+
+    const continentalSource = isInSALeague ? state.saCompetitions : state.europeanCompetitions;
+    Object.values(continentalSource?.competitions || {}).forEach((competition) => {
+      (competition?.teams || []).forEach((team) => ids.add(team.teamId));
+      (competition?.standings || []).forEach((team) => ids.add(team.teamId));
+    });
+
+    return Array.from(ids);
+  }, [state.leagueTable, state.cupCompetition, state.europeanCompetitions, state.saCompetitions, isInSALeague]);
+
+  usePreloadTeamCrests(competitionTeamIds, { limit: 96 });
 
   // Tab names - Liga always visible; Copa and Continental hidden in ranked mode
   const tabs = useMemo(() => {

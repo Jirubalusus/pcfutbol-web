@@ -14,6 +14,7 @@ import { SA_MATCHDAY_WEEKS, ALL_SA_WEEKS, isSouthAmericanLeague, SA_COMPETITIONS
 import { getLeagueName } from '../../game/leagueTiers';
 import { getPlayerSACompetition, getSACalendar } from '../../game/southAmericanSeason';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import { usePreloadTeamCrests } from '../TeamCrest/teamCrestCache';
 import './Calendar.scss';
 
 export default function Calendar() {
@@ -55,6 +56,31 @@ export default function Calendar() {
   const totalWeeks = calendar.totalWeeks;
   const hasEuropean = !!state.europeanCompetitions?.initialized || !!state.saCompetitions?.initialized || (calendar.allEuropeanWeeks?.length > 0);
   const hasCup = !!state.cupCompetition || (calendar.cupWeeks?.length > 0);
+
+  const calendarTeamIds = useMemo(() => {
+    const ids = new Set();
+
+    (state.fixtures || []).forEach((fixture) => {
+      if (fixture.homeTeam) ids.add(fixture.homeTeam);
+      if (fixture.awayTeam) ids.add(fixture.awayTeam);
+    });
+
+    (state.cupCompetition?.rounds || []).forEach((round) => {
+      (round.matches || []).forEach((match) => {
+        if (match.homeTeam?.teamId) ids.add(match.homeTeam.teamId);
+        if (match.awayTeam?.teamId) ids.add(match.awayTeam.teamId);
+      });
+    });
+
+    const continentalSource = isInSALeague ? state.saCompetitions : state.europeanCompetitions;
+    Object.values(continentalSource?.competitions || {}).forEach((competition) => {
+      (competition?.teams || []).forEach((team) => ids.add(team.teamId));
+    });
+
+    return Array.from(ids);
+  }, [state.fixtures, state.cupCompetition, state.europeanCompetitions, state.saCompetitions, isInSALeague]);
+
+  usePreloadTeamCrests(calendarTeamIds, { limit: 120 });
 
   // ── Build unified chronological week entries ──
   const weekEntries = useMemo(() => {

@@ -9,6 +9,7 @@ import { getEuropeanPositionsForLeague } from '../../game/europeanCompetitions';
 import { useTranslation } from 'react-i18next';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import { usePreloadTeamCrests } from '../TeamCrest/teamCrestCache';
 import './LeagueTable.scss';
 
 // Per-league zones for UI rendering. European top-flight positions are
@@ -418,6 +419,9 @@ export default function LeagueTable() {
   
   // Use displayTable for AP-CL, fall back to table for standard
   const activeTable = isAPCL ? displayTable : table;
+
+  const activeTeamIds = useMemo(() => activeTable.map((team) => team.teamId).filter(Boolean), [activeTable]);
+  usePreloadTeamCrests(activeTeamIds, { limit: 80 });
   
   // Equipos a mostrar
   const displayedTeams = showAllTeams ? activeTable : activeTable.slice(0, 10);

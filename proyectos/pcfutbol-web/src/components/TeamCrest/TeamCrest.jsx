@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import teamColors from '../../data/teamColors.json';
 import { getActiveEditionId } from '../../data/editions/editionService';
+import { getCachedEditionTeamAsset, normalizeTeamAssetKey } from '../../data/editions/editionAssetsService';
 import {
-  getCachedEditionTeamAsset,
-  getEditionTeamAsset,
-  normalizeTeamAssetKey
-} from '../../data/editions/editionAssetsService';
+  getEditionCrestUrl,
+  getOfficialCrestUrlFromAsset,
+  isCrestImageReady,
+  preloadCrestImage
+} from './teamCrestCache';
 import './TeamCrest.scss';
 
 function hashCode(str) {
@@ -18,12 +20,6 @@ function hashCode(str) {
 
 const FALLBACK_COLORS = ['#e63946','#457b9d','#2a9d8f','#e9c46a','#f4a261','#264653','#6a4c93','#1982c4'];
 const PATTERNS = ['solid','stripes','half','horiz','diagonal'];
-
-function getOfficialCrestUrlFromAsset(asset) {
-  return asset?.assetType === 'crest' && asset?.status !== 'archived'
-    ? asset.downloadUrl || null
-    : null;
-}
 
 function ShieldPath() {
   return (
@@ -102,7 +98,8 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
   const normalizedTeamKey = normalizeTeamAssetKey(teamId);
   const [officialCrestUrl, setOfficialCrestUrl] = useState(() => {
     const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
-    return getOfficialCrestUrlFromAsset(cachedAsset);
+    const cachedUrl = getOfficialCrestUrlFromAsset(cachedAsset);
+    return isCrestImageReady(cachedUrl) ? cachedUrl : null;
   });
 
   const { primary, secondary, pattern } = useMemo(() => {
@@ -133,15 +130,22 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
 
       const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
       const cachedUrl = getOfficialCrestUrlFromAsset(cachedAsset);
-      if (cachedUrl) {
-        setOfficialCrestUrl(cachedUrl);
+      setOfficialCrestUrl(isCrestImageReady(cachedUrl) ? cachedUrl : null);
+
+      const nextUrl = await getEditionCrestUrl(editionId, teamId);
+      if (!nextUrl) {
+        if (!cancelled) setOfficialCrestUrl(null);
         return;
       }
 
-      const asset = await getEditionTeamAsset(editionId, teamId);
-      const nextUrl = getOfficialCrestUrlFromAsset(asset);
+      if (isCrestImageReady(nextUrl)) {
+        if (!cancelled) setOfficialCrestUrl(nextUrl);
+        return;
+      }
 
-      if (!cancelled) {
+      const loaded = await preloadCrestImage(nextUrl);
+
+      if (!cancelled && loaded) {
         setOfficialCrestUrl(nextUrl);
       }
     }

@@ -4,6 +4,7 @@ import { useGame } from '../../context/GameContext';
 import { Award, Trophy, ChevronDown, ChevronUp, Shield, AlertTriangle } from 'lucide-react';
 import { getCupRoundName } from '../../game/cupSystem';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import { usePreloadTeamCrests } from '../TeamCrest/teamCrestCache';
 import './Cup.scss';
 
 export default function Cup() {
@@ -11,6 +12,18 @@ export default function Cup() {
   const { state } = useGame();
   const bracket = state.cupCompetition;
   const [expandedRound, setExpandedRound] = useState(null);
+  const cupTeamIds = React.useMemo(() => {
+    const ids = new Set();
+    (bracket?.rounds || []).forEach((round) => {
+      (round.matches || []).forEach((match) => {
+        if (match.homeTeam?.teamId) ids.add(match.homeTeam.teamId);
+        if (match.awayTeam?.teamId) ids.add(match.awayTeam.teamId);
+      });
+    });
+    return Array.from(ids);
+  }, [bracket?.rounds]);
+
+  usePreloadTeamCrests(cupTeamIds, { limit: 96 });
 
   if (!bracket) {
     return (
