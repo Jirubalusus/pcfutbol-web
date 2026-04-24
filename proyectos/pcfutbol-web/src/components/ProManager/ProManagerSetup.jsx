@@ -368,6 +368,21 @@ export default function ProManagerSetup() {
                   </div>
                 </dl>
 
+                <div className="offer-detail__briefing">
+                  <div className="offer-detail__briefing-row">
+                    <span>{t('proManager.boardConfidence')}</span>
+                    <strong>60%</strong>
+                  </div>
+                  <div className="offer-detail__briefing-row">
+                    <span>{t('proManager.prestige')}</span>
+                    <strong>10</strong>
+                  </div>
+                  <div className="offer-detail__briefing-row">
+                    <span>{t('common.season')}</span>
+                    <strong>01</strong>
+                  </div>
+                </div>
+
                 <button
                   className="btn-start"
                   onClick={handleStart}
