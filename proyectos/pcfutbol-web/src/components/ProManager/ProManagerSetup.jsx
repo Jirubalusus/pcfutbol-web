@@ -316,7 +316,7 @@ export default function ProManagerSetup() {
                   >
                     <span className="offer-row__accent" aria-hidden="true" />
                     <div className="offer-row__crest">
-                      <TeamCrest teamId={offer.team.id} size={28} />
+                      <TeamCrest teamId={offer.team.id} size={72} />
                     </div>
                     <div className="offer-row__body">
                       <span className="offer-row__eyebrow">
