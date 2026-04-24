@@ -295,15 +295,20 @@ $blue: #0a84ff;
 
       // === Position badge ===
       .player-main {
-        display: contents;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        min-width: 0;
 
         .pos-wrap {
-          display: flex;
-          flex-direction: column;
+          display: inline-flex;
+          flex-direction: row;
           align-items: center;
-          justify-content: center;
-          gap: 2px;
+          justify-content: flex-end;
+          gap: 4px;
           min-width: 0;
+          margin-left: auto;
+          flex-shrink: 0;
         }
 
         .pos {
@@ -321,12 +326,12 @@ $blue: #0a84ff;
         }
 
         .pos-secondary {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
+          display: inline-flex;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
           align-items: center;
           gap: 2px;
-          max-width: 100%;
+          max-width: none;
 
           .pos-secondary__item {
             font-size: 0.5rem;
@@ -344,6 +349,7 @@ $blue: #0a84ff;
         .info {
           min-width: 0;
           overflow: hidden;
+          flex: 1 1 auto;
 
           .name-row {
             display: flex;
