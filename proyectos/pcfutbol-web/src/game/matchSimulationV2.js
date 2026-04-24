@@ -321,17 +321,21 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
 
   if (context.knockout && homeScore === awayScore) {
     extraTime = true;
+    const homeSentOff = new Set(events.filter(e => e.type === 'red_card' && e.team === 'home').map(e => getPlayerName(e.player)));
+    const awaySentOff = new Set(events.filter(e => e.type === 'red_card' && e.team === 'away').map(e => getPlayerName(e.player)));
+    const homeTeamOnPitch = { ...homeTeamData, players: (homeTeamData.players || []).filter(p => !homeSentOff.has(p.name)) };
+    const awayTeamOnPitch = { ...awayTeamData, players: (awayTeamData.players || []).filter(p => !awaySentOff.has(p.name)) };
     // Extra time: ~30% chance someone scores, slight home advantage
     const etRand = Math.random();
     if (etRand < 0.18) {
       // Home scores in extra time
       finalHomeScore += 1;
-      const scorer = selectScorer(homeTeamData);
+      const scorer = selectScorer(homeTeamOnPitch);
       events.push({ type: 'goal', team: 'home', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, isExtraTime: true });
     } else if (etRand < 0.30) {
       // Away scores in extra time
       finalAwayScore += 1;
-      const scorer = selectScorer(awayTeamData);
+      const scorer = selectScorer(awayTeamOnPitch);
       events.push({ type: 'goal', team: 'away', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, isExtraTime: true });
     }
 
@@ -352,14 +356,15 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
   }
 
   // ── MOTM (Man of the Match) calculation ──
-  const motm = calculateMOTM(events, finalHomeScore, finalAwayScore, homeTeamData, awayTeamData);
+  const finalEvents = normalizeDisciplinaryTimeline(events);
+  const motm = calculateMOTM(finalEvents, finalHomeScore, finalAwayScore, homeTeamData, awayTeamData);
 
   return {
     homeScore: finalHomeScore,
     awayScore: finalAwayScore,
     extraTime,
     penalties,
-    events,
+    events: finalEvents,
     stats,
     motm,
     debug: {
@@ -592,6 +597,99 @@ function weightedRandom(options) {
   return options[0].value;
 }
 
+function getPlayerName(player) {
+  return typeof player === 'object' ? player?.name : player;
+}
+
+function getPrimaryPosition(player) {
+  return (player?.playingPosition || player?.position || '').split(',')[0].trim().toUpperCase();
+}
+
+function getPlayerKey(teamLabel, player) {
+  const name = getPlayerName(player);
+  return name ? `${teamLabel}:${name}` : null;
+}
+
+function getLatestRequiredEventMinute(events, teamLabel, player) {
+  const playerName = getPlayerName(player);
+  if (!playerName) return 0;
+
+  return events.reduce((latest, event) => {
+    if (event.team !== teamLabel) return latest;
+    const eventPlayer = getPlayerName(event.player);
+    const eventAssist = getPlayerName(event.assist);
+    if (eventPlayer === playerName || eventAssist === playerName) {
+      return Math.max(latest, event.minute || 0);
+    }
+    return latest;
+  }, 0);
+}
+
+function randomMinuteBetween(min, max) {
+  const safeMin = Math.max(1, Math.ceil(min));
+  const safeMax = Math.min(90, Math.floor(max));
+  if (safeMin > safeMax) return null;
+  return safeMin + Math.floor(Math.random() * (safeMax - safeMin + 1));
+}
+
+function sortEvents(events) {
+  const priority = {
+    goal: 0,
+    injury: 1,
+    yellow_card: 2,
+    red_card: 3
+  };
+  return [...events].sort((a, b) =>
+    (a.minute || 0) - (b.minute || 0) || (priority[a.type] ?? 9) - (priority[b.type] ?? 9)
+  );
+}
+
+function normalizeDisciplinaryTimeline(events) {
+  const yellowed = new Set();
+  const sentOff = new Set();
+  const normalized = [];
+
+  for (const event of sortEvents(events)) {
+    const key = getPlayerKey(event.team, event.player);
+    const assistKey = getPlayerKey(event.team, event.assist);
+
+    if ((key && sentOff.has(key)) || (event.type === 'goal' && assistKey && sentOff.has(assistKey))) {
+      // After a red card the player is no longer on the pitch.
+      if (['goal', 'yellow_card', 'red_card', 'injury'].includes(event.type)) continue;
+    }
+
+    if (event.type === 'yellow_card' && key) {
+      if (yellowed.has(key)) {
+        normalized.push(event);
+        normalized.push({
+          type: 'red_card',
+          team: event.team,
+          minute: event.minute,
+          player: event.player,
+          isSecondYellow: true,
+          reason: 'Segunda amarilla'
+        });
+        sentOff.add(key);
+      } else {
+        yellowed.add(key);
+        normalized.push(event);
+      }
+      continue;
+    }
+
+    if (event.type === 'red_card' && key) {
+      if (sentOff.has(key)) continue;
+      normalized.push(event);
+      sentOff.add(key);
+      continue;
+    }
+
+    normalized.push(event);
+  }
+
+  return sortEvents(normalized);
+}
+
 /**
  * Generar eventos del partido
  */
@@ -608,6 +706,10 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   
   let homeGoalsLeft = homeScore;
   let awayGoalsLeft = awayScore;
+  const scorerCounts = {
+    home: new Map(),
+    away: new Map()
+  };
   
   goalMinutes.forEach(minute => {
     if (homeGoalsLeft + awayGoalsLeft <= 0) return; // Safety: no goals left to allocate
@@ -616,7 +718,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const isHomeGoal = Math.random() < homeChance;
     
     if (isHomeGoal && homeGoalsLeft > 0) {
-      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup);
+      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home);
       const assister = Math.random() > 0.30 ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer) : null;
       events.push({
         type: 'goal',
@@ -626,9 +728,10 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
         assist: assister,
         goalType: minute > 85 ? 'late' : 'normal'
       });
+      scorerCounts.home.set(scorer.name, (scorerCounts.home.get(scorer.name) || 0) + 1);
       homeGoalsLeft--;
     } else if (awayGoalsLeft > 0) {
-      const scorer = selectScorer(awayTeam, awayStrength.strength?.lineup);
+      const scorer = selectScorer(awayTeam, awayStrength.strength?.lineup, scorerCounts.away);
       const assister = Math.random() > 0.30 ? selectAssister(awayTeam, awayStrength.strength?.lineup, scorer) : null;
       events.push({
         type: 'goal',
@@ -638,7 +741,21 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
         assist: assister,
         goalType: minute > 85 ? 'late' : 'normal'
       });
+      scorerCounts.away.set(scorer.name, (scorerCounts.away.get(scorer.name) || 0) + 1);
       awayGoalsLeft--;
+    } else if (homeGoalsLeft > 0) {
+      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home);
+      const assister = Math.random() > 0.30 ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer) : null;
+      events.push({
+        type: 'goal',
+        team: 'home',
+        minute,
+        player: scorer,
+        assist: assister,
+        goalType: minute > 85 ? 'late' : 'normal'
+      });
+      scorerCounts.home.set(scorer.name, (scorerCounts.home.get(scorer.name) || 0) + 1);
+      homeGoalsLeft--;
     }
   });
   
@@ -647,20 +764,23 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   const strictness = referee === 'strict' ? 1.5 : referee === 'lenient' ? 0.6 : 1;
   const playersWithYellow = new Set(); // Track players who already have a yellow (by team-name key)
   const sentOff = new Set(); // Players sent off can't get more cards
+  const yellowMinutes = new Map();
   
   for (let i = 0; i < Math.floor(yellowCount * strictness); i++) {
     const isHome = Math.random() > 0.5;
     const team = isHome ? homeTeam : awayTeam;
     const teamLabel = isHome ? 'home' : 'away';
-    const player = selectRandomPlayer(team);
-    const playerName = typeof player === 'object' ? player.name : player;
-    const playerKey = `${teamLabel}-${playerName}`;
-    const minute = Math.floor(Math.random() * 90) + 1;
+    const player = selectRandomPlayer(team, teamLabel, { sentOff });
+    const playerKey = getPlayerKey(teamLabel, player);
+    const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
     
     // Skip if player was already sent off
-    if (sentOff.has(playerKey)) continue;
+    if (!playerKey || sentOff.has(playerKey)) continue;
     
-    if (playersWithYellow.has(playerKey)) {
+    if (playersWithYellow.has(playerKey) && Math.random() < 0.35) {
+      const previousYellow = yellowMinutes.get(playerKey) || 1;
+      const minute = randomMinuteBetween(Math.max(previousYellow + 1, lastRequiredEvent + 1), 90);
+      if (!minute) continue;
       // Second yellow → red card (double yellow)
       events.push({
         type: 'yellow_card',
@@ -678,7 +798,10 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       });
       sentOff.add(playerKey);
     } else {
+      const minute = randomMinuteBetween(1, 88);
+      if (!minute) continue;
       playersWithYellow.add(playerKey);
+      yellowMinutes.set(playerKey, minute);
       events.push({
         type: 'yellow_card',
         team: teamLabel,
@@ -692,14 +815,16 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   [homeTeam, awayTeam].forEach((team, idx) => {
     const teamLabel = idx === 0 ? 'home' : 'away';
     if (Math.random() < 0.08 * strictness) {
-      const player = selectRandomPlayer(team);
-      const playerName = typeof player === 'object' ? player.name : player;
-      const playerKey = `${teamLabel}-${playerName}`;
+      const player = selectRandomPlayer(team, teamLabel, { sentOff });
+      const playerKey = getPlayerKey(teamLabel, player);
       if (!sentOff.has(playerKey)) {
+        const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
+        const minute = randomMinuteBetween(Math.max(25, lastRequiredEvent + 1), 84);
+        if (!minute) return;
         events.push({
           type: 'red_card',
           team: teamLabel,
-          minute: 25 + Math.floor(Math.random() * 60),
+          minute,
           player,
           isSecondYellow: false
         });
@@ -722,7 +847,12 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     if (Math.random() < injuryChance) {
       const players = team.players?.filter(p => !p.injured && !p.suspended) || [];
       if (players.length > 0) {
-        const injuredPlayer = players[Math.floor(Math.random() * players.length)];
+        const availablePlayers = players.filter(p => !sentOff.has(getPlayerKey(teamLabel, p)));
+        if (availablePlayers.length === 0) return;
+        const injuredPlayer = availablePlayers[Math.floor(Math.random() * availablePlayers.length)];
+        const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, injuredPlayer);
+        const minute = randomMinuteBetween(Math.max(10, lastRequiredEvent), 84);
+        if (!minute) return;
         const severityRoll = Math.random();
         let weeksOut, severity;
         if (severityRoll < 0.60) {
@@ -738,7 +868,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
         events.push({
           type: 'injury',
           team: teamLabel,
-          minute: 10 + Math.floor(Math.random() * 75),
+          minute,
           player: injuredPlayer.name,
           weeksOut,
           severity
@@ -747,29 +877,47 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     }
   });
 
-  return events.sort((a, b) => a.minute - b.minute);
+  return normalizeDisciplinaryTimeline(events);
 }
 
 /**
  * Seleccionar goleador
  */
-function selectScorer(team, lineup) {
+function selectScorer(team, lineup, scorerCounts = new Map()) {
   if (!team?.players) return { name: 'Unknown' };
   
   const available = (lineup || team.players).filter(p => !p.injured && !p.suspended);
-  const attackers = available.filter(p => 
-    ['ST', 'CF', 'RW', 'LW', 'CAM'].includes(p.position)
-  );
+  const attackers = available.filter(p => {
+    const position = getPrimaryPosition(p);
+    return ['ST', 'CF', 'RW', 'LW', 'CAM', 'RM', 'LM', 'CM'].includes(position);
+  });
   
   if (attackers.length === 0) return available[0] || team.players[0] || { name: 'Unknown' };
   
-  // Ponderar por overall
-  const totalOvr = attackers.reduce((sum, p) => sum + p.overall, 0);
-  let rand = Math.random() * totalOvr;
+  const weights = attackers.map(player => {
+    const position = getPrimaryPosition(player);
+    const roleWeight = {
+      ST: 3.2,
+      CF: 3.0,
+      RW: 1.7,
+      LW: 1.7,
+      CAM: 1.35,
+      RM: 1.05,
+      LM: 1.05,
+      CM: 0.55
+    }[position] || 0.35;
+    const goalsAlready = scorerCounts.get(player.name) || 0;
+    const repeatPenalty = goalsAlready === 0 ? 1 : goalsAlready === 1 ? 0.38 : goalsAlready === 2 ? 0.12 : 0.04;
+    const rating = Math.max(45, player.overall || 65);
+    return Math.pow(rating, 1.35) * roleWeight * repeatPenalty;
+  });
+
+  const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+  let rand = Math.random() * totalWeight;
   
-  for (const player of attackers) {
-    rand -= player.overall;
-    if (rand <= 0) return { name: player.name, position: player.position };
+  for (let i = 0; i < attackers.length; i++) {
+    rand -= weights[i];
+    if (rand <= 0) return { name: attackers[i].name, position: attackers[i].position };
   }
   
   return { name: attackers[0].name, position: attackers[0].position };
@@ -783,14 +931,15 @@ function selectAssister(team, lineup, scorer) {
   const scorerName = scorer?.name || scorer;
   const available = (lineup || team.players).filter(p => !p.injured && !p.suspended && p.name !== scorerName);
   const assistPositions = ['CAM', 'CM', 'RW', 'LW', 'RB', 'LB', 'CDM', 'RM', 'LM', 'ST', 'CF'];
-  const candidates = available.filter(p => assistPositions.includes(p.position));
+  const candidates = available.filter(p => assistPositions.includes(getPrimaryPosition(p)));
   
   if (candidates.length === 0) return available.length > 0 ? { name: available[0].name, position: available[0].position } : null;
   
   const weights = candidates.map(p => {
     let weight = p.overall || 70;
-    if (['CAM', 'CM'].includes(p.position)) weight *= 1.5;
-    else if (['RW', 'LW'].includes(p.position)) weight *= 1.3;
+    const position = getPrimaryPosition(p);
+    if (['CAM', 'CM'].includes(position)) weight *= 1.5;
+    else if (['RW', 'LW'].includes(position)) weight *= 1.3;
     return weight;
   });
   
@@ -803,9 +952,13 @@ function selectAssister(team, lineup, scorer) {
   return { name: candidates[0].name, position: candidates[0].position };
 }
 
-function selectRandomPlayer(team) {
+function selectRandomPlayer(team, teamLabel = 'team', options = {}) {
   if (!team?.players || team.players.length === 0) return { name: 'Unknown' };
-  const available = team.players.filter(p => !p.injured && !p.suspended);
+  const available = team.players.filter(p =>
+    !p.injured &&
+    !p.suspended &&
+    !options.sentOff?.has(getPlayerKey(teamLabel, p))
+  );
   const pool = available.length > 0 ? available : team.players;
   // Prefer starters (first 11 or starter flag) — 85% chance starter, 15% sub
   const starters = pool.filter(p => p.starter || p.isStarter);
