@@ -62,6 +62,7 @@ import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } f
 import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
+import CountryFlag from './CountryFlag';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import './TeamSelection.scss';
 import './WorldMap.scss';
@@ -330,6 +331,7 @@ export default function TeamSelection() {
   const [showPreseason, setShowPreseason] = useState(false);
   const [selectedPreseason, setSelectedPreseason] = useState(null);
   const [preseasonOptions, setPreseasonOptions] = useState([]);
+  const [hoveredCountryId, setHoveredCountryId] = useState(null);
   const [isMobileTeamLayout, setIsMobileTeamLayout] = useState(() => {
     if (typeof window === 'undefined') return false;
     return window.innerWidth <= 900;
@@ -454,6 +456,7 @@ export default function TeamSelection() {
 
   const handleSelectCountry = (country) => {
     setSelectedCountry(country);
+    setHoveredCountryId(null);
     // Solo selecciona el país, las ligas se muestran en el panel
     // No avanza de paso
   };
@@ -1040,6 +1043,40 @@ export default function TeamSelection() {
   const teamsPanelClasses = `teams-panel${showMobileTeamTabs && mobileTeamsView === 'details' ? ' teams-panel--hidden-mobile' : ''}`;
   const detailsPanelClasses = `details-panel${showMobileTeamTabs ? ' details-panel--mobile-tab' : ''}${showMobileTeamTabs && mobileTeamsView !== 'details' ? ' details-panel--hidden-mobile' : ''}`;
 
+  const renderCountryRow = (country) => {
+    const countryName = country.nameKey ? t(country.nameKey) : country.id;
+    const leagueCount = country.leagues.length;
+    const clubCount = country.leagues.reduce((total, leagueId) => total + getLeagueTeams(leagueId).length, 0);
+
+    return (
+      <button
+        key={country.id}
+        className={`map-selection__country-card ${hoveredCountryId === country.id ? 'is-hovered' : ''}`}
+        onClick={() => handleSelectCountry(country)}
+        onMouseEnter={() => setHoveredCountryId(country.id)}
+        onMouseLeave={() => setHoveredCountryId(null)}
+        onFocus={() => setHoveredCountryId(country.id)}
+        onBlur={() => setHoveredCountryId(null)}
+      >
+        <CountryFlag
+          countryId={country.id}
+          countryName={countryName}
+          size="lg"
+          className="map-selection__country-flag"
+        />
+        <span className="map-selection__country-copy">
+          <span className="map-selection__country-name">{countryName}</span>
+          <span className="map-selection__country-meta">
+            {t('teamSelection.countrySummary', { count: leagueCount, leagues: leagueCount, clubs: clubCount })}
+          </span>
+        </span>
+        <span className="map-selection__country-teams" aria-label={t('teamSelection.leaguesCount', { count: leagueCount })}>
+          {String(leagueCount).padStart(2, '0')}
+        </span>
+      </button>
+    );
+  };
+
   // Calcular paso visual para el progress bar (simplificado)
   const getVisualStep = () => {
     return step === 1 ? 1 : 2;
@@ -1089,13 +1126,15 @@ export default function TeamSelection() {
                 <WorldMap
                   countries={COUNTRIES}
                   selectedCountry={selectedCountry?.id}
+                  hoveredCountry={hoveredCountryId}
                   onCountryClick={(countryId) => {
                     if (!countryId) {
                       setSelectedCountry(null);
+                      setHoveredCountryId(null);
                       return;
                     }
                     const country = COUNTRIES.find(c => c.id === countryId);
-                    if (country) setSelectedCountry(country);
+                    if (country) handleSelectCountry(country);
                   }}
                 />
               </div>
@@ -1105,8 +1144,13 @@ export default function TeamSelection() {
               {selectedCountry ? (
                 <>
                   <div className="map-selection__title">
-                    <span className={`flag ${selectedCountry.flagVariant === 'code' ? 'flag--code' : ''}`.trim()}>{selectedCountry.flag}</span>
-                    {selectedCountry.nameKey ? t(selectedCountry.nameKey) : selectedCountry.name}
+                    <CountryFlag
+                      countryId={selectedCountry.id}
+                      countryName={selectedCountry.nameKey ? t(selectedCountry.nameKey) : selectedCountry.name}
+                      size="lg"
+                      className="map-selection__title-flag"
+                    />
+                    <span>{selectedCountry.nameKey ? t(selectedCountry.nameKey) : selectedCountry.name}</span>
                   </div>
                   <div className="map-selection__leagues">
                     {selectedCountry.leagues.map(leagueId => {
@@ -1148,49 +1192,11 @@ export default function TeamSelection() {
                   </div>
                   <div className="map-selection__countries">
                     <div className="map-selection__continent-header">🌍 {t('teamSelection.continentEurope')}</div>
-                    {EUROPEAN_COUNTRIES.map(country => (
-                      <button
-                        key={country.id}
-                        className="map-selection__country-card"
-                        onClick={() => setSelectedCountry(country)}
-                      >
-                        <span className={`map-selection__country-flag ${country.flagVariant === 'code' ? 'map-selection__country-flag--code' : ''}`.trim()}>
-                          {country.flag}
-                        </span>
-                        <span className="map-selection__country-name">{country.nameKey ? t(country.nameKey) : country.id}</span>
-                        <span className="map-selection__country-teams">
-                          {country.leagues.length}
-                        </span>
-                      </button>
-                    ))}
+                    {EUROPEAN_COUNTRIES.map(renderCountryRow)}
                     <div className="map-selection__continent-header">🌎 {t('teamSelection.continentSouthAmerica')}</div>
-                    {SOUTH_AMERICAN_COUNTRIES.map(country => (
-                      <button
-                        key={country.id}
-                        className="map-selection__country-card"
-                        onClick={() => setSelectedCountry(country)}
-                      >
-                        <span className="map-selection__country-flag">{country.flag}</span>
-                        <span className="map-selection__country-name">{country.nameKey ? t(country.nameKey) : country.id}</span>
-                        <span className="map-selection__country-teams">
-                          {country.leagues.length}
-                        </span>
-                      </button>
-                    ))}
+                    {SOUTH_AMERICAN_COUNTRIES.map(renderCountryRow)}
                     <div className="map-selection__continent-header">🌏 {t('teamSelection.continentRestOfWorld')}</div>
-                    {REST_OF_WORLD_COUNTRIES.map(country => (
-                      <button
-                        key={country.id}
-                        className="map-selection__country-card"
-                        onClick={() => setSelectedCountry(country)}
-                      >
-                        <span className="map-selection__country-flag">{country.flag}</span>
-                        <span className="map-selection__country-name">{country.nameKey ? t(country.nameKey) : country.id}</span>
-                        <span className="map-selection__country-teams">
-                          {country.leagues.length}
-                        </span>
-                      </button>
-                    ))}
+                    {REST_OF_WORLD_COUNTRIES.map(renderCountryRow)}
                   </div>
                 </>
               )}

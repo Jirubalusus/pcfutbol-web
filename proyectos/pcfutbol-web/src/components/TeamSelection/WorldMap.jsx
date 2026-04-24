@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next';
 import { Globe as GlobeIcon } from 'lucide-react';
 import Globe from 'react-globe.gl';
+import CountryFlag from './CountryFlag';
 import './WorldMap.scss';
 
 // Merged country data: Europe + South America
@@ -55,7 +56,7 @@ const MOBILE_BREAKPOINT = 768;
 const DEFAULT_VIEW = { lat: 34, lng: 3, altitude: 2.35 };
 const FOCUSED_VIEW_ALTITUDE = 2.12;
 
-export default function WorldMap({ countries, selectedCountry, onCountryClick }) {
+export default function WorldMap({ countries, selectedCountry, hoveredCountry, onCountryClick }) {
   const { t } = useTranslation();
   const globeEl = useRef();
   const [size, setSize] = useState(400);
@@ -102,19 +103,20 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     }
   }, []);
 
-  // Zoom to selected country (and pause auto-rotation while focused)
+  // Zoom to selected/hovered country (and pause auto-rotation while focused)
   useEffect(() => {
     if (!globeEl.current) return;
     const controls = globeEl.current.controls?.();
-    if (selectedCountry && COUNTRY_DATA[selectedCountry]) {
-      const { lat, lng } = COUNTRY_DATA[selectedCountry];
-      globeEl.current.pointOfView({ lat, lng, altitude: FOCUSED_VIEW_ALTITUDE }, 650);
+    const focusedCountry = selectedCountry || hoveredCountry;
+    if (focusedCountry && COUNTRY_DATA[focusedCountry]) {
+      const { lat, lng } = COUNTRY_DATA[focusedCountry];
+      globeEl.current.pointOfView({ lat, lng, altitude: FOCUSED_VIEW_ALTITUDE }, selectedCountry ? 650 : 420);
       if (controls) controls.autoRotate = false;
     } else if (controls) {
       controls.autoRotate = true;
       globeEl.current.pointOfView(DEFAULT_VIEW, 650);
     }
-  }, [selectedCountry]);
+  }, [hoveredCountry, selectedCountry]);
 
   // Resolve country name from i18n nameKey or fallback
   const resolveName = useCallback((c) => c.nameKey ? t(c.nameKey) : (c.name || c.id), [t]);
@@ -134,10 +136,11 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         color: data.color,
         continent: data.continent,
         leagues: c.leagues.length,
-        isSelected: selectedCountry === c.id
+        isSelected: selectedCountry === c.id,
+        isHovered: hoveredCountry === c.id
       };
     }).filter(Boolean);
-  }, [countries, selectedCountry, resolveName]);
+  }, [countries, hoveredCountry, selectedCountry, resolveName]);
 
   const handleGlobeClick = useCallback(() => {
     if (selectedCountry) {
@@ -148,14 +151,14 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   // Create HTML element for each marker (must be before conditional returns to respect hook rules)
   const createMarkerElement = useCallback((d) => {
     const el = document.createElement('div');
-    el.className = `globe-marker ${d.isSelected ? 'globe-marker--selected' : ''}`;
-    el.style.setProperty('--marker-color', d.isSelected ? '#00FF88' : d.color);
+    el.className = `globe-marker ${d.isSelected ? 'globe-marker--selected' : ''} ${d.isHovered ? 'globe-marker--hovered' : ''}`.trim();
+    el.style.setProperty('--marker-color', d.isSelected || d.isHovered ? '#00FF88' : d.color);
     el.setAttribute('role', 'button');
     el.setAttribute('tabindex', '0');
     el.setAttribute('aria-label', d.name);
     el.innerHTML = `
       <span class="globe-marker__dot" aria-hidden="true"></span>
-      ${d.isSelected ? `<span class="globe-marker__tooltip">${d.name}</span>` : ''}
+      ${d.isSelected || d.isHovered ? `<span class="globe-marker__tooltip">${d.name}</span>` : ''}
     `;
     el.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -195,7 +198,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
+                  <CountryFlag countryId={country.id} countryName={resolveName(country)} size="lg" className="countries-mobile__flag" />
                   <span className="countries-mobile__name">{resolveName(country)}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
@@ -211,7 +214,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
+                  <CountryFlag countryId={country.id} countryName={resolveName(country)} size="lg" className="countries-mobile__flag" />
                   <span className="countries-mobile__name">{resolveName(country)}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
@@ -227,7 +230,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
+                  <CountryFlag countryId={country.id} countryName={resolveName(country)} size="lg" className="countries-mobile__flag" />
                   <span className="countries-mobile__name">{resolveName(country)}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>

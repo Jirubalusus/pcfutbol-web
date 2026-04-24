@@ -165,6 +165,22 @@
     }
   }
 
+  &--hovered {
+    z-index: 18;
+    transform: translate(-50%, -50%) scale(1.12);
+
+    .globe-marker__dot {
+      width: 23px;
+      height: 23px;
+      background: #00ff88;
+      border-color: rgba(255, 255, 255, 0.92);
+      box-shadow:
+        0 0 0 8px rgba(0, 255, 136, 0.13),
+        0 0 22px rgba(0, 255, 136, 0.62),
+        0 4px 10px rgba(0, 0, 0, 0.55);
+    }
+  }
+
   &__dot {
     width: 19px;
     height: 19px;
