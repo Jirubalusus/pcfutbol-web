@@ -25,16 +25,18 @@ const LINE_THICK = 0.22;
 // so the GPU biases them toward the camera, robustly preventing flicker even
 // when two layers share a Y value at a glancing angle.
 const Y_GROUND = 0;
-const Y_MID_GRASS = 0.05;
-const Y_PLAZA = 0.10;
-const Y_PLAZA_BAND = 0.12;
-const Y_ROAD = 0.14;
-const Y_PARKING = 0.16;
-const Y_PITCH_SURROUND = 0.20;
-const Y_PITCH_TRACK = 0.24;
-const Y_PITCH_BASE = 0.28;
-const Y_PITCH_STRIPES = 0.32;
-const LINE_Y = 0.38;
+// Keep broad ground layers clearly separated to avoid z-fighting/shimmering
+// at the elevated oblique stadium camera.
+const Y_MID_GRASS = 0.18;
+const Y_PLAZA = 0.32;
+const Y_PLAZA_BAND = 0.40;
+const Y_ROAD = 0.52;
+const Y_PARKING = 0.64;
+const Y_PITCH_SURROUND = 0.78;
+const Y_PITCH_TRACK = 0.92;
+const Y_PITCH_BASE = 1.06;
+const Y_PITCH_STRIPES = 1.20;
+const LINE_Y = 1.36;
 
 function Line({ size, position }) {
   return (
