@@ -235,7 +235,7 @@ $pcf-text: #8a9aaa;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 2.5rem 0 0; // nudge globe slightly left of center
+  padding: 1.6rem 3rem 2rem 1.25rem;
   min-height: 0;
   position: relative;
   overflow: hidden;
@@ -244,10 +244,10 @@ $pcf-text: #8a9aaa;
   // Cinematic dark backdrop — deep near-black with a faint green-tinted core
   background:
     radial-gradient(
-      ellipse 75% 95% at 44% 50%,
+      ellipse 82% 104% at 47% 50%,
       #061310 0%,
-      #040a08 32%,
-      #020605 62%,
+      #040b09 35%,
+      #020605 68%,
       #000000 100%
     );
 
@@ -258,10 +258,10 @@ $pcf-text: #8a9aaa;
     inset: 0;
     background:
       radial-gradient(
-        ellipse 90% 110% at 44% 50%,
-        transparent 38%,
-        rgba(0, 0, 0, 0.45) 82%,
-        rgba(0, 0, 0, 0.75) 100%
+        ellipse 94% 112% at 47% 50%,
+        transparent 46%,
+        rgba(0, 0, 0, 0.38) 84%,
+        rgba(0, 0, 0, 0.7) 100%
       );
     pointer-events: none;
     z-index: 0;
@@ -274,13 +274,13 @@ $pcf-text: #8a9aaa;
     inset: 0;
     background:
       radial-gradient(
-        ellipse 60% 20% at 44% 78%,
-        rgba(0, 230, 118, 0.035) 0%,
+        ellipse 64% 24% at 48% 78%,
+        rgba(0, 230, 118, 0.045) 0%,
         transparent 70%
       ),
       radial-gradient(
-        ellipse 40% 12% at 44% 22%,
-        rgba(0, 230, 118, 0.025) 0%,
+        ellipse 44% 14% at 47% 22%,
+        rgba(0, 230, 118, 0.03) 0%,
         transparent 70%
       );
     pointer-events: none;
@@ -289,7 +289,7 @@ $pcf-text: #8a9aaa;
   }
 
   @media (max-width: 1200px) {
-    padding: 0 1.5rem 0 0;
+    padding: 1.25rem 1.75rem 1.5rem 0.75rem;
   }
 
   @media (max-width: 900px) {

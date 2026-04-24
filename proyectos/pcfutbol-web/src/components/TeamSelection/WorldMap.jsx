@@ -66,19 +66,19 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
       const height = window.innerHeight;
       setIsMobile(width < MOBILE_BREAKPOINT);
       if (width < 500) {
-        setSize(Math.min(300, width * 0.75));
+        setSize(Math.min(300, width * 0.78));
       } else if (width < 768) {
-        setSize(Math.min(360, width * 0.6));
+        setSize(Math.min(360, width * 0.64));
       } else if (width < 1200) {
         // Medium desktop — fill the globe area generously
         const availableWidth = width * 0.65;
         const availableHeight = height - 100; // subtract thin header + progress bar
-        setSize(Math.min(620, availableWidth * 0.92, availableHeight * 0.88));
+        setSize(Math.min(600, availableWidth * 0.86, availableHeight * 0.82));
       } else {
         // Large desktop — dominant globe
         const availableWidth = width * 0.68;
         const availableHeight = height - 100;
-        setSize(Math.min(780, availableWidth * 0.92, availableHeight * 0.9));
+        setSize(Math.min(740, availableWidth * 0.84, availableHeight * 0.82));
       }
     };
     handleResize();
@@ -89,7 +89,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   // Center on Europe initially (slightly higher altitude for a more cinematic frame)
   useEffect(() => {
     if (globeEl.current) {
-      globeEl.current.pointOfView({ lat: 46, lng: 8, altitude: 2.15 }, 0);
+      globeEl.current.pointOfView({ lat: 34, lng: 3, altitude: 2.35 }, 0);
       // Subtle idle auto-rotation for premium feel
       const controls = globeEl.current.controls?.();
       if (controls) {
@@ -106,7 +106,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     const controls = globeEl.current.controls?.();
     if (selectedCountry && COUNTRY_DATA[selectedCountry]) {
       const { lat, lng } = COUNTRY_DATA[selectedCountry];
-      globeEl.current.pointOfView({ lat, lng, altitude: 1.6 }, 600);
+      globeEl.current.pointOfView({ lat, lng, altitude: 1.75 }, 600);
       if (controls) controls.autoRotate = false;
     } else if (controls) {
       controls.autoRotate = true;
@@ -147,13 +147,25 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     const el = document.createElement('div');
     el.className = `globe-marker ${d.isSelected ? 'globe-marker--selected' : ''}`;
     el.style.setProperty('--marker-color', d.isSelected ? '#00FF88' : d.color);
-    el.innerHTML = `<span class="globe-marker__code">${d.code}</span>`;
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', d.name);
+    el.innerHTML = `
+      <span class="globe-marker__dot" aria-hidden="true"></span>
+      ${d.isSelected ? `<span class="globe-marker__tooltip">${d.name}</span>` : ''}
+    `;
     el.addEventListener('click', (e) => {
       e.stopPropagation();
       if (d?.id) onCountryClick(d.id);
     });
-    // Tooltip on hover
-    el.title = `${d.name} — ${d.leagues}`;
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        if (d?.id) onCountryClick(d.id);
+      }
+    });
+    el.title = d.name;
     return el;
   }, [onCountryClick]);
 
@@ -238,7 +250,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         htmlElementsData={markersData}
         htmlLat="lat"
         htmlLng="lng"
-        htmlAltitude={0.03}
+        htmlAltitude={0.035}
         htmlElement={createMarkerElement}
         htmlTransitionDuration={300}
 
