@@ -1073,6 +1073,9 @@ export default function TeamSelection() {
   const showMobileTeamTabs = currentContent === 'teams' && isMobileTeamLayout;
   const teamsPanelClasses = `teams-panel${showMobileTeamTabs && mobileTeamsView === 'details' ? ' teams-panel--hidden-mobile' : ''}`;
   const detailsPanelClasses = `details-panel${showMobileTeamTabs ? ' details-panel--mobile-tab' : ''}${showMobileTeamTabs && mobileTeamsView !== 'details' ? ' details-panel--hidden-mobile' : ''}`;
+  const selectedCountryName = selectedCountry?.nameKey ? t(selectedCountry.nameKey) : selectedCountry?.name;
+  const selectedCountryLeagueCount = selectedCountry?.leagues.length || 0;
+  const selectedCountryClubCount = selectedCountry?.leagues.reduce((total, leagueId) => total + getLeagueTeams(leagueId).length, 0) || 0;
 
   const renderCountryRow = (country) => {
     const countryName = country.nameKey ? t(country.nameKey) : country.id;
@@ -1149,7 +1152,7 @@ export default function TeamSelection() {
       <div className="pcf-ts-content">
         {/* PAÍSES - Mapa interactivo */}
         {currentContent === 'countries' && (
-          <div className="map-selection">
+          <div className={`map-selection ${selectedCountry ? 'map-selection--country-selected' : ''}`}>
             {/* Row con mapa y panel */}
             <div className="map-selection__row">
               {/* Globo unificado con todos los países */}
@@ -1173,33 +1176,61 @@ export default function TeamSelection() {
               {/* Panel de ligas del país seleccionado */}
               <div className="map-selection__panel">
               {selectedCountry ? (
-                <>
-                  <div className="map-selection__title">
-                    <CountryFlag
-                      countryId={selectedCountry.id}
-                      countryName={selectedCountry.nameKey ? t(selectedCountry.nameKey) : selectedCountry.name}
-                      size="lg"
-                      className="map-selection__title-flag"
-                    />
-                    <span>{selectedCountry.nameKey ? t(selectedCountry.nameKey) : selectedCountry.name}</span>
+                <div className="map-selection__country-stage">
+                  <div className="map-selection__country-hero">
+                    <button
+                      type="button"
+                      className="map-selection__country-back"
+                      onClick={() => {
+                        setSelectedCountry(null);
+                        setHoveredCountryId(null);
+                      }}
+                    >
+                      <ArrowLeft size={15} />
+                      {t('teamSelection.countries')}
+                    </button>
+                    <div className="map-selection__country-identity">
+                      <CountryFlag
+                        countryId={selectedCountry.id}
+                        countryName={selectedCountryName}
+                        size="lg"
+                        className="map-selection__country-hero-flag"
+                      />
+                      <div className="map-selection__country-heading">
+                        <span className="map-selection__country-kicker">{t('teamSelection.countryLeague')}</span>
+                        <h2>{selectedCountryName}</h2>
+                      </div>
+                    </div>
+                    <div className="map-selection__country-stats">
+                      <div className="map-selection__country-stat">
+                        <span>{String(selectedCountryLeagueCount).padStart(2, '0')}</span>
+                        <small>{t('teamSelection.leaguesCount', { count: selectedCountryLeagueCount })}</small>
+                      </div>
+                      <div className="map-selection__country-stat">
+                        <span>{String(selectedCountryClubCount).padStart(2, '0')}</span>
+                        <small>{t('teamSelection.teamsCount', { count: selectedCountryClubCount })}</small>
+                      </div>
+                    </div>
                   </div>
-                  <div className="map-selection__leagues">
+                  <div className="map-selection__divisions">
                     {selectedCountry.leagues.map(leagueId => {
                       const leagueTeams = getLeagueTeams(leagueId);
                       const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
                       const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
                       const numGroups = groups ? Object.keys(groups).length : 0;
+                      const leagueTier = getLeagueTier(leagueId);
                       
                       return (
                         <button
                           key={leagueId}
-                          className={`map-selection__league ${leagueTeams.length === 0 ? 'disabled' : ''}`}
+                          className={`map-selection__division-card ${leagueTeams.length === 0 ? 'disabled' : ''}`}
                           onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
                           disabled={leagueTeams.length === 0}
                         >
-                          <div>
-                            <div className="map-selection__league-name">{LEAGUE_NAMES[leagueId]}</div>
-                            <div className="map-selection__league-info">
+                          <span className="map-selection__division-index">{String(leagueTier).padStart(2, '0')}</span>
+                          <div className="map-selection__division-copy">
+                            <div className="map-selection__division-name">{LEAGUE_NAMES[leagueId]}</div>
+                            <div className="map-selection__division-info">
                               {leagueTeams.length > 0 
                                 ? hasGroupsForLeague 
                                   ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
@@ -1208,14 +1239,14 @@ export default function TeamSelection() {
                               }
                             </div>
                           </div>
-                          <span className="map-selection__league-arrow">
+                          <span className="map-selection__division-arrow">
                             {leagueTeams.length > 0 ? <ChevronRight size={18} /> : <Lock size={14} />}
                           </span>
                         </button>
                       );
                     })}
                   </div>
-                </>
+                </div>
               ) : (
                 <>
                   <div className="map-selection__title">
