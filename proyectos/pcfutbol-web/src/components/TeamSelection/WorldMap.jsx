@@ -1,8 +1,6 @@
 import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Globe as GlobeIcon } from 'lucide-react';
 import Globe from 'react-globe.gl';
-import CountryFlag from './CountryFlag';
 import './WorldMap.scss';
 
 // Merged country data: Europe + South America
@@ -175,71 +173,9 @@ export default function WorldMap({ countries, selectedCountry, hoveredCountry, o
     return el;
   }, [onCountryClick]);
 
-  // Mobile view: grouped country list
+  // Mobile country list is now rendered by TeamSelection to avoid duplicated selectors.
   if (isMobile) {
-    if (selectedCountry) {
-      return null;
-    }
-
-    const europeCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'europe');
-    const saCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'southamerica');
-    const worldCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'world');
-
-    return (
-      <div className="countries-mobile">
-        <h3 className="countries-mobile__title"><GlobeIcon size={16} /> {t('teamSelection.mobileSelectCountry')}</h3>
-        <div className="countries-mobile__list">
-          {europeCountries.length > 0 && (
-            <>
-              <div className="countries-mobile__header">🌍 {t('teamSelection.continentEurope')}</div>
-              {europeCountries.map(country => (
-                <button
-                  key={country.id}
-                  className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
-                  onClick={() => onCountryClick(country.id)}
-                >
-                  <CountryFlag countryId={country.id} countryName={resolveName(country)} size="lg" className="countries-mobile__flag" />
-                  <span className="countries-mobile__name">{resolveName(country)}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
-                </button>
-              ))}
-            </>
-          )}
-          {saCountries.length > 0 && (
-            <>
-              <div className="countries-mobile__header">🌎 {t('teamSelection.continentSouthAmerica')}</div>
-              {saCountries.map(country => (
-                <button
-                  key={country.id}
-                  className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
-                  onClick={() => onCountryClick(country.id)}
-                >
-                  <CountryFlag countryId={country.id} countryName={resolveName(country)} size="lg" className="countries-mobile__flag" />
-                  <span className="countries-mobile__name">{resolveName(country)}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
-                </button>
-              ))}
-            </>
-          )}
-          {worldCountries.length > 0 && (
-            <>
-              <div className="countries-mobile__header">🌏 {t('teamSelection.continentRestOfWorld')}</div>
-              {worldCountries.map(country => (
-                <button
-                  key={country.id}
-                  className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
-                  onClick={() => onCountryClick(country.id)}
-                >
-                  <CountryFlag countryId={country.id} countryName={resolveName(country)} size="lg" className="countries-mobile__flag" />
-                  <span className="countries-mobile__name">{resolveName(country)}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
-                </button>
-              ))}
-            </>
-          )}
-        </div>
-      </div>
-    );
+    return null;
   }
 
   // Desktop: 3D globe with HTML markers
