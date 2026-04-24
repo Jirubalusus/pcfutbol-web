@@ -1317,11 +1317,11 @@ export default function TeamSelection() {
         {currentContent === 'divisions' && selectedCountry && (
           <div className="country-divisions">
             <div className="country-divisions__shell">
-              <div className="map-selection__country-stage country-divisions__stage">
-                <div className="map-selection__country-hero country-divisions__hero">
+              <aside className="country-divisions__identity">
+                <div className="country-divisions__identity-top">
                   <button
                     type="button"
-                    className="map-selection__country-back"
+                    className="map-selection__country-back country-divisions__back"
                     onClick={() => {
                       setStep(1);
                       setSelectedCountry(null);
@@ -1331,40 +1331,47 @@ export default function TeamSelection() {
                     <ArrowLeft size={15} />
                     {t('teamSelection.countries')}
                   </button>
-                  <div className="map-selection__country-identity">
+
+                  <div className="country-divisions__step-mark">
+                    <span>02</span>
+                    <small>{t('teamSelection.countryLeague')}</small>
+                  </div>
+                </div>
+
+                <div className="country-divisions__country">
+                  <div className="country-divisions__flag-frame">
                     <CountryFlag
                       countryId={selectedCountry.id}
                       countryName={selectedCountryName}
                       size="lg"
-                      className="map-selection__country-hero-flag"
+                      className="country-divisions__flag"
                     />
-                    <div className="map-selection__country-heading">
-                      <span className="map-selection__country-kicker">{t('teamSelection.countryLeague')}</span>
-                      <h2>{selectedCountryName}</h2>
-                    </div>
                   </div>
-                  <div className="map-selection__country-stats">
-                    <div className="map-selection__country-stat">
-                      <span>{String(selectedCountryLeagueCount).padStart(2, '0')}</span>
-                      <small>{t('teamSelection.leaguesCount', { count: selectedCountryLeagueCount })}</small>
-                    </div>
-                    <div className="map-selection__country-stat">
-                      <span>{String(selectedCountryClubCount).padStart(2, '0')}</span>
-                      <small>{t('teamSelection.teamsCount', { count: selectedCountryClubCount })}</small>
-                    </div>
-                  </div>
+                  <span className="country-divisions__kicker">{t('teamSelection.countryLeague')}</span>
+                  <h2>{selectedCountryName}</h2>
                 </div>
 
-                <div className="country-divisions__content">
-                  <div className="country-divisions__heading">
-                    <span>{t('teamSelection.countryLeague')}</span>
-                    <strong>{t('teamSelection.leaguesOf', { country: selectedCountryName })}</strong>
+                <div className="country-divisions__stats">
+                  <div className="country-divisions__stat">
+                    <span>{String(selectedCountryLeagueCount).padStart(2, '0')}</span>
+                    <small>{t('teamSelection.leaguesCount', { count: selectedCountryLeagueCount })}</small>
                   </div>
-                  <div className="map-selection__divisions country-divisions__grid">
-                    {selectedCountry.leagues.map(renderDivisionCard)}
+                  <div className="country-divisions__stat">
+                    <span>{String(selectedCountryClubCount).padStart(2, '0')}</span>
+                    <small>{t('teamSelection.teamsCount', { count: selectedCountryClubCount })}</small>
                   </div>
                 </div>
-              </div>
+              </aside>
+
+              <section className="country-divisions__main">
+                <div className="country-divisions__heading">
+                  <span>{t('teamSelection.countryLeague')}</span>
+                  <strong>{t('teamSelection.leaguesOf', { country: selectedCountryName })}</strong>
+                </div>
+                <div className="map-selection__divisions country-divisions__list">
+                  {selectedCountry.leagues.map(renderDivisionCard)}
+                </div>
+              </section>
             </div>
           </div>
         )}
