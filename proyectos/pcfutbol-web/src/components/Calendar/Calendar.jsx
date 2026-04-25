@@ -423,7 +423,7 @@ export default function Calendar() {
     <div key={key} className={`fixture-card ${homeIsPlayer || awayIsPlayer ? 'is-player' : ''} ${played ? 'played' : ''} ${extraClass || ''}`}>
       <div className={`team home ${homeIsPlayer ? 'is-you' : ''}`}>
         <span className="team-name">{homeName}</span>
-        {homeTeamId && <TeamCrest teamId={homeTeamId} size={20} />}
+        {homeTeamId && <TeamCrest teamId={homeTeamId} size={22} />}
       </div>
       <div className="match-center">
         {played ? (
@@ -438,7 +438,7 @@ export default function Calendar() {
         )}
       </div>
       <div className={`team away ${awayIsPlayer ? 'is-you' : ''}`}>
-        {awayTeamId && <TeamCrest teamId={awayTeamId} size={20} />}
+        {awayTeamId && <TeamCrest teamId={awayTeamId} size={22} />}
         <span className="team-name">{awayName}</span>
       </div>
       <div className="match-status">
