@@ -248,6 +248,20 @@ $blue: #0a84ff;
       &.col-name { padding-left: 0.3rem; }
       &.col-ovr, &.col-salary, &.col-contract { justify-content: center; }
     }
+
+    @media (max-width: 768px) {
+      grid-template-columns: minmax(118px, 1fr) 34px 70px 54px;
+      gap: 5px;
+      padding: 0.35rem 0.4rem;
+
+      .col-pos {
+        display: none;
+      }
+
+      .col-name {
+        padding-left: 0;
+      }
+    }
   }
 
   // ============================================================
@@ -260,90 +274,6 @@ $blue: #0a84ff;
     border-top: none;
     border-radius: 0 0 6px 6px;
     overflow: hidden;
-
-    @media (max-width: 768px) {
-      .player-row {
-        grid-template-columns: 40px minmax(0, 1fr) 42px 88px 74px;
-        gap: 4px;
-        padding: 0.38rem 0.45rem;
-      }
-
-      .player-main {
-        gap: 0.35rem;
-      }
-
-      .player-main .pos-wrap {
-        margin-left: 0;
-      }
-
-      .player-main .pos {
-        width: 34px;
-        height: 20px;
-        font-size: 0.62rem;
-      }
-
-      .player-main .pos-secondary {
-        display: none;
-      }
-
-      .player-main .info {
-        min-width: 0;
-      }
-
-      .player-main .info .name-row {
-        gap: 0.25rem;
-        min-width: 0;
-      }
-
-      .player-main .info .name {
-        font-size: 0.76rem;
-      }
-
-      .player-main .info .meta {
-        display: none;
-      }
-
-      .player-main .info .player-tags {
-        display: none;
-      }
-
-      .player-main .info .tag-injury,
-      .player-main .info .tag-suspended,
-      .player-main .info .tag-yellows {
-        display: none;
-      }
-
-      .player-ovr-badge {
-        height: 24px;
-        font-size: 0.78rem;
-      }
-
-      .player-contract {
-        min-width: 0;
-      }
-
-      .player-contract .salary {
-        font-size: 0.72rem;
-        white-space: nowrap;
-      }
-
-      .player-contract .yearly {
-        display: none;
-      }
-
-      .player-status {
-        min-width: 0;
-      }
-
-      .player-status .contract {
-        font-size: 0.7rem;
-        white-space: nowrap;
-      }
-
-      .player-status .renew-icon {
-        display: none;
-      }
-    }
 
     .player-row {
       display: grid;
@@ -655,6 +585,100 @@ $blue: #0a84ff;
             border: 1px solid rgba($blue, 0.25);
             white-space: nowrap;
           }
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      border-radius: 8px;
+
+      .player-row {
+        grid-template-columns: minmax(118px, 1fr) 34px 70px 54px;
+        gap: 5px;
+        min-height: 44px;
+        padding: 0.34rem 0.4rem;
+      }
+
+      .player-main {
+        grid-column: auto;
+        gap: 0.4rem;
+        min-width: 0;
+      }
+
+      .player-main .pos-wrap {
+        margin-left: 0;
+        flex-shrink: 0;
+      }
+
+      .player-main .pos {
+        width: 32px;
+        height: 20px;
+        font-size: 0.62rem;
+      }
+
+      .player-main .pos-secondary,
+      .player-main .info .meta,
+      .player-main .info .player-tags,
+      .player-main .info .tag-injury,
+      .player-main .info .tag-suspended,
+      .player-main .info .tag-yellows {
+        display: none;
+      }
+
+      .player-main .info {
+        min-width: 0;
+      }
+
+      .player-main .info .name-row {
+        gap: 0.25rem;
+        min-width: 0;
+      }
+
+      .player-main .info .name {
+        font-size: 0.78rem;
+        line-height: 1.1;
+      }
+
+      .player-ovr-badge {
+        min-width: 0;
+        height: 24px;
+        padding: 0;
+        font-size: 0.78rem;
+      }
+
+      .player-contract,
+      .player-status {
+        min-width: 0;
+      }
+
+      .player-contract .salary {
+        display: block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.68rem;
+        line-height: 1.1;
+        white-space: nowrap;
+      }
+
+      .player-contract .yearly,
+      .player-status .renew-icon {
+        display: none;
+      }
+
+      .player-status .contract {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0.18rem 0.2rem;
+        font-size: 0.62rem;
+        line-height: 1.05;
+        text-align: center;
+        white-space: nowrap;
+
+        svg {
+          display: none;
         }
       }
     }
