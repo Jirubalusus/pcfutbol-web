@@ -33,6 +33,8 @@ const gameContext = await server.ssrLoadModule('/src/context/GameContext.jsx');
 
 const {
   loadAllData,
+  getPrimeraRfefTeams,
+  getPrimeraRfefGroups,
   getSegundaRfefTeams,
   getSegundaRfefGroups
 } = teamsFirestore;
@@ -47,8 +49,70 @@ const {
 } = playoffEngine;
 const { gameReducer, initialState } = gameContext;
 
+const leagueMeta = {
+  primeraRFEF: {
+    groups: getPrimeraRfefGroups,
+    teams: getPrimeraRfefTeams,
+    groupIds: ['grupo1', 'grupo2'],
+    promotedTo: 'segunda',
+    playoffPayloadKey: 'primeraRFEFPlayoffBrackets'
+  },
+  segundaRFEF: {
+    groups: getSegundaRfefGroups,
+    teams: getSegundaRfefTeams,
+    groupIds: ['grupo1', 'grupo2', 'grupo3', 'grupo4', 'grupo5'],
+    promotedTo: 'primeraRFEF',
+    playoffPayloadKey: 'segundaRFEFPlayoffBrackets'
+  }
+};
+
+const summary = [];
+
 function assert(condition, message) {
   if (!condition) throw new Error(message);
+}
+
+async function scenario(name, fn) {
+  const started = Date.now();
+  try {
+    await fn();
+    summary.push({ name, ok: true, ms: Date.now() - started });
+    console.log(`PASS ${name}`);
+  } catch (error) {
+    summary.push({ name, ok: false, ms: Date.now() - started, error });
+    console.error(`FAIL ${name}`);
+    console.error(`     ${error.message}`);
+  }
+}
+
+function normalizeGroups(rawGroups, groupIds) {
+  return Object.fromEntries(groupIds.map(groupId => [
+    groupId,
+    rawGroups[groupId]?.teams || rawGroups[groupId] || []
+  ]));
+}
+
+function injectPlayerIntoFirstGroup(groupsData, leagueId, teamOverride = null) {
+  const teams = leagueMeta[leagueId].teams();
+  const playerTeam = teamOverride
+    || teams.find(team => team.id === playerTeamId)
+    || getSegundaRfefTeams().find(team => team.id === playerTeamId);
+  assert(playerTeam, `Missing ${playerTeamId} team data for ${leagueId}`);
+
+  const entries = Object.entries(groupsData);
+  const currentGroup = entries.find(([, teamsInGroup]) => teamsInGroup.some(team => team.id === playerTeamId))?.[0];
+  const targetGroup = currentGroup || entries[0]?.[0];
+  assert(targetGroup, `No groups available for ${leagueId}`);
+
+  const nextGroups = {};
+  for (const [groupId, teamsInGroup] of entries) {
+    let nextTeams = teamsInGroup.filter(team => team.id !== playerTeamId);
+    if (groupId === targetGroup) {
+      nextTeams = [playerTeam, ...nextTeams].slice(0, teamsInGroup.length || 18);
+    }
+    nextGroups[groupId] = nextTeams;
+  }
+  return nextGroups;
 }
 
 function rankTableWithPlayerAt(table, teamId, position) {
@@ -65,30 +129,27 @@ function rankTableWithPlayerAt(table, teamId, position) {
 
   return ordered.map((entry, index) => ({
     ...entry,
-    played: 34,
-    won: Math.max(0, 25 - index),
+    played: Math.max(1, (ordered.length - 1) * 2),
+    won: Math.max(0, ordered.length - index),
     drawn: 0,
     lost: Math.max(0, index),
-    goalsFor: 70 - index,
+    goalsFor: 80 - index,
     goalsAgainst: 20 + index,
-    goalDifference: 50 - (index * 2),
+    goalDifference: 60 - (index * 2),
     points: (ordered.length - index) * 3
   }));
 }
 
 function makeGroupState(leagueId, playerPosition, teamOverride = null) {
-  const configGroups = getSegundaRfefGroups();
-  const groupsData = {
-    grupo1: configGroups.grupo1?.teams || [],
-    grupo2: configGroups.grupo2?.teams || [],
-    grupo3: configGroups.grupo3?.teams || [],
-    grupo4: configGroups.grupo4?.teams || [],
-    grupo5: configGroups.grupo5?.teams || []
-  };
-
+  const meta = leagueMeta[leagueId];
+  const groupsData = injectPlayerIntoFirstGroup(
+    normalizeGroups(meta.groups(), meta.groupIds),
+    leagueId,
+    teamOverride
+  );
   const groupLeague = initializeGroupLeague(groupsData, playerTeamId);
   const playerGroupId = groupLeague.playerGroup;
-  assert(playerGroupId, 'Recreativo group was not found');
+  assert(playerGroupId, `${playerTeamId} group was not found in ${leagueId}`);
 
   const playerGroup = groupLeague.groups[playerGroupId];
   playerGroup.table = rankTableWithPlayerAt(playerGroup.table, playerTeamId, playerPosition);
@@ -101,8 +162,10 @@ function makeGroupState(leagueId, playerPosition, teamOverride = null) {
     otherLeagues[leagueId].playerGroup = playerGroupId;
   }
 
-  const team = teamOverride || getSegundaRfefTeams().find(team => team.id === playerTeamId);
-  assert(team, 'Recreativo team data was not found');
+  const team = teamOverride
+    || meta.teams().find(team => team.id === playerTeamId)
+    || getSegundaRfefTeams().find(team => team.id === playerTeamId);
+  assert(team, `${playerTeamId} team data was not found`);
 
   return {
     playerLeagueId: leagueId,
@@ -135,7 +198,7 @@ function makeWinResult(match, winnerId) {
   };
 }
 
-function completePlayerGroupPlayoff(state) {
+function completePlayerGroupPlayoff(state, playerWins = true) {
   const fullGroups = {
     ...(state.otherLeagues[state.playerLeagueId]?.groups || {}),
     [state.playerGroupId]: {
@@ -149,7 +212,7 @@ function completePlayerGroupPlayoff(state) {
     playerGroup: state.playerGroupId
   };
 
-  const { brackets } = generateAllGroupPlayoffs(groupLeagueData, getSegundaRfefTeams(), playerTeamId);
+  const { brackets } = generateAllGroupPlayoffs(groupLeagueData, leagueMeta[state.playerLeagueId].teams(), playerTeamId);
   const simulated = simulateAllGroupPlayoffs(brackets, playerTeamId);
   let playerBracket = simulated.playerBracket;
   assert(playerBracket, 'Player playoff bracket was not created');
@@ -161,29 +224,44 @@ function completePlayerGroupPlayoff(state) {
 
   const final = getNextPlayoffMatch(playerTeamId, playerBracket);
   assert(final?.id?.endsWith('_final'), 'Winning the semifinal did not create a playable final');
-  playerBracket = advanceGroupPlayoffBracket(playerBracket, final.id, makeWinResult(final, playerTeamId));
+  const finalWinner = playerWins
+    ? playerTeamId
+    : (final.homeTeam.teamId === playerTeamId ? final.awayTeam.teamId : final.homeTeam.teamId);
+  playerBracket = advanceGroupPlayoffBracket(playerBracket, final.id, makeWinResult(final, finalWinner));
 
   const completed = {
     ...simulated.brackets,
     [state.playerGroupId]: playerBracket
   };
-  assert(playerBracket.phase === 'completed' && playerBracket.winner === playerTeamId, 'Player playoff did not finish with promotion');
+  assert(playerBracket.phase === 'completed', 'Player playoff did not complete');
+  assert(playerWins === (playerBracket.winner === playerTeamId), 'Unexpected player playoff winner');
   return completed;
 }
 
-function assertPlayablePlayerLeague(result, expectedLeagueId) {
-  assert(result.newPlayerLeagueId === expectedLeagueId, `Expected ${expectedLeagueId}, got ${result.newPlayerLeagueId}`);
-  assert(result.playerLeague.table.some(entry => entry.teamId === playerTeamId), `${expectedLeagueId} table does not include Recreativo`);
-  assert(result.playerLeague.fixtures.some(f => f.homeTeam === playerTeamId || f.awayTeam === playerTeamId), `${expectedLeagueId} fixtures do not include Recreativo`);
-  assert(result.playerLeague.table.length > 0, `${expectedLeagueId} table is empty`);
-  assert(result.playerLeague.fixtures.length > 0, `${expectedLeagueId} fixtures are empty`);
+function initializeNextSeason(state, rfefPlayoffBrackets = null) {
+  const payload = rfefPlayoffBrackets
+    ? { [leagueMeta[state.playerLeagueId].playoffPayloadKey]: rfefPlayoffBrackets }
+    : {};
+  return initializeNewSeasonWithPromotions(state, playerTeamId, null, payload);
+}
+
+function assertPlayablePlayerLeague(result, expectedLeagueId, label = expectedLeagueId) {
+  assert(result.newPlayerLeagueId === expectedLeagueId, `${label}: expected ${expectedLeagueId}, got ${result.newPlayerLeagueId}`);
+  assert(Array.isArray(result.playerLeague.table) && result.playerLeague.table.length > 0, `${label}: player table is empty`);
+  assert(Array.isArray(result.playerLeague.fixtures) && result.playerLeague.fixtures.length > 0, `${label}: player fixtures are empty`);
+  assert(result.playerLeague.table.some(entry => entry.teamId === playerTeamId), `${label}: table does not include ${playerTeamId}`);
+  assert(result.playerLeague.fixtures.some(f => f.homeTeam === playerTeamId || f.awayTeam === playerTeamId), `${label}: fixtures do not include ${playerTeamId}`);
+  if (['primeraRFEF', 'segundaRFEF'].includes(expectedLeagueId)) {
+    assert(result.playerLeague.playerGroup, `${label}: player group was not assigned`);
+    assert(result.otherLeagues[expectedLeagueId]?.playerGroup === result.playerLeague.playerGroup, `${label}: otherLeagues lost player group metadata`);
+  }
 }
 
 function makeReducerReadyState(sourceState) {
   return {
     ...initialState,
     gameStarted: true,
-    currentSeason: 1,
+    currentSeason: sourceState.currentSeason || 1,
     currentWeek: 34,
     teamId: playerTeamId,
     team: sourceState.team,
@@ -201,7 +279,8 @@ function makeReducerReadyState(sourceState) {
   };
 }
 
-function assertStartNewSeasonAtomic(sourceState, newSeasonData, label) {
+function applyStartNewSeason(sourceState, newSeasonData, label) {
+  const expectedSeason = (sourceState.currentSeason || 1) + 1;
   const nextState = gameReducer(makeReducerReadyState(sourceState), {
     type: 'START_NEW_SEASON',
     payload: {
@@ -219,51 +298,112 @@ function assertStartNewSeasonAtomic(sourceState, newSeasonData, label) {
     }
   });
 
+  assert(nextState.currentSeason === expectedSeason, `${label}: START_NEW_SEASON did not increment season`);
+  assert(nextState.currentWeek === 1, `${label}: START_NEW_SEASON did not reset week`);
   assert(nextState.playerLeagueId === newSeasonData.newPlayerLeagueId, `${label}: START_NEW_SEASON did not atomically set playerLeagueId`);
   assert(nextState.leagueId === newSeasonData.newPlayerLeagueId, `${label}: START_NEW_SEASON did not atomically set leagueId`);
   assert(nextState.playerGroupId === (newSeasonData.playerLeague.playerGroup || null), `${label}: START_NEW_SEASON did not atomically set playerGroupId`);
-  assert(nextState.leagueTable.some(entry => entry.teamId === playerTeamId), `${label}: reducer table lost Recreativo`);
-  assert(nextState.fixtures.some(f => f.homeTeam === playerTeamId || f.awayTeam === playerTeamId), `${label}: reducer fixtures lost Recreativo`);
+  assert(nextState.leagueTable.some(entry => entry.teamId === playerTeamId), `${label}: reducer table lost ${playerTeamId}`);
+  assert(nextState.fixtures.some(f => f.homeTeam === playerTeamId || f.awayTeam === playerTeamId), `${label}: reducer fixtures lost ${playerTeamId}`);
+  return nextState;
 }
 
 assert(await loadAllData(), 'Team data did not load successfully');
 
-const playoffState = makeGroupState('segundaRFEF', 2);
-const completedPlayoffs = completePlayerGroupPlayoff(playoffState);
-const playoffPromotion = initializeNewSeasonWithPromotions(playoffState, playerTeamId, null, {
-  segundaRFEFPlayoffBrackets: completedPlayoffs
+await scenario('Segunda RFEF direct champion promotion creates playable Primera RFEF season', () => {
+  const state = makeGroupState('segundaRFEF', 1);
+  const next = initializeNextSeason(state);
+  assertPlayablePlayerLeague(next, 'primeraRFEF', 'Segunda RFEF direct promotion');
+  assert(Object.keys(next.otherLeagues.primeraRFEF?.groups || {}).length > 0, 'Current Primera RFEF non-player groups were not preserved');
+  applyStartNewSeason(state, next, 'Segunda RFEF direct promotion');
 });
-assertPlayablePlayerLeague(playoffPromotion, 'primeraRFEF');
-assertStartNewSeasonAtomic(playoffState, playoffPromotion, 'Segunda RFEF playoff promotion');
-console.log('OK: Segunda RFEF playoff semifinal advances to final and promotes after final win');
 
-const directPromotionState = makeGroupState('segundaRFEF', 1);
-const directPromotion = initializeNewSeasonWithPromotions(directPromotionState, playerTeamId);
-assertPlayablePlayerLeague(directPromotion, 'primeraRFEF');
-assert(
-  Object.keys(directPromotion.otherLeagues.primeraRFEF?.groups || {}).length > 0,
-  'Current Primera RFEF non-player groups were not preserved in otherLeagues'
-);
-assertStartNewSeasonAtomic(directPromotionState, directPromotion, 'Segunda RFEF direct promotion');
-console.log('OK: Segunda RFEF champion promotes to Primera RFEF with generated table and fixtures');
+await scenario('Segunda RFEF playoff winner advances semifinal to final and promotes', () => {
+  const state = makeGroupState('segundaRFEF', 2);
+  const completedPlayoffs = completePlayerGroupPlayoff(state, true);
+  const next = initializeNextSeason(state, completedPlayoffs);
+  assertPlayablePlayerLeague(next, 'primeraRFEF', 'Segunda RFEF playoff promotion');
+  applyStartNewSeason(state, next, 'Segunda RFEF playoff promotion');
+});
 
-const primeraGroupId = directPromotion.playerLeague.playerGroup;
-assert(primeraGroupId, 'Promoted Primera RFEF player group was not assigned');
+await scenario('Segunda RFEF playoff final loss stays in Segunda RFEF with a fresh season', () => {
+  const state = makeGroupState('segundaRFEF', 2);
+  const completedPlayoffs = completePlayerGroupPlayoff(state, false);
+  const next = initializeNextSeason(state, completedPlayoffs);
+  assertPlayablePlayerLeague(next, 'segundaRFEF', 'Segunda RFEF playoff loss');
+  applyStartNewSeason(state, next, 'Segunda RFEF playoff loss');
+});
 
-const primeraSurvivalState = {
-  playerLeagueId: 'primeraRFEF',
-  leagueId: 'primeraRFEF',
-  playerGroupId: primeraGroupId,
-  teamId: playerTeamId,
-  team: directPromotionState.team,
-  leagueTable: rankTableWithPlayerAt(directPromotion.playerLeague.table, playerTeamId, 7),
-  fixtures: directPromotion.playerLeague.fixtures,
-  otherLeagues: directPromotion.otherLeagues
-};
+await scenario('Segunda RFEF mid-table finish stays in division with standings and fixtures', () => {
+  const state = makeGroupState('segundaRFEF', 8);
+  const next = initializeNextSeason(state);
+  assertPlayablePlayerLeague(next, 'segundaRFEF', 'Segunda RFEF survival');
+  applyStartNewSeason(state, next, 'Segunda RFEF survival');
+});
 
-const primeraSurvival = initializeNewSeasonWithPromotions(primeraSurvivalState, playerTeamId);
-assertPlayablePlayerLeague(primeraSurvival, 'primeraRFEF');
-assertStartNewSeasonAtomic(primeraSurvivalState, primeraSurvival, 'Primera RFEF survival');
-console.log('OK: Primera RFEF 7th-place survival rolls over with classification and fixtures');
+await scenario('Primera RFEF direct champion promotion creates playable Segunda season', () => {
+  const state = makeGroupState('primeraRFEF', 1);
+  const next = initializeNextSeason(state);
+  assertPlayablePlayerLeague(next, 'segunda', 'Primera RFEF direct promotion');
+  applyStartNewSeason(state, next, 'Primera RFEF direct promotion');
+});
+
+await scenario('Primera RFEF playoff winner promotes to Segunda', () => {
+  const state = makeGroupState('primeraRFEF', 2);
+  const completedPlayoffs = completePlayerGroupPlayoff(state, true);
+  const next = initializeNextSeason(state, completedPlayoffs);
+  assertPlayablePlayerLeague(next, 'segunda', 'Primera RFEF playoff promotion');
+  applyStartNewSeason(state, next, 'Primera RFEF playoff promotion');
+});
+
+await scenario('Primera RFEF safe finish rolls over in Primera RFEF', () => {
+  const state = makeGroupState('primeraRFEF', 7);
+  const next = initializeNextSeason(state);
+  assertPlayablePlayerLeague(next, 'primeraRFEF', 'Primera RFEF survival');
+  applyStartNewSeason(state, next, 'Primera RFEF survival');
+});
+
+await scenario('Primera RFEF relegation drops to playable Segunda RFEF season', () => {
+  const state = makeGroupState('primeraRFEF', 18);
+  const next = initializeNextSeason(state);
+  assertPlayablePlayerLeague(next, 'segundaRFEF', 'Primera RFEF relegation');
+  applyStartNewSeason(state, next, 'Primera RFEF relegation');
+});
+
+await scenario('Multiple-season chain: Segunda RFEF to Primera RFEF to Segunda never creates an empty next season', () => {
+  const seasonOne = makeGroupState('segundaRFEF', 1);
+  const seasonTwoData = initializeNextSeason(seasonOne);
+  assertPlayablePlayerLeague(seasonTwoData, 'primeraRFEF', 'multi-season year 2');
+  const seasonTwoReducerState = applyStartNewSeason(seasonOne, seasonTwoData, 'multi-season year 2 reducer');
+
+  const seasonTwo = {
+    ...seasonTwoReducerState,
+    playerLeagueId: 'primeraRFEF',
+    leagueId: 'primeraRFEF',
+    playerGroupId: seasonTwoData.playerLeague.playerGroup,
+    leagueTable: rankTableWithPlayerAt(seasonTwoData.playerLeague.table, playerTeamId, 1),
+    fixtures: seasonTwoData.playerLeague.fixtures,
+    otherLeagues: seasonTwoData.otherLeagues
+  };
+  const seasonThreeData = initializeNextSeason(seasonTwo);
+  assertPlayablePlayerLeague(seasonThreeData, 'segunda', 'multi-season year 3');
+  const seasonThreeReducerState = applyStartNewSeason(seasonTwo, seasonThreeData, 'multi-season year 3 reducer');
+  assert(seasonThreeReducerState.currentSeason === 3, 'multi-season chain did not roll into the third season');
+});
 
 await server.close();
+
+const passed = summary.filter(result => result.ok).length;
+const failed = summary.length - passed;
+console.log('\nRFEF progression regression summary');
+console.log('='.repeat(40));
+for (const result of summary) {
+  const status = result.ok ? 'PASS' : 'FAIL';
+  console.log(`${status} ${String(result.ms).padStart(4)}ms ${result.name}`);
+}
+console.log('-'.repeat(40));
+console.log(`${passed}/${summary.length} scenarios passed`);
+
+if (failed > 0) {
+  process.exitCode = 1;
+}
