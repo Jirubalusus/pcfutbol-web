@@ -71,7 +71,8 @@ const summary = {
   injuries: 0,
   extraTime: 0,
   penalties: 0,
-  pathologicalScorerMatches: 0
+  pathologicalScorerMatches: 0,
+  defenderMultiGoalMatches: 0
 };
 
 const hardIssues = [];
@@ -84,6 +85,18 @@ function playerName(player) {
 function playerKey(team, player) {
   const name = playerName(player);
   return name ? `${team}:${name}` : null;
+}
+
+function playerPosition(player) {
+  return typeof player === 'object' ? player?.position : null;
+}
+
+function playerPlayingPosition(player) {
+  return typeof player === 'object' ? player?.playingPosition : null;
+}
+
+function isDefensivePosition(position) {
+  return ['CB', 'RB', 'LB', 'RWB', 'LWB', 'GK'].includes((position || '').split(',')[0].trim().toUpperCase());
 }
 
 function addIssue(collection, matchIndex, code, message, event = null) {
@@ -101,6 +114,7 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
   const yellowCounts = new Map();
   const goalCounts = { home: 0, away: 0 };
   const scorerCounts = new Map();
+  const scorerMeta = new Map();
   let previousMinute = -Infinity;
 
   for (const event of events) {
@@ -127,7 +141,13 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
 
     if (event.type === 'goal') {
       goalCounts[event.team]++;
-      if (key) scorerCounts.set(key, (scorerCounts.get(key) || 0) + 1);
+      if (key) {
+        scorerCounts.set(key, (scorerCounts.get(key) || 0) + 1);
+        scorerMeta.set(key, {
+          position: playerPosition(event.player),
+          playingPosition: playerPlayingPosition(event.player)
+        });
+      }
     }
 
     if (event.type === 'yellow_card' && key) {
@@ -190,9 +210,16 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
   for (const [scorer, goals] of scorerCounts) {
     const team = scorer.split(':')[0];
     const teamGoals = goalCounts[team] || 0;
+    const meta = scorerMeta.get(scorer);
+    const defensiveScorer = isDefensivePosition(meta?.position) && !['ST', 'CF', 'RW', 'LW', 'CAM'].includes((meta?.playingPosition || '').toUpperCase());
     if (goals >= 4 || (teamGoals >= 4 && goals / teamGoals > 0.75)) {
       summary.pathologicalScorerMatches++;
       addIssue(warnings, matchIndex, 'SCORER_CONCENTRATION', `${scorer} scored ${goals}/${teamGoals} team goals`);
+      break;
+    }
+    if (defensiveScorer && goals >= 2) {
+      summary.defenderMultiGoalMatches++;
+      addIssue(warnings, matchIndex, 'DEFENDER_MULTI_GOAL', `${scorer} (${meta?.position || '?'}) scored ${goals}/${teamGoals} team goals`);
       break;
     }
   }

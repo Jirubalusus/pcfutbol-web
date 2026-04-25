@@ -308,18 +308,27 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     const awaySentOff = new Set(events.filter(e => e.type === 'red_card' && e.team === 'away').map(e => getPlayerName(e.player)));
     const homeTeamOnPitch = { ...homeTeamData, players: (homeTeamData.players || []).filter(p => !homeSentOff.has(p.name)) };
     const awayTeamOnPitch = { ...awayTeamData, players: (awayTeamData.players || []).filter(p => !awaySentOff.has(p.name)) };
+    const extraTimeScorerCounts = buildScorerCounts(events);
     // Extra time: ~30% chance someone scores, slight home advantage
     const etRand = Math.random();
     if (etRand < 0.18) {
       // Home scores in extra time
       finalHomeScore += 1;
-      const scorer = selectScorer(homeTeamOnPitch);
-      events.push({ type: 'goal', team: 'home', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, isExtraTime: true });
+      const scorer = selectScorer(homeTeamOnPitch, null, extraTimeScorerCounts.home, {
+        goalType: 'normal',
+        teamGoals: finalHomeScore,
+        teamGoalsSoFar: finalHomeScore - 1
+      });
+      events.push({ type: 'goal', team: 'home', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, goalType: 'normal', isExtraTime: true });
     } else if (etRand < 0.30) {
       // Away scores in extra time
       finalAwayScore += 1;
-      const scorer = selectScorer(awayTeamOnPitch);
-      events.push({ type: 'goal', team: 'away', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, isExtraTime: true });
+      const scorer = selectScorer(awayTeamOnPitch, null, extraTimeScorerCounts.away, {
+        goalType: 'normal',
+        teamGoals: finalAwayScore,
+        teamGoalsSoFar: finalAwayScore - 1
+      });
+      events.push({ type: 'goal', team: 'away', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, goalType: 'normal', isExtraTime: true });
     }
 
     // If still draw after extra time → penalties
@@ -616,6 +625,41 @@ function getPrimaryPosition(player) {
   return (player?.playingPosition || player?.position || '').split(',')[0].trim().toUpperCase();
 }
 
+function getNaturalPosition(player) {
+  return (player?.position || '').split(',')[0].trim().toUpperCase();
+}
+
+function getScoringRole(player) {
+  const playingPosition = getPrimaryPosition(player);
+  const naturalPosition = getNaturalPosition(player);
+  const attackingPositions = ['ST', 'CF', 'RW', 'LW', 'CAM'];
+  const defensivePositions = ['GK', 'CB', 'RB', 'LB', 'RWB', 'LWB'];
+
+  if (naturalPosition === 'GK' || playingPosition === 'GK') return 'goalkeeper';
+  if (defensivePositions.includes(naturalPosition) && ['RW', 'LW', 'RM', 'LM'].includes(playingPosition)) return 'wingback';
+  if (['ST', 'CF'].includes(playingPosition) || ['ST', 'CF'].includes(naturalPosition)) return 'striker';
+  if (['RW', 'LW'].includes(playingPosition) || ['RW', 'LW'].includes(naturalPosition)) return 'winger';
+  if (playingPosition === 'CAM' || naturalPosition === 'CAM') return 'attackingMid';
+  if (['RM', 'LM'].includes(playingPosition)) {
+    return defensivePositions.includes(naturalPosition) ? 'wingback' : 'wideMid';
+  }
+  if (['CM', 'CDM'].includes(playingPosition) || ['CM', 'CDM'].includes(naturalPosition)) return 'centralMid';
+  if (defensivePositions.includes(playingPosition) || defensivePositions.includes(naturalPosition)) return 'defender';
+  return attackingPositions.includes(playingPosition) ? 'attackingMid' : 'centralMid';
+}
+
+function isDefensiveScorer(player) {
+  return ['defender', 'wingback', 'goalkeeper'].includes(getScoringRole(player));
+}
+
+function makeEventPlayer(player) {
+  return {
+    name: player.name,
+    position: player.position,
+    playingPosition: player.playingPosition
+  };
+}
+
 function getPlayerKey(teamLabel, player) {
   const name = getPlayerName(player);
   return name ? `${teamLabel}:${name}` : null;
@@ -661,6 +705,16 @@ function countGoalsByTeam(events) {
     if (event.type === 'goal' && event.team === 'away') score.away++;
     return score;
   }, { home: 0, away: 0 });
+}
+
+function buildScorerCounts(events) {
+  return events.reduce((counts, event) => {
+    if (event.type !== 'goal') return counts;
+    const name = getPlayerName(event.player);
+    if (!name || !counts[event.team]) return counts;
+    counts[event.team].set(name, (counts[event.team].get(name) || 0) + 1);
+    return counts;
+  }, { home: new Map(), away: new Map() });
 }
 
 function normalizeDisciplinaryTimeline(events) {
@@ -737,41 +791,50 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const isHomeGoal = Math.random() < homeChance;
     
     if (isHomeGoal && homeGoalsLeft > 0) {
-      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home);
-      const assister = Math.random() > 0.30 ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer) : null;
+      const teamGoalsSoFar = homeScore - homeGoalsLeft;
+      const goalType = selectGoalType(minute, homeScore, teamGoalsSoFar);
+      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
+      const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
+      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'home',
         minute,
         player: scorer,
         assist: assister,
-        goalType: minute > 85 ? 'late' : 'normal'
+        goalType: minute > 85 && goalType === 'normal' ? 'late' : goalType
       });
       scorerCounts.home.set(scorer.name, (scorerCounts.home.get(scorer.name) || 0) + 1);
       homeGoalsLeft--;
     } else if (awayGoalsLeft > 0) {
-      const scorer = selectScorer(awayTeam, awayStrength.strength?.lineup, scorerCounts.away);
-      const assister = Math.random() > 0.30 ? selectAssister(awayTeam, awayStrength.strength?.lineup, scorer) : null;
+      const teamGoalsSoFar = awayScore - awayGoalsLeft;
+      const goalType = selectGoalType(minute, awayScore, teamGoalsSoFar);
+      const scorer = selectScorer(awayTeam, awayStrength.strength?.lineup, scorerCounts.away, { goalType, teamGoals: awayScore, teamGoalsSoFar });
+      const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
+      const assister = Math.random() < assistChance ? selectAssister(awayTeam, awayStrength.strength?.lineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'away',
         minute,
         player: scorer,
         assist: assister,
-        goalType: minute > 85 ? 'late' : 'normal'
+        goalType: minute > 85 && goalType === 'normal' ? 'late' : goalType
       });
       scorerCounts.away.set(scorer.name, (scorerCounts.away.get(scorer.name) || 0) + 1);
       awayGoalsLeft--;
     } else if (homeGoalsLeft > 0) {
-      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home);
-      const assister = Math.random() > 0.30 ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer) : null;
+      const teamGoalsSoFar = homeScore - homeGoalsLeft;
+      const goalType = selectGoalType(minute, homeScore, teamGoalsSoFar);
+      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
+      const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
+      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'home',
         minute,
         player: scorer,
         assist: assister,
-        goalType: minute > 85 ? 'late' : 'normal'
+        goalType: minute > 85 && goalType === 'normal' ? 'late' : goalType
       });
       scorerCounts.home.set(scorer.name, (scorerCounts.home.get(scorer.name) || 0) + 1);
       homeGoalsLeft--;
@@ -902,54 +965,125 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
 /**
  * Seleccionar goleador
  */
-function selectScorer(team, lineup, scorerCounts = new Map()) {
+function selectGoalType(minute, teamGoals, teamGoalsSoFar) {
+  const roll = Math.random();
+  const penaltyChance = teamGoals >= 4 && teamGoalsSoFar >= 2 ? 0.06 : 0.09;
+  const setPieceChance = minute > 75 ? 0.18 : 0.15;
+
+  if (roll < penaltyChance) return 'penalty';
+  if (roll < penaltyChance + setPieceChance) return 'set_piece';
+  return 'normal';
+}
+
+function getScorerRoleWeight(role, goalType) {
+  const weights = {
+    normal: {
+      striker: 5.4,
+      winger: 2.75,
+      attackingMid: 2.1,
+      wideMid: 1.25,
+      centralMid: 0.55,
+      wingback: 0.18,
+      defender: 0.04,
+      goalkeeper: 0
+    },
+    penalty: {
+      striker: 5.0,
+      winger: 2.2,
+      attackingMid: 2.1,
+      wideMid: 0.85,
+      centralMid: 0.55,
+      wingback: 0.05,
+      defender: 0.01,
+      goalkeeper: 0
+    },
+    set_piece: {
+      striker: 3.4,
+      winger: 1.15,
+      attackingMid: 1.2,
+      wideMid: 0.75,
+      centralMid: 0.9,
+      wingback: 0.35,
+      defender: 0.55,
+      goalkeeper: 0
+    }
+  };
+  return weights[goalType]?.[role] ?? weights.normal[role] ?? 0.2;
+}
+
+function getRepeatPenalty(goalsAlready, role, teamGoals) {
+  if (goalsAlready <= 0) return 1;
+
+  const isPrimaryScorer = ['striker', 'winger', 'attackingMid'].includes(role);
+  if (goalsAlready === 1) {
+    if (role === 'striker') return 0.42;
+    if (role === 'winger') return 0.34;
+    if (role === 'attackingMid') return 0.30;
+    if (role === 'wideMid') return 0.20;
+    if (role === 'centralMid') return 0.14;
+    return 0.05;
+  }
+
+  if (goalsAlready === 2) {
+    if (teamGoals < 4) return isPrimaryScorer ? 0.03 : 0.002;
+    if (role === 'striker') return 0.075;
+    if (role === 'winger') return 0.035;
+    if (role === 'attackingMid') return 0.03;
+    return 0.004;
+  }
+
+  if (goalsAlready === 3) {
+    if (teamGoals < 5) return 0.0005;
+    return role === 'striker' ? 0.006 : 0.0005;
+  }
+
+  return 0.0001;
+}
+
+function selectScorer(team, lineup, scorerCounts = new Map(), options = {}) {
   if (!team?.players) return { name: 'Unknown' };
-  
+  const { goalType = 'normal', teamGoals = 1 } = options;
   const available = (lineup || team.players).filter(p => !p.injured && !p.suspended);
-  const attackers = available.filter(p => {
-    const position = getPrimaryPosition(p);
-    return ['ST', 'CF', 'RW', 'LW', 'CAM', 'RM', 'LM', 'CM'].includes(position);
-  });
+  const candidates = available.filter(p => getScoringRole(p) !== 'goalkeeper');
   
-  if (attackers.length === 0) return available[0] || team.players[0] || { name: 'Unknown' };
+  if (candidates.length === 0) return available[0] || team.players[0] || { name: 'Unknown' };
   
-  const weights = attackers.map(player => {
-    const position = getPrimaryPosition(player);
-    const roleWeight = {
-      ST: 3.2,
-      CF: 3.0,
-      RW: 1.7,
-      LW: 1.7,
-      CAM: 1.35,
-      RM: 1.05,
-      LM: 1.05,
-      CM: 0.55
-    }[position] || 0.35;
+  const weights = candidates.map(player => {
+    const role = getScoringRole(player);
+    const roleWeight = getScorerRoleWeight(role, goalType);
     const goalsAlready = scorerCounts.get(player.name) || 0;
-    const repeatPenalty = goalsAlready === 0 ? 1 : goalsAlready === 1 ? 0.38 : goalsAlready === 2 ? 0.12 : 0.04;
+    const repeatPenalty = getRepeatPenalty(goalsAlready, role, teamGoals);
+    const concentrationPenalty = goalsAlready > 0 && goalsAlready / Math.max(1, teamGoals) >= 0.5 ? 0.55 : 1;
+    const defensiveMultiGoalPenalty = goalsAlready > 0 && isDefensiveScorer(player) ? 0.18 : 1;
     const rating = Math.max(45, player.overall || 65);
-    return Math.pow(rating, 1.35) * roleWeight * repeatPenalty;
+    return Math.pow(rating, 1.28) * roleWeight * repeatPenalty * concentrationPenalty * defensiveMultiGoalPenalty;
   });
 
   const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+  if (totalWeight <= 0) {
+    const fallback = candidates.find(p => ['striker', 'winger', 'attackingMid'].includes(getScoringRole(p))) || candidates[0];
+    return makeEventPlayer(fallback);
+  }
   let rand = Math.random() * totalWeight;
   
-  for (let i = 0; i < attackers.length; i++) {
+  for (let i = 0; i < candidates.length; i++) {
     rand -= weights[i];
-    if (rand <= 0) return { name: attackers[i].name, position: attackers[i].position };
+    if (rand <= 0) return makeEventPlayer(candidates[i]);
   }
   
-  return { name: attackers[0].name, position: attackers[0].position };
+  return makeEventPlayer(candidates[0]);
 }
 
 /**
  * Seleccionar asistente (distinto al goleador)
  */
-function selectAssister(team, lineup, scorer) {
+function selectAssister(team, lineup, scorer, goalType = 'normal') {
   if (!team?.players) return null;
   const scorerName = scorer?.name || scorer;
   const available = (lineup || team.players).filter(p => !p.injured && !p.suspended && p.name !== scorerName);
-  const assistPositions = ['CAM', 'CM', 'RW', 'LW', 'RB', 'LB', 'CDM', 'RM', 'LM', 'ST', 'CF'];
+  const assistPositions = goalType === 'set_piece'
+    ? ['CAM', 'CM', 'RW', 'LW', 'RB', 'LB', 'RWB', 'LWB', 'CDM', 'RM', 'LM']
+    : ['CAM', 'CM', 'RW', 'LW', 'RB', 'LB', 'RWB', 'LWB', 'CDM', 'RM', 'LM', 'ST', 'CF'];
   const candidates = available.filter(p => assistPositions.includes(getPrimaryPosition(p)));
   
   if (candidates.length === 0) return available.length > 0 ? { name: available[0].name, position: available[0].position } : null;
@@ -957,7 +1091,8 @@ function selectAssister(team, lineup, scorer) {
   const weights = candidates.map(p => {
     let weight = p.overall || 70;
     const position = getPrimaryPosition(p);
-    if (['CAM', 'CM'].includes(position)) weight *= 1.5;
+    if (goalType === 'set_piece' && ['RB', 'LB', 'RWB', 'LWB', 'RM', 'LM', 'CAM'].includes(position)) weight *= 1.55;
+    else if (['CAM', 'CM'].includes(position)) weight *= 1.5;
     else if (['RW', 'LW'].includes(position)) weight *= 1.3;
     return weight;
   });
