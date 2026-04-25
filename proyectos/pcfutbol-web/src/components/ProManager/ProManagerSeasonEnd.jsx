@@ -242,6 +242,8 @@ export default function ProManagerSeasonEnd() {
         newTable: newSeasonData.playerLeague.table,
         newObjectives,
         newPlayerLeagueId,
+        newPlayerGroupId: newSeasonData.playerLeague?.playerGroup || null,
+        newOtherLeagues: newSeasonData.otherLeagues,
         europeanCalendar
       }
     });

@@ -30,6 +30,7 @@ const groupLeagueEngine = await server.ssrLoadModule('/src/game/groupLeagueEngin
 const multiLeagueEngine = await server.ssrLoadModule('/src/game/multiLeagueEngine.js');
 const playoffEngine = await server.ssrLoadModule('/src/game/playoffEngine.js');
 const gameContext = await server.ssrLoadModule('/src/context/GameContext.jsx');
+const objectivesEngine = await server.ssrLoadModule('/src/game/objectivesEngine.js');
 
 const {
   loadAllData,
@@ -48,6 +49,7 @@ const {
   autoResolvePlayoffUntilPlayerMatch
 } = playoffEngine;
 const { gameReducer, initialState } = gameContext;
+const { generateSeasonObjectives } = objectivesEngine;
 
 const leagueMeta = {
   primeraRFEF: {
@@ -255,6 +257,16 @@ function assertPlayablePlayerLeague(result, expectedLeagueId, label = expectedLe
     assert(result.playerLeague.playerGroup, `${label}: player group was not assigned`);
     assert(result.otherLeagues[expectedLeagueId]?.playerGroup === result.playerLeague.playerGroup, `${label}: otherLeagues lost player group metadata`);
   }
+
+  const objectives = generateSeasonObjectives({ id: playerTeamId, reputation: 70, players: [] }, expectedLeagueId, result.playerLeague.table);
+  assert(Array.isArray(objectives) && objectives.length > 0, `${label}: objectives were not regenerated`);
+  const leagueObjective = objectives.find(obj => obj.id === 'league_position');
+  assert(leagueObjective, `${label}: missing league position objective`);
+  if (expectedLeagueId === 'primeraRFEF' || expectedLeagueId === 'segundaRFEF') {
+    assert(leagueObjective.target === 5, `${label}: RFEF objective target should follow grouped-league promotion playoff cutoff`);
+  } else if (expectedLeagueId === 'segunda') {
+    assert(leagueObjective.target === 6, `${label}: Segunda objective target should follow promotion playoff cutoff`);
+  }
 }
 
 function makeReducerReadyState(sourceState) {
@@ -279,23 +291,33 @@ function makeReducerReadyState(sourceState) {
   };
 }
 
-function applyStartNewSeason(sourceState, newSeasonData, label) {
+function applyStartNewSeason(sourceState, newSeasonData, label, options = {}) {
   const expectedSeason = (sourceState.currentSeason || 1) + 1;
-  const nextState = gameReducer(makeReducerReadyState(sourceState), {
+  const reducerSource = options.sourceOverride
+    ? { ...makeReducerReadyState(sourceState), ...options.sourceOverride }
+    : makeReducerReadyState(sourceState);
+  const payload = {
+    seasonResult: { position: 1, promotion: newSeasonData.newPlayerLeagueId !== sourceState.playerLeagueId },
+    objectiveRewards: { netResult: 0 },
+    europeanBonus: 0,
+    preseasonMatches: [],
+    moneyChange: 0,
+    newFixtures: newSeasonData.playerLeague.fixtures,
+    newTable: newSeasonData.playerLeague.table,
+    newObjectives: generateSeasonObjectives(sourceState.team, newSeasonData.newPlayerLeagueId, newSeasonData.playerLeague.table),
+    newPlayerLeagueId: newSeasonData.newPlayerLeagueId,
+    europeanCalendar: null
+  };
+  if (!options.omitPlayerGroup) {
+    payload.newPlayerGroupId = newSeasonData.playerLeague.playerGroup || null;
+  }
+  if (options.includeOtherLeagues) {
+    payload.newOtherLeagues = newSeasonData.otherLeagues;
+  }
+
+  const nextState = gameReducer(reducerSource, {
     type: 'START_NEW_SEASON',
-    payload: {
-      seasonResult: { position: 1, promotion: newSeasonData.newPlayerLeagueId !== sourceState.playerLeagueId },
-      objectiveRewards: { netResult: 0 },
-      europeanBonus: 0,
-      preseasonMatches: [],
-      moneyChange: 0,
-      newFixtures: newSeasonData.playerLeague.fixtures,
-      newTable: newSeasonData.playerLeague.table,
-      newObjectives: [],
-      newPlayerLeagueId: newSeasonData.newPlayerLeagueId,
-      newPlayerGroupId: newSeasonData.playerLeague.playerGroup || null,
-      europeanCalendar: null
-    }
+    payload
   });
 
   assert(nextState.currentSeason === expectedSeason, `${label}: START_NEW_SEASON did not increment season`);
@@ -303,6 +325,10 @@ function applyStartNewSeason(sourceState, newSeasonData, label) {
   assert(nextState.playerLeagueId === newSeasonData.newPlayerLeagueId, `${label}: START_NEW_SEASON did not atomically set playerLeagueId`);
   assert(nextState.leagueId === newSeasonData.newPlayerLeagueId, `${label}: START_NEW_SEASON did not atomically set leagueId`);
   assert(nextState.playerGroupId === (newSeasonData.playerLeague.playerGroup || null), `${label}: START_NEW_SEASON did not atomically set playerGroupId`);
+  if (options.includeOtherLeagues) {
+    assert(nextState.otherLeagues === newSeasonData.otherLeagues, `${label}: START_NEW_SEASON did not atomically replace otherLeagues`);
+  }
+  assert(Array.isArray(nextState.seasonObjectives) && nextState.seasonObjectives.length > 0, `${label}: START_NEW_SEASON did not install regenerated objectives`);
   assert(nextState.leagueTable.some(entry => entry.teamId === playerTeamId), `${label}: reducer table lost ${playerTeamId}`);
   assert(nextState.fixtures.some(f => f.homeTeam === playerTeamId || f.awayTeam === playerTeamId), `${label}: reducer fixtures lost ${playerTeamId}`);
   return nextState;
@@ -316,6 +342,17 @@ await scenario('Segunda RFEF direct champion promotion creates playable Primera 
   assertPlayablePlayerLeague(next, 'primeraRFEF', 'Segunda RFEF direct promotion');
   assert(Object.keys(next.otherLeagues.primeraRFEF?.groups || {}).length > 0, 'Current Primera RFEF non-player groups were not preserved');
   applyStartNewSeason(state, next, 'Segunda RFEF direct promotion');
+});
+
+await scenario('START_NEW_SEASON keeps grouped league transition state atomic when group id is inferred from new otherLeagues', () => {
+  const state = makeGroupState('segundaRFEF', 1);
+  const next = initializeNextSeason(state);
+  assertPlayablePlayerLeague(next, 'primeraRFEF', 'atomic grouped transition');
+  applyStartNewSeason(state, next, 'atomic grouped transition', {
+    omitPlayerGroup: true,
+    includeOtherLeagues: true,
+    sourceOverride: { playerGroupId: 'stale_group' }
+  });
 });
 
 await scenario('Segunda RFEF playoff winner advances semifinal to final and promotes', () => {

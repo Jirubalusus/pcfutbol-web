@@ -954,11 +954,17 @@ export function gameReducer(state, action) {
         newTable,
         newObjectives,
         newPlayerLeagueId,
-        newPlayerGroupId
+        newPlayerGroupId,
+        newOtherLeagues
       } = action.payload;
       const seasonLeagueId = newPlayerLeagueId || state.playerLeagueId || state.leagueId;
       const seasonLeagueTier = seasonLeagueId ? getLeagueTier(seasonLeagueId) : (state.leagueTier || 1);
       const oldLeagueTier = state.leagueTier || (state.playerLeagueId ? getLeagueTier(state.playerLeagueId) : seasonLeagueTier);
+      const resolvedPlayerGroupId = newPlayerGroupId !== undefined
+        ? newPlayerGroupId
+        : (LEAGUE_CONFIG[seasonLeagueId]?.isGroupLeague
+          ? (newOtherLeagues?.[seasonLeagueId]?.playerGroup ?? state.playerGroupId ?? null)
+          : null);
 
       // === PROCESAR CESIONES AL FINAL DE TEMPORADA ===
       const currentLoans = state.activeLoans || [];
@@ -1239,9 +1245,8 @@ export function gameReducer(state, action) {
         playerLeagueId: seasonLeagueId || state.playerLeagueId,
         leagueId: seasonLeagueId || state.leagueId,
         leagueTier: seasonLeagueTier,
-        playerGroupId: newPlayerGroupId !== undefined
-          ? newPlayerGroupId
-          : (LEAGUE_CONFIG[seasonLeagueId]?.isGroupLeague ? state.playerGroupId : null),
+        playerGroupId: resolvedPlayerGroupId,
+        otherLeagues: newOtherLeagues || state.otherLeagues,
         seasonObjectives: newObjectives || [],
         // Guardar resultado anterior
         lastSeasonResult: seasonResult,

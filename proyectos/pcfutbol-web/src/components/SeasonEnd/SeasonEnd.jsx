@@ -838,6 +838,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         newObjectives,
         newPlayerLeagueId: newSeasonData.newPlayerLeagueId,
         newPlayerGroupId: newSeasonData.playerLeague?.playerGroup || null,
+        newOtherLeagues: newSeasonData.otherLeagues,
         europeanCalendar
       }
     });
