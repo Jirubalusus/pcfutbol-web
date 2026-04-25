@@ -58,7 +58,8 @@ import {
   generateAllGroupPlayoffs,
   simulateAllGroupPlayoffs,
   getGroupPlayoffWinners,
-  advanceGroupPlayoffBracket
+  advanceGroupPlayoffBracket,
+  autoResolvePlayoffUntilPlayerMatch
 } from '../../game/playoffEngine';
 import FootballIcon from '../icons/FootballIcon';
 import Confetti from '../Confetti/Confetti';
@@ -236,9 +237,13 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     const result = simulatePlayoffMatch(nextMatch.homeTeam, nextMatch.awayTeam);
     // Use group-aware advance for RFEF playoffs, standard for Segunda
     const isRFEF = playerLeagueId === 'primeraRFEF' || playerLeagueId === 'segundaRFEF';
-    const updatedBracket = isRFEF
+    let updatedBracket = isRFEF
       ? advanceGroupPlayoffBracket(playoffBracket, nextMatch.id, result)
       : advancePlayoffBracket(playoffBracket, nextMatch.id, result);
+
+    updatedBracket = autoResolvePlayoffUntilPlayerMatch(updatedBracket, state.teamId, {
+      simulateEliminatedRest: result.winnerId !== state.teamId
+    });
     
     setPlayoffMatchResult(result);
     setPlayoffBracket(updatedBracket);

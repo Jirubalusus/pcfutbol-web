@@ -1885,15 +1885,33 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     const allSegundaTeams = getSegundaTeams();
     const allPrimeraRfefTeams = getPrimeraRfefTeams();
     const allSegundaRfefTeams = getSegundaRfefTeams();
-    const allTeamsPool = [...allLaLigaTeams, ...allSegundaTeams, ...allPrimeraRfefTeams, ...allSegundaRfefTeams];
-    
-    // Include the player's custom team (e.g. glory_team) in the pool so it's not lost
+    const allTeamsPool = [];
+
+    // Prefer the live player team over static data with the same id so promotions
+    // preserve the current squad, budget and evolved state.
     const playerTeamFromState = state.team;
-    if (playerTeamFromState && playerTeamFromState.id && !allTeamsPool.some(t => t.id === playerTeamFromState.id)) {
+    if (playerTeamFromState?.id) {
       allTeamsPool.push(playerTeamFromState);
     }
-    
+    [...allLaLigaTeams, ...allSegundaTeams, ...allPrimeraRfefTeams, ...allSegundaRfefTeams].forEach(team => {
+      if (team?.id && !allTeamsPool.some(t => t.id === team.id)) {
+        allTeamsPool.push(team);
+      }
+    });
+
     const findTeam = (id) => allTeamsPool.find(t => t.id === id);
+    const getCurrentGroupLeagueIds = (groupLeagueData, fallbackTeams) => {
+      const ids = [];
+      if (groupLeagueData?.groups) {
+        Object.values(groupLeagueData.groups).forEach(groupData => {
+          (groupData.table || []).forEach(entry => {
+            if (entry?.teamId && !ids.includes(entry.teamId)) ids.push(entry.teamId);
+          });
+        });
+      }
+      if (ids.length > 0) return ids;
+      return fallbackTeams.map(t => t.id).filter(Boolean);
+    };
     
     // New La Liga teams
     const newLaLigaTeams = laligaSegundaChanges.newLaLigaTeams || allLaLigaTeams;
@@ -1914,7 +1932,7 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     
     // New Primera RFEF teams: remove promoted to Segunda, remove relegated to Segunda RFEF, 
     // add relegated from Segunda, add promoted from Segunda RFEF
-    let currentPrimeraRFEFIds = allPrimeraRfefTeams.map(t => t.id);
+    let currentPrimeraRFEFIds = getCurrentGroupLeagueIds(primeraRFEFData, allPrimeraRfefTeams);
     currentPrimeraRFEFIds = currentPrimeraRFEFIds
       .filter(id => !rfefChanges.rfefToSegunda.includes(id))
       .filter(id => !rfefChanges.rfefToSegundaRFEF.includes(id));
@@ -1926,7 +1944,7 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     const newPrimeraRFEFTeams = currentPrimeraRFEFIds.map(findTeam).filter(Boolean);
     
     // New Segunda RFEF teams: remove promoted to Primera RFEF, add relegated from Primera RFEF
-    let currentSegundaRFEFIds = allSegundaRfefTeams.map(t => t.id);
+    let currentSegundaRFEFIds = getCurrentGroupLeagueIds(segundaRFEFData, allSegundaRfefTeams);
     currentSegundaRFEFIds = currentSegundaRFEFIds
       .filter(id => !rfefChanges.segundaRFEFToRFEF.includes(id));
     currentSegundaRFEFIds = [
@@ -2045,6 +2063,19 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     spanishLeagues.forEach(leagueId => {
       if (leagueId !== newPlayerLeagueId) {
         otherLeagues[leagueId] = spanishLeagueData[leagueId];
+      } else if (LEAGUE_CONFIG[leagueId]?.isGroupLeague) {
+        const playerGroup = spanishLeagueData[leagueId]?.playerGroup;
+        const groups = {};
+        Object.entries(spanishLeagueData[leagueId]?.groups || {}).forEach(([groupId, groupData]) => {
+          if (groupId !== playerGroup) {
+            groups[groupId] = groupData;
+          }
+        });
+        otherLeagues[leagueId] = {
+          isGroupLeague: true,
+          groups,
+          playerGroup
+        };
       }
     });
     

@@ -583,6 +583,56 @@ export function simulateAllGroupPlayoffs(allBrackets, playerTeamId = null) {
 }
 
 /**
+ * Auto-resolves playoff matches that do not involve the player until the next
+ * player match is available or the bracket is completed.
+ *
+ * This is needed when the player wins one semifinal: the opposite semifinal
+ * must be played before a final can be created.
+ */
+export function autoResolvePlayoffUntilPlayerMatch(bracket, playerTeamId, options = {}) {
+  if (!bracket || !playerTeamId) return bracket;
+
+  const { simulateEliminatedRest = false } = options;
+  const isGroupBracket = !!bracket.groupId;
+  let updated = bracket;
+  let guard = 0;
+
+  while (updated && updated.phase !== 'completed' && guard < 10) {
+    guard++;
+
+    const nextPlayerMatch = getNextPlayoffMatch(playerTeamId, updated);
+    if (nextPlayerMatch) break;
+
+    const playerAlive = isTeamAliveInPlayoff(playerTeamId, updated);
+    if (!playerAlive && !simulateEliminatedRest) break;
+
+    let matchToResolve = null;
+    if (updated.phase === 'semifinals') {
+      matchToResolve = updated.semifinals.find(match => {
+        const involvesPlayer = match.homeTeam?.teamId === playerTeamId || match.awayTeam?.teamId === playerTeamId;
+        return !match.played && !involvesPlayer;
+      });
+    } else if (updated.phase === 'final') {
+      const finalInvolvesPlayer =
+        updated.final.homeTeam?.teamId === playerTeamId ||
+        updated.final.awayTeam?.teamId === playerTeamId;
+      if (!updated.final.played && updated.final.homeTeam && updated.final.awayTeam && !finalInvolvesPlayer) {
+        matchToResolve = updated.final;
+      }
+    }
+
+    if (!matchToResolve) break;
+
+    const result = simulatePlayoffMatch(matchToResolve.homeTeam, matchToResolve.awayTeam);
+    updated = isGroupBracket
+      ? advanceGroupPlayoffBracket(updated, matchToResolve.id, result)
+      : advancePlayoffBracket(updated, matchToResolve.id, result);
+  }
+
+  return updated;
+}
+
+/**
  * Obtiene todos los ganadores de playoffs de grupo (equipos que ascienden)
  * @param {Object} allBrackets - { grupo1: bracket, ... }
  * @returns {Array} - Array de teamIds que ganaron sus playoffs

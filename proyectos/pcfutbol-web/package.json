@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "audit:simulation": "node scripts/audit-match-simulation.mjs",
+    "audit:rfef-progression": "node scripts/audit-rfef-progression.mjs",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -r https://github.com/jirubalusus/pcfutbol-web.git"
