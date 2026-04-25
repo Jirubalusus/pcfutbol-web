@@ -633,13 +633,17 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         // Check if we have Primera RFEF brackets
         const isPrimera = playerLeagueId === 'primeraRFEF';
         if (isPrimera) {
-          rfefPlayoffOptions.primeraRFEFPlayoffBrackets = rfefPlayoffBrackets;
+          rfefPlayoffOptions.primeraRFEFPlayoffBrackets = playoffBracket?.groupId
+            ? { ...rfefPlayoffBrackets, [playoffBracket.groupId]: playoffBracket }
+            : rfefPlayoffBrackets;
         }
       }
       if (playerLeagueId === 'segundaRFEF' || state.otherLeagues?.segundaRFEF) {
         const isSegunda = playerLeagueId === 'segundaRFEF';
         if (isSegunda) {
-          rfefPlayoffOptions.segundaRFEFPlayoffBrackets = rfefPlayoffBrackets;
+          rfefPlayoffOptions.segundaRFEFPlayoffBrackets = playoffBracket?.groupId
+            ? { ...rfefPlayoffBrackets, [playoffBracket.groupId]: playoffBracket }
+            : rfefPlayoffBrackets;
         }
       }
     }
@@ -833,6 +837,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         newTable: newSeasonData.playerLeague.table,
         newObjectives,
         newPlayerLeagueId: newSeasonData.newPlayerLeagueId,
+        newPlayerGroupId: newSeasonData.playerLeague?.playerGroup || null,
         europeanCalendar
       }
     });

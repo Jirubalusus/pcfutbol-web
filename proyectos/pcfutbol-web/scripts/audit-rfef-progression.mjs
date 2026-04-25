@@ -29,6 +29,7 @@ const teamsFirestore = await server.ssrLoadModule('/src/data/teamsFirestore.js')
 const groupLeagueEngine = await server.ssrLoadModule('/src/game/groupLeagueEngine.js');
 const multiLeagueEngine = await server.ssrLoadModule('/src/game/multiLeagueEngine.js');
 const playoffEngine = await server.ssrLoadModule('/src/game/playoffEngine.js');
+const gameContext = await server.ssrLoadModule('/src/context/GameContext.jsx');
 
 const {
   loadAllData,
@@ -44,6 +45,7 @@ const {
   advanceGroupPlayoffBracket,
   autoResolvePlayoffUntilPlayerMatch
 } = playoffEngine;
+const { gameReducer, initialState } = gameContext;
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -177,6 +179,53 @@ function assertPlayablePlayerLeague(result, expectedLeagueId) {
   assert(result.playerLeague.fixtures.length > 0, `${expectedLeagueId} fixtures are empty`);
 }
 
+function makeReducerReadyState(sourceState) {
+  return {
+    ...initialState,
+    gameStarted: true,
+    currentSeason: 1,
+    currentWeek: 34,
+    teamId: playerTeamId,
+    team: sourceState.team,
+    playerLeagueId: sourceState.playerLeagueId,
+    leagueId: sourceState.leagueId,
+    playerGroupId: sourceState.playerGroupId,
+    leagueTable: sourceState.leagueTable,
+    fixtures: sourceState.fixtures,
+    otherLeagues: sourceState.otherLeagues,
+    leagueTeams: [sourceState.team],
+    activeLoans: [],
+    messages: [],
+    lineup: {},
+    convocados: []
+  };
+}
+
+function assertStartNewSeasonAtomic(sourceState, newSeasonData, label) {
+  const nextState = gameReducer(makeReducerReadyState(sourceState), {
+    type: 'START_NEW_SEASON',
+    payload: {
+      seasonResult: { position: 1, promotion: newSeasonData.newPlayerLeagueId !== sourceState.playerLeagueId },
+      objectiveRewards: { netResult: 0 },
+      europeanBonus: 0,
+      preseasonMatches: [],
+      moneyChange: 0,
+      newFixtures: newSeasonData.playerLeague.fixtures,
+      newTable: newSeasonData.playerLeague.table,
+      newObjectives: [],
+      newPlayerLeagueId: newSeasonData.newPlayerLeagueId,
+      newPlayerGroupId: newSeasonData.playerLeague.playerGroup || null,
+      europeanCalendar: null
+    }
+  });
+
+  assert(nextState.playerLeagueId === newSeasonData.newPlayerLeagueId, `${label}: START_NEW_SEASON did not atomically set playerLeagueId`);
+  assert(nextState.leagueId === newSeasonData.newPlayerLeagueId, `${label}: START_NEW_SEASON did not atomically set leagueId`);
+  assert(nextState.playerGroupId === (newSeasonData.playerLeague.playerGroup || null), `${label}: START_NEW_SEASON did not atomically set playerGroupId`);
+  assert(nextState.leagueTable.some(entry => entry.teamId === playerTeamId), `${label}: reducer table lost Recreativo`);
+  assert(nextState.fixtures.some(f => f.homeTeam === playerTeamId || f.awayTeam === playerTeamId), `${label}: reducer fixtures lost Recreativo`);
+}
+
 assert(await loadAllData(), 'Team data did not load successfully');
 
 const playoffState = makeGroupState('segundaRFEF', 2);
@@ -185,6 +234,7 @@ const playoffPromotion = initializeNewSeasonWithPromotions(playoffState, playerT
   segundaRFEFPlayoffBrackets: completedPlayoffs
 });
 assertPlayablePlayerLeague(playoffPromotion, 'primeraRFEF');
+assertStartNewSeasonAtomic(playoffState, playoffPromotion, 'Segunda RFEF playoff promotion');
 console.log('OK: Segunda RFEF playoff semifinal advances to final and promotes after final win');
 
 const directPromotionState = makeGroupState('segundaRFEF', 1);
@@ -194,6 +244,7 @@ assert(
   Object.keys(directPromotion.otherLeagues.primeraRFEF?.groups || {}).length > 0,
   'Current Primera RFEF non-player groups were not preserved in otherLeagues'
 );
+assertStartNewSeasonAtomic(directPromotionState, directPromotion, 'Segunda RFEF direct promotion');
 console.log('OK: Segunda RFEF champion promotes to Primera RFEF with generated table and fixtures');
 
 const primeraGroupId = directPromotion.playerLeague.playerGroup;
@@ -212,6 +263,7 @@ const primeraSurvivalState = {
 
 const primeraSurvival = initializeNewSeasonWithPromotions(primeraSurvivalState, playerTeamId);
 assertPlayablePlayerLeague(primeraSurvival, 'primeraRFEF');
+assertStartNewSeasonAtomic(primeraSurvivalState, primeraSurvival, 'Primera RFEF survival');
 console.log('OK: Primera RFEF 7th-place survival rolls over with classification and fixtures');
 
 await server.close();

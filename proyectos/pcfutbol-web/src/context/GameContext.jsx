@@ -120,7 +120,7 @@ function getPlayerMarketValueForOffers(player) {
 const isCapacitor = typeof window !== 'undefined' && window.Capacitor && window.Capacitor.isNativePlatform;
 // All saves use Firebase — no localStorage for game data
 
-const initialState = {
+export const initialState = {
   // User & Save
   saveId: null,
   loaded: false,
@@ -292,7 +292,7 @@ const initialState = {
 // cases (ADVANCE_WEEK, COUNTER_INCOMING_OFFER, stadium naming offers, etc.). Refactoring all
 // randomness into action payloads would be a large, risky change. This works because we don't
 // use React strict mode double-invoke and game state is never replayed. (Bugs #3, #13, #14)
-function gameReducer(state, action) {
+export function gameReducer(state, action) {
   switch (action.type) {
     case 'LOAD_SAVE': {
       // Firestore can convert arrays to objects with numeric keys.
@@ -944,7 +944,21 @@ function gameReducer(state, action) {
     }
 
     case 'START_NEW_SEASON': {
-      const { seasonResult, objectiveRewards, europeanBonus, preseasonMatches, moneyChange, newFixtures, newTable, newObjectives } = action.payload;
+      const {
+        seasonResult,
+        objectiveRewards,
+        europeanBonus,
+        preseasonMatches,
+        moneyChange,
+        newFixtures,
+        newTable,
+        newObjectives,
+        newPlayerLeagueId,
+        newPlayerGroupId
+      } = action.payload;
+      const seasonLeagueId = newPlayerLeagueId || state.playerLeagueId || state.leagueId;
+      const seasonLeagueTier = seasonLeagueId ? getLeagueTier(seasonLeagueId) : (state.leagueTier || 1);
+      const oldLeagueTier = state.leagueTier || (state.playerLeagueId ? getLeagueTier(state.playerLeagueId) : seasonLeagueTier);
 
       // === PROCESAR CESIONES AL FINAL DE TEMPORADA ===
       const currentLoans = state.activeLoans || [];
@@ -1079,6 +1093,12 @@ function gameReducer(state, action) {
       let finalPlayers = [...updatedPlayers, ...retirementSons];
       // Clear tactical bonus when specs reset
       finalPlayers = finalPlayers.map(p => ({ ...p, tacticalBonus: 0 }));
+      if (seasonLeagueId && seasonLeagueTier !== oldLeagueTier) {
+        finalPlayers = finalPlayers.map(p => ({
+          ...p,
+          salary: generateSalary(p, seasonLeagueId)
+        }));
+      }
 
       // Mensajes de retiros e hijos
       const retirementMessages = [];
@@ -1216,6 +1236,12 @@ function gameReducer(state, action) {
         // Usar nuevos fixtures y tabla generados
         leagueTable: newTable || [],
         fixtures: newFixtures || [],
+        playerLeagueId: seasonLeagueId || state.playerLeagueId,
+        leagueId: seasonLeagueId || state.leagueId,
+        leagueTier: seasonLeagueTier,
+        playerGroupId: newPlayerGroupId !== undefined
+          ? newPlayerGroupId
+          : (LEAGUE_CONFIG[seasonLeagueId]?.isGroupLeague ? state.playerGroupId : null),
         seasonObjectives: newObjectives || [],
         // Guardar resultado anterior
         lastSeasonResult: seasonResult,
