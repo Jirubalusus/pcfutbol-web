@@ -892,8 +892,73 @@
   color: #f39c12;
 }
 
+.rfef-playoff-guide {
+  margin: 1rem 0 1.25rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.12), rgba(59, 130, 246, 0.08));
+  border: 1px solid rgba(243, 156, 18, 0.3);
+  border-radius: 14px;
+}
+
+.rfef-guide-main {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 0.9rem;
+
+  svg { color: #f39c12; flex-shrink: 0; margin-top: 2px; }
+
+  strong {
+    display: block;
+    color: var(--color-text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  span {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+}
+
+.rfef-guide-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rfef-kpi {
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  span {
+    display: block;
+    color: #8e8e93;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+  }
+
+  strong {
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+  }
+
+  &--direct { border-color: rgba(46, 204, 113, 0.28); }
+  &--player { border-color: rgba(59, 130, 246, 0.34); }
+  &--drop { border-color: rgba(231, 76, 60, 0.28); }
+}
+
 .playoff-bracket {
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
   padding: 1rem;
   background: var(--color-glass);
   border-radius: 12px;
@@ -959,6 +1024,45 @@
       }
     }
   }
+}
+
+.rfef-groups-overview {
+  margin: 1rem 0 1.5rem;
+  padding: 1rem;
+  background: rgba(46, 204, 113, 0.06);
+  border: 1px solid rgba(46, 204, 113, 0.18);
+  border-radius: 12px;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+  }
+}
+
+.rfef-group-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.rfef-group-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.7rem;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  color: var(--color-text-secondary);
+
+  &.is-player-group {
+    outline: 1px solid rgba(59, 130, 246, 0.45);
+    background: rgba(59, 130, 246, 0.08);
+  }
+
+  strong.is-complete { color: #2ecc71; }
+  strong.is-pending { color: #f39c12; }
 }
 
 .playoff-result {
@@ -1070,5 +1174,20 @@
       border-top: 1px solid var(--color-glass-border);
     }
     .playoff-winner { color: #2ecc71; font-size: 0.95rem; }
+  }
+}
+
+.rfef-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 0.75rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+
+  .player-group-summary {
+    color: #3b82f6 !important;
+    font-weight: 700;
   }
 }

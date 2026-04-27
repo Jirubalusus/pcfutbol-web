@@ -1112,6 +1112,26 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     const nextMatch = getNextPlayoffMatch(state.teamId, playoffBracket);
     const isPlayerHome = nextMatch?.homeTeam?.teamId === state.teamId;
     const opponentEntry = nextMatch ? (isPlayerHome ? nextMatch.awayTeam : nextMatch.homeTeam) : null;
+    const isRFEFPlayoff = playerLeagueId === 'primeraRFEF' || playerLeagueId === 'segundaRFEF';
+    const rfefLeagueName = playerLeagueId === 'primeraRFEF' ? 'Primera Federación' : 'Segunda Federación';
+    const promotedLeagueName = playerLeagueId === 'primeraRFEF' ? 'Segunda División' : 'Primera Federación';
+    const playerGroupLabel = playoffBracket.groupId
+      ? playoffBracket.groupId.replace('grupo', 'Grupo ')
+      : state.playerGroupId?.replace('grupo', 'Grupo ');
+    const playerPosition = state.leagueTable.findIndex(t => t.teamId === state.teamId) + 1;
+    const directPromotionEntries = isRFEFPlayoff ? (state.leagueTable || []).slice(0, 1) : [];
+    const relegationEntries = isRFEFPlayoff && playerLeagueId === 'primeraRFEF'
+      ? (state.leagueTable || []).slice(-5)
+      : [];
+    const rfefGroupResults = isRFEFPlayoff && rfefPlayoffBrackets
+      ? Object.entries(rfefPlayoffBrackets).map(([groupId, bracket]) => ({
+        groupId,
+        label: groupId.replace('grupo', 'Grupo '),
+        winnerName: bracket?.final?.result?.winnerName || bracket?.winner || 'Pendiente',
+        completed: bracket?.phase === 'completed',
+        isPlayerGroup: groupId === playoffBracket.groupId
+      }))
+      : [];
     
     return (
       <div className="season-end">
@@ -1119,10 +1139,41 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           <div className="modal-header">
             <Zap size={32} className="header-icon playoff-icon" />
             <div>
-              <h1>{t('seasonEnd.playoffDeAscenso')}</h1>
-              <p>{playoffBracket.phase === 'semifinals' ? t('seasonEnd.semisLabel') : t('seasonEnd.finalLabel')}</p>
+              <h1>{isRFEFPlayoff ? `Playoff de ascenso - ${rfefLeagueName}` : t('seasonEnd.playoffDeAscenso')}</h1>
+              <p>
+                {isRFEFPlayoff && playerGroupLabel ? `${playerGroupLabel} · ` : ''}
+                {playoffBracket.phase === 'semifinals' ? t('seasonEnd.semisLabel') : t('seasonEnd.finalLabel')}
+              </p>
             </div>
           </div>
+
+          {isRFEFPlayoff && (
+            <div className="rfef-playoff-guide" data-testid="rfef-playoff-guide">
+              <div className="rfef-guide-main">
+                <Flag size={18} />
+                <div>
+                  <strong>Formato claro</strong>
+                  <span>El 1º sube directo. Del 2º al 5º juegan playoff; el ganador asciende a {promotedLeagueName}.</span>
+                </div>
+              </div>
+              <div className="rfef-guide-kpis">
+                <div className="rfef-kpi rfef-kpi--direct">
+                  <span>Ascenso directo</span>
+                  <strong>{directPromotionEntries[0]?.teamName || '1º clasificado'}</strong>
+                </div>
+                <div className="rfef-kpi rfef-kpi--player">
+                  <span>Tu posición</span>
+                  <strong>{playerPosition > 0 ? `${playerPosition}º` : 'Playoff'}</strong>
+                </div>
+                {playerLeagueId === 'primeraRFEF' && (
+                  <div className="rfef-kpi rfef-kpi--drop">
+                    <span>Zona descenso</span>
+                    <strong>Últimos {relegationEntries.length || 5}</strong>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
           
           {/* Bracket visual */}
           <div className="playoff-bracket">
@@ -1171,6 +1222,20 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               )}
             </div>
           </div>
+
+          {isRFEFPlayoff && rfefGroupResults.length > 0 && (
+            <div className="rfef-groups-overview" data-testid="rfef-groups-overview">
+              <h3><Trophy size={14} /> Ganadores de playoff por grupo</h3>
+              <div className="rfef-group-list">
+                {rfefGroupResults.map(group => (
+                  <div key={group.groupId} className={`rfef-group-row ${group.isPlayerGroup ? 'is-player-group' : ''}`}>
+                    <span>{group.label}{group.isPlayerGroup ? ' · tu grupo' : ''}</span>
+                    <strong className={group.completed ? 'is-complete' : 'is-pending'}>{group.winnerName}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           
           {/* Resultado del último partido */}
           {playoffMatchResult && (
@@ -1650,6 +1715,20 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 ))}
                 <p className="final-result"><strong>{getPlayoffMatchSummary(playoffBracket.final)}</strong></p>
                 <p className="playoff-winner">{t('seasonEnd.promoted')}: <strong>{playoffBracket.final.result?.winnerName}</strong></p>
+              </div>
+            </div>
+          )}
+
+          {/* Resumen de playoffs RFEF */}
+          {(playerLeagueId === 'primeraRFEF' || playerLeagueId === 'segundaRFEF') && rfefPlayoffBrackets && (
+            <div className="playoff-summary-box rfef-summary-box" data-testid="rfef-summary-box">
+              <h3><Trophy size={14} /> Playoffs de ascenso por grupos</h3>
+              <div className="playoff-summary-results rfef-summary-grid">
+                {Object.entries(rfefPlayoffBrackets).map(([groupId, bracket]) => (
+                  <p key={groupId} className={groupId === playoffBracket?.groupId ? 'player-group-summary' : ''}>
+                    <strong>{groupId.replace('grupo', 'Grupo ')}</strong>: {bracket?.winner ? (bracket?.final?.result?.winnerName || bracket.winner) : 'pendiente'}
+                  </p>
+                ))}
               </div>
             </div>
           )}
