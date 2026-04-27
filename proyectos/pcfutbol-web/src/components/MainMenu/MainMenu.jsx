@@ -77,15 +77,15 @@ export default function MainMenu() {
       return;
     }
 
-    // Otherwise check Firebase
-    if (isAuthenticated && user?.uid) {
+    // Otherwise check Firebase. Guest users are local-only and cannot read Firestore.
+    if (isAuthenticated && user?.uid && !user?.isGuest) {
       hasActiveContrarreloj(user.uid)
         .then(info => setContrarrelojInfo(info))
         .catch(() => setContrarrelojInfo({ hasActive: false, summary: null }));
     } else {
       setContrarrelojInfo({ hasActive: false, summary: null });
     }
-  }, [isAuthenticated, user?.uid, isContrarrelojInMemory]);
+  }, [isAuthenticated, user?.uid, user?.isGuest, isContrarrelojInMemory]);
 
   // Detect active ProManager
   const isProManagerInMemory = state.gameStarted && state.gameMode === 'promanager' && !state.proManagerData?.finished;
@@ -104,14 +104,14 @@ export default function MainMenu() {
       });
       return;
     }
-    if (isAuthenticated && user?.uid) {
+    if (isAuthenticated && user?.uid && !user?.isGuest) {
       hasActiveProManager(user.uid)
         .then(info => setProManagerInfo(info))
         .catch(() => setProManagerInfo({ hasActive: false, summary: null }));
     } else {
       setProManagerInfo({ hasActive: false, summary: null });
     }
-  }, [isAuthenticated, user?.uid, isProManagerInMemory]);
+  }, [isAuthenticated, user?.uid, user?.isGuest, isProManagerInMemory]);
 
   // Detect active Glory Mode
   const isGloryInMemory = state.gameStarted && state.gameMode === 'glory';
@@ -362,7 +362,7 @@ export default function MainMenu() {
   };
 
   const handleContrarrelojNew = () => {
-    if (user?.uid) {
+    if (user?.uid && !user?.isGuest) {
       deleteContrarrelojSave(user.uid).catch(() => {});
     }
     if (isContrarrelojInMemory) {

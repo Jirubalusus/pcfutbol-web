@@ -283,7 +283,7 @@ export default function ContrarrelojSetup() {
         preseasonMatches: preseason?.matches || [],
         preseasonPhase: true,
         gameMode: 'contrarreloj',
-        _contrarrelojUserId: user?.uid || null,
+        _contrarrelojUserId: user?.isGuest ? null : (user?.uid || null),
         managerName
       }
     });

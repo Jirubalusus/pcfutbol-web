@@ -156,7 +156,7 @@ export default function ProManagerSetup() {
         preseasonMatches: preseason?.matches || [],
         preseasonPhase: true,
         gameMode: 'promanager',
-        _proManagerUserId: user?.uid || null,
+        _proManagerUserId: user?.isGuest ? null : (user?.uid || null),
         managerName
       }
     });
