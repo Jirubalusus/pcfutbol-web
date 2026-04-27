@@ -429,10 +429,27 @@ export default function ContrarrelojSetup() {
             <ArrowLeft size={16} /> {t('contrarrelojSetup.menu')}
           </button>
           <div className="header-title">
-            <Timer size={32} className="timer-icon" />
-            <div>
+            <div className="timer-stage" aria-hidden="true">
+              <div className="timer-stage__halo" />
+              <div className="timer-stage__dial">
+                <span className="timer-stage__tick timer-stage__tick--12" />
+                <span className="timer-stage__tick timer-stage__tick--3" />
+                <span className="timer-stage__tick timer-stage__tick--6" />
+                <span className="timer-stage__tick timer-stage__tick--9" />
+                <span className="timer-stage__hand timer-stage__hand--seconds" />
+                <span className="timer-stage__hand timer-stage__hand--minutes" />
+                <span className="timer-stage__core" />
+                <Timer size={32} className="timer-icon" />
+              </div>
+            </div>
+            <div className="header-copy">
+              <span className="mode-kicker">Modo límite · Carrera a contrarreloj</span>
               <h1>{t('contrarrelojSetup.title')}</h1>
               <p className="subtitle">{t('contrarrelojSetup.subtitle')}</p>
+            </div>
+            <div className="header-scoreboard" aria-hidden="true">
+              <span>00:00</span>
+              <small>El tiempo no perdona</small>
             </div>
           </div>
         </div>
