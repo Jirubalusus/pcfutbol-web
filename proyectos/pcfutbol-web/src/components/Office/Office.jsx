@@ -1110,8 +1110,11 @@ export default function Office() {
       dispatch({ type: 'SYNC_BATCH_INJURIES', payload: { players: injurySync } });
     }
     
-    // Sync lineup from local state (injured/suspended players were ejected locally)
-    dispatch({ type: 'SET_LINEUP', payload: localLineup });
+    // Sync lineup from local state (injured/suspended players were ejected locally).
+    // Re-fill one last time because batch card/suspension processing can eject players
+    // after the injury refill step, leaving 10/11 despite having available players.
+    const syncedLineup = ensureFullLineup(localLineup, localTeamPlayers, state.formation);
+    dispatch({ type: 'SET_LINEUP', payload: syncedLineup });
 
     if (localGoalBonusMoney > 0) {
       dispatch({ type: 'UPDATE_MONEY', payload: localGoalBonusMoney });

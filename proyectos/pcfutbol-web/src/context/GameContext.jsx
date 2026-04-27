@@ -1039,9 +1039,11 @@ export function gameReducer(state, action) {
         };
       }) || []);
 
-      // Glory mode: auto-renew all contracts (players don't leave via contract expiry)
+      // Fast/progression modes should not drain squads through unattended contract expiry.
+      // Glory and Contrarreloj are designed for long simulated runs, so renew automatically.
       const isGlory = state.gameMode === 'glory';
-      const renewedPlayers = isGlory
+      const autoRenewContracts = isGlory || state.gameMode === 'contrarreloj';
+      const renewedPlayers = autoRenewContracts
         ? evolvedPlayers.map(p => ({ ...p, contractYears: Math.max(p.contractYears, 2) }))
         : evolvedPlayers;
 
@@ -1097,6 +1099,34 @@ export function gameReducer(state, action) {
       // Generar "hijos" de jugadores retirados del equipo del jugador
       const retirementSons = retiringPlayers.map(retired => generateSonPlayer(retired));
       let finalPlayers = [...updatedPlayers, ...retirementSons];
+
+      // Safety net for Contrarreloj: after several auto-simulated seasons, the mode must
+      // always remain playable even if contracts/loans/retirements interacted badly in old saves.
+      // Promote academy fillers up to a sane minimum instead of allowing <11 squads.
+      if (state.gameMode === 'contrarreloj' && finalPlayers.length < 18) {
+        const existingNames = new Set(finalPlayers.map(p => p.name));
+        const needed = 18 - finalPlayers.length;
+        const emergencyYouth = [];
+        for (let i = 0; i < needed; i += 1) {
+          const youth = generateYouthPlayer(1, null);
+          let name = youth.name;
+          let suffix = 2;
+          while (existingNames.has(name)) {
+            name = `${youth.name} ${suffix}`;
+            suffix += 1;
+          }
+          existingNames.add(name);
+          emergencyYouth.push({
+            ...youth,
+            name,
+            teamId: state.teamId,
+            contractYears: Math.max(youth.contractYears || 0, 4),
+            isEmergencyYouth: true
+          });
+        }
+        finalPlayers = [...finalPlayers, ...emergencyYouth];
+      }
+
       // Clear tactical bonus when specs reset
       finalPlayers = finalPlayers.map(p => ({ ...p, tacticalBonus: 0 }));
       if (seasonLeagueId && seasonLeagueTier !== oldLeagueTier) {
