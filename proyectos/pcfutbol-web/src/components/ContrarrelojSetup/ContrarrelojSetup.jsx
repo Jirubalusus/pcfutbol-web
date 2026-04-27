@@ -89,6 +89,10 @@ function formatMoney(amount) {
   return `€${(amount / 1000).toFixed(0)}K`;
 }
 
+function getSquadValue(team) {
+  return (team?.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
+}
+
 function ensureBudgetAndReputation(team, leagueId) {
   const tierBudgets = {
     1: { pct: 0.12, min: 15_000_000, max: 500_000_000 },
@@ -197,12 +201,28 @@ export default function ContrarrelojSetup() {
     setSelectedLeagueId(candidate.leagueId);
   };
 
+  const activeCandidate = candidates.find(c => c.team.id === selectedTeam?.id) || candidates[0] || null;
+  const activeTeam = selectedTeam || activeCandidate?.team || null;
+  const activeLeagueId = selectedLeagueId || activeCandidate?.leagueId || null;
+  const activeAvg = activeTeam ? getAvgOverall(activeTeam) : 0;
+  const activeSquadCount = activeTeam?.players?.length || 0;
+  const activeSquadValue = activeTeam ? formatMoney(getSquadValue(activeTeam)) : '€0';
+  const activeBudget = activeTeam ? formatMoney(activeTeam.budget) : '€0';
+  const activeDifficulty = activeAvg >= 72 ? 'Duro' : activeAvg >= 66 ? 'Muy duro' : 'Épico';
+  const activeDifficultyClass = activeAvg >= 72 ? 'hard' : activeAvg >= 66 ? 'extreme' : 'legend';
+
   const handleStart = async () => {
-    if (!selectedTeam || !selectedLeagueId || starting) return;
+    const startTeam = selectedTeam || activeCandidate?.team;
+    const startLeagueId = selectedLeagueId || activeCandidate?.leagueId;
+    if (!startTeam || !startLeagueId || starting) return;
+    if (!selectedTeam && activeCandidate) {
+      setSelectedTeam(activeCandidate.team);
+      setSelectedLeagueId(activeCandidate.leagueId);
+    }
     setStarting(true);
 
-    const leagueId = selectedLeagueId;
-    const team = selectedTeam;
+    const leagueId = startLeagueId;
+    const team = startTeam;
 
     // Get league teams for this league
     const leagueEntry = ALL_LEAGUES.find(l => l.id === leagueId);
@@ -443,72 +463,84 @@ export default function ContrarrelojSetup() {
         </div>
 
         {/* Team selection */}
-        <div className="contrarreloj-setup__teams">
-          <div className="teams-header">
-            <h2>{t('contrarrelojSetup.chooseChallenge')}</h2>
-            <button className="btn-reroll" onClick={handleReroll}>
-              <RefreshCw size={16} /> {t('contrarrelojSetup.newTeams')}
-            </button>
-          </div>
-
-          <div className="teams-grid">
-            {candidates.map((c, idx) => {
-              const avg = getAvgOverall(c.team);
-              const isSelected = selectedTeam?.id === c.team.id;
-              return (
-                <button
-                  key={c.team.id || idx}
-                  className={`team-card ${isSelected ? 'selected' : ''}`}
-                  onClick={() => handleSelect(c)}
-                >
-                  <TeamCrest teamId={c.team.id} size={32} />
-                  <div className="team-card__info">
-                    <span className="name">{c.team.name}</span>
-                    <span className="league">{c.leagueName}</span>
-                  </div>
-                  <div className="team-card__stats">
-                    <div className="stat">
-                      <Users size={12} />
-                      <span>{avg} {t('contrarrelojSetup.ovr')}</span>
-                    </div>
-                    <div className="stat">
-                      <DollarSign size={12} />
-                      <span>{formatMoney(c.team.budget)}</span>
-                    </div>
-                    <div className="stat">
-                      <Star size={12} />
-                      <span>{c.team.reputation}★</span>
-                    </div>
-                  </div>
-                  {isSelected && <div className="selected-indicator"><ChevronRight size={20} /></div>}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Selected team detail + start — modal on mobile */}
-        {selectedTeam && (
-          <div className="contrarreloj-setup__confirm-overlay" onClick={() => setSelectedTeam(null)}>
-            <div className="contrarreloj-setup__confirm" onClick={e => e.stopPropagation()}>
-              <button className="confirm-close" onClick={() => setSelectedTeam(null)}>✕</button>
-              <div className="confirm-team">
-                <TeamCrest teamId={selectedTeam.id} size={56} />
-                <div className="confirm-info">
-                  <h3>{selectedTeam.name}</h3>
-                  <p>{candidates.find(c => c.team.id === selectedTeam.id)?.leagueName}</p>
-                  <p className="target">
-                    {t('contrarrelojSetup.goal')} {isSouthAmericanLeague(selectedLeagueId) ? t('contrarrelojSetup.libertadores') : t('contrarrelojSetup.championsLeague')}
-                  </p>
-                </div>
-              </div>
-              <button className="btn-start" onClick={handleStart} disabled={starting}>
-                <Timer size={20} />
-                {starting ? t('contrarrelojSetup.starting') : t('contrarrelojSetup.acceptChallenge')}
+        <div className="contrarreloj-setup__board">
+          <section className="contrarreloj-setup__teams">
+            <div className="teams-header">
+              <h2>{t('contrarrelojSetup.chooseChallenge')}</h2>
+              <button className="btn-reroll" onClick={handleReroll}>
+                <RefreshCw size={16} /> {t('contrarrelojSetup.newTeams')}
               </button>
             </div>
-          </div>
-        )}
+
+            <div className="teams-grid" role="list">
+              {candidates.map((c, idx) => {
+                const avg = getAvgOverall(c.team);
+                const isSelected = activeTeam?.id === c.team.id;
+                const diffClass = avg >= 72 ? 'hard' : avg >= 66 ? 'extreme' : 'legend';
+                const squadValue = formatMoney(getSquadValue(c.team));
+                return (
+                  <button
+                    key={c.team.id || idx}
+                    className={`team-card team-card--${diffClass} ${isSelected ? 'selected' : ''}`}
+                    onClick={() => handleSelect(c)}
+                    role="listitem"
+                  >
+                    <span className="team-card__rank">{idx + 1}</span>
+                    <div className="team-card__crest"><TeamCrest teamId={c.team.id} size={46} /></div>
+                    <div className="team-card__info">
+                      <span className="name">{c.team.name}</span>
+                      <span className="league">{c.leagueName}</span>
+                    </div>
+                    <div className="team-card__stats">
+                      <div className="stat">
+                        <Users size={12} />
+                        <span>{avg} {t('contrarrelojSetup.ovr')}</span>
+                      </div>
+                      <div className="stat">
+                        <DollarSign size={12} />
+                        <span>{formatMoney(c.team.budget)}</span>
+                      </div>
+                      <div className="stat">
+                        <Star size={12} />
+                        <span>{squadValue}</span>
+                      </div>
+                    </div>
+                    {isSelected && <div className="selected-indicator"><ChevronRight size={20} /></div>}
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
+          {activeTeam && (
+            <aside className={`contrarreloj-setup__detail contrarreloj-setup__detail--${activeDifficultyClass}`}>
+              <div className="detail-card">
+                <div className="detail-card__crest"><TeamCrest teamId={activeTeam.id} size={64} /></div>
+                <span className="detail-card__eyebrow">{activeCandidate?.leagueName}</span>
+                <h3>{activeTeam.name}</h3>
+                <p>{t('contrarrelojSetup.goal')} {isSouthAmericanLeague(activeLeagueId) ? t('contrarrelojSetup.libertadores') : t('contrarrelojSetup.championsLeague')}</p>
+
+                <div className="detail-card__stats">
+                  <div><span>{t('contrarrelojSetup.ovr')}</span><strong>{activeAvg}</strong></div>
+                  <div><span>Plantilla</span><strong>{activeSquadCount}</strong></div>
+                  <div><span>Presupuesto</span><strong>{activeBudget}</strong></div>
+                  <div><span>Valor</span><strong>{activeSquadValue}</strong></div>
+                </div>
+
+                <div className="detail-card__briefing">
+                  <div><span>Dificultad</span><strong>{activeDifficulty}</strong></div>
+                  <div><span>Objetivo</span><strong>{isSouthAmericanLeague(activeLeagueId) ? 'Libertadores' : 'Champions'}</strong></div>
+                  <div><span>Ranking</span><strong>Temporadas mínimas</strong></div>
+                </div>
+
+                <button className="btn-start" onClick={handleStart} disabled={starting}>
+                  <Timer size={20} />
+                  {starting ? t('contrarrelojSetup.starting') : t('contrarrelojSetup.acceptChallenge')}
+                </button>
+              </div>
+            </aside>
+          )}
+        </div>
       </div>
     </div>
   );
