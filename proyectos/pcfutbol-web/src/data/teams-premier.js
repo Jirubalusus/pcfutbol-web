@@ -563,7 +563,7 @@ export const premierTeams = {
       createPlayer('Adriano Pereira', 'POR', 25, 10, 73),
       createPlayer('D. Blackwell', 'DFC', 26, 16, 76),
       createPlayer('Oliver Ashford', 'DFC', 29, 12, 76),
-      createPlayer('Lewis Osborne'Nien', 'DFC', 31, 1.3),
+      createPlayer("Lewis Osborne'Nien", 'DFC', 31, 1.3),
       createPlayer('Aurélien Arnaud', 'DFC', 25, 1, 64),
       createPlayer('Davi Cardoso', 'LB', 23, 8, 73),
       createPlayer('Rémi Masson', 'LB', 32, 5, 69),
