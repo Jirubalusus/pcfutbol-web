@@ -3156,8 +3156,8 @@
   min-height: 100vh;
   padding: 1rem;
   width: 100%;
-  max-width: 1480px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   box-sizing: border-box;
   overflow-x: hidden;
   background:
@@ -3169,7 +3169,7 @@
     flex-direction: column;
     align-items: stretch;
     padding: 1.5rem clamp(1.25rem, 3vw, 2.5rem) 2.5rem;
-    max-width: 1480px;
+    max-width: none;
   }
 
   &__header {

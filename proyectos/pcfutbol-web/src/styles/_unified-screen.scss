@@ -127,10 +127,13 @@
     }
   }
 
-  // GloryCollection — wider container for desktop
+  // GloryCollection — full-width desktop gallery
   .glory-collection.unified-screen {
-    max-width: 1480px;
-    padding-inline: max(2rem, calc((100vw - 1480px) / 2));
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: stretch;
 
     .glory-collection__header {
       .glory-collection__back {
