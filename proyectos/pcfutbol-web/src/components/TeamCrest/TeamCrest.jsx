@@ -98,8 +98,7 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
   const normalizedTeamKey = normalizeTeamAssetKey(teamId);
   const [officialCrestUrl, setOfficialCrestUrl] = useState(() => {
     const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
-    const cachedUrl = getOfficialCrestUrlFromAsset(cachedAsset);
-    return isCrestImageReady(cachedUrl) ? cachedUrl : null;
+    return getOfficialCrestUrlFromAsset(cachedAsset);
   });
 
   const { primary, secondary, pattern } = useMemo(() => {
@@ -130,7 +129,7 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
 
       const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
       const cachedUrl = getOfficialCrestUrlFromAsset(cachedAsset);
-      setOfficialCrestUrl(isCrestImageReady(cachedUrl) ? cachedUrl : null);
+      setOfficialCrestUrl(cachedUrl || null);
 
       const nextUrl = await getEditionCrestUrl(editionId, teamId);
       if (!nextUrl) {

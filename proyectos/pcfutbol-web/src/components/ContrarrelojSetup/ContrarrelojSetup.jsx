@@ -72,7 +72,11 @@ const ALL_LEAGUES = [
   { id: 'saudiPro', getter: getSaudiTeams },
   { id: 'ligaMX', getter: getLigaMXTeams },
   { id: 'jLeague', getter: getJLeagueTeams },
-].map(l => ({ ...l, name: LEAGUE_CONFIG[l.id]?.name || l.id }));
+].map(l => ({
+  ...l,
+  name: LEAGUE_CONFIG[l.id]?.name || l.id,
+  country: LEAGUE_CONFIG[l.id]?.country || ''
+}));
 
 // Ligas que NO aplican para contrarreloj
 // primeraRFEF excluida (grupos manejados automáticamente para segundaRFEF)
@@ -91,6 +95,39 @@ function formatMoney(amount) {
 
 function getSquadValue(team) {
   return (team?.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
+}
+
+const COUNTRY_LEAGUE_LABELS = {
+  'España': 'Liga española',
+  'Inglaterra': 'Liga inglesa',
+  'Italia': 'Liga italiana',
+  'Alemania': 'Liga alemana',
+  'Francia': 'Liga francesa',
+  'Países Bajos': 'Liga neerlandesa',
+  'Portugal': 'Liga portuguesa',
+  'Bélgica': 'Liga belga',
+  'Turquía': 'Liga turca',
+  'Escocia': 'Liga escocesa',
+  'Suiza': 'Liga suiza',
+  'Austria': 'Liga austríaca',
+  'Grecia': 'Liga griega',
+  'Dinamarca': 'Liga danesa',
+  'Croacia': 'Liga croata',
+  'Chequia': 'Liga checa',
+  'Argentina': 'Liga argentina',
+  'Brasil': 'Liga brasileña',
+  'Colombia': 'Liga colombiana',
+  'Chile': 'Liga chilena',
+  'Uruguay': 'Liga uruguaya',
+  'Ecuador': 'Liga ecuatoriana',
+  'Paraguay': 'Liga paraguaya',
+  'Perú': 'Liga peruana',
+  'Bolivia': 'Liga boliviana',
+  'Venezuela': 'Liga venezolana'
+};
+
+function getCountryLeagueLabel(country) {
+  return COUNTRY_LEAGUE_LABELS[country] || (country ? `Liga de ${country}` : '');
 }
 
 function ensureBudgetAndReputation(team, leagueId) {
@@ -162,7 +199,14 @@ export default function ContrarrelojSetup() {
           ensureBudgetAndReputation(t, league.id);
           const tier = getLeagueTier(league.id);
           if (t.reputation <= 2 || tier >= 3) {
-            const entry = { team: t, leagueId: league.id, leagueName: league.name, tier };
+            const entry = {
+              team: t,
+              leagueId: league.id,
+              leagueName: league.name,
+              leagueCountry: league.country,
+              leagueRegionLabel: getCountryLeagueLabel(league.country),
+              tier
+            };
             if (SA_LEAGUES.has(league.id)) saPool.push(entry);
             else europePool.push(entry);
           }
@@ -506,7 +550,7 @@ export default function ContrarrelojSetup() {
                     <div className="team-card__crest"><TeamCrest teamId={c.team.id} size={54} /></div>
                     <div className="team-card__info">
                       <span className="name">{c.team.name}</span>
-                      <span className="league">{c.leagueName}</span>
+                      <span className="league">{c.leagueName}{c.leagueRegionLabel ? ` · ${c.leagueRegionLabel}` : ''}</span>
                     </div>
                     <div className="team-card__stats">
                       <div className="stat">
@@ -533,7 +577,9 @@ export default function ContrarrelojSetup() {
             <aside className={`contrarreloj-setup__detail contrarreloj-setup__detail--${activeDifficultyClass}`}>
               <div className="detail-card">
                 <div className="detail-card__crest"><TeamCrest teamId={activeTeam.id} size={96} /></div>
-                <span className="detail-card__eyebrow">{activeCandidate?.leagueName}</span>
+                <span className="detail-card__eyebrow">
+                  {activeCandidate?.leagueName}{activeCandidate?.leagueRegionLabel ? ` · ${activeCandidate.leagueRegionLabel}` : ''}
+                </span>
                 <h3>{activeTeam.name}</h3>
                 <p>{t('contrarrelojSetup.goal')} {isSouthAmericanLeague(activeLeagueId) ? t('contrarrelojSetup.libertadores') : t('contrarrelojSetup.championsLeague')}</p>
 
