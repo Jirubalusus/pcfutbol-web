@@ -28,7 +28,7 @@ import {
   getParaguayTeams, getPeruTeams, getBoliviaTeams, getVenezuelaTeams,
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams
 } from '../../data/teamsFirestore';
-import { Timer, ArrowLeft, RefreshCw, Zap, Users, DollarSign, Star, ChevronRight, Trophy, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Zap, Users, DollarSign, Star, ChevronRight, Trophy, AlertTriangle } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import './ContrarrelojSetup.scss';
@@ -474,16 +474,20 @@ export default function ContrarrelojSetup() {
           </button>
           <div className="header-title">
             <div className="timer-stage" aria-hidden="true">
-              <div className="timer-stage__halo" />
+              <div className="timer-stage__glow" />
               <div className="timer-stage__dial">
-                <span className="timer-stage__tick timer-stage__tick--12" />
-                <span className="timer-stage__tick timer-stage__tick--3" />
-                <span className="timer-stage__tick timer-stage__tick--6" />
-                <span className="timer-stage__tick timer-stage__tick--9" />
-                <span className="timer-stage__hand timer-stage__hand--seconds" />
-                <span className="timer-stage__hand timer-stage__hand--minutes" />
-                <span className="timer-stage__core" />
-                <Timer size={32} className="timer-icon" />
+                <span className="timer-stage__arc timer-stage__arc--main" />
+                <span className="timer-stage__arc timer-stage__arc--left" />
+                <span className="timer-stage__marker timer-stage__marker--12" />
+                <span className="timer-stage__marker timer-stage__marker--3" />
+                <span className="timer-stage__marker timer-stage__marker--6" />
+                <span className="timer-stage__marker timer-stage__marker--9" />
+                <span className="timer-stage__needle" />
+                <span className="timer-stage__copy">
+                  <span>Menos es</span>
+                  <strong>Gloria</strong>
+                  <span>Temporadas</span>
+                </span>
               </div>
             </div>
             <div className="header-copy">

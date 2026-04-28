@@ -164,20 +164,20 @@
       }
 
       .timer-stage {
-        width: clamp(92px, 7.4vw, 126px);
+        width: clamp(104px, 8.8vw, 152px);
         aspect-ratio: 1;
         display: grid;
         place-items: center;
       }
 
-      .timer-stage__halo {
+      .timer-stage__glow {
         position: absolute;
-        inset: -8px;
+        inset: -14px;
         border-radius: 999px;
-        background: conic-gradient(from 0deg, rgba(var(--color-gold-rgb), 0.02), rgba(var(--color-gold-rgb), 0.42), rgba(255, 99, 136, 0.24), rgba(var(--color-gold-rgb), 0.02));
-        filter: blur(8px);
-        opacity: 0.58;
-        animation: clockRotate 3.4s linear infinite;
+        background:
+          radial-gradient(circle, rgba(var(--color-gold-rgb), 0.3) 0%, rgba(var(--color-gold-rgb), 0.12) 34%, transparent 70%);
+        filter: blur(10px);
+        opacity: 0.9;
       }
 
       .timer-stage__dial {
@@ -187,67 +187,84 @@
         display: grid;
         place-items: center;
         border-radius: 999px;
-        border: 1px solid rgba(var(--color-gold-rgb), 0.6);
         background:
-          radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.12) 0 4%, transparent 5%),
-          radial-gradient(circle at 50% 50%, rgba(var(--color-gold-rgb), 0.08) 0%, rgba(7, 10, 16, 0.95) 64%, rgba(0, 0, 0, 0.92) 100%);
-        box-shadow: inset 0 0 20px rgba(var(--color-gold-rgb), 0.1), 0 0 18px rgba(var(--color-gold-rgb), 0.18);
-        animation: clockBreath 1.45s ease-in-out infinite;
+          radial-gradient(circle at 52% 48%, rgba(var(--color-gold-rgb), 0.08) 0 39%, rgba(7, 9, 13, 0.84) 40% 100%);
+        box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.44), 0 0 22px rgba(var(--color-gold-rgb), 0.2);
+        animation: clockBreath 1.8s ease-in-out infinite;
       }
 
-      .timer-stage__tick,
-      .timer-stage__hand,
-      .timer-stage__core { position: absolute; }
+      .timer-stage__arc,
+      .timer-stage__marker,
+      .timer-stage__needle,
+      .timer-stage__copy { position: absolute; }
 
-      .timer-stage__tick {
-        width: 3px;
-        height: 10px;
-        border-radius: 99px;
-        background: rgba(var(--color-gold-rgb), 0.8);
-        box-shadow: 0 0 10px rgba(var(--color-gold-rgb), 0.32);
-
-        &--12 { top: 9px; left: 50%; transform: translateX(-50%); }
-        &--3 { right: 9px; top: 50%; transform: translateY(-50%) rotate(90deg); }
-        &--6 { bottom: 9px; left: 50%; transform: translateX(-50%); }
-        &--9 { left: 9px; top: 50%; transform: translateY(-50%) rotate(90deg); }
-      }
-
-      .timer-stage__hand {
-        left: 50%;
-        bottom: 50%;
-        width: 3px;
-        border-radius: 99px;
-        transform-origin: 50% 100%;
-
-        &--seconds {
-          height: 42%;
-          background: #ff4d6d;
-          box-shadow: 0 0 12px rgba(255, 77, 109, 0.7);
-          animation: clockRotate 1.1s linear infinite;
-        }
-
-        &--minutes {
-          height: 32%;
-          width: 5px;
-          background: var(--color-gold);
-          animation: clockRotate 8s linear infinite;
-        }
-      }
-
-      .timer-stage__core {
-        width: 14px;
-        width: 12px;
-        height: 12px;
+      .timer-stage__arc {
+        inset: 8px;
         border-radius: 999px;
-        background: #fff0b1;
-        box-shadow: 0 0 12px rgba(var(--color-gold-rgb), 0.62);
+        transform: rotate(-9deg);
+        background: conic-gradient(from 0deg, var(--color-gold) 0 86deg, transparent 86deg 196deg, var(--color-gold) 196deg 304deg, transparent 304deg 360deg);
+        filter: drop-shadow(0 0 10px rgba(var(--color-gold-rgb), 0.62));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
       }
 
-      .timer-icon {
-        width: 48%;
-        height: 48%;
-        color: rgba(var(--color-gold-rgb), 0.26);
-        filter: drop-shadow(0 0 18px rgba(var(--color-gold-rgb), 0.33));
+      .timer-stage__arc--left {
+        inset: 10px;
+        opacity: 0.28;
+        transform: rotate(22deg);
+        background: conic-gradient(from 0deg, transparent 0 204deg, var(--color-gold) 204deg 242deg, transparent 242deg 360deg);
+      }
+
+      .timer-stage__marker {
+        width: 2px;
+        height: 8px;
+        border-radius: 99px;
+        background: rgba(255, 224, 71, 0.5);
+        box-shadow: 0 0 8px rgba(var(--color-gold-rgb), 0.36);
+
+        &--12 { top: 14px; left: 50%; transform: translateX(-50%); }
+        &--3 { right: 15px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+        &--6 { bottom: 14px; left: 50%; transform: translateX(-50%); }
+        &--9 { left: 15px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+      }
+
+      .timer-stage__needle {
+        left: 50%;
+        bottom: 51%;
+        width: 2px;
+        height: 35%;
+        border-radius: 99px;
+        background: linear-gradient(180deg, rgba(255, 244, 175, 0.96), rgba(var(--color-gold-rgb), 0.46));
+        box-shadow: 0 0 10px rgba(var(--color-gold-rgb), 0.5);
+        transform: translateX(-50%) rotate(10deg);
+        transform-origin: 50% 100%;
+      }
+
+      .timer-stage__copy {
+        inset: 0;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 0.08rem;
+        color: rgba(255, 232, 120, 0.72);
+        font-family: 'Outfit', sans-serif;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        line-height: 1;
+        text-shadow: 0 0 9px rgba(var(--color-gold-rgb), 0.52);
+
+        span {
+          font-size: clamp(0.44rem, 0.54vw, 0.64rem);
+          font-weight: 900;
+        }
+
+        strong {
+          margin: 0.03rem 0;
+          color: var(--color-gold);
+          font-size: clamp(0.88rem, 1.05vw, 1.34rem);
+          font-weight: 1000;
+          letter-spacing: -0.04em;
+        }
       }
 
       .mode-kicker {
