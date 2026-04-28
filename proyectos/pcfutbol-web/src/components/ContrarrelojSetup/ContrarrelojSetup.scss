@@ -130,12 +130,12 @@
 
     .header-title {
       position: relative;
-      min-height: clamp(132px, 16dvh, 184px);
+      min-height: clamp(156px, 18dvh, 220px);
       display: grid;
-      grid-template-columns: clamp(96px, 7.8vw, 132px) minmax(0, 1fr) minmax(150px, 0.22fr);
+      grid-template-columns: clamp(128px, 10.5vw, 188px) minmax(0, 1fr) minmax(150px, 0.2fr);
       align-items: center;
-      gap: clamp(0.9rem, 1.55vw, 1.6rem);
-      padding: clamp(0.9rem, 1.35vw, 1.55rem);
+      gap: clamp(1rem, 1.75vw, 2rem);
+      padding: clamp(1rem, 1.55vw, 1.8rem);
       overflow: hidden;
       border-radius: 14px;
       border: 1px solid rgba(var(--color-gold-rgb), 0.22);
@@ -164,7 +164,7 @@
       }
 
       .timer-stage {
-        width: clamp(104px, 8.8vw, 152px);
+        width: clamp(122px, 10vw, 178px);
         aspect-ratio: 1;
         display: grid;
         place-items: center;
@@ -254,14 +254,14 @@
         text-shadow: 0 0 9px rgba(var(--color-gold-rgb), 0.52);
 
         span {
-          font-size: clamp(0.44rem, 0.54vw, 0.64rem);
+          font-size: clamp(0.5rem, 0.62vw, 0.76rem);
           font-weight: 900;
         }
 
         strong {
           margin: 0.03rem 0;
           color: var(--color-gold);
-          font-size: clamp(0.88rem, 1.05vw, 1.34rem);
+          font-size: clamp(1.02rem, 1.24vw, 1.58rem);
           font-weight: 1000;
           letter-spacing: -0.04em;
         }
@@ -285,10 +285,10 @@
         margin: 0;
         max-width: none;
         font-family: 'Outfit', sans-serif;
-        font-size: clamp(2.8rem, 4.3vw, 5.4rem);
+        font-size: clamp(3.25rem, 4.85vw, 6.05rem);
         font-weight: 1000;
-        line-height: 0.82;
-        letter-spacing: -0.065em;
+        line-height: 0.8;
+        letter-spacing: -0.07em;
         text-transform: uppercase;
         color: var(--color-gold);
         text-shadow: 0 0 18px rgba(var(--color-gold-rgb), 0.16);
@@ -298,8 +298,8 @@
         max-width: 76ch;
         margin: 0.72rem 0 0;
         color: rgba(230, 235, 244, 0.66);
-        font-size: clamp(0.86rem, 0.92vw, 1.06rem);
-        line-height: 1.35;
+        font-size: clamp(0.92rem, 1vw, 1.16rem);
+        line-height: 1.38;
       }
 
       .header-scoreboard {
