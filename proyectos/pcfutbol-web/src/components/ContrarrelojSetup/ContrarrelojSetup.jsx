@@ -503,22 +503,22 @@ export default function ContrarrelojSetup() {
                     role="listitem"
                   >
                     <span className="team-card__rank">{idx + 1}</span>
-                    <div className="team-card__crest"><TeamCrest teamId={c.team.id} size={46} /></div>
+                    <div className="team-card__crest"><TeamCrest teamId={c.team.id} size={54} /></div>
                     <div className="team-card__info">
                       <span className="name">{c.team.name}</span>
                       <span className="league">{c.leagueName}</span>
                     </div>
                     <div className="team-card__stats">
                       <div className="stat">
-                        <Users size={12} />
+                        <Users size={14} />
                         <span>{avg} {t('contrarrelojSetup.ovr')}</span>
                       </div>
                       <div className="stat">
-                        <DollarSign size={12} />
+                        <DollarSign size={14} />
                         <span>{formatMoney(c.team.budget)}</span>
                       </div>
                       <div className="stat">
-                        <Star size={12} />
+                        <Star size={14} />
                         <span>{squadValue}</span>
                       </div>
                     </div>
@@ -532,7 +532,7 @@ export default function ContrarrelojSetup() {
           {activeTeam && (
             <aside className={`contrarreloj-setup__detail contrarreloj-setup__detail--${activeDifficultyClass}`}>
               <div className="detail-card">
-                <div className="detail-card__crest"><TeamCrest teamId={activeTeam.id} size={64} /></div>
+                <div className="detail-card__crest"><TeamCrest teamId={activeTeam.id} size={96} /></div>
                 <span className="detail-card__eyebrow">{activeCandidate?.leagueName}</span>
                 <h3>{activeTeam.name}</h3>
                 <p>{t('contrarrelojSetup.goal')} {isSouthAmericanLeague(activeLeagueId) ? t('contrarrelojSetup.libertadores') : t('contrarrelojSetup.championsLeague')}</p>
@@ -551,7 +551,7 @@ export default function ContrarrelojSetup() {
                 </div>
 
                 <button className="btn-start" onClick={handleStart} disabled={starting}>
-                  <Timer size={20} />
+                  <Timer size={22} />
                   {starting ? t('contrarrelojSetup.starting') : t('contrarrelojSetup.acceptChallenge')}
                 </button>
               </div>
