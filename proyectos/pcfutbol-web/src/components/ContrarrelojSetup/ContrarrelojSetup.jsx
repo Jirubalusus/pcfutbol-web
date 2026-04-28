@@ -28,7 +28,7 @@ import {
   getParaguayTeams, getPeruTeams, getBoliviaTeams, getVenezuelaTeams,
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams
 } from '../../data/teamsFirestore';
-import { ArrowLeft, RefreshCw, Zap, Users, DollarSign, Star, ChevronRight, Trophy, AlertTriangle } from 'lucide-react';
+import { Timer, ArrowLeft, RefreshCw, Zap, Users, DollarSign, Star, ChevronRight, Trophy, AlertTriangle } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import './ContrarrelojSetup.scss';
