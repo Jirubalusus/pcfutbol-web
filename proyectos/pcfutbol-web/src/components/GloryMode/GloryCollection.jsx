@@ -34,10 +34,10 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
   const progress = Math.round((totalUnlocked / sortedCards.length) * 100);
 
   const renderCardIcon = (card, unlocked) => {
-    if (!unlocked) return <Lock size={30} />;
+    if (!unlocked) return <Lock size={36} />;
     const IconComponent = ICON_MAP[card.icon];
-    if (!IconComponent) return <Star size={30} />;
-    return <IconComponent size={30} />;
+    if (!IconComponent) return <Star size={36} />;
+    return <IconComponent size={36} />;
   };
 
   return (
