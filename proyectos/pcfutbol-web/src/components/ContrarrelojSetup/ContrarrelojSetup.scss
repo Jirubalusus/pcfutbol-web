@@ -394,7 +394,8 @@
     align-items: start;
 
     @media (min-width: 960px) {
-      min-height: 0;
+      flex: 1;
+      min-height: clamp(520px, calc(100dvh - 13rem), 760px);
       align-items: stretch;
     }
 
