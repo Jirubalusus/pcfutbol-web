@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [react()],
   base: process.env.GITHUB_PAGES ? '/pcfutbol-web/' : '/',
   build: {
-    sourcemap: true,
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks,

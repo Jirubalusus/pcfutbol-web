@@ -154,10 +154,17 @@ export default function WorldMap({ countries, selectedCountry, hoveredCountry, o
     el.setAttribute('role', 'button');
     el.setAttribute('tabindex', '0');
     el.setAttribute('aria-label', d.name);
-    el.innerHTML = `
-      <span class="globe-marker__dot" aria-hidden="true"></span>
-      ${d.isSelected || d.isHovered ? `<span class="globe-marker__tooltip">${d.name}</span>` : ''}
-    `;
+    const dot = document.createElement('span');
+    dot.className = 'globe-marker__dot';
+    dot.setAttribute('aria-hidden', 'true');
+    el.appendChild(dot);
+
+    if (d.isSelected || d.isHovered) {
+      const tooltip = document.createElement('span');
+      tooltip.className = 'globe-marker__tooltip';
+      tooltip.textContent = d.name;
+      el.appendChild(tooltip);
+    }
     el.addEventListener('click', (e) => {
       e.stopPropagation();
       if (d?.id) onCountryClick(d.id);

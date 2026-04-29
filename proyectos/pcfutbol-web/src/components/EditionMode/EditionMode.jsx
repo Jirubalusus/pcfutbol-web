@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { 
   getEditions, 
@@ -226,7 +226,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
       {/* Warning */}
       <div className="edition-mode__warning">
         <AlertTriangle size={18} />
-        <p dangerouslySetInnerHTML={{ __html: t('edition.warning') }} />
+        <p><Trans i18nKey="edition.warning" components={{ strong: <strong /> }} /></p>
       </div>
 
       {/* Editions list */}
