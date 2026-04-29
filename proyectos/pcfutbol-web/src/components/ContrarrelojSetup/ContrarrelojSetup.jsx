@@ -475,19 +475,23 @@ export default function ContrarrelojSetup() {
           <div className="header-title">
             <div className="timer-stage" aria-hidden="true">
               <div className="timer-stage__glow" />
+              <span className="timer-stage__speed timer-stage__speed--top" />
+              <span className="timer-stage__speed timer-stage__speed--mid" />
+              <span className="timer-stage__speed timer-stage__speed--low" />
               <div className="timer-stage__dial">
-                <span className="timer-stage__arc timer-stage__arc--main" />
-                <span className="timer-stage__arc timer-stage__arc--left" />
+                <span className="timer-stage__crown" />
+                <span className="timer-stage__rim" />
+                <span className="timer-stage__ring timer-stage__ring--outer" />
+                <span className="timer-stage__ring timer-stage__ring--inner" />
                 <span className="timer-stage__marker timer-stage__marker--12" />
-                <span className="timer-stage__marker timer-stage__marker--3" />
+                <span className="timer-stage__marker timer-stage__marker--2" />
+                <span className="timer-stage__marker timer-stage__marker--4" />
                 <span className="timer-stage__marker timer-stage__marker--6" />
-                <span className="timer-stage__marker timer-stage__marker--9" />
-                <span className="timer-stage__needle" />
-                <span className="timer-stage__copy">
-                  <span>Menos es</span>
-                  <strong>Gloria</strong>
-                  <span>Temporadas</span>
-                </span>
+                <span className="timer-stage__marker timer-stage__marker--8" />
+                <span className="timer-stage__marker timer-stage__marker--10" />
+                <span className="timer-stage__needle timer-stage__needle--minutes" />
+                <span className="timer-stage__needle timer-stage__needle--seconds" />
+                <span className="timer-stage__hub" />
               </div>
             </div>
             <div className="header-copy">
