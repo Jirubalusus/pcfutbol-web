@@ -1138,4 +1138,322 @@
       padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.8rem);
     }
   }
+
+  @media (max-width: 880px) {
+    height: 100dvh;
+    min-height: 100dvh;
+    overflow: hidden;
+
+    &__content {
+      height: 100dvh;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 0.5rem;
+      overflow: hidden;
+      padding: 0.62rem 0.62rem calc(env(safe-area-inset-bottom, 0px) + 0.62rem);
+      padding-top: calc(env(safe-area-inset-top, 0px) + 0.62rem);
+    }
+
+    &__header {
+      min-height: 38px;
+      margin: 0;
+      align-items: center;
+      gap: 0.55rem;
+
+      .btn-back {
+        min-width: 66px;
+        height: 34px;
+        padding: 0 0.62rem;
+        border-radius: 10px;
+        font-size: 0.72rem;
+      }
+
+      .header-info h1 {
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: 0.06em;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      .header-info p {
+        margin-top: 0.14rem;
+        font-size: 0.68rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &__offers,
+    &__board {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    &__board {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 236px minmax(0, 1fr);
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+
+    .offer-detail {
+      order: 1;
+      position: relative;
+      top: auto;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto auto auto auto 48px;
+      gap: 0.42rem;
+      padding: 0.66rem;
+      border-radius: 18px;
+      overflow: hidden;
+      border-color: color-mix(in srgb, var(--detail-accent) 20%, rgba(255, 255, 255, 0.07));
+      background:
+        radial-gradient(circle at 12% 4%, color-mix(in srgb, var(--detail-accent) 12%, transparent) 0%, transparent 38%),
+        linear-gradient(135deg, rgba(18, 28, 43, 0.98), rgba(6, 11, 19, 0.99));
+
+      &__head {
+        display: grid;
+        grid-template-columns: 52px minmax(0, 1fr) auto;
+        grid-template-areas:
+          "crest league tags"
+          "crest name tags";
+        align-items: center;
+        gap: 0.16rem 0.55rem;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        border-bottom: 0;
+      }
+
+      &__crest {
+        grid-area: crest;
+        width: 52px;
+        height: 52px;
+        margin: 0;
+        border-radius: 14px;
+
+        .team-crest,
+        .team-crest--official {
+          max-width: 42px;
+          max-height: 42px;
+        }
+      }
+
+      &__eyebrow {
+        grid-area: league;
+        align-self: end;
+        font-size: 0.55rem;
+        letter-spacing: 0.15em;
+      }
+
+      &__name {
+        grid-area: name;
+        align-self: start;
+        font-size: 1.16rem;
+        line-height: 1.05;
+        letter-spacing: 0.01em;
+      }
+
+      &__tags {
+        grid-area: tags;
+        align-self: start;
+        margin: 0;
+        flex-direction: column;
+        gap: 0.24rem;
+      }
+
+      &__diff,
+      &__tier {
+        padding: 3px 7px;
+        font-size: 0.5rem;
+      }
+
+      &__objective {
+        align-items: center;
+        gap: 0.38rem;
+        margin: 0;
+        padding: 0.46rem 0.55rem;
+        border-radius: 11px;
+        font-size: 0.72rem;
+        line-height: 1.22;
+
+        svg {
+          margin-top: 0;
+          width: 13px;
+          height: 13px;
+        }
+      }
+
+      &__stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.36rem;
+        margin: 0;
+      }
+
+      &__stat {
+        min-height: 44px;
+        align-items: center;
+        gap: 0.1rem;
+        padding: 0.34rem 0.26rem;
+        border-radius: 11px;
+        background: rgba(255, 255, 255, 0.035);
+
+        dt {
+          justify-content: center;
+          gap: 0.18rem;
+          font-size: 0.48rem;
+          letter-spacing: 0.09em;
+
+          svg {
+            display: none;
+          }
+        }
+
+        dd {
+          max-width: 100%;
+          font-size: 0.82rem;
+          line-height: 1;
+          text-align: center;
+        }
+      }
+
+      &__briefing {
+        display: grid;
+        grid-template-columns: 1.28fr 0.9fr 0.72fr;
+        gap: 0.36rem;
+        margin: 0;
+        min-height: 32px;
+      }
+
+      &__briefing-row {
+        min-width: 0;
+        min-height: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1px;
+        padding: 0.3rem 0.46rem;
+        border-radius: 11px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.028));
+
+        span {
+          max-width: 100%;
+          font-size: 0.48rem;
+          line-height: 1;
+          letter-spacing: 0.11em;
+        }
+
+        strong {
+          max-width: 100%;
+          font-size: 0.74rem;
+          line-height: 1.05;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &--value strong { color: #49ff9b; }
+        &--prestige strong { color: #f4f8fc; }
+        &--season strong { color: #9ed0ff; }
+      }
+    }
+
+    .offers-list {
+      order: 2;
+      min-height: 0;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 21px repeat(5, minmax(0, 1fr));
+      gap: 0.28rem;
+      padding: 0.42rem;
+      border-radius: 16px;
+      overflow: hidden;
+
+      &__header {
+        height: 21px;
+        margin: 0;
+        padding: 0 0.2rem 0.16rem;
+        font-size: 0.55rem;
+      }
+    }
+
+    .offer-row {
+      min-height: 0;
+      height: 100%;
+      grid-template-columns: 3px 34px minmax(0, 1fr) 42px;
+      gap: 0.46rem;
+      padding: 0.28rem 0.44rem 0.28rem 0;
+      border-radius: 12px;
+
+      &__crest {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+
+        .team-crest,
+        .team-crest--official {
+          max-width: 28px;
+          max-height: 28px;
+        }
+      }
+
+      &__eyebrow {
+        font-size: 0.5rem;
+        letter-spacing: 0.1em;
+      }
+
+      &__name {
+        font-size: 0.78rem;
+        line-height: 1.05;
+      }
+
+      &__stats {
+        display: none;
+      }
+
+      &__meta {
+        gap: 0;
+        justify-content: flex-end;
+      }
+
+      &__rank,
+      &__tier {
+        display: none;
+      }
+
+      &__ovr {
+        width: 38px;
+        height: 30px;
+        padding: 0;
+        border-radius: 9px;
+
+        b {
+          font-size: 0.88rem;
+        }
+
+        em {
+          font-size: 0.45rem;
+        }
+      }
+    }
+
+    .btn-start {
+      position: static;
+      min-height: 48px;
+      height: 48px;
+      padding: 0 0.75rem;
+      border-radius: 14px;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+    }
+  }
 }

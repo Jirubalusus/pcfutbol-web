@@ -396,15 +396,15 @@ export default function ProManagerSetup() {
                 </dl>
 
                 <div className="offer-detail__briefing">
-                  <div className="offer-detail__briefing-row">
-                    <span>{t('proManager.boardConfidence')}</span>
-                    <strong>60%</strong>
+                  <div className="offer-detail__briefing-row offer-detail__briefing-row--value">
+                    <span>Valor club</span>
+                    <strong>{formatMoney(getSquadValue(activeOffer.team))}</strong>
                   </div>
-                  <div className="offer-detail__briefing-row">
+                  <div className="offer-detail__briefing-row offer-detail__briefing-row--prestige">
                     <span>{t('proManager.prestige')}</span>
                     <strong>10</strong>
                   </div>
-                  <div className="offer-detail__briefing-row">
+                  <div className="offer-detail__briefing-row offer-detail__briefing-row--season">
                     <span>{t('common.season')}</span>
                     <strong>01</strong>
                   </div>
