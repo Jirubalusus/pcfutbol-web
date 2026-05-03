@@ -165,21 +165,22 @@ function ensureBudgetAndReputation(team, leagueId) {
 export default function ContrarrelojSetup() {
   const { t } = useTranslation();
   const { dispatch } = useGame();
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedLeagueId, setSelectedLeagueId] = useState(null);
   const [starting, setStarting] = useState(false);
   const [rerollKey, setRerollKey] = useState(0);
 
   // Generate 5 random low-reputation teams from all leagues
-  // South American league IDs
-  const SA_LEAGUES = new Set([
-    'argentinaPrimera', 'brasileiraoA', 'colombiaPrimera', 'chilePrimera',
-    'uruguayPrimera', 'ecuadorLigaPro', 'paraguayPrimera', 'peruLiga1',
-    'boliviaPrimera', 'venezuelaPrimera'
-  ]);
-
   const candidates = useMemo(() => {
+    // rerollKey is intentionally read here so the memo regenerates the random list.
+    void rerollKey;
+    // South American league IDs
+    const saLeagues = new Set([
+      'argentinaPrimera', 'brasileiraoA', 'colombiaPrimera', 'chilePrimera',
+      'uruguayPrimera', 'ecuadorLigaPro', 'paraguayPrimera', 'peruLiga1',
+      'boliviaPrimera', 'venezuelaPrimera'
+    ]);
     const europePool = [];
     const saPool = [];
 
@@ -207,7 +208,7 @@ export default function ContrarrelojSetup() {
               leagueRegionLabel: getCountryLeagueLabel(league.country),
               tier
             };
-            if (SA_LEAGUES.has(league.id)) saPool.push(entry);
+            if (saLeagues.has(league.id)) saPool.push(entry);
             else europePool.push(entry);
           }
         }
@@ -367,7 +368,7 @@ export default function ContrarrelojSetup() {
       try {
         const bootstrapStandings = {};
         const allTeamsMap = {};
-        for (const [lid, slots] of Object.entries(SA_LEAGUE_SLOTS)) {
+        for (const lid of Object.keys(SA_LEAGUE_SLOTS)) {
           const config = LEAGUE_CONFIG[lid];
           if (!config?.getTeams) continue;
           const lt = config.getTeams();
