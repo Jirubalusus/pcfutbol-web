@@ -1,7 +1,7 @@
+/* eslint-disable no-unused-vars, react-hooks/immutability, react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useGame } from '../../context/GameContext';
 import { translatePosition, posToEN } from '../../game/positionNames';
-import CustomSelect from '../common/CustomSelect/CustomSelect';
 import { 
   getLaLigaTeams,
   getSegundaTeams,
@@ -22,10 +22,9 @@ import {
   canLoanPlayer
 } from '../../game/loanSystem';
 import TransferMap from './TransferMap';
-import { Star, Circle, Zap, Globe, X, ShoppingCart, ClipboardList, DollarSign, Mail, Inbox, Search, Settings, Flame, AlertTriangle, Info, MessageSquare, Target, Calendar, Check, XCircle, CheckCircle } from 'lucide-react';
+import TeamCrest from '../TeamCrest/TeamCrest';
+import { Zap, Globe, X, ShoppingCart, ClipboardList, DollarSign, Mail, Inbox, Search, Check, ArrowRightLeft } from 'lucide-react';
 import { getLeagueTier, getMaxTierJumpByAge, getPositionPerformanceMultiplier, getTransferValueMultiplier } from '../../game/leagueTiers';
-import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
-import { useTranslation } from 'react-i18next';
 import './Transfers.scss';
 import './TransferMap.scss';
 
@@ -812,7 +811,7 @@ export default function Transfers() {
       payload: {
         id: Date.now(),
         type: 'transfer',
-        title: t('transfers.freeAgentSignedTitle'),
+        title: 'Agente libre fichado',
         content: `${player.name} firma como agente libre (prima: ${formatMoney(totalCost)})`,
         date: `Semana ${state.currentWeek}`
       }
@@ -1098,953 +1097,108 @@ export default function Transfers() {
   
   // === RENDER ===
 
-  // Mostrar mapa de fichajes
   if (showMap) {
     return <TransferMap onSelectLeague={handleLeagueSelect} onClose={() => setShowMap(false)} />;
   }
 
-  const COUNTRY_FLAGS = { laliga: '🇪🇸', segunda: '🇪🇸', premierLeague: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', ligue1: '🇫🇷', bundesliga: '🇩🇪', serieA: '🇮🇹', eredivisie: '🇳🇱', primeiraLiga: '🇵🇹' };
-  const LEAGUE_NAMES = Object.fromEntries(
-    Object.entries(LEAGUE_CONFIG).filter(([id]) => COUNTRY_FLAGS[id]).map(([id, cfg]) => [id, `${COUNTRY_FLAGS[id]} ${cfg.name}`])
+  const roleLabels = { star: 'Estrella', starter: 'Titular', rotation: 'Rotación', backup: 'Suplente', youth: 'Joven' };
+  const teamName = state.team?.name || 'Tu equipo';
+  const shortlist = filteredPlayers.slice(0, 8);
+  const priorityPlayers = filteredPlayers.filter(p => !p.isFreeAgent).slice(0, 3);
+  const firstLoanCandidate = loanCandidates[0];
+  const activeIncomingOffers = Array.isArray(state.transferOffers) ? state.transferOffers : [];
+  const activeCount = activeIncomingOffers.length + pendingLoanOffers.length + (firstLoanCandidate ? 1 : 0) + priorityPlayers.length;
+  const getOperationLabel = (player) => {
+    if (player.isFreeAgent) return 'Libre';
+    if (player.isForSale) return 'En venta';
+    if (player.contractExpiring) return 'Fin contrato';
+    if (player.isUnhappy) return 'Oportunidad';
+    return 'Traspaso';
+  };
+
+  const TransferCard = ({ player, compact = false }) => (
+    <article className={`transfers__simple-player ${compact ? 'compact' : ''}`}>
+      <div className="transfers__club-line">
+        <TeamCrest teamId={player.teamId || 'free-agent'} size={compact ? 30 : 36} />
+        <div><strong>{player.name}</strong><span>{player.teamName || 'Agente libre'}</span></div>
+      </div>
+      <div className="transfers__simple-meta">
+        <span className="pos" style={{ color: getPositionColor(player.position) }}>{translatePosition(player.position)}</span>
+        <span>{player.age} años</span><span className="ovr">{player.overall}</span>
+      </div>
+      <div className="transfers__simple-footer">
+        <div><small>{getOperationLabel(player)}</small><b>{player.isFreeAgent ? `Prima ${formatMoney(player.signingBonus)}` : formatMoney(player.askingPrice)}</b></div>
+        <button className="transfers__primary-action" onClick={() => player.isFreeAgent ? signFreeAgent(player) : startNegotiation(player)} disabled={player.isFreeAgent ? state.money < player.signingBonus : state.money < player.askingPrice * 0.3}>{player.isFreeAgent ? 'Fichar' : 'Negociar'}</button>
+      </div>
+    </article>
+  );
+
+  const LoanCard = ({ candidate }) => (
+    <article className="transfers__simple-player transfers__simple-player--loan">
+      <div className="transfers__club-line"><TeamCrest teamId={candidate.teamId || 'loan'} size={36} /><div><strong>{candidate.name}</strong><span>{candidate.teamName}</span></div></div>
+      <div className="transfers__simple-meta"><span className="pos" style={{ color: getPositionColor(candidate.position) }}>{translatePosition(candidate.position)}</span><span>{candidate.age} años</span><span className="ovr">{candidate.overall}</span></div>
+      <p className="transfers__microcopy">{candidate.reason || 'Disponible para minutos'}</p>
+      <div className="transfers__simple-footer"><div><small>Cesión</small><b>{formatMoney(candidate.loanFee)}</b></div><button className="transfers__primary-action" onClick={() => handleRequestLoan(candidate)} disabled={!transferWindow.isOpen || state.money < candidate.loanFee}>Pedir cesión</button></div>
+    </article>
+  );
+
+  const OfferCard = ({ offer }) => (
+    <article className="transfers__operation-card">
+      <div className="transfers__club-line"><TeamCrest teamId={offer.teamId || offer.teamShortName || 'buyer'} size={34} /><div><strong>{offer.team}</strong><span>Quiere a {offer.player}</span></div></div>
+      <div className="transfers__operation-price"><small>Oferta</small><b>{formatMoney(offer.amount)}</b></div>
+      <div className="transfers__operation-actions"><button onClick={() => handleAcceptOffer(offer)}><Check size={13} /> Aceptar</button><button onClick={() => handleCounterOffer(offer)}>Negociar</button><button className="danger" onClick={() => handleRejectOffer(offer)}><X size={13} /> Rechazar</button></div>
+    </article>
+  );
+
+  const LoanOfferCard = ({ offer }) => (
+    <article className="transfers__operation-card">
+      <div className="transfers__club-line"><TeamCrest teamId={offer.toTeamId || 'loan-offer'} size={34} /><div><strong>{offer.toTeamName}</strong><span>Solicita a {offer.playerData?.name || offer.playerId}</span></div></div>
+      <div className="transfers__operation-price"><small>Fee + salario</small><b>{formatMoney(offer.loanFee)} · {Math.round(offer.salaryShare * 100)}%</b></div>
+      <div className="transfers__operation-actions"><button onClick={() => handleAcceptLoanOffer(offer)}><Check size={13} /> Aceptar</button><button className="danger" onClick={() => handleRejectLoanOffer(offer)}><X size={13} /> Rechazar</button></div>
+    </article>
   );
 
   return (
-    <div className="transfers">
-      {/* Header con estado del mercado */}
-      <div className="transfers__header">
-        <div className="transfers__title-section">
-          <h2>{t('transfers.marketTitle')}</h2>
-          <div className={`transfers__window ${transferWindow.isOpen ? 'open' : 'closed'} ${transferWindow.isUrgent ? 'urgent' : ''}`}>
-            {transferWindow.isUrgent && <span className="urgent-icon"><Zap size={14} /></span>}
-            {transferWindow.name}
-            {transferWindow.isUrgent && <span className="urgent-text">{t('transfers.lastDays')}</span>}
-          </div>
-        </div>
-        <div className="transfers__header-actions">
-          <button className="map-btn" onClick={() => setShowMap(true)}>
-            <Globe size={14} /> {t('transfers.exploreMap')}
-          </button>
-          <div className="transfers__budget">
-            <span className="label">{t('transfers.budget')}:</span>
-            <span className="value">{formatMoney(state.money)}</span>
-          </div>
-        </div>
+    <div className="transfers transfers--simple">
+      <div className="transfers__simple-header"><div><p className="transfers__eyebrow">Mercado de fichajes</p><h2>Fichajes</h2><p>Decide rápido: necesidades, operaciones activas y mercado completo.</p></div><div className="transfers__money-box"><span>Presupuesto</span><strong>{formatMoney(state.money)}</strong></div></div>
+
+      <div className="transfers__tabs transfers__tabs--simple">
+        <button className={tab === 'market' ? 'active' : ''} onClick={() => setTab('market')}><ShoppingCart size={14} /> Mercado <span className="count">{marketPlayers.length}</span></button>
+        <button className={tab === 'loans' ? 'active' : ''} onClick={() => setTab('loans')}><ArrowRightLeft size={14} /> Cesiones <span className="count">{loanCandidates.length}</span></button>
+        <button className={tab === 'freeagents' ? 'active' : ''} onClick={() => setTab('freeagents')}><ClipboardList size={14} /> Libres <span className="count">{freeAgents.length}</span></button>
+        <button className={tab === 'offers' ? 'active' : ''} onClick={() => setTab('offers')}><Mail size={14} /> Ofertas {activeIncomingOffers.length > 0 && <span className="badge">{activeIncomingOffers.length}</span>}</button>
+        <button className={tab === 'sell' ? 'active' : ''} onClick={() => setTab('sell')}><DollarSign size={14} /> Vender</button>
+        <button onClick={() => setShowMap(true)}><Globe size={14} /> Mapa</button>
       </div>
 
-      {/* Filtro de liga activo */}
-      {selectedLeague && (
-        <div className="transfers__league-filter">
-          <span className="label">{t('transfers.filteringBy')}:</span>
-          <span className="league">{LEAGUE_NAMES[selectedLeague]}</span>
-          <button className="clear" onClick={() => setSelectedLeague(null)}><X size={14} /> {t('transfers.removeFilter')}</button>
-        </div>
-      )}
-      
-      {/* Tabs */}
-      <div className="transfers__tabs">
-        <button className={tab === 'market' ? 'active' : ''} onClick={() => setTab('market')}>
-          <ShoppingCart size={14} /> Mercado <span className="count">{marketPlayers.length}</span>
-        </button>
-        <button className={tab === 'freeagents' ? 'active' : ''} onClick={() => setTab('freeagents')}>
-          <ClipboardList size={14} /> Libres <span className="count">{freeAgents.length}</span>
-        </button>
-        <button className={tab === 'watchlist' ? 'active' : ''} onClick={() => setTab('watchlist')}>
-          <Star size={14} /> Seguimiento <span className="count">{watchlist.length}</span>
-        </button>
-        <button className={tab === 'sell' ? 'active' : ''} onClick={() => setTab('sell')}>
-          <DollarSign size={14} /> Vender
-        </button>
-        <button 
-          className={`${tab === 'offers' ? 'active' : ''} ${state.transferOffers?.length > 0 ? 'has-offers' : ''}`}
-          onClick={() => setTab('offers')}
-        >
-          <Mail size={14} /> Ofertas {state.transferOffers?.length > 0 && <span className="badge">{state.transferOffers.length}</span>}
-        </button>
-        <button 
-          className={`${tab === 'loans' ? 'active' : ''} ${(state.incomingLoanOffers?.length || 0) > 0 ? 'has-offers' : ''}`}
-          onClick={() => setTab('loans')}
-        >
-          🤝 Cesiones {(state.incomingLoanOffers?.length || 0) > 0 && <span className="badge">{state.incomingLoanOffers.length}</span>}
-        </button>
-      </div>
-      
-      {/* Market/Free Agents/Watchlist */}
-      {(tab === 'market' || tab === 'freeagents' || tab === 'watchlist') && (
-        <div className="transfers__market">
-          {/* Filtros */}
-          <div className="transfers__filters">
-            <input 
-              type="text" 
-              placeholder="Buscar jugador o equipo..." 
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-            />
-            <CustomSelect
-              compact
-              value={positionFilter}
-              onChange={setPositionFilter}
-              searchable={false}
-              options={[
-                { value: 'all', label: 'Todas las posiciones' },
-                { value: 'GK', label: 'Portero' },
-                { value: 'CB', label: 'Central' },
-                { value: 'RB', label: 'Lateral Der.' },
-                { value: 'LB', label: 'Lateral Izq.' },
-                { value: 'CDM', label: 'Pivote' },
-                { value: 'CM', label: 'Centrocampista' },
-                { value: 'CAM', label: 'Mediapunta' },
-                { value: 'RW', label: 'Extremo Der.' },
-                { value: 'LW', label: 'Extremo Izq.' },
-                { value: 'ST', label: 'Delantero' },
-              ]}
-            />
-            <CustomSelect
-              compact
-              value={sortBy}
-              onChange={setSortBy}
-              searchable={false}
-              options={[
-                { value: 'overall', label: 'Mayor media' },
-                { value: 'price_low', label: 'Menor precio' },
-                { value: 'price_high', label: 'Mayor precio' },
-                { value: 'age_young', label: 'Más joven' },
-                { value: 'value', label: 'Mejor valor' },
-                { value: 'easy', label: 'Más fácil' },
-              ]}
-            />
-            <button 
-              className={`filter-toggle ${showAdvancedFilters ? 'active' : ''}`}
-              onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-            >
-              <Settings size={14} />
-            </button>
-          </div>
-          
-          {showAdvancedFilters && (
-            <div className="transfers__advanced-filters">
-              <div className="filter-group">
-                <label>Precio máx: {formatMoney(maxPrice * 1000000)}</label>
-                <input type="range" min="1" max="500" value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))} />
-              </div>
-              <div className="filter-group">
-                <label>Media mín: {minOverall}</label>
-                <input type="range" min="50" max="90" value={minOverall} onChange={e => setMinOverall(Number(e.target.value))} />
-              </div>
-              <div className="filter-group">
-                <label>Edad máx: {maxAge} años</label>
-                <input type="range" min="18" max="40" value={maxAge} onChange={e => setMaxAge(Number(e.target.value))} />
-              </div>
-            </div>
-          )}
-          
-          <div className="transfers__results-info">
-            <span>{filteredPlayers.length} jugadores encontrados</span>
-            {scoutingLevel > 0 && <span className="scout-info"><Search size={14} /> Scouting Nv.{scoutingLevel}</span>}
-          </div>
-          
-          {/* Lista de jugadores */}
-          <div className="transfers__list">
-            {filteredPlayers.slice(0, 50).map((player) => (
-              <div 
-                key={player.id} 
-                className={`transfers__player ${player.isForSale ? 'for-sale' : ''} ${player.isUnhappy ? 'unhappy' : ''} ${player.difficulty}`}
-              >
-                <div className="player-main">
-                  <span className="pos" style={{ color: getPositionColor(player.position) }}>
-                    {translatePosition(player.position)}
-                  </span>
-                  <div className="details">
-                    <span className="name">
-                      {player.name}
-                      {player.personality?.type && (
-                        <span className="personality-icon" title={PERSONALITIES[player.personality.type]?.name}>
-                          {PERSONALITIES[player.personality.type]?.icon}
-                        </span>
-                      )}
-                    </span>
-                    <span className="team">{player.teamName}</span>
-                    {player.aiInterest?.length > 0 && (
-                      <span className="competition">
-                        <Flame size={14} /> {player.aiInterest.length} equipo{player.aiInterest.length > 1 ? 's' : ''} interesado{player.aiInterest.length > 1 ? 's' : ''}
-                      </span>
-                    )}
-                  </div>
-                  <div className="stats">
-                    <span className="ovr">{player.overall}</span>
-                    <span className="age">{player.age} años</span>
-                  </div>
-                </div>
-                
-                <div className="player-status">
-                  {player.isForSale && <span className="tag sale">EN VENTA</span>}
-                  {player.isUnhappy && <span className="tag unhappy">DESCONTENTO</span>}
-                  {player.contractExpiring && <span className="tag expiring">FIN CONTRATO</span>}
-                </div>
-                
-                <div className="player-price">
-                  {player.isFreeAgent ? (
-                    <>
-                      <span className="free-label">GRATIS</span>
-                      <span className="bonus">Prima: {formatMoney(player.signingBonus)}</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="price">{formatMoney(player.askingPrice)}</span>
-                      {player.scoutKnowledge && player.scoutKnowledge < 50 && (
-                        <span className="unknown">~aprox</span>
-                      )}
-                    </>
-                  )}
-                </div>
-                
-                <div className="player-actions">
-                  {!player.isFreeAgent && (
-                    <button 
-                      className={`watchlist-btn ${watchlist.some(p => p.id === player.id) ? 'active' : ''}`}
-                      onClick={() => toggleWatchlist(player)}
-                      title={watchlist.some(p => p.id === player.id) ? 'Quitar de seguimiento' : 'Añadir a seguimiento'}
-                    >
-                      {watchlist.some(p => p.id === player.id) ? <Star size={14} style={{fill:'currentColor'}} /> : <Star size={14} />}
-                    </button>
-                  )}
-                  <button 
-                    className="info-btn"
-                    onClick={() => setSelectedPlayer(player)}
-                    title="Ver información"
-                  >
-                    <Info size={14} />
-                  </button>
-                  {player.isFreeAgent ? (
-                    <button 
-                      className="sign-btn"
-                      onClick={() => signFreeAgent(player)}
-                      disabled={state.money < player.signingBonus}
-                    >
-                      Fichar
-                    </button>
-                  ) : (
-                    <button 
-                      className="negotiate-btn"
-                      onClick={() => startNegotiation(player)}
-                      disabled={state.money < player.askingPrice * 0.3}
-                    >
-                      Negociar
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      
-      {/* Vender */}
-      {tab === 'sell' && (
-        <div className="transfers__sell">
-          <div className="transfers__list">
-            {state.team?.players?.filter(p => !p.onLoan).sort((a, b) => b.value - a.value).map((player, idx) => (
-              <div key={idx} className="transfers__player">
-                <div className="player-main">
-                  <span className="pos" style={{ color: getPositionColor(player.position) }}>
-                    {translatePosition(player.position)}
-                  </span>
-                  <div className="details">
-                    <span className="name">{player.name}</span>
-                    <span className="team">Valor: {formatMoney(player.value)}</span>
-                  </div>
-                  <div className="stats">
-                    <span className="ovr">{player.overall}</span>
-                    <span className="age">{player.age} años</span>
-                  </div>
-                </div>
-                <div className="player-price">
-                  <span className="price">{formatMoney(Math.round(player.value * 0.85))}</span>
-                  <span className="percent">Venta directa (85%)</span>
-                </div>
-                <div className="player-actions">
-                  <button 
-                    className="sell-btn"
-                    onClick={() => {
-                      if (window.confirm(`¿Vender a ${player.name} por ${formatMoney(Math.round(player.value * 0.85))}?`)) {
-                        const buyers = (state.leagueTeams || []).filter(t => t.id !== state.teamId);
-                        const buyerId = buyers.length > 0 ? buyers[Math.floor(Math.random() * buyers.length)].id : null;
-                        dispatch({ type: 'SELL_PLAYER', payload: { playerName: player.name, fee: Math.round(player.value * 0.85), buyerTeamId: buyerId } });
-                      }
-                    }}
-                  >
-                    Vender
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      
-      {/* Ofertas recibidas */}
-      {tab === 'offers' && (
-        <div className="transfers__offers">
-          {(!state.transferOffers || state.transferOffers.length === 0) ? (
-            <div className="transfers__empty">
-              <span className="icon"><Inbox size={20} /></span>
-              <p>{t('transfers.noPendingOffers')}</p>
-              <p className="hint">{t('transfers.offersArriveDuringWindows')}</p>
-            </div>
-          ) : (
-            <div className="transfers__offers-list">
-              {(Array.isArray(state.transferOffers) ? state.transferOffers : []).map(offer => (
-                <div key={offer.id} className={`transfers__offer ${offer.isUrgent ? 'urgent' : ''}`}>
-                  {offer.isUrgent && <div className="urgent-banner"><Zap size={14} /> OFERTA URGENTE</div>}
-                  <div className="offer-header">
-                    <div className="offer-team">
-                      <span className="badge">{offer.teamShortName}</span>
-                      <div className="team-info">
-                        <span className="name">{offer.team}</span>
-                        <span className="reputation">Rep: {offer.teamReputation}</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="offer-player">
-                    <span className="pos" style={{ color: getPositionColor(offer.playerPosition) }}>
-                      {offer.playerPosition}
-                    </span>
-                    <div className="player-info">
-                      <span className="name">{offer.player}</span>
-                      <span className="details">{offer.playerAge} años · Valor: {formatMoney(offer.playerValue)}</span>
-                    </div>
-                    <span className="ovr">{offer.playerOverall}</span>
-                  </div>
-                  
-                  <div className="offer-details">
-                    <div className="amount-row">
-                      <span className="label">Oferta:</span>
-                      <span className="value">{formatMoney(offer.amount)}</span>
-                      <span className={`percent ${offer.offerPercent >= 100 ? 'good' : offer.offerPercent >= 85 ? 'fair' : 'low'}`}>
-                        {offer.offerPercent}%
-                      </span>
-                    </div>
-                    {offer.negotiationRound > 0 && (
-                      <div className="negotiation-progress">
-                        Ronda {offer.negotiationRound}/{offer.maxNegotiations}
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="offer-actions">
-                    <button className="accept" onClick={() => handleAcceptOffer(offer)}>
-                      <Check size={14} /> Aceptar
-                    </button>
-                    <button className="counter" onClick={() => handleCounterOffer(offer)}>
-                      <MessageSquare size={14} /> Negociar
-                    </button>
-                    <button className="reject" onClick={() => handleRejectOffer(offer)}>
-                      <X size={14} /> Rechazar
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-      
-      {/* Cesiones (Loans) */}
-      {tab === 'loans' && (
-        <div className="transfers__loans">
-          {/* Sub-tabs de cesiones */}
-          <div className="transfers__loan-tabs">
-            <button className={loanSubTab === 'available' ? 'active' : ''} onClick={() => setLoanSubTab('available')}>
-              🔍 Disponibles
-            </button>
-            <button className={loanSubTab === 'myLoans' ? 'active' : ''} onClick={() => setLoanSubTab('myLoans')}>
-              📤 Cedidos ({myLoanedOut.length})
-            </button>
-            <button className={loanSubTab === 'received' ? 'active' : ''} onClick={() => setLoanSubTab('received')}>
-              📥 Recibidos ({myLoanedIn.length})
-            </button>
-            <button 
-              className={`${loanSubTab === 'offers' ? 'active' : ''} ${pendingLoanOffers.length > 0 ? 'has-offers' : ''}`} 
-              onClick={() => setLoanSubTab('offers')}
-            >
-              📩 Ofertas {pendingLoanOffers.length > 0 && <span className="badge">{pendingLoanOffers.length}</span>}
-            </button>
-          </div>
-          
-          {/* Disponibles para cesión */}
-          {loanSubTab === 'available' && (
-            <div className="transfers__loan-section">
-              {!transferWindow.isOpen ? (
-                <div className="transfers__empty">
-                  <span className="icon">🔒</span>
-                  <p>{t('transfers.marketIsClosed')}</p>
-                  <p className="hint">{t('transfers.loansOnlyDuringWindows')}</p>
-                </div>
-              ) : loanCandidates.length === 0 ? (
-                <div className="transfers__empty">
-                  <span className="icon">🤷</span>
-                  <p>{t('transfers.noLoanPlayersAvailable')}</p>
-                </div>
-              ) : (
-                <>
-                  <div className="transfers__results-info">
-                    <span>{loanCandidates.length} jugadores disponibles en cesión</span>
-                  </div>
-                  <div className="transfers__list">
-                    {loanCandidates.slice(0, 30).map((candidate, idx) => (
-                      <div key={`loan_${idx}`} className="transfers__player loan-candidate">
-                        <div className="player-main">
-                          <span className="pos" style={{ color: getPositionColor(candidate.position) }}>
-                            {translatePosition(candidate.position)}
-                          </span>
-                          <div className="details">
-                            <span className="name">{candidate.name}</span>
-                            <span className="team">{candidate.teamName}</span>
-                            <span className="loan-reason">{candidate.reason}</span>
-                          </div>
-                          <div className="stats">
-                            <span className="ovr">{candidate.overall}</span>
-                            <span className="age">{candidate.age} años</span>
-                          </div>
-                        </div>
-                        <div className="player-price">
-                          <span className="price">Fee: {formatMoney(candidate.loanFee)}</span>
-                          <span className="percent">Salario: {Math.round(candidate.salaryShare * 100)}% tuyo</span>
-                          {candidate.purchaseOption && (
-                            <span className="purchase-option">Compra: {formatMoney(candidate.purchaseOption)}</span>
-                          )}
-                        </div>
-                        <div className="player-actions">
-                          <button 
-                            className="negotiate-btn"
-                            onClick={() => handleRequestLoan(candidate)}
-                            disabled={state.money < candidate.loanFee}
-                          >
-                            Pedir cesión
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          )}
-          
-          {/* Mis jugadores cedidos fuera */}
-          {loanSubTab === 'myLoans' && (
-            <div className="transfers__loan-section">
-              {myLoanedOut.length === 0 ? (
-                <div className="transfers__empty">
-                  <span className="icon">📤</span>
-                  <p>{t('transfers.noLoanedOutPlayers')}</p>
-                </div>
-              ) : (
-                <div className="transfers__list">
-                  {myLoanedOut.map(loan => (
-                    <div key={loan.id} className="transfers__player loan-active">
-                      <div className="player-main">
-                        <span className="pos" style={{ color: getPositionColor(loan.playerData?.position || 'CM') }}>
-                          {translatePosition(loan.playerData?.position) || '?'}
-                        </span>
-                        <div className="details">
-                          <span className="name">{loan.playerData?.name || loan.playerId}</span>
-                          <span className="team">📍 En {loan.toTeamName}</span>
-                        </div>
-                        <div className="stats">
-                          <span className="ovr">{loan.playerData?.overall || '?'}</span>
-                          <span className="age">{loan.playerData?.age || '?'} años</span>
-                        </div>
-                      </div>
-                      <div className="player-price">
-                        <span className="price">⏱️ {loan.weeksRemaining} sem. restantes</span>
-                        {loan.purchaseOption && (
-                          <span className="purchase-option">Opción de compra: {formatMoney(loan.purchaseOption)}</span>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-          
-          {/* Jugadores recibidos en cesión */}
-          {loanSubTab === 'received' && (
-            <div className="transfers__loan-section">
-              {myLoanedIn.length === 0 ? (
-                <div className="transfers__empty">
-                  <span className="icon">📥</span>
-                  <p>{t('transfers.noLoanedInPlayers')}</p>
-                </div>
-              ) : (
-                <div className="transfers__list">
-                  {myLoanedIn.map(loan => (
-                    <div key={loan.id} className="transfers__player loan-active received">
-                      <div className="player-main">
-                        <span className="pos" style={{ color: getPositionColor(loan.playerData?.position || 'CM') }}>
-                          {translatePosition(loan.playerData?.position) || '?'}
-                        </span>
-                        <div className="details">
-                          <span className="name">{loan.playerData?.name || loan.playerId}</span>
-                          <span className="team">🏠 Propiedad de {loan.fromTeamName}</span>
-                        </div>
-                        <div className="stats">
-                          <span className="ovr">{loan.playerData?.overall || '?'}</span>
-                          <span className="age">{loan.playerData?.age || '?'} años</span>
-                        </div>
-                      </div>
-                      <div className="player-price">
-                        <span className="price">⏱️ {loan.weeksRemaining} sem. restantes</span>
-                        {loan.purchaseOption && (
-                          <span className="purchase-option">Compra: {formatMoney(loan.purchaseOption)}</span>
-                        )}
-                      </div>
-                      <div className="player-actions">
-                        {loan.purchaseOption && (
-                          <button 
-                            className="negotiate-btn"
-                            onClick={() => handleExercisePurchaseOption(loan)}
-                            disabled={state.money < loan.purchaseOption}
-                            title={`Ejecutar opción de compra: ${formatMoney(loan.purchaseOption)}`}
-                          >
-                            💰 Comprar ({formatMoney(loan.purchaseOption)})
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-          
-          {/* Ofertas de cesión entrantes */}
-          {loanSubTab === 'offers' && (
-            <div className="transfers__loan-section">
-              {pendingLoanOffers.length === 0 ? (
-                <div className="transfers__empty">
-                  <span className="icon"><Inbox size={20} /></span>
-                  <p>{t('transfers.noLoanOffersPending')}</p>
-                  <p className="hint">{t('transfers.loanOffersHint')}</p>
-                </div>
-              ) : (
-                <div className="transfers__offers-list">
-                  {pendingLoanOffers.map(offer => (
-                    <div key={offer.id} className="transfers__offer loan-offer">
-                      <div className="offer-header">
-                        <div className="offer-team">
-                          <span className="badge">🤝</span>
-                          <div className="team-info">
-                            <span className="name">{offer.toTeamName}</span>
-                            <span className="reputation">{t('transfers.wantsLoan')}</span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="offer-player">
-                        <span className="pos" style={{ color: getPositionColor(offer.playerData?.position || 'CM') }}>
-                          {translatePosition(offer.playerData?.position) || '?'}
-                        </span>
-                        <div className="player-info">
-                          <span className="name">{offer.playerData?.name || offer.playerId}</span>
-                          <span className="details">{offer.playerData?.age} años · {offer.playerData?.overall} OVR</span>
-                        </div>
-                      </div>
-                      
-                      <div className="offer-details">
-                        <div className="amount-row">
-                          <span className="label">Fee de cesión:</span>
-                          <span className="value">{formatMoney(offer.loanFee)}</span>
-                        </div>
-                        <div className="amount-row">
-                          <span className="label">Salario receptor:</span>
-                          <span className="value">{Math.round(offer.salaryShare * 100)}%</span>
-                        </div>
-                        {offer.purchaseOption && (
-                          <div className="amount-row">
-                            <span className="label">Opción de compra:</span>
-                            <span className="value">{formatMoney(offer.purchaseOption)}</span>
-                          </div>
-                        )}
-                      </div>
-                      
-                      <div className="offer-actions">
-                        <button className="accept" onClick={() => handleAcceptLoanOffer(offer)}>
-                          <Check size={14} /> Aceptar cesión
-                        </button>
-                        <button className="reject" onClick={() => handleRejectLoanOffer(offer)}>
-                          <X size={14} /> Rechazar
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-      
-      {/* Modal de negociación de cesión */}
-      {loanNegotiation && (
-        <div className="transfers__modal-overlay" onClick={() => setLoanNegotiation(null)}>
-          <div className="transfers__modal negotiation" onClick={e => e.stopPropagation()}>
-            <div className="modal-header">
-              <h3>Negociar Cesión</h3>
-              <button className="close-btn" onClick={() => setLoanNegotiation(null)}><X size={16} /></button>
-            </div>
-            
-            <div className="modal-content">
-              <div className="negotiation-player">
-                <div className="player-summary">
-                  <span className="pos" style={{ background: getPositionColor(loanNegotiation.candidate.position) }}>
-                    {translatePosition(loanNegotiation.candidate.position)}
-                  </span>
-                  <div className="info">
-                    <span className="name">{loanNegotiation.candidate.name}</span>
-                    <span className="team">de {loanNegotiation.candidate.teamName}</span>
-                  </div>
-                  <span className="ovr">{loanNegotiation.candidate.overall}</span>
-                </div>
-              </div>
-              
-              <div className="offer-form">
-                {/* Fee de cesión */}
-                <div className="form-group">
-                  <label><DollarSign size={14} /> Fee de cesión</label>
-                  <div className="input-with-buttons">
-                    <button onClick={() => setLoanNegotiation(prev => ({ ...prev, loanFee: Math.max(100000, prev.loanFee - 500000) }))}>-0.5M</button>
-                    <span className="amount-display">{formatMoney(loanNegotiation.loanFee)}</span>
-                    <button onClick={() => setLoanNegotiation(prev => ({ ...prev, loanFee: prev.loanFee + 500000 }))}>+0.5M</button>
-                  </div>
-                </div>
-                
-                {/* Opción de compra */}
-                <div className="form-group">
-                  <label><Target size={14} /> Opción de compra</label>
-                  <div className="input-with-buttons">
-                    <button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: prev.purchaseOption ? Math.max(0, prev.purchaseOption - 1000000) : null }))}>-1M</button>
-                    <span className="amount-display">{loanNegotiation.purchaseOption ? formatMoney(loanNegotiation.purchaseOption) : 'Sin opción'}</span>
-                    <button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: (prev.purchaseOption || prev.candidate.marketValue || 5000000) + 1000000 }))}>+1M</button>
-                  </div>
-                  <div className="quick-buttons">
-                    <button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: null }))}>Sin opción</button>
-                    <button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: Math.round((prev.candidate.marketValue || 5000000) * 0.9) }))}>90% valor</button>
-                    <button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: prev.candidate.marketValue || 5000000 }))}>100% valor</button>
-                  </div>
-                </div>
-                
-                {/* Resumen */}
-                <div className="offer-summary">
-                  <div className="summary-row">
-                    <span>Fee de cesión:</span>
-                    <strong>{formatMoney(loanNegotiation.loanFee)}</strong>
-                  </div>
-                  <div className="summary-row">
-                    <span>Tu parte del salario ({Math.round(loanNegotiation.salaryShare * 100)}%):</span>
-                    <strong>{formatMoney(Math.round((loanNegotiation.candidate.salary || 50000) * loanNegotiation.salaryShare))}/sem</strong>
-                  </div>
-                  {loanNegotiation.purchaseOption && (
-                    <div className="summary-row">
-                      <span>Opción de compra:</span>
-                      <strong>{formatMoney(loanNegotiation.purchaseOption)}</strong>
-                    </div>
-                  )}
-                  <div className="summary-row total">
-                    <span>Coste inmediato:</span>
-                    <strong>{formatMoney(loanNegotiation.loanFee)}</strong>
-                  </div>
-                  <div className={`budget-check ${state.money >= loanNegotiation.loanFee ? 'ok' : 'error'}`}>
-                    {state.money >= loanNegotiation.loanFee 
-                      ? <><Check size={12} /> Te quedarían {formatMoney(state.money - loanNegotiation.loanFee)}</>
-                      : <><X size={12} /> Te faltan {formatMoney(loanNegotiation.loanFee - state.money)}</>
-                    }
-                  </div>
-                </div>
-                
-                <button 
-                  className="submit-offer"
-                  onClick={submitLoanRequest}
-                  disabled={state.money < loanNegotiation.loanFee}
-                >
-                  Enviar solicitud de cesión
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Modal de información del jugador */}
-      {selectedPlayer && (
-        <div className="transfers__modal-overlay" onClick={() => setSelectedPlayer(null)}>
-          <div className="transfers__modal player-info" onClick={e => e.stopPropagation()}>
-            <div className="modal-header">
-              <h3>Información del Jugador</h3>
-              <button className="close-btn" onClick={() => setSelectedPlayer(null)}><X size={16} /></button>
-            </div>
-            
-            <div className="modal-content">
-              <div className="player-card">
-                <div className="card-header">
-                  <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                    {translatePosition(selectedPlayer.position)}
-                  </span>
-                  <span className="ovr">{selectedPlayer.overall}</span>
-                </div>
-                <h4>{selectedPlayer.name}</h4>
-                <p className="team">{selectedPlayer.teamName}</p>
-                
-                {selectedPlayer.personality && (
-                  <div className="personality-badge">
-                    <span className="icon">{PERSONALITIES[selectedPlayer.personality.type]?.icon}</span>
-                    <span className="name">{PERSONALITIES[selectedPlayer.personality.type]?.name}</span>
-                  </div>
-                )}
-              </div>
-              
-              <div className="player-stats">
-                <div className="stat"><span>Edad</span><span>{selectedPlayer.age} años</span></div>
-                <div className="stat"><span>Valor</span><span>{formatMoney(selectedPlayer.value)}</span></div>
-                <div className="stat"><span>Salario</span><span>{formatMoney(selectedPlayer.salary)}/sem</span></div>
-                <div className="stat"><span>Precio</span><span>{formatMoney(selectedPlayer.askingPrice)}</span></div>
-                {selectedPlayer.releaseClause && (
-                  <div className="stat highlight">
-                    <span>Cláusula</span>
-                    <span>{formatMoney(selectedPlayer.releaseClause)}</span>
-                  </div>
-                )}
-                {selectedPlayer.contractYears && (
-                  <div className="stat"><span>Contrato</span><span>{selectedPlayer.contractYears} año{selectedPlayer.contractYears > 1 ? 's' : ''}</span></div>
-                )}
-              </div>
-              
-              {/* Info de competencia */}
-              {selectedPlayer.aiInterest?.length > 0 && (
-                <div className="competition-info">
-                  <h5><Flame size={16} /> Competencia</h5>
-                  <div className="competitors">
-                    {selectedPlayer.aiInterest.map((c, i) => (
-                      <div key={i} className="competitor">
-                        <span className="name">{c.shortName}</span>
-                        <span className="likelihood">{c.likelihood}% interés</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Info de personalidad */}
-              {selectedPlayer.personality?.specialGoal && (
-                <div className="special-goal-info">
-                  <h5>{SPECIAL_GOALS[selectedPlayer.personality.specialGoal]?.icon} Objetivo personal</h5>
-                  <p>{SPECIAL_GOALS[selectedPlayer.personality.specialGoal]?.description}</p>
-                </div>
-              )}
-              
-              <button className="negotiate-full" onClick={() => {
-                setSelectedPlayer(null);
-                startNegotiation(selectedPlayer);
-              }}>
-                Iniciar Negociación
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Modal de negociación */}
-      {negotiation && (
-        <div className="transfers__modal-overlay">
-          <div className="transfers__modal negotiation" onClick={e => e.stopPropagation()}>
-            <div className="modal-header">
-              <h3>Negociación</h3>
-              <button className="close-btn" onClick={() => setNegotiation(null)}><X size={16} /></button>
-            </div>
-            
-            <div className="modal-content">
-              {/* Info del jugador */}
-              <div className="negotiation-player">
-                <div className="player-summary">
-                  <span className="pos" style={{ background: getPositionColor(negotiation.player.position) }}>
-                    {translatePosition(negotiation.player.position)}
-                  </span>
-                  <div className="info">
-                    <span className="name">{negotiation.player.name}</span>
-                    <span className="team">de {negotiation.player.teamName}</span>
-                  </div>
-                  <span className="ovr">{negotiation.player.overall}</span>
-                </div>
-                
-                {negotiation.personality && (
-                  <div className="personality-info">
-                    <span className="badge">
-                      {negotiation.personality.icon} {negotiation.personality.name}
-                    </span>
-                    {negotiation.specialGoal && (
-                      <span className="goal">{negotiation.specialGoal.icon} {negotiation.specialGoal.name}</span>
-                    )}
-                  </div>
-                )}
-              </div>
-              
-              {/* Competidores */}
-              {negotiation.aiCompetitors?.length > 0 && (
-                <div className="competitors-warning">
-                  <span className="icon"><AlertTriangle size={16} /></span>
-                  <span>{t('transfers.otherTeamsInterested')}: {negotiation.aiCompetitors.map(c => c.shortName).join(', ')}</span>
-                </div>
-              )}
-              
-              {/* Barra de interés */}
-              <div className="interest-section">
-                <div className="interest-header">
-                  <span>Interés del jugador</span>
-                  <span style={{ color: getInterestColor(negotiation.playerInterest) }}>
-                    {negotiation.playerInterest}%
-                  </span>
-                </div>
-                <div className="interest-bar">
-                  <div 
-                    className="fill" 
-                    style={{ 
-                      width: `${negotiation.playerInterest}%`,
-                      background: getInterestColor(negotiation.playerInterest)
-                    }}
-                  />
-                </div>
-                
-                {/* Razones */}
-                {negotiation.evaluation?.reasons && (
-                  <div className="reasons">
-                    {negotiation.evaluation.reasons.slice(0, 4).map((r, i) => (
-                      <span key={i} className={r.positive ? 'positive' : 'negative'}>
-                        {r.positive ? <Check size={12} /> : <X size={12} />} {r.text}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-              
-              {/* Contraoferta recibida */}
-              {negotiation.stage === 'counter' && (
-                <div className="counter-offer">
-                  <h4><Mail size={16} /> Contraoferta recibida</h4>
-                  <div className="counter-details">
-                    <p>El club pide <strong>{formatMoney(negotiation.counterAmount)}</strong></p>
-                    <p>Salario: <strong>{formatMoney(negotiation.counterSalary)}/sem</strong></p>
-                    {negotiation.counterRole !== negotiation.promisedRole && (
-                      <p>{t('transfers.playerWantsRole')} <strong>{t(PLAYER_ROLES[negotiation.counterRole]?.nameKey)}</strong></p>
-                    )}
-                  </div>
-                  <div className="counter-actions">
-                    <button className="accept-counter" onClick={acceptCounter}>
-                      <Check size={14} /> Aceptar contraoferta
-                    </button>
-                    <button className="reject-counter" onClick={() => setNegotiation(null)}>
-                      <X size={14} /> Abandonar
-                    </button>
-                  </div>
-                </div>
-              )}
-              
-              {/* Formulario de oferta */}
-              {negotiation.stage !== 'counter' && (
-                <div className="offer-form">
-                  {/* Traspaso */}
-                  <div className="form-group">
-                    <label><DollarSign size={14} /> Oferta de traspaso</label>
-                    <div className="input-with-buttons">
-                      <button onClick={() => updateNegotiationOffer('offerAmount', Math.max(0, negotiation.offerAmount - 1000000))}>-1M</button>
-                      <span className="amount-display">{formatMoney(negotiation.offerAmount)}</span>
-                      <button onClick={() => updateNegotiationOffer('offerAmount', negotiation.offerAmount + 1000000)}>+1M</button>
-                    </div>
-                    <div className="quick-buttons">
-                      <button onClick={() => updateNegotiationOffer('offerAmount', Math.round(negotiation.player.value * 0.8))}>80%</button>
-                      <button onClick={() => updateNegotiationOffer('offerAmount', negotiation.player.value)}>100%</button>
-                      <button onClick={() => updateNegotiationOffer('offerAmount', negotiation.player.askingPrice)}>Precio</button>
-                      <button onClick={() => updateNegotiationOffer('offerAmount', negotiation.player.releaseClause)}>Cláusula</button>
-                    </div>
-                  </div>
-                  
-                  {/* Salario */}
-                  <div className="form-group">
-                    <label><ClipboardList size={14} /> Salario semanal</label>
-                    <div className="input-with-buttons">
-                      <button onClick={() => updateNegotiationOffer('offerSalary', Math.max(10000, negotiation.offerSalary - 10000))}>-10K</button>
-                      <span className="amount-display">{formatMoney(negotiation.offerSalary)}</span>
-                      <button onClick={() => updateNegotiationOffer('offerSalary', negotiation.offerSalary + 10000)}>+10K</button>
-                    </div>
-                  </div>
-                  
-                  {/* Rol prometido */}
-                  <div className="form-group">
-                    <label><Target size={14} /> Rol prometido</label>
-                    <div className="role-selector">
-                      {Object.entries(PLAYER_ROLES).map(([key, role]) => (
-                        <button
-                          key={key}
-                          className={negotiation.promisedRole === key ? 'active' : ''}
-                          onClick={() => updateNegotiationOffer('promisedRole', key)}
-                        >
-                          {role.icon} {role.name}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Años de contrato */}
-                  <div className="form-group">
-                    <label><Calendar size={14} /> Duración del contrato</label>
-                    <div className="contract-selector">
-                      {[1, 2, 3, 4, 5].map(years => (
-                        <button
-                          key={years}
-                          className={negotiation.contractYears === years ? 'active' : ''}
-                          onClick={() => updateNegotiationOffer('contractYears', years)}
-                        >
-                          {years} año{years > 1 ? 's' : ''}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Resumen */}
-                  <div className="offer-summary">
-                    <div className="summary-row">
-                      <span>Traspaso:</span>
-                      <strong>{formatMoney(negotiation.offerAmount)}</strong>
-                    </div>
-                    <div className="summary-row">
-                      <span>Salario anual:</span>
-                      <strong>{formatMoney(negotiation.offerSalary * 52)}</strong>
-                    </div>
-                    <div className="summary-row total">
-                      <span>Coste total ({negotiation.contractYears}a):</span>
-                      <strong>{formatMoney(negotiation.offerAmount + negotiation.offerSalary * 52 * negotiation.contractYears)}</strong>
-                    </div>
-                    <div className={`budget-check ${state.money >= negotiation.offerAmount ? 'ok' : 'error'}`}>
-                      {state.money >= negotiation.offerAmount 
-                        ? <><Check size={12} /> Te quedarían {formatMoney(state.money - negotiation.offerAmount)}</>
-                        : <><X size={12} /> Te faltan {formatMoney(negotiation.offerAmount - state.money)}</>
-                      }
-                    </div>
-                  </div>
-                  
-                  <button 
-                    className="submit-offer"
-                    onClick={submitOffer}
-                    disabled={state.money < negotiation.offerAmount}
-                  >
-                    Enviar Oferta
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <section className="transfers__market-roadmap">
+        <article className="transfers__main-card">
+          <div className="transfers__section-head"><div><p className="transfers__eyebrow">Tu mercado</p><h3>{teamName}</h3></div><span className={`transfers__status-pill ${transferWindow.isOpen ? 'open' : 'closed'}`}>{transferWindow.isOpen ? 'Mercado abierto' : 'Mercado cerrado'}</span></div>
+          <div className="transfers__need-grid"><div><small>Objetivo principal</small><strong>Refuerzo inmediato</strong><span>Prioriza jugadores negociables y cesiones útiles.</span></div><div><small>Operaciones vivas</small><strong>{activeCount}</strong><span>Fichajes, ofertas y cesiones pendientes.</span></div><div><small>Scouting</small><strong>Nv. {scoutingLevel}</strong><span>{selectedLeague ? 'Filtro de liga activo' : 'Todas las ligas visibles'}</span></div></div>
+        </article>
+        <aside className="transfers__next-card"><div className="transfers__section-head compact"><div><p className="transfers__eyebrow">Próximos movimientos</p><h3>Hoy</h3></div><Zap size={18} /></div><div className="transfers__next-list">
+          {priorityPlayers.slice(0, 2).map(player => <button key={player.id} onClick={() => startNegotiation(player)}><TeamCrest teamId={player.teamId} size={28} /><span>{player.name}</span><b>{formatMoney(player.askingPrice)}</b></button>)}
+          {firstLoanCandidate && <button onClick={() => handleRequestLoan(firstLoanCandidate)}><TeamCrest teamId={firstLoanCandidate.teamId} size={28} /><span>Cesión: {firstLoanCandidate.name}</span><b>{formatMoney(firstLoanCandidate.loanFee)}</b></button>}
+          {activeIncomingOffers[0] && <button onClick={() => setTab('offers')}><TeamCrest teamId={activeIncomingOffers[0].teamId} size={28} /><span>Oferta por {activeIncomingOffers[0].player}</span><b>{formatMoney(activeIncomingOffers[0].amount)}</b></button>}
+        </div></aside>
+      </section>
+
+      {tab === 'market' && <section className="transfers__simple-section"><div className="transfers__section-head"><div><p className="transfers__eyebrow">Mercado completo</p><h3>Candidatos recomendados</h3></div><div className="transfers__search-box"><Search size={14} /><input value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder="Buscar jugador o club" /></div></div><div className="transfers__simple-grid">{shortlist.map(player => <TransferCard key={player.id} player={player} />)}</div></section>}
+      {tab === 'freeagents' && <section className="transfers__simple-section"><div className="transfers__section-head"><div><p className="transfers__eyebrow">Sin traspaso</p><h3>Agentes libres</h3></div></div><div className="transfers__simple-grid">{filteredPlayers.slice(0, 8).map(player => <TransferCard key={player.id} player={player} />)}</div></section>}
+
+      {tab === 'loans' && <section className="transfers__simple-section transfers__simple-section--loans"><div className="transfers__section-head"><div><p className="transfers__eyebrow">Cesiones</p><h3>Refuerzos temporales</h3></div><div className="transfers__loan-switch"><button className={loanSubTab === 'available' ? 'active' : ''} onClick={() => setLoanSubTab('available')}>Disponibles</button><button className={loanSubTab === 'myLoans' ? 'active' : ''} onClick={() => setLoanSubTab('myLoans')}>Cedidos</button><button className={loanSubTab === 'received' ? 'active' : ''} onClick={() => setLoanSubTab('received')}>Recibidos</button><button className={loanSubTab === 'offers' ? 'active' : ''} onClick={() => setLoanSubTab('offers')}>Ofertas</button></div></div>
+        {loanSubTab === 'available' && (loanCandidates.length === 0 ? <div className="transfers__empty"><Inbox size={20} /><p>No hay cesiones disponibles ahora.</p></div> : <div className="transfers__simple-grid">{loanCandidates.slice(0, 8).map((candidate, idx) => <LoanCard key={`${candidate.teamId}_${candidate.name}_${idx}`} candidate={candidate} />)}</div>)}
+        {loanSubTab === 'myLoans' && <div className="transfers__operations-list">{myLoanedOut.length === 0 ? <div className="transfers__empty"><Inbox size={20} /><p>No tienes jugadores cedidos fuera.</p></div> : myLoanedOut.map(loan => <article key={loan.id} className="transfers__operation-card"><div className="transfers__club-line"><TeamCrest teamId={loan.toTeamId} size={34} /><div><strong>{loan.playerData?.name || loan.playerId}</strong><span>En {loan.toTeamName}</span></div></div><div className="transfers__operation-price"><small>Restan</small><b>{loan.weeksRemaining} sem.</b></div></article>)}</div>}
+        {loanSubTab === 'received' && <div className="transfers__operations-list">{myLoanedIn.length === 0 ? <div className="transfers__empty"><Inbox size={20} /><p>No tienes jugadores recibidos en cesión.</p></div> : myLoanedIn.map(loan => <article key={loan.id} className="transfers__operation-card"><div className="transfers__club-line"><TeamCrest teamId={loan.fromTeamId} size={34} /><div><strong>{loan.playerData?.name || loan.playerId}</strong><span>Propiedad de {loan.fromTeamName}</span></div></div><div className="transfers__operation-price"><small>Restan</small><b>{loan.weeksRemaining} sem.</b></div>{loan.purchaseOption && <div className="transfers__operation-actions"><button onClick={() => handleExercisePurchaseOption(loan)} disabled={state.money < loan.purchaseOption}>Comprar {formatMoney(loan.purchaseOption)}</button></div>}</article>)}</div>}
+        {loanSubTab === 'offers' && <div className="transfers__operations-list">{pendingLoanOffers.length === 0 ? <div className="transfers__empty"><Inbox size={20} /><p>No hay ofertas de cesión pendientes.</p></div> : pendingLoanOffers.map(offer => <LoanOfferCard key={offer.id} offer={offer} />)}</div>}
+      </section>}
+
+      {tab === 'offers' && <section className="transfers__simple-section"><div className="transfers__section-head"><div><p className="transfers__eyebrow">Bandeja</p><h3>Ofertas recibidas</h3></div></div><div className="transfers__operations-list">{activeIncomingOffers.length === 0 ? <div className="transfers__empty"><Inbox size={20} /><p>No hay ofertas pendientes.</p></div> : activeIncomingOffers.map(offer => <OfferCard key={offer.id} offer={offer} />)}</div></section>}
+      {tab === 'sell' && <section className="transfers__simple-section"><div className="transfers__section-head"><div><p className="transfers__eyebrow">Ventas</p><h3>Tu plantilla</h3></div></div><div className="transfers__simple-grid">{(state.team?.players || []).filter(p => !p.onLoan).sort((a, b) => b.value - a.value).slice(0, 8).map((player, idx) => <article key={`${player.name}_${idx}`} className="transfers__simple-player"><div className="transfers__club-line"><TeamCrest teamId={state.teamId} size={36} /><div><strong>{player.name}</strong><span>{teamName}</span></div></div><div className="transfers__simple-meta"><span className="pos" style={{ color: getPositionColor(player.position) }}>{translatePosition(player.position)}</span><span>{player.age} años</span><span className="ovr">{player.overall}</span></div><div className="transfers__simple-footer"><div><small>Valor</small><b>{formatMoney(player.value)}</b></div><button className="transfers__primary-action" onClick={() => { if (window.confirm(`¿Vender a ${player.name} por ${formatMoney(Math.round(player.value * 0.85))}?`)) { const buyers = (state.leagueTeams || []).filter(t => t.id !== state.teamId); const buyerId = buyers.length > 0 ? buyers[Math.floor(Math.random() * buyers.length)].id : null; dispatch({ type: 'SELL_PLAYER', payload: { playerName: player.name, fee: Math.round(player.value * 0.85), buyerTeamId: buyerId } }); } }}>Vender</button></div></article>)}</div></section>}
+
+      {negotiation && <div className="transfers__modal-overlay transfers__modal-overlay--clean" onClick={() => setNegotiation(null)}><div className="transfers__modal transfers__deal-modal" onClick={e => e.stopPropagation()}><div className="modal-header"><div><p className="transfers__eyebrow">Negociación</p><h3>Oferta de traspaso</h3></div><button className="close-btn" onClick={() => setNegotiation(null)}><X size={16} /></button></div><div className="transfers__deal-route"><div className="transfers__club-line"><TeamCrest teamId={negotiation.player.teamId} size={42} /><div><strong>{negotiation.player.teamName}</strong><span>Club vendedor</span></div></div><ArrowRightLeft size={18} /><div className="transfers__club-line"><TeamCrest teamId={state.teamId} size={42} /><div><strong>{teamName}</strong><span>Tu club</span></div></div></div><div className="transfers__modal-player"><strong>{negotiation.player.name}</strong><span>{translatePosition(negotiation.player.position)} · {negotiation.player.age} años · {negotiation.player.overall} OVR</span></div>{negotiation.stage === 'counter' ? <div className="transfers__counter-box"><h4>Contraoferta recibida</h4><p>El club pide <strong>{formatMoney(negotiation.counterAmount)}</strong> y salario de <strong>{formatMoney(negotiation.counterSalary)}/sem</strong>.</p><div className="transfers__modal-actions"><button onClick={acceptCounter}>Aceptar contraoferta</button><button className="danger" onClick={() => setNegotiation(null)}>Abandonar</button></div></div> : <div className="transfers__deal-form"><label><span>Oferta de traspaso</span><b>Recomendado: {formatMoney(negotiation.player.askingPrice)}</b></label><div className="transfers__stepper"><button onClick={() => updateNegotiationOffer('offerAmount', Math.max(0, negotiation.offerAmount - 1000000))}>-1M</button><strong>{formatMoney(negotiation.offerAmount)}</strong><button onClick={() => updateNegotiationOffer('offerAmount', negotiation.offerAmount + 1000000)}>+1M</button></div><div className="transfers__quick-actions"><button onClick={() => updateNegotiationOffer('offerAmount', Math.round(negotiation.player.value * 0.8))}>80%</button><button onClick={() => updateNegotiationOffer('offerAmount', negotiation.player.value)}>Valor</button><button onClick={() => updateNegotiationOffer('offerAmount', negotiation.player.askingPrice)}>Precio</button><button onClick={() => updateNegotiationOffer('offerAmount', negotiation.player.releaseClause)}>Cláusula</button></div><label><span>Salario semanal</span><b>Actual: {formatMoney(negotiation.player.salary)}/sem</b></label><div className="transfers__stepper"><button onClick={() => updateNegotiationOffer('offerSalary', Math.max(10000, negotiation.offerSalary - 10000))}>-10K</button><strong>{formatMoney(negotiation.offerSalary)}</strong><button onClick={() => updateNegotiationOffer('offerSalary', negotiation.offerSalary + 10000)}>+10K</button></div><label><span>Rol prometido</span></label><div className="transfers__role-grid">{Object.keys(PLAYER_ROLES).map(key => <button key={key} className={negotiation.promisedRole === key ? 'active' : ''} onClick={() => updateNegotiationOffer('promisedRole', key)}>{roleLabels[key]}</button>)}</div><label><span>Contrato</span></label><div className="transfers__role-grid compact">{[1, 2, 3, 4, 5].map(years => <button key={years} className={negotiation.contractYears === years ? 'active' : ''} onClick={() => updateNegotiationOffer('contractYears', years)}>{years}a</button>)}</div><div className="transfers__deal-summary"><span>Coste inmediato</span><strong>{formatMoney(negotiation.offerAmount)}</strong><small>{state.money >= negotiation.offerAmount ? `Te quedarían ${formatMoney(state.money - negotiation.offerAmount)}` : `Te faltan ${formatMoney(negotiation.offerAmount - state.money)}`}</small></div><div className="transfers__modal-actions"><button className="ghost" onClick={() => setNegotiation(null)}>Cancelar</button><button onClick={submitOffer} disabled={state.money < negotiation.offerAmount}>Enviar oferta</button></div></div>}</div></div>}
+
+      {loanNegotiation && <div className="transfers__modal-overlay transfers__modal-overlay--clean" onClick={() => setLoanNegotiation(null)}><div className="transfers__modal transfers__deal-modal" onClick={e => e.stopPropagation()}><div className="modal-header"><div><p className="transfers__eyebrow">Cesión</p><h3>Solicitud de cesión</h3></div><button className="close-btn" onClick={() => setLoanNegotiation(null)}><X size={16} /></button></div><div className="transfers__deal-route"><div className="transfers__club-line"><TeamCrest teamId={loanNegotiation.candidate.teamId} size={42} /><div><strong>{loanNegotiation.candidate.teamName}</strong><span>Propietario</span></div></div><ArrowRightLeft size={18} /><div className="transfers__club-line"><TeamCrest teamId={state.teamId} size={42} /><div><strong>{teamName}</strong><span>Tu club</span></div></div></div><div className="transfers__modal-player"><strong>{loanNegotiation.candidate.name}</strong><span>{translatePosition(loanNegotiation.candidate.position)} · {loanNegotiation.candidate.age} años · {loanNegotiation.candidate.overall} OVR</span></div><div className="transfers__deal-form"><label><span>Fee de cesión</span><b>Recomendado: {formatMoney(loanNegotiation.candidate.loanFee)}</b></label><div className="transfers__stepper"><button onClick={() => setLoanNegotiation(prev => ({ ...prev, loanFee: Math.max(0, prev.loanFee - 500000) }))}>-0.5M</button><strong>{formatMoney(loanNegotiation.loanFee)}</strong><button onClick={() => setLoanNegotiation(prev => ({ ...prev, loanFee: prev.loanFee + 500000 }))}>+0.5M</button></div><label><span>Parte del salario que pagas</span><b>{Math.round(loanNegotiation.salaryShare * 100)}%</b></label><div className="transfers__role-grid compact">{[0.25, 0.5, 0.75, 1].map(share => <button key={share} className={loanNegotiation.salaryShare === share ? 'active' : ''} onClick={() => setLoanNegotiation(prev => ({ ...prev, salaryShare: share }))}>{Math.round(share * 100)}%</button>)}</div><label><span>Opción de compra</span></label><div className="transfers__stepper"><button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: prev.purchaseOption ? Math.max(0, prev.purchaseOption - 1000000) : null }))}>-1M</button><strong>{loanNegotiation.purchaseOption ? formatMoney(loanNegotiation.purchaseOption) : 'Sin opción'}</strong><button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: (prev.purchaseOption || prev.candidate.marketValue || 5000000) + 1000000 }))}>+1M</button></div><div className="transfers__quick-actions"><button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: null }))}>Sin opción</button><button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: Math.round((prev.candidate.marketValue || 5000000) * 0.9) }))}>90%</button><button onClick={() => setLoanNegotiation(prev => ({ ...prev, purchaseOption: prev.candidate.marketValue || 5000000 }))}>100%</button></div><div className="transfers__deal-summary"><span>Coste inmediato</span><strong>{formatMoney(loanNegotiation.loanFee)}</strong><small>{state.money >= loanNegotiation.loanFee ? `Te quedarían ${formatMoney(state.money - loanNegotiation.loanFee)}` : `Te faltan ${formatMoney(loanNegotiation.loanFee - state.money)}`}</small></div><div className="transfers__modal-actions"><button className="ghost" onClick={() => setLoanNegotiation(null)}>Cancelar</button><button onClick={submitLoanRequest} disabled={state.money < loanNegotiation.loanFee}>Enviar solicitud</button></div></div></div></div>}
     </div>
   );
 }
