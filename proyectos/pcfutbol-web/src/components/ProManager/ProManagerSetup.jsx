@@ -401,11 +401,11 @@ export default function ProManagerSetup() {
                     <strong>{formatMoney(getSquadValue(activeOffer.team))}</strong>
                   </div>
                   <div className="offer-detail__briefing-row offer-detail__briefing-row--prestige">
-                    <span>{t('proManager.prestige')}</span>
+                    <span>Prestigio</span>
                     <strong>10</strong>
                   </div>
                   <div className="offer-detail__briefing-row offer-detail__briefing-row--season">
-                    <span>{t('common.season')}</span>
+                    <span>Temp.</span>
                     <strong>01</strong>
                   </div>
                 </div>

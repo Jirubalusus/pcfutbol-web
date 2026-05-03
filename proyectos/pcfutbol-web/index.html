@@ -33,18 +33,38 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
     <script>
-      // Unregister old service workers to prevent stale cache issues
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(regs => {
-          regs.forEach(r => r.unregister());
-        });
-        // Clear caches too
-        if ('caches' in window) {
-          caches.keys().then(names => names.forEach(n => caches.delete(n)));
+      // Force-clear old PWA/service-worker caches before the app module starts.
+      // This prevents mobile browsers from keeping stale lazy chunks like ProManagerSetup.
+      (function clearStalePwaCache() {
+        var version = 'pm-mobile-v2-2026-05-03';
+        var reloadKey = 'pcgaffer-cache-reset-' + version;
+        var tasks = [];
+
+        if ('serviceWorker' in navigator) {
+          tasks.push(
+            navigator.serviceWorker.getRegistrations()
+              .then(function(regs) { return Promise.all(regs.map(function(r) { return r.unregister(); })); })
+          );
         }
-      }
+
+        if ('caches' in window) {
+          tasks.push(
+            caches.keys()
+              .then(function(names) { return Promise.all(names.map(function(n) { return caches.delete(n); })); })
+          );
+        }
+
+        if (!tasks.length) return;
+        Promise.all(tasks).then(function() {
+          if (!sessionStorage.getItem(reloadKey)) {
+            sessionStorage.setItem(reloadKey, '1');
+            var cleanPath = window.location.pathname || '/';
+            window.location.replace(cleanPath + '?v=' + version);
+          }
+        }).catch(function() {});
+      })();
     </script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
