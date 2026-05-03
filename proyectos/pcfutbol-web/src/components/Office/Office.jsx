@@ -56,7 +56,7 @@ import Plantilla from '../Plantilla/Plantilla';
 import Formation from '../Formation/Formation';
 import Calendar from '../Calendar/Calendar';
 import LeagueTable from '../LeagueTable/LeagueTable';
-import Transfers from '../Transfers/Transfers';
+import Transfers from '../Transfers/TransfersV2';
 import Stadium from '../Stadium/Stadium';
 import Facilities from '../Facilities/Facilities';
 import Messages from '../Messages/Messages';
