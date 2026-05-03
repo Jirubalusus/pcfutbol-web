@@ -4,7 +4,7 @@
 // Motor de cesiones: préstamos temporales de jugadores entre equipos.
 // Integrado con el sistema de transfers global.
 
-import { calculateMarketValue, TEAM_PROFILES } from './globalTransferEngine';
+import { calculateMarketValue, TEAM_PROFILES } from './globalTransferEngine.js';
 
 // Constantes
 const MAX_INCOMING_LOANS_PER_SEASON = 3;
@@ -200,7 +200,6 @@ export function generateLoanOffers(playerTeam, allTeams, teamId) {
   // Buscar equipo interesado
   const interestedTeams = teamsArray.filter(t => {
     if (t.id === teamId) return false;
-    const profile = getTeamProfileByName(t.name);
     const teamAvg = avgOverall(t.players || []);
     // El jugador debe encajar en el equipo (no demasiado bueno ni malo)
     return targetPlayer.overall >= teamAvg - 5 && targetPlayer.overall <= teamAvg + 10
@@ -299,7 +298,7 @@ export function evaluateLoanRequest(ownerTeam, player, requestingTeam, offer) {
 /**
  * Procesar fin de cesiones — devolver jugadores a sus equipos
  */
-export function expireLoans(activeLoans, allTeams) {
+export function expireLoans(activeLoans) {
   const expiredLoans = [];
   const remainingLoans = [];
   const messages = [];
@@ -437,10 +436,18 @@ export function simulateAILoans(allTeams, playerTeamId, activeLoans) {
     : Array.isArray(allTeams) ? allTeams : [];
   
   const aiTeams = teamsArray.filter(t => t.id !== playerTeamId);
+  const loanedThisBatch = new Set();
+  const alreadyLoaned = new Set((activeLoans || []).map(loan => `${loan.fromTeamId || ''}|${loan.playerId || loan.playerData?.id || loan.playerData?.name || ''}`));
+  const makeLoanKey = (team, player) => `${team.id || team.name}|${player.id || `${player.name}|${player.position}|${player.age}|${player.overall}`}`;
+  const canQueueLoan = (team, player) => {
+    const key = makeLoanKey(team, player);
+    return !loanedThisBatch.has(key) && !alreadyLoaned.has(key);
+  };
+  const markQueuedLoan = (team, player) => loanedThisBatch.add(makeLoanKey(team, player));
   
-  // 15% chance de que un equipo IA intente una cesión
+  // Ritmo moderado de cesiones IA: con 900+ clubes, 15% generaba demasiados movimientos.
   for (const team of aiTeams) {
-    if (Math.random() >= 0.15) continue;
+    if (Math.random() >= 0.06) continue;
     
     const teamProfile = getTeamProfileByName(team.name);
     
@@ -453,6 +460,7 @@ export function simulateAILoans(allTeams, playerTeamId, activeLoans) {
       
       if (youngPlayers.length > 0) {
         const player = youngPlayers[Math.floor(Math.random() * youngPlayers.length)];
+        if (!canQueueLoan(team, player)) continue;
         
         // Buscar equipo receptor (más pequeño)
         const receivers = aiTeams.filter(t => {
@@ -464,10 +472,11 @@ export function simulateAILoans(allTeams, playerTeamId, activeLoans) {
         if (receivers.length > 0) {
           const receiver = receivers[Math.floor(Math.random() * receivers.length)];
           const loanFee = calculateLoanFee(player, team.leagueId);
+          markQueuedLoan(team, player);
           
           events.push({
             type: 'ai_loan',
-            player: { name: player.name, position: player.position, overall: player.overall, age: player.age },
+            player: { ...player },
             from: { id: team.id, name: team.name },
             to: { id: receiver.id, name: receiver.name },
             loanFee
@@ -483,7 +492,7 @@ export function simulateAILoans(allTeams, playerTeamId, activeLoans) {
         return profile.name === 'Elite' || profile.name === 'Top Tier';
       });
       
-      if (bigTeams.length > 0 && Math.random() < 0.30) {
+      if (bigTeams.length > 0 && Math.random() < 0.12) {
         const bigTeam = bigTeams[Math.floor(Math.random() * bigTeams.length)];
         const teamAvg = avgOverall(bigTeam.players || []);
         
@@ -494,11 +503,13 @@ export function simulateAILoans(allTeams, playerTeamId, activeLoans) {
         
         if (availablePlayers.length > 0) {
           const player = availablePlayers[Math.floor(Math.random() * availablePlayers.length)];
+          if (!canQueueLoan(bigTeam, player)) continue;
           const loanFee = calculateLoanFee(player, bigTeam.leagueId);
+          markQueuedLoan(bigTeam, player);
           
           events.push({
             type: 'ai_loan',
-            player: { name: player.name, position: player.position, overall: player.overall, age: player.age },
+            player: { ...player },
             from: { id: bigTeam.id, name: bigTeam.name },
             to: { id: team.id, name: team.name },
             loanFee
@@ -516,7 +527,7 @@ export function simulateAILoans(allTeams, playerTeamId, activeLoans) {
 // ============================================================
 
 function getTeamProfileByName(teamName) {
-  for (const [key, profile] of Object.entries(TEAM_PROFILES)) {
+  for (const profile of Object.values(TEAM_PROFILES)) {
     if (profile.teams?.includes(teamName)) {
       return profile;
     }

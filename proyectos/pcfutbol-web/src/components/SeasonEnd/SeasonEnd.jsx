@@ -37,7 +37,7 @@ import {
 } from '../../game/seasonManager';
 import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, buildEuropeanCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
-import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal, simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal, simulateOtherLeaguesWeek, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
@@ -181,8 +181,13 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   
   // Obtener resultado de temporada
   const seasonResult = useMemo(() => {
-    return getSeasonResult(state.leagueTable, state.teamId, playerLeagueId);
-  }, [state.leagueTable, state.teamId, playerLeagueId]);
+    // Argentina/Apertura-Clausura uses a split table in state.leagueTable for the current tournament.
+    // Continental qualification and season objectives must use the accumulated table.
+    const resultTable = isAperturaClausura(playerLeagueId) && state.aperturaTable
+      ? computeAccumulatedTable(state.aperturaTable, state.leagueTable)
+      : state.leagueTable;
+    return getSeasonResult(resultTable, state.teamId, playerLeagueId);
+  }, [state.leagueTable, state.aperturaTable, state.teamId, playerLeagueId]);
   
   // Calcular recompensas de objetivos
   const objectiveRewards = useMemo(() => {
@@ -889,16 +894,24 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       const leagueStandings = {};
       const allTeamsMap = {};
 
-      const playerTable = newSeasonData.playerLeague?.table || state.leagueTable || [];
-      const newPlayerLeague = newSeasonData.newPlayerLeagueId || playerLeagueId;
-      if (playerTable.length > 0) {
-        leagueStandings[newPlayerLeague] = playerTable;
+      // Continental draws for the new season must be based on the FINAL standings
+      // of the season that just ended, not on the freshly reset new-season tables.
+      const finalPlayerLeague = playerLeagueId;
+      const finalPlayerTable = isAperturaClausura(finalPlayerLeague) && completedState.aperturaTable
+        ? computeAccumulatedTable(completedState.aperturaTable, completedState.leagueTable || [])
+        : (completedState.leagueTable || []);
+      if (finalPlayerTable.length > 0) {
+        leagueStandings[finalPlayerLeague] = finalPlayerTable;
       }
       
-      const otherLeagues = newSeasonData.otherLeagues || state.otherLeagues || {};
+      const otherLeagues = completedState.otherLeagues || state.otherLeagues || {};
       for (const [leagueId, leagueData] of Object.entries(otherLeagues)) {
-        if (leagueData?.table?.length > 0 && leagueId !== newPlayerLeague) {
-          leagueStandings[leagueId] = leagueData.table;
+        if (leagueId === finalPlayerLeague) continue;
+        const standings = isAperturaClausura(leagueId) && leagueData?.accumulatedTable?.length > 0
+          ? leagueData.accumulatedTable
+          : leagueData?.table;
+        if (standings?.length > 0) {
+          leagueStandings[leagueId] = standings;
         }
       }
 
@@ -998,6 +1011,25 @@ export default function SeasonEnd({ allTeams, onComplete }) {
 
     onComplete();
   };
+
+  useEffect(() => {
+    if (!import.meta.env.DEV) return undefined;
+    // DEV-only automation hook for Playwright long-career audits.
+    // eslint-disable-next-line react-hooks/immutability
+    window.__pcfSeasonEnd = {
+      getPhase: () => phase,
+      goPreseason: () => setPhase('preseason'),
+      skipPreseason: () => handleConfirm(false, true),
+      playPlayoff: handlePlayoffMatch,
+      playoffContinue: handlePlayoffContinue,
+      viewSummary: () => setPhase('summary')
+    };
+    return () => {
+      if (window.__pcfSeasonEnd?.getPhase?.() === phase) {
+        delete window.__pcfSeasonEnd;
+      }
+    };
+  }, [phase, handleConfirm, handlePlayoffMatch, handlePlayoffContinue]);
   
   // === FASE FINAL APERTURA vs CLAUSURA ===
   if (phase === 'apcl_final' && pendingAPCLFinal) {

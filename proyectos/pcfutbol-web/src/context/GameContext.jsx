@@ -976,6 +976,35 @@ export function gameReducer(state, action) {
         const loan = seasonExpiredLoans[i];
         return loan && (loan.fromTeamId === myTeamId || loan.toTeamId === myTeamId);
       });
+      const seasonExpiredActiveLoans = seasonExpiredLoans.filter(l => l.status === 'expired');
+      const leagueTeamsAfterLoanReturns = (state.leagueTeams || []).map(team => {
+        let players = [...(team.players || [])];
+
+        for (const loan of seasonExpiredActiveLoans) {
+          const playerName = loan.playerData?.name || loan.playerId;
+          if (!playerName) continue;
+
+          if (team.id === loan.toTeamId) {
+            players = players.filter(p => p.name !== playerName);
+          }
+
+          if (team.id === loan.fromTeamId) {
+            const alreadyReturned = players.some(p => p.name === playerName);
+            if (!alreadyReturned && loan.fromTeamId !== state.teamId) {
+              players.push({
+                ...loan.playerData,
+                onLoan: false,
+                loanFromTeam: undefined,
+                loanFromTeamId: undefined,
+                loanSalaryShare: undefined,
+                teamId: loan.fromTeamId
+              });
+            }
+          }
+        }
+
+        return { ...team, players };
+      });
 
       // Función para calcular si un jugador decide retirarse
       const checkRetirement = (player, newAge) => {
@@ -1161,7 +1190,7 @@ export function gameReducer(state, action) {
       const finalPlayerNames = new Set(finalPlayers.map(p => p.name));
 
       // === ENVEJECER Y GENERAR HIJOS EN EQUIPOS IA (leagueTeams) ===
-      const leagueTeams = state.leagueTeams || [];
+      const leagueTeams = leagueTeamsAfterLoanReturns;
       const updatedLeagueTeamsForSeason = leagueTeams.map(team => {
         if (team.id === state.teamId) return team; // Skip player's team (already handled)
         if (!team.players || team.players.length === 0) return team;
@@ -1929,20 +1958,27 @@ export function gameReducer(state, action) {
       const advWeekNext = state.currentWeek + 1;
       let stadiumCampaignUpdates = {};
       if (advWeekNext >= SEASON_TICKET_DEADLINE && state.stadium?.seasonTicketsCampaignOpen) {
-        // Calculate season tickets based on price and team quality (mirrors Stadium UI logic)
+        // Calculate season tickets based on price, team quality and real league tier.
+        // Important: use playerLeagueId. In long careers state.leagueId may still point to
+        // the initial top-level league, which made 2RFEF campaigns use LaLiga prices/demand.
+        const stLeagueId = state.playerLeagueId || state.leagueId;
+        const stTier = getLeagueTier(stLeagueId) || 1;
         const stCapacity = state.stadium?.realCapacity || 8000;
-        const stMaxSeasonTickets = Math.floor(stCapacity * 0.8);
-        const stPrice = state.stadium?.seasonTicketPrice ?? getBaseSeasonTicketPrice(state.leagueId);
+        const stTierMaxRate = { 1: 0.80, 2: 0.55, 3: 0.40, 4: 0.25, 5: 0.16 }[stTier] || 0.35;
+        const stTierBaseRate = { 1: 0.42, 2: 0.28, 3: 0.18, 4: 0.10, 5: 0.055 }[stTier] || 0.15;
+        const stTierMinRate = { 1: 0.10, 2: 0.06, 3: 0.035, 4: 0.02, 5: 0.01 }[stTier] || 0.03;
+        const stMaxSeasonTickets = Math.floor(stCapacity * stTierMaxRate);
+        const stPrice = state.stadium?.seasonTicketPrice ?? getBaseSeasonTicketPrice(stLeagueId);
+        const stReferencePrice = getBaseSeasonTicketPrice(stLeagueId);
         const stTeamPlayers = state.team?.players || [];
         const stTeamOvr = stTeamPlayers.length > 0 ? stTeamPlayers.reduce((s, p) => s + (p.overall || 70), 0) / stTeamPlayers.length : 70;
         const stRep = state.team?.reputation || 70;
-        // Simple demand model: base 50% fill, adjusted by price (cheaper=more), team quality, and reputation
-        const stPriceFactor = Math.max(0.3, Math.min(1.5, 1.0 - (stPrice - 400) / 800));
-        const stQualityFactor = 0.7 + (stTeamOvr / 100) * 0.6;
-        const stRepFactor = 0.7 + (stRep / 100) * 0.6;
+        const stPriceFactor = Math.max(0.35, Math.min(1.35, stReferencePrice / Math.max(1, stPrice)));
+        const stQualityFactor = 0.75 + (stTeamOvr / 100) * 0.5;
+        const stRepFactor = 0.75 + (stRep / 100) * 0.45;
         const stSeasonTickets = Math.min(stMaxSeasonTickets, Math.max(
-          Math.floor(stCapacity * 0.1),
-          Math.round(stCapacity * 0.5 * stPriceFactor * stQualityFactor * stRepFactor)
+          Math.floor(stCapacity * stTierMinRate),
+          Math.round(stCapacity * stTierBaseRate * stPriceFactor * stQualityFactor * stRepFactor)
         ));
         stadiumCampaignUpdates = {
           seasonTicketsCampaignOpen: false,
@@ -1992,7 +2028,7 @@ export function gameReducer(state, action) {
         // Inicializar equipos con datos actuales
         const teamsData = state.leagueTeams.map(t => ({
           ...t,
-          budget: t.budget || 50_000_000
+          budget: t.budget ?? 50_000_000
         }));
         engine.initializeTeams(teamsData);
         engine.season = state.currentSeason || 1;
@@ -2643,13 +2679,37 @@ export function gameReducer(state, action) {
       if (windowStatus.open && updatedLeagueTeams.length > 0) {
         const aiLoanEvents = simulateAILoans(updatedLeagueTeams, state.teamId, updatedActiveLoans);
         for (const evt of aiLoanEvents) {
-          // Apply AI loan: move player between AI teams
+          // Apply AI loan: move exactly one player between AI teams.
+          // A single market tick can generate several loan candidates from the same source team;
+          // ignore stale/duplicate events if the selected player has already moved.
+          const matchesLoanPlayer = (candidate) => {
+            if (evt.player.id != null && candidate.id != null) return candidate.id === evt.player.id;
+            return candidate.name === evt.player.name
+              && candidate.position === evt.player.position
+              && candidate.age === evt.player.age
+              && candidate.overall === evt.player.overall;
+          };
+          const fromTeam = updatedLeagueTeams.find(t => t.id === evt.from.id);
+          const loanedPlayer = (fromTeam?.players || []).find(matchesLoanPlayer);
+          if (!fromTeam || !loanedPlayer) continue;
+
           updatedLeagueTeams = updatedLeagueTeams.map(t => {
             if (t.id === evt.from.id) {
-              return { ...t, players: (t.players || []).filter(p => p.name !== evt.player.name), budget: (t.budget || 50_000_000) + evt.loanFee };
+              let removed = false;
+              return {
+                ...t,
+                players: (t.players || []).filter(p => {
+                  if (!removed && matchesLoanPlayer(p)) {
+                    removed = true;
+                    return false;
+                  }
+                  return true;
+                }),
+                budget: (t.budget ?? 50_000_000) + evt.loanFee
+              };
             }
             if (t.id === evt.to.id) {
-              return { ...t, players: [...(t.players || []), { ...evt.player, onLoan: true, loanFromTeam: evt.from.name, loanFromTeamId: evt.from.id, teamId: evt.to.id }], budget: (t.budget || 50_000_000) - evt.loanFee };
+              return { ...t, players: [...(t.players || []), { ...loanedPlayer, onLoan: true, loanFromTeam: evt.from.name, loanFromTeamId: evt.from.id, teamId: evt.to.id }], budget: (t.budget ?? 50_000_000) - evt.loanFee };
             }
             return t;
           });
@@ -4592,6 +4652,36 @@ export function gameReducer(state, action) {
         }
       }
 
+      const expiredActiveLoans = expiredLoans.filter(l => l.status === 'expired');
+      const updatedLeagueTeamsAfterLoans = (state.leagueTeams || []).map(team => {
+        let players = [...(team.players || [])];
+
+        for (const loan of expiredActiveLoans) {
+          const playerName = loan.playerData?.name || loan.playerId;
+          if (!playerName) continue;
+
+          if (team.id === loan.toTeamId) {
+            players = players.filter(p => p.name !== playerName);
+          }
+
+          if (team.id === loan.fromTeamId) {
+            const alreadyReturned = players.some(p => p.name === playerName);
+            if (!alreadyReturned && loan.fromTeamId !== state.teamId) {
+              players.push({
+                ...loan.playerData,
+                onLoan: false,
+                loanFromTeam: undefined,
+                loanFromTeamId: undefined,
+                loanSalaryShare: undefined,
+                teamId: loan.fromTeamId
+              });
+            }
+          }
+        }
+
+        return { ...team, players };
+      });
+
       // Formatear mensajes
       const formattedMessages = loanMessages.map(m => ({
         id: Date.now().toString(36) + Math.random().toString(36).slice(2),
@@ -4606,6 +4696,7 @@ export function gameReducer(state, action) {
         team: { ...state.team, players: updatedPlayers },
         activeLoans: remainingLoans,
         loanHistory: [...(state.loanHistory || []), ...expiredLoans],
+        leagueTeams: updatedLeagueTeamsAfterLoans,
         messages: [...formattedMessages, ...state.messages].slice(0, 50)
       };
     }
@@ -4635,9 +4726,7 @@ export function gameReducer(state, action) {
       });
 
       // Actualizar cesión como comprada
-      const updatedLoans = (state.activeLoans || []).map(l =>
-        l.id === loanId ? { ...l, status: 'purchased' } : l
-      );
+      const updatedLoans = (state.activeLoans || []).filter(l => l.id !== loanId);
 
       // Actualizar leagueTeams — dar dinero al equipo propietario
       const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
@@ -5246,6 +5335,14 @@ export function useGame() {
   }
   return context;
 }
+
+
+
+
+
+
+
+
 
 
 

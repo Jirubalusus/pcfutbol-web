@@ -1453,7 +1453,10 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
   // Si no se pasó un bracket resuelto, simular el playoff ahora
   const allSegundaTeams = getSegundaTeams();
   const allLaLigaTeams = getLaLigaTeams();
-  const allTeams = [...allLaLigaTeams, ...allSegundaTeams];
+  const allPrimeraRfefTeams = getPrimeraRfefTeams();
+  const allSegundaRfefTeams = getSegundaRfefTeams();
+  const allTeams = [...allLaLigaTeams, ...allSegundaTeams, ...allPrimeraRfefTeams, ...allSegundaRfefTeams];
+  const findTeam = (id) => allTeams.find(t => t.id === id);
   
   let resolvedBracket = playoffBracket;
   if (!resolvedBracket || resolvedBracket.phase !== 'completed') {
@@ -1496,15 +1499,9 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
     .concat(relegatedFromLaLiga);
   
   // Buscar los objetos team completos
-  const newLaLigaTeams = newLaLigaIds.map(id => 
-    allLaLigaTeams.find(t => t.id === id) || 
-    allSegundaTeams.find(t => t.id === id)
-  ).filter(Boolean);
+  const newLaLigaTeams = newLaLigaIds.map(findTeam).filter(Boolean);
   
-  const newSegundaTeams = newSegundaIds.map(id => 
-    allSegundaTeams.find(t => t.id === id) || 
-    allLaLigaTeams.find(t => t.id === id)
-  ).filter(Boolean);
+  const newSegundaTeams = newSegundaIds.map(findTeam).filter(Boolean);
   
   // Nombres para mensajes
   const playoffWinnerName = resolvedBracket?.final?.result?.winnerName || playoffWinnerId || '';

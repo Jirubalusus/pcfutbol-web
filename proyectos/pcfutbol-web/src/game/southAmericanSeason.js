@@ -6,14 +6,14 @@
 // Follows the same pattern as europeanSeason.js.
 // ============================================================
 
-import { generateSwissDraw, getSwissStandings, determineSwissQualification } from './swissSystem';
-import { drawPlayoffRound, drawKnockoutRound, simulateKnockoutTie, simulateKnockoutRound } from './knockoutEngine';
-import { simulateMatch } from './leagueEngine';
+import { generateSwissDraw, getSwissStandings, determineSwissQualification } from './swissSystem.js';
+import { drawPlayoffRound, drawKnockoutRound, simulateKnockoutTie, simulateKnockoutRound } from './knockoutEngine.js';
+import { simulateMatch } from './leagueEngine.js';
 import {
   SA_COMPETITIONS,
   SA_MATCHDAY_WEEKS,
   calculateSAPrizeMoney
-} from './southAmericanCompetitions';
+} from './southAmericanCompetitions.js';
 
 // ============================================================
 // INITIALIZATION

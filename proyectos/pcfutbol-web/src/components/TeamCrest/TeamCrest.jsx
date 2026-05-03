@@ -21,11 +21,8 @@ function hashCode(str) {
 const FALLBACK_COLORS = ['#e63946','#457b9d','#2a9d8f','#e9c46a','#f4a261','#264653','#6a4c93','#1982c4'];
 const PATTERNS = ['solid','stripes','half','horiz','diagonal'];
 
-function ShieldPath() {
-  return (
-    <path d="M5,8 Q5,2 15,2 L85,2 Q95,2 95,8 L95,65 Q95,90 50,118 Q5,90 5,65 Z" />
-  );
-}
+const SHIELD_PATH = 'M5,8 Q5,2 15,2 L85,2 Q95,2 95,8 L95,65 Q95,90 50,118 Q5,90 5,65 Z';
+const SHIELD_INNER_PATH = 'M7,9 Q7,4 16,4 L84,4 Q93,4 93,9 L93,64 Q93,88 50,115 Q7,88 7,64 Z';
 
 function PatternFill({ pattern, primary, secondary }) {
   switch (pattern) {
@@ -168,20 +165,23 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
     );
   }
 
-  const clipId = `shield-clip-${(teamId || 'unknown').replace(/[^a-zA-Z0-9-]/g, '_')}`;
-  const gradientId = `shield-grad-${(teamId || 'unknown').replace(/[^a-zA-Z0-9-]/g, '_')}`;
+  const safeTeamId = (teamId || 'unknown').replace(/[^a-zA-Z0-9-]/g, '_');
+  const clipId = `shield-clip-${safeTeamId}`;
+  const gradientId = `shield-grad-${safeTeamId}`;
 
   return (
     <svg
       viewBox="0 0 100 120"
       width={size}
-      height={size * 1.2}
-      className={`team-crest ${className}`}
+      height={size}
+      className={`team-crest team-crest--generated ${className}`.trim()}
       aria-label={teamId}
+      role="img"
+      preserveAspectRatio="xMidYMid meet"
     >
       <defs>
-        <clipPath id={clipId}>
-          <ShieldPath />
+        <clipPath id={clipId} clipPathUnits="userSpaceOnUse">
+          <path d={SHIELD_INNER_PATH} />
         </clipPath>
         <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#ffffff" stopOpacity="0.25" />
@@ -194,13 +194,13 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
         <rect x="0" y="0" width="100" height="120" fill={`url(#${gradientId})`} />
       </g>
       <path
-        d="M5,8 Q5,2 15,2 L85,2 Q95,2 95,8 L95,65 Q95,90 50,118 Q5,90 5,65 Z"
+        d={SHIELD_PATH}
         fill="none"
         stroke="rgba(255,255,255,0.35)"
         strokeWidth="2.5"
       />
       <path
-        d="M7,9 Q7,4 16,4 L84,4 Q93,4 93,9 L93,64 Q93,88 50,115 Q7,88 7,64 Z"
+        d={SHIELD_INNER_PATH}
         fill="none"
         stroke="rgba(255,255,255,0.3)"
         strokeWidth="1"

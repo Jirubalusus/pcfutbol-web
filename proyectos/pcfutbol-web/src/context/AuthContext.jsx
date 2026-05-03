@@ -220,6 +220,10 @@ export function AuthProvider({ children }) {
     clearError
   };
 
+  if (import.meta.env.DEV && typeof window !== 'undefined') {
+    window.__pcfAuth = value;
+  }
+
   return (
     <AuthContext.Provider value={value}>
       {children}

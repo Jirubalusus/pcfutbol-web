@@ -1,12 +1,38 @@
 // Sistema de Objetivos del Juego
 // Define los objetivos de temporada y evalúa el rendimiento del entrenador
 
+import { getLeagueTier } from './leagueTiers';
+
+const OBJECTIVE_REWARD_MULTIPLIERS = {
+  1: 1,
+  2: 0.45,
+  3: 0.22,
+  4: 0.10,
+  5: 0.045,
+};
+
+function scaleMoneyByLeagueTier(amount, leagueId) {
+  const tier = getLeagueTier(leagueId) || 3;
+  const mult = OBJECTIVE_REWARD_MULTIPLIERS[tier] ?? OBJECTIVE_REWARD_MULTIPLIERS[3];
+  const scaled = Math.round(amount * mult);
+  // Redondeo legible en pantalla: 50K para importes pequeños, 100K para grandes.
+  const step = Math.abs(scaled) >= 1_000_000 ? 100_000 : 50_000;
+  return Math.round(scaled / step) * step;
+}
+
+function scaleObjectiveRewards(objectives, leagueId) {
+  return objectives.map(obj => ({
+    ...obj,
+    reward: scaleMoneyByLeagueTier(obj.reward || 0, leagueId),
+    penalty: scaleMoneyByLeagueTier(obj.penalty || 0, leagueId),
+  }));
+}
+
 /**
  * Genera los objetivos de temporada basados en el equipo y liga
  */
 export function generateSeasonObjectives(team, leagueId, leagueTable) {
   const reputation = team.reputation || 70;
-  const teamPosition = leagueTable.findIndex(t => t.teamId === team.id) + 1;
   
   // Determinar categoría del equipo
   let teamTier = 'mid'; // low, mid, high, elite
@@ -75,7 +101,7 @@ export function generateSeasonObjectives(team, leagueId, leagueTable) {
     });
   }
   
-  return objectives;
+  return scaleObjectiveRewards(objectives, leagueId);
 }
 
 /**
@@ -156,24 +182,26 @@ export function evaluateSeasonObjectives(objectives, teamStats, money) {
           : 0;
         break;
         
-      case 'goal_difference':
+      case 'goal_difference': {
         const gd = teamStats.goalsFor - teamStats.goalsAgainst;
         completed = gd >= obj.target;
         progress = Math.max(0, Math.min(100, (gd / 20) * 100));
         break;
+      }
         
       case 'financial':
         completed = money >= obj.target;
         progress = money >= 0 ? 100 : Math.max(0, 100 + (money / 10000000) * 100);
         break;
         
-      case 'youth_minutes':
+      case 'youth_minutes': {
         const youthGames = teamStats.youthGames || 0;
         completed = youthGames >= obj.target;
         progress = obj.target > 0
           ? Math.min(100, (youthGames / obj.target) * 100)
           : 0;
         break;
+      }
         
       default:
         completed = false;
@@ -301,10 +329,7 @@ function getOfferDescription(team, currentRep) {
 /**
  * Mensaje de evaluación de fin de temporada
  */
-export function getSeasonEvaluationMessage(managerRating, objectiveResults, teamStats) {
-  const criticalCompleted = objectiveResults.filter(o => o.priority === 'critical' && o.completed).length;
-  const criticalTotal = objectiveResults.filter(o => o.priority === 'critical').length;
-  
+export function getSeasonEvaluationMessage(managerRating) {
   if (managerRating >= 80) {
     return {
       title: '¡Temporada excepcional!',

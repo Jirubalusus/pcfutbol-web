@@ -202,12 +202,14 @@ $blue: #0a84ff;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
-      min-height: 36px;
+      height: 44px !important;
+      min-height: 44px !important;
 
       @media (max-width: 768px) {
-        padding: 0.35rem 0.5rem;
+        padding: 0.55rem 0.5rem;
         font-size: 0.7rem;
-        min-height: 32px;
+        height: 44px !important;
+        min-height: 44px !important;
         flex: 1;
         text-align: center;
       }

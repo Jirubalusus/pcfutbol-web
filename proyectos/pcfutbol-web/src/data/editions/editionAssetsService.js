@@ -36,8 +36,24 @@ const TEAM_ASSETS_SUBCOLLECTION = 'team_assets';
 const EDITION_ASSET_STORAGE_PREFIX = 'pcgaffer_edition_assets_';
 const EDITION_ASSET_STORAGE_VERSION = 1;
 
+// The public/importable JSON pack historically used a different id than the
+// Firestore edition document that contains the official crest subcollection.
+// Team/player names can still apply from the active pack id, but crest lookups
+// must also try the canonical Firestore document id.
+const EDITION_ASSET_ID_ALIASES = {
+  competicion_2025_26: ['real_names_2025_26']
+};
+
 const editionAssetsCache = new Map();
 const editionAssetsPreloadPromises = new Map();
+
+export function getEditionAssetLookupIds(editionId) {
+  if (!editionId) return [];
+  return Array.from(new Set([
+    editionId,
+    ...(EDITION_ASSET_ID_ALIASES[editionId] || [])
+  ].filter(Boolean)));
+}
 
 export function normalizeTeamAssetKey(value) {
   return String(value || '')
@@ -107,6 +123,16 @@ function getUniqueAssetsFromCache(editionId) {
   }
 
   return Array.from(unique.values());
+}
+
+function hydrateCacheFromAssets(sourceEditionId, targetEditionId) {
+  if (!sourceEditionId || !targetEditionId || sourceEditionId === targetEditionId) return false;
+
+  const sourceAssets = getUniqueAssetsFromCache(sourceEditionId);
+  if (sourceAssets.length === 0) return false;
+
+  hydrateEditionAssetsCache(targetEditionId, sourceAssets);
+  return true;
 }
 
 function buildAssetAliases(asset) {
@@ -193,22 +219,27 @@ function restorePersistedEditionAssets(editionId) {
 function getCachedAssetInternal(editionId, teamKeyOrId) {
   if (!editionId || !teamKeyOrId) return null;
 
-  const cache = editionAssetsCache.get(editionId);
-  if ((!cache || cache.size === 0) && !restorePersistedEditionAssets(editionId)) {
-    return null;
-  }
+  for (const lookupEditionId of getEditionAssetLookupIds(editionId)) {
+    const cache = editionAssetsCache.get(lookupEditionId);
+    if ((!cache || cache.size === 0) && !restorePersistedEditionAssets(lookupEditionId)) {
+      continue;
+    }
 
-  const hydratedCache = editionAssetsCache.get(editionId);
-  if (!hydratedCache?.size) return null;
+    const hydratedCache = editionAssetsCache.get(lookupEditionId);
+    if (!hydratedCache?.size) continue;
 
-  const candidateKeys = Array.from(new Set([
-    String(teamKeyOrId || ''),
-    normalizeTeamAssetKey(teamKeyOrId)
-  ].filter(Boolean)));
+    const candidateKeys = Array.from(new Set([
+      String(teamKeyOrId || ''),
+      normalizeTeamAssetKey(teamKeyOrId)
+    ].filter(Boolean)));
 
-  for (const candidateKey of candidateKeys) {
-    const asset = hydratedCache.get(candidateKey);
-    if (asset) return asset;
+    for (const candidateKey of candidateKeys) {
+      const asset = hydratedCache.get(candidateKey);
+      if (asset) {
+        if (lookupEditionId !== editionId) cacheEditionAsset(editionId, asset);
+        return asset;
+      }
+    }
   }
 
   return null;
@@ -240,13 +271,23 @@ export function getCachedEditionTeamAsset(editionId, teamKeyOrId) {
 export async function preloadEditionTeamAssets(editionId, { forceRefresh = false } = {}) {
   if (!editionId) return {};
 
-  const cachedAssets = getUniqueAssetsFromCache(editionId);
-  if (!forceRefresh && cachedAssets.length > 0) {
-    return toAssetMapObject(editionId);
-  }
+  const lookupEditionIds = getEditionAssetLookupIds(editionId);
 
-  if (!forceRefresh && restorePersistedEditionAssets(editionId)) {
-    return toAssetMapObject(editionId);
+  if (!forceRefresh) {
+    for (const lookupEditionId of lookupEditionIds) {
+      const cachedAssets = getUniqueAssetsFromCache(lookupEditionId);
+      if (cachedAssets.length > 0) {
+        if (lookupEditionId !== editionId) hydrateEditionAssetsCache(editionId, cachedAssets);
+        return toAssetMapObject(editionId);
+      }
+    }
+
+    for (const lookupEditionId of lookupEditionIds) {
+      if (restorePersistedEditionAssets(lookupEditionId)) {
+        if (lookupEditionId !== editionId) hydrateCacheFromAssets(lookupEditionId, editionId);
+        return toAssetMapObject(editionId);
+      }
+    }
   }
 
   if (editionAssetsPreloadPromises.has(editionId)) {
@@ -255,17 +296,30 @@ export async function preloadEditionTeamAssets(editionId, { forceRefresh = false
 
   const promise = (async () => {
     try {
-      const snapshot = await getDocs(collection(db, 'editions', editionId, TEAM_ASSETS_SUBCOLLECTION));
-      const assets = await Promise.all(
-        snapshot.docs.map(async (snap) => {
-          const asset = normalizeAsset(snap.id, snap.data());
-          return asset.downloadUrl ? asset : resolveAssetDownloadUrl(asset);
-        })
-      );
+      for (const lookupEditionId of lookupEditionIds) {
+        const snapshot = await getDocs(collection(db, 'editions', lookupEditionId, TEAM_ASSETS_SUBCOLLECTION));
+        if (snapshot.empty) continue;
 
-      hydrateEditionAssetsCache(editionId, assets);
-      persistEditionAssets(editionId, assets);
-      return toAssetMapObject(editionId);
+        const assets = await Promise.all(
+          snapshot.docs.map(async (snap) => {
+            const asset = normalizeAsset(snap.id, snap.data());
+            return asset.downloadUrl ? asset : resolveAssetDownloadUrl(asset);
+          })
+        );
+
+        hydrateEditionAssetsCache(lookupEditionId, assets);
+        persistEditionAssets(lookupEditionId, assets);
+
+        if (lookupEditionId !== editionId) {
+          hydrateEditionAssetsCache(editionId, assets);
+          persistEditionAssets(editionId, assets);
+        }
+
+        return toAssetMapObject(editionId);
+      }
+
+      hydrateEditionAssetsCache(editionId, []);
+      return {};
     } catch (error) {
       console.error('Error loading edition team assets:', error);
       return {};
@@ -297,14 +351,17 @@ export async function getEditionTeamAsset(editionId, teamKeyOrId) {
       teamKey
     ].filter(Boolean)));
 
-    for (const candidateKey of candidateKeys) {
-      const snap = await getDoc(doc(db, 'editions', editionId, TEAM_ASSETS_SUBCOLLECTION, candidateKey));
-      if (!snap.exists()) continue;
+    for (const lookupEditionId of getEditionAssetLookupIds(editionId)) {
+      for (const candidateKey of candidateKeys) {
+        const snap = await getDoc(doc(db, 'editions', lookupEditionId, TEAM_ASSETS_SUBCOLLECTION, candidateKey));
+        if (!snap.exists()) continue;
 
-      const asset = normalizeAsset(snap.id, snap.data());
-      const hydrated = await resolveAssetDownloadUrl(asset);
-      cacheEditionAsset(editionId, hydrated);
-      return { ...hydrated };
+        const asset = normalizeAsset(snap.id, snap.data());
+        const hydrated = await resolveAssetDownloadUrl(asset);
+        cacheEditionAsset(lookupEditionId, hydrated);
+        if (lookupEditionId !== editionId) cacheEditionAsset(editionId, hydrated);
+        return { ...hydrated };
+      }
     }
 
     return null;

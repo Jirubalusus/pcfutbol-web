@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "audit:simulation": "node scripts/audit-match-simulation.mjs",
     "audit:rfef-progression": "node scripts/audit-rfef-progression.mjs",
+    "audit:long-career-champions": "node scripts/audit-long-career-champions.mjs",
     "audit:management-flows": "node scripts/audit-management-flows.mjs",
     "preview": "vite preview",
     "predeploy": "npm run build",

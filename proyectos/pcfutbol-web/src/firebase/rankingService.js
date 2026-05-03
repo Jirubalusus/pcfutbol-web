@@ -10,6 +10,8 @@ import {
 
 const COLLECTION = 'contrarreloj_ranking';
 
+const isPermissionError = (err) => err?.code === 'permission-denied' || /insufficient permissions/i.test(err?.message || '');
+
 /**
  * Save a contrarreloj result to the shared ranking
  */
@@ -54,7 +56,11 @@ export async function loadRanking(maxEntries = 50) {
     
     return entries;
   } catch (err) {
-    console.error('Error loading ranking:', err);
+    if (isPermissionError(err)) {
+      console.warn('Ranking unavailable: missing Firebase read permissions. Showing empty leaderboard.');
+    } else {
+      console.error('Error loading ranking:', err);
+    }
     return [];
   }
 }
@@ -81,7 +87,11 @@ export async function getRankingPosition(seasonsPlayed) {
     
     return { position: Math.max(1, position), total };
   } catch (err) {
-    console.error('Error getting ranking position:', err);
+    if (isPermissionError(err)) {
+      console.warn('Ranking position unavailable: missing Firebase read permissions.');
+    } else {
+      console.error('Error getting ranking position:', err);
+    }
     return { position: 1, total: 1 };
   }
 }

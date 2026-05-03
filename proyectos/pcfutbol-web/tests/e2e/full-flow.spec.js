@@ -59,13 +59,22 @@ async function startNewGame(page) {
   let leagueCount = await leagueBtns.count();
 
   if (leagueCount === 0) {
+    const countryMarker = page.locator('.globe-marker').first();
+    if (await countryMarker.isVisible({ timeout: 1000 }).catch(() => false)) {
+      await countryMarker.click();
+      await page.waitForTimeout(800);
+      leagueCount = await leagueBtns.count();
+    }
+  }
+
+  if (leagueCount === 0) {
     const globeCanvas = page.locator('.map-selection__map canvas').first();
     if (await globeCanvas.isVisible()) {
       for (const pos of [
         { x: 150, y: 170 }, { x: 180, y: 190 }, { x: 120, y: 160 },
         { x: 200, y: 200 }, { x: 160, y: 150 }, { x: 140, y: 200 },
       ]) {
-        await globeCanvas.click({ position: pos });
+        await globeCanvas.click({ position: pos, force: true });
         await page.waitForTimeout(600);
         leagueCount = await leagueBtns.count();
         if (leagueCount > 0) break;
@@ -263,7 +272,7 @@ test.describe('Team Selection Flow', () => {
   test('career button navigates to team selection', async ({ page }) => {
     await page.click('.main-menu__mode-card--hero');
     await expect(page.locator('.pcf-ts-progress')).toBeVisible({ timeout: 10_000 });
-    await expect(page.locator('.progress-step')).toHaveCount(2);
+    await expect(page.locator('.progress-step')).toHaveCount(3);
   });
 
   test('team selection shows globe and league panel', async ({ page }, testInfo) => {

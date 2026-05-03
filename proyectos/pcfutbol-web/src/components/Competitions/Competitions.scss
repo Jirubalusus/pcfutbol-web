@@ -31,6 +31,8 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    height: 44px !important;
+    min-height: 44px !important;
     white-space: nowrap;
 
     &:hover {

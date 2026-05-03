@@ -92,7 +92,8 @@ $pcf-text: #8a9aaa;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 4px;
     color: $pcf-gray;
-    padding: 0.3rem 0.6rem;
+    min-height: 44px;
+    padding: 0.45rem 0.7rem;
     font-size: 0.75rem;
     font-weight: 500;
     cursor: pointer;
@@ -671,6 +672,11 @@ $pcf-text: #8a9aaa;
 
 .country-divisions__back {
   background: rgba(255, 255, 255, 0.045);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.8rem;
 }
 
 .country-divisions__step-mark {
@@ -714,6 +720,24 @@ $pcf-text: #8a9aaa;
     text-transform: uppercase;
     overflow-wrap: anywhere;
   }
+
+  @media (max-width: 560px) {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 0.9rem;
+    align-items: center;
+    margin: 0.75rem 0 0.15rem;
+
+    h2 {
+      grid-column: 2;
+      max-width: none;
+      margin: 0.12rem 0 0;
+      font-size: clamp(2rem, 11vw, 2.7rem);
+      line-height: 0.95;
+      overflow-wrap: normal;
+    }
+  }
 }
 
 .country-divisions__flag-frame {
@@ -722,16 +746,25 @@ $pcf-text: #8a9aaa;
   display: grid;
   place-items: center;
   margin-bottom: 1.2rem;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.36);
+  border-radius: 999px;
+  background: transparent;
+  border: 0;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
+
+  @media (max-width: 560px) {
+    grid-row: 1 / span 2;
+    width: 62px;
+    height: 62px;
+    margin: 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .country-flag.country-divisions__flag {
-  width: calc(100% - 16px);
-  height: calc(100% - 16px);
-  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: transparent;
 }
 
 .country-divisions__kicker {
@@ -741,6 +774,13 @@ $pcf-text: #8a9aaa;
   font-weight: 850;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  @media (max-width: 560px) {
+    grid-column: 2;
+    align-self: end;
+    font-size: 0.64rem;
+    letter-spacing: 1.5px;
+  }
 }
 
 .country-divisions__stats {
@@ -1429,6 +1469,8 @@ $pcf-text: #8a9aaa;
   background: rgba(0, 0, 0, 0.18);
   color: $pcf-text;
   border-radius: 10px;
+  height: 44px !important;
+  min-height: 44px !important;
   padding: 0.75rem 0.9rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -1517,7 +1559,9 @@ $pcf-text: #8a9aaa;
     
     input {
       width: 100%;
-      padding: 0.6rem 0.9rem;
+      height: 44px !important;
+      min-height: 44px !important;
+      padding: 0.65rem 0.9rem;
       background: $pcf-bg-dark;
       border: 2px solid $pcf-bg-light;
       border-radius: 6px;
@@ -1722,11 +1766,11 @@ $pcf-text: #8a9aaa;
     flex-shrink: 0;
     
     .badge-large {
-      width: 70px;
-      height: 70px;
-      background: var(--primary);
-      border: 3px solid var(--secondary);
-      border-radius: 10px;
+      width: 78px;
+      height: 78px;
+      background: radial-gradient(circle at 35% 20%, rgba(255,255,255,0.16), rgba(255,255,255,0.03) 42%, rgba(0,0,0,0.18) 100%);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1734,7 +1778,17 @@ $pcf-text: #8a9aaa;
       font-weight: 900;
       color: var(--secondary);
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 10px 24px rgba(0,0,0,0.34);
+      overflow: visible;
+
+      .team-crest,
+      .team-crest--official,
+      .team-crest--generated {
+        display: block;
+        width: 66px;
+        height: 66px;
+        filter: drop-shadow(0 8px 10px rgba(0,0,0,0.36));
+      }
     }
     
     .team-title {

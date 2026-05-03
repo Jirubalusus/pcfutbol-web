@@ -4,7 +4,7 @@
 // Simula transferencias entre TODOS los equipos (IA ↔ IA)
 // Genera noticias, rumores y mantiene el mundo vivo
 
-import { getTransferValueMultiplier } from './leagueTiers';
+import { getTransferValueMultiplier } from './leagueTiers.js';
 
 /**
  * Calcular valor de mercado de un jugador
@@ -78,6 +78,14 @@ export function calculateMarketValue(player, leagueId) {
   const finalValue = baseValue * ageMod * posMod * contractMod * tierMult;
   return Math.round(Math.max(50_000, Math.min(300_000_000, finalValue)));
 }
+
+// Ritmo global de actividad IA. Con 900+ clubes, porcentajes aparentemente bajos
+// multiplican demasiado el mercado. Mantenerlo explícito evita volver a subirlo sin querer.
+export const MARKET_ACTIVITY_RATES = {
+  weeklySigningChance: 0.09,
+  weeklySaleChance: 0.045,
+  weeklyLoanRumorChance: 0.20,
+};
 
 // ============================================================
 // CONFIGURACIÓN DE EQUIPOS IA
@@ -157,21 +165,35 @@ export class GlobalTransferEngine {
     teamsData.forEach(team => {
       const profile = this.getTeamProfile(team.name);
       
-      // Apply tier multiplier to budget if team has leagueId
+      // Apply tier multiplier to budget if team has leagueId.
+      // Important: initializeTeams() is also used every simulated week with already-mutated
+      // teams from state. Preserve an existing finite budget instead of re-randomizing it;
+      // otherwise the whole market silently receives fresh money every week.
       const tierMult = team.leagueId ? getTransferValueMultiplier(team.leagueId) : 1.0;
       const [minBudget, maxBudget] = profile.budgetRange;
       const scaledMin = Math.round(minBudget * tierMult);
       const scaledMax = Math.round(maxBudget * tierMult);
-      const budget = Math.round(scaledMin + Math.random() * (scaledMax - scaledMin));
+      const hasExistingBudget = Number.isFinite(team.budget) && team.budget >= 0;
+      const budget = hasExistingBudget
+        ? Math.round(team.budget)
+        : Math.round(scaledMin + Math.random() * (scaledMax - scaledMin));
       
-      teams.set(team.id, {
+      const hydratedTeam = {
         ...team,
+        // Some generated/fallback league teams can accidentally share the same players array
+        // reference. Clone both array and player objects so a transfer into one team cannot
+        // appear in every team sharing that reference.
+        players: (team.players || []).map(player => ({ ...player })),
         budget,
-        originalBudget: budget,
+        originalBudget: Number.isFinite(team.originalBudget) ? team.originalBudget : budget,
         profile: profile.name,
-        transferActivity: [], // Fichajes de esta temporada
-        needs: this.calculateTeamNeeds(team),
-        sellPriority: this.calculateSellPriority(team)
+        transferActivity: [] // Fichajes de esta temporada
+      };
+
+      teams.set(team.id, {
+        ...hydratedTeam,
+        needs: this.calculateTeamNeeds(hydratedTeam),
+        sellPriority: this.calculateSellPriority(hydratedTeam)
       });
     });
     
@@ -183,7 +205,7 @@ export class GlobalTransferEngine {
    * Obtener perfil de un equipo por nombre
    */
   getTeamProfile(teamName) {
-    for (const [key, profile] of Object.entries(TEAM_PROFILES)) {
+    for (const profile of Object.values(TEAM_PROFILES)) {
       if (profile.teams.includes(teamName)) {
         return profile;
       }
@@ -294,16 +316,17 @@ export class GlobalTransferEngine {
     
     // Cada equipo IA tiene chance de actuar
     for (const team of aiTeams) {
-      // 30% chance de buscar fichaje
-      if (Math.random() < 0.30 && team.needs.length > 0) {
+      // Ritmo contenido: con 900+ clubes simulados, 9% semanal mantiene actividad
+      // visible pero evita miles de operaciones acumuladas por temporada.
+      if (Math.random() < MARKET_ACTIVITY_RATES.weeklySigningChance && team.needs.length > 0) {
         const signing = this.attemptSigning(team);
         if (signing) {
           events.push({ type: 'transfer', data: signing });
         }
       }
       
-      // 15% chance de vender
-      if (Math.random() < 0.15 && team.sellPriority.length > 0) {
+      // Ventas proactivas también reducidas para que no dupliquen el volumen generado por compras.
+      if (Math.random() < MARKET_ACTIVITY_RATES.weeklySaleChance && team.sellPriority.length > 0) {
         const sale = this.attemptSale(team);
         if (sale) {
           events.push({ type: 'transfer', data: sale });
@@ -316,7 +339,7 @@ export class GlobalTransferEngine {
     events.push(...newRumors.map(r => ({ type: 'rumor', data: r })));
     
     // 30% chance de rumor de cesión durante ventana
-    if (Math.random() < 0.30) {
+    if (Math.random() < MARKET_ACTIVITY_RATES.weeklyLoanRumorChance) {
       const loanRumors = this.generateLoanRumors(1);
       events.push(...loanRumors.map(r => ({ type: 'rumor', data: r })));
     }
@@ -435,8 +458,26 @@ export class GlobalTransferEngine {
    * Ejecutar una transferencia
    */
   executeTransfer(player, fromTeam, toTeam, price) {
-    // Actualizar plantillas
-    fromTeam.players = fromTeam.players.filter(p => p.name !== player.name);
+    // Actualizar plantillas. Prefer player id; fall back to a composite identity.
+    // Do not add the player to the buying team if we cannot remove him from the seller:
+    // otherwise a stale target can clone players across the global market.
+    const matchesPlayer = (candidate) => {
+      if (player.id != null && candidate.id != null) return candidate.id === player.id;
+      return candidate.name === player.name
+        && candidate.position === player.position
+        && candidate.age === player.age
+        && candidate.overall === player.overall;
+    };
+    let removed = false;
+    fromTeam.players = (fromTeam.players || []).filter(candidate => {
+      if (!removed && matchesPlayer(candidate)) {
+        removed = true;
+        return false;
+      }
+      return true;
+    });
+
+    if (!removed) return null;
     
     const newPlayer = {
       ...player,
@@ -716,7 +757,7 @@ export function getWinterWindowRange(totalWeeks = 38) {
   return { start, end };
 }
 
-export function isTransferWindowOpen(week, options = {}) {
+export function isTransferWindowOpen(week) {
   // Summer window: weeks 1-8, Winter window: weeks 20-24 (synced with Transfers.jsx)
   if (week >= 1 && week <= 8) {
     return { open: true, type: 'summer', isUrgent: week >= 7 };

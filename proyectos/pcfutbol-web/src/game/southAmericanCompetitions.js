@@ -223,6 +223,12 @@ export function qualifyTeamsForSouthAmerica(leagueStandings, allTeamsMap = {}) {
     }
   }
 
+  // The declared country slots can overshoot the playable competition size.
+  // Keep deterministic priority order (league slot order + table position) but never
+  // initialize more teams than the format supports.
+  qualified.copaLibertadores = qualified.copaLibertadores.slice(0, COPA_LIBERTADORES.teamsCount);
+  qualified.copaSudamericana = qualified.copaSudamericana.slice(0, COPA_SUDAMERICANA.teamsCount);
+
   return qualified;
 }
 

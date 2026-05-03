@@ -8,7 +8,7 @@ export default defineConfig({
   retries: 1,
   reporter: [['json', { outputFile: 'artifacts/e2e-report.json' }], ['list']],
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:5173',
     headless: true,
     viewport: { width: 1280, height: 800 },
     screenshot: 'only-on-failure',

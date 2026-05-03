@@ -114,8 +114,9 @@ export function calculateFairPrice({
   totalTeams = 20,
   division = 1  // 1 = primera, 2 = segunda, etc.
 } = {}) {
-  // Base por división: primera ~€50, segunda ~€25, tercera ~€15
-  const divisionBase = division === 1 ? 50 : division === 2 ? 25 : 15;
+  // Base por división/tier: Primera ~€50, Segunda ~€25, ligas medianas ~€18,
+  // Primera RFEF/ligas bajas ~€12, Segunda RFEF/amateur ~€8.
+  const divisionBase = division <= 1 ? 50 : division === 2 ? 25 : division === 3 ? 18 : division === 4 ? 12 : 8;
   
   // Factor overall: equipo de 60 OVR → ×0.7, 75 → ×1.0, 90 → ×1.5
   const overallFactor = 0.4 + (teamOverall / 100) * 1.1;
@@ -260,8 +261,11 @@ export function calculateMatchAttendance({
   // Capacidad disponible para entradas sueltas
   const availableSeats = stadiumCapacity - seasonTickets;
   
-  // Demanda base: 55% de asientos disponibles (configurable)
-  const baseDemand = availableSeats * PRICE_CONFIG.baseDemandRate;
+  // Demanda base de entradas sueltas. No todas las categorías llenan el estadio
+  // igual aunque el campo sea grande: un club de 2RFEF con 35k asientos no debe
+  // vender 20k entradas cada semana por defecto.
+  const tierDemandFactor = division <= 1 ? 1.0 : division === 2 ? 0.78 : division === 3 ? 0.58 : division === 4 ? 0.38 : 0.24;
+  const baseDemand = availableSeats * PRICE_CONFIG.baseDemandRate * tierDemandFactor;
   
   // Precio justo dinámico según contexto del equipo
   const fairPrice = calculateFairPrice({ teamOverall, teamReputation, leaguePosition: teamPosition, totalTeams, division });
@@ -302,8 +306,7 @@ export function calculateMatchIncome({
   ticketSales,
   seasonTickets,
   ticketPrice,
-  stadiumLevel = 0,
-  naming = null
+  stadiumLevel = 0
 }) {
   // Ingresos por entradas vendidas
   const ticketIncome = ticketSales * ticketPrice;
