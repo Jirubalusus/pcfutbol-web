@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars, react-hooks/immutability, react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars, react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useGame } from '../../context/GameContext';
 import { translatePosition, posToEN } from '../../game/positionNames';
@@ -23,7 +23,7 @@ import {
 } from '../../game/loanSystem';
 import TransferMap from './TransferMap';
 import TeamCrest from '../TeamCrest/TeamCrest';
-import { Zap, Globe, X, ShoppingCart, ClipboardList, DollarSign, Mail, Inbox, Search, Check, ArrowRightLeft } from 'lucide-react';
+import { Zap, Globe, X, ShoppingCart, ClipboardList, DollarSign, Mail, Inbox, Search, Check, ArrowRightLeft, Star, Circle } from 'lucide-react';
 import { getLeagueTier, getMaxTierJumpByAge, getPositionPerformanceMultiplier, getTransferValueMultiplier } from '../../game/leagueTiers';
 import './Transfers.scss';
 import './TransferMap.scss';
@@ -316,30 +316,6 @@ export default function Transfers() {
   // Tier del jugador para filtrar ofertas cross-tier
   const playerTier = getLeagueTier(state.leagueId);
   
-  useEffect(() => {
-    if (state._batchMode) return;
-    if (state.team?.players && state.currentWeek > 1 && transferWindow.isOpen) {
-      const existingOfferCount = state.transferOffers?.length || 0;
-      const stats = state.playerSeasonStats || {};
-      
-      // Check if we have standout performers (per position!)
-      const hasStarPerformer = state.team.players.some(p => {
-        const pStats = stats[p.name] || {};
-        const perfMult = getPositionPerformanceMultiplier(p, pStats);
-        return perfMult >= 1.8; // Rendimiento muy destacado en su posición
-      });
-      
-      let offerChance = transferWindow.isUrgent ? 0.5 : 0.3;
-      if (hasStarPerformer) offerChance += 0.15;
-      
-      const maxOffers = hasStarPerformer ? 7 : 5;
-      
-      if (existingOfferCount < maxOffers && Math.random() < offerChance) {
-        generateIncomingOffer();
-      }
-    }
-  }, [state.currentWeek, generateIncomingOffer, state.playerSeasonStats]);
-  
   const generateIncomingOffer = useCallback(() => {
     const players = state.team?.players || [];
     if (players.length === 0) return;
@@ -546,6 +522,30 @@ export default function Transfers() {
       }
     });
   }, [state.team, state.teamId, state.currentWeek, state.transferOffers, state.playerSeasonStats, state.leagueId, playerTier, transferWindow, dispatch]);
+
+  useEffect(() => {
+    if (state._batchMode) return;
+    if (state.team?.players && state.currentWeek > 1 && transferWindow.isOpen) {
+      const existingOfferCount = state.transferOffers?.length || 0;
+      const stats = state.playerSeasonStats || {};
+
+      // Check if we have standout performers (per position!)
+      const hasStarPerformer = state.team.players.some(p => {
+        const pStats = stats[p.name] || {};
+        const perfMult = getPositionPerformanceMultiplier(p, pStats);
+        return perfMult >= 1.8; // Rendimiento muy destacado en su posición
+      });
+
+      let offerChance = transferWindow.isUrgent ? 0.5 : 0.3;
+      if (hasStarPerformer) offerChance += 0.15;
+
+      const maxOffers = hasStarPerformer ? 7 : 5;
+
+      if (existingOfferCount < maxOffers && Math.random() < offerChance) {
+        generateIncomingOffer();
+      }
+    }
+  }, [state._batchMode, state.team?.players, state.currentWeek, transferWindow.isOpen, transferWindow.isUrgent, state.transferOffers?.length, state.playerSeasonStats, generateIncomingOffer]);
   
   // === NEGOCIACIÓN ===
   const startNegotiation = useCallback((player) => {

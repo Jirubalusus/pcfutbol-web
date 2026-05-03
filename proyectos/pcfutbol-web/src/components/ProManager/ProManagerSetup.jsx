@@ -3,7 +3,7 @@ import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
-import { generateInitialOffers, getBoardObjective } from '../../game/proManagerEngine';
+import { generateInitialOffers } from '../../game/proManagerEngine';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
@@ -16,7 +16,6 @@ import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import {
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
-  getPrimeraRfefGroups, getSegundaRfefGroups,
   getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams,
   getEredivisieTeams, getPrimeiraLigaTeams, getChampionshipTeams,
   getBelgianProTeams, getSuperLigTeams, getScottishPremTeams,
@@ -208,7 +207,7 @@ export default function ProManagerSetup() {
     if (isPlayerInSA) {
       try {
         const bootstrapStandings = {};
-        for (const [lid, slots] of Object.entries(SA_LEAGUE_SLOTS)) {
+        for (const [lid] of Object.entries(SA_LEAGUE_SLOTS)) {
           const config = LEAGUE_CONFIG[lid];
           if (!config) continue;
           const teams = config.getTeams ? config.getTeams() : ALL_LEAGUE_GETTERS[lid]?.();

@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
+import Office from './components/Office/Office';
 import { GameProvider, useGame } from './context/GameContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataProvider';
@@ -14,7 +15,6 @@ import { useSoundEffects } from './hooks/useSoundEffects';
 import { checkPremiumStatus } from './services/purchaseService';
 
 const TeamSelection = lazy(() => import('./components/TeamSelection/TeamSelection'));
-const Office = lazy(() => import('./components/Office/Office'));
 const CityMode = lazy(() => import('./components/City3D/CityMode'));
 const ContrarrelojSetup = lazy(() => import('./components/ContrarrelojSetup/ContrarrelojSetup'));
 const ContrarrelojEnd = lazy(() => import('./components/ContrarrelojEnd/ContrarrelojEnd'));
