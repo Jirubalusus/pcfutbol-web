@@ -248,6 +248,8 @@ export default function ContrarrelojSetup() {
 
   const activeCandidate = candidates.find(c => c.team.id === selectedTeam?.id) || candidates[0] || null;
   const activeTeam = selectedTeam || activeCandidate?.team || null;
+  const setupTitle = t('contrarrelojSetup.title');
+  const setupTitleWords = setupTitle.split(/\s+/).filter(Boolean);
   const activeLeagueId = selectedLeagueId || activeCandidate?.leagueId || null;
   const activeAvg = activeTeam ? getAvgOverall(activeTeam) : 0;
   const activeSquadCount = activeTeam?.players?.length || 0;
@@ -497,7 +499,11 @@ export default function ContrarrelojSetup() {
             </div>
             <div className="header-copy">
               <span className="mode-kicker">Modo límite · Carrera a contrarreloj</span>
-              <h1>{t('contrarrelojSetup.title')}</h1>
+              <h1 aria-label={setupTitle}>
+                {setupTitleWords.map((word) => (
+                  <span key={word}>{word}</span>
+                ))}
+              </h1>
               <p className="subtitle">{t('contrarrelojSetup.subtitle')}</p>
             </div>
             <div className="header-scoreboard" aria-hidden="true">

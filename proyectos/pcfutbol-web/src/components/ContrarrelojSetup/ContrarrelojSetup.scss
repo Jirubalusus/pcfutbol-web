@@ -951,14 +951,28 @@
         }
 
         h1 {
+          min-height: 44px;
           margin: 0;
-          font-size: 1.04rem;
-          line-height: 1.02;
-          letter-spacing: 0.03em;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 0.12rem 0.34rem;
+          color: var(--color-gold);
+          font-size: clamp(0.92rem, 4.1vw, 1.15rem);
+          line-height: 0.95;
+          letter-spacing: 0.055em;
           text-align: left;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          text-transform: uppercase;
+          white-space: normal;
+          overflow: visible;
+          text-overflow: clip;
+          text-shadow: 0 10px 26px rgba(var(--color-gold-rgb), 0.2);
+
+          span {
+            display: inline-block;
+            white-space: nowrap;
+          }
         }
       }
     }
