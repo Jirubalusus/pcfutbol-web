@@ -110,6 +110,14 @@ service cloud.firestore {
     match /editions/{editionId} {
       allow read: if true;
       allow write: if false; // Admin only via Admin SDK
+
+      // Official crest metadata for public/importable packs.
+      // Firestore rules do not inherit into subcollections, so this must be
+      // exposed explicitly or pack-applied teams fall back to generated shields.
+      match /team_assets/{assetId} {
+        allow read: if true;
+        allow write: if false; // Admin only via Admin SDK
+      }
     }
     
     // Leagues v2: public read-only (game data, no user info)
