@@ -29,6 +29,7 @@ import {
 } from '../../data/teamsFirestore';
 import { ArrowLeft, Briefcase, Users, Target, TrendingUp, Wallet, Shield } from 'lucide-react';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import { usePreloadTeamCrests } from '../TeamCrest/teamCrestCache';
 import './ProManagerSetup.scss';
 
 const ALL_LEAGUE_GETTERS = {
@@ -111,6 +112,9 @@ export default function ProManagerSetup() {
       return offer;
     });
   }, []);
+
+  const offerTeamIds = useMemo(() => offers.map(offer => offer.team.id), [offers]);
+  usePreloadTeamCrests(offerTeamIds, { limit: 10 });
 
   const handleBack = () => {
     dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
@@ -359,7 +363,7 @@ export default function ProManagerSetup() {
 
                 <div className="offer-detail__head">
                   <div className="offer-detail__crest">
-                    <TeamCrest teamId={activeOffer.team.id} size={56} />
+                    <TeamCrest teamId={activeOffer.team.id} size={56} priority />
                   </div>
                   <span className="offer-detail__eyebrow">{activeOffer.leagueName}</span>
                   <h2 className="offer-detail__name">{activeOffer.team.name}</h2>

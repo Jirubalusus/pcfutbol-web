@@ -90,7 +90,7 @@ function PatternFill({ pattern, primary, secondary }) {
   }
 }
 
-export default function TeamCrest({ teamId, size = 40, className = '' }) {
+export default function TeamCrest({ teamId, size = 40, className = '', priority = false }) {
   const editionId = getActiveEditionId();
   const normalizedTeamKey = normalizeTeamAssetKey(teamId);
   const [officialCrestUrl, setOfficialCrestUrl] = useState(() => {
@@ -161,6 +161,9 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
         width={size}
         height={size}
         className={`team-crest team-crest--official ${className}`.trim()}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={priority ? 'high' : 'auto'}
       />
     );
   }
