@@ -1233,6 +1233,144 @@
     }
   }
 
+  @media (min-width: 881px) and (max-width: 1080px) {
+    &__board {
+      grid-template-columns: minmax(0, 1fr) clamp(306px, 34vw, 340px);
+      gap: 0.85rem;
+    }
+
+    .offer-row {
+      grid-template-columns: 4px clamp(54px, 5.6vw, 62px) minmax(0, 1fr) 56px;
+      gap: 0.68rem;
+      min-height: clamp(62px, 8dvh, 76px);
+      padding-right: 0.62rem;
+      border-radius: 13px;
+
+      &__difficulty,
+      &__rank,
+      &__tier,
+      &__stats {
+        display: none;
+      }
+
+      &__crest {
+        width: clamp(52px, 5.2vw, 60px);
+        height: clamp(52px, 5.2vw, 60px);
+        border-radius: 13px;
+
+        .team-crest,
+        .team-crest--official {
+          max-width: clamp(42px, 4.2vw, 50px);
+          max-height: clamp(42px, 4.2vw, 50px);
+        }
+      }
+
+      &__name {
+        font-size: clamp(0.96rem, 1.2vw, 1.12rem);
+      }
+
+      &__eyebrow {
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+      }
+
+      &__metrics {
+        display: flex;
+        justify-content: flex-end;
+        min-height: 0;
+        border: 0;
+        background: transparent;
+        overflow: visible;
+      }
+
+      &__meta {
+        display: flex;
+        min-width: 52px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      &__ovr {
+        width: 52px;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.04rem;
+        border-radius: 12px;
+        background: color-mix(in srgb, var(--row-accent) 9%, rgba(255, 255, 255, 0.035));
+        border: 1px solid color-mix(in srgb, var(--row-accent) 22%, rgba(255, 255, 255, 0.055));
+
+        b {
+          font-size: 1.24rem;
+        }
+
+        em {
+          font-size: 0.5rem;
+          padding: 0;
+        }
+      }
+    }
+
+    .offer-detail {
+      padding: 0.85rem;
+      border-radius: 17px;
+
+      &__head {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr);
+        grid-template-areas:
+          "crest league"
+          "crest name"
+          "crest tags";
+        align-items: center;
+        gap: 0.12rem 0.58rem;
+        text-align: left;
+        padding: 0 0 0.65rem;
+        margin-bottom: 0.62rem;
+      }
+
+      &__crest {
+        grid-area: crest;
+        width: 58px;
+        height: 58px;
+        margin: 0;
+        border-radius: 14px;
+
+        .team-crest,
+        .team-crest--official {
+          max-width: 48px;
+          max-height: 48px;
+        }
+      }
+
+      &__eyebrow { grid-area: league; }
+      &__name { grid-area: name; font-size: clamp(1.08rem, 1.45vw, 1.28rem); }
+      &__tags { grid-area: tags; margin-top: 0.1rem; }
+
+      &__objective {
+        padding: 0.58rem 0.68rem;
+        margin-bottom: 0.58rem;
+        font-size: 0.76rem;
+      }
+
+      &__stats {
+        gap: 0.42rem;
+        margin-bottom: 0.62rem;
+      }
+
+      &__stat {
+        padding: 0.56rem 0.6rem;
+      }
+
+      &__briefing {
+        display: none;
+      }
+    }
+  }
+
   @media (max-width: 880px) {
     height: 100dvh;
     min-height: 100dvh;
@@ -1292,8 +1430,8 @@
       height: 100%;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 250px minmax(0, 1fr);
-      gap: 0.5rem;
+      grid-template-rows: clamp(202px, 29dvh, 224px) minmax(0, 1fr);
+      gap: 0.58rem;
       align-items: stretch;
     }
 
@@ -1303,24 +1441,24 @@
       top: auto;
       min-height: 0;
       display: grid;
-      grid-template-rows: auto auto auto auto 48px;
-      gap: 0.42rem;
-      padding: 0.66rem;
-      border-radius: 18px;
+      grid-template-rows: auto auto minmax(0, 1fr) 44px;
+      gap: 0.48rem;
+      padding: 0.62rem;
+      border-radius: 17px;
       overflow: hidden;
       border-color: color-mix(in srgb, var(--detail-accent) 20%, rgba(255, 255, 255, 0.07));
       background:
-        radial-gradient(circle at 12% 4%, color-mix(in srgb, var(--detail-accent) 12%, transparent) 0%, transparent 38%),
-        linear-gradient(135deg, rgba(18, 28, 43, 0.98), rgba(6, 11, 19, 0.99));
+        radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--detail-accent) 10%, transparent) 0%, transparent 42%),
+        linear-gradient(135deg, rgba(15, 23, 35, 0.985), rgba(6, 10, 18, 0.995));
 
       &__head {
         display: grid;
-        grid-template-columns: 52px minmax(0, 1fr) auto;
+        grid-template-columns: 48px minmax(0, 1fr) auto;
         grid-template-areas:
           "crest league tags"
           "crest name tags";
         align-items: center;
-        gap: 0.16rem 0.55rem;
+        gap: 0.14rem 0.52rem;
         padding: 0;
         margin: 0;
         text-align: left;
@@ -1329,15 +1467,15 @@
 
       &__crest {
         grid-area: crest;
-        width: 52px;
-        height: 52px;
+        width: 48px;
+        height: 48px;
         margin: 0;
-        border-radius: 14px;
+        border-radius: 13px;
 
         .team-crest,
         .team-crest--official {
-          max-width: 42px;
-          max-height: 42px;
+          max-width: 40px;
+          max-height: 40px;
         }
       }
 
@@ -1351,16 +1489,16 @@
       &__name {
         grid-area: name;
         align-self: start;
-        font-size: 1.16rem;
+        font-size: 1.05rem;
         line-height: 1.05;
         letter-spacing: 0.01em;
       }
 
       &__tags {
         grid-area: tags;
-        align-self: start;
+        align-self: center;
         margin: 0;
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.24rem;
       }
 
@@ -1370,13 +1508,17 @@
         font-size: 0.5rem;
       }
 
+      &__tier {
+        display: none;
+      }
+
       &__objective {
         align-items: center;
         gap: 0.38rem;
         margin: 0;
-        padding: 0.46rem 0.55rem;
+        padding: 0.42rem 0.55rem;
         border-radius: 11px;
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         line-height: 1.22;
 
         svg {
@@ -1384,21 +1526,32 @@
           width: 13px;
           height: 13px;
         }
+
+        span {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
       }
 
       &__stats {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.36rem;
         margin: 0;
       }
 
       &__stat {
-        min-height: 44px;
+        min-height: 42px;
         align-items: center;
         gap: 0.1rem;
         padding: 0.34rem 0.26rem;
         border-radius: 11px;
         background: rgba(255, 255, 255, 0.035);
+
+        &:nth-child(4) {
+          display: none;
+        }
 
         dt {
           justify-content: center;
@@ -1420,44 +1573,7 @@
       }
 
       &__briefing {
-        display: grid;
-        grid-template-columns: 1.28fr 0.9fr 0.72fr;
-        gap: 0.36rem;
-        margin: 0;
-        min-height: 32px;
-      }
-
-      &__briefing-row {
-        min-width: 0;
-        min-height: 32px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 1px;
-        padding: 0.3rem 0.46rem;
-        border-radius: 11px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.028));
-
-        span {
-          max-width: 100%;
-          font-size: 0.48rem;
-          line-height: 1;
-          letter-spacing: 0.11em;
-        }
-
-        strong {
-          max-width: 100%;
-          font-size: 0.74rem;
-          line-height: 1.05;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        &--value strong { color: #49ff9b; }
-        &--prestige strong { color: #f4f8fc; }
-        &--season strong { color: #9ed0ff; }
+        display: none;
       }
     }
 
@@ -1466,9 +1582,9 @@
       min-height: 0;
       height: 100%;
       display: grid;
-      grid-template-rows: 21px repeat(5, minmax(0, 1fr));
-      gap: 0.28rem;
-      padding: 0.42rem;
+      grid-template-rows: 22px repeat(5, minmax(0, 1fr));
+      gap: 0.34rem;
+      padding: 0.46rem;
       border-radius: 16px;
       overflow: hidden;
 
@@ -1484,9 +1600,9 @@
       min-height: 0;
       height: 100%;
       grid-template-columns: 3px 34px minmax(0, 1fr) 42px;
-      gap: 0.46rem;
-      padding: 0.28rem 0.44rem 0.28rem 0;
-      border-radius: 12px;
+      gap: 0.5rem;
+      padding: 0.26rem 0.46rem 0.26rem 0;
+      border-radius: 13px;
 
       &__crest {
         width: 34px;
@@ -1542,10 +1658,10 @@
 
     .btn-start {
       position: static;
-      min-height: 48px;
-      height: 48px;
+      min-height: 44px;
+      height: 44px;
       padding: 0 0.75rem;
-      border-radius: 14px;
+      border-radius: 13px;
       font-size: 0.76rem;
       letter-spacing: 0.08em;
     }
