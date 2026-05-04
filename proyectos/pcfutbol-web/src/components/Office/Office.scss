@@ -303,8 +303,11 @@
     width: 100%;
     
     @media (max-width: 768px) {
-      padding: 0.5rem;
+      padding: 0.5rem 0.5rem calc(178px + env(safe-area-inset-bottom, 0px));
       max-width: none;
+      height: calc(100dvh - 214px - env(safe-area-inset-bottom, 0px));
+      max-height: calc(100dvh - 214px - env(safe-area-inset-bottom, 0px));
+      flex: 0 0 auto;
     }
   }
   

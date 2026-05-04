@@ -356,3 +356,186 @@
 .week-btn.cup {
   position: relative;
 }
+
+/* Mobile cup redesign 2026-05 */
+
+@media (max-width: 768px) {
+  .cup {
+    padding: 0;
+    max-width: 100%;
+
+    &__header {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.74rem;
+      margin-bottom: 0.95rem;
+      padding: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(251, 191, 36, 0.16), transparent 38%),
+        linear-gradient(145deg, rgba(21, 32, 50, 0.95), rgba(9, 18, 31, 0.95));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 18px 44px rgba(0, 0, 0, 0.22);
+    }
+
+    &__title {
+      align-items: center;
+
+      h2 {
+        font-size: 1.55rem;
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+      }
+    }
+
+    &__icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(251, 191, 36, 0.12);
+      box-shadow: 0 0 24px rgba(251, 191, 36, 0.14);
+    }
+
+    &__subtitle {
+      font-size: 0.72rem;
+      color: rgba(226, 236, 251, 0.52);
+    }
+
+    &__status {
+      width: fit-content;
+      max-width: 100%;
+      min-height: 42px;
+      padding: 0.55rem 0.78rem;
+      border-radius: 999px;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+
+      &--active {
+        background: rgba(0, 245, 160, 0.13);
+        border-color: rgba(0, 245, 160, 0.25);
+        color: #72ffc6;
+      }
+    }
+
+    &__bracket {
+      gap: 0.72rem;
+    }
+
+    &__round {
+      border-radius: 20px;
+      border-color: rgba(255, 255, 255, 0.085);
+      background: rgba(16, 28, 42, 0.92);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+      &--current {
+        border-color: rgba(0, 245, 160, 0.32);
+        background:
+          radial-gradient(circle at 100% 0%, rgba(0, 245, 160, 0.1), transparent 32%),
+          rgba(16, 34, 45, 0.94);
+      }
+    }
+
+    &__round-header {
+      min-height: 62px;
+      padding: 0.86rem 0.92rem;
+      font-size: 0.9rem;
+    }
+
+    &__round-name {
+      font-size: 1rem;
+      letter-spacing: -0.025em;
+    }
+
+    &__round-count {
+      font-size: 0.73rem;
+    }
+
+    &__round-badge {
+      padding: 0.28rem 0.58rem;
+      border-radius: 999px;
+      background: rgba(0, 245, 160, 0.18);
+      color: #72ffc6;
+    }
+
+    &__matches {
+      gap: 0.54rem;
+      padding: 0.68rem;
+      max-height: 37vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__match {
+      min-height: 56px;
+      grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+      gap: 0.42rem;
+      padding: 0.58rem 0.62rem;
+      border-radius: 15px;
+      background: rgba(10, 22, 34, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.045);
+      font-size: 0.82rem;
+
+      &--player {
+        border-color: rgba(51, 172, 255, 0.38);
+        background: linear-gradient(135deg, rgba(51, 172, 255, 0.14), rgba(0, 245, 160, 0.045));
+      }
+
+      &--bye {
+        opacity: 0.62;
+      }
+    }
+
+    &__match-team {
+      min-width: 0;
+      gap: 0.42rem;
+
+      &--home {
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      &--away {
+        justify-content: flex-end;
+        text-align: right;
+      }
+
+      .team-name {
+        max-width: 100%;
+        font-size: 0.86rem;
+        font-weight: 760;
+        letter-spacing: -0.025em;
+      }
+
+      .team-crest {
+        width: 24px !important;
+        height: 24px !important;
+        flex: 0 0 24px;
+      }
+    }
+
+    &__match-result {
+      min-width: 0;
+
+      .vs,
+      .bye-tag,
+      .score {
+        display: inline-grid;
+        place-items: center;
+        min-height: 28px;
+        min-width: 38px;
+        padding: 0 0.28rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.055);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+      }
+    }
+  }
+}

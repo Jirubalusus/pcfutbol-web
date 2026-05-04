@@ -1397,3 +1397,160 @@
     }
   }
 }
+/* Mobile continental competitions redesign 2026-05 */
+@media (max-width: 768px) {
+  .europe {
+    padding: 0;
+    max-width: 100%;
+
+    &__tabs {
+      gap: 0.48rem;
+      padding: 0.32rem;
+      margin: 0 0 0.78rem;
+      overflow-x: auto;
+      border-radius: 19px;
+      background: rgba(13, 21, 36, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar { display: none; }
+    }
+
+    &__tab {
+      flex: 0 0 auto;
+      min-width: 112px;
+      min-height: 50px;
+      padding: 0.65rem 0.86rem;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.055);
+      font-weight: 850;
+
+      &.active {
+        color: #8cffd1;
+        background: linear-gradient(135deg, rgba(0, 245, 160, 0.2), rgba(0, 194, 255, 0.07));
+        border-color: rgba(0, 245, 160, 0.34);
+        box-shadow: 0 0 26px rgba(0, 245, 160, 0.16);
+      }
+    }
+
+    &__group {
+      border-radius: 20px;
+      background: rgba(16, 28, 42, 0.92);
+      border-color: rgba(255, 255, 255, 0.085);
+      overflow: hidden;
+    }
+
+    &__group-header {
+      min-height: 54px;
+      padding: 0.78rem 0.88rem;
+      font-size: 0.95rem;
+      background: rgba(0, 245, 160, 0.08);
+    }
+
+    &__table-wrapper {
+      overflow-x: visible;
+    }
+
+    &__table {
+      min-width: 0;
+      table-layout: fixed;
+      font-size: 0.72rem;
+
+      th,
+      td {
+        padding: 0.52rem 0.22rem;
+      }
+
+      th:nth-child(4),
+      th:nth-child(5),
+      th:nth-child(6),
+      th:nth-child(7),
+      td:nth-child(4),
+      td:nth-child(5),
+      td:nth-child(6),
+      td:nth-child(7) {
+        display: none;
+      }
+
+      th:first-child,
+      td:first-child {
+        width: 34px;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: auto;
+      }
+
+      th:nth-child(3),
+      td:nth-child(3),
+      th:nth-child(8),
+      td:nth-child(8),
+      th:nth-child(9),
+      td:nth-child(9) {
+        width: 42px;
+        text-align: center;
+      }
+
+      .team-name {
+        min-width: 0;
+        max-width: 132px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.76rem;
+        font-weight: 760;
+      }
+
+      .team-crest {
+        width: 22px !important;
+        height: 22px !important;
+        flex: 0 0 22px;
+      }
+    }
+
+    &__knockout-head {
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.72rem;
+    }
+
+    &__bracket-hint {
+      display: inline-flex;
+    }
+
+    &__bracket {
+      overflow-x: auto;
+      gap: 0.68rem;
+      padding: 0 0 0.4rem;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar { display: none; }
+    }
+
+    &__round {
+      flex: 0 0 86vw;
+      max-width: 360px;
+      scroll-snap-align: start;
+      border-radius: 20px;
+      background: rgba(16, 28, 42, 0.92);
+      border-color: rgba(255, 255, 255, 0.085);
+    }
+
+    &__round-title {
+      min-height: 54px;
+      padding: 0.8rem 0.88rem;
+      font-size: 0.95rem;
+    }
+
+    &__match {
+      min-height: 56px;
+      padding: 0.58rem 0.62rem;
+      border-radius: 15px;
+      background: rgba(10, 22, 34, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.045);
+    }
+  }
+}
