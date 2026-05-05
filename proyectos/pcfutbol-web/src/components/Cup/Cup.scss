@@ -462,13 +462,6 @@
     &__matches {
       gap: 0.54rem;
       padding: 0.68rem;
-      max-height: 37vh;
-      overflow-y: auto;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
     }
 
     &__match {

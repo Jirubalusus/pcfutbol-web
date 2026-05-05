@@ -10,7 +10,9 @@
   
   @media (max-width: 768px) {
     flex-direction: column;
-    padding-bottom: 130px; // Space for action bar (~56px) + MobileNav (~64px) + safe margin
+    padding-bottom: calc(154px + env(safe-area-inset-bottom, 0px)); // Fixed mobile actions + bottom nav, handled by the single page scroll
+    overflow-x: clip !important;
+    overflow-y: visible !important;
   }
   
   &__main {
@@ -22,7 +24,9 @@
 
     @media (max-width: 768px) {
       min-height: auto;
-      padding-bottom: 130px;
+      padding-bottom: 0;
+      overflow-x: clip !important;
+      overflow-y: visible !important;
     }
     
     @media (min-width: 769px) {
@@ -303,11 +307,10 @@
     width: 100%;
     
     @media (max-width: 768px) {
-      padding: 0.5rem 0.5rem calc(178px + env(safe-area-inset-bottom, 0px));
+      padding: 0.5rem;
       max-width: none;
-      height: calc(100dvh - 214px - env(safe-area-inset-bottom, 0px));
-      max-height: calc(100dvh - 214px - env(safe-area-inset-bottom, 0px));
-      flex: 0 0 auto;
+      overflow-x: clip !important;
+      overflow-y: visible !important;
     }
   }
   
