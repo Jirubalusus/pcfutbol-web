@@ -288,6 +288,7 @@ export function simulateWeekMatches(fixtures, table, week, playerTeamId, allTeam
       played: true,
       homeScore: result.homeScore,
       awayScore: result.awayScore,
+      stoppageTime: result.stoppageTime,
       events: result.events,
       stats: result.stats
     };

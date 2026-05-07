@@ -19,6 +19,7 @@ import { ensureFullLineup } from '../../context/GameContext';
 
 // Helper: get short name from team object (fallback to first 3 chars of name)
 const getShort = (team) => team?.shortName || team?.name?.substring(0, 3)?.toUpperCase() || '???';
+const formatMatchMinute = (minute) => Number(minute) > 90 ? `90+${Number(minute) - 90}` : `${minute}`;
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { calculateMatchAttendance, calculateMatchIncome, calculateServicesIncome, STADIUM_SERVICES } from '../../game/stadiumEconomy';
 import { calculateBoardConfidence } from '../../game/proManagerEngine';
@@ -384,7 +385,8 @@ export default function MatchDay({ onComplete, onBack }) {
     
     matchIntervalRef.current = setInterval(() => {
       minute += 3; // Jump 3 minutes each tick
-      setCurrentMinute(Math.min(90, minute));
+      const maxMinute = result.extraTime ? 120 : 90 + (result.stoppageTime || 5);
+      setCurrentMinute(Math.min(maxMinute, minute));
       
       // Show events up to current minute
       while (eventIdx < result.events.length && result.events[eventIdx].minute <= minute) {
@@ -392,7 +394,7 @@ export default function MatchDay({ onComplete, onBack }) {
         eventIdx++;
       }
       
-      if (minute >= 95) {
+      if (minute >= maxMinute) {
         clearInterval(matchIntervalRef.current);
         matchIntervalRef.current = null;
         setEventIndex(result.events.length);
@@ -414,7 +416,7 @@ export default function MatchDay({ onComplete, onBack }) {
         clearInterval(matchIntervalRef.current);
         matchIntervalRef.current = null;
       }
-      setCurrentMinute(90);
+      setCurrentMinute(matchResult.extraTime ? 120 : 90 + (matchResult.stoppageTime || 0));
       setEventIndex(matchResult.events.length);
       setPhase('result');
     }
@@ -1052,7 +1054,7 @@ export default function MatchDay({ onComplete, onBack }) {
         {phase === 'playing' && matchResult && (
           <div className="match-day__playing">
             <div className="match-day__minute">
-              {currentMinute}'
+              {formatMatchMinute(currentMinute)}'
             </div>
             
             <div className="match-day__score">
@@ -1093,7 +1095,7 @@ export default function MatchDay({ onComplete, onBack }) {
                   : (isHome ? getShort(opponent) : getShort(state.team));
                 return (
                 <div key={idx} className={`match-day__event ${event.team} ${event.type} ${event.goalType || ''} ${event.type === 'goal' ? (event.team === (isHome ? 'home' : 'away') ? 'player-goal' : 'opponent-goal') : ''}`}>
-                  <span className="minute">{event.minute}'</span>
+                  <span className="minute">{formatMatchMinute(event.minute)}'</span>
                   <span className="icon">
                     {event.type === 'goal' && <Circle size={16} className="icon-goal" />}
                     {event.type === 'yellow_card' && <span className="icon-card icon-card--yellow" />}
@@ -1232,20 +1234,20 @@ export default function MatchDay({ onComplete, onBack }) {
                 {homeGoals.map((g, i) => (
                   <div key={`hg${i}`} className="event-item goal">
                     <span className="event-icon">⚽</span>
-                    <span className="event-text">{eName(g)} {g.minute}'</span>
+                    <span className="event-text">{eName(g)} {formatMatchMinute(g.minute)}'</span>
                     {g.goalType && <span className="event-type">{getGoalTypeText(g.goalType)}</span>}
                   </div>
                 ))}
                 {homeYellows.map((c, i) => (
                   <div key={`hy${i}`} className="event-item yellow">
                     <span className="event-icon">🟨</span>
-                    <span className="event-text">{eName(c)} {c.minute}'</span>
+                    <span className="event-text">{eName(c)} {formatMatchMinute(c.minute)}'</span>
                   </div>
                 ))}
                 {homeReds.map((c, i) => (
                   <div key={`hr${i}`} className="event-item red">
                     <span className="event-icon">🟥</span>
-                    <span className="event-text">{eName(c)} {c.minute}'</span>
+                    <span className="event-text">{eName(c)} {formatMatchMinute(c.minute)}'</span>
                   </div>
                 ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.home ?? 0}</div>
@@ -1255,20 +1257,20 @@ export default function MatchDay({ onComplete, onBack }) {
                 {awayGoals.map((g, i) => (
                   <div key={`ag${i}`} className="event-item goal">
                     <span className="event-icon">⚽</span>
-                    <span className="event-text">{eName(g)} {g.minute}'</span>
+                    <span className="event-text">{eName(g)} {formatMatchMinute(g.minute)}'</span>
                     {g.goalType && <span className="event-type">{getGoalTypeText(g.goalType)}</span>}
                   </div>
                 ))}
                 {awayYellows.map((c, i) => (
                   <div key={`ay${i}`} className="event-item yellow">
                     <span className="event-icon">🟨</span>
-                    <span className="event-text">{eName(c)} {c.minute}'</span>
+                    <span className="event-text">{eName(c)} {formatMatchMinute(c.minute)}'</span>
                   </div>
                 ))}
                 {awayReds.map((c, i) => (
                   <div key={`ar${i}`} className="event-item red">
                     <span className="event-icon">🟥</span>
-                    <span className="event-text">{eName(c)} {c.minute}'</span>
+                    <span className="event-text">{eName(c)} {formatMatchMinute(c.minute)}'</span>
                   </div>
                 ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.away ?? 0}</div>

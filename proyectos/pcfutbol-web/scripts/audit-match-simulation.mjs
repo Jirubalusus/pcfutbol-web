@@ -31,7 +31,7 @@ const vite = await createServer({
   appType: 'custom'
 });
 
-const { simulateMatch } = await vite.ssrLoadModule('/src/game/leagueEngine.js');
+const { simulateMatch, simulateWeekMatches } = await vite.ssrLoadModule('/src/game/leagueEngine.js');
 
 function createPlayer(name, position, overall, starter = false) {
   return {
@@ -66,13 +66,24 @@ const teams = Array.from({ length: 20 }, (_, index) => createAuditTeam(index + 1
 const summary = {
   matches: 0,
   goals: 0,
+  homeWins: 0,
+  awayWins: 0,
+  draws: 0,
+  highScoreMatches: 0,
   yellowCards: 0,
   redCards: 0,
   injuries: 0,
   extraTime: 0,
   penalties: 0,
+  penaltyGoals: 0,
+  penaltyMasterMatches: 0,
+  penaltyMasterGoals: 0,
+  stoppageTimeMatches: 0,
+  stoppageTimeGoals: 0,
   pathologicalScorerMatches: 0,
-  defenderMultiGoalMatches: 0
+  defenderMultiGoalMatches: 0,
+  cpuFixturesPlayed: 0,
+  cpuFixtureEvents: 0
 };
 
 const hardIssues = [];
@@ -141,6 +152,8 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
 
     if (event.type === 'goal') {
       goalCounts[event.team]++;
+      if (event.goalType === 'penalty') summary.penaltyGoals++;
+      if (!result.extraTime && minute > 90) summary.stoppageTimeGoals++;
       if (key) {
         scorerCounts.set(key, (scorerCounts.get(key) || 0) + 1);
         scorerMeta.set(key, {
@@ -207,6 +220,15 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
     addIssue(hardIssues, matchIndex, 'DRAWN_PENALTIES', 'Penalty shootout cannot be tied');
   }
 
+  if (!Number.isInteger(result.stoppageTime) || result.stoppageTime < 1 || result.stoppageTime > 8) {
+    addIssue(hardIssues, matchIndex, 'INVALID_STOPPAGE_TIME', `Invalid stoppage time ${result.stoppageTime}`);
+  }
+
+  const latestRegulationMinute = Math.max(0, ...events.filter(e => e.minute <= 100).map(e => Number(e.minute) || 0));
+  if (!result.extraTime && latestRegulationMinute > 90 && latestRegulationMinute > 90 + (result.stoppageTime || 0)) {
+    addIssue(hardIssues, matchIndex, 'STOPPAGE_EVENT_OUT_OF_RANGE', `Event at ${latestRegulationMinute}' with +${result.stoppageTime}`);
+  }
+
   for (const [scorer, goals] of scorerCounts) {
     const team = scorer.split(':')[0];
     const teamGoals = goalCounts[team] || 0;
@@ -226,9 +248,14 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
 
   summary.matches++;
   summary.goals += result.homeScore + result.awayScore;
+  if (result.homeScore > result.awayScore) summary.homeWins++;
+  else if (result.homeScore < result.awayScore) summary.awayWins++;
+  else summary.draws++;
+  if (result.homeScore + result.awayScore >= 6) summary.highScoreMatches++;
   summary.yellowCards += statsYellowsHome + statsYellowsAway;
   summary.redCards += statsRedsHome + statsRedsAway;
   summary.injuries += events.filter(e => e.type === 'injury').length;
+  if (!result.extraTime && (events || []).some(e => Number(e.minute) > 90)) summary.stoppageTimeMatches++;
   if (result.extraTime) summary.extraTime++;
   if (result.penalties) summary.penalties++;
 }
@@ -257,6 +284,78 @@ for (let i = 0; i < matchCount; i++) {
   validateMatch(result, homeTeam, awayTeam, i + 1);
 }
 
+const penaltyMasterProbeMatches = 200;
+for (let i = 0; i < penaltyMasterProbeMatches; i++) {
+  const homeTeam = teams[i % teams.length];
+  const awayTeam = teams[(i + 7) % teams.length];
+  const side = i % 2 === 0 ? 'home' : 'away';
+  const result = simulateMatch(homeTeam.id, awayTeam.id, homeTeam, awayTeam, {
+    homeMorale: 70,
+    awayMorale: 70,
+    homeTactic: 'balanced',
+    awayTactic: 'balanced',
+    referee: 'neutral',
+    penaltyMaster: side
+  }, {}, side === 'home' ? homeTeam.id : awayTeam.id);
+  const sidePenaltyGoals = (result.events || []).filter(e => e.type === 'goal' && e.team === side && e.goalType === 'penalty').length;
+  if (sidePenaltyGoals > 0) {
+    summary.penaltyMasterMatches++;
+    summary.penaltyMasterGoals += sidePenaltyGoals;
+  }
+  validateMatch(result, homeTeam, awayTeam, `penalty-master-${i + 1}`);
+}
+if (summary.penaltyMasterMatches <= 0) {
+  addIssue(hardIssues, 'penalty-master', 'PENALTY_MASTER_NOT_OBSERVED', 'Penalty Master never produced a penalty goal in probe matches');
+}
+
+const cpuFixtures = [
+  { week: 1, homeTeam: teams[0].id, awayTeam: teams[1].id, played: false },
+  { week: 1, homeTeam: teams[2].id, awayTeam: teams[3].id, played: false },
+  { week: 1, homeTeam: teams[4].id, awayTeam: teams[5].id, played: false },
+  { week: 1, homeTeam: teams[6].id, awayTeam: teams[7].id, played: false }
+];
+const cpuTable = teams.map(team => ({
+  teamId: team.id,
+  teamName: team.name,
+  played: 0,
+  won: 0,
+  drawn: 0,
+  lost: 0,
+  goalsFor: 0,
+  goalsAgainst: 0,
+  goalDifference: 0,
+  points: 0,
+  form: [],
+  homeForm: [],
+  awayForm: [],
+  morale: 70,
+  streak: 0
+}));
+const cpuWeek = simulateWeekMatches(cpuFixtures, cpuTable, 1, teams[19].id, teams);
+const playedCpuFixtures = cpuWeek.fixtures.filter(f => f.played);
+summary.cpuFixturesPlayed = playedCpuFixtures.length;
+summary.cpuFixtureEvents = playedCpuFixtures.reduce((sum, f) => sum + (f.events?.length || 0), 0);
+if (playedCpuFixtures.length !== cpuFixtures.length) {
+  addIssue(hardIssues, 'cpu-week', 'CPU_FIXTURES_NOT_PLAYED', `Expected ${cpuFixtures.length}, got ${playedCpuFixtures.length}`);
+}
+playedCpuFixtures.forEach((fixture, idx) => {
+  if (!Number.isInteger(fixture.homeScore) || !Number.isInteger(fixture.awayScore)) {
+    addIssue(hardIssues, 'cpu-week', 'CPU_SCORE_MISSING', 'CPU fixture has no score', fixture);
+  }
+  if (!Array.isArray(fixture.events) || !fixture.stats || !Number.isInteger(fixture.stoppageTime)) {
+    addIssue(hardIssues, 'cpu-week', 'CPU_EVENTS_STATS_MISSING', 'CPU fixture has no events/stats/stoppage payload', fixture);
+  }
+  const homeTeam = teams.find(t => t.id === fixture.homeTeam);
+  const awayTeam = teams.find(t => t.id === fixture.awayTeam);
+  validateMatch({
+    homeScore: fixture.homeScore,
+    awayScore: fixture.awayScore,
+    events: fixture.events || [],
+    stats: fixture.stats || {},
+    stoppageTime: fixture.stoppageTime
+  }, homeTeam, awayTeam, `cpu-${idx + 1}`);
+});
+
 await vite.close();
 Math.random = originalRandom;
 
@@ -265,11 +364,33 @@ const report = {
   dataSet: 'synthetic-audit-squads',
   ...summary,
   avgGoals: Number((summary.goals / summary.matches).toFixed(2)),
+  homeWinPct: Number((summary.homeWins / summary.matches * 100).toFixed(1)),
+  drawPct: Number((summary.draws / summary.matches * 100).toFixed(1)),
+  awayWinPct: Number((summary.awayWins / summary.matches * 100).toFixed(1)),
+  highScorePct: Number((summary.highScoreMatches / summary.matches * 100).toFixed(1)),
   avgYellows: Number((summary.yellowCards / summary.matches).toFixed(2)),
   avgReds: Number((summary.redCards / summary.matches).toFixed(2)),
+  avgInjuries: Number((summary.injuries / summary.matches).toFixed(2)),
+  penaltyGoalPct: Number((summary.penaltyGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
+  stoppageGoalPct: Number((summary.stoppageTimeGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
   hardIssueCount: hardIssues.length,
   warningCount: warnings.length
 };
+
+if (report.avgGoals < 2.35 || report.avgGoals > 3.05) {
+  addIssue(warnings, 'aggregate', 'AVG_GOALS_RANGE', `Average goals ${report.avgGoals} outside target 2.35-3.05`);
+}
+if (report.highScorePct > 10) {
+  addIssue(warnings, 'aggregate', 'HIGH_SCORE_RATE', `High-score matches ${report.highScorePct}% above target <=10%`);
+}
+if (report.penaltyGoalPct < 5 || report.penaltyGoalPct > 14) {
+  addIssue(warnings, 'aggregate', 'PENALTY_GOAL_RATE', `Penalty goals ${report.penaltyGoalPct}% outside target 5-14%`);
+}
+if (summary.stoppageTimeGoals <= 0) {
+  addIssue(hardIssues, 'aggregate', 'NO_STOPPAGE_GOALS', 'No goals after 90 minutes were generated');
+}
+report.hardIssueCount = hardIssues.length;
+report.warningCount = warnings.length;
 
 console.log('Simulation audit summary');
 console.table(report);

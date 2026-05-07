@@ -276,16 +276,20 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayTactic
   );
   
-  // Penalty Master perk: 30% chance of winning a penalty per match + always scores
+  // Penalty Master perk: 30% chance of winning a penalty per match + always scores.
+  // Keep the extra goal tied to an actual penalty goal event so scorer tables and
+  // match narration stay coherent.
+  let forcedPenaltyGoalSide = null;
   if (context.penaltyMaster) {
     if (Math.random() < 0.30) {
+      forcedPenaltyGoalSide = context.penaltyMaster;
       if (context.penaltyMaster === 'home') homeScore++;
       else awayScore++;
     }
   }
 
   // Generar eventos del partido
-  const events = generateMatchEvents(
+  const matchEventData = generateMatchEvents(
     homeScore,
     awayScore,
     homeTeamData,
@@ -293,8 +297,10 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     homeStrength,
     awayStrength,
     referee,
-    { grassCondition, medicalPrevention, playerIsHome }
+    { grassCondition, medicalPrevention, playerIsHome, forcedPenaltyGoalSide }
   );
+  const events = matchEventData.events;
+  const stoppageTime = matchEventData.stoppageTime;
   
   // Knockout mode: if draw, resolve with extra time then penalties
   let extraTime = false;
@@ -371,6 +377,7 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayScore: finalAwayScore,
     extraTime,
     penalties,
+    stoppageTime,
     events: finalEvents,
     stats,
     motm,
@@ -539,18 +546,21 @@ function simulateGoals(result, homeStrength, awayStrength, importance, homeTacti
   const awayTacticData = TACTICS[awayTactic] || TACTICS.balanced;
   // Promedio de lo "abierto" del partido (ambas tácticas influyen)
   const goalFrequency = ((homeTacticData.attack + awayTacticData.attack) / 2);  // >1 = más goles, <1 = menos
+  // El motor previo se iba a >3.5 goles/partido en auditorías largas. Este
+  // factor baja el ritmo hacia el rango moderno (~2.6-2.9) sin quitar jerarquía.
+  const goalPace = 0.78;
   
   if (result === 1) {
     // Victoria local
     const margin = weightedRandom([
-      { value: 1, weight: 45 },  // 1-0, 2-1, etc
-      { value: 2, weight: 30 },  // 2-0, 3-1, etc
-      { value: 3, weight: 15 },  // 3-0, 4-1, etc
-      { value: 4, weight: 8 },   // Goleada
-      { value: 5, weight: 2 }    // Goleada histórica
+      { value: 1, weight: 54 },  // 1-0, 2-1, etc
+      { value: 2, weight: 29 },  // 2-0, 3-1, etc
+      { value: 3, weight: 12 },  // 3-0, 4-1, etc
+      { value: 4, weight: 4 },   // Goleada
+      { value: 5, weight: 1 }    // Goleada histórica
     ]);
     
-    homeScore = Math.round(homeProfile.goalsScored * impMod * goalFrequency + Math.random() * 1.5);
+    homeScore = Math.round(homeProfile.goalsScored * impMod * goalFrequency * goalPace + Math.random() * 1.05);
     awayScore = Math.max(0, homeScore - margin);
     
     // Asegurar que local gana
@@ -560,13 +570,13 @@ function simulateGoals(result, homeStrength, awayStrength, importance, homeTacti
   } else if (result === -1) {
     // Victoria visitante
     const margin = weightedRandom([
-      { value: 1, weight: 55 },  // Más ajustado fuera
-      { value: 2, weight: 30 },
-      { value: 3, weight: 12 },
-      { value: 4, weight: 3 }
+      { value: 1, weight: 63 },  // Más ajustado fuera
+      { value: 2, weight: 27 },
+      { value: 3, weight: 8 },
+      { value: 4, weight: 2 }
     ]);
     
-    awayScore = Math.round(awayProfile.goalsScored * impMod * goalFrequency + Math.random() * 1.2);
+    awayScore = Math.round(awayProfile.goalsScored * impMod * goalFrequency * goalPace + Math.random() * 0.95);
     homeScore = Math.max(0, awayScore - margin);
     
     if (awayScore <= homeScore) {
@@ -575,11 +585,11 @@ function simulateGoals(result, homeStrength, awayStrength, importance, homeTacti
   } else {
     // Empate
     const goals = weightedRandom([
-      { value: 0, weight: 25 },  // 0-0
-      { value: 1, weight: 40 },  // 1-1
-      { value: 2, weight: 25 },  // 2-2
-      { value: 3, weight: 8 },   // 3-3
-      { value: 4, weight: 2 }    // 4-4+
+      { value: 0, weight: 29 },  // 0-0
+      { value: 1, weight: 45 },  // 1-1
+      { value: 2, weight: 21 },  // 2-2
+      { value: 3, weight: 4 },   // 3-3
+      { value: 4, weight: 1 }    // 4-4+
     ]);
     
     homeScore = goals;
@@ -687,6 +697,32 @@ function randomMinuteBetween(min, max) {
   return safeMin + Math.floor(Math.random() * (safeMax - safeMin + 1));
 }
 
+function generateStoppageTime(totalGoals = 0) {
+  const base = weightedRandom([
+    { value: 2, weight: 20 },
+    { value: 3, weight: 34 },
+    { value: 4, weight: 28 },
+    { value: 5, weight: 14 },
+    { value: 6, weight: 4 }
+  ]);
+  const goalBonus = totalGoals >= 5 && Math.random() < 0.25 ? 1 : 0;
+  return Math.min(7, base + goalBonus);
+}
+
+function randomGoalMinute(stoppageTime = 4) {
+  // Around 8-10% of goals happen in added time when it exists; enough to make
+  // 90+ visible without flooding the event feed.
+  if (stoppageTime > 0 && Math.random() < 0.085) {
+    return 90 + Math.floor(Math.random() * stoppageTime) + 1;
+  }
+  // Slight late-match bias like real football scoring curves.
+  const roll = Math.random();
+  if (roll < 0.18) return 1 + Math.floor(Math.random() * 20);
+  if (roll < 0.42) return 21 + Math.floor(Math.random() * 25);
+  if (roll < 0.70) return 46 + Math.floor(Math.random() * 25);
+  return 71 + Math.floor(Math.random() * 20);
+}
+
 function sortEvents(events) {
   const priority = {
     goal: 0,
@@ -769,11 +805,13 @@ function normalizeDisciplinaryTimeline(events) {
 function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStrength, awayStrength, referee, context = {}) {
   const events = [];
   const totalGoals = homeScore + awayScore;
+  const stoppageTime = generateStoppageTime(totalGoals);
   
-  // Distribuir goles en el tiempo
+  // Distribuir goles en el tiempo. Una pequeña parte cae en 90+ para que el
+  // descuento exista de verdad y no solo como animación de interfaz.
   const goalMinutes = [];
   for (let i = 0; i < totalGoals; i++) {
-    goalMinutes.push(Math.floor(Math.random() * 90) + 1);
+    goalMinutes.push(randomGoalMinute(stoppageTime));
   }
   goalMinutes.sort((a, b) => a - b);
   
@@ -783,6 +821,8 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     home: new Map(),
     away: new Map()
   };
+  let forcedPenaltyUsed = false;
+  const { forcedPenaltyGoalSide = null } = context;
   
   goalMinutes.forEach(minute => {
     if (homeGoalsLeft + awayGoalsLeft <= 0) return; // Safety: no goals left to allocate
@@ -792,7 +832,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     
     if (isHomeGoal && homeGoalsLeft > 0) {
       const teamGoalsSoFar = homeScore - homeGoalsLeft;
-      const goalType = selectGoalType(minute, homeScore, teamGoalsSoFar);
+      const forcedPenalty = forcedPenaltyGoalSide === 'home' && !forcedPenaltyUsed;
+      const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, homeScore, teamGoalsSoFar);
+      if (forcedPenalty) forcedPenaltyUsed = true;
       const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
       const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer, goalType) : null;
@@ -808,7 +850,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       homeGoalsLeft--;
     } else if (awayGoalsLeft > 0) {
       const teamGoalsSoFar = awayScore - awayGoalsLeft;
-      const goalType = selectGoalType(minute, awayScore, teamGoalsSoFar);
+      const forcedPenalty = forcedPenaltyGoalSide === 'away' && !forcedPenaltyUsed;
+      const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, awayScore, teamGoalsSoFar);
+      if (forcedPenalty) forcedPenaltyUsed = true;
       const scorer = selectScorer(awayTeam, awayStrength.strength?.lineup, scorerCounts.away, { goalType, teamGoals: awayScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
       const assister = Math.random() < assistChance ? selectAssister(awayTeam, awayStrength.strength?.lineup, scorer, goalType) : null;
@@ -824,7 +868,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       awayGoalsLeft--;
     } else if (homeGoalsLeft > 0) {
       const teamGoalsSoFar = homeScore - homeGoalsLeft;
-      const goalType = selectGoalType(minute, homeScore, teamGoalsSoFar);
+      const forcedPenalty = forcedPenaltyGoalSide === 'home' && !forcedPenaltyUsed;
+      const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, homeScore, teamGoalsSoFar);
+      if (forcedPenalty) forcedPenaltyUsed = true;
       const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
       const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer, goalType) : null;
@@ -959,7 +1005,10 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     }
   });
 
-  return normalizeDisciplinaryTimeline(events);
+  return {
+    events: normalizeDisciplinaryTimeline(events),
+    stoppageTime
+  };
 }
 
 /**
