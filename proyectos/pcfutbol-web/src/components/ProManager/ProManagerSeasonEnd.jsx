@@ -4,7 +4,8 @@ import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import {
   evaluateSeason, updatePrestige, generateSeasonEndOffers,
-  getSeasonEndConfidence, getBoardObjective, buildCareerLeagueGetters
+  getSeasonEndConfidence, getBoardObjective, buildCareerLeagueGetters,
+  shouldEndProManagerCareerAfterDismissal
 } from '../../game/proManagerEngine';
 import { LEAGUE_CONFIG, initializeNewSeasonWithPromotions, completeRemainingLeagues } from '../../game/multiLeagueEngine';
 
@@ -29,7 +30,7 @@ import {
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams,
   getPrimeraRfefTeams, getSegundaRfefTeams
 } from '../../data/teamsFirestore';
-import { Trophy, TrendingUp, TrendingDown, Target, Briefcase, ChevronRight, Home, ArrowRight } from 'lucide-react';
+import { Trophy, TrendingUp, TrendingDown, Target, Briefcase, ChevronRight, Home, ArrowRight, AlertTriangle } from 'lucide-react';
 import './ProManagerSeasonEnd.scss';
 
 const ALL_LEAGUE_GETTERS = {
@@ -138,14 +139,24 @@ export default function ProManagerSeasonEnd() {
     buildCareerLeagueGetters(state, ALL_LEAGUE_GETTERS)
   ), [state.playerLeagueId, state.leagueTable, state.otherLeagues]);
 
+  const careerSeason = pm?.seasonsManaged || state.currentSeason || 1;
+  const isDismissal = !!pm?.fired || (pm?.boardConfidence ?? 100) <= 0;
+  const dismissalHistory = Array.isArray(pm?.dismissalHistory) ? pm.dismissalHistory : [];
+  const careerLostByDismissal = isDismissal && shouldEndProManagerCareerAfterDismissal(careerSeason, dismissalHistory);
+  const previousDismissalSeason = dismissalHistory
+    .map(Number)
+    .filter(Number.isFinite)
+    .sort((a, b) => b - a)[0] || null;
+
   const offers = useMemo(() => {
     return generateSeasonEndOffers(
       newPrestige,
       state.playerLeagueId || state.leagueId,
       state.teamId,
-      careerLeagueGetters
+      careerLeagueGetters,
+      isDismissal ? { wasFired: true, minOffers: 5, maxOffers: 6 } : {}
     );
-  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId, careerLeagueGetters]);
+  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId, careerLeagueGetters, isDismissal]);
 
   // Animate prestige change
   useEffect(() => {
@@ -153,7 +164,7 @@ export default function ProManagerSeasonEnd() {
     return () => clearTimeout(timer);
   }, [newPrestige]);
 
-  const canRenew = seasonEval.result !== 'failed' && !pm?.fired;
+  const canRenew = seasonEval.result !== 'failed' && !isDismissal && !careerLostByDismissal;
 
   const handleRenew = () => {
     // Stay with current team — trigger full season transition
@@ -331,6 +342,10 @@ export default function ProManagerSeasonEnd() {
       payload: { team, leagueId, stadiumInfo, stadiumLevel, _proManagerUserId: user?.uid || null, preseasonMatches: preseason?.matches || [] }
     });
 
+    const updatedDismissalHistory = isDismissal
+      ? [...dismissalHistory, careerSeason]
+      : dismissalHistory;
+
     // Set ProManager data with updated career history
     dispatch({
       type: 'SET_PROMANAGER_DATA',
@@ -341,6 +356,8 @@ export default function ProManagerSeasonEnd() {
         objective,
         seasonsManaged: (pm.seasonsManaged || 1) + 1,
         fired: false,
+        dismissalHistory: updatedDismissalHistory,
+        lastDismissalSeason: isDismissal ? careerSeason : pm.lastDismissalSeason,
         winStreak: 0,
         lossStreak: 0,
         currentTeamId: team.id,
@@ -530,47 +547,86 @@ export default function ProManagerSeasonEnd() {
 
         {step === 'offers' && (
           <div className="pm-season-end__offers">
-            <h2>{t('proManager.seasonEnd.jobOffers')}</h2>
+            <div className="pm-season-end__offers-head">
+              <div>
+                <span className="kicker">{isDismissal ? 'Despido confirmado' : 'Mercado de entrenadores'}</span>
+                <h2>{careerLostByDismissal ? 'Carrera terminada' : t('proManager.seasonEnd.jobOffers')}</h2>
+              </div>
+              {!careerLostByDismissal && <span className="offers-count">{offers.length} ofertas</span>}
+            </div>
 
-            {/* Renewal option */}
-            {canRenew && (
-              <div className="pm-season-end__renewal">
-                <h3>{t('proManager.seasonEnd.renewWith', { team: state.team?.name })}</h3>
-                <button className="btn-renew" onClick={handleRenew}>
-                  {t('proManager.seasonEnd.renew')}
+            {careerLostByDismissal ? (
+              <div className="pm-season-end__game-over">
+                <AlertTriangle size={28} />
+                <div>
+                  <h3>Has perdido la partida</h3>
+                  <p>Te han despedido otra vez con solo {careerSeason - previousDismissalSeason} temporadas de diferencia. Tu carrera profesional queda cerrada.</p>
+                </div>
+                <button className="btn-retire btn-retire--inline" onClick={handleRetire}>
+                  <Home size={16} />
+                  Volver al menú
                 </button>
               </div>
-            )}
-
-            {/* External offers */}
-            {offers.length > 0 ? (
-              <div className="offers-list">
-                {offers.map((offer, idx) => (
-                  <div key={offer.team.id + idx} className="offer-item">
-                    <div className="offer-info">
-                      <h4>{offer.team.name}</h4>
-                      <span className="league">{offer.leagueName} · {offer.country}</span>
-                      <div className="offer-objective">
-                        <Target size={12} />
-                        {t(offer.objective.label, offer.objective.labelParams)}
-                      </div>
-                      <span className="budget">{formatMoney(offer.team.budget)}</span>
+            ) : (
+              <>
+                {isDismissal && (
+                  <div className="pm-season-end__dismissal-warning">
+                    <AlertTriangle size={18} />
+                    <div>
+                      <strong>Última oportunidad profesional</strong>
+                      <span>Ahora recibirás 5 o 6 ofertas de clubes menores. Si te echan otra vez en las próximas 2 temporadas, perderás la partida.</span>
                     </div>
-                    <button className="btn-accept" onClick={() => handleAcceptOffer(offer)}>
-                      {t('common.accept')}
+                  </div>
+                )}
+
+                {/* Renewal option */}
+                {canRenew && (
+                  <div className="pm-season-end__renewal">
+                    <h3>{t('proManager.seasonEnd.renewWith', { team: state.team?.name })}</h3>
+                    <button className="btn-renew" onClick={handleRenew}>
+                      {t('proManager.seasonEnd.renew')}
                     </button>
                   </div>
-                ))}
-              </div>
-            ) : (
-              <p className="no-offers">{t('proManager.seasonEnd.noExternalOffers')}</p>
-            )}
+                )}
 
-            {/* Retire */}
-            <button className="btn-retire" onClick={handleRetire}>
-              <Home size={16} />
-              {t('proManager.seasonEnd.retire')}
-            </button>
+                {/* External offers */}
+                {offers.length > 0 ? (
+                  <div className="offers-list">
+                    {offers.map((offer, idx) => (
+                      <div key={offer.team.id + idx} className="offer-item">
+                        <div className="offer-rank">#{idx + 1}</div>
+                        <div className="offer-info">
+                          <h4>{offer.team.name}</h4>
+                          <span className="league">{offer.leagueName} · {offer.country}</span>
+                          <div className="offer-meta">
+                            <div className="offer-objective">
+                              <Target size={12} />
+                              {t(offer.objective.label, offer.objective.labelParams)}
+                            </div>
+                            <span className="budget">{formatMoney(offer.team.budget)}</span>
+                          </div>
+                        </div>
+                        <button className="btn-accept" onClick={() => handleAcceptOffer(offer)}>
+                          {t('common.accept')}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="no-offers">{t('proManager.seasonEnd.noExternalOffers')}</p>
+                )}
+
+                {isDismissal && (
+                  <p className="pm-season-end__fineprint">Aviso: un segundo despido con 2 temporadas o menos de diferencia cuenta como fracaso definitivo de carrera.</p>
+                )}
+
+                {/* Retire */}
+                <button className="btn-retire" onClick={handleRetire}>
+                  <Home size={16} />
+                  {t('proManager.seasonEnd.retire')}
+                </button>
+              </>
+            )}
           </div>
         )}
       </div>

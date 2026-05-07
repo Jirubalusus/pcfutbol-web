@@ -274,9 +274,11 @@ export function updatePrestige(currentPrestige, seasonEval, wasFired = false) {
 /**
  * Generate season-end offers based on prestige
  */
-export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId, allLeagueGetters) {
-  const offers = [];
-  const eligibleLeagues = [];
+export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId, allLeagueGetters = {}, options = {}) {
+  const wasFired = !!options.wasFired;
+  const minOffers = wasFired ? (options.minOffers || 5) : 0;
+  const maxOffers = wasFired ? (options.maxOffers || 6) : (options.maxOffers || 3);
+  const candidates = [];
 
   for (const [leagueId, config] of Object.entries(LEAGUE_CONFIG)) {
     if (!config.getTeams && !allLeagueGetters[leagueId]) continue;
@@ -284,60 +286,95 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
     
     const tier = getLeagueTier(leagueId);
     
-    // Prestige gates
-    if (TOP_LEAGUES.has(leagueId) && prestige < 50) continue;
-    if (MID_LEAGUES.has(leagueId) && prestige < 25) continue;
-    
-    // Low prestige → only lower tier leagues
-    if (prestige < 20 && tier <= 2) continue;
-    if (prestige < 35 && tier <= 1) continue;
+    // Prestige gates. After a dismissal, widen the net downward so the manager
+    // always has several smaller clubs instead of only 1-2 random leftovers.
+    if (!wasFired) {
+      if (TOP_LEAGUES.has(leagueId) && prestige < 50) continue;
+      if (MID_LEAGUES.has(leagueId) && prestige < 25) continue;
+      if (prestige < 20 && tier <= 2) continue;
+      if (prestige < 35 && tier <= 1) continue;
+    } else if (prestige < 35 && tier <= 1) {
+      continue;
+    }
 
-    eligibleLeagues.push({ leagueId, config, tier });
-  }
-
-  // Pick 2-4 random leagues
-  const shuffledLeagues = eligibleLeagues.sort(() => Math.random() - 0.5).slice(0, 4);
-
-  for (const { leagueId, config } of shuffledLeagues) {
     try {
       const getter = allLeagueGetters[leagueId] || config.getTeams;
       if (!getter) continue;
       const teams = getter();
       if (!teams?.length) continue;
 
-      // Filter teams by prestige
-      const maxOvr = 60 + prestige * 0.35;
-      const eligible = teams.filter(t => {
-        if (t.id === currentTeamId) return false;
-        return getAvgOverall(t) <= maxOvr;
-      });
+      const maxOvr = wasFired
+        ? Math.max(58, Math.min(72, 58 + prestige * 0.24))
+        : 60 + prestige * 0.35;
 
-      if (eligible.length === 0) continue;
-      const team = eligible[Math.floor(Math.random() * eligible.length)];
-      
-      // Ensure team has budget and reputation
-      if (!team.budget) {
+      for (const team of teams) {
+        if (!team || team.id === currentTeamId) continue;
         const avgOvr = getAvgOverall(team);
-        if (avgOvr >= 78) team.budget = 80_000_000 + Math.floor(Math.random() * 40_000_000);
-        else if (avgOvr >= 72) team.budget = 30_000_000 + Math.floor(Math.random() * 30_000_000);
-        else if (avgOvr >= 65) team.budget = 10_000_000 + Math.floor(Math.random() * 15_000_000);
-        else team.budget = 3_000_000 + Math.floor(Math.random() * 7_000_000);
+        candidates.push({ team, leagueId, config, avgOvr, tier, underCap: avgOvr <= maxOvr });
       }
-      if (!team.reputation) {
-        team.reputation = Math.min(5, Math.max(1, Math.round(getAvgOverall(team) / 16)));
-      }
-
-      offers.push({
-        team,
-        leagueId,
-        leagueName: config.name,
-        country: config.country,
-        objective: getBoardObjective(getAvgOverall(team), leagueId, team),
-      });
     } catch { /* skip */ }
   }
 
-  return offers.slice(0, 3);
+  const uniqueByTeam = (items) => {
+    const seen = new Set();
+    return items.filter(item => {
+      const id = item.team?.id;
+      if (!id || seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+  };
+
+  let pool = uniqueByTeam(candidates.filter(c => c.underCap));
+
+  if (wasFired) {
+    // Smaller, realistic offers first. If the cap is too strict for a dynamic save,
+    // backfill with the weakest available clubs so dismissal never dead-ends.
+    pool = pool.sort((a, b) => a.avgOvr - b.avgOvr || b.tier - a.tier);
+    if (pool.length < minOffers) {
+      const extras = uniqueByTeam(candidates)
+        .filter(c => !pool.some(p => p.team.id === c.team.id))
+        .sort((a, b) => a.avgOvr - b.avgOvr || b.tier - a.tier);
+      pool = [...pool, ...extras];
+    }
+  } else {
+    pool = pool.sort(() => Math.random() - 0.5);
+  }
+
+  const picked = pool.slice(0, maxOffers);
+
+  return picked.map(({ team, leagueId, config, avgOvr }) => {
+    // Ensure team has budget and reputation
+    if (!team.budget) {
+      if (avgOvr >= 78) team.budget = 80_000_000 + Math.floor(Math.random() * 40_000_000);
+      else if (avgOvr >= 72) team.budget = 30_000_000 + Math.floor(Math.random() * 30_000_000);
+      else if (avgOvr >= 65) team.budget = 10_000_000 + Math.floor(Math.random() * 15_000_000);
+      else team.budget = 3_000_000 + Math.floor(Math.random() * 7_000_000);
+    }
+    if (!team.reputation) {
+      team.reputation = Math.min(5, Math.max(1, Math.round(avgOvr / 16)));
+    }
+
+    return {
+      team,
+      leagueId,
+      leagueName: config.name,
+      country: config.country,
+      objective: getBoardObjective(avgOvr, leagueId, team),
+      avgOvr,
+    };
+  });
+}
+
+export function shouldEndProManagerCareerAfterDismissal(currentSeason, dismissalHistory = [], windowSeasons = 2) {
+  if (!Array.isArray(dismissalHistory) || dismissalHistory.length === 0) return false;
+  const current = Number(currentSeason) || 1;
+  const lastDismissal = dismissalHistory
+    .map(Number)
+    .filter(Number.isFinite)
+    .sort((a, b) => b - a)[0];
+  if (!lastDismissal) return false;
+  return current - lastDismissal <= windowSeasons;
 }
 
 /**
