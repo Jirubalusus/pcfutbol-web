@@ -83,6 +83,62 @@ function getAvgOverall(team) {
 }
 
 /**
+ * Build league getters from the current career universe instead of static data.
+ * ProManager offers and team switches must respect promotions/relegations already
+ * applied to the save; static getters are only used to hydrate metadata/players.
+ */
+export function buildCareerLeagueGetters(state = {}, baseGetters = {}) {
+  const staticTeamsById = new Map();
+  for (const getter of Object.values(baseGetters || {})) {
+    try {
+      (getter?.() || []).forEach(team => {
+        if (team?.id && !staticTeamsById.has(team.id)) staticTeamsById.set(team.id, team);
+      });
+    } catch { /* skip broken static getter */ }
+  }
+
+  const getCareerTable = (leagueId) => {
+    if (leagueId === state.playerLeagueId && Array.isArray(state.leagueTable) && state.leagueTable.length > 0) {
+      return state.leagueTable;
+    }
+    const otherLeague = state.otherLeagues?.[leagueId];
+    if (Array.isArray(otherLeague?.table) && otherLeague.table.length > 0) return otherLeague.table;
+    return null;
+  };
+
+  const leagueIds = new Set([
+    ...Object.keys(baseGetters || {}),
+    state.playerLeagueId,
+    ...Object.keys(state.otherLeagues || {})
+  ].filter(Boolean));
+
+  const careerGetters = {};
+  for (const leagueId of leagueIds) {
+    careerGetters[leagueId] = () => {
+      const table = getCareerTable(leagueId);
+      if (!table) return baseGetters?.[leagueId]?.() || [];
+
+      return table.map(entry => {
+        const teamId = entry.teamId || entry.id;
+        const base = staticTeamsById.get(teamId) || {};
+        return {
+          ...base,
+          id: teamId,
+          name: entry.teamName || base.name || teamId,
+          shortName: entry.shortName || base.shortName || (entry.teamName || teamId)?.substring?.(0, 3)?.toUpperCase?.() || teamId,
+          reputation: base.reputation || entry.reputation || 2,
+          overall: base.overall || entry.overall || 65,
+          players: base.players || entry.players || [],
+          budget: base.budget || entry.budget,
+          leagueId,
+        };
+      });
+    };
+  }
+  return careerGetters;
+}
+
+/**
  * Determine board objective based on team strength relative to league
  */
 export function getBoardObjective(teamOverall, leagueId, team) {

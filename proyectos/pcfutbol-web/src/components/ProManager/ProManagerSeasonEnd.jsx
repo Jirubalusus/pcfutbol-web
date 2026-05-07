@@ -4,10 +4,10 @@ import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import {
   evaluateSeason, updatePrestige, generateSeasonEndOffers,
-  getSeasonEndConfidence, getBoardObjective
+  getSeasonEndConfidence, getBoardObjective, buildCareerLeagueGetters
 } from '../../game/proManagerEngine';
-import { LEAGUE_CONFIG, initializeOtherLeagues, initializeNewSeasonWithPromotions, completeRemainingLeagues } from '../../game/multiLeagueEngine';
-import { initializeLeague } from '../../game/leagueEngine';
+import { LEAGUE_CONFIG, initializeNewSeasonWithPromotions, completeRemainingLeagues } from '../../game/multiLeagueEngine';
+
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { generatePreseasonOptions, getSeasonResult } from '../../game/seasonManager';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
@@ -134,14 +134,18 @@ export default function ProManagerSeasonEnd() {
     return getSeasonEndConfidence(seasonEval.result);
   }, [seasonEval.result]);
 
+  const careerLeagueGetters = useMemo(() => (
+    buildCareerLeagueGetters(state, ALL_LEAGUE_GETTERS)
+  ), [state.playerLeagueId, state.leagueTable, state.otherLeagues]);
+
   const offers = useMemo(() => {
     return generateSeasonEndOffers(
       newPrestige,
       state.playerLeagueId || state.leagueId,
       state.teamId,
-      ALL_LEAGUE_GETTERS
+      careerLeagueGetters
     );
-  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId]);
+  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId, careerLeagueGetters]);
 
   // Animate prestige change
   useEffect(() => {
@@ -268,28 +272,60 @@ export default function ProManagerSeasonEnd() {
   const handleAcceptOffer = (offer) => {
     const { team, leagueId, objective } = offer;
 
-    // Initialize league for the new team
+    // Process the same season rollover as renewing, then move the manager into
+    // the selected club's league inside that rolled-over universe. Do not reload
+    // static league getters here, or promotions/relegations from the save vanish.
     const leagueEntry = Object.entries(LEAGUE_CONFIG).find(([id]) => id === leagueId);
     if (!leagueEntry) return;
-    const [, config] = leagueEntry;
-    const getter = ALL_LEAGUE_GETTERS[leagueId] || config.getTeams;
-    if (!getter) return;
 
-    let leagueTeams;
-    try { leagueTeams = getter(); } catch { return; }
+    let completedState = state;
+    try {
+      completedState = {
+        ...state,
+        otherLeagues: completeRemainingLeagues(state.otherLeagues || {}, state.currentWeek || 1)
+      };
+    } catch { /* keep current state if AI completion fails */ }
 
-    const leagueData = initializeLeague(leagueTeams, team.id);
+    const newSeasonData = initializeNewSeasonWithPromotions(completedState, state.teamId, null, {});
+    const previousPlayerLeagueId = newSeasonData.newPlayerLeagueId || state.playerLeagueId || state.leagueId;
+    const selectedLeagueData = leagueId === previousPlayerLeagueId
+      ? newSeasonData.playerLeague
+      : newSeasonData.otherLeagues?.[leagueId];
+    if (!selectedLeagueData?.table?.length) return;
+
+    const leagueData = {
+      ...selectedLeagueData,
+      table: selectedLeagueData.table.map(entry => ({
+        ...entry,
+        isPlayer: (entry.teamId || entry.id) === team.id
+      }))
+    };
+
+    const otherLeagues = { ...(newSeasonData.otherLeagues || {}) };
+    if (leagueId !== previousPlayerLeagueId && newSeasonData.playerLeague) {
+      otherLeagues[previousPlayerLeagueId] = {
+        ...newSeasonData.playerLeague,
+        table: (newSeasonData.playerLeague.table || []).map(entry => ({ ...entry, isPlayer: false }))
+      };
+    }
+    delete otherLeagues[leagueId];
+
+    const switchedCareerGetters = buildCareerLeagueGetters(
+      { ...state, playerLeagueId: leagueId, leagueTable: leagueData.table, otherLeagues },
+      ALL_LEAGUE_GETTERS
+    );
+    const allTeamsFlat = Object.values(switchedCareerGetters).reduce((acc, getter) => {
+      try { acc.push(...(getter() || [])); } catch { /* skip */ }
+      return acc;
+    }, []);
+
     const stadiumInfo = getStadiumInfo(team.id, team.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
 
-    // Generate preseason (auto-pick first)
-    const preseasonOpts = generatePreseasonOptions(
-      Object.entries(ALL_LEAGUE_GETTERS).reduce((acc, [, g]) => { try { acc.push(...g()); } catch {} return acc; }, []),
-      team, leagueId
-    );
+    // Generate preseason (auto-pick first) from the persisted career universe.
+    const preseasonOpts = generatePreseasonOptions(allTeamsFlat, team, leagueId);
     const preseason = preseasonOpts[0];
 
-    // First switch team (resets state)
     dispatch({
       type: 'PROMANAGER_SWITCH_TEAM',
       payload: { team, leagueId, stadiumInfo, stadiumLevel, _proManagerUserId: user?.uid || null, preseasonMatches: preseason?.matches || [] }
@@ -319,20 +355,16 @@ export default function ProManagerSeasonEnd() {
       }
     });
 
-    // Initialize league, fixtures, other leagues
+    // Initialize league, fixtures, other leagues from the rolled-over universe.
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
-
-    const otherLeagues = initializeOtherLeagues(leagueId, null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
 
-    // Load all league teams for transfers
+    // Load all league teams for transfers from the same career universe.
     const allLeagueTeamsWithData = [];
-    const allTeamsFlat = [];
-    for (const [lid, lgetter] of Object.entries(ALL_LEAGUE_GETTERS)) {
+    for (const [lid, lgetter] of Object.entries(switchedCareerGetters)) {
       try {
         const teams = lgetter();
-        allTeamsFlat.push(...teams);
         for (const tt of teams) {
           allLeagueTeamsWithData.push({
             ...tt, id: tt.id, name: tt.name, players: tt.players || [],
