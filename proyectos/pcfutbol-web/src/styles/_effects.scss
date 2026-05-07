@@ -424,6 +424,21 @@ select:focus-visible {
   transform-origin: center top;
 }
 
+@keyframes appScreenEnterMobile {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .app-screen-transition {
+    animation: appScreenEnterMobile 0.22s ease-out both;
+    transform: none !important;
+    filter: none !important;
+    contain: none !important;
+    will-change: auto !important;
+  }
+}
+
 // Subtle living background on full-screen shells: feels like a sports-game menu,
 // but stays non-interactive and below all content.
 .main-menu,

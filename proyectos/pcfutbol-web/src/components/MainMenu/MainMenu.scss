@@ -23,12 +23,15 @@
   @media (max-width: 768px) {
     padding: 1rem;
     padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
-    padding-bottom: 0;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.75rem);
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     min-height: 100vh;
+    min-height: 100svh;
     min-height: 100dvh;
-    height: auto;
-    max-height: none;
-    overflow: visible;
+    max-height: 100dvh;
+    overflow: hidden;
     justify-content: flex-start;
   }
 

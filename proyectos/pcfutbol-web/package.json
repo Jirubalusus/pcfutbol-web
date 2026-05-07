@@ -14,6 +14,7 @@
     "audit:promanager-switch-consistency": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-promanage-switch-consistency.mjs",
     "audit:promanager-dismissal-offers": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-promanage-dismissal-offers.mjs",
     "audit:promanager-success-offers": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-promanage-success-offers.mjs",
+    "audit:mobile-fixed-viewport": "node tests/audit-mobile-fixed-viewport.mjs",
     "audit:league-fixture-team-coverage": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-league-fixture-team-coverage.mjs",
     "audit:season-promotions": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-season-promotion-rollover.mjs",
     "preview": "vite preview",
