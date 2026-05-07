@@ -11,6 +11,7 @@
     "audit:rfef-progression": "node scripts/audit-rfef-progression.mjs",
     "audit:long-career-champions": "node scripts/audit-long-career-champions.mjs",
     "audit:management-flows": "node scripts/audit-management-flows.mjs",
+    "audit:season-promotions": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-season-promotion-rollover.mjs",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -r https://github.com/jirubalusus/pcfutbol-web.git"

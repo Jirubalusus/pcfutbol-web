@@ -45,7 +45,7 @@ import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { initializeLeague, simulateMatch } from '../../game/leagueEngine';
 import { processSeasonEnd, GLORY_DIVISIONS } from '../../game/gloryEngine';
 import { getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefGroups, getPrimeraRfefGroups, getSegundaRfefTeams } from '../../data/teamsFirestore';
-import { initializeNewSeasonWithPromotions, getLeagueName, getLeagueTable, initializeOtherLeagues } from '../../game/multiLeagueEngine';
+import { initializeNewSeasonWithPromotions, getLeagueName, getLeagueTable, completeRemainingLeagues } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import {
   generatePlayoffBracket,
@@ -410,49 +410,120 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     const divisionChanged = nextDiv.id !== currentDiv.id;
     
     // --- Build team pool for next season ---
+    // Glory used to rebuild from static division lists here, so every AI club stayed in
+    // exactly the same division forever. Reuse the global season-rollover engine first:
+    // it completes the pyramid tables, applies promotion/relegation swaps, and returns
+    // dynamic league compositions for the next season. Glory still keeps its own simple
+    // player rule (top 2 = promote), but the rest of the world now rolls over normally.
+    let completedState = state;
+    if (state.otherLeagues && Object.keys(state.otherLeagues).length > 0) {
+      try {
+        completedState = {
+          ...state,
+          otherLeagues: completeRemainingLeagues(state.otherLeagues, state.currentWeek || 1)
+        };
+      } catch (e) {
+        console.warn('Error completing other leagues for Glory season rollover:', e);
+      }
+    }
+
+    const promotionSeasonData = initializeNewSeasonWithPromotions(completedState, state.teamId, null, {});
     let leagueTeams;
     let newLeagueId = nextDiv.id;
-    let newGroupId = state.playerGroupId;
-    
-    if (divisionChanged) {
-      // Fetch teams for the new division
-      let divTeams = [];
-      if (nextDiv.id === 'laliga') {
-        divTeams = getLaLigaTeams() || [];
-        newGroupId = null; // La Liga has no groups
-      } else if (nextDiv.id === 'segunda') {
-        divTeams = getSegundaTeams() || [];
-        newGroupId = null;
-      } else if (nextDiv.id === 'primeraRFEF') {
-        const groups = getPrimeraRfefGroups() || {};
-        const groupKeys = Object.keys(groups);
-        const randomGroup = groupKeys[Math.floor(Math.random() * groupKeys.length)];
-        divTeams = groups[randomGroup]?.teams || [];
-        newGroupId = randomGroup;
-      } else {
-        // segundaRFEF (shouldn't happen on promotion, but fallback)
-        const groups = getSegundaRfefGroups() || {};
-        const groupKeys = Object.keys(groups);
-        const randomGroup = groupKeys[Math.floor(Math.random() * groupKeys.length)];
-        divTeams = groups[randomGroup]?.teams || [];
-        newGroupId = randomGroup;
+    let newGroupId = null;
+    let dynamicOtherLeagues = { ...(promotionSeasonData.otherLeagues || {}) };
+
+    const staticTeamsByLeague = (leagueId) => {
+      if (leagueId === 'laliga') return getLaLigaTeams() || [];
+      if (leagueId === 'segunda') return getSegundaTeams() || [];
+      if (leagueId === 'primeraRFEF') return getPrimeraRfefTeams() || [];
+      if (leagueId === 'segundaRFEF') return getSegundaRfefTeams() || [];
+      return LEAGUE_CONFIG[leagueId]?.getTeams?.() || [];
+    };
+
+    const teamPool = [];
+    if (state.team?.id) teamPool.push(state.team);
+    Object.keys(LEAGUE_CONFIG).forEach(leagueId => {
+      try {
+        staticTeamsByLeague(leagueId).forEach(t => {
+          if (t?.id && !teamPool.some(existing => existing.id === t.id)) teamPool.push(t);
+        });
+      } catch { /* skip */ }
+    });
+    const findTeam = (id, fallbackName) => {
+      if (id === state.teamId) return state.team;
+      return teamPool.find(t => t.id === id) || { id, name: fallbackName || id, players: [] };
+    };
+
+    const extractLeagueTeams = (leagueData, leagueId, preferredGroupId = null) => {
+      if (LEAGUE_CONFIG[leagueId]?.isGroupLeague || leagueData?.isGroupLeague) {
+        const groups = leagueData?.groups || {};
+        const groupEntries = Object.entries(groups);
+        if (groupEntries.length === 0) return { teams: [], groupId: preferredGroupId };
+        let selectedGroupId = preferredGroupId && groups[preferredGroupId] ? preferredGroupId : null;
+        if (!selectedGroupId) {
+          selectedGroupId = groupEntries.find(([, gd]) => (gd.table || []).some(e => e.teamId === state.teamId))?.[0]
+            || groupEntries[Math.floor(Math.random() * groupEntries.length)]?.[0];
+        }
+        const selectedTable = groups[selectedGroupId]?.table || [];
+        return {
+          teams: selectedTable.map(e => findTeam(e.teamId, e.teamName)).filter(Boolean),
+          groupId: selectedGroupId
+        };
       }
-      
-      // Replace one random team with glory_team
-      const gloryTeam = state.team;
-      const filteredTeams = divTeams.filter(t => t.id !== gloryTeam?.id);
-      const replaceIdx = Math.floor(Math.random() * filteredTeams.length);
-      filteredTeams[replaceIdx] = gloryTeam;
-      leagueTeams = filteredTeams;
-    } else {
-      // Same division — use current teams
-      leagueTeams = (state.leagueTable || []).map(entry => {
-        if (entry.teamId === state.teamId) return state.team;
-        const t = state.leagueTeams?.find(lt => lt.id === entry.teamId);
-        return t || { id: entry.teamId, name: entry.teamName || entry.teamId, players: [] };
-      }).filter(Boolean);
+      const table = leagueData?.table || [];
+      return {
+        teams: table.map(e => findTeam(e.teamId, e.teamName)).filter(Boolean),
+        groupId: null
+      };
+    };
+
+    // If the central engine kept Glory in the same division but Glory's own top-2 rule
+    // promoted the player, move the player's league screen to the target division while
+    // preserving the central engine's swapped AI compositions everywhere else.
+    const centralPlayerLeagueId = promotionSeasonData.newPlayerLeagueId || state.playerLeagueId || gloryData.division || 'segundaRFEF';
+    let targetLeagueData = centralPlayerLeagueId === newLeagueId
+      ? promotionSeasonData.playerLeague
+      : dynamicOtherLeagues[newLeagueId];
+
+    if (centralPlayerLeagueId !== newLeagueId && promotionSeasonData.playerLeague) {
+      dynamicOtherLeagues[centralPlayerLeagueId] = promotionSeasonData.playerLeague;
     }
-    
+
+    if (!targetLeagueData) {
+      const fallbackLeagueData = initializeLeague(staticTeamsByLeague(newLeagueId), null);
+      targetLeagueData = fallbackLeagueData;
+    }
+
+    const extracted = extractLeagueTeams(targetLeagueData, newLeagueId, state.playerGroupId);
+    leagueTeams = extracted.teams;
+    newGroupId = extracted.groupId;
+
+    // Forced Glory promotion: the central league table may not contain glory_team because
+    // its playoff model is stricter. Replace one AI team in the target division/group.
+    if (!leagueTeams.some(t => t.id === state.teamId)) {
+      const filteredTeams = leagueTeams.filter(t => t.id !== state.teamId);
+      const replaceIdx = filteredTeams.length > 0 ? Math.floor(Math.random() * filteredTeams.length) : 0;
+      filteredTeams[replaceIdx] = state.team;
+      leagueTeams = filteredTeams.filter(Boolean);
+    }
+
+    // The player's active league is stored at top level, not inside otherLeagues.
+    if (newLeagueId) {
+      delete dynamicOtherLeagues[newLeagueId];
+    }
+    if (LEAGUE_CONFIG[newLeagueId]?.isGroupLeague && targetLeagueData?.groups) {
+      const otherGroups = {};
+      Object.entries(targetLeagueData.groups).forEach(([groupId, groupData]) => {
+        if (groupId !== newGroupId) otherGroups[groupId] = groupData;
+      });
+      dynamicOtherLeagues[newLeagueId] = {
+        isGroupLeague: true,
+        groups: otherGroups,
+        playerGroup: newGroupId
+      };
+    }
+
     if (leagueTeams.length < 2) {
       console.error('[GlorySeasonEnd] Not enough teams to reinitialize league');
       handleConfirm(true);
@@ -528,6 +599,8 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         newTable: leagueData.table,
         newObjectives: {},
         newPlayerLeagueId: newLeagueId,
+        newPlayerGroupId: newGroupId,
+        newOtherLeagues: dynamicOtherLeagues,
         europeanCalendar: null
       }
     });
@@ -536,9 +609,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: newLeagueId });
     if (newGroupId) dispatch({ type: 'SET_PLAYER_GROUP', payload: newGroupId });
 
-    // Reinitialize other leagues for new season
-    const otherLeagues = initializeOtherLeagues(newLeagueId, newGroupId);
-    dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
+    // Persist dynamically rolled-over leagues. Do not call initializeOtherLeagues here:
+    // that would rebuild every division from static data and erase ascensos/descensos.
+    dispatch({ type: 'SET_OTHER_LEAGUES', payload: dynamicOtherLeagues });
 
     // Rebuild allLeagueTeams for Transfers Explorar tab
     const allLeagueTeamsWithData = [];
