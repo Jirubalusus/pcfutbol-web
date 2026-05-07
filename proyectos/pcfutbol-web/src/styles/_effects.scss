@@ -539,9 +539,9 @@ select:focus-visible {
 }
 
 // Game-like button feedback: no cheap bouncing, just tactile depth and light.
-button:not(:disabled),
-.btn:not(:disabled),
-[role="button"]:not([aria-disabled="true"]) {
+button:not(:disabled):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn),
+.btn:not(:disabled):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn),
+[role="button"]:not([aria-disabled="true"]):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn) {
   will-change: transform, box-shadow, filter;
 
   &:active {

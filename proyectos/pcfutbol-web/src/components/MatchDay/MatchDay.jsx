@@ -1381,20 +1381,18 @@ export default function MatchDay({ onComplete, onBack }) {
         const lineupCount = Object.values(state.lineup || {}).filter(Boolean).length;
         const canPlay = lineupCount >= 11;
         return (
-          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="match-day__actions">
             <button 
-              className="match-day__play-btn"
+              className="match-day__play-btn match-day__play-btn--secondary"
               onClick={() => onBack && onBack()}
-              style={{ background: 'rgba(255,255,255,0.08)', flex: 'none', minWidth: '100px' }}
             >
               <ArrowLeft size={14} /> {t('common.back') || 'Volver'}
             </button>
-            <div style={{ position: 'relative', display: 'inline-block', flex: 1 }}>
+            <div className="match-day__play-slot">
               <button 
-                className={`match-day__play-btn${canPlay ? ' btn-pulse' : ''}`}
+                className={`match-day__play-btn match-day__play-btn--primary${canPlay ? ' btn-pulse' : ''}`}
                 onClick={canPlay ? simulateAndPlay : undefined} 
                 disabled={!canPlay} 
-                style={!canPlay ? { opacity: 0.4, cursor: 'not-allowed' } : {}}
                 title={!canPlay ? `Necesitas 11 titulares (tienes ${lineupCount})` : ''}
               >
                 <FootballIcon size={14} /> {t('matchday.playMatch')}
