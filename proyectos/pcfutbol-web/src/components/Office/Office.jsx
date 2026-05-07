@@ -125,6 +125,7 @@ export default function Office() {
   const [showNoPlayersWarning, setShowNoPlayersWarning] = useState(false);
   const [simProgress, setSimProgress] = useState(null); // { current, total, week }
   const [simSummaryData, setSimSummaryData] = useState(null);
+  const [dismissedBoardWarningKey, setDismissedBoardWarningKey] = useState(null);
   const snapshotRef = useRef(null); // stores pre-simulation snapshot
   const stateRef = useRef(state); // keeps fresh state for async callbacks (#7, #9-10)
   stateRef.current = state;
@@ -143,6 +144,27 @@ export default function Office() {
   // NOTE: Not reactive to window resizes, but fine — only affects initial layout. (#23)
   const isMobile = window.innerWidth <= 768;
   const isRanked = state.gameMode === 'ranked' && !!state.rankedMatchId;
+  const boardWarningModes = ['career', 'glory', 'contrarreloj', 'promanager'];
+  const canBeFiredByBoard = boardWarningModes.includes(state.gameMode) && !isRanked;
+  const boardConfidenceValue = Math.round(
+    state.gameMode === 'promanager'
+      ? (state.proManagerData?.boardConfidence ?? state.managerConfidence ?? 60)
+      : (state.managerConfidence ?? 75)
+  );
+  const boardFiringThreshold = state.gameMode === 'promanager' ? 0 : 10;
+  const boardWarningKey = `${state.gameMode || 'career'}-${state.currentSeason || 1}-${state.currentWeek || 0}-${boardConfidenceValue}`;
+  const shouldShowBoardWarningModal = canBeFiredByBoard
+    && !state.managerFired
+    && !state.proManagerData?.fired
+    && boardConfidenceValue <= 20
+    && boardConfidenceValue > boardFiringThreshold
+    && dismissedBoardWarningKey !== boardWarningKey;
+  
+  useEffect(() => {
+    if (boardConfidenceValue > 20) {
+      setDismissedBoardWarningKey(null);
+    }
+  }, [boardConfidenceValue]);
   
   // Memoize getAllTeams to avoid recalculating on every render
   const allTeamsMemo = useMemo(() => getAllTeams(), [state.leagueTeams]);
@@ -1615,6 +1637,57 @@ export default function Office() {
         simulating={rankedSubmitted}
         isRanked={true}
       />}
+
+      {shouldShowBoardWarningModal && (
+        <div className="office__board-warning" role="dialog" aria-modal="true" aria-labelledby="board-warning-title">
+          <div className="office__board-warning-backdrop" onClick={() => setDismissedBoardWarningKey(boardWarningKey)} />
+          <div className="office__board-warning-card">
+            <div className="office__board-warning-glow" />
+            <div className="office__board-warning-icon">
+              <AlertTriangle size={34} strokeWidth={2.4} />
+            </div>
+            <p className="office__board-warning-kicker">Ultimátum de la directiva</p>
+            <h2 id="board-warning-title">Confianza al {boardConfidenceValue}%</h2>
+            <p className="office__board-warning-copy">
+              Estás muy cerca de que te echen. Una mala racha más puede terminar la partida: revisa objetivos, once y mercado antes de simular más semanas.
+            </p>
+            <div className="office__board-warning-meter" aria-label={`Confianza de la directiva ${boardConfidenceValue}%`}>
+              <span style={{ width: `${Math.max(4, boardConfidenceValue)}%` }} />
+            </div>
+            <div className="office__board-warning-actions">
+              <button
+                type="button"
+                className="office__board-warning-btn office__board-warning-btn--primary"
+                onClick={() => {
+                  setDismissedBoardWarningKey(boardWarningKey);
+                  setActiveTab('objectives');
+                }}
+              >
+                <Target size={17} />
+                Ver objetivos
+              </button>
+              <button
+                type="button"
+                className="office__board-warning-btn"
+                onClick={() => {
+                  setDismissedBoardWarningKey(boardWarningKey);
+                  setActiveTab('formation');
+                }}
+              >
+                <Users size={17} />
+                Ajustar once
+              </button>
+              <button
+                type="button"
+                className="office__board-warning-btn office__board-warning-btn--ghost"
+                onClick={() => setDismissedBoardWarningKey(boardWarningKey)}
+              >
+                Entendido
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       
       <main className="office__main">
         <header className="office__header">
