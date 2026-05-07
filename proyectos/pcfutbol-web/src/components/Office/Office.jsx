@@ -117,6 +117,7 @@ export default function Office() {
   const [simulating, setSimulating] = useState(false);
   const [showInjuredWarning, setShowInjuredWarning] = useState(false);
   const [showRouletteBetModal, setShowRouletteBetModal] = useState(false);
+  const [showAchillesModal, setShowAchillesModal] = useState(false);
   const [injuredInLineup, setInjuredInLineup] = useState([]);
   const [showSeasonEnd, setShowSeasonEnd] = useState(false);
   const [showGlorySeasonEnd, setShowGlorySeasonEnd] = useState(false);
@@ -473,14 +474,93 @@ export default function Office() {
             status: 'pending',
             percent,
             amount,
+            label: percent === 10 ? 'Verde segura' : percent === 25 ? 'Dorada valiente' : percent === 50 ? 'Roja fuerte' : 'All-in',
             placedSeason: state.season || state.gloryData?.season || 1,
             placedWeek: state.currentWeek || 1,
-            label: percent === 10 ? 'Verde segura' : percent === 25 ? 'Dorada valiente' : percent === 50 ? 'Roja fuerte' : 'All-in'
+            week: state.currentWeek || 1,
+            season: state.currentSeason || 1,
           }
         }
       }
     });
     setShowRouletteBetModal(false);
+  };
+
+  const upcomingPlayerMatch = useMemo(() => {
+    const isPlayerInPending = (pm) => {
+      if (!pm) return false;
+      const ids = [pm.homeTeamId, pm.awayTeamId, pm.homeTeam?.teamId, pm.awayTeam?.teamId, pm.team1?.teamId, pm.team2?.teamId];
+      return ids.includes(state.teamId);
+    };
+
+    if (state.pendingCupMatch && isPlayerInPending(state.pendingCupMatch)) {
+      return { type: 'cup', data: state.pendingCupMatch };
+    }
+    if (state.pendingEuropeanMatch && isPlayerInPending(state.pendingEuropeanMatch)) {
+      return { type: 'european', data: state.pendingEuropeanMatch };
+    }
+    if (state.pendingSAMatch && isPlayerInPending(state.pendingSAMatch)) {
+      return { type: 'southamerican', data: state.pendingSAMatch };
+    }
+    if (state.preseasonPhase && state.preseasonMatches?.length > 0) {
+      const preseasonMatch = state.preseasonMatches[(state.preseasonWeek || 1) - 1];
+      return preseasonMatch ? { type: 'preseason', data: preseasonMatch } : null;
+    }
+    const leagueMatch = (state.fixtures || []).find(f =>
+      f.week === state.currentWeek &&
+      !f.played &&
+      (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
+    );
+    return leagueMatch ? { type: 'league', data: leagueMatch } : null;
+  }, [state.pendingCupMatch, state.pendingEuropeanMatch, state.pendingSAMatch, state.preseasonPhase, state.preseasonMatches, state.preseasonWeek, state.fixtures, state.currentWeek, state.teamId]);
+
+  const upcomingOpponent = useMemo(() => {
+    if (!upcomingPlayerMatch) return null;
+    const { type, data } = upcomingPlayerMatch;
+    if (type === 'preseason') return data.opponent || null;
+    if (type === 'cup') {
+      const homeId = data.homeTeam?.teamId;
+      const awayId = data.awayTeam?.teamId;
+      return homeId === state.teamId ? data.awayTeam : awayId === state.teamId ? data.homeTeam : null;
+    }
+    if (type === 'european' || type === 'southamerican') {
+      const homeTeam = data.homeTeam || data.team1;
+      const awayTeam = data.awayTeam || data.team2;
+      const homeId = data.homeTeamId || homeTeam?.teamId;
+      const awayId = data.awayTeamId || awayTeam?.teamId;
+      return homeId === state.teamId ? awayTeam : awayId === state.teamId ? homeTeam : null;
+    }
+    const opponentId = data.homeTeam === state.teamId ? data.awayTeam : data.homeTeam;
+    return allTeamsMemo.find(team => team.id === opponentId) || state.leagueTeams?.find(team => team.id === opponentId) || null;
+  }, [upcomingPlayerMatch, state.teamId, allTeamsMemo, state.leagueTeams]);
+
+  const canUseAchilles = !!state.gloryData?.perks?.achillesHeel && !!upcomingOpponent?.players?.length;
+  const activeAchillesTarget = state.gloryData?.achillesHeelTarget;
+  const achillesLocked = !!activeAchillesTarget
+    && activeAchillesTarget.week === (state.currentWeek || 1)
+    && activeAchillesTarget.season === (state.currentSeason || 1)
+    && activeAchillesTarget.opponentId === (upcomingOpponent?.id || upcomingOpponent?.teamId);
+
+  const placeAchillesTarget = (player) => {
+    if (!player || !canUseAchilles) return;
+    dispatch({
+      type: 'UPDATE_GLORY_STATE',
+      payload: {
+        gloryData: {
+          ...(state.gloryData || {}),
+          achillesHeelTarget: {
+            playerName: player.name,
+            position: player.position,
+            overall: player.overall,
+            opponentId: upcomingOpponent?.id || upcomingOpponent?.teamId,
+            opponentName: upcomingOpponent?.name || upcomingOpponent?.teamName,
+            week: state.currentWeek || 1,
+            season: state.currentSeason || 1,
+          }
+        }
+      }
+    });
+    setShowAchillesModal(false);
   };
 
   const handleAdvanceWeek = () => {
@@ -1715,6 +1795,23 @@ export default function Office() {
               </div>
             )}
 
+            {state.gloryData?.perks?.achillesHeel && (
+              <div
+                className={`office__roulette-wrap office__achilles-wrap${achillesLocked ? ' office__roulette-wrap--locked' : ''}`}
+                data-tooltip={achillesLocked ? `Preparado contra ${activeAchillesTarget.playerName}` : canUseAchilles ? `Lesionar rival de ${upcomingOpponent?.name || upcomingOpponent?.teamName}` : 'Sin rival disponible para el próximo partido'}
+              >
+                <button
+                  className={`office__roulette-btn office__achilles-btn${achillesLocked ? ' office__roulette-btn--locked' : ''}`}
+                  onClick={() => canUseAchilles && setShowAchillesModal(true)}
+                  disabled={simulating || !canUseAchilles}
+                  aria-label={achillesLocked ? 'Talón de Aquiles preparado' : 'Elegir rival para Talón de Aquiles'}
+                >
+                  <span className="office__roulette-icon">🩹</span>
+                  <span>{achillesLocked ? 'Aquiles' : 'Talón'}</span>
+                </button>
+              </div>
+            )}
+
             <div className="office__money">
               <span className="label">{t('office.budget')}</span>
               <span className="value">{formatMoney(state.money)}</span>
@@ -1780,6 +1877,38 @@ export default function Office() {
               <div className="office-roulette-modal__rules">
                 Victoria: cobras lo apostado · Empate: pierdes la mitad · Derrota: pierdes todo.
               </div>
+            </div>
+          </div>
+        )}
+
+        {showAchillesModal && (
+          <div className="office-roulette-modal office-achilles-modal" onClick={() => setShowAchillesModal(false)}>
+            <div className="office-roulette-modal__panel office-achilles-modal__panel" onClick={e => e.stopPropagation()}>
+              <button className="office-roulette-modal__close" onClick={() => setShowAchillesModal(false)}>✕</button>
+              <div className="office-roulette-modal__icon office-achilles-modal__icon">🩹</div>
+              <h3>Talón de Aquiles</h3>
+              <p>Elige un jugador de {upcomingOpponent?.name || upcomingOpponent?.teamName || 'tu próximo rival'} para que no juegue este partido.</p>
+              <div className="office-achilles-modal__players">
+                {(upcomingOpponent?.players || [])
+                  .slice()
+                  .sort((a, b) => (b.overall || 0) - (a.overall || 0))
+                  .slice(0, 11)
+                  .map((player, index) => (
+                    <button
+                      key={`${player.name}-${index}`}
+                      className={`office-achilles-modal__player${achillesLocked && activeAchillesTarget?.playerName === player.name ? ' office-achilles-modal__player--selected' : ''}`}
+                      onClick={() => placeAchillesTarget(player)}
+                    >
+                      <span className="office-achilles-modal__player-name">{player.name}</span>
+                      <span className="office-achilles-modal__player-meta">{player.position} · {player.overall || '?'}</span>
+                    </button>
+                  ))}
+              </div>
+              {achillesLocked && (
+                <div className="office-roulette-modal__rules office-achilles-modal__rules">
+                  Preparado: {activeAchillesTarget.playerName} no jugará el próximo partido.
+                </div>
+              )}
             </div>
           </div>
         )}

@@ -73,11 +73,8 @@ export default function MatchDay({ onComplete, onBack }) {
     : null;
   const [betAmount, setBetAmount] = useState(pendingRouletteBet?.amount || 0);
   const canBet = !!pendingRouletteBet && betAmount > 0;
-  // Achilles Heel perk
-  const [achillesTarget, setAchillesTarget] = useState(null);
-  const [showAchillesUI, setShowAchillesUI] = useState(false);
-  const canAchilles = state.gloryData?.perks?.achillesHeel;
-  
+  // Achilles Heel perk: target is chosen from Office header before the match.
+
   // Helper: normalizar player de eventos (V2 devuelve {name}, V1 devuelve string)
   const getPlayerName = (p) => typeof p === 'object' ? (p?.name || t('common.unknown')) : (p || t('common.unknown'));
   
@@ -243,6 +240,13 @@ export default function MatchDay({ onComplete, onBack }) {
   // Get morale from table
   const playerTableEntry = state.leagueTable.find(t => t.teamId === state.teamId);
   const opponentTableEntry = state.leagueTable.find(t => t.teamId === opponentId);
+  const storedAchillesTarget = state.gloryData?.achillesHeelTarget;
+  const achillesTarget = storedAchillesTarget
+    && storedAchillesTarget.week === (state.currentWeek || 1)
+    && storedAchillesTarget.season === (state.currentSeason || 1)
+    && storedAchillesTarget.opponentId === (opponent?.id || opponent?.teamId)
+      ? storedAchillesTarget.playerName
+      : null;
   
   const simulateAndPlay = () => {
     try {
@@ -1328,39 +1332,6 @@ export default function MatchDay({ onComplete, onBack }) {
       </div>
 
       {/* Buttons rendered OUTSIDE __content — use position:fixed for overlay */}
-      {phase === 'preview' && canAchilles && opponent?.players?.length > 0 && (
-        <div className="match-day__bet-section">
-          {!showAchillesUI ? (
-            <button className="match-day__bet-toggle" style={{ borderColor: '#e53935' }} onClick={() => setShowAchillesUI(true)}>
-              Talón de Aquiles — Lesionar rival
-            </button>
-          ) : (
-            <div className="match-day__bet-ui" style={{ maxHeight: 200, overflowY: 'auto' }}>
-              <span className="match-day__bet-label">Elige un rival para lesionar:</span>
-              {(opponent.players || []).slice(0, 11).sort((a, b) => b.overall - a.overall).map((p, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setAchillesTarget(p.name); setShowAchillesUI(false); }}
-                  style={{
-                    display: 'flex', justifyContent: 'space-between', width: '100%', padding: '6px 10px',
-                    background: achillesTarget === p.name ? 'rgba(229,57,53,0.2)' : 'rgba(255,255,255,0.05)',
-                    border: achillesTarget === p.name ? '1px solid #e53935' : '1px solid rgba(255,255,255,0.1)',
-                    borderRadius: 6, color: '#fff', cursor: 'pointer', fontSize: 12, marginBottom: 3
-                  }}
-                >
-                  <span>{p.name}</span>
-                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>{p.position} · {p.overall}</span>
-                </button>
-              ))}
-            </div>
-          )}
-          {achillesTarget && !showAchillesUI && (
-            <span className="match-day__bet-hint" style={{ color: '#e53935' }}>
-              {achillesTarget} no jugará este partido
-            </span>
-          )}
-        </div>
-      )}
       {phase === 'preview' && canBet && (
         <div className="match-day__bet-section">
           <div className="match-day__bet-ui">
