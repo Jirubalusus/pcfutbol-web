@@ -272,12 +272,47 @@ export function updatePrestige(currentPrestige, seasonEval, wasFired = false) {
 }
 
 /**
- * Generate season-end offers based on prestige
+ * Calculate how much a successful season should improve the manager's market.
+ * The score is intentionally explicit so promotion/cups can improve offers even
+ * when the normal objective evaluation only says "met".
+ */
+export function calculateOfferMomentum({ seasonEvalResult, promoted = false, cupResult = null, europeanResult = null, position = null } = {}) {
+  let score = 0;
+
+  if (seasonEvalResult === 'champion') score += 3;
+  else if (seasonEvalResult === 'exceeded') score += 2;
+  else if (seasonEvalResult === 'met') score += 1;
+
+  if (promoted) score += 3;
+  if (position === 1) score += 2;
+
+  if (cupResult === 'winner') score += 3;
+  else if (cupResult === 'finalist') score += 2;
+  else if (cupResult === 'semifinal') score += 1;
+
+  const europeanText = String(europeanResult || '').toLowerCase();
+  if (['winner', 'campeon', 'campeón', 'champion'].some(token => europeanText.includes(token))) score += 4;
+  else if (['final', 'semifinal'].some(token => europeanText.includes(token))) score += 2;
+
+  const level = score >= 7 ? 'elite'
+    : score >= 5 ? 'breakthrough'
+      : score >= 3 ? 'strong'
+        : score >= 1 ? 'positive'
+          : 'normal';
+
+  return { score, level };
+}
+
+/**
+ * Generate season-end offers based on prestige and season momentum.
  */
 export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId, allLeagueGetters = {}, options = {}) {
   const wasFired = !!options.wasFired;
-  const minOffers = wasFired ? (options.minOffers || 5) : 0;
-  const maxOffers = wasFired ? (options.maxOffers || 6) : (options.maxOffers || 3);
+  const rawMomentum = Number(options.performanceBoost ?? options.offerMomentum?.score ?? 0);
+  const performanceBoost = wasFired ? 0 : Math.max(0, Math.min(10, rawMomentum));
+  const effectivePrestige = Math.max(0, Math.min(100, prestige + performanceBoost * 7));
+  const minOffers = wasFired ? (options.minOffers || 5) : (performanceBoost >= 5 ? 4 : performanceBoost >= 3 ? 3 : 0);
+  const maxOffers = wasFired ? (options.maxOffers || 6) : (options.maxOffers || (performanceBoost >= 5 ? 5 : performanceBoost >= 3 ? 4 : 3));
   const candidates = [];
 
   for (const [leagueId, config] of Object.entries(LEAGUE_CONFIG)) {
@@ -286,13 +321,13 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
     
     const tier = getLeagueTier(leagueId);
     
-    // Prestige gates. After a dismissal, widen the net downward so the manager
-    // always has several smaller clubs instead of only 1-2 random leftovers.
+    // Prestige gates. Successful seasons temporarily boost market access, while
+    // dismissals still force a downward, realistic market.
     if (!wasFired) {
-      if (TOP_LEAGUES.has(leagueId) && prestige < 50) continue;
-      if (MID_LEAGUES.has(leagueId) && prestige < 25) continue;
-      if (prestige < 20 && tier <= 2) continue;
-      if (prestige < 35 && tier <= 1) continue;
+      if (TOP_LEAGUES.has(leagueId) && effectivePrestige < 50) continue;
+      if (MID_LEAGUES.has(leagueId) && effectivePrestige < 25) continue;
+      if (effectivePrestige < 20 && tier <= 2) continue;
+      if (effectivePrestige < 35 && tier <= 1) continue;
     } else if (prestige < 35 && tier <= 1) {
       continue;
     }
@@ -305,7 +340,7 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
 
       const maxOvr = wasFired
         ? Math.max(58, Math.min(72, 58 + prestige * 0.24))
-        : 60 + prestige * 0.35;
+        : 60 + effectivePrestige * 0.35 + performanceBoost * 1.6;
 
       for (const team of teams) {
         if (!team || team.id === currentTeamId) continue;
@@ -337,13 +372,25 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
         .sort((a, b) => a.avgOvr - b.avgOvr || b.tier - a.tier);
       pool = [...pool, ...extras];
     }
+  } else if (performanceBoost > 0) {
+    // Good seasons should feel like a career step up: prioritize the strongest
+    // reachable clubs, then add tiny randomness only inside equal strength bands.
+    pool = pool.sort((a, b) =>
+      b.avgOvr - a.avgOvr || a.tier - b.tier || Math.random() - 0.5
+    );
+    if (pool.length < minOffers) {
+      const extras = uniqueByTeam(candidates)
+        .filter(c => !pool.some(p => p.team.id === c.team.id))
+        .sort((a, b) => b.avgOvr - a.avgOvr || a.tier - b.tier);
+      pool = [...pool, ...extras];
+    }
   } else {
     pool = pool.sort(() => Math.random() - 0.5);
   }
 
   const picked = pool.slice(0, maxOffers);
 
-  return picked.map(({ team, leagueId, config, avgOvr }) => {
+  return picked.map(({ team, leagueId, config, avgOvr }, index) => {
     // Ensure team has budget and reputation
     if (!team.budget) {
       if (avgOvr >= 78) team.budget = 80_000_000 + Math.floor(Math.random() * 40_000_000);
@@ -355,6 +402,8 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
       team.reputation = Math.min(5, Math.max(1, Math.round(avgOvr / 16)));
     }
 
+    const upgradedOffer = performanceBoost > 0 && index < Math.min(2, maxOffers);
+
     return {
       team,
       leagueId,
@@ -362,10 +411,11 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
       country: config.country,
       objective: getBoardObjective(avgOvr, leagueId, team),
       avgOvr,
+      marketTier: upgradedOffer ? (performanceBoost >= 5 ? 'headline' : 'improved') : 'standard',
+      performanceBoost,
     };
   });
 }
-
 export function shouldEndProManagerCareerAfterDismissal(currentSeason, dismissalHistory = [], windowSeasons = 2) {
   if (!Array.isArray(dismissalHistory) || dismissalHistory.length === 0) return false;
   const current = Number(currentSeason) || 1;

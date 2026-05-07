@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import {
-  evaluateSeason, updatePrestige, generateSeasonEndOffers,
+  evaluateSeason, updatePrestige, generateSeasonEndOffers, calculateOfferMomentum,
   getSeasonEndConfidence, getBoardObjective, buildCareerLeagueGetters,
   shouldEndProManagerCareerAfterDismissal
 } from '../../game/proManagerEngine';
@@ -30,7 +30,7 @@ import {
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams,
   getPrimeraRfefTeams, getSegundaRfefTeams
 } from '../../data/teamsFirestore';
-import { Trophy, TrendingUp, TrendingDown, Target, Briefcase, ChevronRight, Home, ArrowRight, AlertTriangle } from 'lucide-react';
+import { Trophy, TrendingUp, TrendingDown, Target, Briefcase, ChevronRight, Home, ArrowRight, AlertTriangle, Sparkles } from 'lucide-react';
 import './ProManagerSeasonEnd.scss';
 
 const ALL_LEAGUE_GETTERS = {
@@ -140,6 +140,16 @@ export default function ProManagerSeasonEnd() {
   ), [state.playerLeagueId, state.leagueTable, state.otherLeagues]);
 
   const careerSeason = pm?.seasonsManaged || state.currentSeason || 1;
+  const seasonResult = useMemo(() => (
+    getSeasonResult(state.leagueTable || [], state.teamId, state.playerLeagueId || state.leagueId)
+  ), [state.leagueTable, state.teamId, state.playerLeagueId, state.leagueId]);
+  const offerMomentum = useMemo(() => calculateOfferMomentum({
+    seasonEvalResult: seasonEval.result,
+    promoted: !!seasonResult?.promotion || !!lastStats?.promoted,
+    cupResult: state.cupResult || lastStats?.cupResult,
+    europeanResult: lastStats?.europeanResult,
+    position,
+  }), [seasonEval.result, seasonResult?.promotion, lastStats?.promoted, state.cupResult, lastStats?.cupResult, lastStats?.europeanResult, position]);
   const isDismissal = !!pm?.fired || (pm?.boardConfidence ?? 100) <= 0;
   const dismissalHistory = Array.isArray(pm?.dismissalHistory) ? pm.dismissalHistory : [];
   const careerLostByDismissal = isDismissal && shouldEndProManagerCareerAfterDismissal(careerSeason, dismissalHistory);
@@ -154,9 +164,11 @@ export default function ProManagerSeasonEnd() {
       state.playerLeagueId || state.leagueId,
       state.teamId,
       careerLeagueGetters,
-      isDismissal ? { wasFired: true, minOffers: 5, maxOffers: 6 } : {}
+      isDismissal
+        ? { wasFired: true, minOffers: 5, maxOffers: 6 }
+        : { offerMomentum, performanceBoost: offerMomentum.score }
     );
-  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId, careerLeagueGetters, isDismissal]);
+  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId, careerLeagueGetters, isDismissal, offerMomentum]);
 
   // Animate prestige change
   useEffect(() => {
@@ -448,6 +460,14 @@ export default function ProManagerSeasonEnd() {
     failed: '#ef4444',
   }[seasonEval.result] || '#8899aa';
 
+  const marketMessage = {
+    elite: 'Tu temporada ha sacudido el mercado: llegan clubes claramente superiores.',
+    breakthrough: 'Ascenso o título pesan: el siguiente salto profesional ya es real.',
+    strong: 'Buen año: las ofertas suben de nivel y presupuesto.',
+    positive: 'Objetivo cumplido: el mercado mejora ligeramente.',
+    normal: 'El mercado se mantiene prudente.'
+  }[offerMomentum.level];
+
   return (
     <div className="pm-season-end">
       <div className="pm-season-end__bg">
@@ -517,6 +537,19 @@ export default function ProManagerSeasonEnd() {
               )}
             </div>
 
+            {/* Career market momentum */}
+            {offerMomentum.score > 0 && !isDismissal && (
+              <div className={`pm-season-end__market pm-season-end__market--${offerMomentum.level}`}>
+                <div className="market-glow" />
+                <Sparkles size={18} />
+                <div>
+                  <strong>Reputación en alza</strong>
+                  <span>{marketMessage}</span>
+                </div>
+                <b>+{offerMomentum.score} mercado</b>
+              </div>
+            )}
+
             {/* Prestige Change */}
             <div className="pm-season-end__prestige">
               <div className="prestige-label">
@@ -549,7 +582,7 @@ export default function ProManagerSeasonEnd() {
           <div className="pm-season-end__offers">
             <div className="pm-season-end__offers-head">
               <div>
-                <span className="kicker">{isDismissal ? 'Despido confirmado' : 'Mercado de entrenadores'}</span>
+                <span className="kicker">{isDismissal ? 'Despido confirmado' : offerMomentum.score > 0 ? 'Mercado en alza' : 'Mercado de entrenadores'}</span>
                 <h2>{careerLostByDismissal ? 'Carrera terminada' : t('proManager.seasonEnd.jobOffers')}</h2>
               </div>
               {!careerLostByDismissal && <span className="offers-count">{offers.length} ofertas</span>}
@@ -593,11 +626,14 @@ export default function ProManagerSeasonEnd() {
                 {offers.length > 0 ? (
                   <div className="offers-list">
                     {offers.map((offer, idx) => (
-                      <div key={offer.team.id + idx} className="offer-item">
+                      <div key={offer.team.id + idx} className={`offer-item offer-item--${offer.marketTier || 'standard'}`} style={{ '--offer-delay': `${idx * 70}ms` }}>
                         <div className="offer-rank">#{idx + 1}</div>
                         <div className="offer-info">
                           <h4>{offer.team.name}</h4>
                           <span className="league">{offer.leagueName} · {offer.country}</span>
+                          {offer.marketTier && offer.marketTier !== 'standard' && (
+                            <span className="offer-upgrade">Oferta mejorada por temporada exitosa</span>
+                          )}
                           <div className="offer-meta">
                             <div className="offer-objective">
                               <Target size={12} />
