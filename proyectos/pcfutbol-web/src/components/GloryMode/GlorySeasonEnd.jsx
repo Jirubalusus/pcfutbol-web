@@ -63,12 +63,24 @@ export default function GlorySeasonEnd({ leaguePosition, onComplete }) {
     syncUnlocks();
   }, [user?.uid]);
 
-  // Determine promotion
-  const promoted = leaguePosition <= 2;
-  const currentDivIndex = GLORY_DIVISIONS.findIndex(d => d.id === gloryData.division);
-  const currentDiv = GLORY_DIVISIONS[currentDivIndex] || GLORY_DIVISIONS[0];
-  const nextDiv = promoted && currentDivIndex < GLORY_DIVISIONS.length - 1
-    ? GLORY_DIVISIONS[currentDivIndex + 1] : null;
+  // Determine the division transition shown in this screen.
+  // SeasonEnd.jsx already starts the new Glory season before rendering this view, so
+  // gloryData.division is the NEXT season division. The completed season division is
+  // preserved in the last history entry. If we recompute from gloryData.division here,
+  // an ascent Segunda RFEF → Primera RFEF is shown incorrectly as Primera RFEF → Segunda.
+  const lastSeason = gloryData.history?.[gloryData.history.length - 1] || null;
+  const completedDivisionId = lastSeason?.division || gloryData.division;
+  const completedDivIndex = GLORY_DIVISIONS.findIndex(d => d.id === completedDivisionId);
+  const currentDiv = GLORY_DIVISIONS[completedDivIndex] || GLORY_DIVISIONS[0];
+  const promoted = lastSeason?.promoted ?? leaguePosition <= 2;
+  const promotedDivisionFromState = promoted && gloryData.division && gloryData.division !== completedDivisionId
+    ? GLORY_DIVISIONS.find(d => d.id === gloryData.division)
+    : null;
+  const nextDiv = promotedDivisionFromState || (
+    promoted && completedDivIndex >= 0 && completedDivIndex < GLORY_DIVISIONS.length - 1
+      ? GLORY_DIVISIONS[completedDivIndex + 1]
+      : null
+  );
 
   // Random event for this season
   const event = useMemo(() => drawEvent(gloryData.usedEventIds || []), []);
