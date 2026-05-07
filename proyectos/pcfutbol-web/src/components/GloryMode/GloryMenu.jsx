@@ -18,6 +18,7 @@ import { getUnlockedCards } from '../../game/gloryUnlocks';
 import { getGlorySave, deleteGlorySave } from '../../firebase/glorySaveService';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase/config';
+import { GLORY_CARDS } from '../../game/gloryEngine';
 import './GloryMode.scss';
 
 export default function GloryMenu() {
@@ -127,9 +128,10 @@ export default function GloryMenu() {
     segunda: 'Segunda Division',
     laliga: 'La Liga',
   };
-  const collectionProgress = Math.round((unlockedCards.length / 24) * 100);
+  const totalCards = GLORY_CARDS.length;
+  const collectionProgress = Math.round((unlockedCards.length / totalCards) * 100);
   const saveDivision = saveInfo ? (divNames[saveInfo.division] || saveInfo.division) : 'Segunda RFEF';
-  const lockedCards = Math.max(0, 24 - unlockedCards.length);
+  const lockedCards = Math.max(0, totalCards - unlockedCards.length);
 
   return (
     <div className="glory-menu unified-screen">
@@ -170,7 +172,7 @@ export default function GloryMenu() {
                   <span>Ascensos</span>
                 </div>
                 <div>
-                  <strong>24</strong>
+                  <strong>{totalCards}</strong>
                   <span>Cartas únicas</span>
                 </div>
                 <div>
@@ -240,7 +242,7 @@ export default function GloryMenu() {
             <section className="glory-menu__collection-showcase" aria-label="Coleccion de cartas">
               <div className="glory-menu__collection-copy">
                 <span className="glory-menu__eyebrow">Vitrina permanente</span>
-                <h2>{unlockedCards.length}/24 cartas desbloqueadas</h2>
+                <h2>{unlockedCards.length}/{totalCards} cartas desbloqueadas</h2>
                 <p>Las cartas conseguidas quedan guardadas y cambian tus futuras temporadas.</p>
               </div>
               <div className="glory-menu__collection-meter">

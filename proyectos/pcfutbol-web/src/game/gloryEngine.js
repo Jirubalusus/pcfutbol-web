@@ -103,6 +103,51 @@ export function generateSquad(ovrMin = 40, ovrMax = 55) {
   return squad;
 }
 
+
+export function generateStarSigningChoices(gloryState = {}) {
+  const tierBoost = Math.max(0, 4 - (gloryState.divisionTier || 4));
+  const base = 70 + tierBoost * 5;
+  const bestSalary = Math.max(...(gloryState.squad || []).map(p => p.salary || 0), 45000);
+  return [
+    {
+      archetype: 'veteran',
+      label: 'Veterano estrella',
+      risk: 'Se retira pronto, rendimiento inmediato',
+      player: { ...generatePlayer({ ovrMin: base + 6, ovrMax: base + 12, ageMin: 32, ageMax: 38 }), contract: 1, salary: Math.round(bestSalary * 1.05) }
+    },
+    {
+      archetype: 'prospect',
+      label: 'Joven promesa',
+      risk: 'Menos media ahora, potencial brutal',
+      player: { ...generatePlayer({ ovrMin: base - 2, ovrMax: base + 4, ageMin: 18, ageMax: 21 }), potential: Math.min(99, base + 18), contract: 3, salary: Math.round(bestSalary * 0.75) }
+    },
+    {
+      archetype: 'media',
+      label: 'Jugador mediático caro',
+      risk: 'Sube fama, pero cobra muchísimo',
+      player: { ...generatePlayer({ ovrMin: base + 3, ovrMax: base + 9, ageMin: 24, ageMax: 30 }), mediaStar: true, contract: 2, salary: Math.round(bestSalary * 1.45) }
+    }
+  ];
+}
+
+export function applyStarSigningRoulette(gloryState, choiceIndex = 0) {
+  const choices = gloryState.starSigningChoices?.length ? gloryState.starSigningChoices : generateStarSigningChoices(gloryState);
+  const choice = choices[Math.max(0, Math.min(choiceIndex, choices.length - 1))] || choices[0];
+  const squad = (gloryState.squad || []).map(p => ({ ...p }));
+  const worst = [...squad].sort((a, b) => (a.overall || 0) - (b.overall || 0))[0];
+  const filtered = worst ? squad.filter(p => p.id !== worst.id && p.name !== worst.name) : squad;
+  const signedPlayer = { ...choice.player, starSigningType: choice.archetype };
+
+  return {
+    ...gloryState,
+    squad: [...filtered, signedPlayer],
+    starSigningAvailable: false,
+    starSigningUsedSeason: gloryState.season || 1,
+    starSigningLast: { choice: choice.label, player: signedPlayer, replaced: worst || null },
+    starSigningChoices: []
+  };
+}
+
 /**
  * Generate rival teams for a division
  * Note: In Glory Mode, rivals use real teams from the game's Firestore data.
@@ -169,12 +214,14 @@ export const GLORY_CARDS = [
     id: 'ghost_sheikh',
     tier: 'S',
     name: 'Jeque Fantasma',
-    description: 'Un inversor misterioso multiplica tu presupuesto x10 durante 2 temporadas.',
+    description: 'Presupuesto x10 durante 2 temporadas. Al desaparecer, deja deuda, bajón de moral y bloqueo premium temporal.',
     icon: 'Landmark',
     color: '#ffd740',
     apply: (state) => {
       state.budget *= 10;
       state.sheikhSeasons = 2;
+      state.sheikhDebtWarning = true;
+      state.sheikhAuditRisk = (state.sheikhAuditRisk || 0) + 1;
       return state;
     },
   },
@@ -182,11 +229,12 @@ export const GLORY_CARDS = [
     id: 'future_scout',
     tier: 'S',
     name: 'Ojeador del Futuro',
-    description: 'Ves el potencial real de todos los jugadores del mercado. Sin sorpresas.',
+    description: 'Ves el potencial real y marcas 1 Diamante Oculto por temporada: +5 potencial y salario más fácil.',
     icon: 'Eye',
     color: '#448aff',
     apply: (state) => {
       state.perks.futureScout = true;
+      state.futureScoutMarks = state.futureScoutMarks ?? 1;
       return state;
     },
   },
@@ -218,7 +266,7 @@ export const GLORY_CARDS = [
     id: 'penalty_master',
     tier: 'S',
     name: 'Penalti Maestro',
-    description: 'Tu equipo nunca falla un penalti. Y provoca el doble de penaltis.',
+    description: 'Nunca fallas penaltis. En eliminatorias empatadas ganas la tanda y en partidos igualados tienes +10% gol.',
     icon: 'Target',
     color: '#ff5252',
     apply: (state) => {
@@ -232,7 +280,7 @@ export const GLORY_CARDS = [
     id: 'dr_miracles',
     tier: 'A',
     name: 'Dr. Milagros',
-    description: 'Las lesiones nunca duran más de 1 semana. Tu cuerpo médico es de otro planeta.',
+    description: 'Lesiones máximo 1 semana. Si curas una lesión grave, el jugador vuelve con +1 OVR y riesgo de recaída.',
     icon: 'HeartPulse',
     color: '#ef5350',
     apply: (state) => {
@@ -281,12 +329,16 @@ export const GLORY_CARDS = [
     id: 'the_wall',
     tier: 'A',
     name: 'La Muralla',
-    description: 'Tu portero titular recibe +15 OVR permanente. Imbatible.',
+    description: 'Portero +15 OVR. Si ya era élite, gana rasgo Imbatible y más porterías a cero en casa.',
     icon: 'ShieldHalf',
     color: '#42a5f5',
     apply: (state) => {
       const gk = state.squad.find(p => p.position === 'GK');
       if (gk) {
+        if ((gk.overall || 0) >= 80) {
+          gk.traits = [...new Set([...(gk.traits || []), 'Imbatible'])];
+          state.perks.imbatibleKeeper = true;
+        }
         gk.overall = Math.min(99, gk.overall + 15);
         gk.goalkeeping = Math.min(99, gk.goalkeeping + 15);
       }
@@ -328,11 +380,12 @@ export const GLORY_CARDS = [
     id: 'fame',
     tier: 'B',
     name: 'Fama',
-    description: 'Atraes más sponsors. Ingresos por publicidad x2 permanente.',
+    description: 'Sponsors x2 y más jugadores aceptan venir, pero los nuevos contratos piden +10% salario.',
     icon: 'Megaphone',
     color: '#ffa726',
     apply: (state) => {
       state.perks.fame = true;
+      state.perks.fameWagePressure = true;
       state.sponsorMultiplier = (state.sponsorMultiplier || 1) * 2;
       return state;
     },
@@ -401,7 +454,7 @@ export const GLORY_CARDS = [
     id: 'double_or_nothing',
     tier: 'A',
     name: 'Doble o Nada',
-    description: 'Antes de cada partido puedes apostar parte de tu presupuesto. Si ganas, lo duplicas. Si pierdes, lo pierdes.',
+    description: 'Antes de cada partido apuestas 10%, 25% o 50%. Ganas: duplicas. Empatas: recuperas mitad. Pierdes: pierdes todo.',
     icon: 'Coins',
     color: '#ff9800',
     apply: (state) => {
@@ -438,7 +491,7 @@ export const GLORY_CARDS = [
     id: 'secret_clause',
     tier: 'B',
     name: 'Cláusula Secreta',
-    description: 'Tus fichajes vienen con +2 años de contrato y -30% salario. Permanente.',
+    description: 'Fichajes: +2 años y -30% salario, pero con cláusula baja que puede tentar a clubes grandes.',
     icon: 'FileText',
     color: '#26a69a',
     apply: (state) => {
@@ -474,15 +527,81 @@ export const GLORY_CARDS = [
     id: 'star_signing',
     tier: 'A',
     name: 'Fichaje Estrella',
-    description: 'Al ascender, ficharás un jugador aleatorio de cualquier equipo del juego. 1 año de contrato, cobra como tu mejor pagado. Sale el peor de tu plantilla.',
+    description: 'Ruleta de ascenso: elige entre veterano estrella, joven promesa o jugador mediático caro. Sale el peor de tu plantilla.',
     icon: 'UserPlus',
     color: '#ffab00',
     apply: (state) => {
       state.perks.starSigning = true;
+      state.starSigningAvailable = true;
+      state.starSigningChoices = generateStarSigningChoices(state);
       return state;
     },
   },
 ];
+
+
+export const GLORY_COMBOS = [
+  {
+    id: 'fortaleza_maldita',
+    name: 'Fortaleza Maldita',
+    cards: ['cursed_stadium', 'the_wall', 'gladiator', 'dr_miracles'],
+    min: 3,
+    bonus: 'Fortín: en casa +10 moral extra, menos lesiones y más porterías a cero.',
+    color: '#78909c'
+  },
+  {
+    id: 'cantera_infinita',
+    name: 'Cantera Infinita',
+    cards: ['golden_academy', 'local_legend', 'fountain_of_youth', 'future_scout'],
+    min: 3,
+    bonus: 'Cada 3 temporadas aparece El Niño Maravilla, canterano 75-85 OVR con potencial 95.',
+    color: '#69f0ae'
+  },
+  {
+    id: 'club_casino',
+    name: 'Club Casino',
+    cards: ['ghost_sheikh', 'double_or_nothing', 'fame', 'goal_bonus'],
+    min: 3,
+    bonus: 'Las apuestas ganadas encadenadas inflan la burbuja; perder dos seguidas activa investigación fiscal.',
+    color: '#ff9800'
+  },
+  {
+    id: 'ataque_suicida',
+    name: 'Ataque Suicida',
+    cards: ['max_speed', 'tactical_wildcard', 'goal_bonus', 'penalty_master'],
+    min: 3,
+    bonus: 'Goleadas más rentables: +25.000€ extra por gol si juegas ofensivo, pero defensa expuesta.',
+    color: '#ffee58'
+  },
+  {
+    id: 'mercado_criminal',
+    name: 'Mercado Criminal',
+    cards: ['black_market', 'legal_theft', 'forced_swap', 'secret_clause'],
+    min: 3,
+    bonus: 'Red de contactos: operaciones especiales más baratas, con riesgo de sanción si abusas.',
+    color: '#b71c1c'
+  },
+  {
+    id: 'proyecto_frankenstein',
+    name: 'Proyecto Frankenstein',
+    cards: ['perfect_clone', 'fountain_of_youth', 'future_scout', 'wild_card'],
+    min: 3,
+    bonus: 'Los clones jóvenes pueden salir con personalidad mutante: más potencial o más salario.',
+    color: '#e040fb'
+  }
+];
+
+export function getActiveGloryCombos(pickedCards = []) {
+  const picked = new Set(pickedCards || []);
+  return GLORY_COMBOS.map(combo => {
+    const owned = combo.cards.filter(id => picked.has(id));
+    return { ...combo, owned, count: owned.length, active: owned.length >= combo.min };
+  });
+}
+
+export function hasGloryCombo(gloryState, comboId) {
+  return getActiveGloryCombos(gloryState?.pickedCards || []).some(c => c.id === comboId && c.active);
+}
 
 /**
  * Get 3 random cards for selection, avoiding already-picked ones
@@ -665,15 +784,26 @@ export function processSeasonEnd(gloryState, leaguePosition) {
     trophies.push({ type: 'league', season: gloryState.season, division: gloryState.division });
   }
 
-  // Sheikh bonus expiry
+  // Sheikh bonus expiry: huge short-term boost, painful long-term consequences
   if (sheikhSeasons > 0) {
     sheikhSeasons--;
-    if (sheikhSeasons === 0) budget = Math.round(budget / 5);
+    if (sheikhSeasons === 0) {
+      budget = Math.round(budget / 5);
+      squad = squad.map(p => ({ ...p, morale: Math.max(35, (p.morale || 70) - 12) }));
+    }
   }
 
   // Golden academy perk
   if (gloryState.perks?.goldenAcademy) {
     squad = [...squad, generatePlayer({ ovrMin: 65, ovrMax: 75, ageMin: 17, ageMax: 19 })];
+  }
+
+  // Cantera Infinita combo: every 3 seasons, generate El Niño Maravilla
+  let wonderkids = [...(gloryState.wonderkids || [])];
+  if (hasGloryCombo(gloryState, 'cantera_infinita') && ((gloryState.season || 1) % 3 === 0)) {
+    const wonderkid = { ...generatePlayer({ ovrMin: 75, ovrMax: 85, ageMin: 16, ageMax: 18 }), potential: 95, nickname: 'El Niño Maravilla' };
+    squad = [...squad, wonderkid];
+    wonderkids = [...wonderkids, { ...wonderkid, season: (gloryState.season || 1) + 1 }];
   }
 
   // Wild card perk
@@ -696,6 +826,8 @@ export function processSeasonEnd(gloryState, leaguePosition) {
     }
   }
 
+  const starSigningAvailable = !!(gloryState.perks?.starSigning && promoted);
+
   return {
     ...gloryState,
     history,
@@ -707,6 +839,9 @@ export function processSeasonEnd(gloryState, leaguePosition) {
     sheikhSeasons,
     squad,
     wildCardPlayers,
+    wonderkids,
+    starSigningAvailable,
+    starSigningChoices: starSigningAvailable ? generateStarSigningChoices({ ...gloryState, squad, divisionTier }) : (gloryState.starSigningChoices || []),
     replaysLeft: gloryState.perks?.secondChance ? 1 : 0,
     pointsPenalty: 0,
     season: (gloryState.season || 1) + 1,

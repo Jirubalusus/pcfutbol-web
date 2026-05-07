@@ -225,6 +225,123 @@
       transform: translateY(0);
     }
   }
+
+  &__roulette-wrap {
+    position: relative;
+    display: inline-flex;
+
+    &::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      z-index: 200;
+      min-width: 190px;
+      max-width: 250px;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      background: rgba(8, 11, 18, 0.96);
+      border: 1px solid rgba(255, 215, 64, 0.28);
+      box-shadow: 0 12px 34px rgba(0,0,0,0.38);
+      color: rgba(255,255,255,0.88);
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.25;
+      white-space: normal;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+    }
+
+    &:hover::after,
+    &:focus-within::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__roulette-btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.34rem;
+    padding: 0.42rem 0.62rem;
+    min-height: 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 193, 7, 0.38);
+    background: radial-gradient(circle at 20% 0%, rgba(255, 215, 64, 0.22), rgba(255, 152, 0, 0.08));
+    color: #ffd740;
+    font-size: 0.78rem;
+    font-weight: 850;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(255, 152, 0, 0.12);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      z-index: -2;
+      border-radius: inherit;
+      background: conic-gradient(
+        from 0deg,
+        rgba(255, 215, 64, 0.08),
+        rgba(255, 255, 255, 0.92),
+        rgba(255, 152, 0, 0.96),
+        rgba(255, 215, 64, 0.08) 32%,
+        rgba(255, 215, 64, 0.08)
+      );
+      opacity: 0;
+      animation: officeRouletteLight 1.65s linear infinite;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      z-index: -1;
+      border-radius: 8px;
+      background: radial-gradient(circle at 22% 0%, rgba(255, 215, 64, 0.28), rgba(255, 152, 0, 0.12)), rgba(16, 12, 5, 0.92);
+    }
+
+    &:not(:disabled):not(.office__roulette-btn--locked) {
+      border-color: rgba(255, 236, 130, 0.64);
+      color: #fff4b0;
+      text-shadow: 0 0 10px rgba(255, 215, 64, 0.42);
+      box-shadow: 0 0 0 1px rgba(255, 215, 64, 0.12), 0 7px 22px rgba(255, 152, 0, 0.26);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      border-color: rgba(255, 215, 64, 0.68);
+      box-shadow: 0 8px 24px rgba(255, 152, 0, 0.28);
+    }
+
+    &:disabled,
+    &--locked {
+      cursor: not-allowed;
+      opacity: 0.76;
+      filter: grayscale(0.2);
+
+      &::before {
+        animation: none;
+        opacity: 0;
+      }
+    }
+  }
+
+  &__roulette-icon { font-size: 0.96rem; }
+
+  @keyframes officeRouletteLight {
+    to { transform: rotate(360deg); }
+  }
   
   &__sim-dropdown {
     position: relative;
@@ -1213,4 +1330,109 @@
     font-weight: 600;
     color: #10b981;
   }
+}
+
+.office-roulette-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(3, 6, 12, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.office-roulette-modal__panel {
+  position: relative;
+  width: min(520px, 100%);
+  border-radius: 22px;
+  padding: 26px;
+  background: linear-gradient(160deg, rgba(20, 24, 34, 0.98), rgba(10, 12, 18, 0.98));
+  border: 1px solid rgba(255, 215, 64, 0.22);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+.office-roulette-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.72);
+  cursor: pointer;
+}
+
+.office-roulette-modal__icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  font-size: 34px;
+  background: radial-gradient(circle, rgba(255,215,64,0.28), rgba(255,152,0,0.08));
+  border: 1px solid rgba(255,215,64,0.28);
+}
+
+.office-roulette-modal__panel h3 {
+  margin: 0 0 8px;
+  color: #ffd740;
+  font-size: 1.45rem;
+}
+
+.office-roulette-modal__panel p {
+  margin: 0 0 18px;
+  color: rgba(255,255,255,0.64);
+  line-height: 1.45;
+}
+
+.office-roulette-modal__options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.office-roulette-modal__option {
+  min-height: 108px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.office-roulette-modal__option strong { font-size: 1.3rem; }
+.office-roulette-modal__option span { font-size: .78rem; font-weight: 800; }
+.office-roulette-modal__option small { color: rgba(255,255,255,0.58); font-weight: 700; }
+.office-roulette-modal__option--10 { border-color: rgba(0, 200, 130, .45); background: rgba(0, 200, 130, .12); }
+.office-roulette-modal__option--25 { border-color: rgba(255, 215, 64, .48); background: rgba(255, 215, 64, .12); }
+.office-roulette-modal__option--50 { border-color: rgba(239, 83, 80, .48); background: rgba(239, 83, 80, .12); }
+.office-roulette-modal__option--100 { border-color: rgba(244, 67, 54, .7); background: linear-gradient(145deg, rgba(244, 67, 54, .22), rgba(255, 152, 0, .12)); }
+.office-roulette-modal__option:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.24); }
+
+.office-roulette-modal__rules {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.58);
+  font-size: .82rem;
+}
+
+@media (max-width: 560px) {
+  .office-roulette-modal { padding: 12px; }
+  .office-roulette-modal__panel { padding: 22px 14px; }
+  .office-roulette-modal__options { grid-template-columns: 1fr; }
+  .office-roulette-modal__option { min-height: 82px; }
 }

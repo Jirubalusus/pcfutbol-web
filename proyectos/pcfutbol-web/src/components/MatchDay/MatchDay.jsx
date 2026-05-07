@@ -14,6 +14,7 @@ import {
   getBoliviaTeams, getVenezuelaTeams
 } from '../../data/teamsFirestore';
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
+import { hasGloryCombo } from '../../game/gloryEngine';
 import { ensureFullLineup } from '../../context/GameContext';
 
 // Helper: get short name from team object (fallback to first 3 chars of name)
@@ -66,10 +67,12 @@ export default function MatchDay({ onComplete, onBack }) {
   const [currentMinute, setCurrentMinute] = useState(0);
   const eventsRef = useRef(null);
   const matchIntervalRef = useRef(null);
-  // Double or Nothing perk
-  const [betAmount, setBetAmount] = useState(0);
-  const [showBetUI, setShowBetUI] = useState(false);
-  const canBet = state.gloryData?.perks?.doubleOrNothing && state.money > 0;
+  // Double or Nothing perk: apuesta cerrada antes del partido desde Oficina/Mejoras
+  const pendingRouletteBet = state.gloryData?.matchRouletteBet?.status === 'pending'
+    ? state.gloryData.matchRouletteBet
+    : null;
+  const [betAmount, setBetAmount] = useState(pendingRouletteBet?.amount || 0);
+  const canBet = !!pendingRouletteBet && betAmount > 0;
   // Achilles Heel perk
   const [achillesTarget, setAchillesTarget] = useState(null);
   const [showAchillesUI, setShowAchillesUI] = useState(false);
@@ -77,6 +80,10 @@ export default function MatchDay({ onComplete, onBack }) {
   
   // Helper: normalizar player de eventos (V2 devuelve {name}, V1 devuelve string)
   const getPlayerName = (p) => typeof p === 'object' ? (p?.name || t('common.unknown')) : (p || t('common.unknown'));
+  
+  useEffect(() => {
+    if (pendingRouletteBet?.amount) setBetAmount(pendingRouletteBet.amount);
+  }, [pendingRouletteBet?.amount]);
   
   // Auto-scroll events list to bottom when new events appear
   useEffect(() => {
@@ -731,7 +738,35 @@ export default function MatchDay({ onComplete, onBack }) {
     // Glory perk: Doble o Nada — bet resolution
     if (betAmount > 0) {
       const won = playerScore > opponentScore;
-      dispatch({ type: 'UPDATE_MONEY', payload: won ? betAmount : -betAmount });
+      const drawn = playerScore === opponentScore;
+      const moneyDelta = won ? betAmount : drawn ? -Math.round(betAmount / 2) : -betAmount;
+      const prevCasino = state.gloryData?.casino || { winStreak: 0, lossStreak: 0, bubbleActive: false, investigation: false };
+      const casinoCombo = hasGloryCombo(state.gloryData, 'club_casino');
+      const nextCasino = {
+        ...prevCasino,
+        winStreak: won ? (prevCasino.winStreak || 0) + 1 : 0,
+        lossStreak: (!won && !drawn) ? (prevCasino.lossStreak || 0) + 1 : 0,
+      };
+      if (casinoCombo && nextCasino.winStreak >= 5) nextCasino.bubbleActive = true;
+      if (casinoCombo && nextCasino.lossStreak >= 2) nextCasino.investigation = true;
+      dispatch({ type: 'UPDATE_MONEY', payload: nextCasino.bubbleActive && won ? moneyDelta * 2 : moneyDelta });
+      dispatch({
+        type: 'UPDATE_GLORY_STATE',
+        payload: {
+          gloryData: {
+            ...state.gloryData,
+            casino: nextCasino,
+            lastBet: { amount: betAmount, result: won ? 'win' : drawn ? 'draw' : 'loss', delta: moneyDelta },
+            matchRouletteBet: {
+              ...(pendingRouletteBet || {}),
+              status: 'resolved',
+              result: won ? 'win' : drawn ? 'draw' : 'loss',
+              delta: nextCasino.bubbleActive && won ? moneyDelta * 2 : moneyDelta,
+              resolvedWeek: state.currentWeek || 1
+            }
+          }
+        }
+      });
     }
 
     // Process injuries for player's team
@@ -1328,27 +1363,18 @@ export default function MatchDay({ onComplete, onBack }) {
       )}
       {phase === 'preview' && canBet && (
         <div className="match-day__bet-section">
-          {!showBetUI ? (
-            <button className="match-day__bet-toggle" onClick={() => setShowBetUI(true)}>
-              Doble o Nada — Apostar
-            </button>
-          ) : (
-            <div className="match-day__bet-ui">
-              <span className="match-day__bet-label">Apuesta: €{betAmount.toLocaleString()}</span>
-              <input
-                type="range"
-                min={0}
-                max={Math.min(state.money, 500000)}
-                step={10000}
-                value={betAmount}
-                onChange={e => setBetAmount(Number(e.target.value))}
-                className="match-day__bet-slider"
-              />
-              <span className="match-day__bet-hint">
-                {betAmount > 0 ? `Ganas: +€${betAmount.toLocaleString()} / Pierdes: -€${betAmount.toLocaleString()}` : 'Sin apuesta'}
-              </span>
+          <div className="match-day__bet-ui">
+            <span className="match-day__bet-label">🎰 Apuesta de ruleta preparada</span>
+            <div className="match-day__roulette-banner">
+              <strong>{pendingRouletteBet.label || 'Casilla elegida'} · {pendingRouletteBet.percent}%</strong>
+              <span>€{betAmount.toLocaleString('es-ES')} bloqueados para este partido. El botón de la oficina volverá a activarse al terminar.</span>
             </div>
-          )}
+            <span className="match-day__bet-hint">
+              Ganas: +€{betAmount.toLocaleString('es-ES')} · Empatas: -€{Math.round(betAmount / 2).toLocaleString('es-ES')} · Pierdes: -€{betAmount.toLocaleString('es-ES')}
+            </span>
+            {state.gloryData?.casino?.bubbleActive && <span className="match-day__bet-hint match-day__bet-hint--hot">Burbuja financiera activa: las apuestas ganadas pagan x2.</span>}
+            {state.gloryData?.casino?.investigation && <span className="match-day__bet-hint match-day__bet-hint--danger">Investigación fiscal: cuidado con perder otra vez.</span>}
+          </div>
         </div>
       )}
       {phase === 'preview' && (() => {

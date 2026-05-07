@@ -389,8 +389,237 @@ select:focus-visible {
   }
 }
 
-// ── Reduce motion for accessibility ────────────────────────
+// ── Professional App-Game Motion Layer ─────────────────────
 
+@keyframes appScreenEnterPro {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.992);
+    filter: saturate(0.92) blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: saturate(1) blur(0);
+  }
+}
+
+@keyframes proSurfaceSheen {
+  from { transform: translateX(-135%) skewX(-18deg); }
+  to { transform: translateX(135%) skewX(-18deg); }
+}
+
+@keyframes proAmbientGlow {
+  0%, 100% { opacity: 0.46; transform: translate3d(-2%, 0, 0) scale(1); }
+  50% { opacity: 0.82; transform: translate3d(2%, -1%, 0) scale(1.045); }
+}
+
+@keyframes proBorderTrace {
+  to { transform: rotate(360deg); }
+}
+
+.app-screen-transition {
+  min-height: 100dvh;
+  animation: appScreenEnterPro 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center top;
+}
+
+// Subtle living background on full-screen shells: feels like a sports-game menu,
+// but stays non-interactive and below all content.
+.main-menu,
+.team-selection,
+.office,
+.glory-menu,
+.glory-setup,
+.worldcup,
+.ranked-lobby,
+.pro-manager-setup,
+.contrarreloj-setup {
+  &::after {
+    content: '';
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(var(--color-accent-rgb), 0.055), transparent 25%),
+      radial-gradient(circle at 85% 10%, rgba(var(--color-gold-rgb), 0.045), transparent 24%),
+      radial-gradient(circle at 76% 84%, rgba(72, 123, 255, 0.04), transparent 28%);
+    mix-blend-mode: screen;
+    animation: proAmbientGlow 12s ease-in-out infinite;
+  }
+}
+
+// Premium surface behavior across the app: lift, glow and a small light sweep.
+:where(
+  .office__card,
+  .office__panel-card,
+  .office__next-match,
+  .office__objective-preview,
+  .office__recent-messages,
+  .main-menu__mode-card,
+  .glory-perks__card,
+  .glory-card,
+  .glory-menu__card,
+  .team-selection__card,
+  .league-card,
+  .country-card,
+  .fixture-card,
+  .match-card,
+  .transfer-card,
+  .offer-card,
+  .renewal-card,
+  .objective-card,
+  .settings-section,
+  .settings-card,
+  .finance-box,
+  .stat-card,
+  .notification-item,
+  .message-item,
+  .save-slots__slot,
+  .ranked-results-card
+) {
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow, border-color;
+  transform: translateZ(0);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.11) 42%, rgba(255,255,255,0.03) 55%, transparent 70%);
+    transform: translateX(-135%) skewX(-18deg);
+    opacity: 0;
+  }
+
+  > * { position: relative; z-index: 1; }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(
+    .office__card,
+    .office__panel-card,
+    .office__next-match,
+    .office__objective-preview,
+    .office__recent-messages,
+    .main-menu__mode-card,
+    .glory-perks__card,
+    .glory-card,
+    .glory-menu__card,
+    .team-selection__card,
+    .league-card,
+    .country-card,
+    .fixture-card,
+    .match-card,
+    .transfer-card,
+    .offer-card,
+    .renewal-card,
+    .objective-card,
+    .settings-section,
+    .settings-card,
+    .finance-box,
+    .stat-card,
+    .notification-item,
+    .message-item,
+    .save-slots__slot,
+    .ranked-results-card
+  ):hover {
+    transform: translateY(-3px) translateZ(0);
+    border-color: rgba(var(--color-accent-rgb), 0.22) !important;
+    box-shadow: 0 18px 46px rgba(0,0,0,0.34), 0 0 28px rgba(var(--color-accent-rgb), 0.075) !important;
+
+    &::before {
+      opacity: 1;
+      animation: proSurfaceSheen 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+  }
+}
+
+// Game-like button feedback: no cheap bouncing, just tactile depth and light.
+button:not(:disabled),
+.btn:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  will-change: transform, box-shadow, filter;
+
+  &:active {
+    transform: translateY(1px) scale(0.985);
+    filter: brightness(0.96);
+  }
+}
+
+:where(.office__advance-btn, .office__sim-btn, .mobile-nav__sim-btn, .btn-primary, .btn-success, .main-menu__primary, .glory-modal__action) {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.22) 45%, transparent 62%);
+    transform: translateX(-130%) skewX(-16deg);
+    opacity: 0;
+  }
+
+  &:hover:not(:disabled)::before {
+    opacity: 1;
+    animation: proSurfaceSheen 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+// Active navigation gets a moving highlight instead of a static block.
+.sidebar__item.active,
+.mobile-nav__tab.active {
+  &::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.28), transparent 58%);
+    opacity: 0.55;
+    animation: proAmbientGlow 4.5s ease-in-out infinite;
+  }
+}
+
+.sidebar__item.active::after {
+  inset: 2px 8px 2px 0;
+}
+
+.mobile-nav__tab.active::after {
+  inset: 2px;
+}
+
+// Professional modal entrance: overlay blur + panel pop that feels native.
+:where(.modal-overlay, .glory-modal-overlay, .office-roulette-modal, .transfer-modal-overlay, .player-modal-overlay, .sim-modal-overlay, .nickname-overlay) {
+  animation: overlayIn 0.22s ease-out both;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:where(.glory-modal, .office-roulette-modal__panel, .modal-content, .pcf-modal, .sim-modal, .nickname-modal, .transfer-modal) {
+  animation: modalIn 0.28s cubic-bezier(0.2, 1.2, 0.22, 1) both;
+  transform-origin: center;
+}
+
+// Lists and grids appear with cadence, useful on squads, transfers and perk screens.
+:where(.glory-perks__grid, .main-menu__modes, .transfers-v2__grid, .office__grid-left, .office__grid-right, .team-selection__grid) > * {
+  animation: staggerFadeIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @for $i from 1 through 24 {
+    &:nth-child(#{$i}) { animation-delay: #{$i * 0.028}s; }
+  }
+}
+
+// Loading indicators get a refined traced ring.
+:where(.main-menu__loading-spinner, .page-loader__spinner, .loading-indicator__spinner) {
+  position: relative;
+  filter: drop-shadow(0 0 16px rgba(var(--color-accent-rgb), 0.22));
+}
+
+// Reduced motion for accessibility keeps polish without constant movement.
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

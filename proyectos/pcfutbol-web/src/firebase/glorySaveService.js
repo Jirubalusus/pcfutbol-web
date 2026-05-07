@@ -18,12 +18,59 @@ const _toArr = (v) => {
   return v;
 };
 
+const _isNumericKeyObject = (v) => {
+  if (!v || typeof v !== 'object' || Array.isArray(v)) return false;
+  const keys = Object.keys(v);
+  return keys.length > 0 && keys.every(k => /^\d+$/.test(k));
+};
+
+function sanitizeForFirestore(value, insideArray = false) {
+  if (value === undefined) return null;
+  if (value === null || typeof value !== 'object') return value;
+
+  if (Array.isArray(value)) {
+    const sanitized = value.map(item => sanitizeForFirestore(item, true));
+    if (!insideArray) return sanitized;
+
+    // Firestore rejects arrays nested inside arrays. When an array appears as an
+    // item of another array, store it as an index-keyed map and restore it on load.
+    return sanitized.reduce((acc, item, index) => {
+      acc[index] = item;
+      return acc;
+    }, {});
+  }
+
+  return Object.entries(value).reduce((acc, [key, item]) => {
+    if (item !== undefined) acc[key] = sanitizeForFirestore(item, false);
+    return acc;
+  }, {});
+}
+
+function restoreFromFirestore(value) {
+  if (Array.isArray(value)) return value.map(restoreFromFirestore);
+  if (!value || typeof value !== 'object') return value;
+
+  if (_isNumericKeyObject(value)) {
+    return Object.keys(value)
+      .sort((a, b) => +a - +b)
+      .map(key => restoreFromFirestore(value[key]));
+  }
+
+  return Object.entries(value).reduce((acc, [key, item]) => {
+    acc[key] = restoreFromFirestore(item);
+    return acc;
+  }, {});
+}
+
+export const sanitizeGlorySaveForFirestore = sanitizeForFirestore;
+export const restoreGlorySaveFromFirestore = restoreFromFirestore;
+
 export async function getGlorySave(userId) {
   const docRef = doc(db, COLLECTION, getSaveId(userId));
   const snap = await getDoc(docRef);
   if (!snap.exists()) return null;
 
-  const data = snap.data();
+  const data = restoreFromFirestore(snap.data());
 
   const arrayFields = [
     'leagueTable', 'fixtures', 'results', 'messages', 'transferOffers',
@@ -65,11 +112,11 @@ export async function hasActiveGlory(userId) {
 
 export async function saveGlory(userId, gameState) {
   const saveId = getSaveId(userId);
-  const saveData = JSON.parse(JSON.stringify({
+  const saveData = sanitizeForFirestore(JSON.parse(JSON.stringify({
     ...gameState,
     userId,
     _type: 'glory'
-  }));
+  })));
 
   delete saveData.loaded;
   delete saveData.leagueTeams;

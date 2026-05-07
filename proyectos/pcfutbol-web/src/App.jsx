@@ -156,7 +156,9 @@ function GameRouter() {
     <>
       {showNotifications && <NotificationCenter />}
       <Suspense fallback={<PageLoader label={getLoadingLabel()} />}>
-        {renderScreen()}
+        <div key={state.currentScreen} className="app-screen-transition">
+          {renderScreen()}
+        </div>
       </Suspense>
     </>
   );

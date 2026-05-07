@@ -116,6 +116,7 @@ export default function Office() {
   const [showMatch, setShowMatch] = useState(false);
   const [simulating, setSimulating] = useState(false);
   const [showInjuredWarning, setShowInjuredWarning] = useState(false);
+  const [showRouletteBetModal, setShowRouletteBetModal] = useState(false);
   const [injuredInLineup, setInjuredInLineup] = useState([]);
   const [showSeasonEnd, setShowSeasonEnd] = useState(false);
   const [showGlorySeasonEnd, setShowGlorySeasonEnd] = useState(false);
@@ -429,6 +430,35 @@ export default function Office() {
       standingAfter: afterStanding,
       weekRange: extras.weekRange || null,
     };
+  };
+
+
+  const hasRouletteBet = !!state.gloryData?.perks?.doubleOrNothing;
+  const pendingRouletteBet = state.gloryData?.matchRouletteBet?.status === 'pending'
+    ? state.gloryData.matchRouletteBet
+    : null;
+  const rouletteBetLocked = !!pendingRouletteBet;
+
+  const placeRouletteBet = (percent) => {
+    const amount = Math.max(0, Math.floor((state.money || 0) * percent / 100));
+    if (!amount || rouletteBetLocked) return;
+    dispatch({
+      type: 'UPDATE_GLORY_STATE',
+      payload: {
+        gloryData: {
+          ...(state.gloryData || {}),
+          matchRouletteBet: {
+            status: 'pending',
+            percent,
+            amount,
+            placedSeason: state.season || state.gloryData?.season || 1,
+            placedWeek: state.currentWeek || 1,
+            label: percent === 10 ? 'Verde segura' : percent === 25 ? 'Dorada valiente' : percent === 50 ? 'Roja fuerte' : 'All-in'
+          }
+        }
+      }
+    });
+    setShowRouletteBetModal(false);
   };
 
   const handleAdvanceWeek = () => {
@@ -1595,6 +1625,23 @@ export default function Office() {
           
           {!isRanked && (
           <div className="office__actions">
+            {hasRouletteBet && (
+              <div
+                className={`office__roulette-wrap${rouletteBetLocked ? ' office__roulette-wrap--locked' : ''}`}
+                data-tooltip={rouletteBetLocked ? `Hasta el próximo partido · ${pendingRouletteBet.percent}% · €${pendingRouletteBet.amount.toLocaleString('es-ES')}` : 'Abrir ruleta de apuesta'}
+              >
+                <button
+                  className={`office__roulette-btn${rouletteBetLocked ? ' office__roulette-btn--locked' : ''}`}
+                  onClick={() => !rouletteBetLocked && setShowRouletteBetModal(true)}
+                  disabled={simulating || rouletteBetLocked}
+                  aria-label={rouletteBetLocked ? 'Ruleta bloqueada hasta el próximo partido' : 'Abrir ruleta de apuesta'}
+                >
+                  <span className="office__roulette-icon">🎰</span>
+                  <span>{rouletteBetLocked ? 'Ruleta' : 'Apostar'}</span>
+                </button>
+              </div>
+            )}
+
             <div className="office__money">
               <span className="label">{t('office.budget')}</span>
               <span className="value">{formatMoney(state.money)}</span>
@@ -1636,6 +1683,33 @@ export default function Office() {
             </div>
           )}
         </header>
+
+        {showRouletteBetModal && (
+          <div className="office-roulette-modal" onClick={() => setShowRouletteBetModal(false)}>
+            <div className="office-roulette-modal__panel" onClick={e => e.stopPropagation()}>
+              <button className="office-roulette-modal__close" onClick={() => setShowRouletteBetModal(false)}>✕</button>
+              <div className="office-roulette-modal__icon">🎰</div>
+              <h3>Ruleta de apuesta</h3>
+              <p>Haz la apuesta antes del partido. Cuando confirmes, el botón queda bloqueado hasta que se juegue el próximo partido.</p>
+              <div className="office-roulette-modal__options">
+                {[10, 25, 50, 100].map(percent => {
+                  const amount = Math.max(0, Math.floor((state.money || 0) * percent / 100));
+                  const label = percent === 10 ? 'Verde segura' : percent === 25 ? 'Dorada valiente' : percent === 50 ? 'Roja fuerte' : 'All-in';
+                  return (
+                    <button key={percent} className={`office-roulette-modal__option office-roulette-modal__option--${percent}`} onClick={() => placeRouletteBet(percent)} disabled={!amount}>
+                      <strong>{percent}%</strong>
+                      <span>{label}</span>
+                      <small>€{amount.toLocaleString('es-ES')}</small>
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="office-roulette-modal__rules">
+                Victoria: cobras lo apostado · Empate: pierdes la mitad · Derrota: pierdes todo.
+              </div>
+            </div>
+          </div>
+        )}
         
         <div className="office__content">
           {renderContent()}

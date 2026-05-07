@@ -2499,12 +2499,122 @@
   }
 
   &__card-chevron {
-    transition: transform 0.2s ease;
-    color: rgba(255,255,255,0.4);
-
     flex-shrink: 0;
-    &--open { transform: rotate(90deg); }
+    color: rgba(255,255,255,0.3);
+    align-self: center;
   }
+
+  &__section--combos {
+    padding: 12px;
+    border: 1px solid rgba(255,215,64,0.08);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,215,64,0.045), rgba(255,255,255,0.018));
+  }
+
+  &__combo-summary {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #ffd740;
+    font-weight: 700;
+  }
+
+.glory-combos {
+  display: grid;
+  gap: 8px;
+
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &__item {
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.035);
+
+    &--active {
+      border-color: color-mix(in srgb, var(--combo-color) 60%, transparent);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--combo-color) 13%, transparent), rgba(255,255,255,0.035));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 22px rgba(0,0,0,0.18);
+    }
+
+    p {
+      margin: 6px 0 0;
+      font-size: 11px;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.35;
+    }
+  }
+
+  &__topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__name {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 800;
+  }
+
+  &__counter {
+    font-size: 11px;
+    color: var(--combo-color);
+    font-weight: 800;
+  }
+
+  &__bar {
+    height: 5px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 8px;
+    background: rgba(255,255,255,0.08);
+
+    span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--combo-color), #fff3b0);
+    }
+  }
+}
+
+.glory-roulette {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+
+  @media (min-width: 620px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  &__option {
+    text-align: left;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.09);
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+    cursor: pointer;
+    transition: border-color .18s, background .18s, transform .18s;
+
+    &:active { transform: scale(0.98); }
+
+    &--selected {
+      border-color: rgba(255,171,0,0.58);
+      background: linear-gradient(180deg, rgba(255,171,0,0.17), rgba(255,255,255,0.045));
+    }
+  }
+
+  &__label, &__player, &__meta, &__risk { display: block; }
+  &__label { font-size: 11px; color: #ffd740; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+  &__player { margin-top: 6px; font-size: 14px; font-weight: 800; }
+  &__meta { margin-top: 3px; font-size: 12px; color: rgba(255,255,255,0.64); }
+  &__risk { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.35; }
+}
+
 
   &__dropdown {
     background: rgba(0,0,0,0.3);
@@ -3838,4 +3948,64 @@
     padding: 1rem 0;
     p { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
   }
+}
+
+
+.glory-modal--bet-roulette {
+  max-width: 520px;
+}
+
+.glory-bet-roulette__icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  font-size: 32px;
+  background: radial-gradient(circle, rgba(255,215,64,0.28), rgba(255,152,0,0.08));
+  border: 1px solid rgba(255,215,64,0.28);
+}
+
+.glory-bet-roulette__options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.glory-bet-roulette__option {
+  min-height: 100px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.glory-bet-roulette__option strong { font-size: 1.25rem; color: #fff3c4; }
+.glory-bet-roulette__option span { font-size: 0.74rem; font-weight: 800; }
+.glory-bet-roulette__option small { color: rgba(255,255,255,0.58); font-weight: 700; }
+.glory-bet-roulette__option--10 { border-color: rgba(0, 200, 130, .45); background: rgba(0, 200, 130, .12); }
+.glory-bet-roulette__option--25 { border-color: rgba(255, 215, 64, .48); background: rgba(255, 215, 64, .12); }
+.glory-bet-roulette__option--50 { border-color: rgba(239, 83, 80, .48); background: rgba(239, 83, 80, .12); }
+.glory-bet-roulette__option--100 { border-color: rgba(244, 67, 54, .7); background: linear-gradient(145deg, rgba(244, 67, 54, .22), rgba(255, 152, 0, .12)); }
+
+.glory-bet-roulette__rules {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 560px) {
+  .glory-bet-roulette__options { grid-template-columns: 1fr; }
+  .glory-bet-roulette__option { min-height: 78px; }
 }
