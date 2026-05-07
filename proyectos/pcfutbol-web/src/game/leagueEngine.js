@@ -252,15 +252,34 @@ export function getNextFixture(fixtures, teamId, currentWeek) {
   );
 }
 
-export function simulateWeekMatches(fixtures, table, week, playerTeamId, allTeams) {
+export function simulateWeekMatches(fixtures, table, week, playerTeamId, allTeams = []) {
   let updatedTable = [...table];
+  const teamsById = new Map((allTeams || []).filter(t => t?.id).map(t => [t.id, t]));
+  const resolveTeam = (teamId) => {
+    const knownTeam = teamsById.get(teamId);
+    if (knownTeam) return knownTeam;
+
+    // Career modes can produce dynamic league compositions after promotion/relegation
+    // (especially Glory forced promotions) where a team is present in table/fixtures
+    // but missing from the static allTeams catalogue passed by the UI. Do not leave
+    // those fixtures unplayed: simulate with a conservative stub built from the table.
+    const tableEntry = updatedTable.find(t => t.teamId === teamId) || table.find(t => t.teamId === teamId);
+    if (!tableEntry) return null;
+    return {
+      id: teamId,
+      name: tableEntry.teamName || teamId,
+      shortName: tableEntry.shortName || tableEntry.teamName || teamId,
+      reputation: tableEntry.reputation || 50,
+      players: []
+    };
+  };
   
   const updatedFixtures = fixtures.map(fixture => {
     if (fixture.played || fixture.week !== week) return fixture;
     if (fixture.homeTeam === playerTeamId || fixture.awayTeam === playerTeamId) return fixture;
     
-    const homeTeam = allTeams.find(t => t.id === fixture.homeTeam);
-    const awayTeam = allTeams.find(t => t.id === fixture.awayTeam);
+    const homeTeam = resolveTeam(fixture.homeTeam);
+    const awayTeam = resolveTeam(fixture.awayTeam);
     
     if (!homeTeam || !awayTeam) return fixture;
     
