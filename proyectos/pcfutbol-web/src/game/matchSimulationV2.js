@@ -489,7 +489,7 @@ function calculateResultProbabilities(homeStrength, awayStrength, totalDiff, isD
   
   // Evitar negativos
   homeWinBase = Math.max(0.05, homeWinBase);
-  awayWinBase = Math.max(0, awayWinBase);
+  awayWinBase = Math.max(0.02, awayWinBase);
   
   // Derby: más impredecible
   if (isDerby) {
@@ -498,15 +498,33 @@ function calculateResultProbabilities(homeStrength, awayStrength, totalDiff, isD
     drawBase *= 1.1;
   }
   
-  // Normalizar
-  const total = homeWinBase + drawBase + awayWinBase;
-  
-  // Mínimos más bajos para mismatches grandes (antes 5% min, ahora 2%)
-  const minAway = Math.abs(totalDiff) > 25 ? 0.02 : 0.05;
+  const rawTotal = homeWinBase + drawBase + awayWinBase;
+  let homeWinProb = homeWinBase / rawTotal;
+  let drawProb = drawBase / rawTotal;
+  let awayWinProb = awayWinBase / rawTotal;
+
+  // Mínimos futboleros después de normalizar: un grande domina, pero nunca es invencible.
+  // Ejemplo: un Madrid local contra un Alavés aún deja una vía realista a empate/sorpresa.
+  const absDiff = Math.abs(totalDiff);
+  const minUnderdog = absDiff > 28 ? 0.06 : absDiff > 20 ? 0.08 : absDiff > 12 ? 0.11 : 0.16;
+  const minDraw = absDiff > 28 ? 0.12 : absDiff > 18 ? 0.15 : 0.18;
+  const maxFavorite = absDiff > 28 ? 0.82 : absDiff > 18 ? 0.76 : 0.70;
+
+  if (totalDiff >= 0) {
+    awayWinProb = Math.max(awayWinProb, minUnderdog);
+    drawProb = Math.max(drawProb, minDraw);
+    homeWinProb = Math.min(homeWinProb, maxFavorite);
+  } else {
+    homeWinProb = Math.max(homeWinProb, minUnderdog);
+    drawProb = Math.max(drawProb, minDraw);
+    awayWinProb = Math.min(awayWinProb, maxFavorite);
+  }
+
+  const total = homeWinProb + drawProb + awayWinProb;
   return {
-    homeWinProb: Math.max(0.05, Math.min(0.92, homeWinBase / total)),
-    drawProb: Math.max(0.08, Math.min(0.40, drawBase / total)),
-    awayWinProb: Math.max(minAway, Math.min(0.70, awayWinBase / total))
+    homeWinProb: homeWinProb / total,
+    drawProb: drawProb / total,
+    awayWinProb: awayWinProb / total
   };
 }
 

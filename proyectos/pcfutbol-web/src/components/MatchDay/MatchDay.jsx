@@ -1071,68 +1071,142 @@ export default function MatchDay({ onComplete, onBack }) {
           </div>
         )}
         
-        {phase === 'playing' && matchResult && (
-          <div className="match-day__playing">
-            <div className="match-day__minute">
-              {formatMatchMinute(currentMinute)}'
-            </div>
-            
-            <div className="match-day__score">
-              {(() => {
-                // Calcular marcador según los eventos mostrados hasta ahora
-                const visibleEvents = matchResult.events.slice(0, eventIndex);
-                const homeGoals = visibleEvents.filter(e => e.type === 'goal' && e.team === 'home').length;
-                const awayGoals = visibleEvents.filter(e => e.type === 'goal' && e.team === 'away').length;
-                
-                return (
-                  <>
-                    <div className="team">
-                      <span className="name">{isHome ? (state.team?.name || getShort(state.team)) : (opponent?.name || getShort(opponent))}</span>
-                      <span className="score">{homeGoals}</span>
-                    </div>
-                    <span className="separator">-</span>
-                    <div className="team">
-                      <span className="score">{awayGoals}</span>
-                      <span className="name">{!isHome ? (state.team?.name || getShort(state.team)) : (opponent?.name || getShort(opponent))}</span>
-                    </div>
-                  </>
-                );
-              })()}
-            </div>
-            
-            <div className="match-day__live-stats">
-              <div className="stat">
-                <div className="bar home" style={{ width: `${matchResult.stats.possession.home}%` }}></div>
-                <span className="label">{t('matchday.possession')}</span>
-                <div className="bar away" style={{ width: `${matchResult.stats.possession.away}%` }}></div>
+        {phase === 'playing' && matchResult && (() => {
+          const visibleEvents = matchResult.events.slice(0, eventIndex);
+          const homeName = isHome ? (state.team?.name || getShort(state.team)) : (opponent?.name || getShort(opponent));
+          const awayName = !isHome ? (state.team?.name || getShort(state.team)) : (opponent?.name || getShort(opponent));
+          const homeShort = isHome ? getShort(state.team) : getShort(opponent);
+          const awayShort = !isHome ? getShort(state.team) : getShort(opponent);
+          const homeGoals = visibleEvents.filter(e => e.type === 'goal' && e.team === 'home').length;
+          const awayGoals = visibleEvents.filter(e => e.type === 'goal' && e.team === 'away').length;
+          const homeSubs = visibleEvents.filter(e => e.type === 'substitution' && e.team === 'home').length;
+          const awaySubs = visibleEvents.filter(e => e.type === 'substitution' && e.team === 'away').length;
+          const lastEvent = visibleEvents[visibleEvents.length - 1];
+          const possessionHome = matchResult.stats?.possession?.home ?? 50;
+          const possessionAway = matchResult.stats?.possession?.away ?? 50;
+          const shotPressureHome = (matchResult.stats?.shotsOnTarget?.home ?? 0) + homeGoals * 3;
+          const shotPressureAway = (matchResult.stats?.shotsOnTarget?.away ?? 0) + awayGoals * 3;
+          const momentumHome = Math.max(20, Math.min(80, Math.round((possessionHome * 0.55) + ((shotPressureHome + 1) / Math.max(2, shotPressureHome + shotPressureAway + 2)) * 45)));
+          const momentumAway = 100 - momentumHome;
+          const matchStage = currentMinute >= 90 ? 'Finalizando' : currentMinute >= 46 ? 'Segunda parte' : currentMinute >= 45 ? 'Descanso' : 'Primera parte';
+          const liveRows = [
+            { label: 'Posesión', home: `${possessionHome}%`, away: `${possessionAway}%`, homePct: possessionHome, awayPct: possessionAway },
+            { label: 'Tiros', home: matchResult.stats?.shots?.home ?? 0, away: matchResult.stats?.shots?.away ?? 0 },
+            { label: 'A puerta', home: matchResult.stats?.shotsOnTarget?.home ?? 0, away: matchResult.stats?.shotsOnTarget?.away ?? 0 },
+            { label: 'Cambios', home: `${homeSubs}/5`, away: `${awaySubs}/5`, homePct: homeSubs * 20, awayPct: awaySubs * 20 }
+          ];
+
+          return (
+          <div className="match-day__playing match-day__playing--tv">
+            <div className="live-scoreboard-tv">
+              <div className="live-scoreboard-tv__meta">
+                <span className="live-pill">EN DIRECTO</span>
+                <span>{matchStage}</span>
+                <span className="live-minute">{formatMatchMinute(currentMinute)}'</span>
+              </div>
+              <div className="live-scoreboard-tv__main">
+                <div className="live-team live-team--home">
+                  <TeamCrest teamId={isHome ? state.teamId : (opponent?.id || opponentId)} size={34} />
+                  <span>{homeName}</span>
+                </div>
+                <div className="live-scorebox">
+                  <strong>{homeGoals}</strong>
+                  <span>–</span>
+                  <strong>{awayGoals}</strong>
+                </div>
+                <div className="live-team live-team--away">
+                  <span>{awayName}</span>
+                  <TeamCrest teamId={!isHome ? state.teamId : (opponent?.id || opponentId)} size={34} />
+                </div>
               </div>
             </div>
-            
-            <div className="match-day__events" ref={eventsRef}>
-              {matchResult.events.slice(0, eventIndex).map((event, idx) => {
-                const eventTeamName = event.team === 'home'
-                  ? (isHome ? getShort(state.team) : getShort(opponent))
-                  : (isHome ? getShort(opponent) : getShort(state.team));
-                return (
-                <div key={idx} className={`match-day__event ${event.team} ${event.type} ${event.goalType || ''} ${event.type === 'goal' ? (event.team === (isHome ? 'home' : 'away') ? 'player-goal' : 'opponent-goal') : ''}`}>
-                  <span className="minute">{formatMatchMinute(event.minute)}'</span>
-                  <span className="icon">
-                    {event.type === 'goal' && <Circle size={16} className="icon-goal" />}
-                    {event.type === 'yellow_card' && <span className="icon-card icon-card--yellow" />}
-                    {event.type === 'red_card' && <span className="icon-card icon-card--red" />}
-                    {event.type === 'injury' && <HeartPulse size={16} className="icon-injury" />}
-                    {event.type === 'substitution' && <span className="icon-substitution">⇄</span>}
-                  </span>
-                  <span className="player">
-                    {renderEventPlayer(event)}
-                  </span>
-                  <span className="event-team">{eventTeamName}</span>
+
+            <div className="live-main-grid">
+              <div className="live-left-panel">
+                <div className={`live-feature-card ${lastEvent?.type || 'waiting'}`}>
+                  <span className="feature-kicker">Último evento</span>
+                  {lastEvent ? (
+                    <>
+                      <div className="feature-minute">{formatMatchMinute(lastEvent.minute)}'</div>
+                      <div className="feature-title">
+                        {lastEvent.type === 'goal' && '⚽ Gol'}
+                        {lastEvent.type === 'yellow_card' && '🟨 Tarjeta amarilla'}
+                        {lastEvent.type === 'red_card' && '🟥 Tarjeta roja'}
+                        {lastEvent.type === 'injury' && '🩺 Lesión'}
+                        {lastEvent.type === 'substitution' && '🔄 Cambio'}
+                        <span>{lastEvent.team === 'home' ? homeShort : awayShort}</span>
+                      </div>
+                      <div className="feature-player">{renderEventPlayer(lastEvent)}</div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="feature-title">El partido está arrancando</div>
+                      <div className="feature-player muted">Esperando la primera acción importante.</div>
+                    </>
+                  )}
                 </div>
-                );
-              })}
+
+                <div className="live-momentum-card">
+                  <div className="mini-title">Dominio / momentum</div>
+                  <div className="momentum-bar">
+                    <div className="momentum-home" style={{ width: `${momentumHome}%` }} />
+                    <div className="momentum-away" style={{ width: `${momentumAway}%` }} />
+                  </div>
+                  <div className="momentum-labels">
+                    <span>{homeShort} {momentumHome}%</span>
+                    <span>{awayShort} {momentumAway}%</span>
+                  </div>
+                </div>
+
+                <div className="match-day__live-stats live-stats-grid">
+                  {liveRows.map((row) => {
+                    const numericHome = typeof row.home === 'number' ? row.home : parseInt(row.home, 10) || 0;
+                    const numericAway = typeof row.away === 'number' ? row.away : parseInt(row.away, 10) || 0;
+                    const total = numericHome + numericAway || 1;
+                    const homePct = row.homePct ?? Math.round((numericHome / total) * 100);
+                    const awayPct = row.awayPct ?? Math.round((numericAway / total) * 100);
+                    return (
+                      <div className="live-stat-row" key={row.label}>
+                        <span className="live-stat-value home">{row.home}</span>
+                        <div className="live-stat-center">
+                          <span>{row.label}</span>
+                          <div className="live-stat-bars">
+                            <i className="home" style={{ width: `${homePct}%` }} />
+                            <i className="away" style={{ width: `${awayPct}%` }} />
+                          </div>
+                        </div>
+                        <span className="live-stat-value away">{row.away}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="match-day__events live-timeline" ref={eventsRef}>
+                {visibleEvents.map((event, idx) => {
+                  const eventTeamName = event.team === 'home' ? homeShort : awayShort;
+                  return (
+                  <div key={idx} className={`match-day__event ${event.team} ${event.type} ${event.goalType || ''} ${event.type === 'goal' ? (event.team === (isHome ? 'home' : 'away') ? 'player-goal' : 'opponent-goal') : ''}`}>
+                    <span className="minute">{formatMatchMinute(event.minute)}'</span>
+                    <span className="icon">
+                      {event.type === 'goal' && <Circle size={16} className="icon-goal" />}
+                      {event.type === 'yellow_card' && <span className="icon-card icon-card--yellow" />}
+                      {event.type === 'red_card' && <span className="icon-card icon-card--red" />}
+                      {event.type === 'injury' && <HeartPulse size={16} className="icon-injury" />}
+                      {event.type === 'substitution' && <span className="icon-substitution">⇄</span>}
+                    </span>
+                    <span className="player">
+                      {renderEventPlayer(event)}
+                    </span>
+                    <span className="event-team">{eventTeamName}</span>
+                  </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        )}
+          );
+        })()}
         
         {phase === 'result' && matchResult && (() => {
           const homeName = isHome ? state.team.name : opponent.name;
@@ -1163,9 +1237,11 @@ export default function MatchDay({ onComplete, onBack }) {
             { label: t('matchday.possession'), home: stats.possession.home, away: stats.possession.away, suffix: '%', isPercent: true },
             { label: t('matchday.shots'), home: stats.shots.home, away: stats.shots.away },
             { label: t('matchday.shotsOnTarget'), home: stats.shotsOnTarget.home, away: stats.shotsOnTarget.away },
+            { label: 'xG', home: stats.xg?.home ?? 0, away: stats.xg?.away ?? 0 },
+            { label: 'Paradas', home: stats.saves?.home ?? 0, away: stats.saves?.away ?? 0 },
             { label: t('matchday.corners'), home: stats.corners.home, away: stats.corners.away },
             { label: t('matchday.fouls'), home: stats.fouls?.home ?? 0, away: stats.fouls?.away ?? 0 },
-            { label: 'Cambios', home: stats.substitutions?.home ?? homeSubs.length, away: stats.substitutions?.away ?? awaySubs.length },
+            { label: 'Cambios', home: `${stats.substitutions?.home ?? homeSubs.length}/5`, away: `${stats.substitutions?.away ?? awaySubs.length}/5`, rawHome: stats.substitutions?.home ?? homeSubs.length, rawAway: stats.substitutions?.away ?? awaySubs.length },
             { label: t('matchday.yellowCard'), home: stats.yellowCards.home, away: stats.yellowCards.away, icon: <Square size={14} className="card-yellow" /> },
             ...(stats.redCards.home > 0 || stats.redCards.away > 0 
               ? [{ label: t('matchday.redCard'), home: stats.redCards.home, away: stats.redCards.away, icon: <Square size={14} className="card-red" /> }] 
@@ -1314,11 +1390,15 @@ export default function MatchDay({ onComplete, onBack }) {
             <div className="result-stats">
               <h4>{t('matchday.statistics')}</h4>
               {statRows.map((row, idx) => {
-                const total = (row.home + row.away) || 1;
-                const homePct = row.isPercent ? row.home : (row.home / total) * 100;
-                const awayPct = row.isPercent ? row.away : (row.away / total) * 100;
-                const homeWins = row.home > row.away;
-                const awayWins = row.away > row.home;
+                const homeRaw = row.rawHome ?? row.home;
+                const awayRaw = row.rawAway ?? row.away;
+                const numericHome = typeof homeRaw === 'number' ? homeRaw : parseFloat(homeRaw) || 0;
+                const numericAway = typeof awayRaw === 'number' ? awayRaw : parseFloat(awayRaw) || 0;
+                const total = (numericHome + numericAway) || 1;
+                const homePct = row.isPercent ? numericHome : (numericHome / total) * 100;
+                const awayPct = row.isPercent ? numericAway : (numericAway / total) * 100;
+                const homeWins = numericHome > numericAway;
+                const awayWins = numericAway > numericHome;
                 
                 return (
                   <div key={idx} className="stat-row">

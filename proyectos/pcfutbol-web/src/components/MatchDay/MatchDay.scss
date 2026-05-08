@@ -482,6 +482,306 @@
     align-items: center;
   }
 
+  &__playing--tv {
+    width: min(100%, 980px);
+    gap: 0.9rem;
+  }
+
+  &__content:has(.match-day__playing--tv) {
+    max-width: 980px;
+  }
+
+  .live-scoreboard-tv {
+    width: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(7, 26, 18, 0.96), rgba(12, 20, 36, 0.94)),
+      radial-gradient(circle at 50% 0%, rgba(0, 245, 160, 0.18), transparent 55%);
+    border: 1px solid rgba(0, 245, 160, 0.18);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .live-scoreboard-tv__meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  .live-pill {
+    padding: 0.22rem 0.48rem;
+    border-radius: 999px;
+    color: #00170d;
+    background: #00f5a0;
+    box-shadow: 0 0 18px rgba(0, 245, 160, 0.48);
+  }
+
+  .live-minute {
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .live-scoreboard-tv__main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 1.15rem 1.15rem;
+  }
+
+  .live-team {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    font-weight: 900;
+    font-size: clamp(0.8rem, 2.3vw, 1.18rem);
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .live-team--home { justify-content: flex-end; text-align: right; }
+  .live-team--away { justify-content: flex-start; text-align: left; }
+
+  .live-scorebox {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    gap: 0.42rem;
+    min-width: 126px;
+    padding: 0.36rem 0.75rem;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    font-family: 'Outfit', sans-serif;
+
+    strong {
+      font-size: clamp(2.15rem, 6vw, 3.4rem);
+      line-height: 0.98;
+      font-weight: 950;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+    }
+
+    span {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 1.55rem;
+      font-weight: 900;
+    }
+  }
+
+  .live-main-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1.15fr);
+    gap: 0.9rem;
+    align-items: stretch;
+
+    @media (max-width: 820px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .live-left-panel {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .live-feature-card,
+  .live-momentum-card,
+  .live-stats-grid {
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .live-feature-card {
+    min-height: 142px;
+    padding: 1rem;
+    text-align: left;
+    background: linear-gradient(135deg, rgba(0, 245, 160, 0.08), rgba(10, 132, 255, 0.08));
+
+    &.goal {
+      background: linear-gradient(135deg, rgba(48, 209, 88, 0.18), rgba(255, 204, 0, 0.08));
+      border-color: rgba(48, 209, 88, 0.22);
+    }
+
+    &.substitution {
+      background: linear-gradient(135deg, rgba(10, 132, 255, 0.18), rgba(48, 209, 88, 0.08));
+      border-color: rgba(10, 132, 255, 0.25);
+    }
+
+    &.red_card {
+      background: linear-gradient(135deg, rgba(255, 69, 58, 0.18), rgba(255, 255, 255, 0.04));
+      border-color: rgba(255, 69, 58, 0.25);
+    }
+  }
+
+  .feature-kicker,
+  .mini-title {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--color-text-tertiary);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .feature-minute {
+    color: #00f5a0;
+    font-size: 0.88rem;
+    font-weight: 900;
+    margin-bottom: 0.15rem;
+  }
+
+  .feature-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 1.12rem;
+    font-weight: 950;
+    color: #fff;
+
+    span {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.42rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.76);
+    }
+  }
+
+  .feature-player {
+    margin-top: 0.58rem;
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    line-height: 1.45;
+
+    &.muted { color: var(--color-text-secondary); }
+  }
+
+  .live-momentum-card {
+    padding: 0.85rem;
+  }
+
+  .momentum-bar {
+    display: flex;
+    height: 12px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .momentum-home,
+  .momentum-away {
+    transition: width 0.35s ease;
+  }
+
+  .momentum-home { background: linear-gradient(90deg, #00f5a0, #00d4ff); }
+  .momentum-away { background: linear-gradient(90deg, #ff9f0a, #ff453a); }
+
+  .momentum-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.45rem;
+    color: var(--color-text-secondary);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .live-stats-grid {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  .live-stat-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .live-stat-value {
+    font-size: 0.78rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+
+    &.home { color: #00d4ff; text-align: right; }
+    &.away { color: #ff9f0a; text-align: left; }
+  }
+
+  .live-stat-center {
+    display: grid;
+    gap: 0.22rem;
+
+    span {
+      color: var(--color-text-tertiary);
+      font-size: 0.66rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  .live-stat-bars {
+    display: flex;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+
+    i { display: block; min-width: 3%; transition: width 0.25s ease; }
+    .home { background: #00d4ff; }
+    .away { background: #ff9f0a; }
+  }
+
+  .live-timeline {
+    max-width: none;
+    max-height: 470px;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 520px) {
+    .live-scoreboard-tv__main {
+      gap: 0.45rem;
+      padding: 0.75rem;
+    }
+
+    .live-scorebox {
+      min-width: 92px;
+      padding: 0.28rem 0.5rem;
+    }
+
+    .live-team {
+      gap: 0.35rem;
+      font-size: 0.75rem;
+    }
+
+    .live-scoreboard-tv__meta {
+      gap: 0.45rem;
+      font-size: 0.62rem;
+    }
+  }
+
   &__minute {
     font-size: 3rem;
     font-family: 'Outfit', sans-serif;
