@@ -1772,7 +1772,7 @@ export default function Office() {
       <main className="office__main">
         <header className="office__header">
           <div className="office__team-info">
-            <h1><TeamCrest teamId={state.teamId} size={24} /> {state.team?.name}</h1>
+            <h1><TeamCrest teamId={state.teamId} size={36} /> {state.team?.name}</h1>
             <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>
           

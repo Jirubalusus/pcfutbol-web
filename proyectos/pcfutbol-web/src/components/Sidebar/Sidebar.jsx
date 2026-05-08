@@ -92,7 +92,7 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
         
         <div className="sidebar__team">
           <div className="sidebar__team-badge">
-            <TeamCrest teamId={state.teamId} size={48} />
+            <TeamCrest teamId={state.teamId} size={64} />
           </div>
           <span className="sidebar__team-name">{state.team?.name}</span>
         </div>
