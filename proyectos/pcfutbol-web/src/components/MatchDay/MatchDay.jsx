@@ -973,30 +973,13 @@ export default function MatchDay({ onComplete, onBack }) {
     }
   };
 
-  const getSubstitutionIntentLabel = (intent) => {
-    switch (intent) {
-      case 'desperateAttack': return 'Apuesta ofensiva total';
-      case 'attack': return 'Cambio ofensivo';
-      case 'controlledAttack': return 'Busca la victoria';
-      case 'closeGame': return 'Cierra el partido';
-      case 'defend': return 'Refuerzo defensivo';
-      case 'protectPoint': return 'Protege el empate';
-      case 'refresh': return 'Refresca el equipo';
-      default: return 'Ajuste táctico';
-    }
-  };
-
   const renderEventPlayer = (event) => {
     if (event.type === 'substitution') {
       return (
-        <>
-          <strong>{getSubstitutionIntentLabel(event.tacticalIntent)}</strong>
-          <span className="substitution-flow">
-            <span className="sub-in"><span className="sub-label">Sustituto</span> ↑ {getPlayerName(event.playerIn)}</span>
-            <span className="sub-out"><span className="sub-label">Sustituido</span> ↓ {getPlayerName(event.playerOut)}</span>
-          </span>
-          {event.reason && <span className="substitution-reason"> {event.reason}</span>}
-        </>
+        <span className="substitution-flow football-style">
+          <span className="sub-out"><span className="sub-label">Sale</span> ↓ {getPlayerName(event.playerOut)}</span>
+          <span className="sub-in"><span className="sub-label">Entra</span> ↑ {getPlayerName(event.playerIn)}</span>
+        </span>
       );
     }
 
@@ -1183,7 +1166,6 @@ export default function MatchDay({ onComplete, onBack }) {
             { label: t('matchday.corners'), home: stats.corners.home, away: stats.corners.away },
             { label: t('matchday.fouls'), home: stats.fouls?.home ?? 0, away: stats.fouls?.away ?? 0 },
             { label: 'Cambios', home: stats.substitutions?.home ?? homeSubs.length, away: stats.substitutions?.away ?? awaySubs.length },
-            { label: 'Ajustes tácticos', home: stats.tacticalAdjustments?.home ?? homeSubs.length, away: stats.tacticalAdjustments?.away ?? awaySubs.length },
             { label: t('matchday.yellowCard'), home: stats.yellowCards.home, away: stats.yellowCards.away, icon: <Square size={14} className="card-yellow" /> },
             ...(stats.redCards.home > 0 || stats.redCards.away > 0 
               ? [{ label: t('matchday.redCard'), home: stats.redCards.home, away: stats.redCards.away, icon: <Square size={14} className="card-red" /> }] 
@@ -1292,7 +1274,7 @@ export default function MatchDay({ onComplete, onBack }) {
                 {homeSubs.slice(0, 5).map((s, i) => (
                   <div key={`hs${i}`} className="event-item substitution">
                     <span className="event-icon">🔄</span>
-                    <span className="event-text">{formatMatchMinute(s.minute)}' Sustituto: {getPlayerName(s.playerIn)} · Sustituido: {getPlayerName(s.playerOut)}</span>
+                    <span className="event-text">{formatMatchMinute(s.minute)}' Sale: {getPlayerName(s.playerOut)} · Entra: {getPlayerName(s.playerIn)}</span>
                   </div>
                 ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.home ?? 0}</div>
@@ -1321,7 +1303,7 @@ export default function MatchDay({ onComplete, onBack }) {
                 {awaySubs.slice(0, 5).map((s, i) => (
                   <div key={`as${i}`} className="event-item substitution">
                     <span className="event-icon">🔄</span>
-                    <span className="event-text">{formatMatchMinute(s.minute)}' Sustituto: {getPlayerName(s.playerIn)} · Sustituido: {getPlayerName(s.playerOut)}</span>
+                    <span className="event-text">{formatMatchMinute(s.minute)}' Sale: {getPlayerName(s.playerOut)} · Entra: {getPlayerName(s.playerIn)}</span>
                   </div>
                 ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.away ?? 0}</div>
