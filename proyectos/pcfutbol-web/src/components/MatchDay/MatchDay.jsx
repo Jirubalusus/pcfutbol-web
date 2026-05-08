@@ -1138,7 +1138,7 @@ export default function MatchDay({ onComplete, onBack }) {
                     {event.type === 'yellow_card' && <span className="icon-card icon-card--yellow" />}
                     {event.type === 'red_card' && <span className="icon-card icon-card--red" />}
                     {event.type === 'injury' && <HeartPulse size={16} className="icon-injury" />}
-                    {event.type === 'substitution' && <span className="icon-substitution">↕</span>}
+                    {event.type === 'substitution' && <span className="icon-substitution">⇄</span>}
                   </span>
                   <span className="player">
                     {renderEventPlayer(event)}
