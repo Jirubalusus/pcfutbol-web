@@ -972,6 +972,43 @@ export default function MatchDay({ onComplete, onBack }) {
       default: return '';
     }
   };
+
+  const getSubstitutionIntentLabel = (intent) => {
+    switch (intent) {
+      case 'desperateAttack': return 'Apuesta ofensiva total';
+      case 'attack': return 'Cambio ofensivo';
+      case 'controlledAttack': return 'Busca la victoria';
+      case 'closeGame': return 'Cierra el partido';
+      case 'defend': return 'Refuerzo defensivo';
+      case 'protectPoint': return 'Protege el empate';
+      case 'refresh': return 'Refresca el equipo';
+      default: return 'Ajuste táctico';
+    }
+  };
+
+  const renderEventPlayer = (event) => {
+    if (event.type === 'substitution') {
+      return (
+        <>
+          <strong>{getSubstitutionIntentLabel(event.tacticalIntent)}</strong>
+          <span className="substitution-flow">
+            <span className="sub-in">↑ {getPlayerName(event.playerIn)}</span>
+            <span className="sub-out">↓ {getPlayerName(event.playerOut)}</span>
+          </span>
+          {event.reason && <span className="substitution-reason"> {event.reason}</span>}
+        </>
+      );
+    }
+
+    return (
+      <>
+        {typeof event.player === 'object' ? event.player?.name || t('common.unknown') : event.player}
+        {event.assist && <span className="assist"> (asist. {typeof event.assist === 'object' ? event.assist?.name : event.assist})</span>}
+        {event.type === 'goal' && event.goalType && <span className="goal-type"> {getGoalTypeText(event.goalType)}</span>}
+        {event.type === 'injury' && <span className="injury-info"> ({event.weeksOut} sem.)</span>}
+      </>
+    );
+  };
   
   const getFormText = (form) => {
     if (!form || form.length === 0) return t('matchday.noFormData');
@@ -1101,12 +1138,10 @@ export default function MatchDay({ onComplete, onBack }) {
                     {event.type === 'yellow_card' && <span className="icon-card icon-card--yellow" />}
                     {event.type === 'red_card' && <span className="icon-card icon-card--red" />}
                     {event.type === 'injury' && <HeartPulse size={16} className="icon-injury" />}
+                    {event.type === 'substitution' && <span className="icon-substitution">↕</span>}
                   </span>
                   <span className="player">
-                    {typeof event.player === 'object' ? event.player?.name || t('common.unknown') : event.player}
-                    {event.assist && <span className="assist"> (asist. {typeof event.assist === 'object' ? event.assist?.name : event.assist})</span>}
-                    {event.type === 'goal' && event.goalType && <span className="goal-type"> {getGoalTypeText(event.goalType)}</span>}
-                    {event.type === 'injury' && <span className="injury-info"> ({event.weeksOut} sem.)</span>}
+                    {renderEventPlayer(event)}
                   </span>
                   <span className="event-team">{eventTeamName}</span>
                 </div>
@@ -1136,6 +1171,8 @@ export default function MatchDay({ onComplete, onBack }) {
           const awayYellows = matchResult.events.filter(e => e.type === 'yellow_card' && e.team === 'away');
           const homeReds = matchResult.events.filter(e => e.type === 'red_card' && e.team === 'home');
           const awayReds = matchResult.events.filter(e => e.type === 'red_card' && e.team === 'away');
+          const homeSubs = matchResult.events.filter(e => e.type === 'substitution' && e.team === 'home');
+          const awaySubs = matchResult.events.filter(e => e.type === 'substitution' && e.team === 'away');
           
           // Stats
           const stats = matchResult.stats;
@@ -1145,6 +1182,8 @@ export default function MatchDay({ onComplete, onBack }) {
             { label: t('matchday.shotsOnTarget'), home: stats.shotsOnTarget.home, away: stats.shotsOnTarget.away },
             { label: t('matchday.corners'), home: stats.corners.home, away: stats.corners.away },
             { label: t('matchday.fouls'), home: stats.fouls?.home ?? 0, away: stats.fouls?.away ?? 0 },
+            { label: 'Cambios', home: stats.substitutions?.home ?? homeSubs.length, away: stats.substitutions?.away ?? awaySubs.length },
+            { label: 'Ajustes tácticos', home: stats.tacticalAdjustments?.home ?? homeSubs.length, away: stats.tacticalAdjustments?.away ?? awaySubs.length },
             { label: t('matchday.yellowCard'), home: stats.yellowCards.home, away: stats.yellowCards.away, icon: <Square size={14} className="card-yellow" /> },
             ...(stats.redCards.home > 0 || stats.redCards.away > 0 
               ? [{ label: t('matchday.redCard'), home: stats.redCards.home, away: stats.redCards.away, icon: <Square size={14} className="card-red" /> }] 
@@ -1250,6 +1289,12 @@ export default function MatchDay({ onComplete, onBack }) {
                     <span className="event-text">{eName(c)} {formatMatchMinute(c.minute)}'</span>
                   </div>
                 ))}
+                {homeSubs.slice(0, 5).map((s, i) => (
+                  <div key={`hs${i}`} className="event-item substitution">
+                    <span className="event-icon">🔄</span>
+                    <span className="event-text">{formatMatchMinute(s.minute)}' {getPlayerName(s.playerIn)} por {getPlayerName(s.playerOut)}</span>
+                  </div>
+                ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.home ?? 0}</div>
               </div>
               <div className="events-column away">
@@ -1271,6 +1316,12 @@ export default function MatchDay({ onComplete, onBack }) {
                   <div key={`ar${i}`} className="event-item red">
                     <span className="event-icon">🟥</span>
                     <span className="event-text">{eName(c)} {formatMatchMinute(c.minute)}'</span>
+                  </div>
+                ))}
+                {awaySubs.slice(0, 5).map((s, i) => (
+                  <div key={`as${i}`} className="event-item substitution">
+                    <span className="event-icon">🔄</span>
+                    <span className="event-text">{formatMatchMinute(s.minute)}' {getPlayerName(s.playerIn)} por {getPlayerName(s.playerOut)}</span>
                   </div>
                 ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.away ?? 0}</div>

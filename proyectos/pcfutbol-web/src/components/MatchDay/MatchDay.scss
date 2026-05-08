@@ -641,6 +641,10 @@
     &.yellow_card { background: rgba(255, 214, 10, 0.1); }
     &.red_card { background: rgba(255, 69, 58, 0.15); }
     &.injury { background: rgba(255, 159, 10, 0.1); }
+    &.substitution {
+      background: linear-gradient(90deg, rgba(10, 132, 255, 0.14), rgba(48, 209, 88, 0.08));
+      border-left: 3px solid rgba(10, 132, 255, 0.75);
+    }
 
     .minute {
       font-weight: 700;
@@ -679,6 +683,14 @@
       .icon-injury {
         color: #ff9f0a;
       }
+
+      .icon-substitution {
+        color: #0a84ff;
+        font-size: 1rem;
+        font-weight: 900;
+        line-height: 1;
+        text-shadow: 0 0 6px rgba(10, 132, 255, 0.35);
+      }
     }
 
     .player {
@@ -686,9 +698,33 @@
       text-align: left;
     }
 
-    .assist, .goal-type, .injury-info {
+    .assist, .goal-type, .injury-info, .substitution-reason {
       font-size: 0.8rem;
       color: var(--color-text-secondary);
+    }
+
+    .substitution-flow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-left: 0.45rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .sub-in {
+      color: var(--color-success);
+    }
+
+    .sub-out {
+      color: var(--color-text-secondary);
+    }
+
+    .substitution-reason {
+      display: block;
+      margin-top: 0.15rem;
+      font-style: italic;
     }
 
     .event-team {
@@ -1288,6 +1324,7 @@
           .event-type { font-size: 0.65rem; color: #8899aa; }
 
           &.goal .event-text { color: #4ade80; font-weight: 600; }
+          &.substitution .event-text { color: #60a5fa; font-weight: 600; }
         }
 
         .fouls-total {
