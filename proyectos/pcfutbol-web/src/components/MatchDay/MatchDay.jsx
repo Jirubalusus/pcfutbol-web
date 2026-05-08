@@ -992,8 +992,8 @@ export default function MatchDay({ onComplete, onBack }) {
         <>
           <strong>{getSubstitutionIntentLabel(event.tacticalIntent)}</strong>
           <span className="substitution-flow">
-            <span className="sub-in">↑ {getPlayerName(event.playerIn)}</span>
-            <span className="sub-out">↓ {getPlayerName(event.playerOut)}</span>
+            <span className="sub-in"><span className="sub-label">Sustituto</span> ↑ {getPlayerName(event.playerIn)}</span>
+            <span className="sub-out"><span className="sub-label">Sustituido</span> ↓ {getPlayerName(event.playerOut)}</span>
           </span>
           {event.reason && <span className="substitution-reason"> {event.reason}</span>}
         </>
@@ -1292,7 +1292,7 @@ export default function MatchDay({ onComplete, onBack }) {
                 {homeSubs.slice(0, 5).map((s, i) => (
                   <div key={`hs${i}`} className="event-item substitution">
                     <span className="event-icon">🔄</span>
-                    <span className="event-text">{formatMatchMinute(s.minute)}' {getPlayerName(s.playerIn)} por {getPlayerName(s.playerOut)}</span>
+                    <span className="event-text">{formatMatchMinute(s.minute)}' Sustituto: {getPlayerName(s.playerIn)} · Sustituido: {getPlayerName(s.playerOut)}</span>
                   </div>
                 ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.home ?? 0}</div>
@@ -1321,7 +1321,7 @@ export default function MatchDay({ onComplete, onBack }) {
                 {awaySubs.slice(0, 5).map((s, i) => (
                   <div key={`as${i}`} className="event-item substitution">
                     <span className="event-icon">🔄</span>
-                    <span className="event-text">{formatMatchMinute(s.minute)}' {getPlayerName(s.playerIn)} por {getPlayerName(s.playerOut)}</span>
+                    <span className="event-text">{formatMatchMinute(s.minute)}' Sustituto: {getPlayerName(s.playerIn)} · Sustituido: {getPlayerName(s.playerOut)}</span>
                   </div>
                 ))}
                 <div className="fouls-total">Total faltas: {stats.fouls?.away ?? 0}</div>
