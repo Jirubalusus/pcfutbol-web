@@ -297,10 +297,11 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     homeStrength,
     awayStrength,
     referee,
-    { grassCondition, medicalPrevention, playerIsHome, forcedPenaltyGoalSide }
+    { grassCondition, medicalPrevention, playerIsHome, forcedPenaltyGoalSide, playerBenchPlayers }
   );
   const events = matchEventData.events;
   const stoppageTime = matchEventData.stoppageTime;
+  const finalLineups = matchEventData.finalLineups;
   
   // Knockout mode: if draw, resolve with extra time then penalties
   let extraTime = false;
@@ -312,8 +313,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     extraTime = true;
     const homeSentOff = new Set(events.filter(e => e.type === 'red_card' && e.team === 'home').map(e => getPlayerName(e.player)));
     const awaySentOff = new Set(events.filter(e => e.type === 'red_card' && e.team === 'away').map(e => getPlayerName(e.player)));
-    const homeTeamOnPitch = { ...homeTeamData, players: (homeTeamData.players || []).filter(p => !homeSentOff.has(p.name)) };
-    const awayTeamOnPitch = { ...awayTeamData, players: (awayTeamData.players || []).filter(p => !awaySentOff.has(p.name)) };
+    const homeTeamOnPitch = { ...homeTeamData, players: (finalLineups?.home || homeStrength.strength?.lineup || homeTeamData.players || []).filter(p => !homeSentOff.has(p.name)) };
+    const awayTeamOnPitch = { ...awayTeamData, players: (finalLineups?.away || awayStrength.strength?.lineup || awayTeamData.players || []).filter(p => !awaySentOff.has(p.name)) };
     const extraTimeScorerCounts = buildScorerCounts(events);
     // Extra time: ~30% chance someone scores, slight home advantage
     const etRand = Math.random();
@@ -370,6 +371,13 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayTactic,
     { yellowCards: { home: eventYellowsHome, away: eventYellowsAway }, redCards: { home: eventRedsHome, away: eventRedsAway } }
   );
+  stats.substitutions = {
+    home: finalEvents.filter(e => e.type === 'substitution' && e.team === 'home').length,
+    away: finalEvents.filter(e => e.type === 'substitution' && e.team === 'away').length
+  };
+  stats.tacticalAdjustments = finalEvents
+    .filter(e => e.type === 'substitution')
+    .map(e => ({ minute: e.minute, team: e.team, intent: e.tacticalIntent, reason: e.reason }));
   const motm = calculateMOTM(finalEvents, finalHomeScore, finalAwayScore, homeTeamData, awayTeamData);
 
   return {
@@ -379,6 +387,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     penalties,
     stoppageTime,
     events: finalEvents,
+    finalLineups,
+    substitutions: finalEvents.filter(e => e.type === 'substitution'),
     stats,
     motm,
     debug: {
@@ -666,7 +676,9 @@ function makeEventPlayer(player) {
   return {
     name: player.name,
     position: player.position,
-    playingPosition: player.playingPosition
+    playingPosition: player.playingPosition,
+    overall: player.overall,
+    stamina: player.stamina
   };
 }
 
@@ -726,9 +738,10 @@ function randomGoalMinute(stoppageTime = 4) {
 function sortEvents(events) {
   const priority = {
     goal: 0,
-    injury: 1,
-    yellow_card: 2,
-    red_card: 3
+    substitution: 1,
+    injury: 2,
+    yellow_card: 3,
+    red_card: 4
   };
   return [...events].sort((a, b) =>
     (a.minute || 0) - (b.minute || 0) || (priority[a.type] ?? 9) - (priority[b.type] ?? 9)
@@ -802,12 +815,185 @@ function normalizeDisciplinaryTimeline(events) {
 /**
  * Generar eventos del partido
  */
+
+const SUBSTITUTION_WINDOWS = [58, 68, 78, 85];
+const MAX_SUBSTITUTIONS = 5;
+
+function getPlayerRoleGroup(player) {
+  const pos = getPrimaryPosition(player) || getNaturalPosition(player);
+  if (['ST', 'CF', 'LW', 'RW', 'CAM', 'LM', 'RM'].includes(pos)) return 'attacking';
+  if (['CB', 'RB', 'LB', 'RWB', 'LWB', 'CDM'].includes(pos)) return 'defensive';
+  if (['GK', 'POR'].includes(pos)) return 'goalkeeper';
+  return 'balanced';
+}
+
+function getSubstitutionIntent(teamLabel, minute, liveScore, ownStrength, opponentStrength) {
+  const scoreDiff = teamLabel === 'home'
+    ? liveScore.home - liveScore.away
+    : liveScore.away - liveScore.home;
+  const strengthGap = (ownStrength.rating || 70) - (opponentStrength.rating || 70);
+
+  if (scoreDiff < 0) return minute >= 78 || scoreDiff <= -2 ? 'desperateAttack' : 'attack';
+  if (scoreDiff > 0) return minute >= 78 ? 'closeGame' : 'defend';
+  if (strengthGap >= 5) return minute >= 78 ? 'attack' : 'controlledAttack';
+  if (strengthGap <= -5) return minute >= 78 ? 'defend' : 'protectPoint';
+  return 'refresh';
+}
+
+function getSubstitutionReason(intent, liveScore) {
+  const scoreline = `${liveScore.home}-${liveScore.away}`;
+  const reasons = {
+    desperateAttack: `Apuesta ofensiva total con ${scoreline}`,
+    attack: `Busca más remate y llegada con ${scoreline}`,
+    controlledAttack: `Se ve superior y quiere convertir el dominio con ${scoreline}`,
+    closeGame: `Quiere cerrar el partido y proteger el ${scoreline}`,
+    defend: `Refuerza el bloque defensivo con ${scoreline}`,
+    protectPoint: `Protege un empate valioso ante un rival superior (${scoreline})`,
+    refresh: `Refresca piernas sin romper el equilibrio (${scoreline})`
+  };
+  return reasons[intent] || `Ajuste táctico con ${scoreline}`;
+}
+
+function cloneLineup(lineup) {
+  return (lineup || []).map(player => ({ ...player }));
+}
+
+function samePlayer(a, b) {
+  const aName = getPlayerName(a);
+  const bName = getPlayerName(b);
+  return Boolean(aName && bName && aName === bName);
+}
+
+function buildBench(team, lineup, explicitBench = null) {
+  if (explicitBench?.length) return explicitBench.filter(Boolean).map(p => ({ ...p }));
+  const lineupNames = new Set((lineup || []).map(p => p?.name).filter(Boolean));
+  return (team.players || []).filter(p => p?.name && !lineupNames.has(p.name) && !p.injured && !p.suspended).map(p => ({ ...p }));
+}
+
+function createTeamSimulationState(teamLabel, team, lineup, strength, explicitBench) {
+  const initialLineup = cloneLineup(lineup?.length ? lineup : (team.players || []).slice(0, 11));
+  return {
+    teamLabel,
+    team,
+    strength,
+    initialLineup,
+    currentLineup: cloneLineup(initialLineup),
+    bench: buildBench(team, initialLineup, explicitBench),
+    substitutionsUsed: 0
+  };
+}
+
+function playerChangeScore(player, intent, outgoing = false) {
+  const role = getPlayerRoleGroup(player);
+  const overall = player?.overall || 65;
+  const stamina = player?.stamina ?? 70;
+  const fatiguePenalty = outgoing ? (100 - stamina) * 0.08 : 0;
+  const roleWeights = {
+    desperateAttack: { attacking: 24, balanced: 8, defensive: -18, goalkeeper: -999 },
+    attack: { attacking: 20, balanced: 6, defensive: -12, goalkeeper: -999 },
+    controlledAttack: { attacking: 16, balanced: 8, defensive: -8, goalkeeper: -999 },
+    closeGame: { defensive: 22, balanced: 8, attacking: -14, goalkeeper: -999 },
+    defend: { defensive: 18, balanced: 6, attacking: -10, goalkeeper: -999 },
+    protectPoint: { defensive: 16, balanced: 8, attacking: -8, goalkeeper: -999 },
+    refresh: { attacking: 5, balanced: 8, defensive: 5, goalkeeper: -999 }
+  };
+  const base = roleWeights[intent]?.[role] ?? 0;
+  return outgoing ? (100 - overall) + base + fatiguePenalty : overall + base;
+}
+
+function isCompatibleSubstitution(inPlayer, outPlayer, intent) {
+  if (!inPlayer || !outPlayer) return false;
+  if (getPlayerRoleGroup(inPlayer) === 'goalkeeper') return false;
+  if (getPlayerRoleGroup(outPlayer) === 'goalkeeper') return false;
+  if (intent === 'refresh') return getPlayerRoleGroup(inPlayer) === getPlayerRoleGroup(outPlayer) || (inPlayer.overall || 0) >= (outPlayer.overall || 0) - 3;
+  return true;
+}
+
+function chooseSubstitution(teamState, intent) {
+  if (teamState.substitutionsUsed >= MAX_SUBSTITUTIONS) return null;
+  const availableBench = teamState.bench.filter(p => !p.injured && !p.suspended && getPlayerRoleGroup(p) !== 'goalkeeper');
+  if (availableBench.length === 0) return null;
+
+  const incomingCandidates = [...availableBench].sort((a, b) => playerChangeScore(b, intent, false) - playerChangeScore(a, intent, false));
+  for (const playerIn of incomingCandidates) {
+    const outgoingCandidates = teamState.currentLineup
+      .filter(playerOut => isCompatibleSubstitution(playerIn, playerOut, intent))
+      .sort((a, b) => playerChangeScore(b, intent, true) - playerChangeScore(a, intent, true));
+    const playerOut = outgoingCandidates[0];
+    if (!playerOut) continue;
+    const inRole = getPlayerRoleGroup(playerIn);
+    const outRole = getPlayerRoleGroup(playerOut);
+    const tacticalGain = playerChangeScore(playerIn, intent, false) - (playerOut.overall || 65);
+    if (intent === 'refresh' && tacticalGain < 1 && inRole !== outRole) continue;
+    return { playerIn, playerOut };
+  }
+  return null;
+}
+
+function applySubstitution(teamState, change) {
+  teamState.currentLineup = teamState.currentLineup.map(player => samePlayer(player, change.playerOut)
+    ? { ...change.playerIn, playingPosition: change.playerOut.playingPosition || change.playerIn.playingPosition || change.playerIn.position }
+    : player
+  );
+  teamState.bench = teamState.bench.filter(player => !samePlayer(player, change.playerIn));
+  teamState.substitutionsUsed += 1;
+}
+
+function applyDueSubstitutionWindows({ windows, nextMinute, homeState, awayState, liveScore, events, homeStrength, awayStrength }) {
+  while (windows.length && windows[0] <= nextMinute) {
+    const minute = windows.shift();
+    for (const [teamLabel, teamState, ownStrength, opponentStrength] of [
+      ['home', homeState, homeStrength, awayStrength],
+      ['away', awayState, awayStrength, homeStrength]
+    ]) {
+      const intent = getSubstitutionIntent(teamLabel, minute, liveScore, ownStrength, opponentStrength);
+      const change = chooseSubstitution(teamState, intent);
+      if (!change) continue;
+      applySubstitution(teamState, change);
+      events.push({
+        type: 'substitution',
+        team: teamLabel,
+        minute,
+        playerIn: makeEventPlayer(change.playerIn),
+        playerOut: makeEventPlayer(change.playerOut),
+        tacticalIntent: intent,
+        reason: getSubstitutionReason(intent, liveScore),
+        scoreline: { ...liveScore },
+        substitutionsUsed: teamState.substitutionsUsed
+      });
+    }
+  }
+}
+
+function getLineupAtMinute(initialLineup, substitutionEvents, teamLabel, minute) {
+  let lineup = cloneLineup(initialLineup);
+  for (const event of sortEvents(substitutionEvents)) {
+    if (event.type !== 'substitution' || event.team !== teamLabel || (event.minute || 0) > minute) continue;
+    lineup = lineup.map(player => samePlayer(player, event.playerOut) ? { ...event.playerIn, playingPosition: event.playerOut?.playingPosition || event.playerIn?.playingPosition || event.playerIn?.position } : player);
+  }
+  return lineup;
+}
+
+function getLineupAfterAllSubstitutions(initialLineup, substitutionEvents, teamLabel) {
+  return getLineupAtMinute(initialLineup, substitutionEvents, teamLabel, 130);
+}
+
+/**
+ * Generar eventos del partido
+ */
 function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStrength, awayStrength, referee, context = {}) {
   const events = [];
+  const substitutionEvents = [];
   const totalGoals = homeScore + awayScore;
   const stoppageTime = generateStoppageTime(totalGoals);
-  const homeLineup = homeStrength.strength?.lineup || null;
-  const awayLineup = awayStrength.strength?.lineup || null;
+  const homeLineup = homeStrength.strength?.lineup || (homeTeam.players || []).slice(0, 11);
+  const awayLineup = awayStrength.strength?.lineup || (awayTeam.players || []).slice(0, 11);
+  const homeExplicitBench = context.playerIsHome === true ? context.playerBenchPlayers : null;
+  const awayExplicitBench = context.playerIsHome === false ? context.playerBenchPlayers : null;
+  const homeState = createTeamSimulationState('home', homeTeam, homeLineup, homeStrength, homeExplicitBench);
+  const awayState = createTeamSimulationState('away', awayTeam, awayLineup, awayStrength, awayExplicitBench);
+  const substitutionWindows = [...SUBSTITUTION_WINDOWS];
+  const liveScore = { home: 0, away: 0 };
   
   // Distribuir goles en el tiempo. Una pequeña parte cae en 90+ para que el
   // descuento exista de verdad y no solo como animación de interfaz.
@@ -827,6 +1013,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   const { forcedPenaltyGoalSide = null } = context;
   
   goalMinutes.forEach(minute => {
+    applyDueSubstitutionWindows({ windows: substitutionWindows, nextMinute: minute, homeState, awayState, liveScore, events: substitutionEvents, homeStrength, awayStrength });
     if (homeGoalsLeft + awayGoalsLeft <= 0) return; // Safety: no goals left to allocate
     // Decidir quién marca
     const homeChance = homeGoalsLeft / (homeGoalsLeft + awayGoalsLeft);
@@ -837,9 +1024,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       const forcedPenalty = forcedPenaltyGoalSide === 'home' && !forcedPenaltyUsed;
       const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, homeScore, teamGoalsSoFar);
       if (forcedPenalty) forcedPenaltyUsed = true;
-      const scorer = selectScorer(homeTeam, homeLineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
+      const scorer = selectScorer(homeTeam, homeState.currentLineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
-      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeLineup, scorer, goalType) : null;
+      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeState.currentLineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'home',
@@ -850,14 +1037,15 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       });
       scorerCounts.home.set(scorer.name, (scorerCounts.home.get(scorer.name) || 0) + 1);
       homeGoalsLeft--;
+      liveScore.home++;
     } else if (awayGoalsLeft > 0) {
       const teamGoalsSoFar = awayScore - awayGoalsLeft;
       const forcedPenalty = forcedPenaltyGoalSide === 'away' && !forcedPenaltyUsed;
       const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, awayScore, teamGoalsSoFar);
       if (forcedPenalty) forcedPenaltyUsed = true;
-      const scorer = selectScorer(awayTeam, awayLineup, scorerCounts.away, { goalType, teamGoals: awayScore, teamGoalsSoFar });
+      const scorer = selectScorer(awayTeam, awayState.currentLineup, scorerCounts.away, { goalType, teamGoals: awayScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
-      const assister = Math.random() < assistChance ? selectAssister(awayTeam, awayLineup, scorer, goalType) : null;
+      const assister = Math.random() < assistChance ? selectAssister(awayTeam, awayState.currentLineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'away',
@@ -868,14 +1056,15 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       });
       scorerCounts.away.set(scorer.name, (scorerCounts.away.get(scorer.name) || 0) + 1);
       awayGoalsLeft--;
+      liveScore.away++;
     } else if (homeGoalsLeft > 0) {
       const teamGoalsSoFar = homeScore - homeGoalsLeft;
       const forcedPenalty = forcedPenaltyGoalSide === 'home' && !forcedPenaltyUsed;
       const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, homeScore, teamGoalsSoFar);
       if (forcedPenalty) forcedPenaltyUsed = true;
-      const scorer = selectScorer(homeTeam, homeLineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
+      const scorer = selectScorer(homeTeam, homeState.currentLineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
-      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeLineup, scorer, goalType) : null;
+      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeState.currentLineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'home',
@@ -886,8 +1075,12 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       });
       scorerCounts.home.set(scorer.name, (scorerCounts.home.get(scorer.name) || 0) + 1);
       homeGoalsLeft--;
+      liveScore.home++;
     }
   });
+
+  applyDueSubstitutionWindows({ windows: substitutionWindows, nextMinute: 90, homeState, awayState, liveScore, events: substitutionEvents, homeStrength, awayStrength });
+  events.push(...substitutionEvents);
   
   // Añadir tarjetas (2-4 amarillas, 0-1 rojas)
   const yellowCount = 2 + Math.floor(Math.random() * 3);
@@ -900,36 +1093,39 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const isHome = Math.random() > 0.5;
     const team = isHome ? homeTeam : awayTeam;
     const teamLabel = isHome ? 'home' : 'away';
-    const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: isHome ? homeLineup : awayLineup });
+    const minute = randomMinuteBetween(1, 88);
+    if (!minute) continue;
+    const lineupAtMinute = getLineupAtMinute(isHome ? homeState.initialLineup : awayState.initialLineup, substitutionEvents, teamLabel, minute);
+    const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: lineupAtMinute });
     const playerKey = getPlayerKey(teamLabel, player);
     const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
     
-    // Skip if player was already sent off
-    if (!playerKey || sentOff.has(playerKey)) continue;
+    // Skip if player was already sent off or a required later event would conflict
+    if (!playerKey || sentOff.has(playerKey) || lastRequiredEvent > minute) continue;
     
     if (playersWithYellow.has(playerKey) && Math.random() < 0.35) {
       const previousYellow = yellowMinutes.get(playerKey) || 1;
-      const minute = randomMinuteBetween(Math.max(previousYellow + 1, lastRequiredEvent + 1), 90);
-      if (!minute) continue;
+      const secondMinute = randomMinuteBetween(Math.max(previousYellow + 1, lastRequiredEvent + 1), 90);
+      if (!secondMinute) continue;
+      const secondLineup = getLineupAtMinute(isHome ? homeState.initialLineup : awayState.initialLineup, substitutionEvents, teamLabel, secondMinute);
+      if (!secondLineup.some(p => samePlayer(p, player))) continue;
       // Second yellow → red card (double yellow)
       events.push({
         type: 'yellow_card',
         team: teamLabel,
-        minute,
+        minute: secondMinute,
         player
       });
       events.push({
         type: 'red_card',
         team: teamLabel,
-        minute,
+        minute: secondMinute,
         player,
         isSecondYellow: true,
         reason: 'Segunda amarilla'
       });
       sentOff.add(playerKey);
     } else {
-      const minute = randomMinuteBetween(1, 88);
-      if (!minute) continue;
       playersWithYellow.add(playerKey);
       yellowMinutes.set(playerKey, minute);
       events.push({
@@ -945,12 +1141,14 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   [homeTeam, awayTeam].forEach((team, idx) => {
     const teamLabel = idx === 0 ? 'home' : 'away';
     if (Math.random() < 0.08 * strictness) {
-      const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: teamLabel === 'home' ? homeLineup : awayLineup });
+      const minute = randomMinuteBetween(25, 84);
+      if (!minute) return;
+      const lineupAtMinute = getLineupAtMinute(teamLabel === 'home' ? homeState.initialLineup : awayState.initialLineup, substitutionEvents, teamLabel, minute);
+      const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: lineupAtMinute });
       const playerKey = getPlayerKey(teamLabel, player);
       if (!sentOff.has(playerKey)) {
         const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
-        const minute = randomMinuteBetween(Math.max(25, lastRequiredEvent + 1), 84);
-        if (!minute) return;
+        if (lastRequiredEvent > minute) return;
         events.push({
           type: 'red_card',
           team: teamLabel,
@@ -975,14 +1173,16 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const injuryChance = baseInjuryChance * (1 - prevention) * (teamLabel === 'home' ? (1 + grassPenalty) : 1);
 
     if (Math.random() < injuryChance) {
-      const players = ((teamLabel === 'home' ? homeLineup : awayLineup) || team.players)?.filter(p => !p.injured && !p.suspended) || [];
+      const minute = randomMinuteBetween(10, 84);
+      if (!minute) return;
+      const players = getLineupAtMinute(teamLabel === 'home' ? homeState.initialLineup : awayState.initialLineup, substitutionEvents, teamLabel, minute)
+        .filter(p => !p.injured && !p.suspended);
       if (players.length > 0) {
         const availablePlayers = players.filter(p => !sentOff.has(getPlayerKey(teamLabel, p)));
         if (availablePlayers.length === 0) return;
         const injuredPlayer = availablePlayers[Math.floor(Math.random() * availablePlayers.length)];
         const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, injuredPlayer);
-        const minute = randomMinuteBetween(Math.max(10, lastRequiredEvent + 1), 84);
-        if (!minute) return;
+        if (lastRequiredEvent > minute) return;
         const severityRoll = Math.random();
         let weeksOut, severity;
         if (severityRoll < 0.60) {
@@ -1009,7 +1209,11 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
 
   return {
     events: normalizeDisciplinaryTimeline(events),
-    stoppageTime
+    stoppageTime,
+    finalLineups: {
+      home: getLineupAfterAllSubstitutions(homeState.initialLineup, substitutionEvents, 'home').map(makeEventPlayer),
+      away: getLineupAfterAllSubstitutions(awayState.initialLineup, substitutionEvents, 'away').map(makeEventPlayer)
+    }
   };
 }
 
@@ -1215,10 +1419,19 @@ function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, re
   const homeReds = eventCards?.redCards?.home ?? (Math.random() < 0.18 ? 1 : 0);
   const awayReds = eventCards?.redCards?.away ?? (Math.random() < 0.18 ? 1 : 0);
   
+  const homeShotsOnTarget = Math.max(homeScore, Math.floor(homeShots * 0.4));
+  const awayShotsOnTarget = Math.max(awayScore, Math.floor(awayShots * 0.4));
+  const homeXg = Math.max(homeScore * 0.62, homeShots * 0.045 + homeShotsOnTarget * 0.16 + homeScore * 0.38);
+  const awayXg = Math.max(awayScore * 0.62, awayShots * 0.045 + awayShotsOnTarget * 0.16 + awayScore * 0.38);
+  const homeSaves = Math.max(0, awayShotsOnTarget - awayScore);
+  const awaySaves = Math.max(0, homeShotsOnTarget - homeScore);
+
   return {
     possession: { home: Math.round(homePossession), away: Math.round(100 - homePossession) },
     shots: { home: homeShots, away: awayShots },
-    shotsOnTarget: { home: Math.floor(homeShots * 0.4), away: Math.floor(awayShots * 0.4) },
+    shotsOnTarget: { home: homeShotsOnTarget, away: awayShotsOnTarget },
+    xg: { home: Number(homeXg.toFixed(2)), away: Number(awayXg.toFixed(2)) },
+    saves: { home: homeSaves, away: awaySaves },
     corners: { home: Math.floor(homePossession / 12), away: Math.floor((100 - homePossession) / 12) },
     fouls: { home: homeFouls, away: awayFouls },
     yellowCards: { home: homeYellows, away: awayYellows },
@@ -1231,3 +1444,5 @@ function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, re
 // ============================================================
 
 export default simulateMatchV2;
+
+

@@ -17,6 +17,7 @@
     "audit:mobile-fixed-viewport": "node tests/audit-mobile-fixed-viewport.mjs",
     "audit:league-fixture-team-coverage": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-league-fixture-team-coverage.mjs",
     "audit:season-promotions": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-season-promotion-rollover.mjs",
+    "audit:professional-substitutions": "node --import \"data:text/javascript,import { register } from 'node:module'; import { pathToFileURL } from 'node:url'; register('./tests/esm-js-loader.mjs', pathToFileURL('./'));\" tests/audit-professional-substitutions.mjs",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -r https://github.com/jirubalusus/pcfutbol-web.git"
