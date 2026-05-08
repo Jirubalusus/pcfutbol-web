@@ -800,6 +800,10 @@ export default function Office() {
     
     // Track local lineup so injured/suspended players are ejected for subsequent weeks
     let localLineup = state.lineup ? { ...state.lineup } : {};
+    const getLocalBenchPlayers = () => {
+      const lineupNames = new Set(Object.values(localLineup || {}).map(player => player?.name).filter(Boolean));
+      return (localTeamPlayers || []).filter(player => (state.convocados || []).includes(player.name) && !lineupNames.has(player.name));
+    };
     
     // Medical reduction (mirrors INJURE_PLAYER reducer logic)
     const medicalLevel = state.facilities?.medical || 0;
@@ -918,7 +922,8 @@ export default function Office() {
               attendanceFillRate: isHome ? attendanceFillRate : 0.7,
               grassCondition: state.stadium?.grassCondition ?? 100,
               medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
-              playerIsHome: isHome
+              playerIsHome: isHome,
+              playerBenchPlayers: getLocalBenchPlayers()
             },
             state.playerForm || {},
             state.teamId
@@ -1181,6 +1186,7 @@ export default function Office() {
                 grassCondition: state.stadium?.grassCondition ?? 100,
                 medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
                 playerIsHome: cupIsHome,
+                playerBenchPlayers: getLocalBenchPlayers(),
                 knockout: true
               },
               state.playerForm || {}, state.teamId

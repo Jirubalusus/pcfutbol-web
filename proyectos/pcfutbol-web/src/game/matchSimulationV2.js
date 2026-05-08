@@ -806,6 +806,8 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   const events = [];
   const totalGoals = homeScore + awayScore;
   const stoppageTime = generateStoppageTime(totalGoals);
+  const homeLineup = homeStrength.strength?.lineup || null;
+  const awayLineup = awayStrength.strength?.lineup || null;
   
   // Distribuir goles en el tiempo. Una pequeña parte cae en 90+ para que el
   // descuento exista de verdad y no solo como animación de interfaz.
@@ -835,9 +837,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       const forcedPenalty = forcedPenaltyGoalSide === 'home' && !forcedPenaltyUsed;
       const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, homeScore, teamGoalsSoFar);
       if (forcedPenalty) forcedPenaltyUsed = true;
-      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
+      const scorer = selectScorer(homeTeam, homeLineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
-      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer, goalType) : null;
+      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeLineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'home',
@@ -853,9 +855,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       const forcedPenalty = forcedPenaltyGoalSide === 'away' && !forcedPenaltyUsed;
       const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, awayScore, teamGoalsSoFar);
       if (forcedPenalty) forcedPenaltyUsed = true;
-      const scorer = selectScorer(awayTeam, awayStrength.strength?.lineup, scorerCounts.away, { goalType, teamGoals: awayScore, teamGoalsSoFar });
+      const scorer = selectScorer(awayTeam, awayLineup, scorerCounts.away, { goalType, teamGoals: awayScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
-      const assister = Math.random() < assistChance ? selectAssister(awayTeam, awayStrength.strength?.lineup, scorer, goalType) : null;
+      const assister = Math.random() < assistChance ? selectAssister(awayTeam, awayLineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'away',
@@ -871,9 +873,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       const forcedPenalty = forcedPenaltyGoalSide === 'home' && !forcedPenaltyUsed;
       const goalType = forcedPenalty ? 'penalty' : selectGoalType(minute, homeScore, teamGoalsSoFar);
       if (forcedPenalty) forcedPenaltyUsed = true;
-      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
+      const scorer = selectScorer(homeTeam, homeLineup, scorerCounts.home, { goalType, teamGoals: homeScore, teamGoalsSoFar });
       const assistChance = goalType === 'penalty' ? 0 : goalType === 'set_piece' ? 0.58 : 0.74;
-      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer, goalType) : null;
+      const assister = Math.random() < assistChance ? selectAssister(homeTeam, homeLineup, scorer, goalType) : null;
       events.push({
         type: 'goal',
         team: 'home',
@@ -898,7 +900,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const isHome = Math.random() > 0.5;
     const team = isHome ? homeTeam : awayTeam;
     const teamLabel = isHome ? 'home' : 'away';
-    const player = selectRandomPlayer(team, teamLabel, { sentOff });
+    const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: isHome ? homeLineup : awayLineup });
     const playerKey = getPlayerKey(teamLabel, player);
     const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
     
@@ -943,7 +945,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   [homeTeam, awayTeam].forEach((team, idx) => {
     const teamLabel = idx === 0 ? 'home' : 'away';
     if (Math.random() < 0.08 * strictness) {
-      const player = selectRandomPlayer(team, teamLabel, { sentOff });
+      const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: teamLabel === 'home' ? homeLineup : awayLineup });
       const playerKey = getPlayerKey(teamLabel, player);
       if (!sentOff.has(playerKey)) {
         const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
@@ -973,7 +975,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const injuryChance = baseInjuryChance * (1 - prevention) * (teamLabel === 'home' ? (1 + grassPenalty) : 1);
 
     if (Math.random() < injuryChance) {
-      const players = team.players?.filter(p => !p.injured && !p.suspended) || [];
+      const players = ((teamLabel === 'home' ? homeLineup : awayLineup) || team.players)?.filter(p => !p.injured && !p.suspended) || [];
       if (players.length > 0) {
         const availablePlayers = players.filter(p => !sentOff.has(getPlayerKey(teamLabel, p)));
         if (availablePlayers.length === 0) return;
@@ -1156,8 +1158,9 @@ function selectAssister(team, lineup, scorer, goalType = 'normal') {
 }
 
 function selectRandomPlayer(team, teamLabel = 'team', options = {}) {
-  if (!team?.players || team.players.length === 0) return { name: 'Unknown' };
-  const available = team.players.filter(p =>
+  const sourcePlayers = options.lineup?.length ? options.lineup : team?.players;
+  if (!sourcePlayers || sourcePlayers.length === 0) return { name: 'Unknown' };
+  const available = sourcePlayers.filter(p =>
     !p.injured &&
     !p.suspended &&
     !options.sentOff?.has(getPlayerKey(teamLabel, p))
