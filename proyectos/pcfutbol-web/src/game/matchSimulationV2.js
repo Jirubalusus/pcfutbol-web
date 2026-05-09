@@ -756,8 +756,8 @@ function randomGoalMinute(stoppageTime = 4) {
 function sortEvents(events) {
   const priority = {
     goal: 0,
-    substitution: 1,
-    injury: 2,
+    injury: 1,
+    substitution: 2,
     yellow_card: 3,
     red_card: 4
   };
@@ -898,13 +898,15 @@ function buildBench(team, lineup, explicitBench = null) {
 
 function createTeamSimulationState(teamLabel, team, lineup, strength, explicitBench) {
   const initialLineup = cloneLineup(lineup?.length ? lineup : (team.players || []).slice(0, 11));
+  const initialBench = buildBench(team, initialLineup, explicitBench);
   return {
     teamLabel,
     team,
     strength,
     initialLineup,
     currentLineup: cloneLineup(initialLineup),
-    bench: buildBench(team, initialLineup, explicitBench),
+    initialBench: cloneLineup(initialBench),
+    bench: cloneLineup(initialBench),
     substitutionsUsed: 0,
     introducedPlayerNames: new Set()
   };
@@ -1016,6 +1018,105 @@ function avoidCrossTeamSubstitutionMinuteCollisions(homeMinutes, awayMinutes) {
     usedAway.add(candidate);
     return candidate;
   }).sort((a, b) => a - b);
+}
+
+function countTeamSubstitutionEvents(substitutionEvents, teamLabel) {
+  return substitutionEvents.filter(event => event.type === 'substitution' && event.team === teamLabel).length;
+}
+
+function removeLatestFuturePlannedSubstitution(substitutionEvents, teamLabel, afterMinute) {
+  const removableIndex = substitutionEvents
+    .map((event, index) => ({ event, index }))
+    .filter(({ event }) => event.type === 'substitution'
+      && event.team === teamLabel
+      && !event.forcedByInjury
+      && (event.minute || 0) > afterMinute)
+    .sort((a, b) => (b.event.minute || 0) - (a.event.minute || 0))[0]?.index;
+
+  if (removableIndex === undefined) return false;
+  substitutionEvents.splice(removableIndex, 1);
+  return true;
+}
+
+function chooseInjuryReplacement(teamState, injuredPlayer, substitutionEvents, injuryMinute) {
+  const teamLabel = teamState.teamLabel;
+  const lineupAtInjury = getLineupAtMinute(teamState.initialLineup, substitutionEvents, teamLabel, injuryMinute);
+  if (!lineupAtInjury.some(player => samePlayer(player, injuredPlayer))) return null;
+
+  const injuredRole = getPlayerRoleGroup(injuredPlayer);
+  const namesOnPitch = new Set(lineupAtInjury.map(getPlayerName).filter(Boolean));
+  const alreadyUsedAsSub = new Set(substitutionEvents
+    .filter(event => event.type === 'substitution' && event.team === teamLabel)
+    .map(event => getPlayerName(event.playerIn))
+    .filter(Boolean));
+
+  const candidates = (teamState.initialBench || [])
+    .filter(player => !player.injured && !player.suspended)
+    .filter(player => !namesOnPitch.has(getPlayerName(player)))
+    .filter(player => !alreadyUsedAsSub.has(getPlayerName(player)))
+    .filter(player => injuredRole === 'goalkeeper'
+      ? getPlayerRoleGroup(player) === 'goalkeeper'
+      : getPlayerRoleGroup(player) !== 'goalkeeper')
+    .sort((a, b) => {
+      const roleMatchA = getPlayerRoleGroup(a) === injuredRole ? 1 : 0;
+      const roleMatchB = getPlayerRoleGroup(b) === injuredRole ? 1 : 0;
+      return roleMatchB - roleMatchA || (b.overall || 65) - (a.overall || 65);
+    });
+
+  const playerIn = candidates[0];
+  if (!playerIn) return null;
+  return { playerIn, playerOut: injuredPlayer };
+}
+
+function addForcedInjurySubstitution(teamState, injuredPlayer, injuryMinute, substitutionEvents) {
+  const teamLabel = teamState.teamLabel;
+  if (countTeamSubstitutionEvents(substitutionEvents, teamLabel) >= MAX_SUBSTITUTIONS) {
+    removeLatestFuturePlannedSubstitution(substitutionEvents, teamLabel, injuryMinute);
+  }
+
+  const usedByInjuryMinute = substitutionEvents.filter(event => event.type === 'substitution'
+    && event.team === teamLabel
+    && (event.minute || 0) <= injuryMinute).length;
+  if (usedByInjuryMinute >= MAX_SUBSTITUTIONS || countTeamSubstitutionEvents(substitutionEvents, teamLabel) >= MAX_SUBSTITUTIONS) return false;
+
+  const change = chooseInjuryReplacement(teamState, injuredPlayer, substitutionEvents, injuryMinute);
+  if (!change) return false;
+
+  // Si el lesionado iba a salir más tarde en un cambio planificado, ese cambio ya no puede ocurrir.
+  for (let i = substitutionEvents.length - 1; i >= 0; i--) {
+    const event = substitutionEvents[i];
+    if (event.type !== 'substitution' || event.team !== teamLabel || (event.minute || 0) <= injuryMinute) continue;
+    if (samePlayer(event.playerOut, injuredPlayer) || samePlayer(event.playerIn, change.playerIn)) {
+      substitutionEvents.splice(i, 1);
+    }
+  }
+
+  while (countTeamSubstitutionEvents(substitutionEvents, teamLabel) >= MAX_SUBSTITUTIONS) {
+    if (!removeLatestFuturePlannedSubstitution(substitutionEvents, teamLabel, injuryMinute)) return false;
+  }
+
+  substitutionEvents.push({
+    type: 'substitution',
+    team: teamLabel,
+    minute: injuryMinute,
+    playerIn: makeEventPlayer(change.playerIn),
+    playerOut: makeEventPlayer(change.playerOut),
+    forcedByInjury: true,
+    tacticalIntent: 'forcedInjury',
+    reason: 'Cambio obligado por lesión',
+    substitutionsUsed: usedByInjuryMinute + 1
+  });
+  return true;
+}
+
+function renumberSubstitutionEvents(substitutionEvents) {
+  ['home', 'away'].forEach(teamLabel => {
+    sortEvents(substitutionEvents)
+      .filter(event => event.type === 'substitution' && event.team === teamLabel)
+      .forEach((event, index) => {
+        event.substitutionsUsed = index + 1;
+      });
+  });
 }
 
 function applyDueSubstitutionWindows({ windows, nextMinute, homeState, awayState, liveScore, events, homeStrength, awayStrength }) {
@@ -1174,7 +1275,6 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   });
 
   applyDueSubstitutionWindows({ windows: substitutionWindows, nextMinute: 90, homeState, awayState, liveScore, events: substitutionEvents, homeStrength, awayStrength });
-  events.push(...substitutionEvents);
   
   // Añadir tarjetas (2-4 amarillas, 0-1 rojas)
   const yellowCount = 2 + Math.floor(Math.random() * 3);
@@ -1197,7 +1297,8 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     // Skip if player was already sent off or a required later event would conflict
     if (!playerKey || sentOff.has(playerKey) || lastRequiredEvent > minute) continue;
     
-    if (playersWithYellow.has(playerKey) && Math.random() < 0.35) {
+    if (playersWithYellow.has(playerKey)) {
+      if (Math.random() >= 0.35) continue;
       const previousYellow = yellowMinutes.get(playerKey) || 1;
       const secondMinute = randomMinuteBetween(Math.max(previousYellow + 1, lastRequiredEvent + 1), 90);
       if (!secondMinute) continue;
@@ -1297,9 +1398,18 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
           weeksOut,
           severity
         });
+        addForcedInjurySubstitution(
+          teamLabel === 'home' ? homeState : awayState,
+          injuredPlayer,
+          minute,
+          substitutionEvents
+        );
       }
     }
   });
+
+  renumberSubstitutionEvents(substitutionEvents);
+  events.push(...substitutionEvents);
 
   return {
     events: normalizeDisciplinaryTimeline(events),
