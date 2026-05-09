@@ -834,14 +834,22 @@ function normalizeDisciplinaryTimeline(events) {
  * Generar eventos del partido
  */
 
-const SUBSTITUTION_WINDOWS = [58, 68, 78, 85];
+const SUBSTITUTION_MINUTE_BANDS = [
+  [52, 64], // primer refresco: rara vez antes del 55, pero puede pasar si el partido lo pide
+  [61, 73],
+  [70, 81],
+  [78, 88],
+  [84, 90]
+];
 const MAX_SUBSTITUTIONS = 5;
 
 function getPlayerRoleGroup(player) {
-  const pos = getPrimaryPosition(player) || getNaturalPosition(player);
-  if (['ST', 'CF', 'LW', 'RW', 'CAM', 'LM', 'RM'].includes(pos)) return 'attacking';
-  if (['CB', 'RB', 'LB', 'RWB', 'LWB', 'CDM'].includes(pos)) return 'defensive';
-  if (['GK', 'POR'].includes(pos)) return 'goalkeeper';
+  const pos = getPrimaryPosition(player);
+  const naturalPos = getNaturalPosition(player);
+  if (['GK', 'POR'].includes(naturalPos) || ['GK', 'POR'].includes(pos)) return 'goalkeeper';
+  const effectivePos = ['SLOT', ''].includes(pos) ? naturalPos : pos;
+  if (['ST', 'CF', 'LW', 'RW', 'CAM', 'LM', 'RM'].includes(effectivePos)) return 'attacking';
+  if (['CB', 'RB', 'LB', 'RWB', 'LWB', 'CDM'].includes(effectivePos)) return 'defensive';
   return 'balanced';
 }
 
@@ -897,7 +905,8 @@ function createTeamSimulationState(teamLabel, team, lineup, strength, explicitBe
     initialLineup,
     currentLineup: cloneLineup(initialLineup),
     bench: buildBench(team, initialLineup, explicitBench),
-    substitutionsUsed: 0
+    substitutionsUsed: 0,
+    introducedPlayerNames: new Set()
   };
 }
 
@@ -935,6 +944,10 @@ function chooseSubstitution(teamState, intent) {
   const incomingCandidates = [...availableBench].sort((a, b) => playerChangeScore(b, intent, false) - playerChangeScore(a, intent, false));
   for (const playerIn of incomingCandidates) {
     const outgoingCandidates = teamState.currentLineup
+      // En un partido real no es normal encadenar "entra X" y diez minutos después
+      // "sale X" salvo lesión/roja. Protegemos a los recién entrados para evitar
+      // carruseles artificiales como 58/68/78/85 con el mismo hilo de jugadores.
+      .filter(playerOut => !teamState.introducedPlayerNames.has(getPlayerName(playerOut)))
       .filter(playerOut => isCompatibleSubstitution(playerIn, playerOut, intent))
       .sort((a, b) => playerChangeScore(b, intent, true) - playerChangeScore(a, intent, true));
     const playerOut = outgoingCandidates[0];
@@ -955,30 +968,85 @@ function applySubstitution(teamState, change) {
   );
   teamState.bench = teamState.bench.filter(player => !samePlayer(player, change.playerIn));
   teamState.substitutionsUsed += 1;
+  const playerInName = getPlayerName(change.playerIn);
+  if (playerInName) teamState.introducedPlayerNames.add(playerInName);
+}
+
+function generateSubstitutionMinutePlan(teamState, teamLabel) {
+  const outfieldBenchCount = teamState.bench.filter(p => !p.injured && !p.suspended && getPlayerRoleGroup(p) !== 'goalkeeper').length;
+  if (outfieldBenchCount <= 0) return [];
+
+  const plannedChanges = Math.min(MAX_SUBSTITUTIONS, outfieldBenchCount, weightedRandom([
+    { value: 2, weight: 14 },
+    { value: 3, weight: 36 },
+    { value: 4, weight: 34 },
+    { value: 5, weight: 16 }
+  ]));
+
+  const teamBias = teamLabel === 'home' ? -1 : 1;
+  const minutes = [];
+
+  for (let i = 0; i < plannedChanges; i++) {
+    const [bandStart, bandEnd] = SUBSTITUTION_MINUTE_BANDS[i];
+    const randomSpread = Math.floor(Math.random() * (bandEnd - bandStart + 1));
+    let minute = bandStart + randomSpread + teamBias + Math.floor(Math.random() * 3) - 1;
+
+    // Evita tandas robóticas: dentro del mismo equipo los cambios deben respirar.
+    // Si dos caen muy pegados, desplazamos el posterior en vez de repetir patrón fijo.
+    const previous = minutes[minutes.length - 1];
+    if (previous && minute - previous < 4) minute = previous + 4 + Math.floor(Math.random() * 3);
+
+    minutes.push(Math.max(52, Math.min(90, minute)));
+  }
+
+  return [...new Set(minutes)].sort((a, b) => a - b);
+}
+
+function avoidCrossTeamSubstitutionMinuteCollisions(homeMinutes, awayMinutes) {
+  const homeSet = new Set(homeMinutes);
+  const usedAway = new Set();
+  return awayMinutes.map((minute) => {
+    let candidate = minute;
+    if (homeSet.has(candidate) || usedAway.has(candidate)) {
+      const alternatives = [1, -1, 2, -2, 3, -3, 4]
+        .map(delta => minute + delta)
+        .filter(value => value >= 52 && value <= 90 && !homeSet.has(value) && !usedAway.has(value));
+      candidate = alternatives[0] ?? candidate;
+    }
+    usedAway.add(candidate);
+    return candidate;
+  }).sort((a, b) => a - b);
 }
 
 function applyDueSubstitutionWindows({ windows, nextMinute, homeState, awayState, liveScore, events, homeStrength, awayStrength }) {
-  while (windows.length && windows[0] <= nextMinute) {
-    const minute = windows.shift();
-    for (const [teamLabel, teamState, ownStrength, opponentStrength] of [
-      ['home', homeState, homeStrength, awayStrength],
-      ['away', awayState, awayStrength, homeStrength]
-    ]) {
-      const intent = getSubstitutionIntent(teamLabel, minute, liveScore, ownStrength, opponentStrength);
-      const change = chooseSubstitution(teamState, intent);
-      if (!change) continue;
-      applySubstitution(teamState, change);
-      events.push({
-        type: 'substitution',
-        team: teamLabel,
-        minute,
-        playerIn: makeEventPlayer(change.playerIn),
-        playerOut: makeEventPlayer(change.playerOut),
-        tacticalIntent: intent,
-        reason: getSubstitutionReason(intent, liveScore),
-        scoreline: { ...liveScore },
-        substitutionsUsed: teamState.substitutionsUsed
-      });
+  const processTeamWindow = (teamLabel, teamState, ownStrength, opponentStrength, minute) => {
+    const intent = getSubstitutionIntent(teamLabel, minute, liveScore, ownStrength, opponentStrength);
+    const change = chooseSubstitution(teamState, intent);
+    if (!change) return;
+    applySubstitution(teamState, change);
+    events.push({
+      type: 'substitution',
+      team: teamLabel,
+      minute,
+      playerIn: makeEventPlayer(change.playerIn),
+      playerOut: makeEventPlayer(change.playerOut),
+      tacticalIntent: intent,
+      reason: getSubstitutionReason(intent, liveScore),
+      scoreline: { ...liveScore },
+      substitutionsUsed: teamState.substitutionsUsed
+    });
+  };
+
+  while ((windows.home.length && windows.home[0] <= nextMinute) || (windows.away.length && windows.away[0] <= nextMinute)) {
+    const nextHome = windows.home.length ? windows.home[0] : Infinity;
+    const nextAway = windows.away.length ? windows.away[0] : Infinity;
+
+    if (nextHome <= nextAway) {
+      const minute = windows.home.shift();
+      processTeamWindow('home', homeState, homeStrength, awayStrength, minute);
+    } else {
+      const minute = windows.away.shift();
+      processTeamWindow('away', awayState, awayStrength, homeStrength, minute);
     }
   }
 }
@@ -1010,7 +1078,15 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   const awayExplicitBench = context.playerIsHome === false ? context.playerBenchPlayers : null;
   const homeState = createTeamSimulationState('home', homeTeam, homeLineup, homeStrength, homeExplicitBench);
   const awayState = createTeamSimulationState('away', awayTeam, awayLineup, awayStrength, awayExplicitBench);
-  const substitutionWindows = [...SUBSTITUTION_WINDOWS];
+  const homeSubstitutionPlan = generateSubstitutionMinutePlan(homeState, 'home');
+  const awaySubstitutionPlan = avoidCrossTeamSubstitutionMinuteCollisions(
+    homeSubstitutionPlan,
+    generateSubstitutionMinutePlan(awayState, 'away')
+  );
+  const substitutionWindows = {
+    home: homeSubstitutionPlan,
+    away: awaySubstitutionPlan
+  };
   const liveScore = { home: 0, away: 0 };
   
   // Distribuir goles en el tiempo. Una pequeña parte cae en 90+ para que el
