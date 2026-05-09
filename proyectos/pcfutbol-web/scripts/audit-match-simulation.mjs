@@ -86,7 +86,9 @@ const summary = {
   cpuFixtureEvents: 0,
   totalXg: 0,
   bigChances: 0,
-  storyLines: 0
+  storyLines: 0,
+  phaseFlowMatches: 0,
+  phaseFlowXg: 0
 };
 
 const hardIssues = [];
@@ -238,6 +240,23 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
     addIssue(warnings, matchIndex, 'MATCH_STORY_MISSING', 'Match story has no explanatory lines', stats.matchStory);
   }
 
+  const phaseFlow = Array.isArray(stats.phaseFlow) ? stats.phaseFlow : [];
+  if (phaseFlow.length !== 6) {
+    addIssue(hardIssues, matchIndex, 'PHASE_FLOW_MISSING', 'Phase flow must contain 6 regulation phases', phaseFlow);
+  } else {
+    const phaseGoals = phaseFlow.reduce((acc, phase) => ({
+      home: acc.home + (phase.goals?.home || 0),
+      away: acc.away + (phase.goals?.away || 0)
+    }), { home: 0, away: 0 });
+    const phaseXg = phaseFlow.reduce((sum, phase) => sum + (phase.xg?.home || 0) + (phase.xg?.away || 0), 0);
+    if (!result.extraTime && (phaseGoals.home !== result.homeScore || phaseGoals.away !== result.awayScore)) {
+      addIssue(hardIssues, matchIndex, 'PHASE_GOALS_SCORE_MISMATCH', `Phase goals ${phaseGoals.home}-${phaseGoals.away} do not match score ${result.homeScore}-${result.awayScore}`, phaseFlow);
+    }
+    if (!Number.isFinite(phaseXg) || phaseXg <= 0) {
+      addIssue(hardIssues, matchIndex, 'PHASE_XG_INVALID', 'Phase xG must be positive and numeric', phaseFlow);
+    }
+  }
+
   if (result.penalties && result.homeScore !== result.awayScore) {
     addIssue(hardIssues, matchIndex, 'PENALTIES_WITHOUT_DRAW', 'Penalty shootout exists after a non-draw score');
   }
@@ -283,6 +302,10 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
   summary.totalXg += (result.stats?.xg?.home || 0) + (result.stats?.xg?.away || 0);
   summary.bigChances += (result.stats?.bigChances?.home || 0) + (result.stats?.bigChances?.away || 0);
   summary.storyLines += Array.isArray(result.stats?.matchStory) ? result.stats.matchStory.length : 0;
+  if (Array.isArray(result.stats?.phaseFlow)) {
+    summary.phaseFlowMatches++;
+    summary.phaseFlowXg += result.stats.phaseFlow.reduce((sum, phase) => sum + (phase.xg?.home || 0) + (phase.xg?.away || 0), 0);
+  }
   summary.injuries += events.filter(e => e.type === 'injury').length;
   if (!result.extraTime && (events || []).some(e => Number(e.minute) > 90)) summary.stoppageTimeMatches++;
   if (result.extraTime) summary.extraTime++;
@@ -403,6 +426,8 @@ const report = {
   avgXg: Number((summary.totalXg / summary.matches).toFixed(2)),
   avgBigChances: Number((summary.bigChances / summary.matches).toFixed(2)),
   avgStoryLines: Number((summary.storyLines / summary.matches).toFixed(2)),
+  phaseFlowCoveragePct: Number((summary.phaseFlowMatches / summary.matches * 100).toFixed(1)),
+  avgPhaseFlowXg: Number((summary.phaseFlowXg / Math.max(1, summary.phaseFlowMatches)).toFixed(2)),
   penaltyGoalPct: Number((summary.penaltyGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
   stoppageGoalPct: Number((summary.stoppageTimeGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
   hardIssueCount: hardIssues.length,
@@ -414,6 +439,9 @@ if (report.avgGoals < 2.35 || report.avgGoals > 3.05) {
 }
 if (report.highScorePct > 10) {
   addIssue(warnings, 'aggregate', 'HIGH_SCORE_RATE', `High-score matches ${report.highScorePct}% above target <=10%`);
+}
+if (report.phaseFlowCoveragePct !== 100) {
+  addIssue(hardIssues, 'aggregate', 'PHASE_FLOW_COVERAGE', `Phase flow coverage ${report.phaseFlowCoveragePct}% expected 100%`);
 }
 if (report.penaltyGoalPct < 5 || report.penaltyGoalPct > 14) {
   addIssue(warnings, 'aggregate', 'PENALTY_GOAL_RATE', `Penalty goals ${report.penaltyGoalPct}% outside target 5-14%`);
