@@ -266,15 +266,18 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
   // Decidir resultado
   const result = decideResult(homeWinProb, drawProb, awayWinProb, upsetFactor, isDerby);
   
-  // Simular goles según resultado (tácticas afectan cantidad de goles)
-  let { homeScore, awayScore } = simulateGoals(
+  // Simular goles desde un modelo de ocasiones/xG, manteniendo el signo del resultado decidido.
+  // El marcador nace de calidad ofensiva, defensa rival, porteros, finalización, táctica y contexto.
+  const goalModel = simulateGoals(
     result,
     homeStrength,
     awayStrength,
     importance,
     homeTactic,
-    awayTactic
+    awayTactic,
+    { weather, isDerby, totalDiff }
   );
+  let { homeScore, awayScore } = goalModel;
   
   // Penalty Master perk: 30% chance of winning a penalty per match + always scores.
   // Keep the extra goal tied to an actual penalty goal event so scorer tables and
@@ -375,7 +378,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
       importance,
       weather,
       isDerby,
-      totalDiff
+      totalDiff,
+      goalModel
     }
   );
   stats.substitutions = {
@@ -404,7 +408,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
       ratingDiff,
       reputationDiff,
       probabilities: { homeWinProb, drawProb, awayWinProb },
-      result: result === 1 ? 'homeWin' : result === 0 ? 'draw' : 'awayWin'
+      result: result === 1 ? 'homeWin' : result === 0 ? 'draw' : 'awayWin',
+      goalModel
     }
   };
 }
@@ -565,73 +570,141 @@ function decideResult(homeWinProb, drawProb, awayWinProb, upsetFactor, isDerby) 
 }
 
 /**
- * Simular goles según resultado decidido
+ * Extrae el 11 usado por el motor para evaluar portero y finalizadores reales.
  */
-function simulateGoals(result, homeStrength, awayStrength, importance, homeTactic = 'balanced', awayTactic = 'balanced') {
-  const homeProfile = homeStrength.profile;
-  const awayProfile = awayStrength.profile;
-  
-  let homeScore, awayScore;
-  
-  // Modificador por importancia
-  const impMod = importance === 'final' ? 0.85 : importance === 'crucial' ? 0.95 : 1;
-  
-  // Tácticas defensivas = menos goles totales, ofensivas = más
+function getMatchLineupFromStrength(matchStrength) {
+  return Array.isArray(matchStrength?.strength?.lineup) && matchStrength.strength.lineup.length > 0
+    ? matchStrength.strength.lineup
+    : [];
+}
+
+function getGoalkeeperRating(matchStrength) {
+  const lineup = getMatchLineupFromStrength(matchStrength);
+  const gk = lineup.find(p => ['GK', 'POR'].includes(getPrimaryPosition(p)) || ['GK', 'POR'].includes(getNaturalPosition(p)));
+  return gk?.overall || matchStrength?.strength?.goalkeeper || matchStrength?.rating || 70;
+}
+
+function getFinishingRating(matchStrength) {
+  const lineup = getMatchLineupFromStrength(matchStrength);
+  const weighted = lineup
+    .filter(p => getScoringRole(p) !== 'goalkeeper')
+    .map(p => {
+      const role = getScoringRole(p);
+      const roleWeight = role === 'striker' ? 1.45
+        : role === 'winger' || role === 'attackingMid' ? 1.20
+        : role === 'wideMid' || role === 'centralMid' ? 0.72
+        : 0.34;
+      return { rating: p.overall || 68, weight: roleWeight };
+    });
+  if (!weighted.length) return matchStrength?.strength?.attack || matchStrength?.rating || 70;
+  const totalWeight = weighted.reduce((sum, item) => sum + item.weight, 0);
+  return weighted.reduce((sum, item) => sum + item.rating * item.weight, 0) / totalWeight;
+}
+
+function poisson(lambda) {
+  const safeLambda = clamp(lambda, 0.05, 5.2);
+  const limit = Math.exp(-safeLambda);
+  let k = 0;
+  let p = 1;
+  do {
+    k += 1;
+    p *= Math.random();
+  } while (p > limit && k < 9);
+  return k - 1;
+}
+
+function buildPreMatchXg(homeStrength, awayStrength, importance, homeTactic = 'balanced', awayTactic = 'balanced', context = {}) {
   const homeTacticData = TACTICS[homeTactic] || TACTICS.balanced;
   const awayTacticData = TACTICS[awayTactic] || TACTICS.balanced;
-  // Promedio de lo "abierto" del partido (ambas tácticas influyen)
-  const goalFrequency = ((homeTacticData.attack + awayTacticData.attack) / 2);  // >1 = más goles, <1 = menos
-  // El motor previo se iba a >3.5 goles/partido en auditorías largas. Este
-  // factor baja el ritmo hacia el rango moderno (~2.6-2.9) sin quitar jerarquía.
-  const goalPace = 0.78;
-  
-  if (result === 1) {
-    // Victoria local
-    const margin = weightedRandom([
-      { value: 1, weight: 54 },  // 1-0, 2-1, etc
-      { value: 2, weight: 29 },  // 2-0, 3-1, etc
-      { value: 3, weight: 12 },  // 3-0, 4-1, etc
-      { value: 4, weight: 4 },   // Goleada
-      { value: 5, weight: 1 }    // Goleada histórica
-    ]);
-    
-    homeScore = Math.round(homeProfile.goalsScored * impMod * goalFrequency * goalPace + Math.random() * 1.05);
-    awayScore = Math.max(0, homeScore - margin);
-    
-    // Asegurar que local gana
-    if (homeScore <= awayScore) {
-      homeScore = awayScore + 1;
-    }
-  } else if (result === -1) {
-    // Victoria visitante
-    const margin = weightedRandom([
-      { value: 1, weight: 63 },  // Más ajustado fuera
-      { value: 2, weight: 27 },
-      { value: 3, weight: 8 },
-      { value: 4, weight: 2 }
-    ]);
-    
-    awayScore = Math.round(awayProfile.goalsScored * impMod * goalFrequency * goalPace + Math.random() * 0.95);
-    homeScore = Math.max(0, awayScore - margin);
-    
-    if (awayScore <= homeScore) {
-      awayScore = homeScore + 1;
-    }
-  } else {
-    // Empate
-    const goals = weightedRandom([
-      { value: 0, weight: 29 },  // 0-0
-      { value: 1, weight: 45 },  // 1-1
-      { value: 2, weight: 21 },  // 2-2
-      { value: 3, weight: 4 },   // 3-3
-      { value: 4, weight: 1 }    // 4-4+
-    ]);
-    
-    homeScore = goals;
-    awayScore = goals;
+  const homeAttack = homeStrength.strength?.attack || homeStrength.rating || 70;
+  const awayAttack = awayStrength.strength?.attack || awayStrength.rating || 70;
+  const homeMidfield = homeStrength.strength?.midfield || homeStrength.rating || 70;
+  const awayMidfield = awayStrength.strength?.midfield || awayStrength.rating || 70;
+  const homeDefense = homeStrength.strength?.defense || homeStrength.rating || 70;
+  const awayDefense = awayStrength.strength?.defense || awayStrength.rating || 70;
+
+  const weatherPace = context.weather === 'extreme' ? 0.82 : context.weather === 'rain' ? 0.92 : 1;
+  const importancePace = importance === 'final' ? 0.88 : importance === 'crucial' ? 0.95 : 1;
+  const derbyPace = context.isDerby ? 0.98 + Math.random() * 0.08 : 1;
+  const sharedPace = weatherPace * importancePace * derbyPace;
+  const homeControl = clamp(0.50 + (homeMidfield - awayMidfield) / 120 + ((homeTacticData.possession || 1) - (awayTacticData.possession || 1)) * 0.12, 0.32, 0.68);
+  const awayControl = 1 - homeControl;
+
+  const baseHome = 0.48 + homeControl * 0.94 + (homeAttack - awayDefense) / 42;
+  const baseAway = 0.40 + awayControl * 0.90 + (awayAttack - homeDefense) / 43;
+  const homeTacticThreat = (homeTacticData.attack || 1) * (awayTacticData.defense ? (1 / Math.sqrt(awayTacticData.defense)) : 1);
+  const awayTacticThreat = (awayTacticData.attack || 1) * (homeTacticData.defense ? (1 / Math.sqrt(homeTacticData.defense)) : 1);
+  const homeXg = clamp(baseHome * homeTacticThreat * sharedPace + Math.random() * 0.30, 0.22, 3.45);
+  const awayXg = clamp(baseAway * awayTacticThreat * sharedPace + Math.random() * 0.28, 0.18, 3.15);
+
+  return {
+    homeXg: round2(homeXg),
+    awayXg: round2(awayXg),
+    homeControl: round2(homeControl),
+    awayControl: round2(awayControl)
+  };
+}
+
+function finishingMultiplier(attackStrength, defenseStrength) {
+  const finisher = getFinishingRating(attackStrength);
+  const goalkeeper = getGoalkeeperRating(defenseStrength);
+  const attackQuality = attackStrength.strength?.attack || attackStrength.rating || 70;
+  const defenseQuality = defenseStrength.strength?.defense || defenseStrength.rating || 70;
+  const finisherEdge = (finisher - 70) / 125;
+  const keeperEdge = (goalkeeper - 70) / 130;
+  const structuralEdge = (attackQuality - defenseQuality) / 190;
+  const volatility = 0.86 + Math.random() * 0.20;
+  return clamp((0.90 + finisherEdge - keeperEdge + structuralEdge) * volatility, 0.55, 1.22);
+}
+
+function enforceResultShape(homeGoals, awayGoals, result, expectedHome, expectedAway) {
+  let homeScore = clamp(homeGoals, 0, 4);
+  let awayScore = clamp(awayGoals, 0, 4);
+
+  if (result === 1 && homeScore <= awayScore) {
+    const plausibleWinner = clamp(Math.round(expectedHome + Math.random() * 0.9), 1, 4);
+    homeScore = Math.max(homeScore, plausibleWinner);
+    awayScore = Math.min(awayScore, homeScore - 1);
+    if (homeScore <= awayScore) homeScore = Math.min(4, awayScore + 1);
+  } else if (result === -1 && awayScore <= homeScore) {
+    const plausibleWinner = clamp(Math.round(expectedAway + Math.random() * 0.9), 1, 4);
+    awayScore = Math.max(awayScore, plausibleWinner);
+    homeScore = Math.min(homeScore, awayScore - 1);
+    if (awayScore <= homeScore) awayScore = Math.min(4, homeScore + 1);
+  } else if (result === 0 && homeScore !== awayScore) {
+    const expectedDraw = (expectedHome + expectedAway) / 2;
+    const drawGoals = clamp(Math.round((homeScore + awayScore + expectedDraw) / 3), 0, 3);
+    homeScore = drawGoals;
+    awayScore = drawGoals;
   }
-  
+
   return { homeScore, awayScore };
+}
+
+/**
+ * Simular goles desde xG/ocasiones. El resultado probable se decide antes,
+ * pero el marcador concreto sale de volumen de ocasiones, finalizadores y porteros.
+ */
+function simulateGoals(result, homeStrength, awayStrength, importance, homeTactic = 'balanced', awayTactic = 'balanced', context = {}) {
+  const xgModel = buildPreMatchXg(homeStrength, awayStrength, importance, homeTactic, awayTactic, context);
+  const homeFinish = finishingMultiplier(homeStrength, awayStrength);
+  const awayFinish = finishingMultiplier(awayStrength, homeStrength);
+  const expectedHomeGoals = clamp(xgModel.homeXg * homeFinish, 0.08, 4.4);
+  const expectedAwayGoals = clamp(xgModel.awayXg * awayFinish, 0.06, 4.1);
+  const rawHomeGoals = poisson(expectedHomeGoals);
+  const rawAwayGoals = poisson(expectedAwayGoals);
+  const { homeScore, awayScore } = enforceResultShape(rawHomeGoals, rawAwayGoals, result, expectedHomeGoals, expectedAwayGoals);
+
+  return {
+    homeScore,
+    awayScore,
+    preMatchXg: { home: xgModel.homeXg, away: xgModel.awayXg },
+    expectedGoals: { home: round2(expectedHomeGoals), away: round2(expectedAwayGoals) },
+    finishing: { home: round2(homeFinish), away: round2(awayFinish) },
+    goalkeeperRating: { home: round2(getGoalkeeperRating(homeStrength)), away: round2(getGoalkeeperRating(awayStrength)) },
+    finisherRating: { home: round2(getFinishingRating(homeStrength)), away: round2(getFinishingRating(awayStrength)) },
+    control: { home: xgModel.homeControl, away: xgModel.awayControl }
+  };
 }
 
 /**
@@ -694,7 +767,9 @@ function getScoringRole(player) {
 }
 
 function isDefensiveScorer(player) {
-  return ['defender', 'wingback', 'goalkeeper'].includes(getScoringRole(player));
+  const naturalPosition = getNaturalPosition(player);
+  const defensiveNatural = ['GK', 'POR', 'CB', 'RB', 'LB', 'RWB', 'LWB'].includes(naturalPosition);
+  return defensiveNatural || ['defender', 'wingback', 'goalkeeper'].includes(getScoringRole(player));
 }
 
 function makeEventPlayer(player) {
@@ -1520,7 +1595,7 @@ function selectScorer(team, lineup, scorerCounts = new Map(), options = {}) {
     const goalsAlready = scorerCounts.get(player.name) || 0;
     const repeatPenalty = getRepeatPenalty(goalsAlready, role, teamGoals);
     const concentrationPenalty = goalsAlready > 0 && goalsAlready / Math.max(1, teamGoals) >= 0.5 ? 0.55 : 1;
-    const defensiveMultiGoalPenalty = goalsAlready > 0 && isDefensiveScorer(player) ? 0.18 : 1;
+    const defensiveMultiGoalPenalty = goalsAlready > 0 && isDefensiveScorer(player) ? 0 : 1;
     const rating = Math.max(45, player.overall || 65);
     return Math.pow(rating, 1.28) * roleWeight * repeatPenalty * concentrationPenalty * defensiveMultiGoalPenalty;
   });
@@ -1650,8 +1725,20 @@ function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, r
   const awayOpenPlayXg = awayShots * awayShotQuality;
   const homeGoalPressure = homeScore > 0 ? 0.16 + Math.min(0.24, homeScore * 0.08) : 0;
   const awayGoalPressure = awayScore > 0 ? 0.16 + Math.min(0.24, awayScore * 0.08) : 0;
-  const homeXg = clamp(homeOpenPlayXg + homeGoalPressure + Math.random() * 0.22, Math.max(0.12, homeScore * 0.45), 4.8);
-  const awayXg = clamp(awayOpenPlayXg + awayGoalPressure + Math.random() * 0.22, Math.max(0.10, awayScore * 0.45), 4.5);
+  const modelHomeXg = context.goalModel?.preMatchXg?.home;
+  const modelAwayXg = context.goalModel?.preMatchXg?.away;
+  const modelHomeExpected = context.goalModel?.expectedGoals?.home;
+  const modelAwayExpected = context.goalModel?.expectedGoals?.away;
+  const generatedHomeXg = homeOpenPlayXg + homeGoalPressure + Math.random() * 0.18;
+  const generatedAwayXg = awayOpenPlayXg + awayGoalPressure + Math.random() * 0.18;
+  const blendedHomeXg = Number.isFinite(modelHomeXg)
+    ? (generatedHomeXg * 0.42) + (modelHomeXg * 0.40) + ((modelHomeExpected ?? modelHomeXg) * 0.18)
+    : generatedHomeXg;
+  const blendedAwayXg = Number.isFinite(modelAwayXg)
+    ? (generatedAwayXg * 0.42) + (modelAwayXg * 0.40) + ((modelAwayExpected ?? modelAwayXg) * 0.18)
+    : generatedAwayXg;
+  const homeXg = clamp(blendedHomeXg, Math.max(0.12, homeScore * 0.38), 4.8);
+  const awayXg = clamp(blendedAwayXg, Math.max(0.10, awayScore * 0.38), 4.5);
 
   const homeShotsOnTarget = clamp(Math.round(homeShots * clamp(0.31 + homeQualityEdge * 0.05, 0.24, 0.47) + homeScore * 0.5), homeScore, homeShots);
   const awayShotsOnTarget = clamp(Math.round(awayShots * clamp(0.30 + awayQualityEdge * 0.05, 0.23, 0.46) + awayScore * 0.5), awayScore, awayShots);
@@ -1665,7 +1752,8 @@ function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, r
     xg: { home: round2(homeXg), away: round2(awayXg) },
     bigChances: { home: homeBigChances, away: awayBigChances },
     saves: { home: Math.max(0, awayShotsOnTarget - awayScore), away: Math.max(0, homeShotsOnTarget - homeScore) },
-    finishing: { home: round2(homeScore - homeXg), away: round2(awayScore - awayXg) }
+    finishing: { home: round2(homeScore - homeXg), away: round2(awayScore - awayXg) },
+    goalModel: context.goalModel || null
   };
 }
 
@@ -1697,15 +1785,31 @@ function generateMatchStory(stats, homeScore, awayScore, homeStrength, awayStren
 
   const homeSaves = stats.saves.home || 0;
   const awaySaves = stats.saves.away || 0;
+  const goalModel = stats.goalModel || context.goalModel || null;
+  const homeKeeper = goalModel?.goalkeeperRating?.home;
+  const awayKeeper = goalModel?.goalkeeperRating?.away;
+  const homeFinisher = goalModel?.finisherRating?.home;
+  const awayFinisher = goalModel?.finisherRating?.away;
   if (homeSaves >= 6 || awaySaves >= 6) {
     const side = homeSaves >= awaySaves ? 'local' : 'visitante';
     story.push(`El portero ${side} sostuvo a su equipo con muchas paradas.`);
   }
 
   if ((stats.finishing.home || 0) >= 1 || (stats.finishing.away || 0) >= 1) {
-    story.push('La pegada decidió: se marcaron más goles de los que sugerían las ocasiones claras.');
+    const lethalSide = (stats.finishing.home || 0) >= (stats.finishing.away || 0) ? 'local' : 'visitante';
+    story.push(`La pegada del ${lethalSide} decidió: convirtió por encima de lo que sugerían sus ocasiones.`);
   } else if ((stats.finishing.home || 0) <= -1 || (stats.finishing.away || 0) <= -1) {
     story.push('Faltó acierto: el volumen ofensivo no se tradujo en goles.');
+  }
+
+  if (Number.isFinite(homeKeeper) && Number.isFinite(awayKeeper) && Math.abs(homeKeeper - awayKeeper) >= 8) {
+    const superior = homeKeeper > awayKeeper ? 'local' : 'visitante';
+    story.push(`La diferencia de portería favoreció al ${superior} en las acciones de más peligro.`);
+  }
+
+  if (Number.isFinite(homeFinisher) && Number.isFinite(awayFinisher) && Math.abs(homeFinisher - awayFinisher) >= 8) {
+    const sharper = homeFinisher > awayFinisher ? 'local' : 'visitante';
+    story.push(`Los finalizadores del ${sharper} llegaban con más calidad para castigar dentro del área.`);
   }
 
   if (context.isDerby) story.push('El contexto de derbi añadió tensión y redujo la previsibilidad del partido.');
@@ -1740,6 +1844,7 @@ function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, re
     bigChances: chanceModel.bigChances,
     saves: chanceModel.saves,
     finishing: chanceModel.finishing,
+    goalModel: chanceModel.goalModel,
     corners: { home: Math.floor(homePossession / 12), away: Math.floor((100 - homePossession) / 12) },
     fouls: { home: homeFouls, away: awayFouls },
     yellowCards: { home: homeYellows, away: awayYellows },
