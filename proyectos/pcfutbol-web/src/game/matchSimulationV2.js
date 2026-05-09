@@ -369,7 +369,14 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     finalResult,
     homeTactic,
     awayTactic,
-    { yellowCards: { home: eventYellowsHome, away: eventYellowsAway }, redCards: { home: eventRedsHome, away: eventRedsAway } }
+    {
+      yellowCards: { home: eventYellowsHome, away: eventYellowsAway },
+      redCards: { home: eventRedsHome, away: eventRedsAway },
+      importance,
+      weather,
+      isDerby,
+      totalDiff
+    }
   );
   stats.substitutions = {
     home: finalEvents.filter(e => e.type === 'substitution' && e.team === 'home').length,
@@ -1596,21 +1603,123 @@ function selectRandomPlayer(team, teamLabel = 'team', options = {}) {
 /**
  * Generar estadísticas del partido
  */
-function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic = 'balanced', awayTactic = 'balanced', eventCards = null) {
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function round2(value) {
+  return Number(value.toFixed(2));
+}
+
+function tacticalPace(tacticData) {
+  return clamp(((tacticData.attack || 1) * 0.72) + ((tacticData.possession || 1) * 0.18) + ((tacticData.defense || 1) * 0.10), 0.72, 1.28);
+}
+
+function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic = 'balanced', awayTactic = 'balanced', context = {}) {
   const homeTacticData = TACTICS[homeTactic] || TACTICS.balanced;
   const awayTacticData = TACTICS[awayTactic] || TACTICS.balanced;
-  
-  // Posesión basada en ratings, resultado Y tácticas
+  const homeAttack = homeStrength.strength?.attack || homeStrength.rating || 70;
+  const awayAttack = awayStrength.strength?.attack || awayStrength.rating || 70;
+  const homeDefense = homeStrength.strength?.defense || homeStrength.rating || 70;
+  const awayDefense = awayStrength.strength?.defense || awayStrength.rating || 70;
   const midDiff = (homeStrength.strength?.midfield || 70) - (awayStrength.strength?.midfield || 70);
   const possessionTacticDiff = ((homeTacticData.possession || 1) - (awayTacticData.possession || 1)) * 20;
-  let homePossession = 50 + midDiff / 4 + possessionTacticDiff + (result === 1 ? 3 : result === -1 ? -3 : 0);
-  homePossession = Math.max(25, Math.min(75, homePossession));
-  
-  // Tiros (tácticas ofensivas = más tiros, defensivas = menos)
-  const homeAttackMod = homeTacticData.attack;
-  const awayAttackMod = awayTacticData.attack;
-  const homeShots = Math.round((8 + Math.floor(homePossession / 10) + homeScore * 2) * homeAttackMod);
-  const awayShots = Math.round((8 + Math.floor((100 - homePossession) / 10) + awayScore * 2) * awayAttackMod);
+  const derbyNoise = context.isDerby ? (Math.random() * 6 - 3) : 0;
+  let homePossession = 50 + midDiff / 4 + possessionTacticDiff + (result === 1 ? 2 : result === -1 ? -2 : 0) + derbyNoise;
+  homePossession = clamp(homePossession, 25, 75);
+
+  const weatherPace = context.weather === 'extreme' ? 0.82 : context.weather === 'rain' ? 0.92 : 1;
+  const importancePace = context.importance === 'final' ? 0.88 : context.importance === 'crucial' ? 0.95 : 1;
+  const totalPace = weatherPace * importancePace;
+  const homeQualityEdge = clamp((homeAttack - awayDefense) / 28, -0.8, 0.9);
+  const awayQualityEdge = clamp((awayAttack - homeDefense) / 28, -0.8, 0.9);
+  const homeTerritory = homePossession / 100;
+  const awayTerritory = 1 - homeTerritory;
+  const homeResultPressure = result === -1 ? 1.10 : result === 1 ? 0.96 : 1;
+  const awayResultPressure = result === 1 ? 1.10 : result === -1 ? 0.96 : 1;
+
+  let homeShots = Math.round((7.2 + homeTerritory * 8.4 + homeQualityEdge * 3.2 + homeScore * 1.25) * tacticalPace(homeTacticData) * homeResultPressure * totalPace + Math.random() * 2.8);
+  let awayShots = Math.round((6.3 + awayTerritory * 8.0 + awayQualityEdge * 3.0 + awayScore * 1.25) * tacticalPace(awayTacticData) * awayResultPressure * totalPace + Math.random() * 2.6);
+  homeShots = Math.max(homeScore + 2, clamp(homeShots, homeScore, 27));
+  awayShots = Math.max(awayScore + 2, clamp(awayShots, awayScore, 25));
+
+  const homeShotQuality = clamp(0.064 + homeQualityEdge * 0.017 + ((homeTacticData.attack || 1) - 1) * 0.020 - ((awayTacticData.defense || 1) - 1) * 0.016, 0.045, 0.118);
+  const awayShotQuality = clamp(0.061 + awayQualityEdge * 0.017 + ((awayTacticData.attack || 1) - 1) * 0.020 - ((homeTacticData.defense || 1) - 1) * 0.016, 0.043, 0.114);
+
+  const homeOpenPlayXg = homeShots * homeShotQuality;
+  const awayOpenPlayXg = awayShots * awayShotQuality;
+  const homeGoalPressure = homeScore > 0 ? 0.16 + Math.min(0.24, homeScore * 0.08) : 0;
+  const awayGoalPressure = awayScore > 0 ? 0.16 + Math.min(0.24, awayScore * 0.08) : 0;
+  const homeXg = clamp(homeOpenPlayXg + homeGoalPressure + Math.random() * 0.22, Math.max(0.12, homeScore * 0.45), 4.8);
+  const awayXg = clamp(awayOpenPlayXg + awayGoalPressure + Math.random() * 0.22, Math.max(0.10, awayScore * 0.45), 4.5);
+
+  const homeShotsOnTarget = clamp(Math.round(homeShots * clamp(0.31 + homeQualityEdge * 0.05, 0.24, 0.47) + homeScore * 0.5), homeScore, homeShots);
+  const awayShotsOnTarget = clamp(Math.round(awayShots * clamp(0.30 + awayQualityEdge * 0.05, 0.23, 0.46) + awayScore * 0.5), awayScore, awayShots);
+  const homeBigChances = clamp(Math.round(homeXg / 0.52 + (homeScore > homeXg + 0.75 ? 1 : 0)), homeScore > 0 ? 1 : 0, Math.max(1, Math.floor(homeShots / 3)));
+  const awayBigChances = clamp(Math.round(awayXg / 0.52 + (awayScore > awayXg + 0.75 ? 1 : 0)), awayScore > 0 ? 1 : 0, Math.max(1, Math.floor(awayShots / 3)));
+
+  return {
+    possession: { home: Math.round(homePossession), away: Math.round(100 - homePossession) },
+    shots: { home: homeShots, away: awayShots },
+    shotsOnTarget: { home: homeShotsOnTarget, away: awayShotsOnTarget },
+    xg: { home: round2(homeXg), away: round2(awayXg) },
+    bigChances: { home: homeBigChances, away: awayBigChances },
+    saves: { home: Math.max(0, awayShotsOnTarget - awayScore), away: Math.max(0, homeShotsOnTarget - homeScore) },
+    finishing: { home: round2(homeScore - homeXg), away: round2(awayScore - awayXg) }
+  };
+}
+
+function generateMatchStory(stats, homeScore, awayScore, homeStrength, awayStrength, context = {}) {
+  const story = [];
+  const xgDiff = round2((stats.xg.home || 0) - (stats.xg.away || 0));
+  const shotDiff = (stats.shots.home || 0) - (stats.shots.away || 0);
+  const homeWon = homeScore > awayScore;
+  const awayWon = awayScore > homeScore;
+  const strongerSide = homeStrength.rating >= awayStrength.rating + 6 ? 'home' : awayStrength.rating >= homeStrength.rating + 6 ? 'away' : null;
+  const winner = homeWon ? 'home' : awayWon ? 'away' : 'draw';
+  const underdogWon = strongerSide && winner !== 'draw' && winner !== strongerSide;
+  const dominantSide = xgDiff >= 0.65 ? 'home' : xgDiff <= -0.65 ? 'away' : null;
+  const dominantName = dominantSide === 'home' ? 'local' : dominantSide === 'away' ? 'visitante' : null;
+
+  if (dominantSide && ((dominantSide === 'home' && !homeWon) || (dominantSide === 'away' && !awayWon))) {
+    story.push(`Dominó el ${dominantName} por xG, pero el marcador no premió todas sus ocasiones.`);
+  }
+
+  if (underdogWon) {
+    story.push('Sorpresa futbolera: el equipo inferior castigó sus momentos y resistió ante un rival más fuerte.');
+  } else if (strongerSide && winner === strongerSide) {
+    story.push('La jerarquía se notó: el favorito convirtió su ventaja de plantilla en resultado.');
+  }
+
+  if (Math.abs(shotDiff) >= 7 && Math.abs(xgDiff) < 0.45) {
+    story.push('Hubo mucho volumen de tiro, pero pocas ocasiones realmente limpias.');
+  }
+
+  const homeSaves = stats.saves.home || 0;
+  const awaySaves = stats.saves.away || 0;
+  if (homeSaves >= 6 || awaySaves >= 6) {
+    const side = homeSaves >= awaySaves ? 'local' : 'visitante';
+    story.push(`El portero ${side} sostuvo a su equipo con muchas paradas.`);
+  }
+
+  if ((stats.finishing.home || 0) >= 1 || (stats.finishing.away || 0) >= 1) {
+    story.push('La pegada decidió: se marcaron más goles de los que sugerían las ocasiones claras.');
+  } else if ((stats.finishing.home || 0) <= -1 || (stats.finishing.away || 0) <= -1) {
+    story.push('Faltó acierto: el volumen ofensivo no se tradujo en goles.');
+  }
+
+  if (context.isDerby) story.push('El contexto de derbi añadió tensión y redujo la previsibilidad del partido.');
+  if (context.weather === 'rain' || context.weather === 'extreme') story.push('El clima bajó el ritmo y ensució parte de la circulación.');
+  if (story.length === 0) {
+    story.push('Partido equilibrado: las ocasiones y el marcador siguieron un guion bastante lógico.');
+  }
+
+  return story.slice(0, 3);
+}
+
+function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic = 'balanced', awayTactic = 'balanced', eventCards = null) {
+  const chanceModel = generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic, awayTactic, eventCards || {});
+  const homePossession = chanceModel.possession.home;
   
   // Faltas (presión alta y defensiva = más faltas)
   const homeFoulMod = homeTactic === 'highPress' ? 1.4 : homeTactic === 'defensive' ? 1.2 : 1;
@@ -1622,25 +1731,22 @@ function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, re
   const awayYellows = eventCards?.yellowCards?.away ?? Math.floor(awayFouls * (0.15 + Math.random() * 0.15));
   const homeReds = eventCards?.redCards?.home ?? (Math.random() < 0.18 ? 1 : 0);
   const awayReds = eventCards?.redCards?.away ?? (Math.random() < 0.18 ? 1 : 0);
-  
-  const homeShotsOnTarget = Math.max(homeScore, Math.floor(homeShots * 0.4));
-  const awayShotsOnTarget = Math.max(awayScore, Math.floor(awayShots * 0.4));
-  const homeXg = Math.max(homeScore * 0.62, homeShots * 0.045 + homeShotsOnTarget * 0.16 + homeScore * 0.38);
-  const awayXg = Math.max(awayScore * 0.62, awayShots * 0.045 + awayShotsOnTarget * 0.16 + awayScore * 0.38);
-  const homeSaves = Math.max(0, awayShotsOnTarget - awayScore);
-  const awaySaves = Math.max(0, homeShotsOnTarget - homeScore);
 
-  return {
-    possession: { home: Math.round(homePossession), away: Math.round(100 - homePossession) },
-    shots: { home: homeShots, away: awayShots },
-    shotsOnTarget: { home: homeShotsOnTarget, away: awayShotsOnTarget },
-    xg: { home: Number(homeXg.toFixed(2)), away: Number(awayXg.toFixed(2)) },
-    saves: { home: homeSaves, away: awaySaves },
+  const stats = {
+    possession: chanceModel.possession,
+    shots: chanceModel.shots,
+    shotsOnTarget: chanceModel.shotsOnTarget,
+    xg: chanceModel.xg,
+    bigChances: chanceModel.bigChances,
+    saves: chanceModel.saves,
+    finishing: chanceModel.finishing,
     corners: { home: Math.floor(homePossession / 12), away: Math.floor((100 - homePossession) / 12) },
     fouls: { home: homeFouls, away: awayFouls },
     yellowCards: { home: homeYellows, away: awayYellows },
     redCards: { home: homeReds, away: awayReds }
   };
+  stats.matchStory = generateMatchStory(stats, homeScore, awayScore, homeStrength, awayStrength, eventCards || {});
+  return stats;
 }
 
 // ============================================================

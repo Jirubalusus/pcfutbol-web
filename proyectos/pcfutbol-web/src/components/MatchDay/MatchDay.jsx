@@ -1233,11 +1233,13 @@ export default function MatchDay({ onComplete, onBack }) {
           
           // Stats
           const stats = matchResult.stats;
+          const matchStory = Array.isArray(stats.matchStory) ? stats.matchStory : [];
           const statRows = [
             { label: t('matchday.possession'), home: stats.possession.home, away: stats.possession.away, suffix: '%', isPercent: true },
             { label: t('matchday.shots'), home: stats.shots.home, away: stats.shots.away },
             { label: t('matchday.shotsOnTarget'), home: stats.shotsOnTarget.home, away: stats.shotsOnTarget.away },
             { label: 'xG', home: stats.xg?.home ?? 0, away: stats.xg?.away ?? 0 },
+            { label: 'Ocasiones claras', home: stats.bigChances?.home ?? 0, away: stats.bigChances?.away ?? 0 },
             { label: 'Paradas', home: stats.saves?.home ?? 0, away: stats.saves?.away ?? 0 },
             { label: t('matchday.corners'), home: stats.corners.home, away: stats.corners.away },
             { label: t('matchday.fouls'), home: stats.fouls?.home ?? 0, away: stats.fouls?.away ?? 0 },
@@ -1419,6 +1421,18 @@ export default function MatchDay({ onComplete, onBack }) {
                 );
               })}
             </div>
+
+            {matchStory.length > 0 && (
+              <div className="result-match-story">
+                <h4>Claves del partido</h4>
+                {matchStory.map((line, idx) => (
+                  <div key={`story${idx}`} className="story-line">
+                    <span className="story-bullet">▸</span>
+                    <span>{line}</span>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Bottom row: Stadium + MOTM */}
             <div className="result-bottom-row">

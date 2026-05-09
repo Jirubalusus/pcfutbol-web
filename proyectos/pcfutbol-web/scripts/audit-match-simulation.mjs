@@ -83,7 +83,10 @@ const summary = {
   pathologicalScorerMatches: 0,
   defenderMultiGoalMatches: 0,
   cpuFixturesPlayed: 0,
-  cpuFixtureEvents: 0
+  cpuFixtureEvents: 0,
+  totalXg: 0,
+  bigChances: 0,
+  storyLines: 0
 };
 
 const hardIssues = [];
@@ -212,6 +215,29 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
     addIssue(hardIssues, matchIndex, 'RED_STATS_MISMATCH', 'Red-card stats do not match events');
   }
 
+  const stats = result.stats || {};
+  const numericStatPairs = [
+    ['shots', stats.shots?.home, stats.shots?.away],
+    ['shotsOnTarget', stats.shotsOnTarget?.home, stats.shotsOnTarget?.away],
+    ['xg', stats.xg?.home, stats.xg?.away],
+    ['bigChances', stats.bigChances?.home, stats.bigChances?.away],
+    ['saves', stats.saves?.home, stats.saves?.away]
+  ];
+  for (const [name, homeValue, awayValue] of numericStatPairs) {
+    if (!Number.isFinite(Number(homeValue)) || !Number.isFinite(Number(awayValue))) {
+      addIssue(hardIssues, matchIndex, 'CHANCE_STATS_MISSING', `${name} is missing or non numeric`, stats);
+    }
+  }
+  if ((stats.shotsOnTarget?.home ?? 0) > (stats.shots?.home ?? 0) || (stats.shotsOnTarget?.away ?? 0) > (stats.shots?.away ?? 0)) {
+    addIssue(hardIssues, matchIndex, 'SHOTS_ON_TARGET_OVER_SHOTS', 'Shots on target cannot exceed total shots', stats);
+  }
+  if ((stats.shotsOnTarget?.home ?? 0) < result.homeScore || (stats.shotsOnTarget?.away ?? 0) < result.awayScore) {
+    addIssue(hardIssues, matchIndex, 'GOALS_OVER_SHOTS_ON_TARGET', 'Goals cannot exceed shots on target', stats);
+  }
+  if (!Array.isArray(stats.matchStory) || stats.matchStory.length === 0) {
+    addIssue(warnings, matchIndex, 'MATCH_STORY_MISSING', 'Match story has no explanatory lines', stats.matchStory);
+  }
+
   if (result.penalties && result.homeScore !== result.awayScore) {
     addIssue(hardIssues, matchIndex, 'PENALTIES_WITHOUT_DRAW', 'Penalty shootout exists after a non-draw score');
   }
@@ -254,6 +280,9 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
   if (result.homeScore + result.awayScore >= 6) summary.highScoreMatches++;
   summary.yellowCards += statsYellowsHome + statsYellowsAway;
   summary.redCards += statsRedsHome + statsRedsAway;
+  summary.totalXg += (result.stats?.xg?.home || 0) + (result.stats?.xg?.away || 0);
+  summary.bigChances += (result.stats?.bigChances?.home || 0) + (result.stats?.bigChances?.away || 0);
+  summary.storyLines += Array.isArray(result.stats?.matchStory) ? result.stats.matchStory.length : 0;
   summary.injuries += events.filter(e => e.type === 'injury').length;
   if (!result.extraTime && (events || []).some(e => Number(e.minute) > 90)) summary.stoppageTimeMatches++;
   if (result.extraTime) summary.extraTime++;
@@ -371,6 +400,9 @@ const report = {
   avgYellows: Number((summary.yellowCards / summary.matches).toFixed(2)),
   avgReds: Number((summary.redCards / summary.matches).toFixed(2)),
   avgInjuries: Number((summary.injuries / summary.matches).toFixed(2)),
+  avgXg: Number((summary.totalXg / summary.matches).toFixed(2)),
+  avgBigChances: Number((summary.bigChances / summary.matches).toFixed(2)),
+  avgStoryLines: Number((summary.storyLines / summary.matches).toFixed(2)),
   penaltyGoalPct: Number((summary.penaltyGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
   stoppageGoalPct: Number((summary.stoppageTimeGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
   hardIssueCount: hardIssues.length,

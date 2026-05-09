@@ -1692,6 +1692,39 @@
     }
 
     // Bottom row: stadium + MOTM
+    .result-match-story {
+      padding: 0.85rem 1rem;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.10), rgba(15, 25, 50, 0.92));
+      border: 1px solid rgba(100, 180, 255, 0.15);
+      border-top: none;
+
+      h4 {
+        margin: 0 0 0.55rem 0;
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: #9fb4c8;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        text-align: center;
+      }
+
+      .story-line {
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: 0.35rem;
+        align-items: start;
+        padding: 0.22rem 0;
+        color: #e0e8f0;
+        font-size: 0.8rem;
+        line-height: 1.35;
+      }
+
+      .story-bullet {
+        color: #00d4ff;
+        font-weight: 900;
+      }
+    }
+
     .result-bottom-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
