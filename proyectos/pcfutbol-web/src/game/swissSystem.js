@@ -38,6 +38,63 @@ function shuffleArray(arr) {
   return a;
 }
 
+function hasCompleteFixtureSlate(fixtures, teams, expectedMatches) {
+  const counts = new Map(teams.map(t => [t.teamId, 0]));
+  const seenPairs = new Set();
+  for (const fixture of fixtures) {
+    if (!counts.has(fixture.homeTeamId) || !counts.has(fixture.awayTeamId)) return false;
+    const pairKey = [fixture.homeTeamId, fixture.awayTeamId].sort().join('::');
+    if (seenPairs.has(pairKey)) return false;
+    seenPairs.add(pairKey);
+    counts.set(fixture.homeTeamId, counts.get(fixture.homeTeamId) + 1);
+    counts.set(fixture.awayTeamId, counts.get(fixture.awayTeamId) + 1);
+  }
+  return [...counts.values()].every(count => count === expectedMatches);
+}
+
+function hasOneMatchPerTeamPerMatchday(matchdays, teams) {
+  const expected = new Set(teams.map(t => t.teamId));
+  return matchdays.every(matchday => {
+    const played = new Set();
+    for (const fixture of matchday) {
+      if (played.has(fixture.homeTeamId) || played.has(fixture.awayTeamId)) return false;
+      played.add(fixture.homeTeamId);
+      played.add(fixture.awayTeamId);
+    }
+    return played.size === expected.size && [...expected].every(teamId => played.has(teamId));
+  });
+}
+
+function generateBalancedFallbackMatchdays(teams, numMatchdays) {
+  const ordered = shuffleArray(teams);
+  const fixed = ordered[0];
+  let rotating = ordered.slice(1);
+  const matchdays = [];
+
+  for (let round = 0; round < numMatchdays; round++) {
+    const roundTeams = [fixed, ...rotating];
+    const fixtures = [];
+    for (let i = 0; i < roundTeams.length / 2; i++) {
+      const a = roundTeams[i];
+      const b = roundTeams[roundTeams.length - 1 - i];
+      const aHome = (round + i) % 2 === 0;
+      fixtures.push({
+        homeTeamId: aHome ? a.teamId : b.teamId,
+        awayTeamId: aHome ? b.teamId : a.teamId,
+        homeTeamName: aHome ? (a.teamName || a.name) : (b.teamName || b.name),
+        awayTeamName: aHome ? (b.teamName || b.name) : (a.teamName || a.name),
+        matchday: round + 1,
+        homePot: null,
+        awayPot: null
+      });
+    }
+    matchdays.push(fixtures);
+    rotating = [rotating[rotating.length - 1], ...rotating.slice(0, -1)];
+  }
+
+  return matchdays;
+}
+
 /**
  * Generate the Swiss-system draw for 32 teams.
  * Each team plays 8 matches: 2 from each pot (1 home, 1 away).
@@ -75,11 +132,25 @@ export function generateSwissDraw(teams) {
     pot.forEach(t => teamPot.set(t.teamId, potIdx));
   });
 
-  // Generate fixtures: each team plays 8 matches (2 per pot, 1 home 1 away)
-  const fixtures = generateConstrainedFixtures(teams, pots, teamPot);
+  // Generate fixtures: each team plays 8 matches (2 per pot, 1 home 1 away per pot)
+  let fixtures = generateConstrainedFixtures(teams, pots, teamPot);
   
+  // The constrained generator is intentionally heuristic. If it cannot build a complete
+  // 8-match slate for all clubs, use a guaranteed balanced Swiss-style fallback so the
+  // European engine never creates missing player matchdays.
+  if (!hasCompleteFixtureSlate(fixtures, teams, 8)) {
+    console.warn('Swiss draw: constrained fixture generation incomplete; using balanced fallback draw.');
+    const matchdays = generateBalancedFallbackMatchdays(teams, 8);
+    return { matchdays, pots };
+  }
+
   // Distribute fixtures across 8 matchdays
   const matchdays = distributeToMatchdays(fixtures, 8);
+
+  if (!hasOneMatchPerTeamPerMatchday(matchdays, teams)) {
+    console.warn('Swiss draw: fixture distribution incomplete; using balanced fallback draw.');
+    return { matchdays: generateBalancedFallbackMatchdays(teams, 8), pots };
+  }
 
   return { matchdays, pots };
 }
@@ -238,47 +309,57 @@ function generateConstrainedFixtures(teams, pots, teamPot) {
  * @returns {Array[]} array of matchday arrays
  */
 function distributeToMatchdays(fixtures, numMatchdays) {
-  const matchdays = Array.from({ length: numMatchdays }, () => []);
-  const teamMatchday = new Map(); // teamId → Set of matchday indices used
+  const teamIds = Array.from(new Set(fixtures.flatMap(f => [f.homeTeamId, f.awayTeamId])));
 
-  // Initialize tracking
-  const allTeamIds = new Set();
-  fixtures.forEach(f => {
-    allTeamIds.add(f.homeTeamId);
-    allTeamIds.add(f.awayTeamId);
-  });
-  allTeamIds.forEach(id => teamMatchday.set(id, new Set()));
+  // A UEFA league-phase draw needs every team to have exactly one fixture per matchday.
+  // The old greedy fallback put clashes into the least-full day when it got stuck, which
+  // could leave the player's team without a match on some matchdays. Try shuffled greedy
+  // schedules until all days are conflict-free and balanced; fall back only after that.
+  for (let attempt = 0; attempt < 250; attempt++) {
+    const matchdays = Array.from({ length: numMatchdays }, () => []);
+    const teamMatchday = new Map(teamIds.map(id => [id, new Set()]));
+    const ordered = shuffleArray(fixtures).sort((a, b) => {
+      const aFlex = numMatchdays - (teamMatchday.get(a.homeTeamId)?.size || 0) - (teamMatchday.get(a.awayTeamId)?.size || 0);
+      const bFlex = numMatchdays - (teamMatchday.get(b.homeTeamId)?.size || 0) - (teamMatchday.get(b.awayTeamId)?.size || 0);
+      return aFlex - bFlex;
+    });
+    let failed = false;
 
-  // Shuffle fixtures for variety
-  const shuffled = shuffleArray(fixtures);
+    for (const fixture of ordered) {
+      const homeUsed = teamMatchday.get(fixture.homeTeamId);
+      const awayUsed = teamMatchday.get(fixture.awayTeamId);
+      const candidates = Array.from({ length: numMatchdays }, (_, idx) => idx)
+        .filter(md => !homeUsed.has(md) && !awayUsed.has(md))
+        .sort((a, b) => matchdays[a].length - matchdays[b].length || a - b);
 
-  for (const fixture of shuffled) {
-    const homeUsed = teamMatchday.get(fixture.homeTeamId);
-    const awayUsed = teamMatchday.get(fixture.awayTeamId);
-
-    // Find a matchday where neither team is already playing
-    let assigned = false;
-    for (let md = 0; md < numMatchdays; md++) {
-      if (!homeUsed.has(md) && !awayUsed.has(md)) {
-        matchdays[md].push({ ...fixture, matchday: md + 1 });
-        homeUsed.add(md);
-        awayUsed.add(md);
-        assigned = true;
+      if (!candidates.length) {
+        failed = true;
         break;
       }
+
+      const md = candidates[0];
+      matchdays[md].push({ ...fixture, matchday: md + 1 });
+      homeUsed.add(md);
+      awayUsed.add(md);
     }
 
-    // Fallback: assign to least-full matchday
-    if (!assigned) {
-      const leastFull = matchdays
-        .map((md, idx) => ({ idx, count: md.length }))
-        .sort((a, b) => a.count - b.count)[0].idx;
-      matchdays[leastFull].push({ ...fixture, matchday: leastFull + 1 });
-      homeUsed.add(leastFull);
-      awayUsed.add(leastFull);
-    }
+    if (failed) continue;
+
+    const valid = teamIds.every(teamId => {
+      const used = teamMatchday.get(teamId);
+      return used && used.size === numMatchdays;
+    }) && matchdays.every(md => new Set(md.flatMap(f => [f.homeTeamId, f.awayTeamId])).size === md.length * 2);
+
+    if (valid) return matchdays;
   }
 
+  // Last-resort legacy behaviour: keep the game running, but make the warning explicit.
+  console.warn('Swiss draw: could not distribute fixtures into clash-free matchdays after retries.');
+  const matchdays = Array.from({ length: numMatchdays }, () => []);
+  for (const [idx, fixture] of fixtures.entries()) {
+    const md = idx % numMatchdays;
+    matchdays[md].push({ ...fixture, matchday: md + 1 });
+  }
   return matchdays;
 }
 
