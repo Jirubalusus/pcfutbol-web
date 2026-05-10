@@ -1,4 +1,5 @@
 .match-day {
+  --match-day-mobile-cta-space: calc(96px + env(safe-area-inset-bottom));
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
@@ -13,7 +14,7 @@
 
   @media (max-width: 768px) {
     padding: 0.5rem;
-    padding-bottom: 80px;
+    padding-bottom: var(--match-day-mobile-cta-space);
     overflow-x: hidden;
     align-items: flex-start;
   }
@@ -480,6 +481,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 768px) {
+      padding-bottom: 1.25rem;
+    }
   }
 
   &__playing--tv {
@@ -1108,8 +1113,7 @@
   }
 
   &__skip-btn {
-    width: calc(100% - 2rem);
-    max-width: none;
+    width: auto;
     min-height: 58px;
     padding: 0 1.35rem;
     background: rgba(12, 20, 36, 0.95);
@@ -1118,24 +1122,28 @@
     cursor: pointer;
     transition: background 0.22s ease, color 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease, transform 0.12s ease;
     position: fixed;
-    bottom: max(1rem, env(safe-area-inset-bottom));
-    left: 50%;
-    right: auto;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: max(0.75rem, env(safe-area-inset-left));
+    right: max(0.75rem, env(safe-area-inset-right));
     z-index: 100;
     border-radius: 18px;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 -8px 34px rgba(0, 0, 0, 0.68);
     font-size: 1.06rem;
     font-weight: 800;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
-    transform: translateX(-50%);
+    transform: none;
     white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
 
     @media (min-width: 769px) {
       width: 360px;
+      left: 50%;
+      right: auto;
       bottom: 1.25rem;
+      transform: translateX(-50%);
     }
 
     &:hover {
@@ -1144,14 +1152,22 @@
     }
 
     &:active {
-      transform: translateX(-50%) scale(0.985);
+      transform: scale(0.985);
       filter: brightness(0.95);
+
+      @media (min-width: 769px) {
+        transform: translateX(-50%) scale(0.985);
+      }
     }
   }
 
   // RESULT PHASE
   &__result {
     animation: fadeInUp 0.5s ease;
+
+    @media (max-width: 768px) {
+      padding-bottom: 1.25rem;
+    }
 
     &.win .result-scoreboard { 
       border-color: rgba(0, 245, 160, 0.3);
@@ -1848,8 +1864,7 @@
   }
 
   &__continue-btn {
-    width: calc(100% - 2rem);
-    max-width: none;
+    width: auto;
     min-height: 58px;
     padding: 0 1.35rem;
     background: linear-gradient(135deg, #00c882, #00f5a0);
@@ -1863,21 +1878,25 @@
     transition: filter 0.22s ease, box-shadow 0.22s ease, transform 0.12s ease;
     letter-spacing: 0.02em;
     position: fixed;
-    bottom: max(1rem, env(safe-area-inset-bottom));
-    left: 50%;
-    right: auto;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: max(0.75rem, env(safe-area-inset-left));
+    right: max(0.75rem, env(safe-area-inset-right));
     z-index: 100;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6), 0 4px 20px rgba(0, 245, 160, 0.2);
+    box-shadow: 0 -8px 34px rgba(0, 0, 0, 0.68), 0 4px 20px rgba(0, 245, 160, 0.2);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
-    transform: translateX(-50%);
+    transform: none;
     white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
 
     @media (min-width: 769px) {
       width: 360px;
+      left: 50%;
+      right: auto;
       bottom: 1.25rem;
+      transform: translateX(-50%);
     }
 
     &:hover {
@@ -1886,8 +1905,12 @@
     }
 
     &:active {
-      transform: translateX(-50%) scale(0.985);
+      transform: scale(0.985);
       filter: brightness(0.95);
+
+      @media (min-width: 769px) {
+        transform: translateX(-50%) scale(0.985);
+      }
     }
   }
 }
