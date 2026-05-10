@@ -3474,11 +3474,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
   return createPortal(
 
-    <div className="transfer-modal-overlay" onClick={() => onClose(finalResult === 'failed')}>
+    <div className="transfer-modal-overlay" onClick={() => onClose(finalResult === 'failed' && negotiationMode !== 'loan')}>
 
-      <div className="transfer-modal" onClick={e => e.stopPropagation()}>
+      <div className={`transfer-modal ${finalResult ? 'final-result-open' : ''}`} onClick={e => e.stopPropagation()}>
 
-        <button className="modal-close-btn" onClick={() => onClose(finalResult === 'failed')}><X size={20} /></button>
+        {!finalResult && <button className="modal-close-btn" onClick={() => onClose(false)}><X size={20} /></button>}
 
 
 
@@ -3544,15 +3544,15 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="result-icon"><XCircle size={48} /></div>
 
-                  <h2>{t('transfers.signingFailed')}</h2>
+                  <h2>{negotiationMode === 'loan' ? t('transfers.loanFailed', 'CESIÓN RECHAZADA') : t('transfers.signingFailed')}</h2>
 
                   <p className="fail-reason">{failReason}</p>
 
-                  <p className="block-notice"><Ban size={14} /> {t('transfers.blockedUntilNextSeason')}</p>
+                  {negotiationMode !== 'loan' && <p className="block-notice"><Ban size={14} /> {t('transfers.blockedUntilNextSeason')}</p>}
 
                   <div className="result-actions">
 
-                    <button className="result-btn close" onClick={() => onClose(true)}>
+                    <button className="result-btn close" onClick={() => onClose(negotiationMode !== 'loan')}>
 
                       {t('transfers.close')}
 

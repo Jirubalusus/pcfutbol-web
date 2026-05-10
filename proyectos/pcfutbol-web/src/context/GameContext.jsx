@@ -3406,11 +3406,15 @@ export function gameReducer(state, action) {
         )
       };
 
-    case 'REMOVE_OUTGOING_OFFER':
+    case 'REMOVE_OUTGOING_OFFER': {
+      const removedOffer = (state.outgoingOffers || []).find(o => o.id === action.payload);
+      const refundAmount = removedOffer?.status === 'pending' ? (removedOffer.amount || 0) : 0;
       return {
         ...state,
-        outgoingOffers: (state.outgoingOffers || []).filter(o => o.id !== action.payload)
+        outgoingOffers: (state.outgoingOffers || []).filter(o => o.id !== action.payload),
+        money: (state.money || 0) + refundAmount
       };
+    }
 
     case 'ADD_INCOMING_OFFER':
       return {
