@@ -1,5 +1,12 @@
 .match-day {
   --match-day-mobile-cta-space: calc(96px + env(safe-area-inset-bottom));
+  transform: none;
+
+  &.fade-in-up {
+    animation: none;
+    transform: none;
+  }
+
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;

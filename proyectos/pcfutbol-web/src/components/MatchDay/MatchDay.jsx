@@ -223,7 +223,7 @@ export default function MatchDay({ onComplete, onBack }) {
     // Pass 'league' so Office advances the week and doesn't loop back here
     // when the opponent can't be resolved (e.g. data loading incomplete).
     return (
-      <div className="match-day fade-in-up">
+      <div className="match-day">
         <div className="match-day__no-match">
           <p>{t('matchday.noMatchThisWeek')}</p>
           <button onClick={() => onComplete('league')}>{t('common.continue')}</button>
@@ -1003,7 +1003,7 @@ export default function MatchDay({ onComplete, onBack }) {
   // Guard duplicado eliminado — ya se comprueba al inicio del componente
   
   return (
-    <div className="match-day fade-in-up">
+    <div className="match-day">
       {matchdayTutorial.shouldShow && (
         <TutorialModal
           id="matchday"
