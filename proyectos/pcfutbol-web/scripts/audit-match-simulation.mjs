@@ -88,7 +88,12 @@ const summary = {
   bigChances: 0,
   storyLines: 0,
   phaseFlowMatches: 0,
-  phaseFlowXg: 0
+  phaseFlowXg: 0,
+  setPieceXg: 0,
+  counterXg: 0,
+  latePressureXg: 0,
+  sourceGoalMatches: 0,
+  sourceGoalEligibleMatches: 0
 };
 
 const hardIssues = [];
@@ -249,11 +254,32 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
       away: acc.away + (phase.goals?.away || 0)
     }), { home: 0, away: 0 });
     const phaseXg = phaseFlow.reduce((sum, phase) => sum + (phase.xg?.home || 0) + (phase.xg?.away || 0), 0);
+    const phaseSourceGoals = phaseFlow.reduce((acc, phase) => {
+      const homeTypes = phase.goalsByType?.home || {};
+      const awayTypes = phase.goalsByType?.away || {};
+      return {
+        home: acc.home + Object.values(homeTypes).reduce((sum, value) => sum + (Number(value) || 0), 0),
+        away: acc.away + Object.values(awayTypes).reduce((sum, value) => sum + (Number(value) || 0), 0)
+      };
+    }, { home: 0, away: 0 });
+    const invalidBreakdownPhase = phaseFlow.find(phase => {
+      const homeBreakdown = phase.xgByType?.home || {};
+      const awayBreakdown = phase.xgByType?.away || {};
+      const homeSum = Object.values(homeBreakdown).reduce((sum, value) => sum + (Number(value) || 0), 0);
+      const awaySum = Object.values(awayBreakdown).reduce((sum, value) => sum + (Number(value) || 0), 0);
+      return !Number.isFinite(homeSum) || !Number.isFinite(awaySum) || Math.abs(homeSum - (phase.xg?.home || 0)) > 0.08 || Math.abs(awaySum - (phase.xg?.away || 0)) > 0.08;
+    });
     if (!result.extraTime && (phaseGoals.home !== result.homeScore || phaseGoals.away !== result.awayScore)) {
       addIssue(hardIssues, matchIndex, 'PHASE_GOALS_SCORE_MISMATCH', `Phase goals ${phaseGoals.home}-${phaseGoals.away} do not match score ${result.homeScore}-${result.awayScore}`, phaseFlow);
     }
     if (!Number.isFinite(phaseXg) || phaseXg <= 0) {
       addIssue(hardIssues, matchIndex, 'PHASE_XG_INVALID', 'Phase xG must be positive and numeric', phaseFlow);
+    }
+    if (invalidBreakdownPhase) {
+      addIssue(hardIssues, matchIndex, 'PHASE_XG_BREAKDOWN_INVALID', 'Phase xG source breakdown must exist and approximately sum to phase xG', invalidBreakdownPhase);
+    }
+    if (!result.extraTime && (phaseSourceGoals.home !== result.homeScore || phaseSourceGoals.away !== result.awayScore)) {
+      addIssue(hardIssues, matchIndex, 'GOAL_SOURCE_SCORE_MISMATCH', `Goal sources ${phaseSourceGoals.home}-${phaseSourceGoals.away} do not match score ${result.homeScore}-${result.awayScore}`, phaseFlow);
     }
   }
 
@@ -305,6 +331,16 @@ function validateMatch(result, homeTeam, awayTeam, matchIndex) {
   if (Array.isArray(result.stats?.phaseFlow)) {
     summary.phaseFlowMatches++;
     summary.phaseFlowXg += result.stats.phaseFlow.reduce((sum, phase) => sum + (phase.xg?.home || 0) + (phase.xg?.away || 0), 0);
+  }
+  const breakdown = result.stats?.xgBreakdown || {};
+  summary.setPieceXg += (breakdown.home?.setPiece || 0) + (breakdown.away?.setPiece || 0);
+  summary.counterXg += (breakdown.home?.counter || 0) + (breakdown.away?.counter || 0);
+  summary.latePressureXg += (breakdown.home?.latePressure || 0) + (breakdown.away?.latePressure || 0);
+  const goalsByType = result.stats?.goalsByType || {};
+  const sourceGoals = ['home', 'away'].reduce((sum, team) => sum + Object.values(goalsByType[team] || {}).reduce((sideSum, value) => sideSum + (Number(value) || 0), 0), 0);
+  if (!result.extraTime) {
+    summary.sourceGoalEligibleMatches++;
+    if (sourceGoals === result.homeScore + result.awayScore) summary.sourceGoalMatches++;
   }
   summary.injuries += events.filter(e => e.type === 'injury').length;
   if (!result.extraTime && (events || []).some(e => Number(e.minute) > 90)) summary.stoppageTimeMatches++;
@@ -428,6 +464,10 @@ const report = {
   avgStoryLines: Number((summary.storyLines / summary.matches).toFixed(2)),
   phaseFlowCoveragePct: Number((summary.phaseFlowMatches / summary.matches * 100).toFixed(1)),
   avgPhaseFlowXg: Number((summary.phaseFlowXg / Math.max(1, summary.phaseFlowMatches)).toFixed(2)),
+  avgSetPieceXg: Number((summary.setPieceXg / summary.matches).toFixed(2)),
+  avgCounterXg: Number((summary.counterXg / summary.matches).toFixed(2)),
+  avgLatePressureXg: Number((summary.latePressureXg / summary.matches).toFixed(2)),
+  sourceGoalCoveragePct: Number((summary.sourceGoalMatches / Math.max(1, summary.sourceGoalEligibleMatches) * 100).toFixed(1)),
   penaltyGoalPct: Number((summary.penaltyGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
   stoppageGoalPct: Number((summary.stoppageTimeGoals / Math.max(1, summary.goals) * 100).toFixed(1)),
   hardIssueCount: hardIssues.length,
@@ -442,6 +482,12 @@ if (report.highScorePct > 10) {
 }
 if (report.phaseFlowCoveragePct !== 100) {
   addIssue(hardIssues, 'aggregate', 'PHASE_FLOW_COVERAGE', `Phase flow coverage ${report.phaseFlowCoveragePct}% expected 100%`);
+}
+if (report.sourceGoalCoveragePct !== 100) {
+  addIssue(hardIssues, 'aggregate', 'SOURCE_GOAL_COVERAGE', `Goal source coverage ${report.sourceGoalCoveragePct}% expected 100%`);
+}
+if (report.avgSetPieceXg < 0.35 || report.avgCounterXg < 0.15) {
+  addIssue(warnings, 'aggregate', 'SOURCE_XG_LOW', `Source xG too low: set pieces ${report.avgSetPieceXg}, counters ${report.avgCounterXg}`);
 }
 if (report.penaltyGoalPct < 5 || report.penaltyGoalPct > 14) {
   addIssue(warnings, 'aggregate', 'PENALTY_GOAL_RATE', `Penalty goals ${report.penaltyGoalPct}% outside target 5-14%`);

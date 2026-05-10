@@ -699,6 +699,73 @@ function phaseFatigueMultiplier(teamStrength, phase) {
   return clamp(1 - fatigueLoad + (resilience - 1) * 0.10, 0.84, 1.05);
 }
 
+function collectiveSetPieceProfile(teamStrength, opponentStrength, tacticData, opponentTacticData, phase, liveScore, teamLabel) {
+  const ownRating = teamStrength.rating || 70;
+  const attack = teamStrength.strength?.attack || ownRating;
+  const midfield = teamStrength.strength?.midfield || ownRating;
+  const defense = teamStrength.strength?.defense || ownRating;
+  const opponentDefense = opponentStrength.strength?.defense || opponentStrength.rating || 70;
+  const opponentKeeper = getGoalkeeperRating(opponentStrength);
+  const scoreDiff = teamLabel === 'home' ? liveScore.home - liveScore.away : liveScore.away - liveScore.home;
+  const lateChase = scoreDiff < 0 && phase.from >= 61 ? 1 : scoreDiff < 0 && phase.from >= 46 ? 0.55 : 0;
+  const protectingBox = scoreDiff > 0 && phase.from >= 61 ? 0.75 : 0;
+  const widePressure = clamp(((tacticData.attack || 1) - 0.9) * 0.50 + ((tacticData.possession || 1) - 0.9) * 0.22 + lateChase * 0.18, -0.12, 0.35);
+  const aerialThreat = clamp(0.92 + (attack + defense - 140) / 180 + lateChase * 0.08, 0.72, 1.24);
+  const setPieceDefense = clamp(0.96 + (opponentDefense - 70) / 140 + (opponentKeeper - 70) / 220 - protectingBox * 0.08, 0.76, 1.22);
+  const counterThreat = clamp(0.08 + ((opponentTacticData.attack || 1) - 1) * 0.08 + ((tacticData.attack || 1) - 1) * 0.10 + lateChase * 0.16 + (phase.id === 'finish' ? 0.05 : 0), 0.03, 0.34);
+  const penaltyPressure = clamp(0.018 + widePressure * 0.020 + lateChase * 0.015 + ((midfield - opponentDefense) / 900), 0.006, 0.060);
+
+  return {
+    aerialThreat,
+    setPieceDefense,
+    crossingPressure: clamp(0.16 + widePressure + lateChase * 0.08, 0.08, 0.48),
+    counterThreat,
+    penaltyPressure
+  };
+}
+
+function splitPhaseXgBySource(phaseXg, teamStrength, opponentStrength, tacticData, opponentTacticData, phase, liveScore, teamLabel) {
+  const profile = collectiveSetPieceProfile(teamStrength, opponentStrength, tacticData, opponentTacticData, phase, liveScore, teamLabel);
+  const scoreDiff = teamLabel === 'home' ? liveScore.home - liveScore.away : liveScore.away - liveScore.home;
+  const lateChase = scoreDiff < 0 && phase.from >= 61;
+  const setPieceShare = clamp(0.14 + profile.crossingPressure * 0.30 + (profile.aerialThreat - profile.setPieceDefense) * 0.10 + (lateChase ? 0.05 : 0), 0.10, 0.34);
+  const counterShare = clamp(profile.counterThreat * (scoreDiff > 0 ? 1.25 : 1), 0.03, 0.26);
+  const penaltyShare = clamp(profile.penaltyPressure, 0.006, 0.055);
+  const latePressureShare = phase.id === 'finish' && scoreDiff < 0 ? clamp(0.07 + Math.abs(scoreDiff) * 0.025, 0.07, 0.16) : 0;
+  const openShare = clamp(1 - setPieceShare - counterShare - penaltyShare - latePressureShare, 0.45, 0.82);
+  const normalizer = openShare + setPieceShare + counterShare + penaltyShare + latePressureShare;
+
+  return {
+    openPlay: round2(phaseXg * openShare / normalizer),
+    setPiece: round2(phaseXg * setPieceShare / normalizer),
+    counter: round2(phaseXg * counterShare / normalizer),
+    penalty: round2(phaseXg * penaltyShare / normalizer),
+    latePressure: round2(phaseXg * latePressureShare / normalizer)
+  };
+}
+
+function aggregateXgBreakdown(phaseFlow = []) {
+  const total = {
+    home: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 },
+    away: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 }
+  };
+  phaseFlow.forEach(phase => {
+    ['home', 'away'].forEach(team => {
+      const source = phase.xgByType?.[team] || {};
+      Object.keys(total[team]).forEach(key => {
+        total[team][key] += source[key] || 0;
+      });
+    });
+  });
+  ['home', 'away'].forEach(team => Object.keys(total[team]).forEach(key => { total[team][key] = round2(total[team][key]); }));
+  return total;
+}
+
+function sumBreakdownSide(breakdown, team) {
+  const side = breakdown?.[team] || {};
+  return Object.values(side).reduce((sum, value) => sum + (Number(value) || 0), 0);
+}
+
 function buildPhaseThreat(baseXg, controlShare, tacticData, opponentTacticData, teamStrength, opponentStrength, phase, liveScore, teamLabel) {
   const attack = teamStrength.strength?.attack || teamStrength.rating || 70;
   const defense = opponentStrength.strength?.defense || opponentStrength.rating || 70;
@@ -727,6 +794,9 @@ function buildMatchFlow(homeStrength, awayStrength, importance, homeTactic = 'ba
     const phaseAwayControl = 1 - phaseHomeControl;
     const homePhaseXg = buildPhaseThreat(preMatch.homeXg, phaseHomeControl, homeTacticData, awayTacticData, homeStrength, awayStrength, phase, liveScore, 'home');
     const awayPhaseXg = buildPhaseThreat(preMatch.awayXg, phaseAwayControl, awayTacticData, homeTacticData, awayStrength, homeStrength, phase, liveScore, 'away');
+    const scoreBeforePhase = { ...liveScore };
+    const homeXgByType = splitPhaseXgBySource(homePhaseXg, homeStrength, awayStrength, homeTacticData, awayTacticData, phase, scoreBeforePhase, 'home');
+    const awayXgByType = splitPhaseXgBySource(awayPhaseXg, awayStrength, homeStrength, awayTacticData, homeTacticData, phase, scoreBeforePhase, 'away');
     const homePhaseGoals = poisson(clamp(homePhaseXg * finishingMultiplier(homeStrength, awayStrength), 0.01, 1.6));
     const awayPhaseGoals = poisson(clamp(awayPhaseXg * finishingMultiplier(awayStrength, homeStrength), 0.01, 1.5));
 
@@ -744,6 +814,7 @@ function buildMatchFlow(homeStrength, awayStrength, importance, homeTactic = 'ba
       to: phase.to,
       control: { home: round2(phaseHomeControl), away: round2(phaseAwayControl) },
       xg: { home: round2(homePhaseXg), away: round2(awayPhaseXg) },
+      xgByType: { home: homeXgByType, away: awayXgByType },
       goals: { home: homePhaseGoals, away: awayPhaseGoals },
       scoreAfter: { ...liveScore },
       pressure: {
@@ -757,7 +828,8 @@ function buildMatchFlow(homeStrength, awayStrength, importance, homeTactic = 'ba
     preMatch,
     phases,
     rawGoals: { home: rawHomeGoals, away: rawAwayGoals },
-    phaseXg: { home: round2(totalHomeXg), away: round2(totalAwayXg) }
+    phaseXg: { home: round2(totalHomeXg), away: round2(totalAwayXg) },
+    xgBreakdown: aggregateXgBreakdown(phases)
   };
 }
 
@@ -819,6 +891,48 @@ function distributeGoalsAcrossPhases(totalGoals, phases, teamLabel) {
   return distribution;
 }
 
+function pickGoalSourceFromPhase(phase, teamLabel) {
+  const source = phase.xgByType?.[teamLabel] || {};
+  const options = [
+    ['openPlay', source.openPlay || 0.01],
+    ['setPiece', source.setPiece || 0.01],
+    ['counter', source.counter || 0.01],
+    ['penalty', source.penalty || 0.004],
+    ['latePressure', source.latePressure || 0.001]
+  ];
+  const total = options.reduce((sum, [, weight]) => sum + Math.max(0.001, weight), 0);
+  let draw = Math.random() * total;
+  for (const [name, weight] of options) {
+    draw -= Math.max(0.001, weight);
+    if (draw <= 0) return name;
+  }
+  return 'openPlay';
+}
+
+function assignGoalSourcesForPhase(phase, homeGoals, awayGoals) {
+  const goalsByType = {
+    home: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 },
+    away: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 }
+  };
+  for (let i = 0; i < homeGoals; i++) goalsByType.home[pickGoalSourceFromPhase(phase, 'home')]++;
+  for (let i = 0; i < awayGoals; i++) goalsByType.away[pickGoalSourceFromPhase(phase, 'away')]++;
+  return goalsByType;
+}
+
+function aggregateGoalsByType(phaseFlow = []) {
+  const total = {
+    home: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 },
+    away: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 }
+  };
+  phaseFlow.forEach(phase => {
+    ['home', 'away'].forEach(team => {
+      const source = phase.goalsByType?.[team] || {};
+      Object.keys(total[team]).forEach(key => { total[team][key] += source[key] || 0; });
+    });
+  });
+  return total;
+}
+
 function attachFinalPhaseGoals(phases, homeScore, awayScore) {
   const homeDistribution = distributeGoalsAcrossPhases(homeScore, phases, 'home');
   const awayDistribution = distributeGoalsAcrossPhases(awayScore, phases, 'away');
@@ -833,6 +947,7 @@ function attachFinalPhaseGoals(phases, homeScore, awayScore) {
     return {
       ...phase,
       goals: { home: homeGoals, away: awayGoals },
+      goalsByType: assignGoalSourcesForPhase(phase, homeGoals, awayGoals),
       scoreAfter: { home: liveHome, away: liveAway }
     };
   });
@@ -845,6 +960,20 @@ function addForcedGoalToPhaseFlow(goalModel, teamLabel, preferredPhaseId = 'fini
   phase.goals = {
     home: (phase.goals?.home || 0) + (teamLabel === 'home' ? 1 : 0),
     away: (phase.goals?.away || 0) + (teamLabel === 'away' ? 1 : 0)
+  };
+  phase.goalsByType = phase.goalsByType || {
+    home: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 },
+    away: { openPlay: 0, setPiece: 0, counter: 0, penalty: 0, latePressure: 0 }
+  };
+  phase.goalsByType[teamLabel].penalty = (phase.goalsByType[teamLabel].penalty || 0) + 1;
+  phase.xgByType = phase.xgByType || { home: {}, away: {} };
+  phase.xgByType[teamLabel] = {
+    ...(phase.xgByType[teamLabel] || {}),
+    penalty: round2((phase.xgByType[teamLabel]?.penalty || 0) + 0.76)
+  };
+  phase.xg = {
+    ...(phase.xg || {}),
+    [teamLabel]: round2((phase.xg?.[teamLabel] || 0) + 0.76)
   };
   let liveHome = 0;
   let liveAway = 0;
@@ -878,6 +1007,8 @@ function simulateGoals(result, homeStrength, awayStrength, importance, homeTacti
     goalkeeperRating: { home: round2(getGoalkeeperRating(homeStrength)), away: round2(getGoalkeeperRating(awayStrength)) },
     finisherRating: { home: round2(getFinishingRating(homeStrength)), away: round2(getFinishingRating(awayStrength)) },
     control: { home: flow.preMatch.homeControl, away: flow.preMatch.awayControl },
+    xgBreakdown: aggregateXgBreakdown(phases),
+    goalsByType: aggregateGoalsByType(phases),
     phaseFlow: phases,
     decisivePhase: phases.reduce((best, phase) => {
       const swing = Math.abs((phase.goals.home || 0) - (phase.goals.away || 0)) + Math.abs((phase.xg.home || 0) - (phase.xg.away || 0));
@@ -1944,16 +2075,24 @@ function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, r
   const awayShotsOnTarget = clamp(Math.round(awayShots * clamp(0.30 + awayQualityEdge * 0.05, 0.23, 0.46) + awayScore * 0.5), awayScore, awayShots);
   const homeBigChances = clamp(Math.round(homeXg / 0.52 + (homeScore > homeXg + 0.75 ? 1 : 0)), homeScore > 0 ? 1 : 0, Math.max(1, Math.floor(homeShots / 3)));
   const awayBigChances = clamp(Math.round(awayXg / 0.52 + (awayScore > awayXg + 0.75 ? 1 : 0)), awayScore > 0 ? 1 : 0, Math.max(1, Math.floor(awayShots / 3)));
+  const phaseBreakdown = aggregateXgBreakdown(context.goalModel?.phaseFlow || []);
+  const fallbackBreakdown = {
+    home: { openPlay: round2(homeXg * 0.66), setPiece: round2(homeXg * 0.18), counter: round2(homeXg * 0.10), penalty: round2(homeXg * 0.03), latePressure: round2(homeXg * 0.03) },
+    away: { openPlay: round2(awayXg * 0.66), setPiece: round2(awayXg * 0.18), counter: round2(awayXg * 0.10), penalty: round2(awayXg * 0.03), latePressure: round2(awayXg * 0.03) }
+  };
+  const xgBreakdown = sumBreakdownSide(phaseBreakdown, 'home') > 0 && sumBreakdownSide(phaseBreakdown, 'away') > 0 ? phaseBreakdown : fallbackBreakdown;
 
   return {
     possession: { home: Math.round(homePossession), away: Math.round(100 - homePossession) },
     shots: { home: homeShots, away: awayShots },
     shotsOnTarget: { home: homeShotsOnTarget, away: awayShotsOnTarget },
     xg: { home: round2(homeXg), away: round2(awayXg) },
+    xgBreakdown,
     bigChances: { home: homeBigChances, away: awayBigChances },
     saves: { home: Math.max(0, awayShotsOnTarget - awayScore), away: Math.max(0, homeShotsOnTarget - homeScore) },
     finishing: { home: round2(homeScore - homeXg), away: round2(awayScore - awayXg) },
     goalModel: context.goalModel || null,
+    goalsByType: aggregateGoalsByType(context.goalModel?.phaseFlow || []),
     phaseFlow: context.goalModel?.phaseFlow || []
   };
 }
@@ -1992,6 +2131,14 @@ function generateMatchStory(stats, homeScore, awayScore, homeStrength, awayStren
   const homeFinisher = goalModel?.finisherRating?.home;
   const awayFinisher = goalModel?.finisherRating?.away;
   const phaseFlow = Array.isArray(stats.phaseFlow) ? stats.phaseFlow : [];
+  const xgBreakdown = stats.xgBreakdown || goalModel?.xgBreakdown || {};
+  const goalsByType = stats.goalsByType || goalModel?.goalsByType || {};
+  const setPieceXg = (xgBreakdown.home?.setPiece || 0) + (xgBreakdown.away?.setPiece || 0);
+  const counterXg = (xgBreakdown.home?.counter || 0) + (xgBreakdown.away?.counter || 0);
+  const latePressureXg = (xgBreakdown.home?.latePressure || 0) + (xgBreakdown.away?.latePressure || 0);
+  const setPieceGoals = (goalsByType.home?.setPiece || 0) + (goalsByType.away?.setPiece || 0);
+  const counterGoals = (goalsByType.home?.counter || 0) + (goalsByType.away?.counter || 0);
+  const latePressureGoals = (goalsByType.home?.latePressure || 0) + (goalsByType.away?.latePressure || 0);
   const lateSwing = phaseFlow.find(phase => phase.id === 'finish' && Math.abs((phase.goals?.home || 0) - (phase.goals?.away || 0)) > 0);
   const strongestPhase = phaseFlow.reduce((best, phase) => {
     const totalXg = (phase.xg?.home || 0) + (phase.xg?.away || 0);
@@ -2002,6 +2149,14 @@ function generateMatchStory(stats, homeScore, awayScore, homeStrength, awayStren
     story.push('El tramo final cambió el partido: la presión y el cansancio abrieron más espacios en los últimos minutos.');
   } else if (strongestPhase.label && strongestPhase.totalXg >= 0.85) {
     story.push(`El partido se concentró en el tramo ${strongestPhase.label}, donde llegaron las ocasiones más claras.`);
+  }
+
+  if (setPieceGoals > 0 || setPieceXg >= 0.7) {
+    story.push('El balón parado tuvo peso real: córners y faltas laterales generaron parte importante del peligro.');
+  } else if (counterGoals > 0 || counterXg >= 0.45) {
+    story.push('Las transiciones hicieron daño: el equipo que encontró espacios pudo correr y castigar.');
+  } else if (latePressureGoals > 0 || latePressureXg >= 0.25) {
+    story.push('El asedio final produjo centros, rechaces y peligro acumulado en el área.');
   }
 
   if (homeSaves >= 6 || awaySaves >= 6) {
@@ -2055,12 +2210,17 @@ function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, re
     shots: chanceModel.shots,
     shotsOnTarget: chanceModel.shotsOnTarget,
     xg: chanceModel.xg,
+    xgBreakdown: chanceModel.xgBreakdown,
+    goalsByType: chanceModel.goalsByType,
     bigChances: chanceModel.bigChances,
     saves: chanceModel.saves,
     finishing: chanceModel.finishing,
     goalModel: chanceModel.goalModel,
     phaseFlow: chanceModel.phaseFlow,
-    corners: { home: Math.floor(homePossession / 12), away: Math.floor((100 - homePossession) / 12) },
+    corners: {
+      home: clamp(Math.round((chanceModel.xgBreakdown?.home?.setPiece || 0) * 8 + homePossession / 18), 1, 13),
+      away: clamp(Math.round((chanceModel.xgBreakdown?.away?.setPiece || 0) * 8 + (100 - homePossession) / 18), 1, 12)
+    },
     fouls: { home: homeFouls, away: awayFouls },
     yellowCards: { home: homeYellows, away: awayYellows },
     redCards: { home: homeReds, away: awayReds }
