@@ -1091,23 +1091,6 @@ export default function MatchDay({ onComplete, onBack }) {
           const matchStage = currentMinute >= 90 ? 'Finalizando' : currentMinute >= 46 ? 'Segunda parte' : currentMinute >= 45 ? 'Descanso' : 'Primera parte';
           const latestEventKey = lastEvent ? `${lastEvent.minute}-${lastEvent.type}-${lastEvent.team}-${getPlayerName(lastEvent.player || lastEvent.playerIn || lastEvent.playerOut)}` : 'kickoff';
           const isGoalFlash = lastEvent?.type === 'goal';
-          const pressureSide = momentumHome >= momentumAway ? 'home' : 'away';
-          const ballTravel = Math.max(12, Math.min(88, pressureSide === 'home' ? momentumHome : 100 - momentumAway));
-          const ballLeft = pressureSide === 'home' ? ballTravel : 100 - ballTravel;
-          const currentPhase = matchResult.stats?.phaseFlow?.find(phase => currentMinute >= phase.minuteRange?.[0] && currentMinute <= phase.minuteRange?.[1]);
-          const phaseXg = currentPhase?.xg || { home: 0, away: 0 };
-          const phaseIntensity = Math.min(100, Math.round(((phaseXg.home || 0) + (phaseXg.away || 0)) * 90));
-          const actionText = isGoalFlash
-            ? '¡Gol! El estadio estalla'
-            : lastEvent?.type === 'red_card'
-              ? 'El partido se calienta'
-              : lastEvent?.type === 'yellow_card'
-                ? 'Entrada fuerte y tensión'
-                : lastEvent?.type === 'substitution'
-                  ? 'Movimiento en el banquillo'
-                  : phaseIntensity > 55
-                    ? 'Tramo de mucha presión'
-                    : 'El balón circula buscando espacios';
           const liveRows = [
             { label: 'Posesión', home: `${possessionHome}%`, away: `${possessionAway}%`, homePct: possessionHome, awayPct: possessionAway },
             { label: 'Tiros', home: matchResult.stats?.shots?.home ?? 0, away: matchResult.stats?.shots?.away ?? 0 },
@@ -1137,20 +1120,6 @@ export default function MatchDay({ onComplete, onBack }) {
                   <span>{awayName}</span>
                   <TeamCrest teamId={!isHome ? state.teamId : (opponent?.id || opponentId)} size={34} />
                 </div>
-              </div>
-            </div>
-
-            <div className={`live-pitch-effects ${isGoalFlash ? 'goal-burst' : ''}`} key={latestEventKey}>
-              <div className="pitch-lines" />
-              <div className="crowd-wave crowd-wave--top" />
-              <div className="crowd-wave crowd-wave--bottom" />
-              <div className={`attack-lane attack-lane--${pressureSide}`} style={{ width: `${Math.max(28, pressureSide === 'home' ? momentumHome : momentumAway)}%` }} />
-              <div className="live-ball" style={{ left: `${ballLeft}%` }}>
-                <FootballIcon size={20} />
-              </div>
-              <div className="pitch-status">
-                <strong>{actionText}</strong>
-                <span>Intensidad {phaseIntensity}% · {currentPhase?.label || matchStage}</span>
               </div>
             </div>
 
