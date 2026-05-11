@@ -1,0 +1,64 @@
+{
+  "adoptExistingLintConfig": false,
+  "deadCode": false,
+  "ignore": {
+    "rules": [
+      "jsx-a11y/click-events-have-key-events",
+      "jsx-a11y/no-static-element-interactions",
+      "jsx-a11y/label-has-associated-control",
+      "jsx-a11y/no-autofocus",
+      "react-doctor/advanced-event-handler-refs",
+      "react-doctor/async-await-in-loop",
+      "react-doctor/async-defer-await",
+      "react-doctor/async-parallel",
+      "react-doctor/client-passive-event-listeners",
+      "react-doctor/design-no-em-dash-in-jsx-text",
+      "react-doctor/design-no-three-period-ellipsis",
+      "react-doctor/js-batch-dom-css",
+      "react-doctor/js-cache-property-access",
+      "react-doctor/js-combine-iterations",
+      "react-doctor/js-flatmap-filter",
+      "react-doctor/js-hoist-intl",
+      "react-doctor/js-index-maps",
+      "react-doctor/js-min-max-loop",
+      "react-doctor/js-set-map-lookups",
+      "react-doctor/js-tosorted-immutable",
+      "react-doctor/no-array-index-as-key",
+      "react-doctor/no-cascading-set-state",
+      "react-doctor/no-derived-state-effect",
+      "react-doctor/no-derived-useState",
+      "react-doctor/no-direct-state-mutation",
+      "react-doctor/no-effect-event-handler",
+      "react-doctor/no-fetch-in-effect",
+      "react-doctor/no-generic-handler-names",
+      "react-doctor/no-giant-component",
+      "react-doctor/no-inline-exhaustive-style",
+      "react-doctor/no-prop-callback-in-effect",
+      "react-doctor/no-react19-deprecated-apis",
+      "react-doctor/no-render-in-render",
+      "react-doctor/no-tiny-text",
+      "react-doctor/no-z-index-9999",
+      "react-doctor/prefer-use-effect-event",
+      "react-doctor/prefer-useReducer",
+      "react-doctor/rendering-hydration-mismatch-time",
+      "react-doctor/rendering-hydration-no-flicker",
+      "react-doctor/rendering-usetransition-loading",
+      "react-doctor/rerender-functional-setstate",
+      "react-doctor/rerender-lazy-state-init",
+      "react-doctor/rerender-memo-with-default-value",
+      "react-doctor/rerender-state-only-in-handlers",
+      "react-doctor/server-sequential-independent-await"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "src/components/City3D/**",
+          "src/components/Stadium3D/**"
+        ],
+        "rules": [
+          "react/no-unknown-property"
+        ]
+      }
+    ]
+  }
+}
