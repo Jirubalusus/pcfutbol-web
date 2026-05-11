@@ -252,7 +252,7 @@ $blue: #0a84ff;
     }
 
     @media (max-width: 768px) {
-      grid-template-columns: minmax(118px, 1fr) 34px 70px 54px;
+      grid-template-columns: minmax(112px, 1fr) 34px 68px 60px;
       gap: 5px;
       padding: 0.35rem 0.4rem;
 
@@ -679,7 +679,7 @@ $blue: #0a84ff;
       border-radius: 8px;
 
       .player-row {
-        grid-template-columns: minmax(118px, 1fr) 34px 70px 54px;
+        grid-template-columns: minmax(112px, 1fr) 34px 68px 60px;
         gap: 5px;
         min-height: 44px;
         padding: 0.34rem 0.4rem;
@@ -752,13 +752,17 @@ $blue: #0a84ff;
         display: none;
       }
 
-      .player-status .contract {
-        display: block;
+      .player-row .player-status .contract {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
+        min-width: 52px;
         overflow: hidden;
         text-overflow: ellipsis;
-        padding: 0.18rem 0.2rem;
-        font-size: 0.62rem;
+        box-sizing: border-box;
+        padding: 0.18rem 0.14rem;
+        font-size: 0.6rem;
         line-height: 1.05;
         text-align: center;
         white-space: nowrap;
