@@ -2144,6 +2144,148 @@ $teal: #14b8a6;
     gap: 0.75rem;
     overflow-y: auto;
     max-height: calc(90vh - 2rem);
+
+    .deal-insight-card {
+      position: relative;
+      overflow: hidden;
+      padding: 0.9rem;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at top left, rgba(10, 132, 255, 0.22), transparent 38%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+      min-height: 10.4rem;
+      height: auto;
+
+      .deal-score {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 0.35rem 0.75rem;
+        margin-bottom: 0.75rem;
+
+        .score-label {
+          color: #f0f6fc;
+          font-size: 0.92rem;
+          font-weight: 800;
+          letter-spacing: -0.02em;
+        }
+
+        .score-value {
+          font-size: 1.35rem;
+          line-height: 1;
+          font-weight: 900;
+          font-variant-numeric: tabular-nums;
+        }
+
+        .score-track {
+          grid-column: 1 / -1;
+          height: 7px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.08);
+          overflow: hidden;
+
+          span {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            box-shadow: 0 0 18px currentColor;
+            transition: width 0.25s ease;
+          }
+        }
+      }
+
+      .squad-compare-mini {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: stretch;
+        gap: 0.55rem;
+        margin-bottom: 0.7rem;
+
+        .compare-side {
+          min-width: 0;
+          padding: 0.7rem;
+          border-radius: 12px;
+          background: rgba(0, 0, 0, 0.18);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+
+          .compare-kicker {
+            display: block;
+            margin-bottom: 0.18rem;
+            color: rgba(255, 255, 255, 0.42);
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          strong {
+            display: block;
+            overflow: hidden;
+            color: #fff;
+            font-size: 0.86rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          span:last-child {
+            display: block;
+            margin-top: 0.16rem;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 0.72rem;
+          }
+
+          &.target {
+            border-color: rgba(10, 132, 255, 0.18);
+            background: rgba(10, 132, 255, 0.08);
+          }
+        }
+
+        .compare-delta {
+          align-self: center;
+          min-width: 42px;
+          padding: 0.35rem 0.45rem;
+          border-radius: 999px;
+          text-align: center;
+          font-weight: 900;
+          font-size: 1rem;
+          font-variant-numeric: tabular-nums;
+
+          &.positive {
+            color: #3ee067;
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.28);
+          }
+
+          &.negative {
+            color: #ff6b6b;
+            background: rgba(231, 76, 60, 0.12);
+            border: 1px solid rgba(231, 76, 60, 0.28);
+          }
+        }
+      }
+
+      .deal-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.38rem;
+
+        span {
+          padding: 0.32rem 0.52rem;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.055);
+          border: 1px solid rgba(255, 255, 255, 0.065);
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 0.68rem;
+          font-weight: 700;
+          white-space: nowrap;
+
+          &.ok { color: #3ee067; }
+          &.bad { color: #ff6b6b; }
+        }
+      }
+    }
     
     .negotiation-section {
       padding: 1.25rem;
@@ -2993,6 +3135,42 @@ $teal: #14b8a6;
           font-weight: 700;
           color: var(--color-warning);
           flex-shrink: 0;
+        }
+      }
+
+      .deal-insight-card {
+        padding: 0.72rem;
+        border-radius: 14px;
+        min-height: 9.55rem;
+
+        .deal-score {
+          margin-bottom: 0.6rem;
+
+          .score-label { font-size: 0.84rem; }
+          .score-value { font-size: 1.18rem; }
+        }
+
+        .squad-compare-mini {
+          gap: 0.38rem;
+          margin-bottom: 0.55rem;
+
+          .compare-side {
+            padding: 0.55rem;
+
+            strong { font-size: 0.78rem; }
+            span:last-child { font-size: 0.66rem; }
+          }
+
+          .compare-delta {
+            min-width: 34px;
+            padding: 0.28rem 0.35rem;
+            font-size: 0.86rem;
+          }
+        }
+
+        .deal-chips {
+          gap: 0.28rem;
+          span { font-size: 0.62rem; padding: 0.28rem 0.42rem; }
         }
       }
 

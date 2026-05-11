@@ -3072,6 +3072,70 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
+  const squadFit = useMemo(() => {
+    const squad = myTeam?.players || state.team?.players || [];
+    const targetPositions = new Set(getAllPlayablePositions(player).map(posToEN));
+    targetPositions.add(posToEN(player.position));
+
+    const candidates = squad
+      .filter(p => p?.name !== player.name)
+      .map(p => {
+        const positions = new Set(getAllPlayablePositions(p).map(posToEN));
+        positions.add(posToEN(p.position));
+        const matches = [...targetPositions].some(pos => positions.has(pos));
+        return { player: p, matches };
+      })
+      .filter(item => item.matches);
+
+    const best = (candidates.length ? candidates : squad.map(p => ({ player: p, matches: false })))
+      .filter(item => item.player?.name !== player.name)
+      .sort((a, b) => (b.player?.overall || 0) - (a.player?.overall || 0))[0]?.player || null;
+
+    const currentOverall = best?.overall || 0;
+    const upgrade = (player.overall || 0) - currentOverall;
+    const ageDelta = best?.age ? (player.age || 0) - best.age : null;
+    const currentWage = best?.salary || 0;
+    const wageDelta = currentSalary - currentWage;
+
+    let verdict = t('transfers.squadFitDepth', 'Fondo');
+    if (upgrade >= 5) verdict = t('transfers.squadFitStarter', 'Titular claro');
+    else if (upgrade >= 2) verdict = t('transfers.squadFitUpgrade', 'Mejora');
+    else if (upgrade >= 0) verdict = t('transfers.squadFitRotation', 'Rotación');
+    else verdict = t('transfers.squadFitRisk', 'No mejora');
+
+    return { best, upgrade, ageDelta, wageDelta, verdict };
+  }, [myTeam?.players, state.team?.players, player, currentSalary, t]);
+
+  const dealPulse = useMemo(() => {
+    const probability = negotiationMode === 'loan'
+      ? loanProbability
+      : (isFreeAgent || negotiationMode === 'precontract')
+        ? freeAgentProbability
+        : Math.round((clubProbability * 0.55) + (playerProbability * 0.45));
+
+    const immediateCost = negotiationMode === 'loan'
+      ? loanFee
+      : (isFreeAgent || negotiationMode === 'precontract')
+        ? signingBonus
+        : offerAmount;
+    const annualCost = negotiationMode === 'loan'
+      ? Math.round(currentSalary * (loanSalaryShare / 100) * 52)
+      : Math.round(salaryOffer * 52);
+    const totalCost = negotiationMode === 'loan'
+      ? immediateCost + annualCost
+      : immediateCost + (annualCost * contractYears);
+    const budgetAfter = (budget || 0) - immediateCost;
+
+    let label = t('transfers.dealPulseCold', 'Difícil');
+    if (probability >= 75) label = t('transfers.dealPulseHot', 'Muy viable');
+    else if (probability >= 55) label = t('transfers.dealPulseWarm', 'Viable');
+    else if (probability >= 35) label = t('transfers.dealPulseMedium', 'Ajustada');
+
+    return { probability, immediateCost, annualCost, totalCost, budgetAfter, label };
+  }, [negotiationMode, loanProbability, freeAgentProbability, clubProbability, playerProbability, loanFee, signingBonus, offerAmount, currentSalary, loanSalaryShare, salaryOffer, contractYears, budget, isFreeAgent, t]);
+
+
+
   // {t('transfers.sendLoanRequest')}
 
   const handleLoanRequest = () => {
@@ -3744,6 +3808,37 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
             </div>
 
+            <div className="deal-insight-card">
+              <div className="deal-score">
+                <span className="score-label">{dealPulse.label}</span>
+                <span className="score-value" style={{ color: getProbColor(dealPulse.probability) }}>{dealPulse.probability}%</span>
+                <div className="score-track"><span style={{ width: `${dealPulse.probability}%`, background: getProbColor(dealPulse.probability) }} /></div>
+              </div>
+
+              <div className="squad-compare-mini">
+                <div className="compare-side current">
+                  <span className="compare-kicker">{t('transfers.now', 'Ahora')}</span>
+                  <strong>{squadFit.best?.name || '—'}</strong>
+                  <span>{squadFit.best ? `${translatePosition(squadFit.best.position)} · ${squadFit.best.overall || '—'}` : t('transfers.noReference', 'Sin referencia')}</span>
+                </div>
+                <div className={`compare-delta ${squadFit.upgrade >= 0 ? 'positive' : 'negative'}`}>
+                  {squadFit.upgrade >= 0 ? '+' : ''}{squadFit.upgrade || 0}
+                </div>
+                <div className="compare-side target">
+                  <span className="compare-kicker">{t('transfers.target', 'Objetivo')}</span>
+                  <strong>{player.name}</strong>
+                  <span>{translatePosition(player.position)} · {player.overall}</span>
+                </div>
+              </div>
+
+              <div className="deal-chips">
+                <span>{squadFit.verdict}</span>
+                <span>{t('transfers.nowPayment', 'Ahora')} {formatTransferPrice(dealPulse.immediateCost)}</span>
+                <span>{t('transfers.yearlyCostShort', 'Año')} {formatTransferPrice(dealPulse.annualCost)}</span>
+                <span className={dealPulse.budgetAfter >= 0 ? 'ok' : 'bad'}>{t('transfers.budgetAfterShort', 'Caja')} {formatTransferPrice(dealPulse.budgetAfter)}</span>
+              </div>
+            </div>
+
 
 
             {/* TOGGLE FICHAJE / CESIÓN / PRE-CONTRATO */}
@@ -4166,37 +4261,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-                {/* Resumen y botón de envío */}
-
-                <div className="offer-summary-box">
-
-                  <div className="summary-line">
-
-                    <span>💰 {t('transfers.totalTransferCost')}</span>
-
-                    <span className="amount">{formatTransferPrice(offerAmount)}</span>
-
-                  </div>
-
-                  <div className="summary-line">
-
-                    <span>📊 {t('transfers.totalContractCost')}</span>
-
-                    <span className="amount">{formatTransferPrice(salaryOffer * 52 * contractYears)}</span>
-
-                  </div>
-
-                  <div className="summary-line total">
-
-                    <span>💵 {t('transfers.totalInvestment')}</span>
-
-                    <span className="amount">{formatTransferPrice(offerAmount + salaryOffer * 52 * contractYears)}</span>
-
-                  </div>
-
-                </div>
-
-
+                {/* Botón primero: acción visible sin bajar hasta el resumen */}
 
                 <button
 
@@ -4247,6 +4312,37 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                 </button>
 
                 <p className="offer-hint">⏳ {t('transfers.responseAfterMatch')}</p>
+
+
+                <div className="offer-summary-box">
+
+                  <div className="summary-line">
+
+                    <span>💰 {t('transfers.totalTransferCost')}</span>
+
+                    <span className="amount">{formatTransferPrice(offerAmount)}</span>
+
+                  </div>
+
+                  <div className="summary-line">
+
+                    <span>📊 {t('transfers.totalContractCost')}</span>
+
+                    <span className="amount">{formatTransferPrice(salaryOffer * 52 * contractYears)}</span>
+
+                  </div>
+
+                  <div className="summary-line total">
+
+                    <span>💵 {t('transfers.totalInvestment')}</span>
+
+                    <span className="amount">{formatTransferPrice(offerAmount + salaryOffer * 52 * contractYears)}</span>
+
+                  </div>
+
+                </div>
+
+
 
               </div>
 
