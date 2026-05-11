@@ -134,10 +134,10 @@
       letter-spacing: 0.5px;
 
       @media (max-width: 768px) {
-        grid-template-columns: 30px 1fr 26px 26px 26px 34px 44px;
-        gap: 3px;
-        padding: 8px 10px;
-        font-size: 0.75rem;
+        grid-template-columns: 28px minmax(0, 1fr) 22px 22px 22px 28px 34px;
+        gap: 2px;
+        padding: 8px 8px;
+        font-size: 0.68rem;
         
         .col-pj, .col-gf, .col-ga, .col-form { display: none; }
       }
@@ -153,9 +153,10 @@
       align-items: center;
 
       @media (max-width: 768px) {
-        grid-template-columns: 30px 1fr 26px 26px 26px 34px 44px;
-        gap: 3px;
-        padding: 7px 10px;
+        grid-template-columns: 28px minmax(0, 1fr) 22px 22px 22px 28px 34px;
+        gap: 2px;
+        padding: 8px 8px;
+        min-height: 52px;
         
         .col-pj, .col-gf, .col-ga, .col-form { display: none; }
       }
@@ -220,7 +221,7 @@
         min-width: 0;
 
         @media (max-width: 768px) {
-          gap: 6px;
+          gap: 5px;
         }
 
         .team-badge {
@@ -259,7 +260,12 @@
           text-overflow: ellipsis;
 
           @media (max-width: 768px) {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            line-height: 1.08;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: normal;
           }
         }
 
@@ -289,7 +295,7 @@
         text-align: center;
 
         @media (max-width: 768px) {
-          font-size: 0.75rem;
+          font-size: 0.7rem;
         }
       }
 
@@ -301,7 +307,7 @@
         &.negative { color: #ff4757; }
 
         @media (max-width: 768px) {
-          font-size: 0.75rem;
+          font-size: 0.7rem;
         }
       }
 
@@ -313,7 +319,7 @@
         text-align: center;
 
         @media (max-width: 768px) {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
         }
       }
 
