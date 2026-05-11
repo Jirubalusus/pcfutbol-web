@@ -35,19 +35,6 @@ export default function SouthAmerica() {
   
   const activeComp = saState?.competitions?.[activeCompId];
 
-  if (!saState || !saState.initialized) {
-    return (
-      <div className="europe sa-comps">
-        <div className="europe__empty">
-          <Globe size={48} strokeWidth={1.5} />
-          <h2>{t('southAmerica.title')}</h2>
-          <p>{t('southAmerica.notQualified')}</p>
-          <p className="europe__hint">{t('southAmerica.qualificationHint')}</p>
-        </div>
-      </div>
-    );
-  }
-
   const playerInComp = activeComp?.teams?.some(t => t.teamId === state.teamId);
   const playerAlive = activeComp ? isTeamAliveInSA(activeComp, state.teamId) : false;
   const playerPrizeMoney = activeComp?.prizesMoney?.[state.teamId] || 0;
@@ -89,7 +76,7 @@ export default function SouthAmerica() {
     }
   };
 
-  const SortIcon = ({ column }) => {
+  const renderSortIcon = (column) => {
     if (sortBy !== column) return null;
     return sortDir === 'desc' ? <ChevronDown size={12} /> : <ChevronUp size={12} />;
   };
@@ -131,6 +118,19 @@ export default function SouthAmerica() {
     boliviaPrimera: '🇧🇴',
     venezuelaPrimera: '🇻🇪'
   };
+
+  if (!saState || !saState.initialized) {
+    return (
+      <div className="europe sa-comps">
+        <div className="europe__empty">
+          <Globe size={48} strokeWidth={1.5} />
+          <h2>{t('southAmerica.title')}</h2>
+          <p>{t('southAmerica.notQualified')}</p>
+          <p className="europe__hint">{t('southAmerica.qualificationHint')}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="europe sa-comps">
@@ -205,32 +205,32 @@ export default function SouthAmerica() {
                     <tr>
                       <th className="pos">#</th>
                       <th className="team" onClick={() => handleSort('name')}>
-                        {t('common.team')} <SortIcon column="name" />
+                        {t('common.team')} {renderSortIcon('name')}
                       </th>
                       <th className="league-flag">{t('common.league')}</th>
                       <th className="num" onClick={() => handleSort('played')}>
-                        {t('leagueTable.played')} <SortIcon column="played" />
+                        {t('leagueTable.played')} {renderSortIcon('played')}
                       </th>
                       <th className="num" onClick={() => handleSort('won')}>
-                        {t('leagueTable.won')} <SortIcon column="won" />
+                        {t('leagueTable.won')} {renderSortIcon('won')}
                       </th>
                       <th className="num" onClick={() => handleSort('drawn')}>
-                        {t('leagueTable.drawn')} <SortIcon column="drawn" />
+                        {t('leagueTable.drawn')} {renderSortIcon('drawn')}
                       </th>
                       <th className="num" onClick={() => handleSort('lost')}>
-                        {t('leagueTable.lost')} <SortIcon column="lost" />
+                        {t('leagueTable.lost')} {renderSortIcon('lost')}
                       </th>
                       <th className="num" onClick={() => handleSort('gf')}>
-                        {t('leagueTable.goalsFor')} <SortIcon column="gf" />
+                        {t('leagueTable.goalsFor')} {renderSortIcon('gf')}
                       </th>
                       <th className="num" onClick={() => handleSort('ga')}>
-                        {t('leagueTable.goalsAgainst')} <SortIcon column="ga" />
+                        {t('leagueTable.goalsAgainst')} {renderSortIcon('ga')}
                       </th>
                       <th className="num" onClick={() => handleSort('gd')}>
-                        {t('leagueTable.goalDifference')} <SortIcon column="gd" />
+                        {t('leagueTable.goalDifference')} {renderSortIcon('gd')}
                       </th>
                       <th className="num pts" onClick={() => handleSort('points')}>
-                        {t('leagueTable.points')} <SortIcon column="points" />
+                        {t('leagueTable.points')} {renderSortIcon('points')}
                       </th>
                     </tr>
                   </thead>

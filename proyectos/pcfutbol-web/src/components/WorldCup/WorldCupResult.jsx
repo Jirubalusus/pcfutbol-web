@@ -97,8 +97,15 @@ export default function WorldCupResult({ type, state, teams, onPlayAgain, onExit
   const [animateIn, setAnimateIn] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setAnimateIn(true), 100);
-    if (type === 'champion') setTimeout(() => setShowConfetti(true), 500);
+    const animateTimer = setTimeout(() => setAnimateIn(true), 100);
+    const confettiTimer = type === 'champion'
+      ? setTimeout(() => setShowConfetti(true), 500)
+      : null;
+
+    return () => {
+      clearTimeout(animateTimer);
+      if (confettiTimer) clearTimeout(confettiTimer);
+    };
   }, [type]);
 
   const teamMap = {};

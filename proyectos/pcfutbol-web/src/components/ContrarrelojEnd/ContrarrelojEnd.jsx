@@ -78,7 +78,8 @@ export default function ContrarrelojEnd() {
   }, [won, saved, contrarreloj, state.team, user]);
 
   useEffect(() => {
-    setTimeout(() => setAnimateIn(true), 100);
+    const timer = setTimeout(() => setAnimateIn(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleMenu = () => {

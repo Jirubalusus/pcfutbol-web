@@ -30,11 +30,6 @@ export default function Objectives() {
   const { state } = useGame();
   const { t } = useTranslation();
 
-  // Modo contrarreloj: mostrar panel de progreso en vez de objetivos
-  if (state.gameMode === 'contrarreloj') {
-    return <ContrarrelojProgress />;
-  }
-
   const objectives = Array.isArray(state.seasonObjectives) ? state.seasonObjectives : [];
   const [filter, setFilter] = useState('all');
   
@@ -195,6 +190,11 @@ export default function Objectives() {
     const top11 = sorted.slice(0, Math.min(11, sorted.length));
     return Math.round(top11.reduce((s, p) => s + (p.overall || 50), 0) / top11.length);
   }, [state.team?.players]);
+
+  // Modo contrarreloj: mostrar panel de progreso en vez de objetivos
+  if (state.gameMode === 'contrarreloj') {
+    return <ContrarrelojProgress />;
+  }
 
   return (
     <div className="objectives fade-in-up">

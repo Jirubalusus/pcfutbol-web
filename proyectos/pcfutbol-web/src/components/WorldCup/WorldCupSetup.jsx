@@ -73,13 +73,26 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
   const overlayRef = useRef(null);
 
   useEffect(() => {
+    let cancelled = false;
+    let animateTimer = null;
+
     fetch('/data/national-teams.json')
       .then(r => r.json())
       .then(data => {
+        if (cancelled) return;
         setTeams(data);
-        setTimeout(() => setAnimateIn(true), 50);
+        animateTimer = setTimeout(() => {
+          if (!cancelled) setAnimateIn(true);
+        }, 50);
       })
-      .catch(() => setTeams([]));
+      .catch(() => {
+        if (!cancelled) setTeams([]);
+      });
+
+    return () => {
+      cancelled = true;
+      if (animateTimer) clearTimeout(animateTimer);
+    };
   }, []);
 
   const filtered = useMemo(() => {

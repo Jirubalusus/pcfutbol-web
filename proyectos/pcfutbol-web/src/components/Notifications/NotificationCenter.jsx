@@ -147,6 +147,7 @@ export default function NotificationCenter() {
     }
 
     prevMessagesRef.current = current;
+    return () => clearTimeout(dismissTimer.current);
   }, [state.messages, state.isSimulating, dismiss]);
 
   // Cleanup processed IDs

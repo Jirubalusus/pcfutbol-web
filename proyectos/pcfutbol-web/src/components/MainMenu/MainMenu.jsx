@@ -52,7 +52,8 @@ export default function MainMenu() {
   const [loadingGlory, setLoadingGlory] = useState(false);
   
   useEffect(() => {
-    setTimeout(() => setAnimateIn(true), 100);
+    const timer = setTimeout(() => setAnimateIn(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   // Detect active contrarreloj: check in-memory state first, then Firebase
