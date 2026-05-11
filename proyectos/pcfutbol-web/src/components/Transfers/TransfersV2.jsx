@@ -3810,29 +3810,35 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
             <div className="deal-insight-card">
               <div className="deal-score">
-                <span className="score-label">{dealPulse.label}</span>
+                <div>
+                  <span className="score-kicker">{t('transfers.dealViability', 'Viabilidad')}</span>
+                  <span className="score-label">{dealPulse.label}</span>
+                </div>
                 <span className="score-value" style={{ color: getProbColor(dealPulse.probability) }}>{dealPulse.probability}%</span>
                 <div className="score-track"><span style={{ width: `${dealPulse.probability}%`, background: getProbColor(dealPulse.probability) }} /></div>
               </div>
 
               <div className="squad-compare-mini">
-                <div className="compare-side current">
+                <div className="compare-row current">
                   <span className="compare-kicker">{t('transfers.now', 'Ahora')}</span>
                   <strong>{squadFit.best?.name || '—'}</strong>
-                  <span>{squadFit.best ? `${translatePosition(squadFit.best.position)} · ${squadFit.best.overall || '—'}` : t('transfers.noReference', 'Sin referencia')}</span>
+                  <span className="compare-meta">{squadFit.best ? translatePosition(squadFit.best.position) : '—'}</span>
+                  <span className="compare-ovr">{squadFit.best?.overall || '—'}</span>
                 </div>
-                <div className={`compare-delta ${squadFit.upgrade >= 0 ? 'positive' : 'negative'}`}>
-                  {squadFit.upgrade >= 0 ? '+' : ''}{squadFit.upgrade || 0}
-                </div>
-                <div className="compare-side target">
+                <div className="compare-arrow">↓</div>
+                <div className="compare-row target">
                   <span className="compare-kicker">{t('transfers.target', 'Objetivo')}</span>
                   <strong>{player.name}</strong>
-                  <span>{translatePosition(player.position)} · {player.overall}</span>
+                  <span className="compare-meta">{translatePosition(player.position)}</span>
+                  <span className="compare-ovr">{player.overall}</span>
+                </div>
+                <div className={`compare-summary ${squadFit.upgrade >= 0 ? 'positive' : 'negative'}`}>
+                  <span>{squadFit.verdict}</span>
+                  <strong>{squadFit.upgrade >= 0 ? '+' : ''}{squadFit.upgrade || 0}</strong>
                 </div>
               </div>
 
               <div className="deal-chips">
-                <span>{squadFit.verdict}</span>
                 <span>{t('transfers.nowPayment', 'Ahora')} {formatTransferPrice(dealPulse.immediateCost)}</span>
                 <span>{t('transfers.yearlyCostShort', 'Año')} {formatTransferPrice(dealPulse.annualCost)}</span>
                 <span className={dealPulse.budgetAfter >= 0 ? 'ok' : 'bad'}>{t('transfers.budgetAfterShort', 'Caja')} {formatTransferPrice(dealPulse.budgetAfter)}</span>
@@ -4052,31 +4058,6 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                   </div>
 
                 </div>
-
-
-
-                <div className="probability-row">
-
-                  <span className="prob-label">{t('transfers.estimatedProbability')}</span>
-
-                  <div className="prob-bar-container">
-
-                    <div
-
-                      className="prob-bar"
-
-                      style={{ width: `${loanProbability}%`, background: getProbColor(loanProbability) }}
-
-                    ></div>
-
-                  </div>
-
-                  <span className="prob-value" style={{ color: getProbColor(loanProbability) }}>{loanProbability}%</span>
-
-                </div>
-
-
-
                 {clubStatus === 'pending' && (
 
                   <button
@@ -4162,21 +4143,8 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                   />
 
                 </div>
-
-
-
-                <div className="probability-row">
-
-                  <span className="prob-label"><Building2 size={12} /> {t('transfers.clubAccepts')}</span>
-
-                  <div className="prob-bar-container">
-
-                    <div className="prob-bar" style={{ width: `${clubProbability}%`, background: getProbColor(clubProbability) }}></div>
-
-                  </div>
-
-                  <span className="prob-value" style={{ color: getProbColor(clubProbability) }}>{clubProbability}%</span>
-
+                <div className="probability-pill-row">
+                  <span><Building2 size={12} /> {t('transfers.clubAccepts')} <strong style={{ color: getProbColor(clubProbability) }}>{clubProbability}%</strong></span>
                 </div>
 
 
@@ -4242,21 +4210,8 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                   </div>
 
                 </div>
-
-
-
-                <div className="probability-row">
-
-                  <span className="prob-label"><UserCheck size={12} /> {t('transfers.playerAccepts')}</span>
-
-                  <div className="prob-bar-container">
-
-                    <div className="prob-bar" style={{ width: `${playerProbability}%`, background: getProbColor(playerProbability) }}></div>
-
-                  </div>
-
-                  <span className="prob-value" style={{ color: getProbColor(playerProbability) }}>{playerProbability}%</span>
-
+                <div className="probability-pill-row">
+                  <span><UserCheck size={12} /> {t('transfers.playerAccepts')} <strong style={{ color: getProbColor(playerProbability) }}>{playerProbability}%</strong></span>
                 </div>
 
 
