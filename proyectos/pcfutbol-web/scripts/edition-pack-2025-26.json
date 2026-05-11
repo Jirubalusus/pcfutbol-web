@@ -276,7 +276,11 @@
         "B. Silveira": "Williot Swedberg",
         "Patricio Dorrego": "Borja Iglesias",
         "Thierry Delacroix": "Pablo Durán"
-      }
+      },
+      "name": "RC Celta de Vigo",
+      "shortName": "CEL",
+      "city": "Vigo",
+      "stadium": "Abanca-Balaídos"
     },
     "Levante Bay CF": {
       "name": "Sevilla FC",
@@ -40229,6 +40233,36 @@
       "name": "Richards Bay FC",
       "shortName": "RIB",
       "stadium": "King Zwelithini"
+    },
+    "rc-celta": {
+      "players": {
+        "Iván Valderrama": "Marc Vidal",
+        "Valentin Girard": "Iván Villar",
+        "G. Medrano": "Ionuț Radu",
+        "Cédric Saunier": "Mihailo Ristic",
+        "João": "Marcos Alonso",
+        "Ulises Navarrete": "Javi Rueda",
+        "Jonas Alcântara": "Carlos Domínguez",
+        "Matheus Almeida": "Carl Starfelt",
+        "Marcos Salcedo": "Manu Fernández",
+        "Otávio Machado": "Javi Rodríguez",
+        "Héctor Jurado": "Yoel Lago",
+        "F. Bermejo": "Miguel Román",
+        "Douglas Rezende": "Hugo Sotelo",
+        "Iñaki Mendoza": "Ilaix Moriba",
+        "Laurent Tessier": "Fer López",
+        "Waldo Saavedra": "Franco Cervi",
+        "Fabián Carrasco": "Iago Aspas",
+        "Igor Azevedo": "Jones El-Abdellaoui",
+        "Agustín Dorrego": "Ferran Jutglà",
+        "B. Silveira": "Williot Swedberg",
+        "Patricio Dorrego": "Borja Iglesias",
+        "Thierry Delacroix": "Pablo Durán"
+      },
+      "name": "RC Celta de Vigo",
+      "shortName": "CEL",
+      "city": "Vigo",
+      "stadium": "Abanca-Balaídos"
     }
   },
   "leagues": {
@@ -40266,6 +40300,7 @@
     "Southern Cross League": "A-League Men",
     "Veld League": "Betway Premiership"
   },
-  "teamCount": 1799,
-  "playerCount": 30552
+  "teamCount": 1988,
+  "playerCount": 30628,
+  "updatedAt": "2026-05-11T15:59:43.407Z"
 }
