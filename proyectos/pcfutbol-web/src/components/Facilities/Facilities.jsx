@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { translatePosition } from '../../game/positionNames';
@@ -300,11 +301,15 @@ export default function Facilities() {
     acc[f.category].push(f);
     return acc;
   }, {});
+
+  const renderModal = (node) => (
+    typeof document !== 'undefined' ? createPortal(node, document.body) : node
+  );
   
   return (
     <div className="facilities-v2">
       {/* Event Modal */}
-      {pendingEvent && (
+      {pendingEvent && renderModal(
         <div className="facilities-v2__modal-overlay">
           <div className="facilities-v2__modal">
             <div className="modal-header">
@@ -332,7 +337,7 @@ export default function Facilities() {
       )}
       
       {/* Specialization Modal */}
-      {selectedFacility && FACILITY_SPECIALIZATIONS[selectedFacility] && !facilitySpecsLocked[selectedFacility] && (
+      {selectedFacility && FACILITY_SPECIALIZATIONS[selectedFacility] && !facilitySpecsLocked[selectedFacility] && renderModal(
         <div className="facilities-v2__modal-overlay" onClick={() => setSelectedFacility(null)}>
           <div className="facilities-v2__modal facilities-v2__modal--spec" onClick={e => e.stopPropagation()}>
             <h3><Target size={14} /> {FACILITY_SPECIALIZATIONS[selectedFacility].name}</h3>
