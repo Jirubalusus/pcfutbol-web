@@ -24,6 +24,7 @@ import {
   Briefcase
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
+import { formatCompactMoney } from '../../utils/money';
 import './Objectives.scss';
 
 export default function Objectives() {
@@ -130,11 +131,7 @@ export default function Objectives() {
     }
   };
 
-  const formatMoney = (amount) => {
-    if (amount >= 1000000) return `€${(amount / 1000000).toFixed(1)}M`;
-    if (amount <= -1000000) return `-€${(Math.abs(amount) / 1000000).toFixed(1)}M`;
-    return `€${(amount / 1000).toFixed(0)}K`;
-  };
+  const formatMoney = (amount) => formatCompactMoney(amount);
 
   const getProgressExplanation = (obj) => {
     if (!teamStats) return t('common.loading');

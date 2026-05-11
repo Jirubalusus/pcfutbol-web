@@ -105,6 +105,7 @@ import { useAuth } from '../../context/AuthContext';
 import { WelcomeModal, TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import LoadingIndicator from '../common/LoadingIndicator';
+import { formatCompactMoney } from '../../utils/money';
 import './Office.scss';
 
 export default function Office() {
@@ -282,12 +283,7 @@ export default function Office() {
   const halfSeason = Math.ceil(maxWeek / 2);
   const isPastHalfSeason = !state.preseasonPhase && state.currentWeek >= halfSeason;
 
-  const formatMoney = (amount) => {
-    if (amount >= 1000000) {
-      return `€${(amount / 1000000).toFixed(1)}M`;
-    }
-    return `€${(amount / 1000).toFixed(0)}K`;
-  };
+  const formatMoney = (amount) => formatCompactMoney(amount);
   
   // Comprobar lesionados en alineación titular
   const getInjuredInLineup = () => {

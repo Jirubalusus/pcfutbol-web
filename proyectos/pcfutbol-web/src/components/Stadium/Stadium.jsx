@@ -49,6 +49,7 @@ import {
 import { getFacilityCostMultiplier, getBaseTicketPrice, getBaseSeasonTicketPrice, getTicketPriceRange } from '../../game/leagueTiers';
 import { Building2, Mic, Briefcase, Trophy, Ticket, Coins, BarChart3, Megaphone, Users, Sprout, Check, AlertTriangle, XCircle, Lock, Wrench, Tag } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
+import { formatCompactMoney } from '../../utils/money';
 import './Stadium.scss';
 
 // Función para obtener todos los equipos
@@ -486,11 +487,7 @@ export default function Stadium() {
     });
   };
   
-  const formatMoney = (n) => {
-    if (Math.abs(n) >= 1000000) return `€${(n/1000000).toFixed(1)}M`;
-    if (Math.abs(n) >= 1000) return `€${(n/1000).toFixed(0)}K`;
-    return `€${Math.round(n)}`;
-  };
+  const formatMoney = (n) => formatCompactMoney(n);
   
   // Nombre del estadio (mantener nombre original + naming rights si hay sponsor)
   const baseStadiumName = stadium.name || state.team?.stadium || `${t('stadium.title')} ${t(currentLevel.nameKey)}`;

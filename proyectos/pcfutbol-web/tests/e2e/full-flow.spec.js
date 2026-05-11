@@ -46,106 +46,67 @@ async function waitForOffice(page) {
 }
 
 /**
- * Start a new game by going through team selection.
- * Falls back to JS injection if the 3D globe is not clickable in headless.
+ * Start a deterministic career save for Office tests.
+ * TeamSelection itself has dedicated tests above; Office tests should not depend on
+ * brittle 3D globe/canvas clicks that behave differently in headless desktop.
  */
 async function startNewGame(page) {
-  await page.click('.main-menu__mode-card--hero');
-  await expect(page.locator('.pcf-ts-progress')).toBeVisible({ timeout: 10_000 });
+  await page.waitForFunction(
+    () => window.__pcfGame && typeof window.__pcfGame.dispatch === 'function',
+    { timeout: 15_000 }
+  );
 
-  await page.waitForTimeout(3000);
+  const started = await page.evaluate(async () => {
+    try {
+      const teamsMod = await import('/src/data/teamsFirestore.js');
+      const leagueMod = await import('/src/game/leagueEngine.js');
+      if (typeof teamsMod.loadAllData === 'function') await teamsMod.loadAllData();
 
-  let leagueBtns = page.locator('.map-selection__league:not(.disabled)');
-  let leagueCount = await leagueBtns.count();
+      const leagueId = 'laliga';
+      const teams = teamsMod.getLaLigaTeams();
+      if (!Array.isArray(teams) || teams.length === 0) return false;
 
-  if (leagueCount === 0) {
-    const countryMarker = page.locator('.globe-marker').first();
-    if (await countryMarker.isVisible({ timeout: 1000 }).catch(() => false)) {
-      await countryMarker.click();
-      await page.waitForTimeout(800);
-      leagueCount = await leagueBtns.count();
+      const rawTeam = teams.find(t => Array.isArray(t.players) && t.players.length >= 11) || teams[0];
+      const team = {
+        ...rawTeam,
+        budget: Number.isFinite(Number(rawTeam.budget)) ? Number(rawTeam.budget) : 50_000_000,
+        transferBudget: Number.isFinite(Number(rawTeam.transferBudget)) ? Number(rawTeam.transferBudget) : 20_000_000,
+        players: Array.isArray(rawTeam.players) ? rawTeam.players : [],
+      };
+      const leagueTeams = teams.map(t => ({
+        ...t,
+        budget: Number.isFinite(Number(t.budget)) ? Number(t.budget) : 50_000_000,
+        players: Array.isArray(t.players) ? t.players : [],
+      }));
+      const leagueData = leagueMod.initializeLeague(leagueTeams, team.id);
+
+      window.__pcfGame.dispatch({
+        type: 'NEW_GAME',
+        payload: {
+          teamId: team.id,
+          team,
+          leagueId,
+          stadiumInfo: { name: team.stadium || 'Estadio', capacity: team.stadiumCapacity || 30_000 },
+          stadiumLevel: 3,
+          gameMode: 'career',
+          preseasonMatches: [],
+          preseasonPhase: false,
+          managerName: 'E2E Manager',
+        }
+      });
+      window.__pcfGame.dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
+      window.__pcfGame.dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
+      window.__pcfGame.dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
+      return true;
+    } catch (e) {
+      console.warn('[E2E] deterministic game injection failed:', e);
+      return false;
     }
-  }
+  });
 
-  if (leagueCount === 0) {
-    const globeCanvas = page.locator('.map-selection__map canvas').first();
-    if (await globeCanvas.isVisible()) {
-      for (const pos of [
-        { x: 150, y: 170 }, { x: 180, y: 190 }, { x: 120, y: 160 },
-        { x: 200, y: 200 }, { x: 160, y: 150 }, { x: 140, y: 200 },
-      ]) {
-        await globeCanvas.click({ position: pos, force: true });
-        await page.waitForTimeout(600);
-        leagueCount = await leagueBtns.count();
-        if (leagueCount > 0) break;
-      }
-    }
-  }
-
-  // On mobile, globe may be replaced by a country list
-  if (leagueCount === 0) {
-    const countryItem = page.locator('.map-selection__country-item, .country-list__item, [class*="country"]').first();
-    if (await countryItem.isVisible({ timeout: 2000 }).catch(() => false)) {
-      await countryItem.click();
-      await page.waitForTimeout(1000);
-      leagueCount = await leagueBtns.count();
-    }
-  }
-
-  if (leagueCount > 0) {
-    await leagueBtns.first().click();
-    await page.waitForTimeout(1000);
-    const teamRows = page.locator('.team-row');
-    await expect(teamRows.first()).toBeVisible({ timeout: 8_000 });
-    await teamRows.first().click();
-    await page.waitForTimeout(500);
-    await page.locator('.btn-start').click();
-
-    const preseasonModal = page.locator('.preseason-modal');
-    const office = page.locator('.sidebar, .mobile-nav');
-    await expect(preseasonModal.or(office)).toBeVisible({ timeout: 15_000 });
-    if (await preseasonModal.isVisible()) {
-      const cards = page.locator('.preseason-card');
-      if (await cards.count() > 0) await cards.first().click();
-      await page.locator('.btn-confirm').click();
-    }
-  } else {
-    // Globe not working — inject game via JS
-    const backBtn = page.locator('.btn-back').first();
-    if (await backBtn.isVisible()) await backBtn.click();
-    await page.waitForTimeout(500);
-
-    const started = await page.evaluate(async () => {
-      try {
-        const mod = await import('/src/data/teamsFirestore.js');
-        if (typeof mod.loadAllData === 'function') await mod.loadAllData();
-        const teams = mod.getLaLigaTeams();
-        if (!teams || teams.length === 0) return false;
-
-        const team = teams[0];
-        window.__pcfGame.dispatch({
-          type: 'NEW_GAME',
-          payload: {
-            teamId: team.id,
-            team: team,
-            leagueId: 'laliga',
-            stadiumInfo: { name: team.stadium || 'Estadio', capacity: team.stadiumCapacity || 30000 },
-            stadiumLevel: 3,
-            gameMode: 'career',
-            preseasonPhase: false,
-          }
-        });
-        return true;
-      } catch (e) {
-        console.warn('[E2E] JS game injection failed:', e);
-        return false;
-      }
-    });
-
-    if (!started) {
-      test.skip(true, 'Could not load team data for game injection');
-      return;
-    }
+  if (!started) {
+    test.skip(true, 'Could not load deterministic team data for game injection');
+    return;
   }
 
   await waitForOffice(page);
@@ -303,6 +264,21 @@ test.describe('Office / Dashboard', () => {
       await expect(page.locator('.sidebar')).toBeVisible();
       await expect(page.locator('.sidebar__team-name')).toBeVisible();
       await expect(page.locator('.sidebar__item.active')).toBeVisible();
+    }
+  });
+
+  test('money widgets never render NaN or Infinity', async ({ page }, testInfo) => {
+    const tabs = isMobile(testInfo)
+      ? [
+          ['overview'], ['plantilla'], ['objectives'], ['stadium'], ['facilities']
+        ]
+      : [
+          ['overview', 0], ['plantilla', 1], ['objectives', 3], ['stadium', 7], ['facilities', 9]
+        ];
+
+    for (const [tabId, sidebarIndex] of tabs) {
+      if (tabId !== 'overview') await navigateToTab(page, testInfo, tabId, sidebarIndex);
+      await expect(page.locator('body')).not.toContainText(/NaN|Infinity/, { timeout: 2_000 });
     }
   });
 
