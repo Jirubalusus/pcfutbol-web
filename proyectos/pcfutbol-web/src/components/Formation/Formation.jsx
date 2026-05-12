@@ -1642,6 +1642,24 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
     return fp.filter(p => p.id !== 'GK').map(p => translatePosition(p.id));
   }, [formation]);
 
+  const selectedShapeStats = useMemo(() => {
+    const fp = FORMATION_POSITIONS[formation] || [];
+    const defense = fp.filter(p => /^(RB|LB|CB)/.test(p.id)).length;
+    const attack = fp.filter(p => /^(RW|LW|ST)/.test(p.id)).length;
+    const midfield = Math.max(0, fp.filter(p => p.id !== 'GK').length - defense - attack);
+    return { defense, midfield, attack };
+  }, [formation]);
+
+  const formationQuickPicks = ['4-3-3', '4-4-2', '4-2-3-1', '3-5-2', '5-3-2'];
+
+  const tacticProfile = {
+    defensive: { risk: 20, pressure: 32, tempo: 34, riskLabel: 'Bajo', pressureLabel: 'Baja', tempoLabel: 'Lento' },
+    balanced: { risk: 50, pressure: 48, tempo: 54, riskLabel: 'Medio', pressureLabel: 'Normal', tempoLabel: 'Medio' },
+    attacking: { risk: 82, pressure: 74, tempo: 72, riskLabel: 'Alto', pressureLabel: 'Alta', tempoLabel: 'Alto' },
+    possession: { risk: 42, pressure: 58, tempo: 38, riskLabel: 'Medio', pressureLabel: 'Media', tempoLabel: 'Pausado' },
+    counter: { risk: 62, pressure: 36, tempo: 78, riskLabel: 'Medio-alto', pressureLabel: 'Baja', tempoLabel: 'Rápido' },
+  }[tactic] || { risk: 50, pressure: 50, tempo: 50, riskLabel: 'Medio', pressureLabel: 'Normal', tempoLabel: 'Medio' };
+
   const handleSave = () => {
     dispatch({ type: 'SET_TACTIC', payload: tactic });
     if (formation !== currentFormation && onFormationChange) {
@@ -1674,35 +1692,65 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
 
         <div className="modal-body">
           {activeTab === 'formation' && (
-            <div className="formation-visual-selector">
-              {formationGroups.map(group => (
-                <div key={group.label} className="formation-group">
-                  <div className="group-label">{group.label}</div>
-                  <div className="formation-grid">
-                    {group.formations.map(f => {
-                      const fp = FORMATION_POSITIONS[f];
-                      if (!fp) return null;
-                      const isActive = formation === f;
-                      return (
-                        <div
-                          key={f}
-                          className={`formation-card ${isActive ? 'active' : ''}`}
-                          onClick={() => setFormation(f)}
-                        >
-                          <MiniPitch positions={fp} isActive={isActive} />
-                          <div className="formation-name">{f}</div>
-                        </div>
-                      );
-                    })}
+            <div className="formation-visual-selector formation-board-mode">
+              <section className="formation-stage">
+                <div className="formation-stage__pitch">
+                  <MiniPitch positions={FORMATION_POSITIONS[formation] || []} isActive />
+                </div>
+                <div className="formation-stage__summary">
+                  <div>
+                    <span className="eyebrow">Formación actual</span>
+                    <h4>{formation}</h4>
+                    <p>{FORMATIONS[formation]?.description || 'Plan base del equipo'}</p>
+                  </div>
+                  <div className="shape-stats">
+                    <span><strong>{selectedShapeStats.defense}</strong> DEF</span>
+                    <span><strong>{selectedShapeStats.midfield}</strong> MED</span>
+                    <span><strong>{selectedShapeStats.attack}</strong> DEL</span>
                   </div>
                 </div>
-              ))}
+              </section>
 
-              {/* Detalle de la formación seleccionada */}
-              <div className="formation-detail">
+              <div className="formation-quick-picks" aria-label="Formaciones rápidas">
+                {formationQuickPicks.map(f => (
+                  <button
+                    key={f}
+                    type="button"
+                    className={formation === f ? 'active' : ''}
+                    onClick={() => setFormation(f)}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+
+              <div className="formation-groups-compact">
+                {formationGroups.map(group => (
+                  <div key={group.label} className="formation-group-compact">
+                    <div className="group-label">{group.label}</div>
+                    <div className="formation-chip-grid">
+                      {group.formations.map(f => {
+                        if (!FORMATION_POSITIONS[f]) return null;
+                        return (
+                          <button
+                            type="button"
+                            key={f}
+                            className={formation === f ? 'active' : ''}
+                            onClick={() => setFormation(f)}
+                          >
+                            {f}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="formation-detail formation-detail--compact">
                 <div className="detail-header">
-                  <span className="detail-name">{formation}</span>
-                  <span className="detail-desc">{FORMATIONS[formation]?.description}</span>
+                  <span className="detail-name">Posiciones</span>
+                  <span className="detail-desc">{selectedPositions.length} roles en campo</span>
                 </div>
                 <div className="detail-positions">
                   {selectedPositions.map((p, i) => (
@@ -1714,36 +1762,54 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
           )}
 
           {activeTab === 'tactic' && (
-            <div className="tactic-options">
-              {tacticOptions.map(opt => {
-                const IconComponent = {
-                  shield: Shield,
-                  scale: Scale,
-                  swords: Swords,
-                  target: Target,
-                  zap: Zap
-                }[opt.iconType] || Settings;
+            <div className="tactic-options tactic-profile-mode">
+              <div className="tactic-profile-list">
+                {tacticOptions.map(opt => {
+                  const IconComponent = {
+                    shield: Shield,
+                    scale: Scale,
+                    swords: Swords,
+                    target: Target,
+                    zap: Zap
+                  }[opt.iconType] || Settings;
 
-                return (
-                  <div
-                    key={opt.id}
-                    className={`tactic-option ${tactic === opt.id ? 'active' : ''}`}
-                    onClick={() => setTactic(opt.id)}
-                    style={{ '--tactic-color': opt.color }}
-                  >
-                    <span className="icon" style={{ color: opt.color }}>
-                      <IconComponent size={24} />
-                    </span>
-                    <div className="info">
-                      <span className="name">{opt.name}</span>
-                      <span className="desc">{opt.desc}</span>
-                      <span className="bonus">{opt.bonus}</span>
-                      {opt.detail && <span className="detail">{opt.detail}</span>}
-                    </div>
-                    {tactic === opt.id && <CheckCircle2 size={20} className="check" style={{ color: opt.color }} />}
-                  </div>
-                );
-              })}
+                  return (
+                    <button
+                      type="button"
+                      key={opt.id}
+                      className={`tactic-option ${tactic === opt.id ? 'active' : ''}`}
+                      onClick={() => setTactic(opt.id)}
+                      style={{ '--tactic-color': opt.color }}
+                    >
+                      <span className="icon" style={{ color: opt.color }}>
+                        <IconComponent size={24} />
+                      </span>
+                      <span className="info">
+                        <span className="name">{opt.name}</span>
+                        <span className="desc">{opt.desc}</span>
+                      </span>
+                      {tactic === opt.id && <CheckCircle2 size={20} className="check" style={{ color: opt.color }} />}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="tactic-profile-summary">
+                <span className="eyebrow">Lectura rápida</span>
+                <div className="tactic-meter">
+                  <label><span>Riesgo</span><strong>{tacticProfile.riskLabel}</strong></label>
+                  <div className="meter"><span style={{ width: `${tacticProfile.risk}%` }} /></div>
+                </div>
+                <div className="tactic-meter">
+                  <label><span>Presión</span><strong>{tacticProfile.pressureLabel}</strong></label>
+                  <div className="meter"><span style={{ width: `${tacticProfile.pressure}%` }} /></div>
+                </div>
+                <div className="tactic-meter">
+                  <label><span>Ritmo</span><strong>{tacticProfile.tempoLabel}</strong></label>
+                  <div className="meter"><span style={{ width: `${tacticProfile.tempo}%` }} /></div>
+                </div>
+                <p>Los porcentajes exactos quedan fuera de la vista principal; aquí importa cómo se va a sentir el equipo.</p>
+              </div>
             </div>
           )}
         </div>
