@@ -1,55 +1,24 @@
-// PC Gaffer — Service Worker (basic for TWA/PWA installability)
-const CACHE_NAME = 'pcgaffer-v1';
+// PC Gaffer — Service Worker kill switch
+// Older mobile/PWA installs could keep stale lazy chunks. This SW immediately
+// clears every cache, takes control once, then unregisters itself.
 
-// Install — precache critical assets
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll([
-        '/pcfutbol-web/',
-        '/pcfutbol-web/index.html',
-        '/pcfutbol-web/manifest.json',
-        '/pcfutbol-web/favicon.svg',
-        '/pcfutbol-web/icons/icon-192x192.png',
-        '/pcfutbol-web/icons/icon-512x512.png'
-      ]);
-    })
-  );
-  self.skipWaiting();
+  event.waitUntil(self.skipWaiting());
 });
 
-// Activate — clean old caches
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-      );
-    })
-  );
-  self.clients.claim();
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.map((key) => caches.delete(key)));
+    await self.clients.claim();
+    const registration = await self.registration.unregister();
+    const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of clients) {
+      client.postMessage({ type: 'PCGAFFER_CACHE_CLEARED', registration });
+    }
+  })());
 });
 
-// Fetch — network first, fallback to cache
-self.addEventListener('fetch', (event) => {
-  // Only handle same-origin requests
-  if (!event.request.url.startsWith(self.location.origin)) return;
-  
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Cache successful responses
-        if (response.ok) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, clone);
-          });
-        }
-        return response;
-      })
-      .catch(() => {
-        // Fallback to cache
-        return caches.match(event.request);
-      })
-  );
+self.addEventListener('fetch', () => {
+  // Deliberately do nothing: always let the network/browser handle requests.
 });

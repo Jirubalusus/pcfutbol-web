@@ -30,25 +30,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
     
     <title>PC Gaffer</title>
-    <script type="module" crossorigin src="/assets/index-I5k2sYC-.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/three-pMndhuGY.js">
-    <link rel="modulepreload" crossorigin href="/assets/react-three-DdjCKXML.js">
-    <link rel="modulepreload" crossorigin href="/assets/firebase-DtpDFfZE.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-BlFCCAdT.css">
+    <script type="module" crossorigin src="/assets/index-D0kHRfjZ.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/three-CseYu_KH.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-three-B3YWtKfS.js">
+    <link rel="modulepreload" crossorigin href="/assets/firebase-B5m01CTy.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-6zzT1MRj.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
     <script>
-      // Unregister old service workers to prevent stale cache issues
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(regs => {
-          regs.forEach(r => r.unregister());
-        });
-        // Clear caches too
-        if ('caches' in window) {
-          caches.keys().then(names => names.forEach(n => caches.delete(n)));
+      // Force-clear old PWA/service-worker caches before the app module starts.
+      // This prevents mobile browsers from keeping stale lazy chunks like ProManagerSetup.
+      (function clearStalePwaCache() {
+        var version = 'tactics-formation-board-2026-05-12';
+        var reloadKey = 'pcgaffer-cache-reset-' + version;
+        var tasks = [];
+
+        if ('serviceWorker' in navigator) {
+          tasks.push(
+            navigator.serviceWorker.getRegistrations()
+              .then(function(regs) { return Promise.all(regs.map(function(r) { return r.unregister(); })); })
+          );
         }
-      }
+
+        if ('caches' in window) {
+          tasks.push(
+            caches.keys()
+              .then(function(names) { return Promise.all(names.map(function(n) { return caches.delete(n); })); })
+          );
+        }
+
+        if (!tasks.length) return;
+        Promise.all(tasks).then(function() {
+          if (!sessionStorage.getItem(reloadKey)) {
+            sessionStorage.setItem(reloadKey, '1');
+            var cleanPath = window.location.pathname || '/';
+            window.location.replace(cleanPath + '?v=' + version);
+          }
+        }).catch(function() {});
+      })();
     </script>
   </body>
 </html>
