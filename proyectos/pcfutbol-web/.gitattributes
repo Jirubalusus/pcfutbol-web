@@ -1,0 +1,3 @@
+# Historical database (large datasets ~695 MB) tracked via Git LFS.
+# Backup + reproducibility: a fresh clone can build & deploy (public/ -> dist/).
+public/historical-db/** filter=lfs diff=lfs merge=lfs -text
