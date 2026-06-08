@@ -458,6 +458,11 @@ export class GlobalTransferEngine {
    * Ejecutar una transferencia
    */
   executeTransfer(player, fromTeam, toTeam, price) {
+    // Never let AI buyers complete a deal they cannot afford. Candidate filtering allows
+    // negotiations around askingPrice * 0.7, but the final negotiated price can exceed
+    // the current budget; without this guard low-tier clubs go negative after purchases.
+    if (!Number.isFinite(price) || !Number.isFinite(toTeam?.budget) || toTeam.budget < price) return null;
+
     // Actualizar plantillas. Prefer player id; fall back to a composite identity.
     // Do not add the player to the buying team if we cannot remove him from the seller:
     // otherwise a stale target can clone players across the global market.

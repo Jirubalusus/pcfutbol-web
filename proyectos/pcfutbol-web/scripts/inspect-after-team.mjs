@@ -1,0 +1,15 @@
+import { chromium, devices } from 'playwright';
+const browser=await chromium.launch({headless:true});
+const page=await (await browser.newContext({...devices['iPhone 13']})).newPage();
+await page.goto('http://127.0.0.1:5173',{waitUntil:'domcontentloaded'});
+await page.waitForFunction(()=>window.__pcfGame?.state?.loaded,null,{timeout:60000});
+await page.evaluate(()=>window.__pcfGame.dispatch({type:'SET_SCREEN',payload:'team_selection'}));
+await page.waitForTimeout(500);
+await page.locator('.map-selection__country-card').first().click(); await page.waitForTimeout(500);
+await page.locator('.map-selection__division-card').first().click(); await page.waitForTimeout(500);
+await page.locator('.team-row').first().click(); await page.waitForTimeout(1500);
+console.log('screen',await page.evaluate(()=>window.__pcfGame.state.currentScreen));
+console.log((await page.locator('body').innerText()).slice(0,1500));
+const buttons=await page.$$eval('button,a,[role="button"]',els=>els.slice(0,80).map((e,idx)=>({idx,tag:e.tagName,cls:String(e.className),text:e.innerText.slice(0,100),rect:e.getBoundingClientRect().toJSON()})));
+console.log(JSON.stringify(buttons,null,2));
+await browser.close();

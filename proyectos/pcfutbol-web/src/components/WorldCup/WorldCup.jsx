@@ -50,7 +50,7 @@ export default function WorldCup({ onExit }) {
 
   // Load teams
   useEffect(() => {
-    fetch('/data/national-teams.json')
+    fetch(`${import.meta.env.BASE_URL}data/national-teams.json`)
       .then(r => r.json())
       .then(setTeams)
       .catch(() => setTeams([]));

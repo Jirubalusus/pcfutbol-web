@@ -4,9 +4,10 @@ import { useGame } from '../../context/GameContext';
 import { useToast } from '../Toast/Toast';
 import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import { FORMATIONS, TACTICS, calculateTeamStrength } from '../../game/leagueEngine';
-import { getSlotPosition, FIT_COLORS, getBestPositionFit, getSecondaryPositions } from '../../game/positionSystem';
+import { getSlotPosition, FIT_COLORS, getBestPositionFit, getSecondaryPositions, canPlayAt } from '../../game/positionSystem';
 import { translatePosition, posToEN } from '../../game/positionNames';
 import { FORM_STATES } from '../../game/formSystem';
+import { attachRosterIdentities, buildSlotIdentityMap, categorizeRoster, planSwap } from '../../game/playerIdentity';
 import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Heart, AlertTriangle, Building2, TrendingUp, BarChart3, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import PositionRoleIcon from '../common/PositionRoleIcon';
@@ -65,6 +66,103 @@ function PlayerPositionCell({ player, getPositionStyle, t, displayPosition }) {
     >
       <span className="col-pos__primary">{translatePosition(primaryPosition)}</span>
       {hasMultiplePositions && <span className="col-pos__marker" aria-label={tooltip}>*</span>}
+    </span>
+  );
+}
+
+// Pluralización sencilla en español para los tooltips de estado.
+const semanas = (n) => `${n} ${n === 1 ? 'semana' : 'semanas'}`;
+const partidos = (n) => `${n} ${n === 1 ? 'partido' : 'partidos'}`;
+
+// Efecto exacto de la forma sobre la MED en partido, p.ej. "+5% MED en
+// partido", "-8% MED en partido" o "sin bonus".
+const formMatchEffectLabel = (formInfo) => {
+  const pct = Math.round((formInfo?.matchBonus || 0) * 100);
+  if (pct > 0) return `+${pct}% MED en partido`;
+  if (pct < 0) return `${pct}% MED en partido`;
+  return 'sin bonus';
+};
+
+const getFormTooltip = (formInfo) =>
+  `Forma: ${formInfo?.label || 'Normal'} (${formMatchEffectLabel(formInfo)})`;
+
+// Iconos de estado (lesión, sanción, aviso de amarillas, recuperación) + flecha
+// de forma con tooltips informativos. Centralizado aquí para que las tres
+// secciones (titulares/convocados/no convocados) muestren exactamente lo mismo.
+function PlayerStatusIcons({ player, form }) {
+  const formInfo = FORM_STATES[form] || FORM_STATES.normal;
+  const formTooltip = getFormTooltip(formInfo);
+
+  const yellowCards = player.yellowCards || 0;
+  const isInjured = player.injured && player.injuryWeeksLeft > 0;
+  const hasBoost = !player.suspended && !player.injured &&
+    player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0;
+  const showWarning = !player.suspended && !player.injured && !hasBoost && yellowCards >= 4;
+  const pending = player.suspensionMatches || 0;
+  const pendingLabel = (n) => `${partidos(n)} pendiente${n === 1 ? '' : 's'}`;
+
+  const injuryTip = `Lesionado: ${semanas(player.injuryWeeksLeft)} de baja`;
+  const redTip = `Sancionado por tarjeta roja: ${pendingLabel(pending)}`;
+  const doubleYellowTip = `Sancionado por doble amarilla: ${pendingLabel(pending)}`;
+  const yellowSuspTip = `Sancionado por acumular 5 amarillas: ${pendingLabel(pending || 1)}`;
+  const boostTip = `Recién recuperado: +${player.postInjuryBonus} MED durante ${semanas(player.postInjuryWeeksLeft)}`;
+  const warningTip = `Advertencia: ${yellowCards} amarillas acumuladas; una más acarrea suspensión`;
+
+  return (
+    <span className="col-status">
+      {isInjured && (
+        <span className="status-icon injury has-tooltip" tabIndex={0}
+          title={injuryTip} aria-label={injuryTip} data-tooltip={injuryTip}>
+          <HeartPulse size={14} /> {player.injuryWeeksLeft}sem
+        </span>
+      )}
+      {player.suspended && player.suspensionType === 'red' && (
+        <span className="status-icon red has-tooltip" tabIndex={0}
+          title={redTip} aria-label={redTip} data-tooltip={redTip}>
+          <Square size={14} className="card-red" />{player.suspensionMatches}p
+        </span>
+      )}
+      {player.suspended && player.suspensionType === 'double_yellow' && (
+        <span className="status-icon red has-tooltip" tabIndex={0}
+          title={doubleYellowTip} aria-label={doubleYellowTip} data-tooltip={doubleYellowTip}>
+          <><Square size={14} className="card-yellow" /><Square size={14} className="card-yellow" /></>{player.suspensionMatches}p
+        </span>
+      )}
+      {player.suspended && player.suspensionType === 'yellow' && (
+        <span className="status-icon yellow has-tooltip" tabIndex={0}
+          title={yellowSuspTip} aria-label={yellowSuspTip} data-tooltip={yellowSuspTip}>
+          <Square size={14} className="card-yellow" />×5
+        </span>
+      )}
+      {hasBoost && (
+        <span className="status-icon boost has-tooltip" tabIndex={0}
+          title={boostTip} aria-label={boostTip} data-tooltip={boostTip}>
+          <TrendingUp size={14} />{player.postInjuryWeeksLeft}sem
+        </span>
+      )}
+      {showWarning && (
+        <span className="status-icon warning has-tooltip" tabIndex={0}
+          title={warningTip} aria-label={warningTip} data-tooltip={warningTip}>
+          <AlertTriangle size={14} />
+        </span>
+      )}
+      {/* La flecha se rota 45º, así que el tooltip va en un envoltorio sin giro
+          para que el recuadro emergente no aparezca inclinado. */}
+      <span
+        className="form-arrow-wrap has-tooltip"
+        tabIndex={0}
+        title={formTooltip}
+        aria-label={formTooltip}
+        data-tooltip={formTooltip}
+      >
+        <span
+          className={`form-arrow form-${form}`}
+          style={{ color: formInfo.color }}
+          aria-hidden="true"
+        >
+          {formInfo.arrow}
+        </span>
+      </span>
     </span>
   );
 }
@@ -346,6 +444,30 @@ export default function Formation() {
   const players = state.team?.players || [];
   const teamStrength = calculateTeamStrength(state.team, selectedFormation, selectedTactic);
 
+  // Roster con identidad estable (`_pid`) + dorsal por ranking de overall.
+  // Esto evita que jugadores distintos con el MISMO nombre (p.ej. varios
+  // "Andrés Martínez") se traten como el mismo y se dupliquen al mover.
+  const rosterPlayers = useMemo(() => {
+    const withId = attachRosterIdentities(players);
+    const ranked = [...withId].sort((a, b) => b.overall - a.overall);
+    const numByPid = new Map();
+    ranked.forEach((p, i) => numByPid.set(p._pid, i + 1));
+    return withId.map(p => ({ ...p, number: numByPid.get(p._pid) }));
+  }, [players]);
+
+  const rosterByPid = useMemo(
+    () => new Map(rosterPlayers.map(p => [p._pid, p])),
+    [rosterPlayers]
+  );
+
+  // Mapas slot ↔ identidad resueltos contra el roster actual (soporta
+  // lineups antiguos guardados sin `_pid`).
+  const { pidToSlot, slotToPid } = useMemo(
+    () => buildSlotIdentityMap(lineup, rosterPlayers),
+    [lineup, rosterPlayers]
+  );
+  const lineupIdSet = useMemo(() => new Set(Object.keys(pidToSlot)), [pidToSlot]);
+
   // Sync global lineup → local cuando cambia externamente (ej: limpieza por suspensiones/lesiones)
   useEffect(() => {
     const globalStr = JSON.stringify(state.lineup || {});
@@ -371,13 +493,9 @@ export default function Formation() {
   // Lista manual de convocados (nombres)
   const manualConvocados = state.convocados || [];
 
-  // Dividir jugadores por categoría
+  // Dividir jugadores por categoría (partición garantizada por identidad:
+  // cada jugador del roster cae en EXACTAMENTE una sección, sin duplicados).
   const categorizedPlayers = useMemo(() => {
-    const lineupNames = Object.values(lineup).map(p => p?.name).filter(Boolean);
-    const titulares = [];
-    const convocados = [];
-    const noConvocados = [];
-
     // Orden de posiciones estilo PC Fútbol 5.0: POR → DEF → MED → DEL
     const posOrder = {
       'GK': 0,
@@ -385,85 +503,40 @@ export default function Formation() {
       'CDM': 6, 'CM': 7, 'RM': 8, 'LM': 9, 'CAM': 10,
       'RW': 11, 'LW': 12, 'CF': 13, 'ST': 14
     };
-
-    // Función para ordenar por posición
     const sortByPosition = (a, b) => {
       const orderA = posOrder[a.position] ?? 99;
       const orderB = posOrder[b.position] ?? 99;
       if (orderA !== orderB) return orderA - orderB;
-      return b.overall - a.overall; // Mismo tipo de posición: por overall
+      return b.overall - a.overall;
     };
 
-    // Ordenar jugadores por overall para mejor distribución inicial
-    const sortedPlayers = [...players].sort((a, b) => b.overall - a.overall);
-
-    // Si hay lista manual de convocados, usarla
-    const hasManualConvocados = manualConvocados.length > 0;
-
-    sortedPlayers.forEach((player, idx) => {
-      const isInLineup = lineupNames.includes(player.name);
-      const playerWithNumber = { ...player, number: idx + 1 };
-
-      if (isInLineup) {
-        titulares.push(playerWithNumber);
-      } else if (hasManualConvocados) {
-        // Usar lista manual
-        if (manualConvocados.includes(player.name)) {
-          convocados.push(playerWithNumber);
-        } else {
-          noConvocados.push(playerWithNumber);
-        }
-      } else {
-        // Auto: primeros 5 no lesionados como suplentes (estilo PC Fútbol 5.0)
-        if (!player.injured && convocados.length < 5) {
-          convocados.push(playerWithNumber);
-        } else {
-          noConvocados.push(playerWithNumber);
-        }
-      }
-    });
-
-    // Backfill: si la lista manual dejó menos de 5 convocados
-    // (porque algunos pasaron a titulares al cambiar formación),
-    // rellenar con los mejores no convocados no lesionados
-    if (hasManualConvocados && convocados.length < 5) {
-      const needed = 5 - convocados.length;
-      const backfill = noConvocados
-        .filter(p => !p.injured)
-        .slice(0, needed);
-      backfill.forEach(p => {
-        convocados.push(p);
-        noConvocados.splice(noConvocados.indexOf(p), 1);
-      });
-    }
+    const { titulares, convocados, noConvocados } = categorizeRoster(
+      rosterPlayers,
+      lineupIdSet,
+      manualConvocados,
+      { autoConvocadoCount: 5 }
+    );
 
     // Titulares: ordenar por SLOT de la formación (GK → DEF → MED → DEL fijo)
-    // Así el orden refleja la formación elegida, no la posición natural del jugador
     const slotOrder = {};
     formationPositions.forEach((pos, idx) => { slotOrder[pos.id] = idx; });
-    const lineupEntries = Object.entries(lineup);
-    titulares.sort((a, b) => {
-      const slotA = lineupEntries.find(([_, p]) => p?.name === a.name)?.[0];
-      const slotB = lineupEntries.find(([_, p]) => p?.name === b.name)?.[0];
-      return (slotOrder[slotA] ?? 99) - (slotOrder[slotB] ?? 99);
-    });
-    // Suplentes y no convocados: ordenar por posición natural
+    titulares.sort((a, b) =>
+      (slotOrder[pidToSlot[a._pid]] ?? 99) - (slotOrder[pidToSlot[b._pid]] ?? 99)
+    );
     convocados.sort(sortByPosition);
     noConvocados.sort(sortByPosition);
 
     return { titulares, convocados, noConvocados };
-  }, [players, lineup, manualConvocados]);
+  }, [rosterPlayers, lineupIdSet, manualConvocados, pidToSlot, formationPositions]);
 
-  // Mapa playerName → slotId para saber en qué slot juega cada titular
-  const playerSlotMap = useMemo(() => {
-    const map = {};
-    Object.entries(lineup).forEach(([slotId, player]) => {
-      if (player?.name) {
-        map[player.name] = slotId;
-      }
-    });
-    return map;
-  }, [lineup]);
+  // Mapa identidad → slotId para saber en qué slot juega cada titular.
+  const playerSlotMap = pidToSlot;
+
+  // Identidades actualmente convocadas (para comparaciones por identidad).
+  const convocadoIdSet = useMemo(
+    () => new Set(categorizedPlayers.convocados.map(p => p._pid)),
+    [categorizedPlayers]
+  );
 
   // Auto-fill lineup al cargar (solo si no hay lineup guardado)
   useEffect(() => {
@@ -472,47 +545,55 @@ export default function Formation() {
     }
   }, [players]);
 
-  const autoFillLineup = () => {
+  // Construye un 11 inicial para una formación eligiendo el mejor encaje por
+  // slot. Usa identidad (`_pid`) para no excluir a un jugador con el mismo
+  // nombre que otro ya colocado. Los objetos guardados llevan `_pid`.
+  const buildLineupForFormation = (positions, sourcePlayers = rosterPlayers) => {
     const newLineup = {};
     const used = new Set();
-
-    formationPositions.forEach(pos => {
+    positions.forEach(pos => {
       const slotPos = getSlotPosition(pos.id);
-      const best = players
-        .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
+      const best = sourcePlayers
+        .filter(p => !used.has(p._pid) && !p.injured && !p.suspended)
         .sort((a, b) => {
-          // Usar compatibilidad gradual (factor 0.0-1.0) para elegir mejor jugador
           const fitA = getBestPositionFit(a, slotPos);
           const fitB = getBestPositionFit(b, slotPos);
-          // Puntuación: factor de posición × overall (así un 80 en posición perfecta > 85 fuera de posición)
-          const scoreA = fitA.factor * a.overall;
-          const scoreB = fitB.factor * b.overall;
-          return scoreB - scoreA;
+          return (fitB.factor * b.overall) - (fitA.factor * a.overall);
         })[0];
-
       if (best) {
         newLineup[pos.id] = best;
-        used.add(best.name);
+        used.add(best._pid);
       }
     });
+    return newLineup;
+  };
 
-    setLineup(newLineup);
-    // Guardar inmediatamente
-    dispatch({ type: 'SET_LINEUP', payload: newLineup });
-
-    // Recalcular convocados tras el auto-fill
-    const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
-    const currentConv = (state.convocados || []).filter(n => !newLineupNames.has(n));
+  // Recalcula la lista de convocados (nombres) tras reconstruir el 11,
+  // conservando los convocados previos que no estén ya en el campo y
+  // rellenando hasta 5 con los mejores disponibles no lesionados.
+  const recomputeConvocadoNames = (newLineup) => {
+    const lineupPids = new Set(Object.values(newLineup).map(p => p?._pid).filter(Boolean));
+    const lineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
+    const currentConv = (state.convocados || []).filter(n => !lineupNames.has(n));
     if (currentConv.length < 5) {
       const needed = 5 - currentConv.length;
-      const available = players
-        .filter(p => !newLineupNames.has(p.name) && !currentConv.includes(p.name) && !p.injured)
+      const available = rosterPlayers
+        .filter(p => !lineupPids.has(p._pid) && !currentConv.includes(p.name) && !p.injured)
         .sort((a, b) => b.overall - a.overall)
         .slice(0, needed)
         .map(p => p.name);
       currentConv.push(...available);
     }
-    dispatch({ type: 'SET_CONVOCADOS', payload: currentConv });
+    return currentConv;
+  };
+
+  const autoFillLineup = () => {
+    const newLineup = buildLineupForFormation(formationPositions);
+    setLineup(newLineup);
+    // Guardar inmediatamente
+    dispatch({ type: 'SET_LINEUP', payload: newLineup });
+    // Recalcular convocados tras el auto-fill
+    dispatch({ type: 'SET_CONVOCADOS', payload: recomputeConvocadoNames(newLineup) });
   };
 
   const handleSlotClick = (slotId) => {
@@ -522,10 +603,10 @@ export default function Formation() {
 
   const handlePlayerSelect = (player) => {
     if (selectedSlot) {
-      // Quitar de otra posición si ya está
+      // Quitar de otra posición si ya está (por identidad, no por nombre)
       const newLineup = { ...lineup };
       Object.keys(newLineup).forEach(key => {
-        if (newLineup[key]?.name === player.name) {
+        if (newLineup[key]?._pid === player._pid) {
           delete newLineup[key];
         }
       });
@@ -546,119 +627,33 @@ export default function Formation() {
       return;
     }
 
-    // Si es el mismo jugador, deseleccionar
-    if (selectedPlayer.name === player.name) {
+    // Si es el mismo jugador (misma identidad), deseleccionar
+    if (selectedPlayer._pid === player._pid) {
       setSelectedPlayer(null);
       return;
     }
 
-    // INTERCAMBIO: hay dos jugadores distintos
-    const player1 = selectedPlayer;
-    const player2 = player;
+    // INTERCAMBIO por identidad (gestiona homónimos correctamente).
+    const { lineup: newLineup, convocadoIds: newConvocadoIds, lineupChanged, blocked } =
+      planSwap({ lineup, convocadoIdSet, pidToSlot }, selectedPlayer, player);
 
-    // Buscar en qué slot está cada uno
-    const slot1 = Object.entries(lineup).find(([_, p]) => p?.name === player1.name)?.[0];
-    const slot2 = Object.entries(lineup).find(([_, p]) => p?.name === player2.name)?.[0];
-
-    // Bloquear si un sancionado/lesionado intenta entrar a la alineación
-    if (slot1 && !slot2 && (player2.suspended || player2.injured)) {
-      setSelectedPlayer(null);
-      return;
-    }
-    if (!slot1 && slot2 && (player1.suspended || player1.injured)) {
+    if (blocked) {
       setSelectedPlayer(null);
       return;
     }
 
-    const newLineup = { ...lineup };
-
-    if (slot1 && slot2) {
-      // Ambos en lineup → intercambiar posiciones
-      newLineup[slot1] = player2;
-      newLineup[slot2] = player1;
-    } else if (slot1 && !slot2) {
-      // Solo player1 en lineup → player2 entra, player1 sale
-      newLineup[slot1] = player2;
-      // Player1 sale del campo. Debe ir adonde estaba player2 (convocado o no convocado).
-      const newConvocados = manualConvocados.length > 0
-        ? [...manualConvocados]
-        : categorizedPlayers.convocados.map(p => p.name);
-      const player2WasConvocado = newConvocados.includes(player2.name);
-
-      if (player2WasConvocado) {
-        // Player2 era convocado → player1 hereda su puesto como convocado
-        // Quitar player2 de convocados (entra al campo) y añadir player1
-        const finalConvocados = newConvocados.filter(n => n !== player2.name);
-        finalConvocados.push(player1.name);
-        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
-      } else {
-        // Player2 era no-convocado → player1 va a no-convocados
-        // Solo quitar player2 de convocados (por si acaso) sin añadir player1
-        const finalConvocados = newConvocados.filter(n => n !== player2.name && n !== player1.name);
-        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
-      }
-    } else if (!slot1 && slot2) {
-      // Solo player2 en lineup → player1 entra, player2 sale
-      newLineup[slot2] = player1;
-      // Player2 sale del campo. Debe ir adonde estaba player1 (convocado o no convocado).
-      const newConvocados = manualConvocados.length > 0
-        ? [...manualConvocados]
-        : categorizedPlayers.convocados.map(p => p.name);
-      const player1WasConvocado = newConvocados.includes(player1.name);
-
-      if (player1WasConvocado) {
-        // Player1 era convocado → player2 hereda su puesto como convocado
-        const finalConvocados = newConvocados.filter(n => n !== player1.name);
-        finalConvocados.push(player2.name);
-        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
-      } else {
-        // Player1 era no-convocado → player2 va a no-convocados
-        const finalConvocados = newConvocados.filter(n => n !== player1.name && n !== player2.name);
-        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
-      }
-    } else {
-      // NINGUNO en lineup → intercambiar entre convocados/no convocados
-      const isPlayer1Convocado = manualConvocados.includes(player1.name) ||
-        (!manualConvocados.length && categorizedPlayers.convocados.some(p => p.name === player1.name));
-      const isPlayer2Convocado = manualConvocados.includes(player2.name) ||
-        (!manualConvocados.length && categorizedPlayers.convocados.some(p => p.name === player2.name));
-
-      // Solo intercambiar si están en categorías diferentes
-      if (isPlayer1Convocado !== isPlayer2Convocado) {
-        let newConvocados;
-
-        if (manualConvocados.length > 0) {
-          // Hay lista manual - modificarla
-          newConvocados = [...manualConvocados];
-          if (isPlayer1Convocado) {
-            // player1 sale de convocados, player2 entra
-            newConvocados = newConvocados.filter(n => n !== player1.name);
-            newConvocados.push(player2.name);
-          } else {
-            // player2 sale de convocados, player1 entra
-            newConvocados = newConvocados.filter(n => n !== player2.name);
-            newConvocados.push(player1.name);
-          }
-        } else {
-          // No hay lista manual - crear una basada en los actuales
-          newConvocados = categorizedPlayers.convocados.map(p => p.name);
-          if (isPlayer1Convocado) {
-            newConvocados = newConvocados.filter(n => n !== player1.name);
-            newConvocados.push(player2.name);
-          } else {
-            newConvocados = newConvocados.filter(n => n !== player2.name);
-            newConvocados.push(player1.name);
-          }
-        }
-
-        dispatch({ type: 'SET_CONVOCADOS', payload: newConvocados });
-      }
-    }
-
-    if (slot1 || slot2) {
+    if (lineupChanged) {
       setLineup(newLineup);
       dispatch({ type: 'SET_LINEUP', payload: newLineup });
     }
+    // Traducir identidades convocadas a nombres (compat. con simulación).
+    // Una misma cadena puede repetirse si hay homónimos: la cuota por nombre
+    // en categorizeRoster promueve exactamente a esos jugadores.
+    const convocadoNames = [...newConvocadoIds]
+      .map(pid => rosterByPid.get(pid)?.name)
+      .filter(Boolean);
+    dispatch({ type: 'SET_CONVOCADOS', payload: convocadoNames });
+
     setSelectedPlayer(null); // Deseleccionar después del intercambio
   };
 
@@ -667,66 +662,77 @@ export default function Formation() {
     dispatch({ type: 'SET_FORMATION', payload: newFormation });
     // Auto-fill immediately with new formation positions
     const newPositions = FORMATION_POSITIONS[newFormation] || FORMATION_POSITIONS['4-3-3'];
-    const newLineup = {};
-    const used = new Set();
-    newPositions.forEach(pos => {
-      const slotPos = getSlotPosition(pos.id);
-      const best = players
-        .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
-        .sort((a, b) => {
-          const fitA = getBestPositionFit(a, slotPos);
-          const fitB = getBestPositionFit(b, slotPos);
-          return (fitB.factor * b.overall) - (fitA.factor * a.overall);
-        })[0];
-      if (best) { newLineup[pos.id] = best; used.add(best.name); }
-    });
+    const newLineup = buildLineupForFormation(newPositions);
     setLineup(newLineup);
     dispatch({ type: 'SET_LINEUP', payload: newLineup });
-    // Recalculate convocados
-    const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
-    const currentConv = (state.convocados || []).filter(n => !newLineupNames.has(n));
-    if (currentConv.length < 5) {
-      const needed = 5 - currentConv.length;
-      const available = players
-        .filter(p => !newLineupNames.has(p.name) && !currentConv.includes(p.name) && !p.injured)
-        .sort((a, b) => b.overall - a.overall)
-        .slice(0, needed)
-        .map(p => p.name);
-      currentConv.push(...available);
-    }
-    dispatch({ type: 'SET_CONVOCADOS', payload: currentConv });
+    dispatch({ type: 'SET_CONVOCADOS', payload: recomputeConvocadoNames(newLineup) });
   };
 
   const handleTacticChange = (e) => {
     dispatch({ type: 'SET_TACTIC', payload: e.target.value });
   };
 
-  // Compatibilidad de intercambio basada en el sistema de posiciones real
-  // Usa getPositionFit bidireccional: ¿puede player2 jugar en el puesto de player1, o viceversa?
-  const SWAP_THRESHOLD = 0.70;
+  // Umbral conservador de compatibilidad "blanda" (fuera de puesto pero sin
+  // gran bajada de rendimiento). CAM→CM (0.88) lo supera y se resalta en
+  // amarillo; ED/MD→DC (RW→ST, 0.75) NO lo supera y sigue sin resaltarse.
+  // OJO: solo se evalúa la dirección seleccionado→objetivo, nunca bidireccional.
+  const SOFT_COMPAT_THRESHOLD = 0.85;
 
-  const getSwapFit = (player1, player2) => {
-    if (!player1 || !player2) return null;
-    if (player1.name === player2.name) return null;
-
-    // Posiciones efectivas (slot si es titular, posición natural si no)
-    const slot1 = playerSlotMap[player1.name];
-    const effectivePos1 = slot1 ? getSlotPosition(slot1) : player1.position;
-    const slot2 = playerSlotMap[player2.name];
-    const effectivePos2 = slot2 ? getSlotPosition(slot2) : player2.position;
-
-    // Bidireccional: ¿player2 puede jugar en pos1, o player1 en pos2?
-    // Usa best fit (primaria + secundarias) para que un MC con MCD secundario
-    // sea intercambiable con un MCD natural sin penalización absurda.
-    const fit1 = getBestPositionFit(player2, effectivePos1);
-    const fit2 = getBestPositionFit(player1, effectivePos2);
-
-    return fit1.factor >= fit2.factor ? fit1 : fit2;
+  // Resaltado de filas "compatibles" al seleccionar un jugador.
+  //
+  // REGLA (dirección ÚNICA seleccionado→objetivo, NO bidireccional):
+  //
+  //  1) Si el seleccionado NO es titular (banquillo / no convocados):
+  //     solo se resaltan TITULARES. Convocados y no convocados no se
+  //     resaltan entre sí en este modo.
+  //       · Encaje EXACTO (primaria/secundaria) → color normal (verde/teal).
+  //       · Si no es exacto pero la compatibilidad dirigida del seleccionado
+  //         hacia el puesto del titular ≥ SOFT_COMPAT_THRESHOLD → AMARILLO
+  //         (ej: un MCO sin MC en secundarias resalta huecos MC). Un ED/MD
+  //         hacia DC (0.75) NO llega al umbral y NUNCA se resalta.
+  //
+  //  2) Si el seleccionado SÍ es titular: el objetivo es SU puesto actual
+  //     (ej: titular en DC → objetivo DC). Se evalúa cada OTRO jugador hacia
+  //     ese puesto con la misma regla: exacto → color normal; compatibilidad
+  //     dirigida fila→puesto ≥ umbral → amarillo. (ED/MD hacia DC sigue fuera.)
+  //
+  // Devuelve { ...fit, soft } (soft = true fuerza el amarillo) o null si no
+  // aplica. Identidad SIEMPRE por `_pid`; jamás por nombre (homónimos a salvo).
+  const fitTowards = (player, targetPos) => {
+    // Encaje exacto por primaria/secundaria → color normal del nivel del fit.
+    if (canPlayAt(player, targetPos)) {
+      return { ...getBestPositionFit(player, targetPos), soft: false };
+    }
+    // Fuera de puesto pero con bajada pequeña → amarillo (compat. blanda).
+    const fit = getBestPositionFit(player, targetPos);
+    if (fit.factor >= SOFT_COMPAT_THRESHOLD) {
+      return { ...fit, soft: true };
+    }
+    return null;
   };
 
-  const isCompatibleSwap = (player1, player2) => {
-    const fit = getSwapFit(player1, player2);
-    return fit !== null && fit.factor >= SWAP_THRESHOLD;
+  const getHighlightFit = (selected, row) => {
+    if (!selected || !row) return null;
+    if (selected._pid === row._pid) return null;
+
+    const selectedSlot = playerSlotMap[selected._pid];
+    if (selectedSlot) {
+      // Modo 2: seleccionado titular → objetivo = su puesto actual.
+      return fitTowards(row, getSlotPosition(selectedSlot));
+    }
+
+    // Modo 1: seleccionado en banquillo/descartes → solo titulares.
+    const rowSlot = playerSlotMap[row._pid];
+    if (!rowSlot) return null;
+    return fitTowards(selected, getSlotPosition(rowSlot));
+  };
+
+  // El amarillo (swap-decent) se reserva para la compatibilidad blanda; el
+  // encaje exacto conserva su color por nivel (verde/teal).
+  const swapClassFor = (fit) => {
+    if (!fit) return '';
+    if (fit.soft) return 'swap-decent';
+    return fit.level === 'perfect' ? 'swap-perfect' : fit.level === 'good' ? 'swap-good' : 'swap-decent';
   };
 
   const getPositionColor = (pos) => {
@@ -784,7 +790,7 @@ export default function Formation() {
   });
 
   return (
-    <div className="pcf-formation">
+    <div className="pcf-formation" data-pcf-build="formation-soft-compat-yellow-20260602">
       {formationTutorial.shouldShow && (
         <TutorialModal
           id="formation"
@@ -800,7 +806,7 @@ export default function Formation() {
       {/* HEADER */}
       <div className="pcf-header">
         <div className="pcf-header__team">
-          <TeamCrest teamId={state.teamId} size={32} />
+          <TeamCrest team={state.team} teamId={state.teamId} size={32} />
           <span className="team-name">{state.team?.name || 'Mi Equipo'}</span>
         </div>
         <div className="pcf-header__title">
@@ -833,42 +839,22 @@ export default function Formation() {
 
             <div className="table-body">
               {categorizedPlayers.titulares.map((player, idx) => {
-                const isSelected = selectedPlayer?.name === player.name;
-                const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
-                const slotId = playerSlotMap[player.name];
+                const isSelected = selectedPlayer?._pid === player._pid;
+                const highlightFit = selectedPlayer && !isSelected ? getHighlightFit(selectedPlayer, player) : null;
+                const isCompatible = !!highlightFit;
+                const slotId = playerSlotMap[player._pid];
                 const slotPos = slotId ? getSlotPosition(slotId) : null;
                 const fit = slotPos ? getBestPositionFit(player, slotPos) : null;
-                const swapFit = isCompatible ? getSwapFit(selectedPlayer, player) : null;
-                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
+                const swapClass = swapClassFor(highlightFit);
                 return (
                 <div
-                  key={player.name}
+                  key={player._pid}
                   className={`table-row titulares ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? `compatible-swap ${swapClass}` : ''} ${player.injured ? 'injured' : ''} ${player.suspended ? (player.suspensionType === 'red' ? 'suspended-red' : 'suspended-yellow') : ''}`}
                   onClick={() => handleRowClick(player)}
                 >
                   <span className="col-num">{player.number}</span>
                   <span className="col-name">{player.name}</span>
-                  <span className="col-status">
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={14} /> {player.injuryWeeksLeft}sem</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={14} className="card-red" />{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={14} className="card-yellow" /><Square size={14} className="card-yellow" /></>{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={14} className="card-yellow" />×5</span>}
-                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={14} />{player.postInjuryWeeksLeft}sem</span>}
-                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={14} /></span>}
-                    {(() => {
-                      const form = (state.playerForm || {})[player.name] || 'normal';
-                      const formInfo = FORM_STATES[form];
-                      return (
-                        <span
-                          className={`form-arrow form-${form}`}
-                          style={{ color: formInfo.color }}
-                          title={`Forma: ${formInfo.label} (${formInfo.matchBonus > 0 ? '+' : ''}${Math.round(formInfo.matchBonus * 100)}%)`}
-                        >
-                          {formInfo.arrow}
-                        </span>
-                      );
-                    })()}
-                  </span>
+                  <PlayerStatusIcons player={player} form={(state.playerForm || {})[player.name] || 'normal'} />
                   {PLAYER_ATTRIBUTES.map(attr => {
                     const baseOvr = player.overall + (player.postInjuryBonus || 0);
                     const adjOvr = fit ? Math.round(baseOvr * fit.factor) : baseOvr;
@@ -897,39 +883,19 @@ export default function Formation() {
           <div className="pcf-table">
             <div className="table-body">
               {categorizedPlayers.convocados.map((player, idx) => {
-                const isSelected = selectedPlayer?.name === player.name;
-                const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
-                const swapFit = isCompatible ? getSwapFit(selectedPlayer, player) : null;
-                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
+                const isSelected = selectedPlayer?._pid === player._pid;
+                const highlightFit = selectedPlayer && !isSelected ? getHighlightFit(selectedPlayer, player) : null;
+                const isCompatible = !!highlightFit;
+                const swapClass = swapClassFor(highlightFit);
                 return (
                 <div
-                  key={player.name}
+                  key={player._pid}
                   className={`table-row convocados ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? `compatible-swap ${swapClass}` : ''} ${player.injured ? 'injured' : ''} ${player.suspended ? (player.suspensionType === 'red' ? 'suspended-red' : 'suspended-yellow') : ''}`}
                   onClick={() => handleRowClick(player)}
                 >
                   <span className="col-num">{player.number}</span>
                   <span className="col-name">{player.name}</span>
-                  <span className="col-status">
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={14} /> {player.injuryWeeksLeft}sem</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={14} className="card-red" />{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={14} className="card-yellow" /><Square size={14} className="card-yellow" /></>{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={14} className="card-yellow" />×5</span>}
-                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={14} />{player.postInjuryWeeksLeft}sem</span>}
-                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={14} /></span>}
-                    {(() => {
-                      const form = (state.playerForm || {})[player.name] || 'normal';
-                      const formInfo = FORM_STATES[form];
-                      return (
-                        <span
-                          className={`form-arrow form-${form}`}
-                          style={{ color: formInfo.color }}
-                          title={`Forma: ${formInfo.label} (${formInfo.matchBonus > 0 ? '+' : ''}${Math.round(formInfo.matchBonus * 100)}%)`}
-                        >
-                          {formInfo.arrow}
-                        </span>
-                      );
-                    })()}
-                  </span>
+                  <PlayerStatusIcons player={player} form={(state.playerForm || {})[player.name] || 'normal'} />
                   {PLAYER_ATTRIBUTES.map(attr => {
                     const boostedOvr = (player[attr.key] || player.overall) + (player.postInjuryBonus || 0);
                     const hasBoosted = player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0;
@@ -957,39 +923,19 @@ export default function Formation() {
           <div className="pcf-table pcf-table--noconvocados">
             <div className="table-body table-body--scroll">
               {categorizedPlayers.noConvocados.map((player, idx) => {
-                const isSelected = selectedPlayer?.name === player.name;
-                const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
-                const swapFit = isCompatible ? getSwapFit(selectedPlayer, player) : null;
-                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
+                const isSelected = selectedPlayer?._pid === player._pid;
+                const highlightFit = selectedPlayer && !isSelected ? getHighlightFit(selectedPlayer, player) : null;
+                const isCompatible = !!highlightFit;
+                const swapClass = swapClassFor(highlightFit);
                 return (
                 <div
-                  key={player.name}
+                  key={player._pid}
                   className={`table-row noconvocados ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? `compatible-swap ${swapClass}` : ''} ${player.injured ? 'injured' : ''} ${player.suspended ? (player.suspensionType === 'red' ? 'suspended-red' : 'suspended-yellow') : ''}`}
                   onClick={() => handleRowClick(player)}
                 >
                   <span className="col-num">{player.number}</span>
                   <span className="col-name">{player.name}</span>
-                  <span className="col-status">
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={14} /> {player.injuryWeeksLeft}sem</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={14} className="card-red" />{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={14} className="card-yellow" /><Square size={14} className="card-yellow" /></>{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={14} className="card-yellow" />×5</span>}
-                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={14} />{player.postInjuryWeeksLeft}sem</span>}
-                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={14} /></span>}
-                    {(() => {
-                      const form = (state.playerForm || {})[player.name] || 'normal';
-                      const formInfo = FORM_STATES[form];
-                      return (
-                        <span
-                          className={`form-arrow form-${form}`}
-                          style={{ color: formInfo.color }}
-                          title={`Forma: ${formInfo.label} (${formInfo.matchBonus > 0 ? '+' : ''}${Math.round(formInfo.matchBonus * 100)}%)`}
-                        >
-                          {formInfo.arrow}
-                        </span>
-                      );
-                    })()}
-                  </span>
+                  <PlayerStatusIcons player={player} form={(state.playerForm || {})[player.name] || 'normal'} />
                   {PLAYER_ATTRIBUTES.map(attr => {
                     const boostedOvr = (player[attr.key] || player.overall) + (player.postInjuryBonus || 0);
                     const hasBoosted = player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0;
@@ -1026,8 +972,12 @@ export default function Formation() {
 
             {formationPositions.map(pos => {
               const lineupPlayer = lineup[pos.id];
-              // Use fresh player data from team (lineup stores snapshots that can go stale)
-              const player = lineupPlayer ? (players.find(p => p.name === lineupPlayer.name) || lineupPlayer) : null;
+              // Use fresh player data from team (lineup stores snapshots that can go stale).
+              // Resolve by identity (`_pid`) so homónimos no se confunden.
+              const slotPid = slotToPid[pos.id];
+              const player = lineupPlayer
+                ? (rosterByPid.get(slotPid) || rosterByPid.get(lineupPlayer._pid) || lineupPlayer)
+                : null;
               const slotPos = getSlotPosition(pos.id);
               const fit = player ? getBestPositionFit(player, slotPos) : null;
               const baseOvr = (player?.overall || 0) + (player?.postInjuryBonus || 0);
@@ -1151,7 +1101,7 @@ export default function Formation() {
               <button onClick={() => setShowModal(false)}><X size={14} /></button>
             </div>
             <div className="modal-body">
-              {players
+              {rosterPlayers
                 .filter(p => !p.injured && !p.suspended)
                 .sort((a, b) => {
                   const slotPos = getSlotPosition(selectedSlot);
@@ -1166,10 +1116,10 @@ export default function Formation() {
                   const fitClass = fit.level === 'perfect' ? 'fit-perfect' :
                                    fit.level === 'good' ? 'fit-good' :
                                    fit.level === 'decent' ? 'fit-decent' : '';
-                  const isInLineup = Object.values(lineup).some(p => p?.name === player.name);
+                  const isInLineup = lineupIdSet.has(player._pid);
                   return (
                     <div
-                      key={player.name}
+                      key={player._pid}
                       className={`modal-player ${fitClass} ${isInLineup ? 'in-lineup' : ''}`}
                       onClick={() => handlePlayerSelect(player)}
                     >
@@ -1224,36 +1174,10 @@ export default function Formation() {
             dispatch({ type: 'SET_FORMATION', payload: newFormation });
             // Auto-fill immediately (no setTimeout race condition)
             const newPositions = FORMATION_POSITIONS[newFormation] || FORMATION_POSITIONS['4-3-3'];
-            const newLineup = {};
-            const used = new Set();
-
-            newPositions.forEach(pos => {
-              const slotPos = getSlotPosition(pos.id);
-              const best = players
-                .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
-                .sort((a, b) => {
-                  const fitA = getBestPositionFit(a, slotPos);
-                  const fitB = getBestPositionFit(b, slotPos);
-                  return (fitB.factor * b.overall) - (fitA.factor * a.overall);
-                })[0];
-              if (best) { newLineup[pos.id] = best; used.add(best.name); }
-            });
-
+            const newLineup = buildLineupForFormation(newPositions);
             setLineup(newLineup);
             dispatch({ type: 'SET_LINEUP', payload: newLineup });
-
-            const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
-            const currentConvocados = (state.convocados || []).filter(n => !newLineupNames.has(n));
-            if (currentConvocados.length < 5) {
-              const needed = 5 - currentConvocados.length;
-              const available = players
-                .filter(p => !newLineupNames.has(p.name) && !currentConvocados.includes(p.name) && !p.injured)
-                .sort((a, b) => b.overall - a.overall)
-                .slice(0, needed)
-                .map(p => p.name);
-              currentConvocados.push(...available);
-            }
-            dispatch({ type: 'SET_CONVOCADOS', payload: currentConvocados });
+            dispatch({ type: 'SET_CONVOCADOS', payload: recomputeConvocadoNames(newLineup) });
           }}
         />
       )}

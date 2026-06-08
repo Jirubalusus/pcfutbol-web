@@ -60,9 +60,10 @@
     "saveProgress": "Guarda tu progreso en la nube",
     "saveCurrentProgress": "Guarda tu progreso actual",
     "reachChampions": "Llega a la Champions desde abajo",
-    "guestNotice": "Inicia sesión para guardar tu progreso en la nube",
+    "guestNotice": "Puedes probar PC Gaffer sin cuenta. Inicia sesión cuando quieras guardar tu progreso en la nube.",
     "tribute": "El fútbol, gestionado por ti",
-    "supportUs": "Apoya el proyecto",
+    "supportUs": "Apoyar al creador",
+    "feedbackContact": "Feedback y sugerencias: jirubalusus@gmail.com",
     "contrarrelojActive": "Contrarreloj activo",
     "newGame": "Nueva partida",
     "deleteWarning": "⚠️ Empezar nueva partida borrará el progreso actual",
@@ -77,7 +78,44 @@
     "tabSolo": "Un jugador",
     "tabMulti": "Multijugador",
     "comingSoon": "Próximamente...",
-    "moreModesComingSoon": "Más modos próximamente..."
+    "moreModesComingSoon": "Más modos próximamente...",
+    "careerActive": "Carrera Libre en curso",
+    "databaseGlobal": "Base de datos global",
+    "databaseHint": "Se aplicará a todas las partidas nuevas.",
+    "changeSeason": "Cambiar temporada",
+    "applySeason": "Aplicar temporada",
+    "spinHint": "Arrastra o gira para viajar en el tiempo",
+    "changeDatabaseAria": "Cambiar base de datos global",
+    "dbCurrent": "Temporada actual",
+    "dbHistorical": "Temporada histórica",
+    "dbCurrentShort": "Actual",
+    "dbHistoricalShort": "Histórica",
+    "glory": "Camino a la Gloria",
+    "gloryDesc": "Roguelike con cartas",
+    "worldCup": "Modo Mundial",
+    "soon": "Próximamente",
+    "gloryActive": "Partida en curso",
+    "matchday": "Jornada",
+    "ballAlt": "balón",
+    "changeDatabaseTitle": "Cambiar base de datos",
+    "changeDatabaseWarning": "Las partidas guardadas actuales se borrarán porque equipos, jugadores, calendarios y competiciones pertenecen a otra base de datos.",
+    "changeDatabaseConfirmWarning": "Si cambias de temporada perderás tus partidas guardadas actuales. ¿Estás seguro?",
+    "changing": "Cambiando…",
+    "changeAndDelete": "Cambiar año y borrar partidas",
+    "changeSeasonAndDelete": "Cambiar temporada y borrar partidas",
+    "playNow": "Jugar ahora",
+    "playNowSubtitle": "Prueba una Carrera sin iniciar sesión",
+    "loginCreateAccount": "Iniciar sesión / Crear cuenta",
+    "lockedLoginRequired": "Inicia sesión para desbloquear",
+    "cardPlay": "Jugar modo",
+    "cardUnlock": "Iniciar sesión",
+    "chipSolo": "1 jugador",
+    "chipLongTerm": "Largo plazo",
+    "chipRanking": "Ranking",
+    "chipSpeed": "Rápido",
+    "chipPromotions": "Ascensos",
+    "chipJobOffers": "Ofertas",
+    "chipSoon": "Próximamente"
   },
   "office": {
     "title": "Despacho",
@@ -624,8 +662,8 @@
     "minute": "Min",
     "attendance": "Asistencia",
     "possession": "Posesión",
-    "shots": "Disparos",
-    "shotsOnTarget": "Disparos a Portería",
+    "shots": "Tiros",
+    "shotsOnTarget": "A puerta",
     "corners": "Corners",
     "fouls": "Faltas",
     "offsides": "Fueras de Juego",
@@ -652,6 +690,59 @@
     "yourFormation": "Tu formación",
     "yourTactic": "Tu táctica",
     "statistics": "Estadísticas",
+    "cup": "Copa",
+    "round": "Ronda",
+    "europe": "Europa",
+    "matchweek": "Jornada {{week}}",
+    "weekLabel": "Semana {{week}}",
+    "friendly": "Amistoso {{n}}/5",
+    "homeTag": "LOCAL",
+    "awayTag": "VISITANTE",
+    "subOut": "Sale",
+    "subIn": "Entra",
+    "assistShort": "asist.",
+    "weeksAbbr": "{{weeks}} sem.",
+    "stageFinishing": "Finalizando",
+    "stageFirstHalf": "Primera parte",
+    "stageSecondHalf": "Segunda parte",
+    "live": "En directo",
+    "lastEvent": "Último evento",
+    "eventGoal": "Gol",
+    "matchStarting": "El partido está arrancando",
+    "waitingFirstAction": "Esperando la primera acción importante.",
+    "dominance": "Dominio",
+    "momentum": "Presión",
+    "topRated": "Jugadores mejor valorados",
+    "onTarget": "A puerta",
+    "substitutions": "Cambios",
+    "noSubstitutions": "Sin cambios",
+    "bigChances": "Ocasiones claras",
+    "saves": "Paradas",
+    "stadium": "Estadio",
+    "totalFouls": "Total faltas: {{count}}",
+    "chronology": "Cronología",
+    "matchMomentum": "Momentum del partido",
+    "noGoals": "Sin goles",
+    "matchKeys": "Claves del partido",
+    "capacity": "Aforo",
+    "revenue": "Recaudación",
+    "motm": "Jugador del partido",
+    "goalSingular": "gol",
+    "goalPlural": "goles",
+    "assistSingular": "asistencia",
+    "assistPlural": "asistencias",
+    "rating": "Valoración",
+    "extraTime": "prórroga",
+    "penaltiesShort": "pen.",
+    "tacticHighPress": "Presión alta",
+    "rouletteBetPrepared": "Apuesta de ruleta preparada",
+    "rouletteSlotChosen": "Casilla elegida",
+    "rouletteFundsLocked": "{{amount}} bloqueados para este partido. El botón de la oficina volverá a activarse al terminar.",
+    "rouletteOutcomeHint": "Ganas: {{win}} · Empatas: {{draw}} · Pierdes: {{lose}}",
+    "rouletteBubbleActive": "Burbuja financiera activa: las apuestas ganadas pagan x2.",
+    "rouletteInvestigation": "Investigación fiscal: cuidado con perder otra vez.",
+    "needStarters": "Necesitas 11 titulares (tienes {{count}})",
+    "syntheticPlayer": "Jugador {{number}}",
     "resultWin": "¡Victoria!",
     "resultLoss": "Derrota",
     "resultDraw": "Empate",
@@ -692,6 +783,13 @@
     "apertura": "Apertura",
     "clausura": "Clausura",
     "acumulada": "Acumulada",
+    "apclContinentalNote": "🏆 Libertadores y Sudamericana se deciden por la tabla Acumulada — puestos {{lib}}: Libertadores · {{sud}}: Sudamericana.",
+    "apclContinentalNoteNoSud": "🏆 Libertadores se decide por la tabla Acumulada — puestos {{lib}}.",
+    "apclChampionNote": "🏆 El campeón del Apertura y el campeón del Clausura clasifican a la Libertadores. Las plazas restantes se deciden por la tabla Acumulada — puestos {{lib}}: Libertadores · {{sud}}: Sudamericana.",
+    "apclChampionNoteNoRemainingLib": "🏆 El campeón del Apertura y el campeón del Clausura clasifican a la Libertadores. La Sudamericana se decide por la tabla Acumulada — puestos {{sud}}.",
+    "apclChampionNoteNoSud": "🏆 El campeón del Apertura y el campeón del Clausura clasifican a la Libertadores. Las plazas restantes se deciden por la tabla Acumulada — puestos {{lib}}.",
+    "apclChampionLegend": "Campeón → Libertadores",
+    "apclLeaderLegend": "Líder → Libertadores (provisional)",
     "inProgress": "en curso",
     "searchLeague": "Buscar liga...",
     "yourLeague": "Tu liga",
@@ -972,7 +1070,9 @@
     "spectatorShort": "espec.",
     "matchShort": "partido",
     "serviceRequires": "Requiere estadio {{stadium}}",
-    "serviceUpgradeStadium": "Mejora estadio para +niveles"
+    "serviceUpgradeStadium": "Mejora estadio para +niveles",
+    "serviceLocked": "Bloqueado",
+    "serviceVisible3D": "Visible en el campus 3D"
   },
   "training": {
     "title": "Intensidad de Entrenamiento",
@@ -1168,7 +1268,53 @@
     "countrySummary_other": "{{leagues}} ligas · {{clubs}} clubes",
     "clubsCount_one": "{{count}} club",
     "clubsCount_other": "{{count}} clubes",
-    "leaguesLabel": "Ligas disponibles"
+    "leaguesLabel": "Ligas disponibles",
+    "activeDatabase": "Base de datos activa",
+    "historicalMeta": "{{teams}} equipos · {{players}} jugadores · {{leagues}} ligas",
+    "currentMeta": "{{countries}} países · base viva 2025/26",
+    "historicalBaseCopy": "Foto histórica inicial: plantillas y medias del año elegido. Después la simulación evoluciona libremente.",
+    "currentBaseCopy": "Base actual del juego con equipos, escudos y competiciones vigentes.",
+    "historicalBadge": "Histórica {{season}}",
+    "currentBadge": "Actual",
+    "changeDatabaseHint": "Cambia el año/base de datos desde el menú inicial para que todos los modos usen la misma temporada.",
+    "loadingHistorical": "Cargando temporada histórica completa...",
+    "preseasonPlanning": "Planificación de pretemporada",
+    "preseasonSubtitle": "Elige una gira de 5 partidos ajustada al nivel competitivo y mediático de tu club.",
+    "club": "Club",
+    "tourDiffHigh": "Alta",
+    "tourDiffMedium": "Media",
+    "tourDiffControlled": "Controlada",
+    "ovrRivals": "OVR rivales",
+    "tourDifficultyLabel": "dificultad",
+    "mediaTierLabel": "media",
+    "home": "Casa",
+    "away": "Fuera",
+    "skipPreseason": "Saltar pretemporada",
+    "preseasonTours": {
+      "regional": {
+        "identity": "Base competitiva",
+        "name": "Tour de rodaje",
+        "description": "Rivales cercanos al nivel del club, con una progresión suave antes del partido de presentación."
+      },
+      "balanced": {
+        "identity": "Preparación premium",
+        "name": "Circuito continental",
+        "description": "Un calendario equilibrado para medir automatismos contra equipos de media y exigencia similar."
+      },
+      "prestige": {
+        "identity": "Máxima taquilla",
+        "name": "Gira de prestigio",
+        "description": "Cinco citas de alto impacto mediático, cerrando en casa contra el rival más atractivo."
+      }
+    },
+    "mediaTier": {
+      "eliteWorld": "élite mundial",
+      "continental": "continental",
+      "topTier": "primera línea",
+      "competitive": "competitivo",
+      "strongRegional": "regional fuerte",
+      "development": "desarrollo"
+    }
   },
   "contrarreloj": {
     "title": "Modo Contrarreloj",
@@ -1712,7 +1858,29 @@
     "playGamesError": "Error al conectar con Google Play Games",
     "playGamesDesc": "Inicia sesión con tu cuenta de Google Play Games para guardar tu progreso y competir en los rankings.",
     "connecting": "Conectando...",
-    "loginPlayGames": "Iniciar con Google Play Games"
+    "loginPlayGames": "Iniciar con Google Play Games",
+    "intent": {
+      "generic": {
+        "title": "Guarda y sincroniza tu progreso",
+        "subtitle": "Inicia sesión o crea una cuenta para proteger tus partidas."
+      },
+      "save-progress": {
+        "title": "Inicia sesión para guardar esta partida",
+        "subtitle": "Tu partida de prueba está en este dispositivo. Entra para guardarla en la nube."
+      },
+      "rankings": {
+        "title": "Inicia sesión para competir",
+        "subtitle": "Los rankings y desafíos necesitan una cuenta para evitar duplicados y guardar resultados."
+      },
+      "edition-mode": {
+        "title": "Inicia sesión para gestionar ediciones",
+        "subtitle": "El editor y los packs se vinculan a tu cuenta para mantener tus datos seguros."
+      },
+      "cloud-load": {
+        "title": "Inicia sesión para cargar partidas",
+        "subtitle": "Accede a tus partidas guardadas y continúa desde cualquier dispositivo."
+      }
+    }
   },
   "europe": {
     "title": "Competiciones Europeas",
@@ -2234,5 +2402,675 @@
     "transfersSearch": "Busca jugadores por nombre, posición o valor.",
     "matchdayQuick": "El partido se simula en tiempo real. Lesiones y tarjetas se aplican automáticamente.",
     "leagueTableQuick": "Tu equipo aparece destacado. Los colores indican zonas de ascenso, descenso y Europa."
+  },
+  "glory": {
+    "common": {
+      "back": "Volver",
+      "close": "Cerrar",
+      "season": "Temporada",
+      "matchday": "Jornada",
+      "squad": "Plantilla",
+      "budget": "Presupuesto",
+      "crest": "Escudo",
+      "stadium": "Estadio",
+      "continue": "Continuar",
+      "next": "Siguiente"
+    },
+    "divisions": {
+      "segundaRFEF": "Segunda RFEF",
+      "primeraRFEF": "Primera RFEF",
+      "segunda": "Segunda División",
+      "laliga": "La Liga"
+    },
+    "menu": {
+      "legacyMode": "Modo legado",
+      "ownClub": "Club propio",
+      "kicker": "Camino a la Gloria",
+      "heroTitle": "Crea tu club y conquista Europa.",
+      "heroDesc": "Un modo compacto: diseña tu identidad, sobrevive a cada temporada y escala desde barro hasta Champions.",
+      "summaryAria": "Resumen del modo",
+      "promotions": "Ascensos",
+      "uniqueCards": "Cartas únicas",
+      "finalGoal": "Meta final",
+      "actionsAria": "Acciones de Camino a la Gloria",
+      "activeSave": "Partida activa",
+      "newProject": "Nuevo proyecto",
+      "noActiveSave": "Sin partida activa",
+      "newProjectDesc": "Crea escudo, equipación y debuta.",
+      "continueRoad": "Continuar Camino",
+      "newRoad": "Nuevo Camino",
+      "startRoad": "Iniciar Camino",
+      "panelNote": "Las cartas desbloqueadas hacen cada nuevo intento más interesante.",
+      "showcaseEyebrow": "Vitrina permanente",
+      "cardsUnlocked": "{{unlocked}}/{{total}} cartas desbloqueadas",
+      "collectionAria": "Colección de cartas",
+      "showcaseDesc": "Las cartas conseguidas quedan guardadas y cambian tus futuras temporadas.",
+      "complete": "completo",
+      "unlockedCount": "{{count}} desbloqueadas",
+      "pendingCount": "{{count}} pendientes",
+      "raritiesCount": "3 rarezas",
+      "viewShowcase": "Ver vitrina",
+      "roadmapAria": "Camino de ascenso"
+    },
+    "setup": {
+      "preparing": "Preparando Camino a la Gloria",
+      "title": "Camino a la Gloria",
+      "stepProgress": "Paso {{current}} de {{total}} · {{title}}",
+      "progressAria": "Progreso",
+      "infoEyebrow": "Fundación",
+      "infoTitle": "Crea tu club",
+      "infoDesc": "Nombre, casa y un sueño. Arrancas en Segunda RFEF.",
+      "badgeEyebrow": "Escudo",
+      "badgeTitle": "Diseña tu escudo",
+      "badgeDesc": "Forma, patrón, colores y símbolo. La vista se actualiza al instante.",
+      "confirmEyebrow": "Confirmación",
+      "confirmTitle": "Tu club está listo",
+      "confirmDesc": "Revisa la identidad antes de arrancar.",
+      "primeraLabel": "Primera Federación",
+      "primeraShort": "Primera RFEF",
+      "primeraTag": "Primera RFEF · 3ª categoría",
+      "primeraDesc": "Nombre, casa y un sueño. Arrancas en Primera Federación porque esta temporada histórica no incluye Segunda RFEF.",
+      "primeraConfirm": "Primera Federación / Primera RFEF (3ª categoría)",
+      "primeraNote": "Esta temporada histórica no incluye Segunda RFEF: arrancas en Primera Federación y no hay descenso a una categoría inexistente.",
+      "segundaTag": "Segunda RFEF · 4ª categoría",
+      "segundaConfirm": "Segunda RFEF (4ª categoría)",
+      "clubName": "Nombre del club",
+      "stadiumName": "Nombre del estadio",
+      "defaultClub": "FC Gloria",
+      "defaultStadium": "Estadio Municipal",
+      "fictionalSquad": "Plantilla ficticia",
+      "objectiveChampions": "Objetivo: la Champions",
+      "historicalNoteConfirm": "Sin categoría inferior en esta base histórica: no habrá descensos desde Primera Federación.",
+      "summaryTag": "Resumen del club",
+      "confirmDivisionLabel": "División",
+      "confirmSquadLabel": "Plantilla",
+      "confirmSquadValue": "20 jugadores",
+      "confirmBudgetLabel": "Presupuesto",
+      "confirmStadiumLabel": "Estadio",
+      "confirmStadiumValue": "3.000 localidades",
+      "confirmObjectiveLabel": "Objetivo",
+      "confirmObjectiveValue": "Ganar la Champions League",
+      "startBtn": "Comenzar el Camino",
+      "preparingBtn": "Preparando…",
+      "nextBtn": "Siguiente",
+      "error": "No se pudo preparar Camino a la Gloria con la temporada seleccionada."
+    },
+    "collection": {
+      "eyebrow": "Vitrina permanente",
+      "title": "Colección de cartas",
+      "unlockedOf": "{{unlocked}}/{{total}} desbloqueadas",
+      "progress": "Progreso",
+      "percentComplete": "{{percent}}% completo",
+      "openHint": "Abre cada carta para ver su rareza y condición de desbloqueo.",
+      "legendaryCount": "{{count}} legendarias",
+      "activeCount": "{{count}} activas",
+      "hiddenCount": "{{count}} ocultas",
+      "starterUnlocked": "Desbloqueada de inicio",
+      "unlocked": "Desbloqueada",
+      "secretUpgrade": "Mejora secreta"
+    },
+    "cards": {
+      "tierLegendary": "LEGENDARIA",
+      "tierEpic": "ÉPICA",
+      "tierRare": "RARA",
+      "seasonEndTitle": "Fin de Temporada {{season}}",
+      "seasonEndSubtitle": "Elige una mejora permanente para tu club",
+      "confirmChoice": "Confirmar elección"
+    },
+    "reveal": {
+      "next": "Siguiente",
+      "continue": "Continuar"
+    },
+    "seasonEnd": {
+      "readyNext": "Preparado para la siguiente temporada",
+      "seasonEndTitle": "Fin de Temporada {{season}}",
+      "directPromotion": "Ascenso directo",
+      "finalPosition": "Posición final",
+      "seasonStat": "Temporada {{season}}",
+      "cardsCollected": "{{count}} cartas recogidas",
+      "continue": "Continuar",
+      "startIn": "Empezar en {{division}}",
+      "nextSeason": "Siguiente temporada"
+    },
+    "perks": {
+      "title": "Camino a la Gloria",
+      "promotions": "Ascensos",
+      "cards": "Cartas",
+      "season": "Temporada",
+      "hiddenBonuses": "Bonus ocultos",
+      "hiddenCombo": "Combo oculto",
+      "comboLocked": "Reúne {{min}} cartas compatibles para revelar este bonus.",
+      "activeCombos": "Activos: {{combos}}",
+      "usableUpgrades": "Mejoras Activables",
+      "tapToUse": "Toca para usar",
+      "permanentUpgrades": "Mejoras Permanentes",
+      "wildCardPlayers": "Jugadores traídos por Wild Card",
+      "emptyTitle": "Sin mejoras todavía",
+      "emptyDesc": "Completa una temporada para elegir tu primera carta de mejora.",
+      "history": "Historial",
+      "promotionBadge": "Ascenso"
+    },
+    "perkStatus": {
+      "applied": "Aplicado",
+      "active": "Activo",
+      "used": "Usado",
+      "expired": "Expirado",
+      "usedThisWindow": "Usado este mercado",
+      "oneUse": "1 uso disponible",
+      "clone": "Tu mejor jugador fue clonado al recoger esta carta",
+      "sheikhActive": "Presupuesto x10 activo · auditoría fiscal pendiente",
+      "sheikhActiveStatus": "{{count}} temporada(s) restante(s)",
+      "sheikhExpired": "El jeque se fue: deuda, moral tocada y presupuesto reducido",
+      "scoutStatus": "{{count}} marca disponible",
+      "scoutDesc": "Potencial real + Diamante Oculto anual",
+      "fountainDesc": "Todos tus jugadores rejuvenecieron 3 años",
+      "cursedDesc": "+20% rendimiento local, -15% rival en casa",
+      "penaltyDesc": "Penaltis seguros · +10% en partidos igualados y tandas favorables",
+      "drMiraclesDesc": "Lesiones máx. 1 semana · curas graves pueden dar +1 OVR",
+      "localLegendDesc": "Tu mejor canterano gana +3 OVR cada temporada",
+      "theftReload": "Se recarga en el próximo mercado",
+      "theftDesc": "Ficha a cualquier jugador al 50%",
+      "tacticalDesc": "Formaciones 2-3-5 y 3-1-3-3 desbloqueadas",
+      "wallTrait": "Rasgo Imbatible",
+      "wallTraitDesc": "Portero élite: bonus extra en casa",
+      "wallDesc": "Tu portero titular recibió +15 OVR",
+      "maxSpeedDesc": "Delanteros +10 velocidad, -5 defensa",
+      "fameDesc": "Sponsors x{{mult}} · salarios nuevos +10%",
+      "goldenDesc": "Aparece un canterano 70+ OVR cada temporada",
+      "wildDesc": "Recibes un jugador aleatorio cada temporada",
+      "blackUsed": "Ya elegiste tu leyenda",
+      "blackDesc": "Elige una leyenda retirada",
+      "betPending": "Hasta el próximo partido",
+      "betPendingDesc": "{{percent}}% · €{{amount}} ya apostados",
+      "betAvailable": "Ruleta disponible",
+      "betDesc": "Apuesta 10%, 25%, 50% o all-in antes de cada partido",
+      "achillesDesc": "Lesiona a un rival antes de un partido",
+      "swapUsed": "Ya usaste tu intercambio",
+      "swapDesc": "Intercambia un jugador por uno rival",
+      "secretDesc": "Fichajes baratos y largos, pero con cláusula baja",
+      "goalBonusDesc": "+50.000€ por gol · Ganado: {{earned}}€",
+      "gladiatorDesc": "Tus jugadores son inmunes a rojas",
+      "replaysLeft": "{{count}} uso(s) restante(s)",
+      "replayDesc": "Rejuga un partido perdido",
+      "exhausted": "Agotado",
+      "exhaustedDesc": "Se recarga la próxima temporada",
+      "diplomatUsed": "Un solo uso",
+      "diplomatDesc": "Renueva +3 años a un jugador",
+      "starAvailable": "Ruleta disponible",
+      "starAvailableDesc": "Elige una de 3 estrellas tras el ascenso",
+      "starDone": "Fichaje realizado",
+      "starDoneDesc": "{{name}} llegó por {{route}}",
+      "starWaiting": "Esperando ascenso",
+      "starWaitingDesc": "Se activa al ascender"
+    },
+    "diplomat": {
+      "title": "Diplomático",
+      "desc": "Elige un jugador para renovarle +3 años de contrato",
+      "success": "<0>{{name}}</0> renovado — ahora tiene {{years}} años de contrato",
+      "renew": "Renovar +3 años"
+    },
+    "starSigning": {
+      "title": "Ruleta de Fichaje Estrella",
+      "desc": "Elige una ruta de ascenso. Entra una estrella y sale el peor jugador de tu plantilla.",
+      "success": "<0>{{name}}</0> ya está en tu club.",
+      "out": "Sale: {{name}}",
+      "noRoulette": "No hay ruleta disponible ahora. Se activa al ascender.",
+      "sign": "Fichar esta estrella"
+    },
+    "bet": {
+      "title": "Ruleta de apuesta",
+      "desc": "Apuesta antes del partido. Al confirmar, queda bloqueada hasta que juegues el próximo partido.",
+      "safeGreen": "Verde segura",
+      "boldGold": "Dorada valiente",
+      "strongRed": "Roja fuerte",
+      "allIn": "All-in",
+      "rules": "Victoria cobra · Empate pierde media · Derrota pierde todo"
+    },
+    "theft": {
+      "title": "Robo Legal",
+      "confirmTitle": "Confirmar Robo",
+      "desc": "Elige un jugador de cualquier equipo rival. Lo ficharás al 50% de su valor de mercado.",
+      "search": "Buscar jugador...",
+      "all": "Todos",
+      "marketValue": "Valor de mercado",
+      "yourPrice": "Tu precio (50%)",
+      "yourBudget": "Tu presupuesto:",
+      "after": "Después:",
+      "signHalf": "¡Fichar por la mitad!",
+      "insufficient": "Presupuesto insuficiente",
+      "back": "Volver",
+      "done": "¡Robo completado!",
+      "joined": "<0>{{name}}</0> se une a tu plantilla por {{price}}",
+      "doneNote": "Valor de mercado: {{value}}",
+      "close": "Cerrar",
+      "noBudget": "No tienes suficiente presupuesto",
+      "empty": "No se encontraron jugadores",
+      "potential": "POT",
+      "years": "años"
+    },
+    "blackMarket": {
+      "title": "Mercado Negro",
+      "desc": "5 leyendas retiradas disponibles. Elige una antes de que se acabe el tiempo.",
+      "timeUp": "Tiempo agotado",
+      "noPick": "No elegiste ningún jugador.",
+      "signed": "Fichado del mercado negro",
+      "close": "Cerrar",
+      "years": "años"
+    },
+    "forcedSwap": {
+      "selectMineTitle": "Elige tu jugador para intercambiar",
+      "selectMineDesc": "Elige uno de tus jugadores. Luego elegirás un rival de media similar (±3 OVR).",
+      "selectTheirsTitle": "Elige rival (±3 OVR de {{ovr}})",
+      "confirmTitle": "Confirmar intercambio",
+      "out": "SALE",
+      "in": "ENTRA",
+      "confirm": "Confirmar intercambio",
+      "done": "Intercambio completado",
+      "toRival": "{{player}} → {{team}}",
+      "toYou": "{{player}} → Tu equipo",
+      "search": "Buscar...",
+      "noSimilar": "No hay jugadores de media similar",
+      "close": "Cerrar",
+      "years": "años"
+    },
+    "replay": {
+      "title": "Segunda Oportunidad",
+      "subtitle": "Elige un partido para rejugarlo",
+      "empty": "No has jugado ningún partido aún.",
+      "win": "¡Victoria!",
+      "draw": "Empate",
+      "loss": "Derrota",
+      "before": "Antes",
+      "now": "Ahora",
+      "better": "¡El destino te ha sonreído!",
+      "worse": "El destino no estuvo de tu lado...",
+      "same": "El resultado no ha cambiado.",
+      "apply": "Aplicar resultado",
+      "keep": "Mantener original",
+      "yourTeam": "Tu equipo"
+    },
+    "event": {
+      "mystery_investor": {
+        "title": "Inversor Misterioso",
+        "desc": "Un empresario desconocido ofrece 500.000€... pero quiere a tu mejor jugador a cambio.",
+        "optA": "Aceptar el dinero",
+        "optB": "Rechazar"
+      },
+      "federation_probe": {
+        "title": "Investigación de la Federación",
+        "desc": "La federación investiga irregularidades en tu club. Debes actuar.",
+        "optA": "Pagar 200.000€ de multa",
+        "optB": "Asumir -3 puntos"
+      },
+      "youth_loan": {
+        "title": "Canterano Ambicioso",
+        "desc": "Tu mejor joven quiere salir cedido para crecer. Si lo dejas, vuelve con +5 OVR.",
+        "optA": "Dejar que se vaya",
+        "optB": "Retenerlo"
+      },
+      "naming_rights": {
+        "title": "Naming Rights",
+        "desc": "\"Patatas Lozano\" ofrece 150.000€/año por ponerle su nombre a tu estadio.",
+        "optA": "Aceptar (Estadio Patatas Lozano)",
+        "optB": "Mantener el nombre"
+      },
+      "rival_collapse": {
+        "title": "Rival en Crisis",
+        "desc": "Un rival directo tiene problemas económicos. Su estrella está disponible por la mitad.",
+        "optA": "Fichar al jugador (mitad de precio)",
+        "optB": "No intervenir"
+      },
+      "stadium_fire": {
+        "title": "Incendio en el Estadio",
+        "desc": "Un incendio daña una grada. Pierdes aforo o pagas la reparación.",
+        "optA": "Reparar (300.000€)",
+        "optB": "Jugar con grada cerrada (-2000 aforo)"
+      }
+    },
+    "archetypes": {
+      "veteran": {
+        "label": "Veterano estrella",
+        "risk": "Se retira pronto, rendimiento inmediato"
+      },
+      "prospect": {
+        "label": "Joven promesa",
+        "risk": "Menos media ahora, potencial brutal"
+      },
+      "media": {
+        "label": "Jugador mediático caro",
+        "risk": "Sube fama, pero cobra muchísimo"
+      }
+    },
+    "cardData": {
+      "perfect_clone": {
+        "name": "Clon Perfecto",
+        "desc": "Duplica a tu mejor jugador. Dos versiones del mismo crack en tu plantilla."
+      },
+      "ghost_sheikh": {
+        "name": "Jeque Fantasma",
+        "desc": "Presupuesto x10 durante 2 temporadas. Al desaparecer, deja deuda, bajón de moral y bloqueo premium temporal."
+      },
+      "future_scout": {
+        "name": "Ojeador del Futuro",
+        "desc": "Ves el potencial real y marcas 1 Diamante Oculto por temporada: +5 potencial y salario más fácil."
+      },
+      "fountain_of_youth": {
+        "name": "Fuente de la Juventud",
+        "desc": "Todos tus jugadores rejuvenecen 3 años. Permanente."
+      },
+      "cursed_stadium": {
+        "name": "Estadio Maldito",
+        "desc": "En casa siempre llueve. Tu equipo +20% rendimiento, rival -15%. Permanente."
+      },
+      "penalty_master": {
+        "name": "Penalti Maestro",
+        "desc": "Nunca fallas penaltis. En eliminatorias empatadas ganas la tanda y en partidos igualados tienes +10% gol."
+      },
+      "dr_miracles": {
+        "name": "Dr. Milagros",
+        "desc": "Lesiones máximo 1 semana. Si curas una lesión grave, el jugador vuelve con +1 OVR y riesgo de recaída."
+      },
+      "local_legend": {
+        "name": "Leyenda Local",
+        "desc": "Tu mejor canterano gana +3 OVR por temporada en vez de +1."
+      },
+      "legal_theft": {
+        "name": "Robo Legal",
+        "desc": "Cada mercado puedes fichar 1 jugador de cualquier equipo al 50% de su valor."
+      },
+      "tactical_wildcard": {
+        "name": "Comodín Táctico",
+        "desc": "Desbloquea formaciones secretas (2-3-5, 3-1-3-3) con bonificaciones únicas."
+      },
+      "the_wall": {
+        "name": "La Muralla",
+        "desc": "Portero +15 OVR. Si ya era élite, gana rasgo Imbatible y más porterías a cero en casa."
+      },
+      "max_speed": {
+        "name": "Velocidad Máxima",
+        "desc": "Todos los delanteros +10 velocidad, pero -5 defensa. Imparables al contraataque."
+      },
+      "diplomat": {
+        "name": "Diplomático",
+        "desc": "Elige un jugador y renuévale +3 años de contrato. Un solo uso."
+      },
+      "fame": {
+        "name": "Fama",
+        "desc": "Sponsors x2 y más jugadores aceptan venir, pero los nuevos contratos piden +10% salario."
+      },
+      "golden_academy": {
+        "name": "Academia de Oro",
+        "desc": "Cada temporada aparece un canterano con 70+ OVR. Talento puro."
+      },
+      "second_chance": {
+        "name": "Segunda Oportunidad",
+        "desc": "Si pierdes un partido, puedes rejugarlo 1 vez por temporada."
+      },
+      "wild_card": {
+        "name": "Wild Card",
+        "desc": "Al inicio de cada mercado, recibes un jugador aleatorio. Puede ser crack o desastre."
+      },
+      "black_market": {
+        "name": "Mercado Negro",
+        "desc": "Accedes a una lista secreta de 5 leyendas retiradas (85-95 OVR). Tienes 30 segundos para elegir una. Gratis."
+      },
+      "double_or_nothing": {
+        "name": "Doble o Nada",
+        "desc": "Antes de cada partido apuestas 10%, 25% o 50%. Ganas: duplicas. Empatas: recuperas mitad. Pierdes: pierdes todo."
+      },
+      "achilles_heel": {
+        "name": "Talón de Aquiles",
+        "desc": "Antes de un partido, puedes lesionar a un jugador del equipo rival para que no juegue."
+      },
+      "forced_swap": {
+        "name": "Intercambio Forzoso",
+        "desc": "Una sola vez: intercambia un jugador tuyo por uno rival de media similar. Sin dinero."
+      },
+      "secret_clause": {
+        "name": "Cláusula Secreta",
+        "desc": "Fichajes: +2 años y -30% salario, pero con cláusula baja que puede tentar a clubes grandes."
+      },
+      "goal_bonus": {
+        "name": "Lluvia de Millones",
+        "desc": "Cada gol que metes te da 50.000€ de bonus. Las goleadas son muy rentables."
+      },
+      "gladiator": {
+        "name": "Gladiador",
+        "desc": "Tus jugadores nunca reciben tarjetas rojas. Inmunidad total."
+      },
+      "star_signing": {
+        "name": "Fichaje Estrella",
+        "desc": "Ruleta de ascenso: elige entre veterano estrella, joven promesa o jugador mediático caro. Sale el peor de tu plantilla."
+      }
+    },
+    "combos": {
+      "fortaleza_maldita": {
+        "name": "Fortaleza Maldita",
+        "bonus": "Fortín: en casa +10 moral extra, menos lesiones y más porterías a cero."
+      },
+      "cantera_infinita": {
+        "name": "Cantera Infinita",
+        "bonus": "Cada 3 temporadas aparece El Niño Maravilla, canterano 75-85 OVR con potencial 95."
+      },
+      "club_casino": {
+        "name": "Club Casino",
+        "bonus": "Las apuestas ganadas encadenadas inflan la burbuja; perder dos seguidas activa investigación fiscal."
+      },
+      "ataque_suicida": {
+        "name": "Ataque Suicida",
+        "bonus": "Goleadas más rentables: +25.000€ extra por gol si juegas ofensivo, pero defensa expuesta."
+      },
+      "mercado_criminal": {
+        "name": "Mercado Criminal",
+        "bonus": "Red de contactos: operaciones especiales más baratas, con riesgo de sanción si abusas."
+      },
+      "proyecto_frankenstein": {
+        "name": "Proyecto Frankenstein",
+        "bonus": "Los clones jóvenes pueden salir con personalidad mutante: más potencial o más salario."
+      }
+    },
+    "milestones": {
+      "survivor": {
+        "name": "Superviviente",
+        "desc": "Termina 1 temporada sin ser despedido"
+      },
+      "academy": {
+        "name": "Academia",
+        "desc": "Gana 3 partidos seguidos"
+      },
+      "local_fame": {
+        "name": "Fama local",
+        "desc": "Consigue el ascenso por primera vez"
+      },
+      "home_fortress": {
+        "name": "Imbatible en casa",
+        "desc": "Gana 5 partidos en casa seguidos"
+      },
+      "scorer": {
+        "name": "Goleador",
+        "desc": "Mete 30+ goles en una temporada"
+      },
+      "wall": {
+        "name": "Muro defensivo",
+        "desc": "Deja 5 porterías a cero en una temporada"
+      },
+      "negotiator": {
+        "name": "Negociador",
+        "desc": "Ficha 3 jugadores en un mismo mercado"
+      },
+      "strategist": {
+        "name": "Estratega",
+        "desc": "Gana un partido con 3+ goles de diferencia"
+      },
+      "veteran": {
+        "name": "Veterano",
+        "desc": "Llega a la temporada 3"
+      },
+      "youth": {
+        "name": "Cantera",
+        "desc": "Ten 3+ jugadores sub-21 en plantilla"
+      },
+      "climber": {
+        "name": "Escalador",
+        "desc": "Asciende 2 veces"
+      },
+      "unbeaten": {
+        "name": "Invicto",
+        "desc": "Encadena 10 partidos sin perder"
+      },
+      "chosen_one": {
+        "name": "El elegido",
+        "desc": "Llega a Segunda División"
+      },
+      "tycoon": {
+        "name": "Magnate",
+        "desc": "Acumula 2M€ en presupuesto"
+      },
+      "mad_scientist": {
+        "name": "Científico loco",
+        "desc": "Ten un jugador con 85+ OVR"
+      },
+      "champion": {
+        "name": "Campeón",
+        "desc": "Gana la liga"
+      },
+      "underdog": {
+        "name": "Underdog",
+        "desc": "Gana a un equipo 10+ OVR superior"
+      },
+      "mercenary": {
+        "name": "Mercenario",
+        "desc": "Vende un jugador por 500K+"
+      },
+      "legend": {
+        "name": "Leyenda",
+        "desc": "Llega a La Liga"
+      },
+      "primera": {
+        "name": "Primera",
+        "desc": "Asciende a Primera División"
+      }
+    },
+    "badge": {
+      "shapes": {
+        "shield": "Escudo",
+        "pointed": "Gótico",
+        "classic": "Clásico",
+        "circle": "Roundel",
+        "oval": "Óvalo",
+        "diamond": "Diamante",
+        "hexagon": "Hexágono",
+        "pentagon": "Pentágono",
+        "triangle": "Triángulo",
+        "banner": "Banderín",
+        "castle": "Almenado",
+        "rounded": "Moderno",
+        "badge": "Placa"
+      },
+      "patterns": {
+        "gradient": "Degradado",
+        "solid": "Liso",
+        "split": "Diagonal",
+        "halves": "Mitades",
+        "vertical": "Franjas V",
+        "horizontal": "Franjas H",
+        "quarters": "Cuartos",
+        "sash": "Banda",
+        "chevron": "Galón",
+        "band": "Central",
+        "ring": "Anillo"
+      },
+      "icons": {
+        "star": "Estrella",
+        "crown": "Corona",
+        "trophy": "Trofeo",
+        "shield": "Defensa",
+        "sword": "Espada",
+        "swords": "Espadas",
+        "flame": "Fuego",
+        "zap": "Rayo",
+        "mountain": "Cima",
+        "anchor": "Ancla",
+        "bird": "Ave",
+        "pawprint": "Fiera",
+        "cat": "Felino",
+        "fish": "Pez",
+        "sun": "Sol",
+        "moon": "Luna",
+        "compass": "Brújula",
+        "castle": "Castillo",
+        "landmark": "Monumento",
+        "waves": "Olas",
+        "droplets": "Gotas",
+        "trees": "Bosque",
+        "leaf": "Hoja",
+        "wind": "Viento",
+        "snowflake": "Nieve",
+        "target": "Diana",
+        "crosshair": "Punto",
+        "flag": "Bandera",
+        "medal": "Medalla",
+        "award": "Galardón",
+        "gem": "Gema",
+        "heart": "Corazón",
+        "rocket": "Cohete",
+        "feather": "Pluma",
+        "skull": "Calavera",
+        "bone": "Hueso",
+        "hammer": "Martillo",
+        "axe": "Hacha",
+        "bell": "Campana",
+        "key": "Llave",
+        "atom": "Átomo",
+        "hexagon": "Núcleo",
+        "sparkles": "Destello",
+        "ship": "Barco",
+        "volleyball": "Balón",
+        "globe": "Globo"
+      },
+      "trims": {
+        "none": "Sin",
+        "thin": "Fino",
+        "med": "Medio",
+        "bold": "Grueso"
+      },
+      "tabs": {
+        "shape": "Forma",
+        "pattern": "Patrón",
+        "color": "Colores",
+        "symbol": "Símbolo"
+      },
+      "primary": "Principal",
+      "secondary": "Secundario",
+      "border": "Borde / trim",
+      "symbol": "Símbolo",
+      "borderLabel": "Borde",
+      "primaryTitle": "Principal",
+      "secondaryTitle": "Secundario",
+      "borderWidth": "Grosor del borde",
+      "symbolSize": "Tamaño del símbolo",
+      "initials": "Iniciales",
+      "custom": "{{label}} personalizado"
+    },
+    "kit": {
+      "styles": {
+        "solid": "Liso",
+        "stripes_v": "Rayas V",
+        "stripes_h": "Rayas H",
+        "half": "Mitad",
+        "sleeves": "Mangas",
+        "diagonal": "Diagonal",
+        "chest_band": "Banda"
+      },
+      "style": "Estilo",
+      "primaryColor": "Color principal",
+      "secondaryColor": "Color secundario",
+      "primaryAria": "Color principal {{color}}",
+      "secondaryAria": "Color secundario {{color}}"
+    }
+  },
+  "trial": {
+    "bannerText": "Modo prueba: esta partida no está guardada en la nube.",
+    "bannerCta": "Guardar progreso"
   }
 }

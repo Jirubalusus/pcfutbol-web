@@ -10,9 +10,14 @@ function manualChunks(id) {
 }
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
   base: process.env.GITHUB_PAGES ? '/pcfutbol-web/' : '/',
+  // Strip console.* and debugger statements from production builds only.
+  // Dev builds keep logs intact for debugging.
+  esbuild: {
+    drop: mode === 'production' ? ['console', 'debugger'] : [],
+  },
   build: {
     sourcemap: false,
     rollupOptions: {
@@ -21,4 +26,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))

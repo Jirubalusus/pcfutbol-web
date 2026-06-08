@@ -3,7 +3,8 @@
 // ============================================================
 
 import { evolvePlayer } from './seasonEngine.js';
-import { LEAGUE_SLOTS, getEuropeanPositionsForLeague } from './europeanCompetitions.js';
+import { LEAGUE_SLOTS, getEuropeanPositionsForLeague, isCompetitionActiveForSeason } from './europeanCompetitions.js';
+import { SA_LEAGUE_SLOTS } from './southAmericanCompetitions.js';
 
 // Leagues that are the lowest tier in their pyramid — no relegation destination exists in-game
 const BOTTOM_TIER_LEAGUES = new Set([
@@ -26,7 +27,7 @@ const BOTTOM_TIER_LEAGUES = new Set([
 // ============================================================
 const NON_EURO_SPOTS = {
   // Spanish pyramid
-  segunda:      { promotion: [1, 2], playoff: [3, 4, 5, 6], relegation: [19, 20, 21, 22] },
+  segunda:      { promotion: [1, 2], playoff: [3, 4, 5, 6], relegation: [18, 19, 20] },
   primeraRFEF:  { promotion: [1], playoff: [2, 3, 4, 5], relegationCount: 5 },
   segundaRFEF:  { promotion: [1], playoff: [2, 3, 4, 5], relegation: [] },
   // English pyramid
@@ -84,6 +85,21 @@ function buildEuropeanSpots() {
   return out;
 }
 
+// Build a South American league's qualification positions from SA_LEAGUE_SLOTS
+// (the single source of truth) so libertadores/sudamericana berths stay in lock
+// step with the league-table coloring and the real cup draw. `relegation` stays
+// league-specific and is passed in by the caller.
+function saSpots(leagueId, relegation = []) {
+  const slots = SA_LEAGUE_SLOTS[leagueId] || {};
+  const cl = Math.max(0, Number(slots.copaLibertadores) || 0);
+  const sud = Math.max(0, Number(slots.copaSudamericana) || 0);
+  return {
+    libertadores: Array.from({ length: cl }, (_, i) => i + 1),
+    sudamericana: Array.from({ length: sud }, (_, i) => cl + i + 1),
+    relegation
+  };
+}
+
 // Configuración de competiciones europeas por liga
 export const EUROPEAN_SPOTS = {
   ...buildEuropeanSpots(),
@@ -101,26 +117,49 @@ export const EUROPEAN_SPOTS = {
     championsLeague: [1, 2, 3],
     relegation: [18, 19, 20]
   },
-  // South American leagues (use libertadores/sudamericana instead of champions/europaLeague)
-  argentinaPrimera: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6], relegation: [27, 28, 29, 30] },
-  brasileiraoA: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6, 7, 8], relegation: [17, 18, 19, 20] },
-  colombiaPrimera: { libertadores: [1, 2, 3], sudamericana: [4, 5, 6], relegation: [18, 19, 20] },
-  chilePrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [14, 15, 16] },
-  uruguayPrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [14, 15, 16] },
-  ecuadorLigaPro: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [14, 15, 16] },
-  paraguayPrimera: { libertadores: [1], sudamericana: [2, 3], relegation: [11, 12] },
-  peruLiga1: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [16, 17, 18] },
-  boliviaPrimera: { libertadores: [1], sudamericana: [2, 3], relegation: [14, 15, 16] },
-  venezuelaPrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [12, 13, 14] }
+  // South American leagues (use libertadores/sudamericana instead of champions/europaLeague).
+  // Continental qualification positions are derived from the single source of
+  // truth — SA_LEAGUE_SLOTS (southAmericanCompetitions.js) — so the season-result
+  // outcome message ("you qualified for Libertadores/Sudamericana") can never
+  // drift from the league-table coloring or the actual cup draw. Only the
+  // relegation positions remain league-specific here.
+  argentinaPrimera: saSpots('argentinaPrimera', [27, 28, 29, 30]),
+  brasileiraoA: saSpots('brasileiraoA', [17, 18, 19, 20]),
+  colombiaPrimera: saSpots('colombiaPrimera', [18, 19, 20]),
+  chilePrimera: saSpots('chilePrimera', [14, 15, 16]),
+  uruguayPrimera: saSpots('uruguayPrimera', [14, 15, 16]),
+  ecuadorLigaPro: saSpots('ecuadorLigaPro', [14, 15, 16]),
+  paraguayPrimera: saSpots('paraguayPrimera', [11, 12]),
+  peruLiga1: saSpots('peruLiga1', [16, 17, 18]),
+  boliviaPrimera: saSpots('boliviaPrimera', [14, 15, 16]),
+  venezuelaPrimera: saSpots('venezuelaPrimera', [12, 13, 14])
 };
 
-// Número de jornadas por liga
-export function getEuropeanSpotsForLeague(leagueId) {
-  return EUROPEAN_SPOTS[leagueId] || null;
+/**
+ * Whether the Conference League ("Continental Trophy") is active for the
+ * given era. Explicit active competition ids from loaded saves take
+ * precedence; otherwise current play always has it and historical saves only
+ * from 2021-22 onward. Used to strip pre-2021 conference qualification.
+ */
+function isConferenceEraActive({ seasonId = null, historical = false, activeCompetitionIds = null } = {}) {
+  if (Array.isArray(activeCompetitionIds)) return activeCompetitionIds.includes('conferenceleague');
+  if (!historical) return true;
+  return isCompetitionActiveForSeason('conferenceleague', seasonId, { historical: true });
 }
 
-export function getSeasonOutcomeFromSpots(position, leagueId) {
-  const spots = getEuropeanSpotsForLeague(leagueId);
+// Número de jornadas por liga
+export function getEuropeanSpotsForLeague(leagueId, options = {}) {
+  const base = EUROPEAN_SPOTS[leagueId] || null;
+  if (!base) return null;
+  // Strip Conference qualification for historical eras predating 2021-22.
+  if (base.conference?.length && !isConferenceEraActive(options)) {
+    return { ...base, conference: [] };
+  }
+  return base;
+}
+
+export function getSeasonOutcomeFromSpots(position, leagueId, options = {}) {
+  const spots = getEuropeanSpotsForLeague(leagueId, options);
   if (!spots) return null;
 
   return {
@@ -132,9 +171,25 @@ export function getSeasonOutcomeFromSpots(position, leagueId) {
   };
 }
 
+function isRelegationPosition(position, tableLength, spots, leagueId) {
+  const relegationCount = spots.relegation?.length || 0;
+
+  if (leagueId === 'segunda' && relegationCount > 0 && tableLength > 0) {
+    return position > tableLength - relegationCount;
+  }
+
+  if (spots.relegation?.includes(position)) return true;
+
+  if (spots.relegationCount && tableLength > 0) {
+    return position > tableLength - spots.relegationCount;
+  }
+
+  return false;
+}
+
 export const LEAGUE_MATCHDAYS = {
   laliga: 38,
-  segunda: 42,
+  segunda: 38,
   premierLeague: 38,
   serieA: 38,
   bundesliga: 34,
@@ -204,10 +259,10 @@ export function isSeasonOver(fixtures, leagueId = 'laliga') {
 /**
  * Obtiene el resultado final de temporada para un equipo
  */
-export function getSeasonResult(table, teamId, leagueId = 'laliga') {
+export function getSeasonResult(table, teamId, leagueId = 'laliga', options = {}) {
   const position = table.findIndex(t => t.teamId === teamId) + 1;
   const teamData = table.find(t => t.teamId === teamId);
-  const spots = getEuropeanSpotsForLeague(leagueId) || {};
+  const spots = getEuropeanSpotsForLeague(leagueId, options) || {};
   
   let qualification = null;
   let relegation = false;
@@ -228,16 +283,8 @@ export function getSeasonResult(table, teamId, leagueId = 'laliga') {
   }
   
   // Determinar descenso (only if there's an actual lower league in the game)
-  if (!BOTTOM_TIER_LEAGUES.has(leagueId)) {
-    if (spots.relegation?.includes(position)) {
-      relegation = true;
-    } else if (spots.relegationCount && table.length > 0) {
-      // Dynamic relegation for group leagues (last N positions)
-      const totalTeams = table.length;
-      if (position > totalTeams - spots.relegationCount) {
-        relegation = true;
-      }
-    }
+  if (!options.suppressRelegation && !BOTTOM_TIER_LEAGUES.has(leagueId)) {
+    relegation = isRelegationPosition(position, table.length, spots, leagueId);
   }
   
   // Determinar ascenso (para ligas inferiores)

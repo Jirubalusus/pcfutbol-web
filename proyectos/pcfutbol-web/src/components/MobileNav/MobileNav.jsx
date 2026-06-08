@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   Home, Users, BarChart3, Menu, Target, Calendar, Award,
   Coins, Building2, Building, Wrench, Mail, FastForward, SkipForward,
-  Settings as SettingsIcon, LogOut, X
+  Settings as SettingsIcon, LogOut, X, Coffee
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Mountain } from 'lucide-react';
@@ -126,6 +126,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
           {TABS.map(tab => (
             <button
               key={tab.id}
+              data-tab={tab.id}
               className={`mobile-nav__tab ${
                 tab.id === 'menu'
                   ? isMenuItemActive ? 'active' : ''
@@ -158,6 +159,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
               {filteredMenuItems.map(item => (
                 <button
                   key={item.id}
+                  data-tab={item.id}
                   className={`mobile-menu__item ${activeTab === item.id ? 'active' : ''}`}
                   onClick={() => handleMenuItemClick(item.id)}
                 >
@@ -171,6 +173,21 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
             </div>
 
             <div className="mobile-menu__footer">
+              <a
+                href="https://buymeacoffee.com/jirubalusus"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-menu__support-link"
+              >
+                <span className="icon"><Coffee size={18} /></span>
+                <span className="label">{t('mainMenu.supportUs', 'Support the creator')}</span>
+              </a>
+              <a
+                href="mailto:jirubalusus@gmail.com"
+                className="mobile-menu__feedback-link"
+              >
+                {t('mainMenu.feedbackContact', 'Feedback y sugerencias: jirubalusus@gmail.com')}
+              </a>
               <button
                 className="mobile-menu__footer-btn"
                 onClick={handleOpenSettings}

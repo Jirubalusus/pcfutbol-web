@@ -119,8 +119,11 @@ function testSpanishGroupRolloverForGloryBaseDivision() {
     playerLeagueId: 'segundaRFEF',
     leagueId: 'segundaRFEF',
     playerGroupId,
-    teamId: groupTeams[2].id, // no forzamos ascenso del jugador; auditamos los movimientos IA
-    team: groupTeams[2],
+    // Pick a team outside the direct/playoff promotion zone. A 3rd-place team can
+    // randomly win the Segunda RFEF playoff, moving result.playerLeague to
+    // Primera RFEF and making this IA rollover audit nondeterministic.
+    teamId: groupTeams[5].id,
+    team: groupTeams[5],
     leagueTable: playerTable,
     fixtures: [],
     otherLeagues,

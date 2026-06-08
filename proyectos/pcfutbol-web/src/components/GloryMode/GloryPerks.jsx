@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { GLORY_CARDS, GLORY_DIVISIONS, getActiveGloryCombos, applyStarSigningRoulette } from '../../game/gloryEngine';
 import { BadgePreview } from './BadgeEditor';
@@ -22,96 +23,91 @@ const ICON_MAP = {
   Skull, Coins, Crosshair, ArrowLeftRight, FileText, Banknote, Swords, UserPlus,
 };
 
-const TIER_LABELS = { S: 'LEGENDARIA', A: 'ÉPICA', B: 'RARA' };
+const TIER_LABEL_KEYS = { S: 'glory.cards.tierLegendary', A: 'glory.cards.tierEpic', B: 'glory.cards.tierRare' };
 const TIER_CLASSES = { S: 'legendary', A: 'epic', B: 'rare' };
 
 // Cards that have an interactive "use" action
 const USABLE_CARD_IDS = ['second_chance', 'legal_theft', 'black_market', 'forced_swap', 'diplomat', 'star_signing', 'double_or_nothing'];
 
 // Status descriptions for each perk (shown in card)
-function getPerkStatus(cardId, state) {
+function getPerkStatus(cardId, state, t) {
   const perks = state.gloryData?.perks || {};
   const gloryData = state.gloryData || {};
-  
+  const fmt = (amount) => Number(amount || 0).toLocaleString('es-ES');
+
   switch (cardId) {
     case 'perfect_clone':
-      return { status: 'Aplicado', desc: 'Tu mejor jugador fue clonado al recoger esta carta' };
+      return { status: t('glory.perkStatus.applied'), desc: t('glory.perkStatus.clone') };
     case 'ghost_sheikh':
       return gloryData.sheikhSeasons > 0
-        ? { status: `${gloryData.sheikhSeasons} temporada(s) restante(s)`, desc: 'Presupuesto x10 activo · auditoría fiscal pendiente', active: true }
-        : { status: 'Expirado', desc: 'El jeque se fue: deuda, moral tocada y presupuesto reducido' };
+        ? { status: t('glory.perkStatus.sheikhActiveStatus', { count: gloryData.sheikhSeasons }), desc: t('glory.perkStatus.sheikhActive'), active: true }
+        : { status: t('glory.perkStatus.expired'), desc: t('glory.perkStatus.sheikhExpired') };
     case 'future_scout':
-      return { status: `${gloryData.futureScoutMarks ?? 1} marca disponible`, desc: 'Potencial real + Diamante Oculto anual', active: true };
+      return { status: t('glory.perkStatus.scoutStatus', { count: gloryData.futureScoutMarks ?? 1 }), desc: t('glory.perkStatus.scoutDesc'), active: true };
     case 'fountain_of_youth':
-      return { status: 'Aplicado', desc: 'Todos tus jugadores rejuvenecieron 3 años' };
+      return { status: t('glory.perkStatus.applied'), desc: t('glory.perkStatus.fountainDesc') };
     case 'cursed_stadium':
-      return { status: 'Activo', desc: '+20% rendimiento local, -15% rival en casa', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.cursedDesc'), active: true };
     case 'penalty_master':
-      return { status: 'Activo', desc: 'Penaltis seguros · +10% en partidos igualados y tandas favorables', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.penaltyDesc'), active: true };
     case 'dr_miracles':
-      return { status: 'Activo', desc: 'Lesiones máx. 1 semana · curas graves pueden dar +1 OVR', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.drMiraclesDesc'), active: true };
     case 'local_legend':
-      return { status: 'Activo', desc: 'Tu mejor canterano gana +3 OVR cada temporada', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.localLegendDesc'), active: true };
     case 'legal_theft':
       return gloryData.legalTheftUsed
-        ? { status: 'Usado este mercado', desc: 'Se recarga en el próximo mercado' }
-        : { status: '1 uso disponible', desc: 'Ficha a cualquier jugador al 50%', active: true };
+        ? { status: t('glory.perkStatus.usedThisWindow'), desc: t('glory.perkStatus.theftReload') }
+        : { status: t('glory.perkStatus.oneUse'), desc: t('glory.perkStatus.theftDesc'), active: true };
     case 'tactical_wildcard':
-      return { status: 'Activo', desc: 'Formaciones 2-3-5 y 3-1-3-3 desbloqueadas', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.tacticalDesc'), active: true };
     case 'the_wall':
-      return { status: perks.imbatibleKeeper ? 'Rasgo Imbatible' : 'Aplicado', desc: perks.imbatibleKeeper ? 'Portero élite: bonus extra en casa' : 'Tu portero titular recibió +15 OVR', active: !!perks.imbatibleKeeper };
+      return { status: perks.imbatibleKeeper ? t('glory.perkStatus.wallTrait') : t('glory.perkStatus.applied'), desc: perks.imbatibleKeeper ? t('glory.perkStatus.wallTraitDesc') : t('glory.perkStatus.wallDesc'), active: !!perks.imbatibleKeeper };
     case 'max_speed':
-      return { status: 'Aplicado', desc: 'Delanteros +10 velocidad, -5 defensa' };
+      return { status: t('glory.perkStatus.applied'), desc: t('glory.perkStatus.maxSpeedDesc') };
     case 'fame':
-      return { status: 'Activo', desc: `Sponsors x${gloryData.sponsorMultiplier || 2} · salarios nuevos +10%`, active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.fameDesc', { mult: gloryData.sponsorMultiplier || 2 }), active: true };
     case 'golden_academy':
-      return { status: 'Activo', desc: 'Aparece un canterano 70+ OVR cada temporada', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.goldenDesc'), active: true };
     case 'wild_card':
-      return { status: 'Activo', desc: 'Recibes un jugador aleatorio cada temporada', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.wildDesc'), active: true };
     case 'black_market':
       return gloryData.blackMarketUsed
-        ? { status: 'Usado', desc: 'Ya elegiste tu leyenda' }
-        : { status: '1 uso disponible', desc: 'Elige una leyenda retirada', active: true };
+        ? { status: t('glory.perkStatus.used'), desc: t('glory.perkStatus.blackUsed') }
+        : { status: t('glory.perkStatus.oneUse'), desc: t('glory.perkStatus.blackDesc'), active: true };
     case 'double_or_nothing':
       return gloryData.matchRouletteBet?.status === 'pending'
-        ? { status: 'Hasta el próximo partido', desc: `${gloryData.matchRouletteBet.percent}% · €${gloryData.matchRouletteBet.amount.toLocaleString('es-ES')} ya apostados`, active: false }
-        : { status: 'Ruleta disponible', desc: 'Apuesta 10%, 25%, 50% o all-in antes de cada partido', active: true };
+        ? { status: t('glory.perkStatus.betPending'), desc: t('glory.perkStatus.betPendingDesc', { percent: gloryData.matchRouletteBet.percent, amount: fmt(gloryData.matchRouletteBet.amount) }), active: false }
+        : { status: t('glory.perkStatus.betAvailable'), desc: t('glory.perkStatus.betDesc'), active: true };
     case 'achilles_heel':
-      return { status: 'Activo', desc: 'Lesiona a un rival antes de un partido', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.achillesDesc'), active: true };
     case 'forced_swap':
       return gloryData.forcedSwapUsed
-        ? { status: 'Usado', desc: 'Ya usaste tu intercambio' }
-        : { status: '1 uso disponible', desc: 'Intercambia un jugador por uno rival', active: true };
+        ? { status: t('glory.perkStatus.used'), desc: t('glory.perkStatus.swapUsed') }
+        : { status: t('glory.perkStatus.oneUse'), desc: t('glory.perkStatus.swapDesc'), active: true };
     case 'secret_clause':
-      return { status: 'Activo', desc: 'Fichajes baratos y largos, pero con cláusula baja', active: true };
-    case 'goal_bonus': {
-      const earned = gloryData.goalBonusEarned || 0;
-      return {
-        status: 'Activo',
-        desc: `+50.000€ por gol · Ganado: ${earned.toLocaleString('es-ES')}€`,
-        active: true
-      };
-    }
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.secretDesc'), active: true };
+    case 'goal_bonus':
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.goalBonusDesc', { earned: fmt(gloryData.goalBonusEarned || 0) }), active: true };
     case 'gladiator':
-      return { status: 'Activo', desc: 'Tus jugadores son inmunes a rojas', active: true };
+      return { status: t('glory.perkStatus.active'), desc: t('glory.perkStatus.gladiatorDesc'), active: true };
     case 'second_chance': {
       const replays = gloryData.replaysLeft || 0;
       return replays > 0
-        ? { status: `${replays} uso(s) restante(s)`, desc: 'Rejuga un partido perdido', active: true }
-        : { status: 'Agotado', desc: 'Se recarga la próxima temporada' };
+        ? { status: t('glory.perkStatus.replaysLeft', { count: replays }), desc: t('glory.perkStatus.replayDesc'), active: true }
+        : { status: t('glory.perkStatus.exhausted'), desc: t('glory.perkStatus.exhaustedDesc') };
     }
     case 'diplomat':
       return gloryData.diplomatUsed
-        ? { status: 'Usado', desc: 'Un solo uso' }
-        : { status: '1 uso disponible', desc: 'Renueva +3 años a un jugador', active: true };
+        ? { status: t('glory.perkStatus.used'), desc: t('glory.perkStatus.diplomatUsed') }
+        : { status: t('glory.perkStatus.oneUse'), desc: t('glory.perkStatus.diplomatDesc'), active: true };
     case 'star_signing':
       return gloryData.starSigningAvailable
-        ? { status: 'Ruleta disponible', desc: 'Elige una de 3 estrellas tras el ascenso', active: true }
+        ? { status: t('glory.perkStatus.starAvailable'), desc: t('glory.perkStatus.starAvailableDesc'), active: true }
         : gloryData.starSigningLast
-          ? { status: 'Fichaje realizado', desc: `${gloryData.starSigningLast.player?.name || 'Estrella'} llegó por ${gloryData.starSigningLast.choice || 'ruleta'}` }
-          : { status: 'Esperando ascenso', desc: 'Se activa al ascender', active: false };
+          ? { status: t('glory.perkStatus.starDone'), desc: t('glory.perkStatus.starDoneDesc', { name: gloryData.starSigningLast.player?.name || 'Star', route: gloryData.starSigningLast.choice || 'roulette' }) }
+          : { status: t('glory.perkStatus.starWaiting'), desc: t('glory.perkStatus.starWaitingDesc'), active: false };
     default:
-      return { status: 'Activo', desc: '', active: true };
+      return { status: t('glory.perkStatus.active'), desc: '', active: true };
   }
 }
 
@@ -140,14 +136,14 @@ function DiplomatModal({ onClose }) {
       <div className="glory-modal glory-modal--diplomat" onClick={e => e.stopPropagation()}>
         <button className="glory-modal__close" onClick={onClose}><span>✕</span></button>
         <Handshake size={32} color="#26c6da" />
-        <h3>Diplomático</h3>
-        <p className="glory-modal__desc">Elige un jugador para renovarle +3 años de contrato</p>
+        <h3>{t('glory.diplomat.title')}</h3>
+        <p className="glory-modal__desc">{t('glory.diplomat.desc')}</p>
 
         {done ? (
           <div className="glory-modal__success">
             <Star size={28} color="#ffd740" />
-            <p><strong>{selected.name}</strong> renovado — ahora tiene {(selected.contractYears || 1) + 3} años de contrato</p>
-            <button className="glory-modal__btn" onClick={onClose}>Cerrar</button>
+            <p><Trans i18nKey="glory.diplomat.success" values={{ name: selected.name, years: (selected.contractYears || 1) + 3 }} components={[<strong key="0" />]} /></p>
+            <button className="glory-modal__btn" onClick={onClose}>{t('glory.common.close')}</button>
           </div>
         ) : (
           <>
@@ -173,7 +169,7 @@ function DiplomatModal({ onClose }) {
               disabled={!selected}
               onClick={handleConfirm}
             >
-              Renovar +3 años
+              {t('glory.diplomat.renew')}
             </button>
           </>
         )}
@@ -184,6 +180,7 @@ function DiplomatModal({ onClose }) {
 
 
 function StarSigningModal({ onClose }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const gloryData = state.gloryData || {};
   const choices = gloryData.starSigningChoices?.length
@@ -205,20 +202,20 @@ function StarSigningModal({ onClose }) {
       <div className="glory-modal glory-modal--star-signing" onClick={e => e.stopPropagation()}>
         <button className="glory-modal__close" onClick={onClose}><span>✕</span></button>
         <UserPlus size={34} color="#ffab00" />
-        <h3>Ruleta de Fichaje Estrella</h3>
-        <p className="glory-modal__desc">Elige una ruta de ascenso. Entra una estrella y sale el peor jugador de tu plantilla.</p>
+        <h3>{t('glory.starSigning.title')}</h3>
+        <p className="glory-modal__desc">{t('glory.starSigning.desc')}</p>
 
         {done ? (
           <div className="glory-modal__success">
             <Star size={28} color="#ffd740" />
-            <p><strong>{result?.player?.name || 'Nueva estrella'}</strong> ya está en tu club.</p>
-            {result?.replaced && <p className="glory-modal__microcopy">Sale: {result.replaced.name}</p>}
-            <button className="glory-modal__btn" onClick={onClose}>Cerrar</button>
+            <p><Trans i18nKey="glory.starSigning.success" values={{ name: result?.player?.name || 'New star' }} components={[<strong key="0" />]} /></p>
+            {result?.replaced && <p className="glory-modal__microcopy">{t('glory.starSigning.out', { name: result.replaced.name })}</p>}
+            <button className="glory-modal__btn" onClick={onClose}>{t('glory.common.close')}</button>
           </div>
         ) : choices.length === 0 ? (
           <div className="glory-modal__success">
-            <p>No hay ruleta disponible ahora. Se activa al ascender.</p>
-            <button className="glory-modal__btn" onClick={onClose}>Cerrar</button>
+            <p>{t('glory.starSigning.noRoulette')}</p>
+            <button className="glory-modal__btn" onClick={onClose}>{t('glory.common.close')}</button>
           </div>
         ) : (
           <>
@@ -236,7 +233,7 @@ function StarSigningModal({ onClose }) {
                 </button>
               ))}
             </div>
-            <button className="glory-modal__btn" onClick={handleConfirm}>Fichar esta estrella</button>
+            <button className="glory-modal__btn" onClick={handleConfirm}>{t('glory.starSigning.sign')}</button>
           </>
         )}
       </div>
@@ -245,6 +242,7 @@ function StarSigningModal({ onClose }) {
 }
 
 export default function GloryPerks() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const gloryData = state.gloryData || {};
   const pickedCards = gloryData.pickedCards || [];
@@ -342,7 +340,7 @@ export default function GloryPerks() {
             amount,
             placedSeason: state.season || gloryData.season || 1,
             placedWeek: state.currentWeek || 1,
-            label: percent === 10 ? 'Verde segura' : percent === 25 ? 'Dorada valiente' : percent === 50 ? 'Roja fuerte' : 'All-in'
+            label: percent === 10 ? t('glory.bet.safeGreen') : percent === 25 ? t('glory.bet.boldGold') : percent === 50 ? t('glory.bet.strongRed') : t('glory.bet.allIn')
           }
         }
       }
@@ -364,12 +362,12 @@ export default function GloryPerks() {
           {gloryData.badge && <BadgePreview badge={gloryData.badge} size={48} />}
           <div>
             <h2 className="glory-perks__title">
-              <Mountain size={20} /> Camino a la Gloria
+              <Mountain size={20} /> {t('glory.perks.title')}
             </h2>
             <div className="glory-perks__subtitle">
               <span>{currentDiv.name}</span>
               <span className="glory-perks__separator">·</span>
-              <span>Temporada {season}</span>
+              <span>{t('glory.common.season')} {season}</span>
             </div>
           </div>
         </div>
@@ -380,17 +378,17 @@ export default function GloryPerks() {
         <div className="glory-perks__stat">
           <Trophy size={16} />
           <span className="glory-perks__stat-value">{history.filter(h => h.promoted).length}</span>
-          <span className="glory-perks__stat-label">Ascensos</span>
+          <span className="glory-perks__stat-label">{t('glory.perks.promotions')}</span>
         </div>
         <div className="glory-perks__stat">
           <Star size={16} />
           <span className="glory-perks__stat-value">{pickedCards.length}</span>
-          <span className="glory-perks__stat-label">Cartas</span>
+          <span className="glory-perks__stat-label">{t('glory.perks.cards')}</span>
         </div>
         <div className="glory-perks__stat">
           <Swords size={16} />
           <span className="glory-perks__stat-value">{season}</span>
-          <span className="glory-perks__stat-label">Temporada</span>
+          <span className="glory-perks__stat-label">{t('glory.perks.season')}</span>
         </div>
       </div>
 
@@ -398,7 +396,7 @@ export default function GloryPerks() {
       {pickedCards.length > 0 && (
         <div className="glory-perks__section glory-perks__section--combos">
           <h3 className="glory-perks__section-title">
-            <Sparkles size={16} /> Bonus ocultos
+            <Sparkles size={16} /> {t('glory.perks.hiddenBonuses')}
           </h3>
           <div className="glory-combos">
             {comboProgress.map(combo => (
@@ -408,16 +406,16 @@ export default function GloryPerks() {
                 style={{ '--combo-color': combo.color }}
               >
                 <div className="glory-combos__topline">
-                  <span className="glory-combos__name">{combo.active ? combo.name : 'Combo oculto'}</span>
+                  <span className="glory-combos__name">{combo.active ? t(`glory.combos.${combo.id}.name`, { defaultValue: combo.name }) : t('glory.perks.hiddenCombo')}</span>
                   <span className="glory-combos__counter">{combo.count}/{combo.cards.length}</span>
                 </div>
                 <div className="glory-combos__bar"><span style={{ width: `${Math.min(100, (combo.count / combo.min) * 100)}%` }} /></div>
-                <p>{combo.active ? combo.bonus : `Reúne ${combo.min} cartas compatibles para revelar este bonus.`}</p>
+                <p>{combo.active ? t(`glory.combos.${combo.id}.bonus`, { defaultValue: combo.bonus }) : t('glory.perks.comboLocked', { min: combo.min })}</p>
               </div>
             ))}
           </div>
           {activeCombos.length > 0 && (
-            <div className="glory-perks__combo-summary">Activos: {activeCombos.map(c => c.name).join(' · ')}</div>
+            <div className="glory-perks__combo-summary">{t('glory.perks.activeCombos', { combos: activeCombos.map(c => t(`glory.combos.${c.id}.name`, { defaultValue: c.name })).join(' · ') })}</div>
           )}
         </div>
       )}
@@ -426,11 +424,11 @@ export default function GloryPerks() {
       {usableCards.length > 0 && (
         <div className="glory-perks__section">
           <h3 className="glory-perks__section-title">
-            <Zap size={16} /> Mejoras Activables
+            <Zap size={16} /> {t('glory.perks.usableUpgrades')}
           </h3>
           {usableCards.map(card => {
             const available = isCardAvailable(card);
-            const perkStatus = getPerkStatus(card.id, state);
+            const perkStatus = getPerkStatus(card.id, state, t);
             return (
               <div
                 key={card.id}
@@ -444,19 +442,19 @@ export default function GloryPerks() {
                 </div>
                 <div className="glory-perks__card-info">
                   <div className="glory-perks__card-header">
-                    <span className="glory-perks__card-name">{card.name}</span>
+                    <span className="glory-perks__card-name">{t(`glory.cardData.${card.id}.name`, { defaultValue: card.name })}</span>
                     <span className={`glory-perks__card-tier glory-perks__card-tier--${TIER_CLASSES[card.tier]}`}>
-                      {TIER_LABELS[card.tier]}
+                      {t(TIER_LABEL_KEYS[card.tier])}
                     </span>
                   </div>
-                  <p className="glory-perks__card-desc">{card.description}</p>
+                  <p className="glory-perks__card-desc">{t(`glory.cardData.${card.id}.description`, { defaultValue: card.description })}</p>
                   <div className="glory-perks__card-uses">
                     <span className={`glory-perks__card-uses-count ${perkStatus.active ? '' : 'exhausted'}`}>
                       {perkStatus.status}
                     </span>
                     {available ? (
                       <span className="glory-perks__card-cta">
-                        <ChevronRight size={12} /> Toca para usar
+                        <ChevronRight size={12} /> {t('glory.perks.tapToUse')}
                       </span>
                     ) : (
                       <span className="glory-perks__card-hint">{perkStatus.desc}</span>
@@ -474,10 +472,10 @@ export default function GloryPerks() {
       {passiveCards.length > 0 && (
         <div className="glory-perks__section">
           <h3 className="glory-perks__section-title">
-            <Star size={16} /> Mejoras Permanentes
+            <Star size={16} /> {t('glory.perks.permanentUpgrades')}
           </h3>
           {passiveCards.map(card => {
-            const perkStatus = getPerkStatus(card.id, state);
+            const perkStatus = getPerkStatus(card.id, state, t);
             const isExpanded = expandedCard === card.id;
             const hasDropdown = card.id === 'wild_card' && (gloryData.wildCardPlayers || []).length > 0;
             const hasGoldenDropdown = card.id === 'golden_academy';
@@ -493,12 +491,12 @@ export default function GloryPerks() {
                   </div>
                   <div className="glory-perks__card-info">
                     <div className="glory-perks__card-header">
-                      <span className="glory-perks__card-name">{card.name}</span>
+                      <span className="glory-perks__card-name">{t(`glory.cardData.${card.id}.name`, { defaultValue: card.name })}</span>
                       <span className={`glory-perks__card-tier glory-perks__card-tier--${TIER_CLASSES[card.tier]}`}>
-                        {TIER_LABELS[card.tier]}
+                        {t(TIER_LABEL_KEYS[card.tier])}
                       </span>
                     </div>
-                    <p className="glory-perks__card-desc">{card.description}</p>
+                    <p className="glory-perks__card-desc">{t(`glory.cardData.${card.id}.description`, { defaultValue: card.description })}</p>
                     <div className="glory-perks__card-status">
                       <span className={`glory-perks__card-active ${perkStatus.active ? '' : 'glory-perks__card-active--expired'}`}>
                         {perkStatus.status}
@@ -515,7 +513,7 @@ export default function GloryPerks() {
                 {/* Wild Card player list dropdown */}
                 {card.id === 'wild_card' && isExpanded && (
                   <div className="glory-perks__dropdown">
-                    <div className="glory-perks__dropdown-title">Jugadores traídos por Wild Card</div>
+                    <div className="glory-perks__dropdown-title">{t('glory.perks.wildCardPlayers')}</div>
                     {(gloryData.wildCardPlayers || []).map((p, i) => (
                       <div key={i} className="glory-perks__dropdown-player">
                         <span className="glory-perks__dropdown-pos">{p.position}</span>
@@ -539,8 +537,8 @@ export default function GloryPerks() {
       {pickedCards.length === 0 && (
         <div className="glory-perks__empty">
           <Star size={48} />
-          <h3>Sin mejoras todavía</h3>
-          <p>Completa una temporada para elegir tu primera carta de mejora.</p>
+          <h3>{t('glory.perks.emptyTitle')}</h3>
+          <p>{t('glory.perks.emptyDesc')}</p>
         </div>
       )}
 
@@ -555,21 +553,21 @@ export default function GloryPerks() {
           <div className="glory-modal glory-modal--bet-roulette" onClick={e => e.stopPropagation()}>
             <button className="glory-modal__close" onClick={() => setShowBetRoulette(false)}><span>✕</span></button>
             <div className="glory-bet-roulette__icon">🎰</div>
-            <h3>Ruleta de apuesta</h3>
-            <p className="glory-modal__desc">Apuesta antes del partido. Al confirmar, queda bloqueada hasta que juegues el próximo partido.</p>
+            <h3>{t('glory.bet.title')}</h3>
+            <p className="glory-modal__desc">{t('glory.bet.desc')}</p>
             <div className="glory-bet-roulette__options">
               {[10, 25, 50, 100].map(percent => {
                 const amount = Math.max(0, Math.floor((state.money || 0) * percent / 100));
                 return (
                   <button key={percent} className={`glory-bet-roulette__option glory-bet-roulette__option--${percent}`} onClick={() => placeRouletteBet(percent)}>
                     <strong>{percent}%</strong>
-                    <span>{percent === 10 ? 'Verde segura' : percent === 25 ? 'Dorada valiente' : percent === 50 ? 'Roja fuerte' : 'All-in'}</span>
+                    <span>{percent === 10 ? t('glory.bet.safeGreen') : percent === 25 ? t('glory.bet.boldGold') : percent === 50 ? t('glory.bet.strongRed') : t('glory.bet.allIn')}</span>
                     <small>€{amount.toLocaleString('es-ES')}</small>
                   </button>
                 );
               })}
             </div>
-            <div className="glory-bet-roulette__rules">Victoria cobra · Empate pierde media · Derrota pierde todo</div>
+            <div className="glory-bet-roulette__rules">{t('glory.bet.rules')}</div>
           </div>
         </div>
       )}
@@ -581,7 +579,7 @@ export default function GloryPerks() {
       {history.length > 0 && (
         <div className="glory-perks__section">
           <h3 className="glory-perks__section-title">
-            <Trophy size={16} /> Historial
+            <Trophy size={16} /> {t('glory.perks.history')}
           </h3>
           <div className="glory-perks__history">
             {history.map((h, i) => {
@@ -591,7 +589,7 @@ export default function GloryPerks() {
                   <span className="glory-perks__history-season">T{h.season}</span>
                   <span className="glory-perks__history-div">{div?.name || h.division}</span>
                   <span className="glory-perks__history-pos">{h.position}º</span>
-                  {h.promoted && <span className="glory-perks__history-badge">Ascenso</span>}
+                  {h.promoted && <span className="glory-perks__history-badge">{t('glory.perks.promotionBadge')}</span>}
                 </div>
               );
             })}

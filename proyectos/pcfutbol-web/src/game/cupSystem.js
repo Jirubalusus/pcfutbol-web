@@ -6,6 +6,7 @@
 
 import { LEAGUE_CONFIG } from './multiLeagueEngine';
 import { simulateMatch } from './leagueEngine';
+import { normalizeLeagueId } from '../data/leagueRegistry';
 
 // ============================================================
 // CONFIGURACIÓN DE COPAS
@@ -48,6 +49,19 @@ export const CUP_CONFIGS = {
 // Ligas de grupos que NO cuentan para la copa (divisiones bajas de España)
 const GROUP_LEAGUE_IDS = ['primeraRFEF', 'segundaRFEF'];
 
+const HISTORICAL_TO_GAME_LEAGUE_ID = {
+  laliga2: 'segunda',
+  premier: 'premierLeague',
+  seriea: 'serieA',
+  ligaMx: 'ligaMX',
+  jleague: 'jLeague',
+};
+
+function normalizeGameLeagueId(leagueId) {
+  const normalized = normalizeLeagueId(leagueId);
+  return HISTORICAL_TO_GAME_LEAGUE_ID[normalized] || normalized;
+}
+
 // Orden de tier de las ligas principales por país (primera div primero)
 const LEAGUE_TIER_ORDER = {};
 Object.entries(LEAGUE_CONFIG).forEach(([id, cfg]) => {
@@ -77,15 +91,71 @@ Object.values(LEAGUE_TIER_ORDER).forEach(leagues => {
  * @param {Object} playerTeam - Datos del equipo del jugador
  * @param {Object} otherLeagues - Estado de otras ligas
  * @param {Array} leagueTable - Tabla de la liga del jugador
+ * @param {Object} [options]
+ * @param {string} [options.playerGameLeagueId] - ID canonical de LEAGUE_CONFIG
+ * @param {Array} [options.universeEntries] - Entradas del universo activo/histórico
+ * @param {Array} [options.historicalTeams] - Equipos de la temporada histórica activa
+ * @param {boolean} [options.historical] - Evita fallback estático 2025/26
+ * @param {boolean} [options.allowStaticFallback] - Permite fallback estático
  * @returns {{ teams: Array, cupConfig: Object, country: string } | null}
  */
-export function getCupTeams(playerLeagueId, playerTeam, otherLeagues, leagueTable) {
-  const playerLeagueConfig = LEAGUE_CONFIG[playerLeagueId];
+export function getCupTeams(playerLeagueId, playerTeam, otherLeagues, leagueTable, options = {}) {
+  const playerGameLeagueId = normalizeGameLeagueId(options.playerGameLeagueId || playerLeagueId);
+  const playerLeagueConfig = LEAGUE_CONFIG[playerGameLeagueId];
   if (!playerLeagueConfig || !playerLeagueConfig.country) return null;
 
   const country = playerLeagueConfig.country;
   const cupConfig = CUP_CONFIGS[country];
   if (!cupConfig) return null;
+
+  const historical = Boolean(options.historical || options.historicalTeams?.length || options.universeEntries?.length);
+  const allowStaticFallback = options.allowStaticFallback ?? !historical;
+  const activeEntries = (options.universeEntries || []).filter(entry => entry?.id);
+  const activeTeamById = new Map();
+  for (const entry of activeEntries) {
+    for (const team of entry.teams || []) {
+      const id = team?.id || team?.teamId;
+      if (id && !activeTeamById.has(id)) activeTeamById.set(id, team);
+    }
+  }
+  for (const team of options.historicalTeams || []) {
+    const id = team?.id || team?.teamId;
+    if (id && !activeTeamById.has(id)) activeTeamById.set(id, team);
+  }
+
+  const cupEntryFromTeam = (team, leagueId, leaguePosition, isFirstDivision) => {
+    const id = team?.id || team?.teamId;
+    if (!id) return null;
+    const name = team.name || team.teamName || id;
+    return {
+      teamId: id,
+      teamName: name,
+      shortName: team.shortName || name?.substring(0, 3).toUpperCase(),
+      reputation: team.reputation || team.avgOverall || team.overall || 70,
+      overall: team.overall || team.avgOverall || team.reputation || 70,
+      players: team.players || [],
+      leagueId,
+      leaguePosition,
+      isFirstDivision
+    };
+  };
+
+  const cupEntryFromTable = (entry, leagueId, leaguePosition, isFirstDivision) => {
+    const id = entry?.teamId || entry?.id;
+    if (!id) return null;
+    const fullTeam = activeTeamById.get(id);
+    return cupEntryFromTeam({
+      ...(fullTeam || {}),
+      ...entry,
+      id,
+      name: entry.teamName || fullTeam?.name || entry.name,
+      players: fullTeam?.players || entry.players || []
+    }, leagueId, leaguePosition, isFirstDivision);
+  };
+
+  const getActiveUniverseTeams = (leagueId) => activeEntries
+    .filter(entry => entry.id === leagueId)
+    .flatMap(entry => entry.teams || []);
 
   // Encontrar ligas de este país (excluir ligas de grupos)
   const countryLeagues = Object.entries(LEAGUE_CONFIG)
@@ -107,66 +177,54 @@ export function getCupTeams(playerLeagueId, playerTeam, otherLeagues, leagueTabl
   for (const [leagueId, config] of leaguesToUse) {
     let leagueTeams = [];
 
-    if (leagueId === playerLeagueId) {
+    if (leagueId === playerGameLeagueId) {
       // Liga del jugador: obtener equipos de la tabla + datos completos
       const table = leagueTable || [];
-      const allLeagueTeams = config.getTeams ? config.getTeams() : [];
+      const allLeagueTeams = historical ? getActiveUniverseTeams(leagueId) : (config.getTeams ? config.getTeams() : []);
       
       for (const entry of table) {
         if (addedTeamIds.has(entry.teamId)) continue;
-        const fullTeam = allLeagueTeams.find(t => t.id === entry.teamId);
-        if (fullTeam) {
-          teams.push({
-            teamId: fullTeam.id,
-            teamName: fullTeam.name,
-            shortName: fullTeam.shortName || fullTeam.name?.substring(0, 3).toUpperCase(),
-            reputation: fullTeam.reputation || 70,
-            players: fullTeam.players || [],
-            leagueId,
-            leaguePosition: table.indexOf(entry) + 1,
-            isFirstDivision: !!config.zones?.champions
-          });
+        const fullTeam = allLeagueTeams.find(t => (t.id || t.teamId) === entry.teamId);
+        const cupEntry = cupEntryFromTeam(fullTeam || entry, leagueId, table.indexOf(entry) + 1, !!config.zones?.champions);
+        if (cupEntry) {
+          teams.push(cupEntry);
           addedTeamIds.add(entry.teamId);
         }
       }
     } else {
       // Otra liga: obtener de otherLeagues o directamente
       const leagueData = otherLeagues?.[leagueId];
-      const allLeagueTeams = config.getTeams ? config.getTeams() : [];
+      const allLeagueTeams = historical ? getActiveUniverseTeams(leagueId) : (config.getTeams ? config.getTeams() : []);
 
       if (leagueData?.table?.length > 0) {
         for (const entry of leagueData.table) {
           if (addedTeamIds.has(entry.teamId)) continue;
-          const fullTeam = allLeagueTeams.find(t => t.id === entry.teamId);
-          if (fullTeam) {
-            teams.push({
-              teamId: fullTeam.id,
-              teamName: fullTeam.name,
-              shortName: fullTeam.shortName || fullTeam.name?.substring(0, 3).toUpperCase(),
-              reputation: fullTeam.reputation || 70,
-              players: fullTeam.players || [],
-              leagueId,
-              leaguePosition: leagueData.table.indexOf(entry) + 1,
-              isFirstDivision: !!config.zones?.champions
-            });
+          const cupEntry = cupEntryFromTable(entry, leagueId, leagueData.table.indexOf(entry) + 1, !!config.zones?.champions);
+          if (cupEntry) {
+            teams.push(cupEntry);
             addedTeamIds.add(entry.teamId);
           }
         }
-      } else {
+      } else if (allLeagueTeams.length > 0) {
         // Sin tabla disponible: usar equipos directamente
         for (const t of allLeagueTeams) {
-          if (addedTeamIds.has(t.id)) continue;
-          teams.push({
-            teamId: t.id,
-            teamName: t.name,
-            shortName: t.shortName || t.name?.substring(0, 3).toUpperCase(),
-            reputation: t.reputation || 70,
-            players: t.players || [],
-            leagueId,
-            leaguePosition: allLeagueTeams.indexOf(t) + 1,
-            isFirstDivision: !!config.zones?.champions
-          });
-          addedTeamIds.add(t.id);
+          const id = t.id || t.teamId;
+          if (addedTeamIds.has(id)) continue;
+          const cupEntry = cupEntryFromTeam(t, leagueId, allLeagueTeams.indexOf(t) + 1, !!config.zones?.champions);
+          if (cupEntry) {
+            teams.push(cupEntry);
+            addedTeamIds.add(id);
+          }
+        }
+      } else if (allowStaticFallback) {
+        for (const t of (config.getTeams ? config.getTeams() : [])) {
+          const id = t.id || t.teamId;
+          if (addedTeamIds.has(id)) continue;
+          const cupEntry = cupEntryFromTeam(t, leagueId, (config.getTeams ? config.getTeams() : []).indexOf(t) + 1, !!config.zones?.champions);
+          if (cupEntry) {
+            teams.push(cupEntry);
+            addedTeamIds.add(id);
+          }
         }
       }
     }
@@ -180,7 +238,7 @@ export function getCupTeams(playerLeagueId, playerTeam, otherLeagues, leagueTabl
       shortName: playerTeam.shortName || playerTeam.name?.substring(0, 3).toUpperCase(),
       reputation: playerTeam.reputation || 70,
       players: playerTeam.players || [],
-      leagueId: playerLeagueId,
+      leagueId: playerGameLeagueId,
       leaguePosition: 99,
       isFirstDivision: false
     });

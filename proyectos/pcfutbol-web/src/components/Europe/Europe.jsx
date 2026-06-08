@@ -7,7 +7,7 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
-import { COMPETITIONS } from '../../game/europeanCompetitions';
+import { COMPETITIONS, getEuropeanEraContextFromState } from '../../game/europeanCompetitions';
 import { SA_COMPETITIONS } from '../../game/southAmericanCompetitions';
 import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
 import { getPlayerSACompetition } from '../../game/southAmericanSeason';
@@ -313,6 +313,29 @@ export default function Europe() {
   
   // Use SA or European competitions depending on the player's league
   const european = isInSA ? state.saCompetitions : state.europeanCompetitions;
+  const euroEra = useMemo(() => getEuropeanEraContextFromState(state), [
+    state.historicalDatabase,
+    state.databaseSeasonId,
+    state.careerStartSeason,
+    state.currentSeason,
+    state.europeanCompetitions
+  ]);
+  const activeCompetitionIds = useMemo(() => {
+    if (!european?.competitions) return [];
+    // Base list: stored active ids when present, otherwise every initialized comp.
+    const stored = Array.isArray(european.activeCompetitionIds) && european.activeCompetitionIds.length
+      ? european.activeCompetitionIds
+      : Object.keys(european.competitions);
+    let ids = stored.filter((compId) => european.competitions[compId]);
+    // Era gate (European only): drop competitions that did not exist in this
+    // historical season, even if a stale/legacy save still carries them
+    // (e.g. a 2008-09 save with leftover Continental Trophy state).
+    if (!isInSA && euroEra.historical) {
+      const allowed = new Set(euroEra.activeCompetitionIds);
+      ids = ids.filter((compId) => allowed.has(compId));
+    }
+    return ids;
+  }, [european, isInSA, euroEra]);
   
   // Find player's competition
   const playerComp = useMemo(() => {
@@ -322,8 +345,11 @@ export default function Europe() {
   }, [european, state.teamId, isInSA]);
 
   // Default to player's competition, or first available
-  const activeCompId = selectedComp || playerComp?.competitionId || 
-    (european?.competitions ? Object.keys(european.competitions).find(k => european.competitions[k]) : null);
+  const activeCompId = (selectedComp && activeCompetitionIds.includes(selectedComp))
+    ? selectedComp
+    : (playerComp?.competitionId && activeCompetitionIds.includes(playerComp.competitionId))
+      ? playerComp.competitionId
+      : activeCompetitionIds[0];
   
   const activeComp = european?.competitions?.[activeCompId];
 
@@ -418,9 +444,10 @@ export default function Europe() {
     <div className="europe">
       {/* Competition Tabs */}
       <div className="europe__tabs">
-        {Object.entries(COMPETITIONS).map(([compId, comp]) => {
+        {activeCompetitionIds.map((compId) => {
           const compState = european.competitions[compId];
           if (!compState) return null;
+          const comp = compState.config || COMPETITIONS[compId];
           const isActive = activeCompId === compId;
           const isPlayerComp = playerComp?.competitionId === compId;
           

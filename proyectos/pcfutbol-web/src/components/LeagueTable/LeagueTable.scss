@@ -109,6 +109,41 @@
     }
   }
 
+  &__floor-note {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 12px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.26);
+    background: rgba(59, 130, 246, 0.08);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.78rem;
+    font-weight: 650;
+    line-height: 1.3;
+  }
+
+  &__continental-note {
+    display: block;
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(245, 158, 11, 0.30);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.10), rgba(245, 158, 11, 0.10));
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+
+    @media (max-width: 768px) {
+      font-size: 0.74rem;
+      padding: 9px 12px;
+    }
+  }
+
   &__table {
     background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;

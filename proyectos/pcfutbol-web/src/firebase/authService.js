@@ -14,9 +14,11 @@ import {
 import { doc, setDoc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from './config';
 import { Capacitor } from '@capacitor/core';
+import { DEFAULT_ACTIVE_EDITION_ID } from '../data/editions/editionService';
 
 const googleProvider = new GoogleAuthProvider();
 const isNativePlatform = Capacitor.isNativePlatform();
+const PC_GAFFER_ACTION_URL = 'https://www.pcgaffer.com/';
 
 // Register with email/password
 export async function registerWithEmail(email, password, displayName) {
@@ -28,12 +30,13 @@ export async function registerWithEmail(email, password, displayName) {
     email: user.email,
     displayName: displayName || email.split('@')[0],
     createdAt: serverTimestamp(),
-    emailVerified: false
+    emailVerified: false,
+    activeEdition: DEFAULT_ACTIVE_EDITION_ID
   });
   
   // Send verification email
   await sendEmailVerification(user, {
-    url: isNativePlatform ? 'https://pcfutbol-web.firebaseapp.com' : window.location.origin + '/pcfutbol-web/',
+    url: PC_GAFFER_ACTION_URL,
     handleCodeInApp: false
   });
   
@@ -102,7 +105,8 @@ async function ensureUserDoc(user) {
       email: user.email,
       displayName: user.displayName || user.email?.split('@')[0] || 'User',
       createdAt: serverTimestamp(),
-      emailVerified: true
+      emailVerified: true,
+      activeEdition: DEFAULT_ACTIVE_EDITION_ID
     });
   }
 }
@@ -115,7 +119,7 @@ export async function logout() {
 // Send password reset email
 export async function resetPassword(email) {
   await sendPasswordResetEmail(auth, email, {
-    url: window.location.origin + '/pcfutbol-web/',
+    url: PC_GAFFER_ACTION_URL,
     handleCodeInApp: false
   });
 }
@@ -124,7 +128,7 @@ export async function resetPassword(email) {
 export async function resendVerificationEmail() {
   if (auth.currentUser && !auth.currentUser.emailVerified) {
     await sendEmailVerification(auth.currentUser, {
-      url: window.location.origin + '/pcfutbol-web/',
+      url: PC_GAFFER_ACTION_URL,
       handleCodeInApp: false
     });
   }

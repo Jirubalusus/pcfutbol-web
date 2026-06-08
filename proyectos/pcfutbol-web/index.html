@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
     <!-- PWA / Mobile App Meta Tags -->
     <meta name="theme-color" content="#0c0f14" />
@@ -15,8 +15,23 @@
     <meta name="format-detection" content="telephone=no" />
     
     <!-- SEO -->
-    <meta name="description" content="PC Gaffer - Football Manager Game" />
-    
+    <meta name="description" content="PC Gaffer — manager de fútbol con bases de datos históricas. Dirige tu club, ficha jugadores y conquista títulos." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PC Gaffer" />
+    <meta property="og:title" content="PC Gaffer — Manager de Fútbol" />
+    <meta property="og:description" content="El fútbol, dirigido por ti. Manager de fútbol con bases de datos históricas." />
+    <meta property="og:url" content="https://pcgaffer.com/" />
+    <meta property="og:image" content="https://pcgaffer.com/icons/icon-512x512.png" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="PC Gaffer — Manager de Fútbol" />
+    <meta name="twitter:description" content="El fútbol, dirigido por ti. Manager de fútbol con bases de datos históricas." />
+    <meta name="twitter:image" content="https://pcgaffer.com/icons/icon-512x512.png" />
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json" />
     
@@ -37,7 +52,8 @@
       // Force-clear old PWA/service-worker caches before the app module starts.
       // This prevents mobile browsers from keeping stale lazy chunks like ProManagerSetup.
       (function clearStalePwaCache() {
-        var version = 'tactics-formation-board-2026-05-12';
+        // Current cache marker: mundial-draft-premium-cards-20260607
+        var version = 'mundial-draft-premium-cards-20260607';
         var reloadKey = 'pcgaffer-cache-reset-' + version;
         var tasks = [];
 
@@ -59,8 +75,12 @@
         Promise.all(tasks).then(function() {
           if (!sessionStorage.getItem(reloadKey)) {
             sessionStorage.setItem(reloadKey, '1');
+            // Preserve existing query params (e.g. ?qa=...); only set/replace the
+            // cache-busting `v` marker so a stale install reloads onto fresh chunks.
+            var params = new URLSearchParams(window.location.search);
+            params.set('v', version);
             var cleanPath = window.location.pathname || '/';
-            window.location.replace(cleanPath + '?v=' + version);
+            window.location.replace(cleanPath + '?' + params.toString());
           }
         }).catch(function() {});
       })();

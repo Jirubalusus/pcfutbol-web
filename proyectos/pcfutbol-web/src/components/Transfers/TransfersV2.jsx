@@ -23,7 +23,7 @@ import {
 
   Ban, Sparkles, CheckCircle, XCircle, Lock, AlertTriangle,
 
-  Trophy, Heart, Swords, ClipboardList, Globe, Home, Coins, Dumbbell, Scale, Trash2
+  Trophy, Heart, Swords, ClipboardList, Globe, Home, Car, Coins, Dumbbell, Scale, Trash2
 
 } from 'lucide-react';
 
@@ -69,7 +69,11 @@ import {
 
   SCOUTING_LEVELS, generateScoutingSuggestions, analyzeTeamNeeds,
 
-  AVAILABLE_LEAGUES, getTeamsByLeague
+  AVAILABLE_LEAGUES, SCOUT_FILTERS, SCOUT_CONTINENTS, SCOUT_ATTRIBUTES,
+
+  isFilterUnlocked, countActiveFilters, deriveRegion, derivePotential,
+
+  derivePreferredFoot, deriveHeight
 
 } from '../../game/scoutingSystem';
 
@@ -80,9 +84,25 @@ import {
 } from '../../game/loanSystem';
 
 import TeamCrest from '../TeamCrest/TeamCrest';
+import { getTeamLeagueId, normalizeLeagueId } from '../../data/leagueRegistry';
 import './TransfersV2.scss';
 
 
+
+const HOUSE_AND_CAR_COST = 20_000_000;
+
+const getHouseAndCarCost = (offer) => offer?.houseAndCar ? (offer.houseAndCarCost || HOUSE_AND_CAR_COST) : 0;
+
+const getOfferUpfrontCost = (offer) => (offer?.amount || 0) + getHouseAndCarCost(offer);
+
+const getHouseAndCarWeeklyEquivalent = (contractYears = 4) => {
+  const years = Math.max(1, contractYears || 4);
+  return Math.round(HOUSE_AND_CAR_COST / (years * 52));
+};
+
+const getEffectiveSalaryWithPerks = (salary, houseAndCar, contractYears = 4) => {
+  return (salary || 0) + (houseAndCar ? getHouseAndCarWeeklyEquivalent(contractYears) : 0);
+};
 
 // ============================================================
 
@@ -253,9 +273,14 @@ export default function TransfersV2() {
 
 
 
-  // Nivel de ojeador (desde facilities)
-
-  const scoutingLevel = state.facilities?.scouting || 0;
+  // Nivel del ojeador 1-4. Preferimos el estado del club; si no, derivamos de
+  // las instalaciones (zero-indexed en este modelo de guardado: 0-3 → 1-4).
+  const scoutLevel = Math.max(1, Math.min(4,
+    state.scoutLevel
+    ?? state.club?.scoutLevel
+    ?? state.team?.scoutLevel
+    ?? ((state.facilities?.scouting ?? 0) + 1)
+  ));
 
 
 
@@ -395,6 +420,8 @@ export default function TransfersV2() {
 
             leagueTeams={state.leagueTeams || []}
 
+            databaseSeasonId={state.databaseSeasonId}
+
             myTeamId={state.teamId}
 
             playerLeagueId={state.leagueId}
@@ -419,7 +446,7 @@ export default function TransfersV2() {
 
             leagueTeams={state.leagueTeams || []}
 
-            scoutingLevel={scoutingLevel}
+            scoutLevel={scoutLevel}
 
             budget={state.money}
 
@@ -962,7 +989,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
                   ) : (
 
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      {player.teamId && <TeamCrest teamId={player.teamId} size={18} />}
+                      {player.teamId && <TeamCrest teamId={player.teamId} teamName={player.teamName} size={18} />}
                       {player.teamName}
                     </span>
 
@@ -1509,6 +1536,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
             <div className="offer-v2-amounts">
 
               <span><DollarSign size={14} /> {formatTransferPrice(offer.amount)}</span>
+              {offer.houseAndCar && <span className="perk-tag"><Home size={14} /><Car size={14} /> +{formatTransferPrice(getHouseAndCarCost(offer))}</span>}
 
               <span><Users size={14} /> {formatTransferPrice((offer.salaryOffer || 0) * 52)}/{t('transfers.year')}</span>
 
@@ -1949,9 +1977,178 @@ const LEAGUE_GROUPS = (() => {
 
 })();
 
+const STATIC_LEAGUE_BY_ID = new Map(AVAILABLE_LEAGUES.map(league => [league.id, league]));
+
+const GROUP_SOURCE_LEAGUE_RE = /(?:Rfef|RFEF|rfef|segundaB|SegundaB|2b|2B).*(?:G\d+|grupo\d+)$|(?:G\d+|grupo\d+)$/;
+
+function getExploreSourceLeagueId(team) {
+
+  return team?.sourceLeagueId || team?.historicalLeagueId || team?.originalLeagueId || team?.league || team?.competitionId || team?.leagueId;
+
+}
+
+function formatHistoricalLeagueName(sourceLeagueId, canonicalLeagueId, fallbackName) {
+
+  if (fallbackName && fallbackName !== sourceLeagueId) return fallbackName;
+
+  const id = String(sourceLeagueId || '');
+
+  const groupMatch = id.match(/(?:G|grupo)(\d+)$/i);
+
+  const groupSuffix = groupMatch ? ` G${groupMatch[1]}` : '';
+
+  if (/primeraRfefG/i.test(id)) return `Segunda División B${groupSuffix}`;
+
+  if (/segundaRfefG/i.test(id)) return `Segunda Federación${groupSuffix}`;
+
+  if (/primeraRFEF|primeraRfef/i.test(id) && groupSuffix) return `Primera Federación${groupSuffix}`;
+
+  return STATIC_LEAGUE_BY_ID.get(canonicalLeagueId)?.name || id || 'Liga';
+
+}
+
+function matchesExploreLeague(team, leagueId) {
+
+  const sourceLeagueId = getExploreSourceLeagueId(team);
+
+  if (sourceLeagueId && String(sourceLeagueId) === String(leagueId)) return true;
+
+  // Las ligas históricas agrupadas (por ejemplo Segunda B G1-G4) deben
+  // contarse por su id fuente exacto. Si caemos al id canónico, cada grupo
+  // acaba mostrando todos los equipos de Segunda B repetidos.
+  if (GROUP_SOURCE_LEAGUE_RE.test(String(leagueId || ''))) return false;
+
+  return getTeamLeagueId(team) === normalizeLeagueId(leagueId);
+
+}
+
+function getTeamsByExploreLeague(allTeams, leagueId) {
+
+  const teams = leagueId ? (allTeams || []).filter(team => matchesExploreLeague(team, leagueId)) : (allTeams || []);
+
+  return teams.map(team => ({
+
+    ...team,
+
+    tier: getClubTier(team.name),
+
+    avgOverall: team.players?.length > 0
+
+      ? Math.round(team.players.reduce((sum, p) => sum + p.overall, 0) / team.players.length)
+
+      : 70,
+
+    totalValue: team.players?.reduce((sum, p) => sum + calculateMarketValue(p), 0) || 0
+
+  })).sort((a, b) => b.avgOverall - a.avgOverall);
+
+}
+
+function countTeamsInExploreLeague(allTeams, leagueId) {
+
+  return (allTeams || []).filter(team => matchesExploreLeague(team, leagueId)).length;
+
+}
+
+function buildVisibleLeagueGroups(leagueTeams = []) {
+
+  const dynamicLeagueById = new Map();
+
+  const canonicalIdsWithSourceGroups = new Set();
+
+  leagueTeams.forEach(team => {
+
+    const sourceLeagueId = getExploreSourceLeagueId(team);
+
+    const canonicalLeagueId = getTeamLeagueId(team);
+
+    if (!sourceLeagueId || !canonicalLeagueId || sourceLeagueId === canonicalLeagueId) return;
+
+    if (!GROUP_SOURCE_LEAGUE_RE.test(String(sourceLeagueId))) return;
+
+    canonicalIdsWithSourceGroups.add(canonicalLeagueId);
+
+    if (!dynamicLeagueById.has(sourceLeagueId)) {
+
+      const staticLeague = STATIC_LEAGUE_BY_ID.get(canonicalLeagueId) || STATIC_LEAGUE_BY_ID.get(sourceLeagueId) || {};
+
+      dynamicLeagueById.set(sourceLeagueId, {
+
+        id: sourceLeagueId,
+
+        name: formatHistoricalLeagueName(sourceLeagueId, canonicalLeagueId, team.sourceLeagueName || team.historicalLeagueName),
+
+        country: staticLeague.country || 'España',
+
+        flagUrl: staticLeague.flagUrl || 'https://flagcdn.com/es.svg',
+
+        color: staticLeague.color || '#cc6600',
+
+        sourceLeagueId,
+
+        canonicalLeagueId,
+
+      });
+
+    }
+
+  });
+
+  const groups = {};
+
+  const addLeague = (league) => {
+
+    const country = league.country || 'Resto del Mundo';
+
+    if (!groups[country]) {
+
+      groups[country] = { country, flagUrl: league.flagUrl, leagues: [], continent: getContinent(country) };
+
+    }
+
+    groups[country].leagues.push(league);
+
+  };
+
+  AVAILABLE_LEAGUES.forEach(league => {
+
+    const canonicalLeagueId = normalizeLeagueId(league.id);
+
+    if (canonicalIdsWithSourceGroups.has(canonicalLeagueId)) return;
+
+    if (countTeamsInExploreLeague(leagueTeams, league.id) > 0) addLeague(league);
+
+  });
+
+  Array.from(dynamicLeagueById.values())
+
+    .sort((a, b) => a.name.localeCompare(b.name, 'es', { numeric: true }))
+
+    .forEach(addLeague);
+
+  return Object.values(groups).map(group => ({
+
+    ...group,
+
+    leagues: group.leagues.sort((a, b) => {
+
+      const ai = AVAILABLE_LEAGUES.findIndex(league => league.id === a.id);
+
+      const bi = AVAILABLE_LEAGUES.findIndex(league => league.id === b.id);
+
+      if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+
+      return a.name.localeCompare(b.name, 'es', { numeric: true });
+
+    })
+
+  })).filter(group => group.leagues.length > 0);
+
+}
 
 
-function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, blockedPlayers = [], hasFutureScout = false }) {
+
+function ExplorarTab({ leagueTeams, databaseSeasonId = 'current', myTeamId, playerLeagueId, onSelectPlayer, blockedPlayers = [], hasFutureScout = false }) {
   const { t } = useTranslation();
 
   const [selectedLeague, setSelectedLeague] = useState(null);
@@ -1962,9 +2159,93 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
   const [continent, setContinent] = useState('eu');
 
+  const [historicalLeagueMetaByTeamId, setHistoricalLeagueMetaByTeamId] = useState(null);
+
+  useEffect(() => {
+
+    const alreadyHasSourceMetadata = (leagueTeams || []).some(team => team?.sourceLeagueId || team?.historicalLeagueId || team?.historicalLeagueName);
+
+    if (!databaseSeasonId || databaseSeasonId === 'current' || alreadyHasSourceMetadata) {
+
+      setHistoricalLeagueMetaByTeamId(null);
+
+      return undefined;
+
+    }
+
+    let cancelled = false;
+
+    import('../../data/historicalDatabaseService')
+
+      .then(({ loadHistoricalSeason }) => loadHistoricalSeason(databaseSeasonId))
+
+      .then(dataset => {
+
+        if (cancelled) return;
+
+        const leagueNameById = new Map((dataset?.leagues || []).map(league => [league.id, league.name || league.id]));
+
+        const teamMeta = new Map();
+
+        (dataset?.teams || []).forEach(team => {
+
+          const teamId = team.id || team.teamId;
+
+          const sourceLeagueId = team.leagueId || team.league || team.competitionId;
+
+          if (!teamId || !sourceLeagueId) return;
+
+          teamMeta.set(teamId, {
+
+            sourceLeagueId,
+
+            historicalLeagueId: sourceLeagueId,
+
+            historicalLeagueName: leagueNameById.get(sourceLeagueId) || sourceLeagueId,
+
+          });
+
+        });
+
+        setHistoricalLeagueMetaByTeamId(teamMeta);
+
+      })
+
+      .catch(error => {
+
+        if (!cancelled) {
+
+          console.warn('[TransfersV2] No se pudo enriquecer el catálogo histórico de ligas:', error);
+
+          setHistoricalLeagueMetaByTeamId(null);
+
+        }
+
+      });
+
+    return () => { cancelled = true; };
+
+  }, [databaseSeasonId, leagueTeams]);
+
+  const exploreLeagueTeams = useMemo(() => {
+
+    if (!historicalLeagueMetaByTeamId?.size) return leagueTeams;
+
+    return (leagueTeams || []).map(team => {
+
+      const teamId = team.id || team.teamId;
+
+      const meta = historicalLeagueMetaByTeamId.get(teamId);
+
+      return meta ? { ...team, ...meta } : team;
+
+    });
+
+  }, [leagueTeams, historicalLeagueMetaByTeamId]);
 
 
-  const teams = useMemo(() => getTeamsByLeague(leagueTeams, selectedLeague), [leagueTeams, selectedLeague]);
+
+  const teams = useMemo(() => getTeamsByExploreLeague(exploreLeagueTeams, selectedLeague), [exploreLeagueTeams, selectedLeague]);
 
 
 
@@ -1978,7 +2259,9 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
 
 
-  const filteredGroups = useMemo(() => LEAGUE_GROUPS.filter(g => g.continent === continent), [continent]);
+  const visibleLeagueGroups = useMemo(() => buildVisibleLeagueGroups(exploreLeagueTeams), [exploreLeagueTeams]);
+
+  const filteredGroups = useMemo(() => visibleLeagueGroups.filter(g => g.continent === continent), [visibleLeagueGroups, continent]);
 
 
 
@@ -2016,7 +2299,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
           {filteredGroups.map(group => {
 
-            const totalTeams = group.leagues.reduce((sum, l) => sum + (leagueTeams || []).filter(t => t.leagueId === l.id).length, 0);
+            const totalTeams = group.leagues.reduce((sum, l) => sum + countTeamsInExploreLeague(exploreLeagueTeams, l.id), 0);
 
             return (
 
@@ -2040,7 +2323,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
                   {group.leagues.map(league => {
 
-                    const count = (leagueTeams || []).filter(t => t.leagueId === league.id).length;
+                    const count = countTeamsInExploreLeague(exploreLeagueTeams, league.id);
 
                     return (
 
@@ -2084,7 +2367,8 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
   // Vista de equipos
 
-  const leagueInfo = AVAILABLE_LEAGUES.find(l => l.id === selectedLeague);
+  const leagueInfo = visibleLeagueGroups.flatMap(group => group.leagues).find(l => l.id === selectedLeague)
+    || AVAILABLE_LEAGUES.find(l => l.id === selectedLeague);
 
 
 
@@ -2170,7 +2454,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
               >
 
-                <TeamCrest teamId={team.id} size={28} />
+                <TeamCrest team={team} teamId={team.id} size={28} />
 
                 <div className="tc-info">
 
@@ -2218,17 +2502,23 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
         </button>
 
-        <div className="header-info">
+        <div className="header-info team-roster-header">
 
           <h3>
 
-            <img src={leagueInfo?.flagUrl} alt="" className="header-flag" />
+            <TeamCrest team={selectedTeam} teamId={selectedTeam.id} size={34} className="header-team-crest" priority />
 
-            {selectedTeam.name}
+            <span className="team-title-text">{selectedTeam.name}</span>
 
           </h3>
 
-          <p>{t('transfers.playersAvgOvr', { count: selectedTeam.players?.length || 0, avg: selectedTeam.avgOverall || '??' })}</p>
+          <p>
+
+            <img src={leagueInfo?.flagUrl} alt="" className="header-flag" />
+
+            {t('transfers.playersAvgOvr', { count: selectedTeam.players?.length || 0, avg: selectedTeam.avgOverall || '??' })}
+
+          </p>
 
         </div>
 
@@ -2337,252 +2627,389 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
   );
 
 }
-
-
-
+// ============================================================
+// TAB: OJEADOR (SCOUTING) — Rediseño PC Gaffer 4 niveles
 // ============================================================
 
-// TAB: OJEADOR (SCOUTING)
+const SCOUT_LEVEL_META = {
+  1: { name: 'Ojeador Local',    stage: 'Local',     subtitle: 'Busca jugadores en tu propia liga',     theme: 'cyan' },
+  2: { name: 'Ojeador Regional', stage: 'Regional',  subtitle: 'Amplía con rango de edad y presupuesto', theme: 'teal' },
+  3: { name: 'Ojeador Nacional', stage: 'Nacional',  subtitle: 'Filtra por origen, media y atributos',   theme: 'teal' },
+  4: { name: 'Ojeador Mundial',  stage: 'Mundial',   subtitle: 'Potencial, joyas ocultas y perfil físico', theme: 'gold' },
+};
 
-// ============================================================
+const SCOUT_STAGE_DOTS = ['Local', 'Regional', 'Nacional', 'Mundial'];
 
-function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer, facilities, dispatch, blockedPlayers = [] }) {
+const OJEADOR_POSITION_CHIPS = [
+  { en: 'GK', es: 'POR' }, { en: 'CB', es: 'DFC' }, { en: 'LB', es: 'LI' }, { en: 'RB', es: 'LD' },
+  { en: 'LWB', es: 'CRI' }, { en: 'RWB', es: 'CRD' }, { en: 'CDM', es: 'MCD' }, { en: 'CM', es: 'MC' },
+  { en: 'CAM', es: 'MCO' }, { en: 'LM', es: 'MI' }, { en: 'RM', es: 'MD' }, { en: 'LW', es: 'EI' },
+  { en: 'RW', es: 'ED' }, { en: 'ST', es: 'DC' }, { en: 'CF', es: 'SD' },
+];
+
+const OJEADOR_AGE_OPTIONS = [
+  { label: '≤ 19', value: 19 }, { label: '≤ 21', value: 21 },
+  { label: '≤ 23', value: 23 }, { label: 'Cualquiera', value: null },
+];
+
+// Metadatos de las 9 tarjetas de filtro (orden de la rejilla)
+const OJEADOR_FILTER_META = {
+  position:  { minLevel: 1, icon: Target,       title: 'Posición a buscar',     subtitle: 'Demarcación principal' },
+  age:       { minLevel: 2, icon: Calendar,     title: 'Rango de edad',          subtitle: 'Edad máxima del objetivo' },
+  budget:    { minLevel: 2, icon: Coins,        title: 'Presupuesto y valor',    subtitle: 'Valor de mercado máximo' },
+  region:    { minLevel: 3, icon: Globe,        title: 'Región de origen',       subtitle: 'Continente de procedencia' },
+  ovr:       { minLevel: 3, icon: Star,         title: 'Media mínima',           subtitle: 'Valoración global (OVR)' },
+  attrs:     { minLevel: 3, icon: Sparkles,     title: 'Atributos clave',        subtitle: 'Cualidades prioritarias' },
+  potential: { minLevel: 4, icon: TrendingUp,   title: 'Potencial y joyas',      subtitle: 'Descubre el techo de mejora' },
+  physique:  { minLevel: 4, icon: Dumbbell,     title: 'Perfil físico',          subtitle: 'Pie preferido y altura mínima' },
+  compare:   { minLevel: 4, icon: Scale,        title: 'Comparar con plantilla', subtitle: 'Frente a uno de tus titulares' },
+};
+const OJEADOR_FILTER_ORDER = ['position', 'age', 'budget', 'region', 'ovr', 'attrs', 'potential', 'physique', 'compare'];
+
+// Nombre del nivel necesario para desbloquear (para los carteles de "Mejora a…")
+const OJEADOR_UNLOCK_NAME = { 1: 'Local', 2: 'Regional', 3: 'Nacional', 4: 'Mundial' };
+
+function OjeadorTab({ myTeam, leagueTeams, scoutLevel = 1, budget, onSelectPlayer, facilities, dispatch, blockedPlayers = [] }) {
   const { t } = useTranslation();
 
-  const [suggestions, setSuggestions] = useState(null);
+  const level = Math.max(1, Math.min(4, Number(scoutLevel) || 1));
+  const meta = SCOUT_LEVEL_META[level];
+  const activeCount = countActiveFilters(level);
 
+  const valueCap = Math.max(Number(budget) || 0, 1_000_000);
+
+  const [criteria, setCriteria] = useState({
+    position: 'CAM',
+    ageMax: 23,
+    valueMax: valueCap,
+    regions: ['Europa'],
+    ovrMin: 60,
+    attributes: ['Regate'],
+    revealPotential: true,
+    potentialMin: 75,
+    preferredFoot: 'Indiferente',
+    heightMin: 165,
+    compareWithStarter: false,
+  });
+
+  const [suggestions, setSuggestions] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [selectedPosition, setSelectedPosition] = useState(null);
+  const patch = (delta) => setCriteria(prev => ({ ...prev, ...delta }));
+  const toggleInArray = (key, val) => setCriteria(prev => {
+    const arr = prev[key] || [];
+    return { ...prev, [key]: arr.includes(val) ? arr.filter(v => v !== val) : [...arr, val] };
+  });
 
+  // Titular de referencia para "Comparar con plantilla"
+  const starter = useMemo(() => {
+    const players = myTeam?.players || [];
+    if (!players.length) return null;
+    let pool = players;
+    if (criteria.position) {
+      const matched = players.filter(p => posToEN((p.position || '').replace(/\d+$/, '').toUpperCase().trim()) === posToEN(criteria.position));
+      if (matched.length) pool = matched;
+    }
+    return [...pool].sort((a, b) => (b.overall || 0) - (a.overall || 0))[0] || null;
+  }, [myTeam, criteria.position]);
 
-
-  const config = SCOUTING_LEVELS[scoutingLevel] || SCOUTING_LEVELS[0];
-
-
-
-  const POSITION_CHIPS = [
-    { en: 'GK', es: 'POR' },
-    { en: 'CB', es: 'DFC' },
-    { en: 'LB', es: 'LI' },
-    { en: 'RB', es: 'LD' },
-    { en: 'LWB', es: 'CRI' },
-    { en: 'RWB', es: 'CRD' },
-    { en: 'CDM', es: 'MCD' },
-    { en: 'CM', es: 'MC' },
-    { en: 'CAM', es: 'MCO' },
-    { en: 'LM', es: 'MI' },
-    { en: 'RM', es: 'MD' },
-    { en: 'LW', es: 'EI' },
-    { en: 'RW', es: 'ED' },
-    { en: 'ST', es: 'DC' },
-    { en: 'CF', es: 'SD' },
-  ];
-
-  const handleGenerateSuggestions = () => {
-
+  const handleSearch = () => {
     setIsLoading(true);
-
     setTimeout(() => {
-
-      const result = generateScoutingSuggestions(myTeam, leagueTeams, scoutingLevel, budget, selectedPosition);
-
+      const searchCriteria = { ...criteria, starter: criteria.compareWithStarter ? starter : null };
+      const result = generateScoutingSuggestions(myTeam, leagueTeams, level, budget, searchCriteria);
       setSuggestions(result);
-
       setIsLoading(false);
-
-    }, 1000);
-
+    }, 700);
   };
 
+  // ---- Render de controles por tarjeta ----
+  const renderControls = (key) => {
+    switch (key) {
+      case 'position':
+        return (
+          <div className="oj-chips">
+            {OJEADOR_POSITION_CHIPS.map(pos => (
+              <button
+                key={pos.en}
+                type="button"
+                className={`oj-chip ${criteria.position === pos.en ? 'is-active' : ''}`}
+                onClick={() => patch({ position: criteria.position === pos.en ? null : pos.en })}
+              >{pos.es}</button>
+            ))}
+          </div>
+        );
+      case 'age':
+        return (
+          <div className="oj-chips">
+            {OJEADOR_AGE_OPTIONS.map(opt => (
+              <button
+                key={opt.label}
+                type="button"
+                className={`oj-chip ${criteria.ageMax === opt.value ? 'is-active' : ''}`}
+                onClick={() => patch({ ageMax: opt.value })}
+              >{opt.label}</button>
+            ))}
+          </div>
+        );
+      case 'budget':
+        return (
+          <div className="oj-slider-block">
+            <div className="oj-slider-row">
+              <input
+                type="range" min={0} max={valueCap} step={Math.max(100000, Math.round(valueCap / 100))}
+                value={Math.min(criteria.valueMax ?? valueCap, valueCap)}
+                onChange={e => patch({ valueMax: Number(e.target.value) })}
+              />
+              <span className="oj-slider-value gold">{formatTransferPrice(criteria.valueMax ?? valueCap)}</span>
+            </div>
+            <span className="oj-note">Tu presupuesto disponible: {formatTransferPrice(budget || 0)}</span>
+          </div>
+        );
+      case 'region':
+        return (
+          <div className="oj-chips">
+            {SCOUT_CONTINENTS.map(r => (
+              <button
+                key={r}
+                type="button"
+                className={`oj-chip ${(criteria.regions || []).includes(r) ? 'is-active' : ''}`}
+                onClick={() => toggleInArray('regions', r)}
+              >{r}</button>
+            ))}
+          </div>
+        );
+      case 'ovr':
+        return (
+          <div className="oj-slider-block">
+            <div className="oj-slider-row">
+              <input
+                type="range" min={50} max={90} step={1}
+                value={criteria.ovrMin}
+                onChange={e => patch({ ovrMin: Number(e.target.value) })}
+              />
+              <span className="oj-slider-value">{criteria.ovrMin}</span>
+            </div>
+          </div>
+        );
+      case 'attrs':
+        return (
+          <div className="oj-chips">
+            {SCOUT_ATTRIBUTES.map(a => (
+              <button
+                key={a}
+                type="button"
+                className={`oj-chip ${(criteria.attributes || []).includes(a) ? 'is-active' : ''}`}
+                onClick={() => toggleInArray('attributes', a)}
+              >{a}</button>
+            ))}
+          </div>
+        );
+      case 'potential':
+        return (
+          <div className="oj-slider-block">
+            <label className="oj-check">
+              <input
+                type="checkbox"
+                checked={criteria.revealPotential}
+                onChange={e => patch({ revealPotential: e.target.checked })}
+              />
+              <span>Revelar potencial y joyas ocultas</span>
+            </label>
+            <div className={`oj-slider-row ${criteria.revealPotential ? '' : 'is-dim'}`}>
+              <input
+                type="range" min={60} max={99} step={1}
+                value={criteria.potentialMin}
+                disabled={!criteria.revealPotential}
+                onChange={e => patch({ potentialMin: Number(e.target.value) })}
+              />
+              <span className="oj-slider-value gold">↗ {criteria.potentialMin}</span>
+            </div>
+          </div>
+        );
+      case 'physique':
+        return (
+          <div className="oj-slider-block">
+            <div className="oj-chips">
+              {['Indiferente', 'Diestro', 'Zurdo'].map(f => (
+                <button
+                  key={f}
+                  type="button"
+                  className={`oj-chip ${criteria.preferredFoot === f ? 'is-active' : ''}`}
+                  onClick={() => patch({ preferredFoot: f })}
+                >{f}</button>
+              ))}
+            </div>
+            <div className="oj-slider-row">
+              <input
+                type="range" min={155} max={200} step={1}
+                value={criteria.heightMin}
+                onChange={e => patch({ heightMin: Number(e.target.value) })}
+              />
+              <span className="oj-slider-value">{criteria.heightMin} cm</span>
+            </div>
+          </div>
+        );
+      case 'compare':
+        return (
+          <div className="oj-slider-block">
+            <label className="oj-check">
+              <input
+                type="checkbox"
+                checked={criteria.compareWithStarter}
+                onChange={e => patch({ compareWithStarter: e.target.checked })}
+              />
+              <span>Comparar con un titular</span>
+            </label>
+            {criteria.compareWithStarter && (
+              starter ? (
+                <div className="oj-starter-row">
+                  <span className="oj-pos" data-pos={starter.position}>{translatePosition(starter.position)}</span>
+                  <span className="oj-starter-name">{starter.name}</span>
+                  <span className="oj-starter-ovr">{starter.overall}</span>
+                </div>
+              ) : (
+                <span className="oj-note">Sin jugadores en tu plantilla para comparar.</span>
+              )
+            )}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
+  const renderCard = (key) => {
+    const fm = OJEADOR_FILTER_META[key];
+    const unlocked = isFilterUnlocked(level, fm.minLevel);
+    const Icon = fm.icon;
+    return (
+      <div
+        key={key}
+        className={`oj-card ${unlocked ? 'is-unlocked' : 'is-locked'}`}
+        data-min-level={fm.minLevel}
+        data-locked={unlocked ? 'false' : 'true'}
+      >
+        <div className="oj-card-head">
+          <div className="oj-card-icon"><Icon size={18} /></div>
+          <div className="oj-card-titles">
+            <span className="oj-card-title">{fm.title}</span>
+            <span className="oj-card-subtitle">{fm.subtitle}</span>
+          </div>
+          {!unlocked && <span className="oj-card-badge">Nv. {fm.minLevel}</span>}
+        </div>
+
+        {unlocked ? (
+          <div className="oj-card-body">{renderControls(key)}</div>
+        ) : (
+          <div className="oj-card-locked">
+            <div className="oj-card-body oj-card-preview" aria-hidden="true">{renderControls(key)}</div>
+            <div className="oj-lock-panel">
+              <Lock size={18} />
+              <span className="oj-lock-title">Mejora a Ojeador {OJEADOR_UNLOCK_NAME[fm.minLevel]}</span>
+              <span className="oj-lock-sub">Desbloquéalo en Instalaciones → Ojeadores (Nv. {fm.minLevel})</span>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const list = suggestions?.suggestions || [];
 
   return (
+    <div className={`tab-ojeador theme-${meta.theme}`} data-scout-level={level} data-active-filters={activeCount}>
 
-    <div className="tab-ojeador">
-
-      {/* Header con nivel */}
-
-      <div className="ojeador-header">
-
-        <div className="ojeador-level">
-
-          <div className="level-icon">
-
-            <Target size={24} />
-
+      {/* Cabecera del ojeador */}
+      <div className="oj-header">
+        <div className="oj-header-icon"><Target size={26} /></div>
+        <div className="oj-header-main">
+          <div className="oj-header-titleline">
+            <span className="oj-header-title">{meta.name}</span>
+            <span className="oj-header-nv">Nv. {level}</span>
           </div>
-
-          <div className="level-info">
-
-            <span className="level-name">{config.name}</span>
-
-            <span className="level-desc">{config.description}</span>
-
+          <span className="oj-header-subtitle">{meta.subtitle}</span>
+          <div className="oj-stage-dots">
+            {SCOUT_STAGE_DOTS.map((s, i) => (
+              <span key={s} className={`oj-dot ${i < level ? 'is-on' : ''} ${i === level - 1 ? 'is-current' : ''}`}>{s}</span>
+            ))}
           </div>
-
-          <div className="level-badge">{t('transfers.level')} {scoutingLevel}</div>
-
         </div>
-
+        <div className="oj-header-count">
+          <span className="oj-count-num">{activeCount}/9</span>
+          <span className="oj-count-label">opciones activas</span>
+        </div>
       </div>
 
-
-
-      {/* Selector de posición */}
-
-      <div className="position-selector">
-
-        <span className="position-selector__label">{t('transfers.positionToSearch')}:</span>
-
-        <div className="position-selector__chips">
-
-          {POSITION_CHIPS.map(pos => (
-
-            <button
-
-              key={pos.en}
-
-              className={`pos-chip ${selectedPosition === pos.en ? 'pos-chip--active' : ''}`}
-
-              onClick={() => setSelectedPosition(selectedPosition === pos.en ? null : pos.en)}
-
-            >
-
-              {pos.es}
-
-            </button>
-
-          ))}
-
-        </div>
-
+      {/* Rejilla de 9 filtros */}
+      <div className="oj-grid">
+        {OJEADOR_FILTER_ORDER.map(renderCard)}
       </div>
-
-
 
       {/* Botón buscar */}
-
-      <button
-
-        className="generate-btn"
-
-        onClick={handleGenerateSuggestions}
-
-        disabled={isLoading}
-
-      >
-
-        {isLoading ? (
-
-          <>
-
-            <RefreshCw size={18} className="spinning" />
-
-            {t('transfers.analyzingMarket')}
-
-          </>
-
-        ) : (
-
-          <>
-
-            <Search size={18} />
-
-            {selectedPosition ? t('transfers.searchSpecific', { pos: POSITION_CHIPS.find(p => p.en === selectedPosition)?.es || '' }) : t('transfers.searchPlayers')}
-
-          </>
-
-        )}
-
+      <button type="button" className="oj-search-btn" onClick={handleSearch} disabled={isLoading}>
+        {isLoading
+          ? (<><RefreshCw size={18} className="spinning" /> Analizando mercado…</>)
+          : (<><Search size={18} /> Buscar jugadores</>)}
       </button>
 
-
-
-      {/* Lista de sugerencias */}
-
+      {/* Resultados */}
       {suggestions && (
-
-        <div className="suggestions-section">
-
-          <div className="suggestions-header">
-
-            <h4><Star size={16} /> {t('transfers.playersFound', { count: suggestions.suggestions.length })}</h4>
-
+        <div className="oj-results">
+          <div className="oj-results-head">
+            <span className="oj-results-title">Informe de ojeo · {list.length} jugadores</span>
+            <span className="oj-results-scope">Alcance: {suggestions.scopeLabel}</span>
           </div>
 
+          {list.length === 0 && (
+            <div className="oj-empty">No hay jugadores que cumplan tus criterios. Prueba a relajar los filtros.</div>
+          )}
 
-
-          <div className="suggestions-list">
-
-            {suggestions.suggestions.map((player, i) => {
-
+          <div className="oj-results-list">
+            {list.map((player, i) => {
               const playerId = player.id || player.name;
-
               const isBlocked = blockedPlayers.includes(playerId);
-
               return (
-
                 <div
-
                   key={i}
-
-                  className={`suggestion-card ${isBlocked ? 'blocked' : ''}`}
-
+                  className={`oj-result ${isBlocked ? 'blocked' : ''}`}
                   onClick={() => !isBlocked && onSelectPlayer(player)}
-
                 >
-
-                  <div className="suggestion-pos" data-pos={player.position}>{translatePosition(player.position)}</div>
-
-                  <div className="suggestion-main">
-
-                    <span className="name">{player.name}</span>
-
-                    <span className="meta">{player.teamName} · {player.age} {t('transfers.years')}</span>
-
+                  <span className="oj-avatar">{(player.name || '?').charAt(0)}</span>
+                  <div className="oj-result-main">
+                    <div className="oj-result-nameline">
+                      <span className="oj-pos" data-pos={player.position}>{translatePosition(player.position)}</span>
+                      <span className="oj-result-name">{player.name}</span>
+                    </div>
+                    <span className="oj-result-meta">
+                      {player.teamName} · {player.age} {t('transfers.years')}
+                      {level >= 3 && player.region ? ` · ${player.region}` : ''}
+                    </span>
                   </div>
-
-                  <div className="suggestion-stats">
-
-                    <span className="overall">{player.overall}</span>
-
-                    <span className="value">{isBlocked ? <Ban size={14} /> : formatTransferPrice(player.marketValue)}</span>
-
+                  <div className="oj-result-stats">
+                    <span className="oj-result-value gold">{isBlocked ? <Ban size={14} /> : formatTransferPrice(player.marketValue)}</span>
+                    <div className="oj-result-ovrline">
+                      <span className="oj-result-ovr">{player.overall}</span>
+                      {level >= 4
+                        ? <span className="oj-result-pot">↗ {player.potential}</span>
+                        : <span className="oj-result-locked"><Lock size={11} /> Nv. 4</span>}
+                    </div>
                   </div>
-
-                  {!isBlocked && (
-
-                    <div
-
-                      className="difficulty-indicator"
-
-                      style={{ background: player.difficulty?.color }}
-
-                      title={player.difficulty?.difficulty}
-
-                    />
-
-                  )}
-
                 </div>
-
               );
-
             })}
-
           </div>
 
+          {level < 4 && list.length > 0 && (
+            <div className="oj-results-hint">
+              <Sparkles size={14} /> Sube el ojeador para revelar potencial, joyas ocultas y más jugadores fuera de tu alcance actual.
+            </div>
+          )}
         </div>
-
       )}
-
     </div>
-
   );
-
 }
-
 
 
 // CesionesTab removed — loan functionality merged into Recibidas, Enviadas, and PlayerModal
@@ -2694,6 +3121,8 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
   const [failReason, setFailReason] = useState('');
 
   const [signingBonus, setSigningBonus] = useState(0);
+
+  const [houseAndCar, setHouseAndCar] = useState(false);
 
   const [negotiationMode, setNegotiationMode] = useState('transfer'); // 'transfer', 'loan', 'precontract'
 
@@ -2902,7 +3331,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
   const playerProbability = useMemo(() => {
 
-    const salaryRatio = salaryOffer / requiredSalary;
+    const salaryRatio = getEffectiveSalaryWithPerks(salaryOffer, houseAndCar, contractYears) / requiredSalary;
 
     let prob = 50; // Base same as evaluatePlayerOffer
 
@@ -2968,7 +3397,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
     return Math.max(5, Math.min(95, Math.round(prob)));
 
-  }, [salaryOffer, requiredSalary, tierDiff, personalityData, player.age]);
+  }, [salaryOffer, requiredSalary, tierDiff, personalityData, player.age, houseAndCar, contractYears]);
 
 
 
@@ -3030,7 +3459,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-    const salaryRatio = salaryOffer / expectedSalary;
+    const salaryRatio = getEffectiveSalaryWithPerks(salaryOffer, houseAndCar, contractYears) / expectedSalary;
 
     const bonusRatio = expectedBonus > 0 ? signingBonus / expectedBonus : 1;
 
@@ -3068,7 +3497,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
     return Math.max(5, Math.min(95, Math.round(prob)));
 
-  }, [isFreeAgent, negotiationMode, salaryOffer, requiredSalary, marketValue, signingBonus, buyerTier]);
+  }, [isFreeAgent, negotiationMode, salaryOffer, requiredSalary, marketValue, signingBonus, buyerTier, houseAndCar, contractYears]);
 
 
 
@@ -3116,8 +3545,8 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
     const immediateCost = negotiationMode === 'loan'
       ? loanFee
       : (isFreeAgent || negotiationMode === 'precontract')
-        ? signingBonus
-        : offerAmount;
+        ? signingBonus + (houseAndCar ? HOUSE_AND_CAR_COST : 0)
+        : offerAmount + (houseAndCar ? HOUSE_AND_CAR_COST : 0);
     const annualCost = negotiationMode === 'loan'
       ? Math.round(currentSalary * (loanSalaryShare / 100) * 52)
       : Math.round(salaryOffer * 52);
@@ -3132,7 +3561,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
     else if (probability >= 35) label = t('transfers.dealPulseMedium', 'Ajustada');
 
     return { probability, immediateCost, annualCost, totalCost, budgetAfter, label };
-  }, [negotiationMode, loanProbability, freeAgentProbability, clubProbability, playerProbability, loanFee, signingBonus, offerAmount, currentSalary, loanSalaryShare, salaryOffer, contractYears, budget, isFreeAgent, t]);
+  }, [negotiationMode, loanProbability, freeAgentProbability, clubProbability, playerProbability, loanFee, signingBonus, offerAmount, currentSalary, loanSalaryShare, salaryOffer, contractYears, budget, isFreeAgent, houseAndCar, t]);
 
 
 
@@ -3318,7 +3747,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-      const salaryRatio = salaryOffer / expectedSalary;
+      const salaryRatio = getEffectiveSalaryWithPerks(salaryOffer, houseAndCar, contractYears) / expectedSalary;
 
       const bonusRatio = expectedBonus > 0 ? signingBonus / expectedBonus : 1;
 
@@ -3452,7 +3881,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
       type: 'SIGN_PLAYER',
 
-      payload: { player: newPlayer, fee: signingBonus }
+      payload: { player: newPlayer, fee: signingBonus + (houseAndCar ? HOUSE_AND_CAR_COST : 0) }
 
     });
 
@@ -3504,7 +3933,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
         title: isFreeAgent ? t('transfers.freeAgentSigned') : t('transfers.preContractSigned'),
 
-        content: t('transfers.playerJoined', { name: player.name, bonus: formatTransferPrice(signingBonus), salary: formatTransferPrice(salaryOffer * 52) }),
+        content: t('transfers.playerJoined', { name: player.name, bonus: formatTransferPrice(signingBonus + (houseAndCar ? HOUSE_AND_CAR_COST : 0)), salary: formatTransferPrice(salaryOffer * 52) }),
 
         date: `${t('transfers.weekShort', { week: state.currentWeek })}`
 
@@ -3516,7 +3945,10 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  const canAfford = budget >= offerAmount;
+  const immediateTransferCost = offerAmount + (houseAndCar ? HOUSE_AND_CAR_COST : 0);
+  const immediateFreeAgentCost = signingBonus + (houseAndCar ? HOUSE_AND_CAR_COST : 0);
+  const houseAndCarWeeklyEquivalent = getHouseAndCarWeeklyEquivalent(contractYears);
+  const canAfford = budget >= immediateTransferCost;
 
 
 
@@ -3570,9 +4002,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                       negotiationMode === 'loan' ? formatTransferPrice(loanFee) :
 
-                      (isFreeAgent || negotiationMode === 'precontract') ? formatTransferPrice(signingBonus) :
+                      (isFreeAgent || negotiationMode === 'precontract') ? formatTransferPrice(signingBonus + (houseAndCar ? HOUSE_AND_CAR_COST : 0)) :
 
-                      formatTransferPrice(offerAmount)
+                      formatTransferPrice(offerAmount + (houseAndCar ? HOUSE_AND_CAR_COST : 0))
 
                     }</span>
 
@@ -4181,6 +4613,19 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 </div>
 
+                <label className={`house-car-option ${houseAndCar ? 'active' : ''}`}>
+                  <input
+                    type="checkbox"
+                    checked={houseAndCar}
+                    onChange={(event) => setHouseAndCar(event.target.checked)}
+                  />
+                  <span className="perk-icon"><Home size={15} /><Car size={15} /></span>
+                  <span className="perk-copy">
+                    <strong>Casa y coche</strong>
+                    <small>Precio cerrado: {formatTransferPrice(HOUSE_AND_CAR_COST)} · suma +{formatTransferPrice(houseAndCarWeeklyEquivalent * 52)}/{t('transfers.year')} a ojos del jugador</small>
+                  </span>
+                </label>
+
 
 
                 <div className="contract-row">
@@ -4246,6 +4691,10 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                         contractYears,
 
+                        houseAndCar,
+
+                        houseAndCarCost: houseAndCar ? HOUSE_AND_CAR_COST : 0,
+
                         status: 'pending',
 
                         submittedWeek: state.currentWeek
@@ -4258,7 +4707,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   }}
 
-                  disabled={budget < offerAmount || offerAmount <= 0 || (state.outgoingOffers || []).some(o => o.playerName === player.name && o.status === 'pending')}
+                  disabled={budget < immediateTransferCost || offerAmount <= 0 || (state.outgoingOffers || []).some(o => o.playerName === player.name && o.status === 'pending')}
 
                 >
 
@@ -4287,11 +4736,17 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   </div>
 
+                  {houseAndCar && (
+                    <div className="summary-line perk">
+                      <span>🏠🚗 Casa y coche</span>
+                      <span className="amount">{formatTransferPrice(HOUSE_AND_CAR_COST)}</span>
+                    </div>
+                  )}
                   <div className="summary-line total">
 
                     <span>💵 {t('transfers.totalInvestment')}</span>
 
-                    <span className="amount">{formatTransferPrice(offerAmount + salaryOffer * 52 * contractYears)}</span>
+                    <span className="amount">{formatTransferPrice(offerAmount + (houseAndCar ? HOUSE_AND_CAR_COST : 0) + salaryOffer * 52 * contractYears)}</span>
 
                   </div>
 
@@ -4427,6 +4882,20 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 </div>
 
+                <label className={`house-car-option ${houseAndCar ? 'active' : ''}`}>
+                  <input
+                    type="checkbox"
+                    checked={houseAndCar}
+                    onChange={(event) => setHouseAndCar(event.target.checked)}
+                    disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
+                  />
+                  <span className="perk-icon"><Home size={15} /><Car size={15} /></span>
+                  <span className="perk-copy">
+                    <strong>Casa y coche</strong>
+                    <small>Precio cerrado: {formatTransferPrice(HOUSE_AND_CAR_COST)} · ayuda a cubrir lo que pide el jugador</small>
+                  </span>
+                </label>
+
 
 
                 <div className="contract-row">
@@ -4527,7 +4996,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <span className="cost-label">{t('transfers.totalCostLabel')}</span>
 
-                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer * 52)}/{t('transfers.year')} × {contractYears} {t('transfers.years')}</span>
+                  <span className="cost-value">{formatTransferPrice(signingBonus + (houseAndCar ? HOUSE_AND_CAR_COST : 0))} + {formatTransferPrice(salaryOffer * 52)}/{t('transfers.year')} × {contractYears} {t('transfers.years')}</span>
 
                 </div>
 
@@ -4541,11 +5010,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     onClick={handleFreeAgentOffer}
 
-                    disabled={budget < signingBonus}
+                    disabled={budget < immediateFreeAgentCost}
 
                   >
 
-                    {budget < signingBonus ? t('transfers.insufficientBudget', { amount: formatTransferPrice(budget) }) : isFreeAgent ? t('transfers.presentOffer') : t('transfers.offerPreContract')}
+                    {budget < immediateFreeAgentCost ? t('transfers.insufficientBudget', { amount: formatTransferPrice(budget) }) : isFreeAgent ? t('transfers.presentOffer') : t('transfers.offerPreContract')}
 
                   </button>
 

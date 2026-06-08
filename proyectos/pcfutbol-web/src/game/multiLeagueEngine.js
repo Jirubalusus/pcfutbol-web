@@ -83,14 +83,14 @@ export const LEAGUE_CONFIG = {
   },
   segunda: {
     id: 'segunda',
-    name: 'Segunda División',
+    name: 'Segunda Ibérica',
     country: 'España',
-    teams: 22,
+    teams: 20,
     getTeams: getSegundaTeams,
     zones: {
       promotion: [1, 2],
       playoff: [3, 4, 5, 6],
-      relegation: [19, 20, 21, 22]  // 4 descienden a Primera RFEF
+      relegation: [18, 19, 20]
     }
   },
   primeraRFEF: {
@@ -944,6 +944,75 @@ export function initializeOtherLeagues(playerLeagueId, playerGroupId = null) {
 }
 
 /**
+ * Build a minimal team object from a live standings row. Historical/diverged
+ * careers carry team IDs that are absent from the static 2025/26 getTeams()
+ * pools; deriving a stub from the live table lets those fixtures still be
+ * simulated instead of being silently skipped (which froze tables and made the
+ * Champions winner repeat season after season). simulateMatch only needs an
+ * id/name plus a strength (overall/reputation); players default to empty.
+ */
+function teamFromTableRow(row) {
+  if (!row) return null;
+  const id = row.teamId || row.id;
+  if (!id) return null;
+  return {
+    id,
+    name: row.teamName || row.name || id,
+    shortName: row.shortName || '',
+    overall: row.overall ?? row.reputation ?? 70,
+    reputation: row.reputation ?? row.overall ?? 70,
+    players: row.players || [],
+  };
+}
+
+/**
+ * Resolve the team-lookup map for a standard league from the LIVE table first,
+ * enriching with the static config pool only when the same ID exists there. In
+ * current mode the live table is built from getTeams() so every ID matches and
+ * behaviour is unchanged; in a historical career the static pool lacks the IDs,
+ * so table-derived stubs guarantee fixtures still get played.
+ */
+function buildStandardTeamsMap(leagueData, config) {
+  const staticTeams = config?.getTeams?.() || [];
+  const staticById = new Map(staticTeams.map(t => [t.id, t]));
+  const map = new Map();
+  (leagueData.table || []).forEach(row => {
+    const id = row.teamId || row.id;
+    if (!id) return;
+    map.set(id, staticById.get(id) || teamFromTableRow(row));
+  });
+  // Defensive (current mode): include static teams missing from the table.
+  staticTeams.forEach(t => { if (t.id && !map.has(t.id)) map.set(t.id, t); });
+  return map;
+}
+
+/**
+ * Build per-group team-lookup arrays from the LIVE group tables first so
+ * historical group fixtures (IDs absent from the static getGroups pool) still
+ * play. Resolution per row: static config team → stored group team object →
+ * table-derived stub. Falls back to a group's stored team objects if its table
+ * is empty.
+ */
+function buildGroupTeams(leagueData, config) {
+  const staticGroups = config?.getGroups?.() || {};
+  const staticById = new Map();
+  Object.values(staticGroups).forEach(arr => {
+    (Array.isArray(arr) ? arr : (arr?.teams || [])).forEach(t => { if (t?.id) staticById.set(t.id, t); });
+  });
+  const groupsTeams = {};
+  Object.entries(leagueData.groups || {}).forEach(([groupId, groupData]) => {
+    const stored = new Map((groupData.teams || []).map(t => [t.id, t]));
+    const list = (groupData.table || []).map(row => {
+      const id = row.teamId || row.id;
+      if (!id) return null;
+      return staticById.get(id) || stored.get(id) || teamFromTableRow(row);
+    }).filter(Boolean);
+    groupsTeams[groupId] = list.length > 0 ? list : (groupData.teams || []);
+  });
+  return groupsTeams;
+}
+
+/**
  * Simula los partidos de una semana para todas las otras ligas
  * @param {Object} otherLeagues - Estado actual de otras ligas
  * @param {number} week - Semana a simular
@@ -963,7 +1032,7 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       }
       
       try {
-        const groupsTeams = config?.getGroups?.() || {};
+        const groupsTeams = buildGroupTeams(leagueData, config);
         const updated = simulateGroupLeagueWeek(leagueData, week, groupsTeams);
         updatedLeagues[leagueId] = {
           ...updated,
@@ -988,19 +1057,11 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       return;
     }
     
-    if (!config) {
+    const teamsMap = buildStandardTeamsMap(leagueData, config);
+    if (teamsMap.size === 0) {
       updatedLeagues[leagueId] = leagueData;
       return;
     }
-    
-    const teams = config.getTeams();
-    if (!teams || teams.length === 0) {
-      updatedLeagues[leagueId] = leagueData;
-      return;
-    }
-    
-    // Build team lookup map for O(1) access instead of O(n) .find()
-    const teamsMap = new Map(teams.map(t => [t.id, t]));
     
     // ---- Apertura-Clausura: Check if we need to reset table for Clausura ----
     let updatedTable = [...leagueData.table];
@@ -1099,7 +1160,7 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
               };
             } else {
               // Different champions — simulate two-leg final
-              finalResult = simulateAperturaClausuraFinal(aperturaChampId, clausuraChampId, teams);
+              finalResult = simulateAperturaClausuraFinal(aperturaChampId, clausuraChampId, Array.from(teamsMap.values()));
               champion = finalResult?.winner || null;
             }
           }
@@ -1148,9 +1209,10 @@ export function completeRemainingLeagues(otherLeagues, currentWeek) {
       });
       if (!hasUnplayed) return;
       
-      // Simulate remaining weeks for group league
+      // Simulate remaining weeks for group league using the live group tables;
+      // historical group team IDs are often absent from static getGroups().
       const config = LEAGUE_CONFIG[leagueId];
-      const groupsTeams = config?.getGroups?.() || {};
+      const groupsTeams = buildGroupTeams(leagueData, config);
       let maxWeek = 0;
       Object.values(leagueData.groups).forEach(g => {
         (g.fixtures || []).forEach(f => { if (f.week > maxWeek) maxWeek = f.week; });
@@ -1310,7 +1372,7 @@ const LEAGUE_RELATIONS = {
     relegatesTo: 'primeraRFEF',
     promotedFrom: 'primeraRFEF',
     promotesTo: 'laliga',
-    relegationSpots: 4,  // Últimos 4 descienden a Primera RFEF (positions 19-22)
+    relegationSpots: 3,
     promotionSpots: 2
   },
   primeraRFEF: {
@@ -1400,6 +1462,13 @@ export function getRelegatedTeams(table, leagueId) {
   
   const zones = config.zones;
   if (!zones.relegation) return [];
+
+  if (leagueId === 'segunda' && table.length > 0) {
+    return table
+      .slice(-zones.relegation.length)
+      .map(team => team.teamId)
+      .filter(Boolean);
+  }
   
   // Obtener equipos en posiciones de descenso
   return zones.relegation.map(pos => table[pos - 1]?.teamId).filter(Boolean);
@@ -1443,7 +1512,7 @@ export function getPromotedTeams(table, leagueId) {
  * @param {Object|null} options.playoffBracket - Bracket de playoff ya resuelto (si el jugador jugó el playoff)
  * @returns {Object} - Nuevos equipos para cada liga y nueva liga del jugador
  */
-export function processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId, playoffBracket = null) {
+export function processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId, playoffBracket = null, teamPoolOverride = null) {
   // Equipos que descienden de La Liga (posiciones 18, 19, 20)
   const relegatedFromLaLiga = getRelegatedTeams(laligaTable, 'laliga');
   
@@ -1456,7 +1525,9 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
   const allLaLigaTeams = getLaLigaTeams();
   const allPrimeraRfefTeams = getPrimeraRfefTeams();
   const allSegundaRfefTeams = getSegundaRfefTeams();
-  const allTeams = [...allLaLigaTeams, ...allSegundaTeams, ...allPrimeraRfefTeams, ...allSegundaRfefTeams];
+  const allTeams = Array.isArray(teamPoolOverride) && teamPoolOverride.length > 0
+    ? teamPoolOverride
+    : [...allLaLigaTeams, ...allSegundaTeams, ...allPrimeraRfefTeams, ...allSegundaRfefTeams];
   const findTeam = (id) => allTeams.find(t => t.id === id);
   
   let resolvedBracket = playoffBracket;
@@ -1536,8 +1607,9 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
 /**
  * @param {Object} options.primeraRFEFPlayoffBrackets - Pre-resolved playoff brackets (if player participated)
  * @param {Object} options.segundaRFEFPlayoffBrackets - Pre-resolved playoff brackets (if player participated)
+ * @param {boolean} options.disablePrimeraRFEFToSegundaRFEFRelegation - Historical floor: no Segunda RFEF exists.
  */
-function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRFEFData, options = {}) {
+export function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRFEFData, options = {}) {
   const allSegundaTeams = getSegundaTeams();
   const allPrimeraRfefTeams = getPrimeraRfefTeams();
   const allSegundaRfefTeams = getSegundaRfefTeams();
@@ -1551,14 +1623,11 @@ function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRF
     segundaRFEFPlayoffBrackets: {}   // Playoff brackets for Segunda RFEF
   };
   
-  // 1. Segunda → Primera RFEF: Last 4 of Segunda descend (positions 19-22)
+  // 1. Segunda → Primera RFEF: use the live table length, not the static
+  // 20-team config positions. In a 22-team Segunda, the normal 3 demotions are
+  // positions 20-22.
   if (segundaTable && segundaTable.length > 0) {
-    const zones = LEAGUE_CONFIG.segunda.zones;
-    if (zones.relegation) {
-      changes.segundaToRFEF = zones.relegation
-        .map(pos => segundaTable[pos - 1]?.teamId)
-        .filter(Boolean);
-    }
+    changes.segundaToRFEF = getRelegatedTeams(segundaTable, 'segunda');
   }
   
   // 2. Primera RFEF → Segunda: Champions ascend directly + playoff winners
@@ -1577,19 +1646,32 @@ function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRF
     }
     changes.primeraRFEFPlayoffBrackets = playoffBrackets;
     
-    // Add playoff winners to promoted list
+    // Add playoff winners to promoted list. The game currently exposes three
+    // Segunda relegation slots (UI, season result and league relations), so cap
+    // RFEF promotions to that same contract to keep league sizes stable without
+    // silently demoting an extra Segunda club.
     const playoffWinners = getGroupPlayoffWinners(playoffBrackets);
     changes.rfefToSegunda = [...changes.rfefToSegunda, ...playoffWinners];
+    const segundaSlots = LEAGUE_CONFIG.segunda.zones.relegation?.length || changes.rfefToSegunda.length;
+    changes.rfefToSegunda = changes.rfefToSegunda.slice(0, segundaSlots);
+  }
+
+  // Keep Segunda's size stable if RFEF produces a different number of promoted
+  // clubs. This can intentionally expand the demotion count, but it must always
+  // be anchored to the actual bottom rows.
+  if (segundaTable?.length && changes.rfefToSegunda.length > 0 && changes.segundaToRFEF.length !== changes.rfefToSegunda.length) {
+    const targetRelegations = Math.min(changes.rfefToSegunda.length, segundaTable.length);
+    changes.segundaToRFEF = segundaTable.slice(-targetRelegations).map(t => t.teamId).filter(Boolean);
   }
   
   // 3. Primera RFEF → Segunda RFEF: Last 5 of each group descend (10 total)
-  if (primeraRFEFData?.groups) {
+  if (primeraRFEFData?.groups && !options.disablePrimeraRFEFToSegundaRFEFRelegation) {
     const relegated = getRelegatedFromGroups(primeraRFEFData, 5);
     changes.rfefToSegundaRFEF = relegated.map(r => r.teamId);
   }
   
   // 4. Segunda RFEF → Primera RFEF: Champions ascend directly + playoff winners
-  if (segundaRFEFData?.groups) {
+  if (segundaRFEFData?.groups && !options.disablePrimeraRFEFToSegundaRFEFRelegation) {
     // Direct: champion of each group
     const directPromoted = getPromotedFromGroups(segundaRFEFData, 1);
     changes.segundaRFEFToRFEF = directPromoted.map(p => p.teamId);
@@ -1728,14 +1810,16 @@ function simulatePromotionPlayoffBracket(bottomTable, allTeams, playoffPositions
  * Process promotion/relegation for a single non-Spanish league pair.
  * Returns { relegated, promoted, playoffWinner, newPlayerLeagueId (or null) }
  */
-function processLeaguePairPromotionRelegation(pair, topTable, bottomTable, playerTeamId) {
+function processLeaguePairPromotionRelegation(pair, topTable, bottomTable, playerTeamId, teamPoolOverride = null) {
   const topConfig = LEAGUE_CONFIG[pair.topLeague];
   const bottomConfig = LEAGUE_CONFIG[pair.bottomLeague];
   if (!topConfig || !bottomConfig) return null;
   
   const allTopTeams = topConfig.getTeams();
   const allBottomTeams = bottomConfig.getTeams();
-  const allTeams = [...allTopTeams, ...allBottomTeams];
+  const allTeams = Array.isArray(teamPoolOverride) && teamPoolOverride.length > 0
+    ? teamPoolOverride
+    : [...allTopTeams, ...allBottomTeams];
   const findTeam = (id) => allTeams.find(t => t.id === id);
   
   let relegatedIds = [];  // teams going down from top
@@ -1836,6 +1920,10 @@ function processLeaguePairPromotionRelegation(pair, topTable, bottomTable, playe
  */
 export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBracket = null, rfefPlayoffs = {}) {
   const playerLeagueId = state.playerLeagueId || 'laliga';
+  const disablePrimeraRFEFToSegundaRFEFRelegation = !!rfefPlayoffs.disablePrimeraRFEFToSegundaRFEFRelegation
+    || (state.gameMode === 'glory'
+      && !!state.historicalDatabase
+      && !!state.gloryData?.historicalNoSegundaRfef);
   
   // Solo procesamos promoción/relegación para ligas españolas
   const spanishLeagues = ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'];
@@ -1865,17 +1953,42 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     
     const primeraRFEFData = reconstructGroupData('primeraRFEF');
     const segundaRFEFData = reconstructGroupData('segundaRFEF');
+
+    const liveTeamPool = [];
+    const addTeamToLivePool = (team) => {
+      const id = team?.id || team?.teamId;
+      if (!id || liveTeamPool.some(existing => existing.id === id)) return;
+      liveTeamPool.push({ ...team, id, name: team.name || team.teamName || team.shortName || id });
+    };
+    addTeamToLivePool(state.team);
+    (state.leagueTeams || []).forEach(addTeamToLivePool);
+    (state.playerMarket || []).forEach(addTeamToLivePool);
+    const addTableToLivePool = (table) => (table || []).forEach(row => addTeamToLivePool(teamFromTableRow(row)));
+    const addLeagueDataToLivePool = (leagueData) => {
+      if (!leagueData) return;
+      addTableToLivePool(leagueData.table);
+      addTableToLivePool(leagueData.accumulatedTable);
+      if (leagueData.groups) {
+        Object.values(leagueData.groups).forEach(groupData => {
+          (groupData.teams || []).forEach(addTeamToLivePool);
+          addTableToLivePool(groupData.table);
+        });
+      }
+    };
+    addTableToLivePool(state.leagueTable);
+    Object.values(state.otherLeagues || {}).forEach(addLeagueDataToLivePool);
     
     // Process LaLiga ↔ Segunda promotion/relegation (existing logic)
     let laligaSegundaChanges = { changes: { relegated: [], promoted: [], playoffWinner: '' } };
     if (segundaTable.length > 0 && laligaTable.length > 0) {
-      laligaSegundaChanges = processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId, playoffBracket);
+      laligaSegundaChanges = processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId, playoffBracket, liveTeamPool);
     }
     
     // Process RFEF promotion/relegation (with playoffs)
     const rfefChanges = processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRFEFData, {
       primeraRFEFPlayoffBrackets: rfefPlayoffs.primeraRFEFPlayoffBrackets || null,
-      segundaRFEFPlayoffBrackets: rfefPlayoffs.segundaRFEFPlayoffBrackets || null
+      segundaRFEFPlayoffBrackets: rfefPlayoffs.segundaRFEFPlayoffBrackets || null,
+      disablePrimeraRFEFToSegundaRFEFRelegation
     });
     
     // === BUILD NEW TEAM LISTS ===
@@ -1883,7 +1996,7 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     const allSegundaTeams = getSegundaTeams();
     const allPrimeraRfefTeams = getPrimeraRfefTeams();
     const allSegundaRfefTeams = getSegundaRfefTeams();
-    const allTeamsPool = [];
+    const allTeamsPool = [...liveTeamPool];
 
     // Prefer the live player team over static data with the same id so promotions
     // preserve the current squad, budget and evolved state.
@@ -1898,6 +2011,19 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     });
 
     const findTeam = (id) => allTeamsPool.find(t => t.id === id);
+    const teamsFromTable = (table) => (table || [])
+      .map(row => findTeam(row.teamId || row.id) || teamFromTableRow(row))
+      .filter(Boolean);
+    const getCurrentLeagueTeams = (leagueId) => {
+      if (leagueId === playerLeagueId) return teamsFromTable(state.leagueTable);
+      const ld = state.otherLeagues?.[leagueId];
+      if (!ld) return [];
+      if (ld.groups) {
+        return Object.values(ld.groups).flatMap(groupData => teamsFromTable(groupData.table));
+      }
+      const table = (ld.accumulatedTable && ld.accumulatedTable.length > 0) ? ld.accumulatedTable : ld.table;
+      return teamsFromTable(table);
+    };
     const getCurrentGroupLeagueIds = (groupLeagueData, fallbackTeams) => {
       const ids = [];
       if (groupLeagueData?.groups) {
@@ -1911,8 +2037,9 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
       return fallbackTeams.map(t => t.id).filter(Boolean);
     };
     
-    // New La Liga teams
-    const newLaLigaTeams = laligaSegundaChanges.newLaLigaTeams || allLaLigaTeams;
+    // New La Liga teams: preserve the live historical composition if no swap ran.
+    const currentLaLigaTeams = teamsFromTable(laligaTable);
+    const newLaLigaTeams = laligaSegundaChanges.newLaLigaTeams || (currentLaLigaTeams.length > 0 ? currentLaLigaTeams : allLaLigaTeams);
     
     // New Segunda teams: remove promoted to LaLiga, remove relegated to Primera RFEF, add from LaLiga, add from Primera RFEF
     let newSegundaIds;
@@ -1942,14 +2069,18 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     const newPrimeraRFEFTeams = currentPrimeraRFEFIds.map(findTeam).filter(Boolean);
     
     // New Segunda RFEF teams: remove promoted to Primera RFEF, add relegated from Primera RFEF
-    let currentSegundaRFEFIds = getCurrentGroupLeagueIds(segundaRFEFData, allSegundaRfefTeams);
+    let currentSegundaRFEFIds = disablePrimeraRFEFToSegundaRFEFRelegation
+      ? []
+      : getCurrentGroupLeagueIds(segundaRFEFData, allSegundaRfefTeams);
     currentSegundaRFEFIds = currentSegundaRFEFIds
       .filter(id => !rfefChanges.segundaRFEFToRFEF.includes(id));
     currentSegundaRFEFIds = [
       ...currentSegundaRFEFIds,
       ...rfefChanges.rfefToSegundaRFEF
     ];
-    const newSegundaRFEFTeams = currentSegundaRFEFIds.map(findTeam).filter(Boolean);
+    const newSegundaRFEFTeams = disablePrimeraRFEFToSegundaRFEFRelegation
+      ? []
+      : currentSegundaRFEFIds.map(findTeam).filter(Boolean);
     
     // Determine player's new league
     let newPlayerLeagueId = laligaSegundaChanges.newPlayerLeague || playerLeagueId;
@@ -1981,7 +2112,7 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
       const bottomTable = getNonSpanishTable(pair.bottomLeague);
       if (topTable.length === 0 || bottomTable.length === 0) continue;
       
-      const pairResult = processLeaguePairPromotionRelegation(pair, topTable, bottomTable, null);
+      const pairResult = processLeaguePairPromotionRelegation(pair, topTable, bottomTable, null, allTeamsPool);
       if (!pairResult) continue;
       
       nonSpanishOverrides[pair.topLeague] = pairResult.newTopTeams;
@@ -2002,14 +2133,20 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
       const config = LEAGUE_CONFIG[leagueId];
       if (config.isGroupLeague) {
         try {
-          const groupsData = config.getGroups();
+          const liveGroupsData = {};
+          Object.entries(state.otherLeagues?.[leagueId]?.groups || {}).forEach(([groupId, groupData]) => {
+            const teams = teamsFromTable(groupData.table);
+            if (teams.length > 0) liveGroupsData[groupId] = teams;
+          });
+          const groupsData = Object.keys(liveGroupsData).length > 0 ? liveGroupsData : config.getGroups();
           const groupLeague = initializeGroupLeague(groupsData, null);
           otherLeagues[leagueId] = { isGroupLeague: true, ...groupLeague };
         } catch (e) {
           otherLeagues[leagueId] = { isGroupLeague: true, groups: {} };
         }
       } else {
-        const teams = nonSpanishOverrides[leagueId] || config.getTeams();
+        const liveTeams = getCurrentLeagueTeams(leagueId);
+        const teams = nonSpanishOverrides[leagueId] || (liveTeams.length > 0 ? liveTeams : config.getTeams());
         if (teams && teams.length > 0) {
           const { table, fixtures } = initializeLeague(teams, null);
           if (isAperturaClausura(leagueId)) {
@@ -2046,19 +2183,24 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     const primeraRFEFGroupsData = distributeTeamsInGroups(newPrimeraRFEFTeams, 2);
     const newPrimeraRFEFData = initializeGroupLeague(primeraRFEFGroupsData, newPlayerLeagueId === 'primeraRFEF' ? playerTeamId : null);
     // Segunda RFEF (group league)
-    const segundaRFEFGroupsData = distributeTeamsInGroups(newSegundaRFEFTeams, 5);
-    const newSegundaRFEFData = initializeGroupLeague(segundaRFEFGroupsData, newPlayerLeagueId === 'segundaRFEF' ? playerTeamId : null);
+    const segundaRFEFGroupsData = disablePrimeraRFEFToSegundaRFEFRelegation
+      ? {}
+      : distributeTeamsInGroups(newSegundaRFEFTeams, 5);
+    const newSegundaRFEFData = disablePrimeraRFEFToSegundaRFEFRelegation
+      ? null
+      : initializeGroupLeague(segundaRFEFGroupsData, newPlayerLeagueId === 'segundaRFEF' ? playerTeamId : null);
     
     // Place each league appropriately (player league vs other leagues)
     const spanishLeagueData = {
       laliga: newLaLigaData,
       segunda: newSegundaData,
       primeraRFEF: { isGroupLeague: true, ...newPrimeraRFEFData },
-      segundaRFEF: { isGroupLeague: true, ...newSegundaRFEFData }
+      ...(newSegundaRFEFData ? { segundaRFEF: { isGroupLeague: true, ...newSegundaRFEFData } } : {})
     };
     
     // Add non-player Spanish leagues to otherLeagues
     spanishLeagues.forEach(leagueId => {
+      if (!spanishLeagueData[leagueId]) return;
       if (leagueId !== newPlayerLeagueId) {
         otherLeagues[leagueId] = spanishLeagueData[leagueId];
       } else if (LEAGUE_CONFIG[leagueId]?.isGroupLeague) {
@@ -2139,6 +2281,41 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
   
   // Map of leagueId → new team list (overrides default getTeams)
   const leagueTeamOverrides = {};
+  const liveTeamPool = [];
+  const addTeamToLivePool = (team) => {
+    const id = team?.id || team?.teamId;
+    if (!id || liveTeamPool.some(existing => existing.id === id)) return;
+    liveTeamPool.push({ ...team, id, name: team.name || team.teamName || team.shortName || id });
+  };
+  addTeamToLivePool(state.team);
+  (state.leagueTeams || []).forEach(addTeamToLivePool);
+  (state.playerMarket || []).forEach(addTeamToLivePool);
+  const addTableToLivePool = (table) => (table || []).forEach(row => addTeamToLivePool(teamFromTableRow(row)));
+  const addLeagueDataToLivePool = (leagueData) => {
+    if (!leagueData) return;
+    addTableToLivePool(leagueData.table);
+    addTableToLivePool(leagueData.accumulatedTable);
+    if (leagueData.groups) {
+      Object.values(leagueData.groups).forEach(groupData => {
+        (groupData.teams || []).forEach(addTeamToLivePool);
+        addTableToLivePool(groupData.table);
+      });
+    }
+  };
+  addTableToLivePool(state.leagueTable);
+  Object.values(state.otherLeagues || {}).forEach(addLeagueDataToLivePool);
+  const findTeam = (id) => liveTeamPool.find(t => t.id === id);
+  const teamsFromTable = (table) => (table || [])
+    .map(row => findTeam(row.teamId || row.id) || teamFromTableRow(row))
+    .filter(Boolean);
+  const getCurrentLeagueTeams = (leagueId) => {
+    if (leagueId === playerLeagueId) return teamsFromTable(state.leagueTable);
+    const ld = state.otherLeagues?.[leagueId];
+    if (!ld) return [];
+    if (ld.groups) return Object.values(ld.groups).flatMap(groupData => teamsFromTable(groupData.table));
+    const table = (ld.accumulatedTable && ld.accumulatedTable.length > 0) ? ld.accumulatedTable : ld.table;
+    return teamsFromTable(table);
+  };
   
   for (const pair of LEAGUE_PAIRS) {
     const topTable = getLeagueFinalTable(pair.topLeague);
@@ -2146,7 +2323,7 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     
     if (topTable.length === 0 || bottomTable.length === 0) continue;
     
-    const result = processLeaguePairPromotionRelegation(pair, topTable, bottomTable, playerTeamId);
+    const result = processLeaguePairPromotionRelegation(pair, topTable, bottomTable, playerTeamId, liveTeamPool);
     if (!result) continue;
     
     pairResults.push(result);
@@ -2188,7 +2365,12 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     
     if (config.isGroupLeague) {
       try {
-        const groupsData = config.getGroups();
+        const liveGroupsData = {};
+        Object.entries(state.otherLeagues?.[leagueId]?.groups || {}).forEach(([groupId, groupData]) => {
+          const teams = teamsFromTable(groupData.table);
+          if (teams.length > 0) liveGroupsData[groupId] = teams;
+        });
+        const groupsData = Object.keys(liveGroupsData).length > 0 ? liveGroupsData : config.getGroups();
         const groupLeague = initializeGroupLeague(groupsData, null);
         otherLeagues[leagueId] = { isGroupLeague: true, ...groupLeague };
       } catch (e) {
@@ -2197,8 +2379,10 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
       return;
     }
     
-    // Use overridden teams if promotion/relegation affected this league
-    const teams = leagueTeamOverrides[leagueId] || config.getTeams();
+    // Use overridden teams if promotion/relegation affected this league;
+    // otherwise preserve the live historical/diverged composition before static fallback.
+    const liveTeams = getCurrentLeagueTeams(leagueId);
+    const teams = leagueTeamOverrides[leagueId] || (liveTeams.length > 0 ? liveTeams : config.getTeams());
     if (!teams || teams.length === 0) {
       otherLeagues[leagueId] = { table: [], fixtures: [] };
       return;
@@ -2220,7 +2404,13 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
   const playerConfig = LEAGUE_CONFIG[newPlayerLeagueId];
   
   if (playerConfig?.isGroupLeague) {
-    const groupsData = playerConfig.getGroups();
+    const liveGroupsData = {};
+    const sourceGroups = state.otherLeagues?.[newPlayerLeagueId]?.groups || (newPlayerLeagueId === playerLeagueId ? state.leagueGroupData?.groups : null) || {};
+    Object.entries(sourceGroups).forEach(([groupId, groupData]) => {
+      const teams = teamsFromTable(groupData.table);
+      if (teams.length > 0) liveGroupsData[groupId] = teams;
+    });
+    const groupsData = Object.keys(liveGroupsData).length > 0 ? liveGroupsData : playerConfig.getGroups();
     const playerLeagueData = initializeGroupLeague(groupsData, playerTeamId);
     const pg = playerLeagueData.playerGroup;
     const pgData = pg ? playerLeagueData.groups?.[pg] : null;
@@ -2237,7 +2427,8 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     };
   }
   
-  const playerTeams = leagueTeamOverrides[newPlayerLeagueId] || playerConfig?.getTeams() || [];
+  const livePlayerTeams = getCurrentLeagueTeams(newPlayerLeagueId);
+  const playerTeams = leagueTeamOverrides[newPlayerLeagueId] || (livePlayerTeams.length > 0 ? livePlayerTeams : (playerConfig?.getTeams() || []));
   const playerLeagueData = initializeLeague(playerTeams, playerTeamId);
   
   if (isAperturaClausura(newPlayerLeagueId)) {

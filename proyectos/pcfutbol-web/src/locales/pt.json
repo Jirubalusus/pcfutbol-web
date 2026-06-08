@@ -60,7 +60,7 @@
     "saveProgress": "Guarde o seu progresso na nuvem",
     "saveCurrentProgress": "Guardar progresso atual",
     "reachChampions": "Chegue · Champions League desde baixo",
-    "guestNotice": "Entre para guardar o seu progresso na nuvem",
+    "guestNotice": "Podes experimentar PC Gaffer sem conta. Inicia sessão quando quiseres guardar o progresso na nuvem.",
     "tribute": "O belo jogo, gerido por ti",
     "contrarrelojActive": "Contra o Relógio Ativo",
     "newGame": "Novo Jogo",
@@ -76,7 +76,36 @@
     "tabSolo": "Um jogador",
     "tabMulti": "Multijogador",
     "comingSoon": "Em breve...",
-    "moreModesComingSoon": "Mais modos em breve..."
+    "moreModesComingSoon": "Mais modos em breve...",
+    "playNow": "Jogar agora",
+    "playNowSubtitle": "Experimenta uma Carreira sem iniciar sessão",
+    "loginCreateAccount": "Entrar / Criar conta",
+    "lockedLoginRequired": "Inicia sessão para desbloquear",
+    "cardPlay": "Jogar modo",
+    "cardUnlock": "Iniciar sessão",
+    "chipSolo": "1 jogador",
+    "chipLongTerm": "Longo prazo",
+    "chipRanking": "Ranking",
+    "chipSpeed": "Rápido",
+    "chipPromotions": "Promoções",
+    "chipJobOffers": "Ofertas",
+    "chipSoon": "Brevemente",
+    "databaseGlobal": "Base de dados global",
+    "databaseHint": "Aplica-se a todos os novos jogos.",
+    "changeSeason": "Mudar temporada",
+    "applySeason": "Aplicar temporada",
+    "spinHint": "Arrasta ou roda para viajar no tempo",
+    "changeDatabaseAria": "Mudar base de dados global",
+    "dbCurrent": "Temporada atual",
+    "dbHistorical": "Temporada histórica",
+    "dbCurrentShort": "Atual",
+    "dbHistoricalShort": "Histórica",
+    "changeDatabaseTitle": "Mudar base de dados",
+    "changeDatabaseWarning": "Os jogos guardados atuais serão apagados porque equipas, jogadores, calendários e competições pertencem a outra base de dados.",
+    "changeDatabaseConfirmWarning": "Se mudares de temporada, perderás os teus jogos guardados atuais. Tens a certeza?",
+    "changing": "A mudar…",
+    "changeAndDelete": "Mudar ano e apagar jogos",
+    "changeSeasonAndDelete": "Mudar temporada e apagar jogos"
   },
   "cup": {
     "noCupActive": "Nenhuma taça ativa esta temporada",
@@ -660,7 +689,68 @@
     "defense": "Defesa",
     "yourFormation": "A tua formação",
     "yourTactic": "A tua tática",
-    "statistics": "Estatísticas"
+    "statistics": "Estatísticas",
+    "cup": "Taça",
+    "round": "Ronda",
+    "europe": "Europa",
+    "matchweek": "Jornada {{week}}",
+    "weekLabel": "Semana {{week}}",
+    "friendly": "Amigável {{n}}/5",
+    "homeTag": "CASA",
+    "awayTag": "FORA",
+    "subOut": "Sai",
+    "subIn": "Entra",
+    "assistShort": "assist.",
+    "weeksAbbr": "{{weeks}} sem.",
+    "stageFinishing": "A terminar",
+    "stageFirstHalf": "Primeira parte",
+    "stageSecondHalf": "Segunda parte",
+    "live": "Ao vivo",
+    "lastEvent": "Último evento",
+    "eventGoal": "Golo",
+    "matchStarting": "O jogo está a começar",
+    "waitingFirstAction": "À espera da primeira ação importante.",
+    "dominance": "Domínio",
+    "momentum": "Momento",
+    "topRated": "Melhores avaliados",
+    "onTarget": "À baliza",
+    "substitutions": "Substituições",
+    "noSubstitutions": "Sem substituições",
+    "bigChances": "Grandes ocasiões",
+    "saves": "Defesas",
+    "stadium": "Estádio",
+    "totalFouls": "Total faltas: {{count}}",
+    "chronology": "Cronologia",
+    "noGoals": "Sem golos",
+    "matchKeys": "Chaves do jogo",
+    "capacity": "Lotação",
+    "revenue": "Receita",
+    "motm": "Jogador do jogo",
+    "goalSingular": "golo",
+    "goalPlural": "golos",
+    "assistSingular": "assistência",
+    "assistPlural": "assistências",
+    "rating": "Nota",
+    "extraTime": "prolongamento",
+    "penaltiesShort": "pen.",
+    "tacticHighPress": "Pressão alta",
+    "rouletteBetPrepared": "Aposta de roleta preparada",
+    "rouletteSlotChosen": "Casa escolhida",
+    "rouletteFundsLocked": "{{amount}} bloqueados para este jogo. O botão do escritório volta a ativar no fim.",
+    "rouletteOutcomeHint": "Ganhas: {{win}} · Empatas: {{draw}} · Perdes: {{lose}}",
+    "rouletteBubbleActive": "Bolha financeira ativa: apostas ganhas pagam x2.",
+    "rouletteInvestigation": "Investigação fiscal: cuidado para não perder outra vez.",
+    "needStarters": "Precisas de 11 titulares (tens {{count}})",
+    "syntheticPlayer": "Jogador {{number}}",
+    "noMatchThisWeek": "Não há jogo esta semana",
+    "resultWin": "Vitória!",
+    "resultLoss": "Derrota",
+    "resultDraw": "Empate",
+    "playMatch": "Jogar partida",
+    "noEvents": "Sem incidentes relevantes",
+    "nextMatch": "Próximo jogo",
+    "homeGame": "Jogamos em casa",
+    "awayGame": "Jogamos fora"
   },
   "leagueTable": {
     "title": "Classificação",
@@ -693,6 +783,12 @@
     "apertura": "Apertura",
     "clausura": "Clausura",
     "acumulada": "Acumulada",
+    "apclContinentalNote": "🏆 Libertadores e Sul-Americana são definidas pela tabela Acumulada — posições {{lib}}: Libertadores · {{sud}}: Sul-Americana.",
+    "apclContinentalNoteNoSud": "🏆 Libertadores é definida pela tabela Acumulada — posições {{lib}}.",
+    "apclChampionNote": "🏆 O campeão do Apertura e o campeão do Clausura se classificam para a Libertadores. As vagas restantes são definidas pela tabela Acumulada — posições {{lib}}: Libertadores · {{sud}}: Sul-Americana.",
+    "apclChampionNoteNoSud": "🏆 O campeão do Apertura e o campeão do Clausura se classificam para a Libertadores. As vagas restantes são definidas pela tabela Acumulada — posições {{lib}}.",
+    "apclChampionLegend": "Campeão → Libertadores",
+    "apclLeaderLegend": "Líder → Libertadores (provisório)",
     "inProgress": "em andamento",
     "searchLeague": "Buscar liga...",
     "yourLeague": "Sua liga",
@@ -1118,7 +1214,53 @@
     "countrySummary_other": "{{leagues}} ligas · {{clubs}} clubes",
     "clubsCount_one": "{{count}} clube",
     "clubsCount_other": "{{count}} clubes",
-    "leaguesLabel": "Ligas disponíveis"
+    "leaguesLabel": "Ligas disponíveis",
+    "activeDatabase": "Base de dados ativa",
+    "historicalMeta": "{{teams}} equipas · {{players}} jogadores · {{leagues}} ligas",
+    "currentMeta": "{{countries}} países · base viva 2025/26",
+    "historicalBaseCopy": "Instantâneo histórico inicial: plantéis e médias do ano escolhido. Depois a simulação evolui livremente.",
+    "currentBaseCopy": "Base atual do jogo com equipas, emblemas e competições vigentes.",
+    "historicalBadge": "Histórica {{season}}",
+    "currentBadge": "Atual",
+    "changeDatabaseHint": "Muda o ano/base de dados no menu inicial para que todos os modos usem a mesma época.",
+    "loadingHistorical": "A carregar época histórica completa...",
+    "preseasonPlanning": "Planeamento de pré-época",
+    "preseasonSubtitle": "Escolhe uma digressão de 5 jogos ajustada ao nível competitivo e mediático do clube.",
+    "club": "Clube",
+    "tourDiffHigh": "Alta",
+    "tourDiffMedium": "Média",
+    "tourDiffControlled": "Controlada",
+    "ovrRivals": "OVR rivais",
+    "tourDifficultyLabel": "dificuldade",
+    "mediaTierLabel": "média",
+    "home": "Casa",
+    "away": "Fora",
+    "skipPreseason": "Saltar pré-época",
+    "preseasonTours": {
+      "regional": {
+        "identity": "Base competitiva",
+        "name": "Digressão de rodagem",
+        "description": "Rivais próximos do nível do clube, com progressão suave antes do jogo de apresentação."
+      },
+      "balanced": {
+        "identity": "Preparação premium",
+        "name": "Circuito continental",
+        "description": "Calendário equilibrado para testar automatismos contra equipas de força semelhante."
+      },
+      "prestige": {
+        "identity": "Receita máxima",
+        "name": "Digressão de prestígio",
+        "description": "Cinco jogos de alto impacto, fechando em casa contra o rival mais atrativo."
+      }
+    },
+    "mediaTier": {
+      "eliteWorld": "elite mundial",
+      "continental": "continental",
+      "topTier": "primeira linha",
+      "competitive": "competitivo",
+      "strongRegional": "regional forte",
+      "development": "desenvolvimento"
+    }
   },
   "contrarreloj": {
     "title": "Modo Contra o Relógio",
@@ -1640,7 +1782,29 @@
     "playGamesError": "Error connecting to Google Play Games",
     "playGamesDesc": "Sign in with your Google Play Games account to save your progress and compete in rankings.",
     "connecting": "Connecting...",
-    "loginPlayGames": "Sign in with Google Play Games"
+    "loginPlayGames": "Sign in with Google Play Games",
+    "intent": {
+      "generic": {
+        "title": "Guarda e sincroniza o teu progresso",
+        "subtitle": "Inicia sessão ou cria uma conta para proteger as tuas partidas."
+      },
+      "save-progress": {
+        "title": "Inicia sessão para guardar esta partida",
+        "subtitle": "A tua partida de teste está neste dispositivo. Entra para a guardar na nuvem."
+      },
+      "rankings": {
+        "title": "Inicia sessão para competir",
+        "subtitle": "Rankings e desafios precisam de uma conta para evitar duplicados e guardar resultados."
+      },
+      "edition-mode": {
+        "title": "Inicia sessão para gerir edições",
+        "subtitle": "O editor e os packs ficam ligados à tua conta para manter os teus dados seguros."
+      },
+      "cloud-load": {
+        "title": "Inicia sessão para carregar partidas",
+        "subtitle": "Acede às tuas partidas guardadas na nuvem e continua em qualquer dispositivo."
+      }
+    }
   },
   "europe": {
     "title": "Competições Europeias",
@@ -2105,5 +2269,9 @@
   "simulation": {
     "yourResults": "Seus resultados",
     "goals": "Golos"
+  },
+  "trial": {
+    "bannerText": "Modo teste: esta partida não está guardada na nuvem.",
+    "bannerCta": "Guardar progresso"
   }
 }

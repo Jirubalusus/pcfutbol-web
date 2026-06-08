@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Shield, Swords, ChevronRight, AlertTriangle, HeartPulse, Lock, Star, X, Check, Target, Scale, Zap, CheckCircle2, Eye } from 'lucide-react';
 import { WORLD_CUP_UI_I18N } from '../../data/worldCupEventsI18n';
 import { translatePosition, posToEN } from '../../game/positionNames';
-import { getPositionFit, FIT_COLORS } from '../../game/positionSystem';
+import { getPositionFit, FIT_COLORS, getBestPositionFit, canPlayAt } from '../../game/positionSystem';
 import ResourceBars from './ResourceBars';
 import FlagIcon from './FlagIcon';
 import '../../components/Formation/Formation.scss';
@@ -299,24 +299,32 @@ export default function WorldCupFormation({ squad, opponent, resources, formatio
     setSelectedPlayer(null);
   }, [selectedPlayer, lineup]);
 
-  // Swap compatibility check
-  const getSwapFit = (p1, p2) => {
-    if (!p1 || !p2 || p1.name === p2.name) return null;
-    const s1 = playerSlotMap[p1.name];
-    const s2 = playerSlotMap[p2.name];
-    const slot1Data = s1 ? slots.find(s => s.id === s1) : null;
-    const slot2Data = s2 ? slots.find(s => s.id === s2) : null;
-    const pos1 = slot1Data?.pos || p1.position;
-    const pos2 = slot2Data?.pos || p2.position;
-    const fit1 = getPositionFit(p2.position, pos1);
-    const fit2 = getPositionFit(p1.position, pos2);
-    return fit1.factor >= fit2.factor ? fit1 : fit2;
+  // Resaltado verde de filas compatibles (misma regla que Formation.jsx):
+  // puesto EXACTO por primaria/secundaria, NO compatibilidad bidireccional.
+  //  - Si el seleccionado NO es titular: solo se resaltan titulares cuyo
+  //    puesto exacto puede jugar el seleccionado.
+  //  - Si el seleccionado SÍ es titular: objetivo = su puesto; se resalta
+  //    cualquier otro jugador que pueda jugar ese puesto exacto.
+  // Identidad por nombre (modelo existente del Mundial; sin homónimos).
+  const getHighlightFit = (selected, row) => {
+    if (!selected || !row || selected.name === row.name) return null;
+
+    const selectedSlot = playerSlotMap[selected.name];
+    if (selectedSlot) {
+      const targetPos = slots.find(s => s.id === selectedSlot)?.pos;
+      if (!targetPos || !canPlayAt(row, targetPos)) return null;
+      return getBestPositionFit(row, targetPos);
+    }
+
+    const rowSlot = playerSlotMap[row.name];
+    if (!rowSlot) return null;
+    const targetPos = slots.find(s => s.id === rowSlot)?.pos;
+    if (!targetPos || !canPlayAt(selected, targetPos)) return null;
+    return getBestPositionFit(selected, targetPos);
   };
 
-  const isCompatibleSwap = (p1, p2) => {
-    const fit = getSwapFit(p1, p2);
-    return fit !== null && fit.factor >= 0.7;
-  };
+  const swapClassFor = (fit) =>
+    fit ? (fit.level === 'perfect' ? 'swap-perfect' : fit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
 
   const opponentTeam = teams?.find(t => t.id === opponent);
   const opponentData = opponentTeam || { flag: '🏳️', name: opponent, rating: 70 };
@@ -493,9 +501,9 @@ export default function WorldCupFormation({ squad, opponent, resources, formatio
             <div className="table-body">
               {categorizedPlayers.titulares.map((player, idx) => {
                 const isSelected = selectedPlayer?.name === player.name;
-                const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
-                const swapFit = isCompatible ? getSwapFit(selectedPlayer, player) : null;
-                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
+                const highlightFit = selectedPlayer && !isSelected ? getHighlightFit(selectedPlayer, player) : null;
+                const isCompatible = !!highlightFit;
+                const swapClass = swapClassFor(highlightFit);
                 const adjRating = Math.round(getAdjustedRating(player) * player.fit.factor);
                 const fitClass = `fit-${player.fit.level}`;
                 const slotPos = player.slotPos || player.position;
@@ -530,9 +538,9 @@ export default function WorldCupFormation({ squad, opponent, resources, formatio
             <div className="table-body table-body--scroll">
               {categorizedPlayers.subs.map((player, idx) => {
                 const isSelected = selectedPlayer?.name === player.name;
-                const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
-                const swapFit = isCompatible ? getSwapFit(selectedPlayer, player) : null;
-                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
+                const highlightFit = selectedPlayer && !isSelected ? getHighlightFit(selectedPlayer, player) : null;
+                const isCompatible = !!highlightFit;
+                const swapClass = swapClassFor(highlightFit);
                 const rating = getAdjustedRating(player);
                 const unavailable = isUnavailable(player);
                 

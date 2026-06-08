@@ -13,6 +13,7 @@ import {
 } from '../firebase/authService';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { DEFAULT_ACTIVE_EDITION_ID } from '../data/editions/editionService';
 import { signInWithCustomToken } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
@@ -68,7 +69,8 @@ class PlayGamesService {
         avatarUrl: player.iconImageUrl || null,
         createdAt: serverTimestamp(),
         platform: 'android',
-        authProvider: 'play_games'
+        authProvider: 'play_games',
+        activeEdition: DEFAULT_ACTIVE_EDITION_ID
       });
     }
     

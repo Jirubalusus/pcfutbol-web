@@ -120,6 +120,21 @@ service cloud.firestore {
       }
     }
     
+    // World Cup Draft editions: public read-only (historical game data). The
+    // client reads one slim metadata doc per edition plus its `teams`
+    // subcollection. Firestore rules do not inherit into subcollections, so the
+    // teams subcollection must be exposed explicitly or the loader falls back to
+    // the bundled JSON. Writes are Admin-SDK only (upload script).
+    match /world_cup_draft_editions/{editionId} {
+      allow read: if true;
+      allow write: if false;
+
+      match /teams/{teamId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+
     // Leagues v2: public read-only (game data, no user info)
     match /leagues_v2/{leagueId} {
       allow read: if true;
@@ -138,6 +153,16 @@ service cloud.firestore {
       allow write: if false;
     }
     
+    // Leaderboard aggregates: single public-read docs that mirror the top of
+    // each leaderboard so clients avoid scanning whole collections / running
+    // count queries. Client writes are intentionally denied to prevent leaderboard
+    // vandalism; aggregates should be maintained by Admin SDK / trusted jobs. The
+    // app falls back to legacy queries when aggregate docs are missing.
+    match /leaderboard_aggregates/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
     // Ranked: authenticated users can read public ranked data and only mutate valid participant docs.
     match /ranked_players/{userId} {
       allow read: if isSignedIn();

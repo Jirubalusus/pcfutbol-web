@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Official team crests bundled with public/importable editions.
+    // These assets are referenced by public Firestore metadata, so the browser
+    // must be able to render them in <img> without user-specific credentials.
+    match /editions/{editionId}/teams/{teamId}/official/{fileName} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Default-deny everything else unless explicitly opened later.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

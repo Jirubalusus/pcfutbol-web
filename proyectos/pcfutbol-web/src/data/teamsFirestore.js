@@ -397,8 +397,11 @@ export async function loadAllData() {
     const start = Date.now();
 
     try {
-      // Fetch bundle (CDN: ~240KB brotli) and parse off main thread
-      const resp = await fetch('/data/all-teams.json');
+      // Fetch bundle (CDN: ~240KB brotli) and parse off main thread.
+      // In Node-based audits there is no Vite `import.meta.env`, so default to root.
+      const viteBaseUrl = import.meta.env?.BASE_URL || '/';
+      const dataBaseUrl = viteBaseUrl.endsWith('/') ? viteBaseUrl : `${viteBaseUrl}/`;
+      const resp = await fetch(`${dataBaseUrl}data/all-teams.json`);
       if (!resp.ok) throw new Error('fetch failed');
       const text = await resp.text();
       console.log(`📥 Downloaded in ${Date.now() - start}ms (${(text.length/1024).toFixed(0)}KB)`);

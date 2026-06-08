@@ -1,0 +1,94 @@
+// ============================================================
+// TRIAL BANNER — discreet "this game is not saved" notice + save CTA
+// In-flow top notice rendered inside the Office content.
+// ============================================================
+
+.trial-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto 12px;
+  padding: 10px 12px 10px 14px;
+  border-radius: 14px;
+
+  background: rgba(20, 24, 33, 0.92);
+  border: 1px solid rgba(74, 158, 255, 0.28);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color: #f0f6fc;
+  font-size: 0.82rem;
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a9eff;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    min-width: 0;
+    margin: 0;
+    line-height: 1.35;
+    color: rgba(240, 246, 252, 0.88);
+  }
+
+  &__cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #4a9eff 0%, #2d7ff0 100%);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(74, 158, 255, 0.35);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 540px) {
+    gap: 7px;
+    max-width: 100%;
+    margin-bottom: 10px;
+    padding: 7px 8px 7px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.34);
+
+    &__text {
+      flex: 1 1 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__cta {
+      gap: 5px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    &__icon {
+      display: none;
+    }
+  }
+}

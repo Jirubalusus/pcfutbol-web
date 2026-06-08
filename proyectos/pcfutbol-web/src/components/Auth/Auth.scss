@@ -101,6 +101,30 @@
     }
   }
 
+  // ── Contextual intent banner (why you're being asked to log in) ──
+  &__intent {
+    margin: -20px 0 24px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.12) 0%, rgba(74, 158, 255, 0.04) 100%);
+    border: 1px solid rgba(74, 158, 255, 0.2);
+    text-align: center;
+
+    &-title {
+      margin: 0;
+      color: #f0f6fc;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    &-subtitle {
+      margin: 4px 0 0;
+      color: rgba(240, 246, 252, 0.65);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+  }
+
   &__icon {
     width: 56px;
     height: 56px;

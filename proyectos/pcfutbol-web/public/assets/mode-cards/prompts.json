@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-06-04",
+  "provider": "openai-codex",
+  "model": "gpt-image-2-high",
+  "assets": [
+    {
+      "file": "mode-card-free-career.webp",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_011049_06540e4f.png",
+      "prompt": "Professional sports-management game mode card background for PC Gaffer, theme: FREE CAREER MODE. A cinematic anonymous footballer seen from behind in a dark modern stadium tunnel opening to floodlights, teal and mint neon rim light, subtle tactical grid patterns and data particles, premium console-game UI art mood, space on the left/top for overlaid title text, dark navy/black palette, high contrast, realistic but stylized, no club logos, no real brands, no readable text, no UI frame, no watermark."
+    },
+    {
+      "file": "mode-card-time-trial.webp",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_011134_848d28eb.png",
+      "prompt": "Professional sports-management game mode card background for PC Gaffer, theme: TIME TRIAL / SPEED CHALLENGE. Anonymous football manager/player silhouette from behind, dark stadium, dynamic yellow-gold stopwatch arcs and motion streaks, competitive ranking energy, premium console-game UI art, space on the left/top for overlaid title text, black and amber palette, high contrast, realistic but stylized, no club logos, no real brands, no readable text, no UI frame, no watermark."
+    },
+    {
+      "file": "mode-card-road-to-glory.webp",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_011223_38321ea7.png",
+      "prompt": "Professional sports-management game mode card background for PC Gaffer, theme: ROAD TO GLORY. Anonymous lower-league football ground at night, modest stadium transforming toward bright floodlit glory, coach silhouette with clipboard facing the pitch, emerald and gold accents, aspirational promotion journey mood, premium sports game UI art, space on the left/top for overlaid title text, dark navy/green palette, high contrast, no club logos, no real brands, no readable text, no UI frame, no watermark."
+    },
+    {
+      "file": "mode-card-world-cup.webp",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_011320_51aaff62.png",
+      "prompt": "Professional sports-management game mode card background for PC Gaffer, theme: WORLD CUP / INTERNATIONAL MODE coming soon. Anonymous national-team footballer silhouette under global stadium lights, abstract globe lines and flags as generic color ribbons without country symbols, cyan and violet neon accents, prestigious tournament atmosphere, premium console-game UI art, space on the left/top for overlaid title text, dark navy/black palette, high contrast, no real federation logos, no real brands, no readable text, no UI frame, no watermark."
+    },
+    {
+      "file": "mode-card-pro-manager.webp",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_013026_d6614fea.png",
+      "prompt": "Professional sports-management game mode card background for PC Gaffer, theme: PROFESSIONAL MANAGER / JOB OFFERS. Anonymous football coach in a tailored dark coat holding a briefcase and tactical folder, walking through a stadium executive corridor toward floodlit pitch, subtle contract papers and club-job silhouettes as abstract shapes, emerald and deep blue neon accents, premium console sports-manager UI art, space on the left/top for overlaid title text, high contrast, no club logos, no real brands, no readable text, no UI frame, no watermark."
+    }
+  ]
+}

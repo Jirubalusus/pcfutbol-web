@@ -184,7 +184,7 @@ export function isSeasonEnd(currentWeek, totalWeeks = 38) {
 /**
  * Calcula el resultado de fin de temporada para el equipo del jugador
  */
-export function calculateSeasonOutcome(position, leagueId, totalTeams) {
+export function calculateSeasonOutcome(position, leagueId, totalTeams, options = {}) {
   const outcome = {
     promotion: false,
     relegation: false,
@@ -195,7 +195,7 @@ export function calculateSeasonOutcome(position, leagueId, totalTeams) {
     newLeagueId: leagueId
   };
 
-  const europeanOutcome = getSeasonOutcomeFromSpots(position, leagueId);
+  const europeanOutcome = getSeasonOutcomeFromSpots(position, leagueId, options);
   if (europeanOutcome) {
     outcome.champions = europeanOutcome.champions;
     outcome.europaLeague = europeanOutcome.europaLeague;

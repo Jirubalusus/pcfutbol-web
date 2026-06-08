@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
@@ -7,11 +7,11 @@ import { generateInitialOffers } from '../../game/proManagerEngine';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
-import { initializeOtherLeagues, LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import { generatePreseasonOptions } from '../../game/seasonManager';
 import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
-import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
+import { isSouthAmericanLeague, buildSouthAmericanQualifiedTeams, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import {
@@ -30,6 +30,8 @@ import {
 import { ArrowLeft, Briefcase, Users, Target, TrendingUp, Wallet, Shield } from 'lucide-react';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import { usePreloadTeamCrests } from '../TeamCrest/teamCrestCache';
+import PageLoader from '../common/PageLoader';
+import { loadActiveSeasonUniverse, getAllTeamsFromUniverse, initializeOtherLeaguesFromUniverse, buildLeagueGettersFromUniverse } from '../../data/activeSeasonUniverse';
 import './ProManagerSetup.scss';
 
 const ALL_LEAGUE_GETTERS = {
@@ -105,12 +107,46 @@ export default function ProManagerSetup() {
   const { user } = useAuth();
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [starting, setStarting] = useState(false);
+  const [seasonUniverse, setSeasonUniverse] = useState(null);
+  const [offers, setOffers] = useState([]);
+  const [loadingOffers, setLoadingOffers] = useState(true);
+  const [setupError, setSetupError] = useState(null);
 
-  const offers = useMemo(() => {
-    return generateInitialOffers(null, 10, ALL_LEAGUE_GETTERS).map(offer => {
-      ensureBudgetAndReputation(offer.team, offer.leagueId);
-      return offer;
-    });
+  useEffect(() => {
+    let cancelled = false;
+    setLoadingOffers(true);
+    setSetupError(null);
+
+    loadActiveSeasonUniverse()
+      .then((universe) => {
+        if (cancelled) return;
+        const leagueGetters = buildLeagueGettersFromUniverse(universe);
+        // Strict mode: only offer leagues that exist in the selected season universe and
+        // teams with a playable squad. Prevents "No se pudo preparar la liga de la oferta
+        // elegida." for historical seasons that lack some static LEAGUE_CONFIG leagues.
+        const nextOffers = generateInitialOffers(null, 10, leagueGetters, {
+          strictLeagueGetters: true,
+          minPlayersPerTeam: 11,
+        }).map(offer => {
+          ensureBudgetAndReputation(offer.team, offer.leagueId);
+          return offer;
+        });
+        setSeasonUniverse(universe);
+        setOffers(nextOffers);
+        setSelectedOffer(null);
+        setLoadingOffers(false);
+      })
+      .catch((error) => {
+        console.error('No se pudieron generar ofertas de Manager para la temporada activa:', error);
+        if (!cancelled) {
+          setSeasonUniverse(null);
+          setOffers([]);
+          setSetupError('No se pudieron cargar las ofertas de la temporada seleccionada.');
+          setLoadingOffers(false);
+        }
+      });
+
+    return () => { cancelled = true; };
   }, []);
 
   const offerTeamIds = useMemo(() => offers.map(offer => offer.team.id), [offers]);
@@ -126,21 +162,22 @@ export default function ProManagerSetup() {
 
     const { team, leagueId, objective } = selectedOffer;
     ensureBudgetAndReputation(team, leagueId);
+    const activeSeasonUniverse = seasonUniverse || await loadActiveSeasonUniverse();
 
-    const leagueEntry = ALL_LEAGUES.find(l => l.id === leagueId);
-    if (!leagueEntry) return;
-
-    let leagueTeams;
-    try { leagueTeams = leagueEntry.getter(); } catch { return; }
+    const leagueTeams = (activeSeasonUniverse.entries || [])
+      .filter(entry => entry.id === leagueId)
+      .flatMap(entry => entry.teams || []);
+    if (!leagueTeams.length) {
+      setStarting(false);
+      setSetupError('No se pudo preparar la liga de la oferta elegida.');
+      return;
+    }
 
     const leagueData = initializeLeague(leagueTeams, team.id);
     const stadiumInfo = getStadiumInfo(team.id, team.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
 
-    const allTeamsFlat = [];
-    for (const l of ALL_LEAGUES) {
-      try { allTeamsFlat.push(...l.getter()); } catch { /* skip */ }
-    }
+    const allTeamsFlat = getAllTeamsFromUniverse(activeSeasonUniverse);
     const preseasonOptions = generatePreseasonOptions(allTeamsFlat, team, leagueId);
     const preseason = preseasonOptions[0];
 
@@ -160,7 +197,11 @@ export default function ProManagerSetup() {
         preseasonPhase: true,
         gameMode: 'promanager',
         _proManagerUserId: user?.isGuest ? null : (user?.uid || null),
-        managerName
+        managerName,
+        databaseSeasonId: activeSeasonUniverse.databaseSeasonId,
+        careerStartSeason: activeSeasonUniverse.startYear,
+        historicalDatabase: activeSeasonUniverse.historical,
+        historicalDatabaseLabel: activeSeasonUniverse.label
       }
     });
 
@@ -188,40 +229,44 @@ export default function ProManagerSetup() {
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
 
     // Load all league teams for transfers
-    const allLeagueTeamsWithData = [];
-    for (const league of ALL_LEAGUES) {
-      try {
-        const teams = league.getter();
-        for (const tt of teams) {
-          allLeagueTeamsWithData.push({
-            ...tt, id: tt.id, name: tt.name, players: tt.players || [],
-            budget: tt.budget || (tt.reputation > 4 ? 100_000_000 : tt.reputation > 3 ? 50_000_000 : 20_000_000),
-            leagueId: league.id
-          });
-        }
-      } catch { /* skip */ }
-    }
+    const allLeagueTeamsWithData = allTeamsFlat.map(tt => ({
+      ...tt,
+      id: tt.id,
+      name: tt.name,
+      players: tt.players || [],
+      budget: tt.budget || (tt.reputation > 4 ? 100_000_000 : tt.reputation > 3 ? 50_000_000 : 20_000_000),
+      leagueId: tt.leagueId || leagueId
+    }));
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
 
-    const otherLeagues = initializeOtherLeagues(leagueId, null);
+    const otherLeagues = initializeOtherLeaguesFromUniverse(activeSeasonUniverse, leagueId, null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
+    const activeLeagueGetters = buildLeagueGettersFromUniverse(activeSeasonUniverse);
 
     // Bootstrap continental competitions (same as ContrarrelojSetup)
     const isPlayerInSA = isSouthAmericanLeague(leagueId);
     if (isPlayerInSA) {
       try {
         const bootstrapStandings = {};
+        const allTeamsMap = {};
         for (const [lid] of Object.entries(SA_LEAGUE_SLOTS)) {
           const config = LEAGUE_CONFIG[lid];
           if (!config) continue;
-          const teams = config.getTeams ? config.getTeams() : ALL_LEAGUE_GETTERS[lid]?.();
+          const teams = activeLeagueGetters[lid]?.() || config.getTeams?.() || ALL_LEAGUE_GETTERS[lid]?.();
           if (!teams?.length) continue;
-          bootstrapStandings[lid] = teams.map((t, i) => ({
+          const sorted = [...teams].sort((a, b) => (b.reputation || 70) - (a.reputation || 70));
+          bootstrapStandings[lid] = sorted.map((t, i) => ({
             teamId: t.id, teamName: t.name, shortName: t.shortName || '',
             reputation: t.reputation || 70, overall: t.overall || 70, leaguePosition: i + 1
           }));
+          sorted.forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
         }
-        const qualified = qualifyTeamsForSouthAmerica(bootstrapStandings);
+        const qualified = buildSouthAmericanQualifiedTeams({
+          leagueStandings: bootstrapStandings,
+          allTeamsMap,
+          fillerPool: Object.values(allTeamsMap),
+          playerLeagueId: leagueId
+        });
         const saComps = initializeSACompetitions(qualified);
         if (saComps) dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saComps });
       } catch (e) { console.warn('SA comps init error:', e); }
@@ -229,10 +274,13 @@ export default function ProManagerSetup() {
       try {
         const bootstrapStandings = ensureEuropeanLeagueStandings(
           {},
-          (lid) => LEAGUE_CONFIG[lid]?.getTeams?.() || ALL_LEAGUE_GETTERS[lid]?.()
+          (lid) => activeLeagueGetters[lid]?.() || LEAGUE_CONFIG[lid]?.getTeams?.() || ALL_LEAGUE_GETTERS[lid]?.()
         );
         const qualified = qualifyTeamsForEurope(bootstrapStandings);
-        const euroComps = initializeEuropeanCompetitions(qualified);
+        const euroComps = initializeEuropeanCompetitions(qualified, {
+          seasonId: activeSeasonUniverse.databaseSeasonId,
+          historical: activeSeasonUniverse.historical
+        });
         if (euroComps) dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: euroComps });
       } catch (e) {
         console.error('Euro comps init error:', e);
@@ -270,6 +318,14 @@ export default function ProManagerSetup() {
   const activeDifficultyLabel = activeAvgOvr >= 78 ? 'Fácil' : activeAvgOvr >= 72 ? 'Normal' : activeAvgOvr >= 66 ? 'Difícil' : 'Extremo';
   const activeDifficultyClass = activeAvgOvr >= 78 ? 'easy' : activeAvgOvr >= 72 ? 'normal' : activeAvgOvr >= 66 ? 'hard' : 'extreme';
 
+  if (starting) {
+    return <PageLoader label="Preparando partida de Manager" />;
+  }
+
+  if (loadingOffers) {
+    return <PageLoader label="Cargando ofertas de Manager" />;
+  }
+
   return (
     <div className="promanager-setup unified-screen">
       <div className="promanager-setup__bg" aria-hidden="true">
@@ -291,7 +347,11 @@ export default function ProManagerSetup() {
         </div>
 
         <div className="promanager-setup__offers">
-          {offers.length === 0 && (
+          {setupError && (
+            <p className="no-offers" role="alert">{setupError}</p>
+          )}
+
+          {offers.length === 0 && !setupError && (
             <p className="no-offers">{t('proManager.noOffers')}</p>
           )}
 

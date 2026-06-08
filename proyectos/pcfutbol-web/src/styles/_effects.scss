@@ -554,15 +554,33 @@ select:focus-visible {
 }
 
 // Game-like button feedback: no cheap bouncing, just tactile depth and light.
-button:not(:disabled):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn),
-.btn:not(:disabled):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn),
-[role="button"]:not([aria-disabled="true"]):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn) {
+button:not(:disabled):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn):not(.mode-card-full):not(.mode-carousel__nav):not(.mode-carousel__dot),
+.btn:not(:disabled):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn):not(.mode-card-full):not(.mode-carousel__nav):not(.mode-carousel__dot),
+[role="button"]:not([aria-disabled="true"]):not(.match-day__play-btn):not(.match-day__skip-btn):not(.match-day__continue-btn):not(.mode-card-full):not(.mode-carousel__nav):not(.mode-carousel__dot) {
   will-change: transform, box-shadow, filter;
 
   &:active {
     transform: translateY(1px) scale(0.985);
     filter: brightness(0.96);
   }
+}
+
+.mode-card-full:active,
+.mode-carousel__nav:active,
+.mode-carousel__dot:active {
+  filter: brightness(0.96);
+}
+
+.mode-card-full:active {
+  transform: var(--mode-card-transform) !important;
+}
+
+.mode-carousel__nav:active {
+  transform: translateY(-50%) !important;
+}
+
+.mode-carousel__dot:active {
+  transform: none !important;
 }
 
 :where(.office__advance-btn, .office__sim-btn, .mobile-nav__sim-btn, .btn-primary, .btn-success, .main-menu__primary, .glory-modal__action) {

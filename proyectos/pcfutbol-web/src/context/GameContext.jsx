@@ -6,6 +6,9 @@ import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrel
 import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
 import { saveGlory, deleteGlorySave } from '../firebase/glorySaveService';
 import { saveCareer } from '../firebase/careerSaveService';
+import { saveLocalGlory, markLocalGlorySynced, markLocalGlorySyncFailed } from '../game/localGlorySave';
+import { saveLocalCareer } from '../game/localCareerSave';
+import { loadLocalCareer, markLocalCareerSynced, markLocalCareerSyncFailed, isLocalCareerPendingSync } from '../game/localCareerSave';
 import { loadUserSettings, saveUserSettings } from '../firebase/settingsService';
 import { calculateBoardConfidence } from '../game/proManagerEngine';
 import { generateFacilityEvent, generateYouthPlayer, generateSonPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
@@ -16,7 +19,7 @@ import { evaluateManager, generateWarningMessage } from '../game/managerEvaluati
 import { generateSalary, applyTeamsSalaries } from '../game/salaryGenerator';
 import { getLeagueTier, getEconomyMultiplier, getBaseTicketPrice, getBaseSeasonTicketPrice, getBaseCommercialIncome } from '../game/leagueTiers';
 import { evolvePlayer } from '../game/seasonEngine';
-import { isEuropeanWeekDynamic, getPhaseForWeekCompat, isCupWeek, getCupRoundForWeek, EUROPEAN_MATCHDAY_WEEKS } from '../game/europeanCompetitions';
+import { isEuropeanWeekDynamic, getPhaseForWeekCompat, isCupWeek, getCupRoundForWeek, EUROPEAN_MATCHDAY_WEEKS, applyEuropeanPrizeCashflow } from '../game/europeanCompetitions';
 import { simulateEuropeanMatchday, advanceEuropeanPhase, recordPlayerLeagueResult, recordPlayerKnockoutResult, getPlayerCompetition } from '../game/europeanSeason';
 import { isSouthAmericanLeague } from '../game/southAmericanCompetitions';
 import { simulateSAMatchday, advanceSAPhase, recordPlayerSALeagueResult, recordPlayerSAKnockoutResult, getPlayerSACompetition } from '../game/southAmericanSeason';
@@ -26,8 +29,29 @@ import { sortTable } from '../game/leagueEngine';
 import { updateWeeklyForm, updateMatchTracker, tickRejectedTransfers, generateInitialForm, generateAIForm, FORM_STATES, getFormMatchModifier } from '../game/formSystem';
 import { generateLoanOffers, expireLoans, simulateAILoans, createLoan } from '../game/loanSystem';
 import { checkPremiumStatus } from '../services/purchaseService';
+import { loadHistoricalSeason } from '../data/historicalDatabaseService';
+import { buildHistoricalUniverseFromDataset, getAllTeamsFromUniverse, initializeOtherLeaguesFromUniverse, toGameLeagueId } from '../data/activeSeasonUniverse';
+import { buildCurrentLoadedCupBootstrap, buildHistoricalLoadedCupBootstrap } from '../game/cupBootstrap';
+import { CONTRARRELOJ_BALANCE_FLOOR, normalizeContrarrelojSalaries, shouldNormalizeContrarrelojSave } from '../game/contrarrelojEconomy';
+import { useToast } from '../components/Toast/Toast';
 
 const GameContext = createContext();
+
+const HOUSE_AND_CAR_COST = 20_000_000;
+const CLOUD_SAVE_DEBOUNCE_MS = 2500;
+const CLOUD_SAVE_PERIODIC_MS = 60000;
+// Min gap between throttled career cloud re-sync attempts (visibility/idle ticks).
+// Event-driven retries that signal real connectivity recovery (online, app init)
+// pass { force: true } to bypass this and try immediately.
+const CAREER_SYNC_RETRY_MIN_MS = 15000;
+const CLOUD_SAVE_MIN_INTERVAL_MS = 10000;
+const getHouseAndCarCost = (offer) => offer?.houseAndCar ? (offer.houseAndCarCost || HOUSE_AND_CAR_COST) : 0;
+const getOfferUpfrontCost = (offer) => (offer?.amount || 0) + getHouseAndCarCost(offer);
+const getHouseAndCarWeeklyEquivalent = (contractYears = 4) => Math.round(HOUSE_AND_CAR_COST / (Math.max(1, contractYears || 4) * 52));
+const getEffectiveSalaryWithPerks = (salary, houseAndCar, contractYears = 4) => (salary || 0) + (houseAndCar ? getHouseAndCarWeeklyEquivalent(contractYears) : 0);
+const getMaxFixtureWeek = (fixtures, fallback = 38) => (fixtures || []).length > 0
+  ? Math.max(...fixtures.map(f => f.week || 0))
+  : fallback;
 
 // ============================================================
 // LINEUP INTEGRITY — Asegurar que siempre hay 11 jugadores
@@ -132,6 +156,9 @@ export const initialState = {
   gameStarted: false,
   currentWeek: 1,
   currentSeason: 1,
+  databaseSeasonId: 'current',
+  careerStartSeason: 2025,
+  historicalDatabase: false,
 
   // Player's Team
   teamId: null,
@@ -227,6 +254,7 @@ export const initialState = {
 
   // Transfer Market
   transferOffers: [],
+  incomingOfferPityWeeks: 0,
   playerMarket: [],
   freeAgents: [],
 
@@ -371,10 +399,26 @@ export function gameReducer(state, action) {
         sanitized.saCompetitions = { ...sanitized.saCompetitions, competitions: sanitizedComps };
       }
 
+      // Game state uses current engine ids. Historical/source ids such as
+      // laliga2 must be accepted on load but normalized before UI and logic read
+      // playerLeagueId, leagueId or otherLeagues keys.
+      if (sanitized.playerLeagueId || sanitized.leagueId) {
+        const normalizedPlayerLeagueId = toGameLeagueId(sanitized.playerLeagueId || sanitized.leagueId || 'laliga');
+        sanitized.playerLeagueId = normalizedPlayerLeagueId;
+        sanitized.leagueId = toGameLeagueId(sanitized.leagueId || normalizedPlayerLeagueId);
+      }
+      if (sanitized.otherLeagues && typeof sanitized.otherLeagues === 'object') {
+        const normalizedOtherLeagues = {};
+        for (const [leagueId, leagueData] of Object.entries(sanitized.otherLeagues)) {
+          normalizedOtherLeagues[toGameLeagueId(leagueId)] = leagueData;
+        }
+        sanitized.otherLeagues = normalizedOtherLeagues;
+      }
+
       // === SALARY MIGRATION ===
       // Recalculate salaries if they don't match the current league tier.
       // Catches: old saves with broken formulas, promotions where salaries weren't updated, etc.
-      if (sanitized.team?.players?.length > 0) {
+      if (sanitized.gameMode !== 'contrarreloj' && sanitized.team?.players?.length > 0) {
         const leagueId = sanitized.playerLeagueId || sanitized.leagueId;
         if (leagueId) {
           const players = sanitized.team.players;
@@ -396,6 +440,16 @@ export function gameReducer(state, action) {
               }))
             };
           }
+        }
+      }
+      if (sanitized.gameMode === 'contrarreloj' && sanitized.team?.players?.length > 0) {
+        const leagueId = sanitized.playerLeagueId || sanitized.leagueId;
+        const totalCalendarWeeks = getMaxFixtureWeek(sanitized.fixtures, 38);
+        if (leagueId && shouldNormalizeContrarrelojSave(sanitized, { totalCalendarWeeks, floor: CONTRARRELOJ_BALANCE_FLOOR })) {
+          sanitized.team = normalizeContrarrelojSalaries(sanitized.team, leagueId, {
+            totalCalendarWeeks,
+            stadiumLevel: sanitized.facilities?.stadium ?? sanitized.stadium?.level ?? 0
+          });
         }
       }
       
@@ -426,6 +480,46 @@ export function gameReducer(state, action) {
           );
         } catch (e) { console.warn('Failed to reconstruct otherLeagues:', e); }
       }
+
+      // Migrate legacy Spanish saves that displayed Santander as Argentina's
+      // "Racing Club". Keep ids stable to avoid breaking fixtures/results; fix
+      // the label and give crest consumers an unambiguous Santander lookup.
+      const spanishLeagueIds = new Set(['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF']);
+      const legacySpanishRacingIds = new Set(['racing-club', 'racing', 'rac-laliga2', 'racing-santander', 'real-racing-club', 'tm-team-630']);
+      const normalizeSpanishRacingRow = (row, leagueId) => {
+        if (!row || !spanishLeagueIds.has(leagueId)) return row;
+        const rawName = String(row.teamName || row.name || '').trim().toLowerCase();
+        const rawId = String(row.teamId || row.id || '').trim().toLowerCase();
+        if (rawName !== 'racing club' && !legacySpanishRacingIds.has(rawId)) return row;
+        return {
+          ...row,
+          teamName: 'Real Racing Club',
+          crestTeamId: row.crestTeamId || 'tm-team-630',
+          crestLookupKeys: ['tm-team-630', '630', 'real-racing-club', 'racing-santander', 'rac-laliga2', 'Sentinel Racing']
+        };
+      };
+      const normalizeSpanishRacingTable = (rows, leagueId) => Array.isArray(rows)
+        ? rows.map((row) => normalizeSpanishRacingRow(row, leagueId))
+        : rows;
+
+      const loadedPlayerLeagueId = sanitized.playerLeagueId || sanitized.leagueId || 'laliga';
+      sanitized.leagueTable = normalizeSpanishRacingTable(sanitized.leagueTable, loadedPlayerLeagueId);
+      if (otherLeaguesData) {
+        otherLeaguesData = Object.fromEntries(Object.entries(otherLeaguesData).map(([leagueId, leagueData]) => {
+          if (!leagueData || !spanishLeagueIds.has(leagueId)) return [leagueId, leagueData];
+          const nextLeagueData = { ...leagueData };
+          if (Array.isArray(nextLeagueData.table)) {
+            nextLeagueData.table = normalizeSpanishRacingTable(nextLeagueData.table, leagueId);
+          }
+          if (nextLeagueData.groups) {
+            nextLeagueData.groups = Object.fromEntries(Object.entries(nextLeagueData.groups).map(([groupId, groupData]) => [
+              groupId,
+              groupData ? { ...groupData, table: normalizeSpanishRacingTable(groupData.table, leagueId) } : groupData
+            ]));
+          }
+          return [leagueId, nextLeagueData];
+        }));
+      }
       
       // Sanitize lineup on load: remove ghost players (sold/injured/suspended/missing)
       const loadedState = { ...state, ...sanitized, ...cleanRanked, otherLeagues: otherLeaguesData || state.otherLeagues, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null, _gloryUserId: sanitized._gloryUserId || null };
@@ -446,8 +540,9 @@ export function gameReducer(state, action) {
       const stadiumLevel = action.payload.stadiumLevel ?? 0;
 
       // League tier para escalado económico
-      const leagueId = action.payload.leagueId;
+      const leagueId = toGameLeagueId(action.payload.leagueId);
       const leagueTier = leagueId ? getLeagueTier(leagueId) : 1;
+      const incomingGameMode = action.payload.gameMode || 'career';
 
       // Función para generar contrato basado en edad
       const generateContract = (age) => {
@@ -460,15 +555,23 @@ export function gameReducer(state, action) {
 
       // Asignar roles, contratos y salarios a todos los jugadores
       // Salarios escalados por tier de liga
-      const teamWithRoles = {
+      const teamWithRolesBase = {
         ...action.payload.team,
         players: action.payload.team.players.map(player => ({
           ...player,
           role: player.role || assignRole(player),
           contractYears: player.contractYears ?? generateContract(player.age || 25),
-          salary: generateSalary(player, leagueId || leagueTier)
+          salary: incomingGameMode === 'contrarreloj' && Number(player.salary) > 0
+            ? Number(player.salary)
+            : generateSalary(player, leagueId || leagueTier)
         }))
       };
+      const teamWithRoles = incomingGameMode === 'contrarreloj'
+        ? normalizeContrarrelojSalaries(teamWithRolesBase, leagueId, {
+            stadiumLevel,
+            totalCalendarWeeks: action.payload.totalCalendarWeeks || 38
+          })
+        : teamWithRolesBase;
 
       const initialForm = generateInitialForm(teamWithRoles.players);
       const initialTracker = {};
@@ -477,7 +580,6 @@ export function gameReducer(state, action) {
       });
 
       // Contrarreloj mode support
-      const incomingGameMode = action.payload.gameMode || 'career';
       const contrarrelojInit = incomingGameMode === 'contrarreloj' ? {
         seasonsPlayed: 1,
         trophies: [],
@@ -535,6 +637,10 @@ export function gameReducer(state, action) {
         matchTracker: initialTracker,
         rejectedTransfers: {},
         managerName: action.payload.managerName || state.managerName || initialState.managerName,
+        databaseSeasonId: action.payload.databaseSeasonId || 'current',
+        careerStartSeason: action.payload.careerStartSeason || 2025,
+        historicalDatabase: Boolean(action.payload.historicalDatabase),
+        historicalDatabaseLabel: action.payload.historicalDatabaseLabel || null,
         // Glory mode: start with higher confidence (80 instead of 75)
         ...(incomingGameMode === 'glory' ? { managerConfidence: 80 } : {}),
         // Glory mode data
@@ -858,7 +964,7 @@ export function gameReducer(state, action) {
     }
 
     case 'SET_PLAYER_LEAGUE': {
-      const newLeagueId = action.payload;
+      const newLeagueId = toGameLeagueId(action.payload);
       const newLeagueTier = newLeagueId ? getLeagueTier(newLeagueId) : (state.leagueTier || 1);
       const oldLeagueTier = state.leagueTier || (state.playerLeagueId ? getLeagueTier(state.playerLeagueId) : 1);
       
@@ -1572,11 +1678,11 @@ export function gameReducer(state, action) {
         const targetPlayer = targetTeam ? (targetTeam.players || []).find(p => p.name === offer.playerName) : null;
 
         if (!targetTeam || !targetPlayer) {
-          preseasonMoneyReturned += offer.amount;
+          preseasonMoneyReturned += getOfferUpfrontCost(offer);
           preseasonOfferMessages.push({
             id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'transfer',
             titleKey: 'gameMessages.offerCancelled', titleParams: { player: offer.playerName },
-            contentKey: 'gameMessages.playerUnavailableRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
+            contentKey: 'gameMessages.playerUnavailableRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(getOfferUpfrontCost(offer)) },
             dateKey: 'gameMessages.preseason'
           });
           return null;
@@ -1627,17 +1733,19 @@ export function gameReducer(state, action) {
         let playerReason = '';
         const requiredSalary = Math.round((targetPlayer.salary || 50000) * 1.1);
 
-        if (offer.salaryOffer >= requiredSalary * 1.2) {
+        const effectiveSalaryOffer = getEffectiveSalaryWithPerks(offer.salaryOffer, offer.houseAndCar, offer.contractYears);
+
+        if (effectiveSalaryOffer >= requiredSalary * 1.2) {
           playerResponse = 'accepted';
           playerReason = 'gameMessages.playerReasonHappy';
-        } else if (offer.salaryOffer >= requiredSalary * 0.95) {
+        } else if (effectiveSalaryOffer >= requiredSalary * 0.95) {
           if (Math.random() < 0.7) {
             playerResponse = 'accepted';
             playerReason = 'gameMessages.playerReasonProject';
           } else {
             playerReason = 'gameMessages.playerReasonMoreSalary';
           }
-        } else if (offer.salaryOffer >= requiredSalary * 0.7) {
+        } else if (effectiveSalaryOffer >= requiredSalary * 0.7) {
           if (Math.random() < 0.25) {
             playerResponse = 'accepted';
             playerReason = 'gameMessages.playerReasonConvinced';
@@ -1657,7 +1765,7 @@ export function gameReducer(state, action) {
           titleParams: { player: offer.playerName, icon },
           contentKey: bothAccepted ? 'gameMessages.transferCompleteContent' : 'gameMessages.offerRejectedContent',
           contentParams: bothAccepted
-            ? { player: offer.playerName, cost: formatTransferPrice(offer.amount) }
+            ? { player: offer.playerName, cost: formatTransferPrice(getOfferUpfrontCost(offer)) }
             : { clubReasonKey: clubReason, playerReasonKey: playerReason },
           dateKey: 'gameMessages.preseason'
         });
@@ -1666,7 +1774,7 @@ export function gameReducer(state, action) {
           // Fichaje — el jugador se añade al equipo
           // (se manejará abajo)
         } else if (clubResponse !== 'countered') {
-          preseasonMoneyReturned += offer.amount;
+          preseasonMoneyReturned += getOfferUpfrontCost(offer);
         }
 
         return {
@@ -2068,11 +2176,13 @@ export function gameReducer(state, action) {
 
       // ============================================================
       // OFERTAS ENTRANTES POR JUGADORES DEL USUARIO
-      // 15% probabilidad base por jornada (50% en pretemporada)
+      // 18% probabilidad base por jornada (55% en pretemporada)
       // Puede generar 1-3 ofertas cuando se activa (normalmente 1)
       // Pretemporada: 35% extra chance si no llegó ninguna esa ronda
+      // Además, si pasan 4 jornadas seguidas sin ofertas, forzamos al menos 1.
       // ============================================================
       let newIncomingOffers = [...(state.incomingOffers || [])];
+      let incomingOfferPityWeeks = state.incomingOfferPityWeeks || 0;
 
       // NOTE: This reducer uses Math.random() for transfers, injuries, form, etc.
       // This is technically impure (violates React reducer conventions) and could cause
@@ -2084,8 +2194,8 @@ export function gameReducer(state, action) {
       // NOTE: state.leagueTeams below may be stale when called from ADVANCE_WEEKS_BATCH,
       // but this only affects AI transfer offers which is acceptable. (#19)
       const isPreseason = state.preseasonPhase || false;
-      // Pretemporada: 50% chance, temporada normal: 15% chance
-      const offerChance = isPreseason ? 0.50 : 0.15;
+      // Pretemporada: 55% chance, temporada normal: 18% chance
+      const offerChance = isPreseason ? 0.55 : 0.18;
 
       if (!isBatchMode && windowStatus.open && state.team?.players && Math.random() < offerChance) {
         // Cuántas ofertas hoy: 1-2 (raramente 3)
@@ -2268,6 +2378,78 @@ export function gameReducer(state, action) {
               contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmt), player: listedPlayer.name },
               dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
             });
+          }
+        }
+      }
+
+      // Si una semana no generó ninguna oferta, llevamos la cuenta; al cuarto
+      // partido/semana consecutivo sin ofertas, forzamos una mínima para que el
+      // jugador no se quede demasiado tiempo sin interés del mercado.
+      const offersGeneratedThisRound = newIncomingOffers.length - (state.incomingOffers || []).length;
+      if (!isBatchMode && windowStatus.open && state.team?.players) {
+        if (offersGeneratedThisRound > 0) {
+          incomingOfferPityWeeks = 0;
+        } else {
+          incomingOfferPityWeeks += 1;
+        }
+
+        if (offersGeneratedThisRound === 0 && incomingOfferPityWeeks >= 3) {
+          const eligibleForced = state.team.players
+            .filter(p => !p.injured && !p.onLoan)
+            .sort(() => Math.random() - 0.5);
+
+          if (eligibleForced.length > 0) {
+            const targetPlayer = eligibleForced[0];
+            const marketValue = getPlayerMarketValueForOffers(targetPlayer);
+            const potentialBuyers = (state.leagueTeams || []).filter(t => {
+              if (t.id === state.teamId) return false;
+              return t.budget >= marketValue * 0.3;
+            });
+
+            let buyer;
+            if (potentialBuyers.length > 0) {
+              buyer = potentialBuyers[Math.floor(Math.random() * potentialBuyers.length)];
+            } else {
+              const fakeTeamNames = ['FC Esperanza', 'Atlético Progreso', 'CD Horizonte', 'UD Fénix', 'Racing Nuevo', 'CF Promesa', 'SD Aurora', 'Real Frontera'];
+              buyer = {
+                id: `fake_buyer_${Date.now()}`,
+                name: fakeTeamNames[Math.floor(Math.random() * fakeTeamNames.length)],
+                budget: 10_000_000
+              };
+            }
+
+            const offerAmount = Math.round(marketValue * (0.85 + Math.random() * 0.35));
+            const offerRatio = offerAmount / marketValue;
+            const expiryWeeks = offerRatio >= 0.95 ? 2 : 1;
+
+            newIncomingOffers.push({
+              id: `incoming_pity_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+              player: {
+                name: targetPlayer.name,
+                position: targetPlayer.position,
+                overall: targetPlayer.overall,
+                age: targetPlayer.age
+              },
+              fromTeam: buyer.name,
+              fromTeamId: buyer.id,
+              amount: offerAmount,
+              salaryOffer: Math.round((targetPlayer.salary || 50000) * 1.3),
+              status: 'pending',
+              createdWeek: nextWeek,
+              expiryWeek: nextWeek + expiryWeeks,
+              createdAt: Date.now(),
+              expiresAt: Date.now() + expiryWeeks * 7 * 24 * 60 * 60 * 1000
+            });
+
+            newTransferMessages.push({
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2),
+              type: 'offer',
+              titleKey: 'gameMessages.newOfferReceived',
+              contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmount), player: targetPlayer.name },
+              dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
+            });
+
+            incomingOfferPityWeeks = 0;
           }
         }
       }
@@ -2908,11 +3090,11 @@ export function gameReducer(state, action) {
           }
           // Caducidad de contraofertas sin respuesta (2 semanas)
           if (offer.status === 'resolved' && offer.clubResponse === 'countered' && offer.resolvedWeek && nextWeek - offer.resolvedWeek > 2) {
-            moneyReturned += offer.amount;
+              moneyReturned += getOfferUpfrontCost(offer);
             offerMessages.push({
               id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'transfer',
               titleKey: 'gameMessages.counterOfferExpired', titleParams: { player: offer.playerName },
-              contentKey: 'gameMessages.counterOfferExpiredContent', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
+              contentKey: 'gameMessages.counterOfferExpiredContent', contentParams: { player: offer.playerName, amount: formatTransferPrice(getOfferUpfrontCost(offer)) },
               dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
             });
             return null;
@@ -2984,17 +3166,18 @@ export function gameReducer(state, action) {
         let playerReason = '';
         const requiredSalaryForOffer = Math.round((resolvePlayer.salary || 50000) * 1.1);
 
-        if (offer.salaryOffer >= requiredSalaryForOffer * 1.2) {
+        const effectiveSalaryForOffer = getEffectiveSalaryWithPerks(offer.salaryOffer, offer.houseAndCar, offer.contractYears);
+        if (effectiveSalaryForOffer >= requiredSalaryForOffer * 1.2) {
           playerResponse = 'accepted';
           playerReason = 'gameMessages.playerReasonHappy';
-        } else if (offer.salaryOffer >= requiredSalaryForOffer * 0.95) {
+        } else if (effectiveSalaryForOffer >= requiredSalaryForOffer * 0.95) {
           if (Math.random() < 0.7) {
             playerResponse = 'accepted';
             playerReason = 'gameMessages.playerReasonProject';
           } else {
             playerReason = 'gameMessages.playerReasonMoreSalary';
           }
-        } else if (offer.salaryOffer >= requiredSalaryForOffer * 0.7) {
+        } else if (effectiveSalaryForOffer >= requiredSalaryForOffer * 0.7) {
           if (Math.random() < 0.25) {
             playerResponse = 'accepted';
             playerReason = 'gameMessages.playerReasonConvinced';
@@ -3028,7 +3211,7 @@ export function gameReducer(state, action) {
           titleParams: { player: offer.playerName, icon },
           contentKey: bothAccepted ? 'gameMessages.transferCompleteContent' : 'gameMessages.offerRejectedContent',
           contentParams: bothAccepted
-            ? { player: offer.playerName, cost: formatTransferPrice(offer.amount) }
+            ? { player: offer.playerName, cost: formatTransferPrice(getOfferUpfrontCost(offer)) }
             : { clubReasonKey: clubReason, playerReasonKey: playerReason },
           dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
         });
@@ -3056,7 +3239,7 @@ export function gameReducer(state, action) {
         } else {
           // Rechazado por alguno → devolver dinero (salvo contraoferta pendiente)
           if (clubResponse !== 'countered') {
-            moneyReturned += offer.amount;
+              moneyReturned += getOfferUpfrontCost(offer);
           }
         }
 
@@ -3114,13 +3297,14 @@ export function gameReducer(state, action) {
         // Mercado global
         leagueTeams: updatedLeagueTeams,
         incomingOffers: newIncomingOffers,
+        incomingOfferPityWeeks,
         globalMarket: {
           ...state.globalMarket,
           summary: marketSummary,
           windowOpen: windowStatus.open,
           windowType: windowStatus.type
         },
-        // Evaluación del míster
+
         managerConfidence: managerEval.confidence,
         managerFired: managerEval.fired || state.managerFired,
         managerFiredReason: managerEval.fired ? (managerEval.reason || 'managerFired.defaultReason') : state.managerFiredReason,
@@ -3355,8 +3539,9 @@ export function gameReducer(state, action) {
 
         const requiredSalary = Math.round((targetPlayer.salary || 50000) * 1.1);
         let playerResponse = 'rejected', playerReason = '';
-        if (newOffer.salaryOffer >= requiredSalary * 0.95) { playerResponse = Math.random() < 0.75 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'gameMessages.playerReasonHappy' : 'gameMessages.playerReasonMoreSalary'; }
-        else if (newOffer.salaryOffer >= requiredSalary * 0.7) { playerResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'gameMessages.playerReasonConvinced' : 'gameMessages.playerReasonLowSalary'; }
+        const effectiveRankedSalary = getEffectiveSalaryWithPerks(newOffer.salaryOffer, newOffer.houseAndCar, newOffer.contractYears);
+        if (effectiveRankedSalary >= requiredSalary * 0.95) { playerResponse = Math.random() < 0.75 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'gameMessages.playerReasonHappy' : 'gameMessages.playerReasonMoreSalary'; }
+        else if (effectiveRankedSalary >= requiredSalary * 0.7) { playerResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'gameMessages.playerReasonConvinced' : 'gameMessages.playerReasonLowSalary'; }
         else { playerReason = 'gameMessages.playerReasonLaughableSalary'; }
 
         const bothAccepted = clubResponse === 'accepted' && playerResponse === 'accepted';
@@ -3364,7 +3549,7 @@ export function gameReducer(state, action) {
 
         let updatedPlayers = state.team ? [...state.team.players] : [];
         let updatedLeagueTeams = [...(state.leagueTeams || [])];
-        let moneyChange = -(newOffer.amount || 0);
+        let moneyChange = -getOfferUpfrontCost(newOffer);
 
         if (bothAccepted) {
           updatedPlayers.push({ ...targetPlayer, salary: newOffer.salaryOffer, contractYears: newOffer.contractYears || 4, teamId: state.teamId, morale: 80, fitness: 100 });
@@ -3394,7 +3579,7 @@ export function gameReducer(state, action) {
       return {
         ...state,
         outgoingOffers: [...(state.outgoingOffers || []), safeOffer],
-        money: state.money - (safeOffer.amount || 0)
+        money: state.money - getOfferUpfrontCost(safeOffer)
       };
     }
 
@@ -3408,7 +3593,7 @@ export function gameReducer(state, action) {
 
     case 'REMOVE_OUTGOING_OFFER': {
       const removedOffer = (state.outgoingOffers || []).find(o => o.id === action.payload);
-      const refundAmount = removedOffer?.status === 'pending' ? (removedOffer.amount || 0) : 0;
+      const refundAmount = removedOffer?.status === 'pending' ? getOfferUpfrontCost(removedOffer) : 0;
       return {
         ...state,
         outgoingOffers: (state.outgoingOffers || []).filter(o => o.id !== action.payload),
@@ -4169,17 +4354,23 @@ export function gameReducer(state, action) {
         }
       }
 
-      // Award prize money to player
+      // Award prize money to player.
+      // prizesMoney tracks the full gross continental prize (used for prize
+      // tables / season summaries). What we actually credit to the spendable
+      // transfer balance is the board's released share — full for elite clubs,
+      // reduced for small/underdog clubs so one European run can't trivialise
+      // career progression. See getEuropeanPrizeCashflowMultiplier().
       const finalComp = updatedEuropean.competitions[competitionId];
       const playerPrize = finalComp.prizesMoney?.[state.teamId] || 0;
       const prevPrize = compState.prizesMoney?.[state.teamId] || 0;
       const newPrize = playerPrize - prevPrize;
+      const creditedPrize = applyEuropeanPrizeCashflow(newPrize, state.team);
 
-      const prizeMessages = newPrize > 0 ? [{
+      const prizeMessages = creditedPrize > 0 ? [{
         id: Date.now(),
         type: 'european',
         titleKey: 'gameMessages.europeanIncome', titleParams: { icon: finalComp.config.icon },
-        contentKey: 'gameMessages.prizeMoneyContent', contentParams: { competition: finalComp.config.shortName, amount: `€${(newPrize / 1_000_000).toFixed(1)}M` },
+        contentKey: 'gameMessages.prizeMoneyContent', contentParams: { competition: finalComp.config.shortName, amount: `€${(creditedPrize / 1_000_000).toFixed(1)}M` },
         dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }] : [];
 
@@ -4231,7 +4422,7 @@ export function gameReducer(state, action) {
         ...state,
         europeanCompetitions: updatedEuropean,
         pendingEuropeanMatch: newPendingMatch,
-        money: state.money + newPrize,
+        money: state.money + creditedPrize,
         messages: [...fmtAdvanceMessages, ...prizeMessages, ...state.messages].slice(0, 50),
         ...contrarrelojWinEu
       };
@@ -4960,14 +5151,95 @@ export function gameReducer(state, action) {
 
 export function GameProvider({ children }) {
   const [state, dispatch] = useReducer(gameReducer, initialState);
+  const toast = useToast();
+  const historicalRosterRepairRef = useRef(null);
+  const loadedCupBootstrapRef = useRef(null);
   const contrarrelojSaveRef = useRef(null); // debounce timer for contrarreloj auto-save
+  const lastCloudSaveAtRef = useRef({});
+  const saveErrorNotifiedRef = useRef(false); // avoid spamming the save-failure toast on every retry
+  const careerSyncRetryAtRef = useRef(0); // throttle career cloud re-sync retries
+  const careerSyncInFlightRef = useRef(false); // prevent overlapping re-sync attempts
+
+  const stripCloudSaveData = (sourceState, userKey) => {
+    const saveData = { ...sourceState };
+    delete saveData.loaded;
+    delete saveData[userKey];
+    delete saveData.leagueTeams;
+    delete saveData.otherLeagues;
+    return saveData;
+  };
+
+  const saveModeWithMinInterval = (mode, userId, userKey, saveFn, sourceState, { force = false } = {}) => {
+    if (!userId) return Promise.resolve(false);
+    const now = Date.now();
+    const lastSavedAt = lastCloudSaveAtRef.current[mode] || 0;
+    if (!force && now - lastSavedAt < CLOUD_SAVE_MIN_INTERVAL_MS) {
+      return Promise.resolve(false);
+    }
+    lastCloudSaveAtRef.current[mode] = now;
+    return saveFn(userId, stripCloudSaveData(sourceState, userKey)).then(() => true);
+  };
+
+  // Persist a Glory run with the SAME local-first safety net as Carrera: write a
+  // synchronous on-device backup FIRST (it survives a refresh even when the async
+  // cloud write is dropped during unload), then push to Firestore and reconcile the
+  // backup's pending flag. Without the local write, a refresh before the debounced
+  // or beforeunload cloud save landed made the run vanish from the menu — it only
+  // ever lived in memory + an unconfirmed cloud doc.
+  const persistGlory = (sourceState, { force = false } = {}) => {
+    const uid = sourceState?._gloryUserId;
+    if (!uid || sourceState.gameMode !== 'glory' || !sourceState.gameStarted) {
+      return Promise.resolve(false);
+    }
+    saveLocalGlory(sourceState, { uid });
+    return saveModeWithMinInterval('glory', uid, '_gloryUserId', saveGlory, sourceState, { force })
+      .then((wrote) => {
+        // Only confirm the backup as synced when a cloud write actually happened —
+        // the min-interval throttle can short-circuit and return false without writing.
+        if (wrote) markLocalGlorySynced({ uid });
+        return wrote;
+      })
+      .catch((err) => {
+        // Cloud failed (offline / Firestore / dropped on unload): keep the on-device
+        // backup flagged pending so the menu keeps preferring it until a write lands.
+        markLocalGlorySyncFailed({ uid }, err);
+        throw err;
+      });
+  };
 
   // Generate unique save ID
   const generateSaveId = () => {
     return 'save_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   };
 
-  // Save game - always Firebase (single career save)
+  // Surface save failures once per failure streak so the debounced auto-save
+  // doesn't spam toasts. Production builds drop console.*, so the toast is the
+  // only signal the user gets.
+  const notifyCloudSaveError = (savedLocally) => {
+    if (saveErrorNotifiedRef.current) return;
+    saveErrorNotifiedRef.current = true;
+    if (savedLocally) {
+      toast.warning('Partida guardada en este dispositivo. La sincronización con la nube queda pendiente y se reintentará.', 5000);
+    } else {
+      toast.error('No se pudo guardar la partida. El guardado local y la sincronización con la nube han fallado.', 6000);
+    }
+  };
+  const notifyLocalSaveError = (reason) => {
+    if (saveErrorNotifiedRef.current) return;
+    saveErrorNotifiedRef.current = true;
+    toast.error(
+      reason === 'quota'
+        ? 'No hay espacio para guardar la partida en este dispositivo. Libera espacio o inicia sesión para guardar en la nube.'
+        : 'No se pudo guardar la partida en este dispositivo.',
+      6000
+    );
+  };
+
+  // Save game.
+  //  - Career: persist to localStorage FIRST (trial users have no UID and this is
+  //    their only save; authenticated users get a synchronous on-device backup),
+  //    then write to Firestore as the source of truth when authenticated.
+  //  - ProManager: cloud-only, auth-gated.
   const saveGame = async () => {
     if (!state.gameStarted) return;
     if (state.gameMode === 'contrarreloj') return; // Contrarreloj uses its own auto-save
@@ -4975,16 +5247,77 @@ export function GameProvider({ children }) {
     if (state.gameMode === 'glory') return; // Glory uses its own auto-save
 
     const userId = auth.currentUser?.uid || state.userId;
-    if (!userId) return;
+
+    if (state.gameMode === 'promanager') {
+      // ProManager is a competitive, auth-gated mode — no local trial save.
+      if (!userId) return;
+      try {
+        await saveProManager(userId, state);
+        saveErrorNotifiedRef.current = false;
+      } catch (error) {
+        console.error('Error saving game:', error);
+        toast.error('No se pudo sincronizar la partida con la nube.', 5000);
+      }
+      return;
+    }
+
+    // Career mode. Always persist locally first (trial + authenticated backup).
+    const localResult = saveLocalCareer(state, { uid: userId || null });
+    if (!localResult.ok && localResult.reason !== 'unavailable') {
+      notifyLocalSaveError(localResult.reason);
+    }
+
+    if (!userId) {
+      // Trial / no Firebase user: localStorage IS the save. Surface real failures
+      // (quota / serialize) — but treat a missing storage engine as a no-op so we
+      // don't toast on platforms without localStorage.
+      if (localResult.ok) {
+        saveErrorNotifiedRef.current = false;
+      }
+      return;
+    }
 
     try {
-      if (state.gameMode === 'promanager') {
-        await saveProManager(userId, state);
-      } else {
-        await saveCareer(userId, state);
-      }
+      await saveCareer(userId, state);
+      // Cloud confirmed — clear the pending flag the local save set above.
+      markLocalCareerSynced({ uid: userId });
+      saveErrorNotifiedRef.current = false;
     } catch (error) {
       console.error('Error saving game:', error);
+      // Cloud failed (network / Firestore). The on-device backup above stays
+      // flagged pending so the retry hooks resync it later; navigator.onLine is
+      // only a browser hint and must not decide whether this attempt runs.
+      markLocalCareerSyncFailed({ uid: userId }, error);
+      notifyCloudSaveError(localResult.ok);
+    }
+  };
+
+  // Retry a pending authenticated career backup against Firestore. Driven by the
+  // app-init/online/visibility hooks below and by future saves — NOT a polling
+  // loop. Only ever touches a real UID's backup (trial saves have no UID/pending).
+  const retryPendingCareerSync = async ({ force = false } = {}) => {
+    const uid = auth.currentUser?.uid;
+    if (!uid) return; // no real Firebase user → nothing to cloud-sync
+    if (!isLocalCareerPendingSync({ uid })) return; // already synced — avoid spam
+    if (careerSyncInFlightRef.current) return;
+    const now = Date.now();
+    if (!force && now - careerSyncRetryAtRef.current < CAREER_SYNC_RETRY_MIN_MS) return;
+    careerSyncRetryAtRef.current = now;
+
+    const loaded = loadLocalCareer({ uid });
+    if (!loaded?.state) return;
+
+    careerSyncInFlightRef.current = true;
+    try {
+      await saveCareer(uid, loaded.state);
+      markLocalCareerSynced({ uid });
+      saveErrorNotifiedRef.current = false;
+    } catch (error) {
+      // Still offline / failing — keep it pending for the next event.
+      markLocalCareerSyncFailed({ uid }, error);
+      console.warn('Career cloud re-sync failed; will retry later:', error?.message || error);
+    } finally {
+      careerSyncInFlightRef.current = false;
     }
   };
 
@@ -5047,6 +5380,11 @@ export function GameProvider({ children }) {
           }
         }
       }
+      if (uid) {
+        // App init / auth restore: a prior session may have left an on-device
+        // backup that never reached Firestore (offline / tab closed). Push it now.
+        retryPendingCareerSync({ force: true });
+      }
       if (!initialized) {
         initialized = true;
         dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
@@ -5056,6 +5394,180 @@ export function GameProvider({ children }) {
     unsubscribe = onAuthStateChanged(auth, syncUser);
     return () => unsubscribe?.();
   }, []);
+
+  // Retry pending career cloud sync on connectivity/visibility recovery. These are
+  // event-driven (no polling): `online` and a fresh tab focus are the moments a
+  // previously-failed Firestore write is most likely to succeed. `online` forces an
+  // immediate attempt; visibility ticks are throttled to avoid retry spam.
+  useEffect(() => {
+    const onOnline = () => { retryPendingCareerSync({ force: true }); };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') retryPendingCareerSync();
+    };
+    window.addEventListener('online', onOnline);
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      window.removeEventListener('online', onOnline);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
+  }, []);
+
+  // Historical saves created before the full-season runtime used 2025/26 leagueTeams
+  // for market/explorer and could leave opponents without historical players in matches.
+  // Repair them client-side after load by hydrating the selected historical dataset.
+  useEffect(() => {
+    if (!state.loaded || !state.gameStarted || !state.historicalDatabase || !state.databaseSeasonId) return;
+
+    const leagueTeams = state.leagueTeams || [];
+    const modernLeakNames = new Set(['J. Oblak', 'J. Alvarez', 'Julián Álvarez', 'A. Griezmann', 'Álex Baena']);
+    const hasModernLeak = leagueTeams.some(team =>
+      (team.players || []).some(player => modernLeakNames.has(player.name))
+    );
+    const hasShortRosters = leagueTeams.length === 0 || leagueTeams.some(team => (team.players || []).length < 18);
+    const currentOpponentId = (state.fixtures || [])
+      .find(fixture => fixture.week === state.currentWeek && (fixture.homeTeam === state.teamId || fixture.awayTeam === state.teamId));
+    const opponentId = currentOpponentId
+      ? (currentOpponentId.homeTeam === state.teamId ? currentOpponentId.awayTeam : currentOpponentId.homeTeam)
+      : null;
+    const currentOpponentMissing = opponentId
+      ? !leagueTeams.find(team => (team.id === opponentId || team.teamId === opponentId) && (team.players || []).length >= 18)
+      : false;
+    const needsRepair = hasModernLeak || hasShortRosters || currentOpponentMissing;
+    if (!needsRepair) return;
+
+    const repairKey = `${state.databaseSeasonId}:${state.teamId}:${state.currentSeason || 1}`;
+    if (historicalRosterRepairRef.current === repairKey) return;
+    historicalRosterRepairRef.current = repairKey;
+
+    let cancelled = false;
+    loadHistoricalSeason(state.databaseSeasonId)
+      .then((dataset) => {
+        if (cancelled) return;
+        const universe = buildHistoricalUniverseFromDataset(dataset, {
+          id: state.databaseSeasonId,
+          label: state.historicalDatabaseLabel,
+          startYear: state.careerStartSeason,
+        });
+        const historicalTeams = getAllTeamsFromUniverse(universe).map(team => {
+          if ((team.id || team.teamId) !== state.teamId) return team;
+          return {
+            ...team,
+            ...state.team,
+            id: state.team?.id || team.id,
+            name: state.team?.name || team.name,
+            players: (state.team?.players || []).length >= 18 ? state.team.players : (team.players || []),
+          };
+        });
+        const repairedSelectedTeam = historicalTeams.find(team => (team.id || team.teamId) === state.teamId);
+        if (repairedSelectedTeam && (state.team?.players || []).length < 18) {
+          dispatch({ type: 'UPDATE_TEAM', payload: repairedSelectedTeam });
+        }
+        dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: historicalTeams });
+        dispatch({
+          type: 'SET_OTHER_LEAGUES',
+          payload: initializeOtherLeaguesFromUniverse(
+            universe,
+            toGameLeagueId(state.playerLeagueId || state.leagueId || 'laliga'),
+            state.playerGroupId || null
+          )
+        });
+      })
+      .catch((error) => {
+        console.warn('No se pudo reparar la base histórica de plantillas:', error);
+        historicalRosterRepairRef.current = null;
+      });
+
+    return () => { cancelled = true; };
+  }, [
+    state.loaded,
+    state.gameStarted,
+    state.historicalDatabase,
+    state.databaseSeasonId,
+    state.historicalDatabaseLabel,
+    state.careerStartSeason,
+    state.currentSeason,
+    state.currentWeek,
+    state.teamId,
+    state.team,
+    state.leagueId,
+    state.playerLeagueId,
+    state.playerGroupId,
+    state.leagueTeams,
+    state.fixtures,
+  ]);
+
+  // Saves intentionally omit heavy competition state. Recreate missing domestic
+  // cup/calendar data after load, using historical rosters when applicable.
+  useEffect(() => {
+    if (!state.loaded || !state.gameStarted || state.cupCompetition) return;
+    if (state.gameMode === 'ranked' || state.rankedMatchId) return;
+    if (!state.team || !Array.isArray(state.leagueTable) || state.leagueTable.length === 0) return;
+
+    const bootstrapKey = [
+      state.saveId || 'local',
+      state.databaseSeasonId || 'current',
+      state.teamId || state.team?.id || state.team?.teamId,
+      state.currentSeason || 1,
+      state.playerLeagueId || state.leagueId || 'laliga',
+    ].join(':');
+    if (loadedCupBootstrapRef.current === bootstrapKey) return;
+    loadedCupBootstrapRef.current = bootstrapKey;
+
+    const applyBootstrap = (bootstrap) => {
+      if (!bootstrap?.cupCompetition) {
+        loadedCupBootstrapRef.current = null;
+        return;
+      }
+      if (bootstrap.shouldReplaceOtherLeagues && bootstrap.otherLeagues) {
+        dispatch({ type: 'SET_OTHER_LEAGUES', payload: bootstrap.otherLeagues });
+      }
+      if (bootstrap.shouldRemapFixtures && bootstrap.remappedFixtures) {
+        dispatch({ type: 'SET_FIXTURES', payload: bootstrap.remappedFixtures });
+      }
+      if (bootstrap.needsCalendar && bootstrap.europeanCalendar) {
+        dispatch({ type: 'SET_EUROPEAN_CALENDAR', payload: bootstrap.europeanCalendar });
+      }
+      dispatch({ type: 'INIT_CUP_COMPETITION', payload: bootstrap.cupCompetition });
+    };
+
+    if (state.historicalDatabase && state.databaseSeasonId && state.databaseSeasonId !== 'current') {
+      let cancelled = false;
+      loadHistoricalSeason(state.databaseSeasonId)
+        .then((dataset) => {
+          if (cancelled) return;
+          applyBootstrap(buildHistoricalLoadedCupBootstrap(state, dataset));
+        })
+        .catch((error) => {
+          console.warn('No se pudo reconstruir la copa histórica cargada:', error);
+          loadedCupBootstrapRef.current = null;
+        });
+      return () => { cancelled = true; };
+    }
+
+    applyBootstrap(buildCurrentLoadedCupBootstrap(state));
+  }, [
+    state.loaded,
+    state.gameStarted,
+    state.gameMode,
+    state.rankedMatchId,
+    state.saveId,
+    state.cupCompetition,
+    state.team,
+    state.teamId,
+    state.leagueTable,
+    state.otherLeagues,
+    state.fixtures,
+    state.europeanCalendar,
+    state.currentWeek,
+    state.currentSeason,
+    state.historicalDatabase,
+    state.databaseSeasonId,
+    state.historicalDatabaseLabel,
+    state.careerStartSeason,
+    state.playerLeagueId,
+    state.leagueId,
+    state.playerGroupId,
+  ]);
 
   // Persist settings to Firebase when they change
   const settingsRef = useRef(state.settings);
@@ -5068,13 +5580,21 @@ export function GameProvider({ children }) {
     }
   }, [state.settings]);
 
-  // Auto-save on state changes (debounced) — respects autoSave setting
+  // Auto-save on state changes (debounced) — respects autoSave setting.
+  // Triggers on every user-meaningful surface the player expects to be saved:
+  // season/week advance, finances (money), transfers/contracts (team), squad
+  // management (lineup/formation/tactic) and infrastructure (stadium/facilities/
+  // training). The 2s debounce coalesces rapid edits into a single write.
   useEffect(() => {
-    if (state.gameStarted && state.gameMode !== 'contrarreloj' && state.settings?.autoSave !== false) {
+    if (state.gameStarted && !['contrarreloj', 'promanager', 'glory', 'ranked'].includes(state.gameMode) && state.settings?.autoSave !== false) {
       const timeout = setTimeout(saveGame, 2000);
       return () => clearTimeout(timeout);
     }
-  }, [state.currentWeek, state.money, state.team]);
+  }, [
+    state.currentSeason, state.currentWeek, state.money, state.team,
+    state.lineup, state.formation, state.tactic,
+    state.stadium, state.facilities, state.training,
+  ]);
 
   // ============================================================
   // CONTRARRELOJ AUTO-SAVE (Firebase)
@@ -5096,15 +5616,12 @@ export function GameProvider({ children }) {
       return;
     }
 
-    // Save immediately on week/season advance (debounce 500ms to batch rapid changes)
+    // Save on week/season advance (debounced and throttled to avoid Firebase write spikes)
     if (contrarrelojSaveRef.current) clearTimeout(contrarrelojSaveRef.current);
     contrarrelojSaveRef.current = setTimeout(() => {
-      const saveData = { ...state };
-      delete saveData._contrarrelojUserId;
-      // Heavy fields stripped in contrarrelojSaveService.saveContrarreloj
-      saveContrarreloj(state._contrarrelojUserId, saveData)
+      saveModeWithMinInterval('contrarreloj', state._contrarrelojUserId, '_contrarrelojUserId', saveContrarreloj, state)
         .catch(err => console.error('Error auto-saving contrarreloj:', err));
-    }, 500);
+    }, CLOUD_SAVE_DEBOUNCE_MS);
 
     return () => {
       if (contrarrelojSaveRef.current) clearTimeout(contrarrelojSaveRef.current);
@@ -5118,7 +5635,7 @@ export function GameProvider({ children }) {
   stateRef.current = state;
 
   // ============================================================
-  // CONTRARRELOJ: Periodic auto-save every 30 seconds
+  // CONTRARRELOJ: Periodic auto-save
   // ============================================================
   useEffect(() => {
     if (
@@ -5131,15 +5648,10 @@ export function GameProvider({ children }) {
     const interval = setInterval(() => {
       const s = stateRef.current;
       if (s.gameMode === 'contrarreloj' && s.gameStarted && s._contrarrelojUserId && !s.contrarrelojData?.finished) {
-        const saveData = { ...s };
-        delete saveData.loaded;
-        delete saveData._contrarrelojUserId;
-        delete saveData.leagueTeams;
-        delete saveData.otherLeagues;
-        saveContrarreloj(s._contrarrelojUserId, saveData)
+        saveModeWithMinInterval('contrarreloj', s._contrarrelojUserId, '_contrarrelojUserId', saveContrarreloj, s)
           .catch(err => console.error('Periodic save error:', err));
       }
-    }, 30000);
+    }, CLOUD_SAVE_PERIODIC_MS);
 
     return () => clearInterval(interval);
   }, [state.gameMode, state.gameStarted, state._contrarrelojUserId, state.contrarrelojData?.finished]);
@@ -5158,32 +5670,22 @@ export function GameProvider({ children }) {
     }
     if (proManagerSaveRef.current) clearTimeout(proManagerSaveRef.current);
     proManagerSaveRef.current = setTimeout(() => {
-      const saveData = { ...state };
-      delete saveData.loaded;
-      delete saveData._proManagerUserId;
-      delete saveData.leagueTeams;
-      delete saveData.otherLeagues;
-      saveProManager(state._proManagerUserId, saveData)
+      saveModeWithMinInterval('promanager', state._proManagerUserId, '_proManagerUserId', saveProManager, state)
         .catch(err => console.error('ProManager save error:', err));
-    }, 500);
+    }, CLOUD_SAVE_DEBOUNCE_MS);
     return () => { if (proManagerSaveRef.current) clearTimeout(proManagerSaveRef.current); };
   }, [state.currentWeek, state.currentSeason, state.money, state.team, state.leagueTable, state.proManagerData, state.gameMode, state.currentScreen]);
 
-  // Periodic ProManager save (every 30s) — matches contrarreloj pattern
+  // Periodic ProManager save
   useEffect(() => {
     if (state.gameMode !== 'promanager' || !state.gameStarted || !state._proManagerUserId) return;
     if (state.proManagerData?.finished) return;
     const interval = setInterval(() => {
       const s = stateRef.current;
       if (s.gameMode === 'promanager' && s.gameStarted && s._proManagerUserId && !s.proManagerData?.finished) {
-        const saveData = { ...s };
-        delete saveData.loaded;
-        delete saveData._proManagerUserId;
-        delete saveData.leagueTeams;
-        delete saveData.otherLeagues;
-        saveProManager(s._proManagerUserId, saveData).catch(() => {});
+        saveModeWithMinInterval('promanager', s._proManagerUserId, '_proManagerUserId', saveProManager, s).catch(() => {});
       }
-    }, 30000);
+    }, CLOUD_SAVE_PERIODIC_MS);
     return () => clearInterval(interval);
   }, [state.gameMode, state.gameStarted, state._proManagerUserId, state.proManagerData?.finished]);
 
@@ -5195,39 +5697,38 @@ export function GameProvider({ children }) {
     if (state.gameMode !== 'glory' || !state.gameStarted || !state._gloryUserId) return;
     if (glorySaveRef.current) clearTimeout(glorySaveRef.current);
     glorySaveRef.current = setTimeout(() => {
-      const saveData = { ...state };
-      delete saveData.loaded;
-      delete saveData._gloryUserId;
-      delete saveData.leagueTeams;
-      delete saveData.otherLeagues;
-      saveGlory(state._gloryUserId, saveData)
+      persistGlory(state)
         .catch(err => console.error('Glory save error:', err));
-    }, 500);
+    }, CLOUD_SAVE_DEBOUNCE_MS);
     return () => { if (glorySaveRef.current) clearTimeout(glorySaveRef.current); };
   }, [state.currentWeek, state.currentSeason, state.money, state.team, state.leagueTable, state.gloryData, state.gameMode, state.currentScreen]);
 
-  // Periodic Glory save (every 30s)
+  // Periodic Glory save
   useEffect(() => {
     if (state.gameMode !== 'glory' || !state.gameStarted || !state._gloryUserId) return;
     const interval = setInterval(() => {
       const s = stateRef.current;
       if (s.gameMode === 'glory' && s.gameStarted && s._gloryUserId) {
-        const saveData = { ...s };
-        delete saveData.loaded;
-        delete saveData._gloryUserId;
-        delete saveData.leagueTeams;
-        delete saveData.otherLeagues;
-        saveGlory(s._gloryUserId, saveData).catch(() => {});
+        persistGlory(s).catch(() => {});
       }
-    }, 30000);
+    }, CLOUD_SAVE_PERIODIC_MS);
     return () => clearInterval(interval);
   }, [state.gameMode, state.gameStarted, state._gloryUserId]);
+
+  // Immediate cloud flush when the player explicitly leaves Glory to the menu.
+  // This closes the gap where the local backup survives a refresh but the queued
+  // Firestore write has not landed yet.
+  useEffect(() => {
+    if (state.gameMode !== 'glory' || !state.gameStarted || !state._gloryUserId) return;
+    if (state.currentScreen !== 'main_menu') return;
+    persistGlory(state, { force: true }).catch(err => console.error('Glory menu flush error:', err));
+  }, [state.currentScreen, state.gameMode, state.gameStarted, state._gloryUserId]);
 
   // ============================================================
   // SAVE ON APP CLOSE / BACKGROUND (visibilitychange + Capacitor pause)
   // Uses stateRef to always have the latest state
   // ============================================================
-  // Pre-import save modules so they're ready synchronously on beforeunload
+
   const careerSaveModule = { saveCareer }; // Already statically imported
   const careerSaveRef = useRef(careerSaveModule);
   const capacitorAppRef = useRef(null);
@@ -5244,12 +5745,7 @@ export function GameProvider({ children }) {
         s._contrarrelojUserId &&
         !s.contrarrelojData?.finished
       ) {
-        const saveData = { ...s };
-        delete saveData.loaded;
-        delete saveData._contrarrelojUserId;
-        delete saveData.leagueTeams;
-        delete saveData.otherLeagues;
-        saveContrarreloj(s._contrarrelojUserId, saveData).catch(() => {});
+        saveModeWithMinInterval('contrarreloj', s._contrarrelojUserId, '_contrarrelojUserId', saveContrarreloj, s, { force: true }).catch(() => {});
       }
       if (
         s.gameMode === 'promanager' &&
@@ -5257,28 +5753,29 @@ export function GameProvider({ children }) {
         s._proManagerUserId &&
         !s.proManagerData?.finished
       ) {
-        const saveData = { ...s };
-        delete saveData.loaded;
-        delete saveData._proManagerUserId;
-        delete saveData.leagueTeams;
-        delete saveData.otherLeagues;
-        saveProManager(s._proManagerUserId, saveData).catch(() => {});
+        saveModeWithMinInterval('promanager', s._proManagerUserId, '_proManagerUserId', saveProManager, s, { force: true }).catch(() => {});
       }
       if (s.gameMode === 'glory' && s.gameStarted && s._gloryUserId) {
-        const saveData = { ...s };
-        delete saveData.loaded;
-        delete saveData._gloryUserId;
-        delete saveData.leagueTeams;
-        delete saveData.otherLeagues;
-        saveGlory(s._gloryUserId, saveData).catch(() => {});
+        // Synchronous on-device backup completes during unload even when the async
+        // Firestore write is dropped — the reliable last-ditch save across a refresh.
+        persistGlory(s, { force: true }).catch(() => {});
       }
       if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.gameMode !== 'glory' && s.gameMode !== 'ranked' && s.settings?.autoSave !== false) {
         const freshState = stateRef.current;
         const userId = auth.currentUser?.uid || freshState.userId;
+        // Synchronous localStorage write completes during unload even when the
+        // async Firestore write below gets dropped — this is the reliable last-ditch
+        // save for trial users AND an on-device backup for authenticated users.
+        saveLocalCareer(freshState, { uid: userId || null });
         if (userId) {
-          // Use pre-imported careerSaveService (writes to career_saves with stripUndefined)
+          // Use pre-imported careerSaveService (writes to career_saves with stripUndefined).
+          // The local save above is flagged pending; confirm it on success so we don't
+          // needlessly re-sync next launch. If the async write is dropped during unload,
+          // it stays pending and the init/online/visibility hooks resync it later.
           if (careerSaveRef.current) {
-            careerSaveRef.current.saveCareer(userId, freshState).catch(() => {});
+            careerSaveRef.current.saveCareer(userId, freshState)
+              .then(() => markLocalCareerSynced({ uid: userId }))
+              .catch((err) => markLocalCareerSyncFailed({ uid: userId }, err));
           }
         }
       }

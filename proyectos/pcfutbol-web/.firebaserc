@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "pcfutbol-web"
-  }
+  },
+  "targets": {
+    "pcfutbol-web": {
+      "hosting": {
+        "production": [
+          "pcfutbol-web"
+        ],
+        "preprod": [
+          "pcgaffer-preprod"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

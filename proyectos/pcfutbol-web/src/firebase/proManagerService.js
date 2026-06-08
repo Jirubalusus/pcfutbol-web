@@ -85,7 +85,8 @@ export async function hasActiveProManager(userId) {
       week: save.currentWeek || 1,
       prestige: save.proManagerData?.prestige || 10,
       boardConfidence: save.proManagerData?.boardConfidence || 60,
-      titles: save.proManagerData?.titles || 0
+      titles: save.proManagerData?.titles || 0,
+      databaseSeasonId: save.databaseSeasonId || 'current'
     }
   };
 }

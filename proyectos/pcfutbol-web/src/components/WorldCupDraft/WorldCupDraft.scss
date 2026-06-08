@@ -1,0 +1,4444 @@
+.worldcup-draft {
+  --wc-green: #38d39f;
+  --wc-amber: #fbbf24;
+  --wc-red: #f87171;
+  --wc-ink: #f8fafc;
+  --wc-line: rgba(255, 255, 255, 0.12);
+  --wc-panel: rgba(8, 14, 22, 0.86);
+  --radius: 12px;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  padding: 14px;
+  color: var(--wc-ink);
+  font-family: 'Outfit', system-ui, sans-serif;
+  background:
+    linear-gradient(180deg, rgba(3, 8, 16, 0.74), rgba(3, 7, 12, 0.98)),
+    radial-gradient(ellipse at 50% -12%, rgba(56, 211, 159, 0.2), transparent 50%),
+    #04070c;
+
+  * { box-sizing: border-box; }
+  button { font: inherit; }
+
+  &__stadium {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background:
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 80px),
+      radial-gradient(ellipse at 50% 108%, rgba(25, 120, 80, 0.42), transparent 48%);
+    mask-image: linear-gradient(180deg, transparent, #000 18%, #000);
+  }
+
+  &__topbar,
+  &__setup,
+  &__draft,
+  &__tournament,
+  &__result,
+  &__legend-upgrade,
+  &__legend-gauntlet,
+  &__legend-champion {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1340px);
+    margin-inline: auto;
+  }
+
+  /* ---------- Topbar ---------- */
+  &__topbar {
+    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__title { text-align: center; }
+
+  &__topbar h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 3.6vw, 2.8rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    background: linear-gradient(180deg, #ffffff, #b7f5dd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  &__kicker {
+    display: block;
+    color: var(--wc-green);
+    font-size: 0.66rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+
+  /* ---------- Buttons ---------- */
+  &__ghost,
+  &__primary,
+  &__top-stat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 10px;
+    min-height: 44px;
+    border: 1px solid var(--wc-line);
+    color: var(--wc-ink);
+    background: rgba(12, 19, 29, 0.82);
+    font-weight: 800;
+  }
+
+  &__ghost {
+    padding: 0 14px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+
+    &:hover { border-color: rgba(56, 211, 159, 0.5); background: rgba(20, 30, 42, 0.9); }
+    &--block { width: 100%; }
+  }
+
+  &__top-stat {
+    justify-self: end;
+    padding: 0 14px;
+    color: rgba(248, 250, 252, 0.86);
+    font-size: 0.82rem;
+    & > svg { color: var(--wc-amber); }
+  }
+
+  &__primary {
+    width: 100%;
+    padding: 0 20px;
+    border: none;
+    color: #04110b;
+    background: linear-gradient(180deg, #4ce3ad, var(--wc-green));
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(56, 211, 159, 0.28);
+    transition: transform 0.12s ease, box-shadow 0.15s ease, filter 0.15s ease;
+
+    &:hover:not(:disabled) { filter: brightness(1.06); box-shadow: 0 14px 34px rgba(56, 211, 159, 0.36); }
+    &:active:not(:disabled) { transform: translateY(1px); }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: rgba(248, 250, 252, 0.42);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: none;
+    }
+  }
+
+  /* ---------- Shared panels ---------- */
+  &__hero-panel,
+  &__setup-panel,
+  &__pick-panel,
+  &__summary,
+  &__result-head,
+  &__fixtures,
+  &__match,
+  &__match-pitch,
+  &__timeline,
+  &__pitch-wrap {
+    border: 1px solid var(--wc-line);
+    border-radius: var(--radius);
+    background: var(--wc-panel);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 48px rgba(0, 0, 0, 0.4);
+  }
+
+  /* ---------- Setup ---------- */
+  &__setup {
+    min-height: calc(100dvh - 92px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__hero-panel {
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    background:
+      linear-gradient(90deg, rgba(5, 10, 17, 0.95), rgba(5, 10, 17, 0.4)),
+      radial-gradient(circle at 80% 26%, rgba(56, 211, 159, 0.24), transparent 30%),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 46px),
+      var(--wc-panel);
+
+    h2 {
+      width: min(760px, 100%);
+      margin: 14px 0 12px;
+      font-size: clamp(2.1rem, 4.6vw, 4.4rem);
+      line-height: 0.94;
+      font-style: italic;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    p {
+      width: min(620px, 100%);
+      margin: 0;
+      color: rgba(248, 250, 252, 0.76);
+      line-height: 1.5;
+    }
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+
+    span {
+      padding: 8px 12px;
+      border: 1px solid rgba(56, 211, 159, 0.34);
+      border-radius: 999px;
+      color: #dfffee;
+      background: rgba(56, 211, 159, 0.12);
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+  }
+
+  &__setup-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    label {
+      color: rgba(248, 250, 252, 0.7);
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  &__segmented {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+
+    &--wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    button {
+      min-height: 46px;
+      border: 1px solid var(--wc-line);
+      border-radius: 10px;
+      color: rgba(248, 250, 252, 0.8);
+      background: rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      font-weight: 900;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+
+      &:hover { border-color: rgba(56, 211, 159, 0.45); }
+
+      &.is-active {
+        border-color: transparent;
+        color: #04110b;
+        background: linear-gradient(180deg, #4ce3ad, var(--wc-green));
+        box-shadow: 0 8px 20px rgba(56, 211, 159, 0.26);
+      }
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    padding: 10px 12px;
+    border: 1px solid rgba(248, 113, 113, 0.44);
+    border-radius: 10px;
+    color: #fecaca;
+    background: rgba(127, 29, 29, 0.3);
+    font-weight: 700;
+  }
+
+  &__notice {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    padding: 10px 12px;
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    border-radius: 10px;
+    color: #fde68a;
+    background: rgba(120, 87, 14, 0.26);
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  &__retry {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border: 1px solid rgba(248, 250, 252, 0.28);
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.4);
+    color: #f8fafc;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+
+    &:hover { background: rgba(15, 23, 42, 0.62); }
+
+    &--ghost {
+      border-color: rgba(250, 204, 21, 0.45);
+      color: #fde68a;
+    }
+  }
+
+  /* ---------- Draft layout (pitch-first, chemistry below) ---------- */
+  &__draft {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ---------- Pitch ---------- */
+  &__pitch-wrap {
+    position: relative;
+    min-height: 0;
+    padding: 14px 12px;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(56, 211, 159, 0.08), transparent 60%),
+      var(--wc-panel);
+  }
+
+  &__pitch-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(4, 9, 15, 0.7);
+    color: var(--wc-ink);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+  }
+
+  &__pitch {
+    position: relative;
+    height: min(68vh, 620px);
+    aspect-ratio: 72 / 100;
+    max-width: 100%;
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid rgba(232, 255, 244, 0.32);
+    background:
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 9.09%, transparent 9.09% 18.18%),
+      linear-gradient(180deg, #1c7a49 0%, #14633a 55%, #0f5532 100%);
+    box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.45);
+  }
+
+  /* pitch markings drawn with absolutely positioned spans */
+  &__pitch-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    /* halfway line */
+    &::before {
+      content: '';
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      top: 50%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.32);
+    }
+  }
+
+  &__pitch-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 26%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+  }
+
+  &__pitch-spot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  &__pitch-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56%;
+    height: 17%;
+    border: 2px solid rgba(255, 255, 255, 0.28);
+
+    &--top { top: -2px; border-top: none; }
+    &--bottom { bottom: -2px; border-bottom: none; }
+  }
+
+  &__pitch-six {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28%;
+    height: 7%;
+    border: 2px solid rgba(255, 255, 255, 0.26);
+
+    &--top { top: -2px; border-top: none; }
+    &--bottom { bottom: -2px; border-bottom: none; }
+  }
+
+  /* ---------- Tactical tokens ---------- */
+  &__slot {
+    position: absolute;
+    z-index: 2;
+    width: 84px;
+    transform: translate(-50%, -50%) !important;
+    transform-origin: 50% 50%;
+    transition: none;
+    will-change: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--wc-ink);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+
+    &:disabled { cursor: default; }
+    &:hover,
+    &:focus,
+    &:active,
+    &.is-active {
+      transform: translate(-50%, -50%) !important;
+    }
+    &:focus-visible .worldcup-draft__slot-badge {
+      outline: 2px solid rgba(248, 250, 252, 0.9);
+      outline-offset: 3px;
+    }
+
+    &-badge {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: rgba(248, 250, 252, 0.78);
+      background: rgba(6, 12, 20, 0.82);
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      transform: none;
+      transform-origin: 50% 50%;
+      transition: box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      pointer-events: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: -7px;
+        border-radius: inherit;
+        border: 2px solid rgba(56, 211, 159, 0);
+        opacity: 0;
+        transform: none;
+        pointer-events: none;
+      }
+    }
+
+    &-name {
+      max-width: 92px;
+      padding: 1px 7px;
+      border-radius: 6px;
+      background: rgba(4, 9, 15, 0.78);
+      font-size: 0.72rem;
+      font-weight: 800;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-hint {
+      font-size: 0.62rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(248, 250, 252, 0.66);
+    }
+
+    /* empty + clickable: every open slot invites a pick */
+    &.is-open .worldcup-draft__slot-badge {
+      border-style: solid;
+      border-color: rgba(56, 211, 159, 0.7);
+      color: var(--wc-green);
+      background: rgba(56, 211, 159, 0.14);
+      box-shadow: 0 0 0 3px rgba(56, 211, 159, 0.16), 0 8px 18px rgba(0, 0, 0, 0.4);
+    }
+    &.is-open .worldcup-draft__slot-hint { color: var(--wc-green); }
+    &.is-open:hover .worldcup-draft__slot-badge {
+      border-color: var(--wc-green);
+      background: rgba(56, 211, 159, 0.24);
+    }
+    /* the slot whose picker is currently open */
+    &.is-open.is-active .worldcup-draft__slot-badge {
+      box-shadow: 0 0 0 5px rgba(56, 211, 159, 0.3), 0 8px 18px rgba(0, 0, 0, 0.4);
+      animation: none;
+    }
+    &.is-open.is-active .worldcup-draft__slot-badge::after {
+      border-color: rgba(56, 211, 159, 0.35);
+      opacity: 1;
+    }
+
+    /* filled token */
+    &.is-filled .worldcup-draft__slot-badge {
+      border-style: solid;
+      color: #04110b;
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+    &.is-filled.tier-legendary .worldcup-draft__slot-badge {
+      background: linear-gradient(180deg, #ffe9a0, #f6b817);
+      border-color: rgba(255, 233, 160, 0.9);
+      box-shadow: 0 0 0 3px rgba(246, 184, 23, 0.32), 0 8px 18px rgba(0, 0, 0, 0.45);
+    }
+    &.is-filled.tier-elite .worldcup-draft__slot-badge { background: linear-gradient(180deg, #ffe48a, #f5c33b); }
+    &.is-filled.tier-great .worldcup-draft__slot-badge { background: linear-gradient(180deg, #5ce8b2, #2fc996); }
+    &.is-filled.tier-good .worldcup-draft__slot-badge { background: linear-gradient(180deg, #7fd0f0, #4aa6d6); color: #051620; }
+    &.is-filled.tier-base .worldcup-draft__slot-badge { background: linear-gradient(180deg, #c7d2dd, #97a6b6); color: #0a141e; }
+  }
+
+  /* ---------- Pick panel ---------- */
+  &__pick-panel {
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+
+  &__team-card {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(56, 211, 159, 0.22);
+    background: linear-gradient(90deg, rgba(56, 211, 159, 0.16), rgba(255, 255, 255, 0.03));
+  }
+
+  &__team-flag {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 46px;
+    border-radius: 8px;
+    font-size: 2rem;
+    background: rgba(2, 6, 12, 0.55);
+  }
+
+  &__team-meta {
+    min-width: 0;
+    h2, p { margin: 0; }
+    h2 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 1.22rem;
+      line-height: 1.12;
+      font-weight: 900;
+    }
+    p { color: rgba(248, 250, 252, 0.66); font-size: 0.8rem; }
+  }
+
+  &__reroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 0 13px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--wc-ink);
+    background: rgba(10, 16, 25, 0.8);
+    font-weight: 900;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+
+    & b { color: var(--wc-green); }
+    &:hover:not(:disabled) { border-color: rgba(56, 211, 159, 0.5); }
+    &:disabled { opacity: 0.45; cursor: not-allowed; }
+  }
+
+  &__instruction {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 9px 11px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(248, 250, 252, 0.78);
+    font-size: 0.82rem;
+    line-height: 1.3;
+
+    & svg { color: var(--wc-green); flex-shrink: 0; }
+    strong { color: var(--wc-green); }
+  }
+
+  /* ---------- Premium draft cards ---------- */
+  &__cards {
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
+    gap: 10px;
+    padding: 2px 4px 2px 2px;
+    align-content: start;
+  }
+
+  &__card {
+    --tier-a: #c7d2dd;
+    --tier-b: #97a6b6;
+    --tier-glow: rgba(151, 166, 182, 0.4);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 150px;
+    padding: 11px 12px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--wc-ink);
+    text-align: left;
+    cursor: pointer;
+    background:
+      linear-gradient(157deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 46%),
+      linear-gradient(180deg, rgba(16, 26, 38, 0.96), rgba(7, 12, 20, 0.98));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 10px 22px rgba(0, 0, 0, 0.38);
+    transition: transform 0.16s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    animation: wc-card-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(var(--card-index, 0) * 42ms);
+
+    /* tier-coloured top edge + ambient glow */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(160deg, var(--tier-a), transparent 52%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    &.tier-legendary { --tier-a: #ffe9a0; --tier-b: #f6b817; --tier-glow: rgba(246, 184, 23, 0.6); }
+    &.tier-elite { --tier-a: #ffe48a; --tier-b: #f5c33b; --tier-glow: rgba(245, 195, 59, 0.5); }
+    &.tier-great { --tier-a: #5ce8b2; --tier-b: #2fc996; --tier-glow: rgba(56, 211, 159, 0.5); }
+    &.tier-good { --tier-a: #7fd0f0; --tier-b: #4aa6d6; --tier-glow: rgba(122, 200, 240, 0.46); }
+
+    &:hover {
+      transform: translateY(-5px) rotate(-0.5deg);
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 0 0 1px var(--tier-glow), 0 18px 34px rgba(0, 0, 0, 0.5);
+    }
+    &:hover .worldcup-draft__card-shine { transform: translateX(120%) skewX(-18deg); }
+    &:active { transform: translateY(-2px) scale(0.99); }
+
+    &.is-selected {
+      border-color: transparent;
+      box-shadow: 0 0 0 2px var(--tier-a), 0 0 22px var(--tier-glow), 0 16px 30px rgba(0, 0, 0, 0.45);
+      animation: wc-card-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) backwards, wc-card-glow 1.8s ease-in-out infinite;
+    }
+  }
+
+  &__card-shine {
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    transform: translateX(0) skewX(-18deg);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &__card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__card-rating {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1.18rem;
+    font-weight: 900;
+    color: #05130c;
+    background: linear-gradient(180deg, var(--tier-a), var(--tier-b));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    .tier-good & { color: #051620; }
+    .tier-base & { color: #0a141e; }
+  }
+
+  &__card-pos {
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(248, 250, 252, 0.82);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  &__card-name {
+    margin-top: 2px;
+    font-size: 0.98rem;
+    line-height: 1.12;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &__card-origin {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(248, 250, 252, 0.72);
+    font-size: 0.72rem;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    i { font-style: normal; font-size: 0.95rem; }
+  }
+
+  &__card-club {
+    color: rgba(248, 250, 252, 0.5);
+    font-size: 0.7rem;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    margin-top: auto;
+    padding-top: 6px;
+
+    em { font-style: normal; }
+  }
+
+  &__card-style {
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-style: normal;
+    font-size: 0.64rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #04110b;
+    background: var(--style-c, var(--wc-green));
+  }
+
+  /* Per-style accent colour, shared by draft-card chips and summary links. */
+  [data-style] { --style-c: #38d39f; }
+  [data-style='Tiki-taka'] { --style-c: #34d399; }
+  [data-style='Potencia'] { --style-c: #fb7185; }
+  [data-style='Catenaccio'] { --style-c: #60a5fa; }
+  [data-style='Samba'] { --style-c: #fbbf24; }
+  [data-style='Presión'] { --style-c: #f472b6; }
+  [data-style='Contraataque'] { --style-c: #22d3ee; }
+  [data-style='Balón parado'] { --style-c: #a78bfa; }
+  [data-style='Muro defensivo'] { --style-c: #94a3b8; }
+  [data-style='Fantasía'] { --style-c: #fcd34d; }
+
+  &__card-chem {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 7px;
+    border-radius: 999px;
+    border: 1px solid rgba(56, 211, 159, 0.5);
+    color: #c8ffe7;
+    background: rgba(56, 211, 159, 0.14);
+    font-size: 0.64rem;
+    font-weight: 900;
+  }
+
+  /* ---------- Position card picker overlay ---------- */
+  &__picker {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: grid;
+    place-items: center;
+    padding: clamp(12px, 2vw, 28px);
+  }
+
+  &__picker-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(1, 7, 13, 0.74);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+
+  &__picker-sheet {
+    position: relative;
+    z-index: 1;
+    width: min(940px, 100%);
+    max-height: min(92dvh, 780px);
+    overflow: auto;
+    display: grid;
+    gap: 16px;
+    padding: clamp(16px, 2vw, 24px);
+    border-radius: 24px;
+    border: 1px solid rgba(56, 211, 159, 0.35);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(56, 211, 159, 0.16), transparent 44%),
+      linear-gradient(180deg, rgba(9, 20, 31, 0.98), rgba(3, 8, 15, 0.98));
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.66), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    animation: wc-picker-pop 0.24s ease-out both;
+  }
+
+  &__picker-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    h2 {
+      margin: 2px 0 0;
+      font-size: clamp(1.45rem, 3.6vw, 2.15rem);
+      line-height: 0.95;
+      font-weight: 950;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    h2 em {
+      color: var(--wc-green);
+      font-style: normal;
+    }
+  }
+
+  &__picker-close {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--wc-ink);
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+  }
+
+  &__picker-stage {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) 54px;
+    align-items: center;
+    gap: clamp(8px, 2vw, 18px);
+    overflow: hidden;
+    padding: 4px 0 28px;
+  }
+
+  &__picker-arrow {
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 76px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--wc-ink);
+    background: rgba(255, 255, 255, 0.07);
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.32;
+      cursor: not-allowed;
+    }
+  }
+
+  /* Stage wrapper: a portrait card slot. Holds the stacked-card depth layers
+     behind the hero card so the picker reads like a physical deck you swipe
+     through. Width is constrained so the card stays TALL, never a wide panel. */
+  &__feature-wrap {
+    --drag-x: 0px;
+    --drag-y: 0px;
+    --drag-rotate-x: 0deg;
+    --drag-rotate-y: 0deg;
+    --drag-rotate-z: 0deg;
+    --drag-peek: 0;
+    position: relative;
+    width: clamp(284px, 28vw, 366px);
+    max-width: 100%;
+    margin-inline: auto;
+    aspect-ratio: 326 / 520;
+    perspective: 1100px;
+    touch-action: none;
+    user-select: none;
+
+    &.is-swipeable {
+      cursor: grab;
+      -webkit-user-select: none;
+    }
+
+    &.is-dragging { cursor: grabbing; }
+  }
+
+  /* Full-size rounded cards sitting behind the hero, scaled down and peeking
+     below it — the layered "stack you swipe" look, not faint borders. */
+  &__feature-stack {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at 30% 10%, rgba(120, 150, 200, 0.16), transparent 40%),
+      linear-gradient(150deg, #1b2a45 0%, #121d32 50%, #070d18 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 44px rgba(3, 7, 16, 0.62);
+    transform-origin: 50% 100%;
+    transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.2, 1), opacity 0.22s ease;
+    z-index: 0;
+
+    &--1 {
+      transform:
+        translate(
+          calc(-16px - (var(--drag-peek) * 16px)),
+          calc(18px + (var(--drag-peek) * 9px))
+        )
+        rotate(calc(-4deg - (var(--drag-peek) * 2deg)))
+        scale(0.985);
+      opacity: calc(0.82 + (var(--drag-peek) * 0.14));
+    }
+    &--2 {
+      transform:
+        translate(
+          calc(-29px - (var(--drag-peek) * 16px)),
+          calc(35px + (var(--drag-peek) * 10px))
+        )
+        rotate(calc(-7deg - (var(--drag-peek) * 2deg)))
+        scale(0.95);
+      opacity: calc(0.46 + (var(--drag-peek) * 0.2));
+    }
+  }
+
+  &__feature {
+    /* Default = bronze tier. Silver/green/gold accents are set per tier below.
+       The base panel is always a dark navy/black so it reads as a FIFA-style
+       trading card, never a flat pink post-it; the tier only tints the rim,
+       header glow and rating, like an Ultimate-Team card. */
+    --tier-a: #c7d2dd;
+    --tier-b: #97a6b6;
+    --tier-glow: rgba(151, 166, 182, 0.4);
+    --country-glow: rgba(34, 197, 94, 0.34);
+    --country-accent: #22c55e;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: clamp(16px, 2.4vw, 24px);
+    border-radius: 28px;
+    border: 1px solid rgba(215, 185, 104, 0.38);
+    background:
+      radial-gradient(circle at 50% 26%, transparent 0 38%, rgba(0, 0, 0, 0.52) 78%, rgba(0, 0, 0, 0.8) 100%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, transparent 30%, rgba(0, 0, 0, 0.32) 100%),
+      radial-gradient(ellipse 120% 60% at 50% -6%, var(--country-glow), transparent 56%),
+      linear-gradient(158deg, #10141c 0%, #0b111a 52%, #05080d 100%);
+    box-shadow:
+      inset 0 0 0 2px rgba(215, 185, 104, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 34px 74px rgba(3, 7, 16, 0.7),
+      0 0 42px var(--country-glow),
+      0 16px 38px rgba(2, 6, 14, 0.5);
+    transform-style: preserve-3d;
+    transform:
+      translate3d(var(--drag-x), var(--drag-y), 0)
+      rotateX(var(--drag-rotate-x))
+      rotateY(var(--drag-rotate-y))
+      rotateZ(var(--drag-rotate-z));
+    transition:
+      transform 0.64s cubic-bezier(0.16, 1, 0.28, 1),
+      box-shadow 0.28s ease,
+      filter 0.28s ease;
+    animation: wc-card-flip 0.5s cubic-bezier(0.16, 1, 0.28, 1) both;
+
+    /* Faint diagonal sheen sweeping across the panel — the brushed-metal arc of
+       a premium card, sitting above the flag but below the content. */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(58deg, rgba(255, 255, 255, 0.045) 0 2px, transparent 2px 26px),
+        radial-gradient(ellipse 90% 70% at 50% 120%, color-mix(in srgb, var(--tier-a) 16%, transparent), transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      z-index: 4;
+      border-radius: 27px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      pointer-events: none;
+    }
+  }
+
+  &__feature-wrap.is-dragging &__feature {
+    transition: none;
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--tier-a) 44%, rgba(255, 255, 255, 0.14)),
+      0 46px 86px rgba(2, 6, 14, 0.78),
+      0 20px 44px rgba(2, 6, 14, 0.6);
+  }
+
+  &__feature.tier-legendary {
+    --tier-a: #ffe9a0;
+    --tier-b: #f6b817;
+    --tier-glow: rgba(246, 184, 23, 0.6);
+    animation: wc-card-flip 0.48s cubic-bezier(0.2, 1, 0.2, 1) both, wc-legend-shake 1.7s ease-in-out 0.55s infinite;
+  }
+  &__feature.tier-elite { --tier-a: #ffe48a; --tier-b: #f5c33b; --tier-glow: rgba(245, 195, 59, 0.42); }
+  &__feature.tier-great { --tier-a: #5ce8b2; --tier-b: #2fc996; --tier-glow: rgba(56, 211, 159, 0.4); }
+  &__feature.tier-good { --tier-a: #d6dee9; --tier-b: #9aa7b8; --tier-glow: rgba(190, 205, 224, 0.4); }
+
+  &__feature-shine {
+    position: absolute;
+    inset: -40% auto -40% -30%;
+    width: 34%;
+    transform: rotate(18deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    animation: wc-card-sweep 1.05s ease-out 0.18s both;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Legendary-only: tiny light glints twinkling around the card border. Pure CSS
+     dots + glow, staggered by index — no images or particle library. */
+  &__feature-sparks {
+    position: absolute;
+    inset: 7px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  &__feature-spark {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    margin: -3.5px 0 0 -3.5px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 0%, #ffe9a0 46%, rgba(246, 184, 23, 0) 72%);
+    box-shadow: 0 0 9px 2px rgba(255, 233, 160, 0.85);
+    opacity: 0;
+    animation: wc-spark 1.9s ease-in-out infinite;
+    animation-delay: calc(var(--spark-i, 0) * 0.21s);
+  }
+
+  &__feature-flag-css {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    // General flag opacity: the real national flag fills the whole card but is
+    // muted ~16% into the dark card base behind it, so it always reads as a
+    // recognisable backdrop without ever fighting the white player text on top.
+    opacity: 0.84;
+    filter: saturate(1.06) contrast(1.02);
+    // Neutral slate base — only ever visible behind the emoji-flag fallback for
+    // nations without a hand-built CSS flag. The real flag (emoji or geometry)
+    // always paints on top, so this is never a "generic green" panel.
+    background:
+      radial-gradient(circle at 50% 4%, rgba(255, 255, 255, 0.1), transparent 36%),
+      linear-gradient(180deg, #1b2433, #0a0f17);
+
+    // Readability scrim. The flag centre (diamond / cross / saltire) stays
+    // bright, but the bottom third carries a strong bottom-to-top graduated
+    // overlay so the player name, club and chemistry strip sit on a near-solid
+    // dark base and stay legible on every nation's colours. The top is darkened
+    // just enough to anchor the rating/legend block.
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 92% 26% at 50% 64%, rgba(3, 8, 14, 0.55), transparent 74%),
+        linear-gradient(180deg,
+          rgba(3, 8, 14, 0.52) 0%,
+          rgba(3, 8, 14, 0.18) 18%,
+          transparent 38%,
+          transparent 52%,
+          rgba(3, 8, 14, 0.42) 70%,
+          rgba(3, 8, 14, 0.74) 86%,
+          rgba(3, 8, 14, 0.9) 100%);
+    }
+  }
+
+  // Real emoji flag, used as a full-bleed background for every nation without a
+  // hand-built CSS flag. Deterministic, no image assets, always the real flag.
+  &__feature-flag-emoji {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13rem;
+    line-height: 1;
+    opacity: 0.82;
+    filter: saturate(1.05) drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
+    transform: scale(1.04);
+  }
+
+  &__feature-flag-css--spain {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent 34%, rgba(255, 255, 255, 0.08), transparent),
+      linear-gradient(180deg, #8d1118 0 26%, #f2c333 26% 73%, #8d1118 73% 100%);
+  }
+  &__feature-flag-css--france {
+    background:
+      linear-gradient(130deg, rgba(255, 255, 255, 0.1), transparent 42%),
+      linear-gradient(90deg, #16326d 0 33.33%, #f4f4f1 33.33% 66.66%, #a90d1f 66.66% 100%);
+  }
+  &__feature-flag-css--netherlands {
+    background:
+      linear-gradient(45deg, rgba(255, 255, 255, 0.09), transparent 45%),
+      linear-gradient(180deg, #a31625 0 33.33%, #f0f3f3 33.33% 66.66%, #1f407f 66.66% 100%);
+  }
+  &__feature-flag-css--germany {
+    background:
+      linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 38%),
+      linear-gradient(180deg, #111318 0 33.33%, #be1828 33.33% 66.66%, #e1b328 66.66% 100%);
+  }
+  // Brazil: green field + centred yellow diamond + blue globe, built from real
+  // geometry (clip-path rhombus + circle) instead of fake diagonal bands.
+  &__feature-flag-css--brazil {
+    background: linear-gradient(180deg, #1f9d52, #00822f);
+  }
+  &__feature-flag-brazil {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+  &__feature-flag-brazil-diamond {
+    position: absolute;
+    width: 78%;
+    height: 56%;
+    background: #ffdf00;
+    clip-path: polygon(50% 3%, 97% 50%, 50% 97%, 3% 50%);
+  }
+  &__feature-flag-brazil-globe {
+    position: absolute;
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 34%, #234fc4 0%, #002776 72%);
+  }
+  // Scotland: St Andrew's saltire — white diagonal cross on a blue field. The
+  // bands follow the card's true corner-to-corner diagonals.
+  &__feature-flag-css--scotland {
+    background:
+      linear-gradient(to bottom right, transparent calc(50% - 13px), #f4f6fb calc(50% - 13px) calc(50% + 13px), transparent calc(50% + 13px)),
+      linear-gradient(to bottom left, transparent calc(50% - 13px), #f4f6fb calc(50% - 13px) calc(50% + 13px), transparent calc(50% + 13px)),
+      linear-gradient(180deg, #0a63bf, #00529c);
+  }
+  &__feature-flag-css--northern-ireland {
+    background:
+      radial-gradient(circle at 50% 50%, #c8102e 0 6%, transparent 6.5%),
+      linear-gradient(to bottom right, transparent calc(50% - 10px), #c8102e calc(50% - 10px) calc(50% + 10px), transparent calc(50% + 10px)),
+      linear-gradient(to bottom left, transparent calc(50% - 10px), #c8102e calc(50% - 10px) calc(50% + 10px), transparent calc(50% + 10px)),
+      #f4f4f1;
+  }
+  // Argentina: three real horizontal bands (celeste / white / celeste), so the
+  // card finally reads as the Argentine flag instead of the nine-stripe field it
+  // used to share with Uruguay. The Sol de Mayo — a golden sun with a face and
+  // alternating straight/wavy rays — is the overlay child centred on the white
+  // band (see the SunOfMay overlay), never the flat yellow ball it drew before.
+  &__feature-flag-css--argentina {
+    background:
+      linear-gradient(130deg, rgba(255, 255, 255, 0.1), transparent 42%),
+      linear-gradient(180deg, #75aadb 0 33.33%, #ffffff 33.33% 66.66%, #75aadb 66.66% 100%);
+  }
+  // Uruguay: nine horizontal stripes (5 white, 4 blue) with a solid white canton
+  // in the upper hoist carrying the Sol de Mayo (overlay). Replaces the prior flat
+  // field whose centre "sun" was just a yellow ball.
+  &__feature-flag-css--uruguay {
+    background:
+      radial-gradient(circle at 22% 19%, rgba(245, 196, 66, 0.95) 0 8.3%, transparent 8.7%),
+      repeating-linear-gradient(180deg, #ffffff 0 11.1%, #75aadb 11.1% 22.2%);
+  }
+  &__feature-flag-css--italy,
+  &__feature-flag-css--mexico {
+    background:
+      linear-gradient(130deg, rgba(255, 255, 255, 0.1), transparent 42%),
+      linear-gradient(90deg, #118a4b 0 33.33%, #f4f4f1 33.33% 66.66%, #c51e2c 66.66% 100%);
+  }
+  // Mexico crest: a stylised eagle silhouette centred in the white band so the
+  // card never reads as a plain Italian tricolour. Drawn as an inline SVG child,
+  // never the copyrighted national coat of arms.
+  &__feature-flag-emblem {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+
+    svg { display: block; width: 100%; height: 100%; }
+
+    &--mexico {
+      width: 32%;
+      aspect-ratio: 1;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.32));
+    }
+  }
+  // Argentina's Sol de Mayo, centred on the white band. An inline SVG sun with a
+  // face and alternating straight/wavy gold rays (see the SunOfMay overlay) —
+  // this is what replaces the flat yellow "ball" the card used to draw.
+  &__feature-flag-sun {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56%;
+    aspect-ratio: 1;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 5px rgba(120, 78, 6, 0.55));
+
+    svg { display: block; width: 100%; height: 100%; }
+
+    // Uruguay: smaller sun, nested in the white upper-hoist canton (not centred).
+    &--uruguay {
+      left: 21%;
+      top: 22.2%;
+      width: 30%;
+      filter: drop-shadow(0 1px 3px rgba(120, 78, 6, 0.5));
+    }
+  }
+  // Senegal / Ghana five-pointed star, centred in the gold band. Pure clip-path
+  // geometry — replaces the old generic dark circle the user reported.
+  &__feature-flag-star {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 19%;
+    aspect-ratio: 1;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+
+    &--senegal { background: #0b7a3b; }
+    &--ghana { background: #0a0c10; }
+  }
+  // Switzerland: a compact, equal-armed white cross floating in the red field
+  // (square arms via aspect-ratio), so it never extends to the edges like the
+  // Danish Nordic cross it used to be confused with.
+  &__feature-flag-cross {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    aspect-ratio: 1;
+    background:
+      linear-gradient(#f4f4f1, #f4f4f1) 50% 50% / 32% 100% no-repeat,
+      linear-gradient(#f4f4f1, #f4f4f1) 50% 50% / 100% 32% no-repeat;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22));
+  }
+  // USA: a smaller blue canton over the top-left seven stripes, carrying a
+  // staggered field of white star dots (two offset radial-gradient grids).
+  &__feature-flag-usa-canton {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40%;
+    height: 53.85%;
+    background-color: #1f3b73;
+    background-image:
+      radial-gradient(circle, #f4f4f1 0 1.3px, transparent 1.8px),
+      radial-gradient(circle, #f4f4f1 0 1.3px, transparent 1.8px);
+    background-size: 16.5% 16.5%, 16.5% 16.5%;
+    background-position: 4% 8%, 12.25% 16.25%;
+    background-repeat: repeat, repeat;
+  }
+  &__feature-flag-css--england {
+    background:
+      linear-gradient(90deg, transparent 0 42%, #b51d2a 42% 58%, transparent 58%),
+      linear-gradient(180deg, transparent 0 42%, #b51d2a 42% 58%, transparent 58%),
+      #f4f4f1;
+  }
+  &__feature-flag-css--portugal {
+    background: linear-gradient(90deg, #0f7f3f 0 42%, #c91f2d 42% 100%);
+  }
+  &__feature-flag-css--croatia {
+    background:
+      linear-gradient(45deg, rgba(255, 255, 255, 0.12), transparent 44%),
+      repeating-conic-gradient(#c51e2c 0 25%, #f4f4f1 0 50%) 50% 50% / 36px 36px,
+      linear-gradient(180deg, #c51e2c 0 33%, #f4f4f1 33% 66%, #274f9f 66% 100%);
+  }
+  &__feature-flag-css--belgium {
+    background: linear-gradient(90deg, #101010 0 33.33%, #f2c333 33.33% 66.66%, #b51224 66.66% 100%);
+  }
+  // USA: thirteen red/white stripes as the base; the smaller blue canton with
+  // its star field is layered on top as a child (see __feature-flag-usa-canton).
+  &__feature-flag-css--usa {
+    background: repeating-linear-gradient(180deg, #b51224 0 7.69%, #f4f4f1 7.69% 15.38%);
+  }
+  &__feature-flag-css--sweden {
+    background:
+      linear-gradient(90deg, transparent 0 30%, #f5d23d 30% 42%, transparent 42%),
+      linear-gradient(180deg, transparent 0 42%, #f5d23d 42% 56%, transparent 56%),
+      #1f65a6;
+  }
+  // Denmark: the Nordic (off-centre, edge-to-edge) white cross on red.
+  &__feature-flag-css--denmark {
+    background:
+      linear-gradient(90deg, transparent 0 32%, #f4f4f1 32% 44%, transparent 44%),
+      linear-gradient(180deg, transparent 0 43%, #f4f4f1 43% 57%, transparent 57%),
+      #b51224;
+  }
+  // Switzerland: solid red field; the compact equal-armed white cross is layered
+  // on top as a child (see __feature-flag-cross), so it never reads as Denmark.
+  &__feature-flag-css--switzerland {
+    background: #d52b1e;
+  }
+  &__feature-flag-css--colombia {
+    background: linear-gradient(180deg, #f5d23d 0 50%, #2449a5 50% 75%, #b51224 75% 100%);
+  }
+  &__feature-flag-css--chile {
+    background:
+      linear-gradient(90deg, #2449a5 0 35%, transparent 35%),
+      linear-gradient(180deg, #f4f4f1 0 50%, #b51224 50% 100%);
+  }
+  // Japan: white field with the centred red sun disc. Keep this separate from
+  // Poland so the Polish card never inherits a central red ball.
+  &__feature-flag-css--japan {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(181, 18, 36, 0.9) 0 12%, transparent 12.4%),
+      #f4f4f1;
+  }
+  // Poland: clean white over red, no central disc (the old shared Japan rule
+  // wrongly painted a red ball in the centre).
+  &__feature-flag-css--poland {
+    background: linear-gradient(180deg, #f4f4f1 0 50%, #d61f34 50% 100%);
+  }
+  &__feature-flag-css--czechia {
+    background:
+      linear-gradient(135deg, #2449a5 0 38%, transparent 38%),
+      linear-gradient(180deg, #f4f4f1 0 50%, #b51224 50% 100%);
+  }
+  &__feature-flag-css--korea {
+    background:
+      radial-gradient(circle at 50% 50%, #b51224 0 8%, #2449a5 8.2% 14%, transparent 14.2%),
+      #f4f4f1;
+  }
+  // Senegal: vertical green-gold-red with a green star (overlaid child) in the
+  // central gold band — the old shared rule drew a generic dark circle.
+  &__feature-flag-css--senegal {
+    background: linear-gradient(90deg, #108343 0 33.33%, #f5d23d 33.33% 66.66%, #c51e2c 66.66% 100%);
+  }
+  // Ghana: horizontal red-gold-green with a black lodestar (overlaid child) in
+  // the central gold band — it is not the Senegalese vertical tricolour.
+  &__feature-flag-css--ghana {
+    background: linear-gradient(180deg, #c51e2c 0 33.33%, #f5d23d 33.33% 66.66%, #108343 66.66% 100%);
+  }
+  &__feature-flag-css--nigeria {
+    background: linear-gradient(90deg, #108343 0 33.33%, #f4f4f1 33.33% 66.66%, #108343 66.66% 100%);
+  }
+  // Costa Rica: horizontal blue-white-red-white-blue (centre red double-width).
+  &__feature-flag-css--costa-rica {
+    background: linear-gradient(180deg,
+      #002b7f 0 16.66%,
+      #f4f4f1 16.66% 33.33%,
+      #d52b1e 33.33% 66.66%,
+      #f4f4f1 66.66% 83.33%,
+      #002b7f 83.33% 100%);
+  }
+  // Ivory Coast: vertical orange-white-green (mirror of Ireland's order).
+  &__feature-flag-css--ivory-coast {
+    background:
+      linear-gradient(130deg, rgba(255, 255, 255, 0.08), transparent 42%),
+      linear-gradient(90deg, #f77f00 0 33.33%, #f4f4f1 33.33% 66.66%, #009e60 66.66% 100%);
+  }
+
+  // -------------------------------------------------------------------------
+  // Second wave of hand-built CSS flags. Each field is a flat gradient here;
+  // stars / crescents / cantons / crests are positioned children drawn by the
+  // FlagOverlay component (see the &__flag-* primitives further down).
+  // -------------------------------------------------------------------------
+  &__feature-flag-css--hungary {
+    background: linear-gradient(180deg, #cd2a3e 0 33.33%, #f4f4f1 33.33% 66.66%, #2e7d4f 66.66% 100%);
+  }
+  &__feature-flag-css--cameroon {
+    background: linear-gradient(90deg, #007a5e 0 33.33%, #ce1126 33.33% 66.66%, #fcd116 66.66% 100%);
+  }
+  &__feature-flag-css--paraguay {
+    background: linear-gradient(180deg, #d52b1e 0 33.33%, #f4f4f1 33.33% 66.66%, #0038a8 66.66% 100%);
+  }
+  // Yugoslavia (SFRJ): blue-white-red with the bordered red star overlay — the
+  // star is what keeps it distinct from Serbia & Montenegro below.
+  &__feature-flag-css--yugoslavia {
+    background: linear-gradient(180deg, #2449a5 0 33.33%, #f4f4f1 33.33% 66.66%, #c51e2c 66.66% 100%);
+  }
+  &__feature-flag-css--austria {
+    background: linear-gradient(180deg, #ed2939 0 33.33%, #f4f4f1 33.33% 66.66%, #ed2939 66.66% 100%);
+  }
+  // USSR: plain red field; the gold star + hammer-and-sickle sit in the hoist
+  // canton (overlay), so it never falls back to the modern Russia tricolour.
+  &__feature-flag-css--ussr {
+    background: #c81e1e;
+  }
+  &__feature-flag-css--bulgaria {
+    background: linear-gradient(180deg, #f4f4f1 0 33.33%, #009b48 33.33% 66.66%, #d62612 66.66% 100%);
+  }
+  &__feature-flag-css--romania {
+    background: linear-gradient(90deg, #002b7f 0 33.33%, #fcd116 33.33% 66.66%, #ce1126 66.66% 100%);
+  }
+  // Australia & New Zealand share a navy field; the Union Jack canton + the
+  // Southern Cross stars are overlays.
+  &__feature-flag-css--australia {
+    background: linear-gradient(180deg, #16306b, #0a1c44);
+  }
+  &__feature-flag-css--new-zealand {
+    background: linear-gradient(180deg, #16306b, #0a1c44);
+  }
+  &__feature-flag-css--tunisia {
+    background: #e70013;
+  }
+  &__feature-flag-css--saudi-arabia {
+    background: #147b3c;
+  }
+  &__feature-flag-css--iran {
+    background: linear-gradient(180deg, #239f40 0 33.33%, #f4f4f1 33.33% 66.66%, #da0000 66.66% 100%);
+  }
+  &__feature-flag-css--morocco {
+    background: #c1272d;
+  }
+  &__feature-flag-css--peru {
+    background: linear-gradient(90deg, #d91023 0 33.33%, #f4f4f1 33.33% 66.66%, #d91023 66.66% 100%);
+  }
+  &__feature-flag-css--ecuador {
+    background: linear-gradient(180deg, #ffd100 0 50%, #034ea2 50% 75%, #ed1c24 75% 100%);
+  }
+  &__feature-flag-css--russia {
+    background: linear-gradient(180deg, #f4f4f1 0 33.33%, #0039a6 33.33% 66.66%, #d52b1e 66.66% 100%);
+  }
+  &__feature-flag-css--algeria {
+    background: linear-gradient(90deg, #006233 0 50%, #f4f4f1 50% 100%);
+  }
+  // Serbia (modern): red-blue-white. Serbia & Montenegro / FR Yugoslavia:
+  // blue-white-red and NO star — so it never collides with SFR Yugoslavia.
+  &__feature-flag-css--serbia {
+    background: linear-gradient(180deg, #c6363c 0 33.33%, #0c4076 33.33% 66.66%, #f4f4f1 66.66% 100%);
+  }
+  &__feature-flag-css--serbia-montenegro {
+    background: linear-gradient(180deg, #2449a5 0 33.33%, #f4f4f1 33.33% 66.66%, #c51e2c 66.66% 100%);
+  }
+  // South Africa: red-over-blue base with the green pall built from layered
+  // green-on-white diagonals + a central horizontal stem; the black hoist
+  // triangle (overlay) closes it into the recognisable Y.
+  &__feature-flag-css--south-africa {
+    background:
+      linear-gradient(180deg, transparent 0 40%, #007a4d 40% 60%, transparent 60%),
+      linear-gradient(to bottom right, transparent calc(50% - 9px), #007a4d calc(50% - 9px) calc(50% + 9px), transparent calc(50% + 9px)),
+      linear-gradient(to bottom left, transparent calc(50% - 9px), #007a4d calc(50% - 9px) calc(50% + 9px), transparent calc(50% + 9px)),
+      linear-gradient(180deg, transparent 0 36%, #f4f4f1 36% 64%, transparent 64%),
+      linear-gradient(to bottom right, transparent calc(50% - 17px), #f4f4f1 calc(50% - 17px) calc(50% + 17px), transparent calc(50% + 17px)),
+      linear-gradient(to bottom left, transparent calc(50% - 17px), #f4f4f1 calc(50% - 17px) calc(50% + 17px), transparent calc(50% + 17px)),
+      linear-gradient(180deg, #de3831 0 50%, #002395 50% 100%);
+  }
+  &__feature-flag-css--honduras {
+    background: linear-gradient(180deg, #0073cf 0 33.33%, #f4f4f1 33.33% 66.66%, #0073cf 66.66% 100%);
+  }
+  // Greece: nine blue/white stripes with a blue canton + white cross (top-left).
+  &__feature-flag-css--greece {
+    background:
+      linear-gradient(90deg, transparent calc(50% - 6px), #f4f4f1 calc(50% - 6px) calc(50% + 6px), transparent calc(50% + 6px)) left top / 40% 55.55% no-repeat,
+      linear-gradient(180deg, transparent calc(50% - 6px), #f4f4f1 calc(50% - 6px) calc(50% + 6px), transparent calc(50% + 6px)) left top / 40% 55.55% no-repeat,
+      linear-gradient(#1f65a6, #1f65a6) left top / 40% 55.55% no-repeat,
+      repeating-linear-gradient(180deg, #1f65a6 0 11.11%, #f4f4f1 11.11% 22.22%);
+  }
+  &__feature-flag-css--ireland {
+    background: linear-gradient(90deg, #169b62 0 33.33%, #f4f4f1 33.33% 66.66%, #ff883e 66.66% 100%);
+  }
+  // Norway: blue Nordic cross with a white border, on a red field.
+  &__feature-flag-css--norway {
+    background:
+      linear-gradient(90deg, transparent 0 34%, #00205b 34% 42%, transparent 42%),
+      linear-gradient(180deg, transparent 0 46%, #00205b 46% 54%, transparent 54%),
+      linear-gradient(90deg, transparent 0 31%, #f4f4f1 31% 45%, transparent 45%),
+      linear-gradient(180deg, transparent 0 43%, #f4f4f1 43% 57%, transparent 57%),
+      #ba0c2f;
+  }
+  &__feature-flag-css--egypt {
+    background: linear-gradient(180deg, #ce1126 0 33.33%, #f4f4f1 33.33% 66.66%, #0c0c0c 66.66% 100%);
+  }
+  &__feature-flag-css--bolivia {
+    background: linear-gradient(180deg, #d52b1e 0 33.33%, #f9e300 33.33% 66.66%, #007a33 66.66% 100%);
+  }
+  // Canada: red-white-red vertical (1:2:1) with the red maple leaf overlay.
+  &__feature-flag-css--canada {
+    background: linear-gradient(90deg, #d52b1e 0 25%, #f4f4f1 25% 75%, #d52b1e 75% 100%);
+  }
+  &__feature-flag-css--slovenia {
+    background: linear-gradient(180deg, #f4f4f1 0 33.33%, #0000a0 33.33% 66.66%, #d52b1e 66.66% 100%);
+  }
+  &__feature-flag-css--slovakia {
+    background: linear-gradient(180deg, #f4f4f1 0 33.33%, #0b4ea2 33.33% 66.66%, #ee1c25 66.66% 100%);
+  }
+  &__feature-flag-css--turkey {
+    background: #e30a17;
+  }
+  // North Korea: blue-white-red-white-blue bands with a hoist-side white disc
+  // carrying a red star (overlay).
+  &__feature-flag-css--north-korea {
+    background: linear-gradient(180deg, #024fa2 0 16%, #f4f4f1 16% 20%, #ed1c27 20% 80%, #f4f4f1 80% 84%, #024fa2 84% 100%);
+  }
+  &__feature-flag-css--el-salvador {
+    background: linear-gradient(180deg, #0f47af 0 33.33%, #f4f4f1 33.33% 66.66%, #0f47af 66.66% 100%);
+  }
+  &__feature-flag-css--qatar {
+    background: #8a1538;
+  }
+  &__feature-flag-css--china {
+    background: #de2910;
+  }
+  // Trinidad & Tobago: red field with a white-edged black diagonal band.
+  &__feature-flag-css--trinidad-tobago {
+    background:
+      linear-gradient(to bottom right, transparent calc(50% - 14px), #1c1c1c calc(50% - 14px) calc(50% + 14px), transparent calc(50% + 14px)),
+      linear-gradient(to bottom right, transparent calc(50% - 22px), #f4f4f1 calc(50% - 22px) calc(50% + 22px), transparent calc(50% + 22px)),
+      #da1a35;
+  }
+  &__feature-flag-css--angola {
+    background: linear-gradient(180deg, #cc092f 0 50%, #0c0c0c 50% 100%);
+  }
+  // Togo: five green/yellow stripes with a red canton + white star (overlay).
+  &__feature-flag-css--togo {
+    background: repeating-linear-gradient(180deg, #006a4e 0 20%, #ffce00 20% 40%);
+  }
+  &__feature-flag-css--ukraine {
+    background: linear-gradient(180deg, #0057b7 0 50%, #ffd500 50% 100%);
+  }
+  &__feature-flag-css--bosnia {
+    background: #002395;
+  }
+  // Iceland: red Nordic cross with a white border, on a blue field.
+  &__feature-flag-css--iceland {
+    background:
+      linear-gradient(90deg, transparent 0 34%, #dc1e35 34% 42%, transparent 42%),
+      linear-gradient(180deg, transparent 0 46%, #dc1e35 46% 54%, transparent 54%),
+      linear-gradient(90deg, transparent 0 31%, #f4f4f1 31% 45%, transparent 45%),
+      linear-gradient(180deg, transparent 0 43%, #f4f4f1 43% 57%, transparent 57%),
+      #02529c;
+  }
+  // Panama: quartered white / red over blue / white, with two stars (overlay).
+  &__feature-flag-css--panama {
+    background:
+      linear-gradient(90deg, #f4f4f1 0 50%, #d21034 50% 100%) left top / 100% 50% no-repeat,
+      linear-gradient(90deg, #072357 0 50%, #f4f4f1 50% 100%) left bottom / 100% 50% no-repeat;
+  }
+  &__feature-flag-css--israel {
+    background:
+      linear-gradient(180deg,
+        transparent 0 15%, #0038b8 15% 25%, transparent 25% 75%,
+        #0038b8 75% 85%, transparent 85% 100%),
+      #f4f4f1;
+  }
+  &__feature-flag-css--kuwait {
+    background: linear-gradient(180deg, #007a3d 0 33.33%, #f4f4f1 33.33% 66.66%, #ce1126 66.66% 100%);
+  }
+  &__feature-flag-css--iraq {
+    background: linear-gradient(180deg, #ce1126 0 33.33%, #f4f4f1 33.33% 66.66%, #0c0c0c 66.66% 100%);
+  }
+  // UAE: red hoist bar + green/white/black horizontal tricolour to the fly.
+  &__feature-flag-css--uae {
+    background:
+      linear-gradient(180deg, #00732f 0 33.33%, #f4f4f1 33.33% 66.66%, #0c0c0c 66.66% 100%) right top / 75% 100% no-repeat,
+      #ce1126;
+  }
+  // Jamaica: gold saltire splitting green (top/bottom) and black (hoist/fly).
+  &__feature-flag-css--jamaica {
+    background:
+      linear-gradient(to bottom right, transparent calc(50% - 9px), #fed100 calc(50% - 9px) calc(50% + 9px), transparent calc(50% + 9px)),
+      linear-gradient(to bottom left, transparent calc(50% - 9px), #fed100 calc(50% - 9px) calc(50% + 9px), transparent calc(50% + 9px)),
+      conic-gradient(from 0deg at 50% 50%, #009b3a 0 45deg, #1c1c1c 45deg 135deg, #009b3a 135deg 225deg, #1c1c1c 225deg 315deg, #009b3a 315deg 360deg);
+  }
+  // Cuba: five blue/white stripes with a red hoist triangle + white star.
+  &__feature-flag-css--cuba {
+    background: repeating-linear-gradient(180deg, #002a8f 0 20%, #f4f4f1 20% 40%);
+  }
+  &__feature-flag-css--haiti {
+    background: linear-gradient(180deg, #00209f 0 50%, #d21034 50% 100%);
+  }
+  &__feature-flag-css--zaire {
+    background: #13a538;
+  }
+  // Dutch East Indies: the historic red-over-white horizontal bicolour. Vivid red
+  // + pure white + a crisp central seam and sheen so it never reads as a washed,
+  // greyed field.
+  &__feature-flag-css--dutch-east-indies {
+    background: linear-gradient(180deg, #e30016 0 50%, #ffffff 50% 100%);
+  }
+  // East Germany (GDR): black-red-gold with the gold hammer-and-compass crest.
+  &__feature-flag-css--east-germany {
+    background: linear-gradient(180deg, #111318 0 33.33%, #be1828 33.33% 66.66%, #e1b328 66.66% 100%);
+  }
+
+  // ---- Flag overlay primitives (shared by FlagOverlay) --------------------
+  // Generic five-point star: size/position/colour come from inline styles, the
+  // clip-path makes the points. Used by Cameroon, China, Honduras, Panama, etc.
+  &__flag-star {
+    position: absolute;
+    aspect-ratio: 1;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
+  }
+  // Filled SVG crescent (Turkey, Tunisia, Algeria). Field-colour independent.
+  &__flag-crescent {
+    position: absolute;
+    aspect-ratio: 1;
+    display: block;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22));
+    svg { display: block; width: 100%; height: 100%; }
+  }
+  // Compact Union Jack canton (Australia / New Zealand), top-left quarter.
+  &__flag-unionjack {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 50%;
+    background:
+      linear-gradient(90deg, transparent 0 40%, #cf142b 40% 60%, transparent 60%),
+      linear-gradient(180deg, transparent 0 40%, #cf142b 40% 60%, transparent 60%),
+      linear-gradient(90deg, transparent 0 33%, #f4f4f1 33% 67%, transparent 67%),
+      linear-gradient(180deg, transparent 0 33%, #f4f4f1 33% 67%, transparent 67%),
+      linear-gradient(to bottom right, transparent calc(50% - 3px), #cf142b calc(50% - 3px) calc(50% + 3px), transparent calc(50% + 3px)),
+      linear-gradient(to bottom left, transparent calc(50% - 3px), #cf142b calc(50% - 3px) calc(50% + 3px), transparent calc(50% + 3px)),
+      linear-gradient(to bottom right, transparent calc(50% - 8px), #f4f4f1 calc(50% - 8px) calc(50% + 8px), transparent calc(50% + 8px)),
+      linear-gradient(to bottom left, transparent calc(50% - 8px), #f4f4f1 calc(50% - 8px) calc(50% + 8px), transparent calc(50% + 8px)),
+      #00247d;
+  }
+  // Generic disc base for flags whose symbol sits inside a circle.
+  &__flag-disc {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+
+    &--tunisia { width: 54%; left: 50%; top: 50%; background: #f4f4f1; }
+    &--prk { width: 30%; left: 32%; top: 50%; background: #f4f4f1; }
+    &--zaire { width: 34%; left: 32%; top: 50%; background: #f7d618; }
+  }
+  // Inline crescent/star SVG that fills a &__flag-disc (Tunisia), so the symbol
+  // geometry is crisp instead of two tiny positioned primitives.
+  &__flag-disc-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+  }
+  // Togo's red hoist canton (top-left), carrying a white star.
+  &__flag-canton--togo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40%;
+    height: 40%;
+    background: #d21034;
+  }
+  // USSR hoist canton holding the gold star + hammer & sickle.
+  &__flag-ussr {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36%;
+    height: 42%;
+    svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  }
+  // Generic centred crest container (Iran, Egypt, Canada, Israel, etc.).
+  &__flag-emblem-c {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22));
+    svg { display: block; width: 100%; height: 100%; }
+
+    &--iran { width: 24%; aspect-ratio: 1; }
+    &--egypt { width: 26%; aspect-ratio: 1; }
+    &--canada { width: 36%; aspect-ratio: 1; }
+    &--israel { width: 28%; aspect-ratio: 1; }
+    &--salvador { width: 26%; aspect-ratio: 1; }
+    &--angola { width: 30%; aspect-ratio: 1; top: 54%; }
+    &--gdr { width: 30%; aspect-ratio: 1; }
+  }
+  // Small hoist shields for the otherwise-identical white/blue/red tricolours.
+  &__flag-emblem-sm {
+    position: absolute;
+    width: 18%;
+    aspect-ratio: 0.82;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
+    svg { display: block; width: 100%; height: 100%; }
+
+    &--slovenia { left: 22%; top: 42%; }
+    &--slovakia { left: 26%; top: 50%; }
+  }
+  // Morocco's green interlaced pentagram outline.
+  &__flag-pentagram {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 38%;
+    aspect-ratio: 1;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    svg { display: block; width: 100%; height: 100%; }
+  }
+  // Saudi Arabia: stylised white shahada script + horizontal sword (not real
+  // script), drawn as one inline SVG so it reads clearly as the flag.
+  &__flag-saudi {
+    position: absolute;
+    inset: 0;
+  }
+  &__flag-saudi-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+  }
+  // South Africa hoist triangle: a wider gold triangle behind a black one, so a
+  // thin gold edge shows along the slanted sides.
+  &__flag-sa-hoist { position: absolute; inset: 0; }
+  &__flag-sa-hoist-gold,
+  &__flag-sa-hoist-black {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+  &__flag-sa-hoist-gold { width: 46%; background: #ffb915; }
+  &__flag-sa-hoist-black { width: 40%; background: #0c0c0c; }
+  // Bosnia: yellow right-triangle down the fly.
+  &__flag-bih-triangle {
+    position: absolute;
+    inset: 0;
+    background: #fad201;
+    clip-path: polygon(30% 0, 100% 0, 100% 100%);
+  }
+  // Kuwait: black trapezoid at the hoist.
+  &__flag-kuwait-trapezoid {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    background: #0c0c0c;
+    clip-path: polygon(0 0, 100% 25%, 100% 75%, 0 100%);
+  }
+  // Cuba: red hoist triangle.
+  &__flag-cuba-triangle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 42%;
+    height: 100%;
+    background: #cb1515;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+  // Haiti: small central white panel (stand-in for the arms).
+  &__flag-haiti-panel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 26%;
+    height: 22%;
+    background: #f4f4f1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  }
+  // Zaire torch (inside the yellow disc): brown handle + red flame.
+  &__flag-zaire-torch {
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%) rotate(32deg);
+    width: 14%;
+    height: 56%;
+    background: #7a4a1d;
+    border-radius: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -28%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200%;
+      height: 42%;
+      background: #e23b1e;
+      border-radius: 50% 50% 45% 45%;
+    }
+  }
+  // Qatar: white nine-point serrated band at the hoist.
+  &__flag-qatar-band {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 34%;
+    height: 100%;
+    background: #f4f4f1;
+    clip-path: polygon(
+      0 0, 70% 0, 100% 5.5%, 70% 11%, 100% 16.6%, 70% 22%, 100% 27.7%,
+      70% 33%, 100% 38.8%, 70% 44%, 100% 50%, 70% 55.5%, 100% 61%,
+      70% 66.6%, 100% 72%, 70% 77.7%, 100% 83%, 70% 88.8%, 100% 94%,
+      70% 100%, 0 100%);
+  }
+
+  &__feature-top,
+  &__feature-id,
+  &__feature-meta,
+  &__feature-chips,
+  &__feature-chem { position: relative; z-index: 1; }
+
+  /* FIFA-style header: a giant top-left stat block (rating, then position +
+     playing style stacked under it) with an optional legend badge top-right. */
+  &__feature-top {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__feature-stat {
+    width: 84px;
+    height: 92px;
+    clip-path: polygon(10% 0, 90% 0, 90% 70%, 50% 100%, 10% 70%);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    place-items: center;
+    padding: 9px 8px 16px;
+    background:
+      linear-gradient(#121722, #080b10) padding-box,
+      linear-gradient(140deg, #f1d98b, #8d6c27 48%, #efd481) border-box;
+    border: 2px solid transparent;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.42));
+  }
+
+  &__feature-stat-sub {
+    display: contents;
+  }
+
+  /* Giant rating number — tier-tinted gradient text. The visual anchor of the
+     card, big and prominent, not a small boxed widget. */
+  &__feature-rating {
+    font-size: 2.65rem;
+    line-height: 0.9;
+    font-weight: 950;
+    color: #ffd766;
+    text-shadow: 0 2px 10px rgba(255, 215, 102, 0.22);
+    filter: none;
+  }
+
+  &__feature-pos {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #fff;
+    font-weight: 950;
+    font-size: 0.94rem;
+    letter-spacing: 0.09em;
+  }
+
+  &__feature-meta {
+    align-self: stretch;
+    display: grid;
+    justify-items: start;
+    gap: 10px;
+    margin-top: -8px;
+    transform: translateZ(26px);
+  }
+
+  &__feature-positions,
+  &__feature-style-tag {
+    width: fit-content;
+    max-width: 100%;
+    border-radius: 10px;
+    padding: 8px 14px;
+    background: rgba(9, 12, 18, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #f2f5fb;
+    font-size: 0.93rem;
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__feature-style-tag {
+    background: color-mix(in srgb, var(--style-c) 56%, #052312);
+    border-color: color-mix(in srgb, var(--style-c) 42%, transparent);
+    color: #ecfff3;
+    font-style: normal;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  }
+
+  &__feature-id {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    text-align: center;
+    transform: translateZ(34px);
+  }
+
+  &__feature-name {
+    display: grid;
+    /* More breathing room so the first name never visually collides with the
+       giant surname below (e.g. ÓSCAR / MÍGUEZ). */
+    gap: clamp(7px, 1.8vw, 12px);
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    text-wrap: balance;
+    max-width: 100%;
+    text-shadow: 0 2px 14px rgba(4, 6, 14, 0.62), 0 0 18px rgba(4, 6, 14, 0.55);
+
+    span {
+      font-size: clamp(1.24rem, 5.6vw, 1.82rem);
+      line-height: 0.92;
+      letter-spacing: 0.16em;
+      opacity: 0.95;
+    }
+
+    b {
+      font-size: clamp(2.55rem, 11.4vw, 3.75rem);
+      line-height: 0.86;
+      letter-spacing: 0.012em;
+      font-weight: 950;
+    }
+  }
+
+  &__feature-origin {
+    display: inline-flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 800;
+    text-shadow: 0 1px 8px rgba(2, 6, 14, 0.7);
+  }
+
+  &__feature-origin i { font-style: normal; margin-right: 6px; }
+
+  &__mini-flag {
+    flex: 0 0 auto;
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22), 0 1px 4px rgba(0, 0, 0, 0.38);
+    vertical-align: -1px;
+    overflow: hidden;
+  }
+
+  &__mini-flag--england {
+    background:
+      linear-gradient(90deg, transparent 0 43%, #c8102e 43% 57%, transparent 57%),
+      linear-gradient(180deg, transparent 0 40%, #c8102e 40% 60%, transparent 60%),
+      #f8fafc;
+  }
+
+  &__mini-flag--scotland {
+    background:
+      linear-gradient(to bottom right, transparent calc(50% - 3px), #f8fafc calc(50% - 3px) calc(50% + 3px), transparent calc(50% + 3px)),
+      linear-gradient(to bottom left, transparent calc(50% - 3px), #f8fafc calc(50% - 3px) calc(50% + 3px), transparent calc(50% + 3px)),
+      #0065bd;
+  }
+
+  &__mini-flag--northern-ireland {
+    background:
+      radial-gradient(circle at 50% 50%, #c8102e 0 11%, transparent 12%),
+      linear-gradient(to bottom right, transparent calc(50% - 2px), #c8102e calc(50% - 2px) calc(50% + 2px), transparent calc(50% + 2px)),
+      linear-gradient(to bottom left, transparent calc(50% - 2px), #c8102e calc(50% - 2px) calc(50% + 2px), transparent calc(50% + 2px)),
+      #f8fafc;
+  }
+
+  &__mini-flag--wales {
+    background:
+      radial-gradient(ellipse at 50% 50%, #c8102e 0 18%, transparent 19%),
+      linear-gradient(180deg, #f8fafc 0 50%, #00a85a 50% 100%);
+  }
+
+  &__mini-flag--code {
+    width: auto;
+    min-width: 24px;
+    padding: 0 3px;
+    color: #fff;
+    background: linear-gradient(90deg, #15803d 0 50%, #b91c1c 50%);
+    font-size: 0.52rem;
+    line-height: 12px;
+    font-weight: 950;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  /* Club/team where the player featured — always shown, even fullscreen. */
+  &__feature-club {
+    max-width: 100%;
+    margin-top: 1px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(4, 10, 18, 0.5);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.78rem;
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__feature-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    min-height: 26px;
+
+    em { font-style: normal; }
+  }
+
+  &__feature-legend {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(215, 185, 104, 0.42);
+    color: #ead07b;
+    background: rgba(8, 10, 14, 0.72);
+    font-size: 0.86rem;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+
+    &--worldclass { border-color: rgba(245, 195, 59, 0.34); color: #ffe48a; }
+    &--star { border-color: rgba(56, 211, 159, 0.34); color: #a8f5d3; }
+    &--prospect { border-color: rgba(199, 210, 221, 0.3); color: #d7e0ea; }
+  }
+
+  /* Bottom chemistry-preview strip: what this card would add to the XI. */
+  &__feature-chem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  &__feature-chem-label {
+    flex-shrink: 0;
+    margin-right: 2px;
+    padding-right: 7px;
+    border-right: 1px solid rgba(248, 250, 252, 0.16);
+    color: rgba(248, 250, 252, 0.58);
+    font-size: 0.58rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  &__feature-chem-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  &__chem-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    max-width: min(100%, 260px);
+    min-height: 34px;
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-style: normal;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 0;
+    background: rgba(10, 22, 28, 0.72);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26);
+    color: #d6ffee;
+
+    i { font-style: normal; font-size: 0.92rem; flex-shrink: 0; }
+
+    &--country,
+    &--mixed {
+      color: #d6ffee;
+      background: rgba(56, 211, 159, 0.18);
+    }
+    &--style {
+      color: var(--style-c);
+      background: color-mix(in srgb, var(--style-c) 18%, rgba(5, 12, 22, 0.72));
+    }
+    &--none {
+      color: rgba(248, 250, 252, 0.68);
+      background: rgba(9, 15, 24, 0.74);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    }
+  }
+
+  /* ---------- Replacement (filled-slot) mode ---------- */
+  &__replace {
+    display: grid;
+    gap: 14px;
+  }
+
+  &__replace-warn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 11px 13px;
+    border-radius: 12px;
+    border: 1px solid rgba(245, 195, 59, 0.46);
+    background: rgba(245, 195, 59, 0.1);
+    color: #ffe9a0;
+    font-size: 0.86rem;
+    font-weight: 700;
+    line-height: 1.35;
+
+    svg { flex-shrink: 0; }
+    strong { color: #fff5d6; font-weight: 950; }
+  }
+
+  &__replace-empty {
+    margin: 0;
+    text-align: center;
+    color: rgba(248, 250, 252, 0.55);
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+
+  &__picker-stage--single {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+
+    .worldcup-draft__feature-wrap { width: clamp(230px, 62vw, 300px); }
+  }
+
+  &__picker-actions--replace {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  &__feature.is-current { animation: wc-card-flip 0.4s cubic-bezier(0.2, 1, 0.2, 1) both; }
+
+  &__feature.is-empty {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgba(248, 250, 252, 0.6);
+    font-weight: 800;
+  }
+
+  &__deck-flag {
+    font-style: normal;
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  /* Subtle carousel position row: dots + count + the "vuelta completa" badge.
+     Replaces the old visible 5-card mini deck so only the hero card is on show. */
+  &__picker-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 22px;
+    margin-top: -14px;
+  }
+
+  &__picker-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  &__picker-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.24);
+    opacity: 0.72;
+    transition: width 0.22s ease, transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+
+    &.is-seen { background: rgba(56, 211, 159, 0.55); }
+    &.is-on {
+      width: 24px;
+      transform: none;
+      opacity: 1;
+      background: #22c55e;
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+    }
+  }
+
+  &__picker-count {
+    color: rgba(248, 250, 252, 0.5);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__picker-loop {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(245, 195, 59, 0.5);
+    color: #ffe9a0;
+    background: rgba(245, 195, 59, 0.14);
+    font-size: 0.64rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.24s ease, transform 0.24s ease;
+
+    &.is-on {
+      opacity: 1;
+      transform: scale(1);
+      animation: wc-loop-pulse 1.6s ease-in-out infinite;
+    }
+  }
+
+  &__picker-deck {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* QA-only: keep the dealt choices in the DOM but fully off-screen. */
+  &__picker-deck--hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  &__deck-card {
+    --tier-a: #c7d2dd;
+    --tier-b: #97a6b6;
+    min-height: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border-radius: 14px;
+    border: 1px solid color-mix(in srgb, var(--tier-a) 42%, rgba(255,255,255,0.16));
+    color: var(--wc-ink);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--tier-a) 24%, rgba(15,25,37,0.96)), rgba(7,12,20,0.96));
+    cursor: pointer;
+    animation: wc-card-in 0.38s ease backwards;
+    animation-delay: calc(var(--card-index, 0) * 58ms);
+
+    b { color: var(--tier-a); font-size: 1.08rem; }
+    span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.74rem; font-weight: 900; }
+
+    &.is-active {
+      transform: translateY(-4px);
+      box-shadow: 0 0 0 2px var(--tier-a), 0 12px 24px rgba(0, 0, 0, 0.42);
+    }
+    &.tier-legendary { --tier-a: #ffe9a0; --tier-b: #f6b817; }
+    &.tier-elite { --tier-a: #ffe48a; --tier-b: #f5c33b; }
+    &.tier-great { --tier-a: #5ce8b2; --tier-b: #2fc996; }
+    &.tier-good { --tier-a: #7fd0f0; --tier-b: #4aa6d6; }
+  }
+
+  &__picker-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__reroll-btn {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(245, 195, 59, 0.46);
+    color: #ffe9a0;
+    background: rgba(245, 195, 59, 0.12);
+    font-weight: 950;
+    cursor: pointer;
+
+    &:disabled { opacity: 0.45; cursor: not-allowed; }
+  }
+
+  /* ---------- Select mode: fullscreen card-stage ---------- */
+  /* Pablo's requirement: "que no aparezca nada más que la card por pantalla".
+     In select mode the picker drops ALL panel chrome — the sheet is transparent,
+     so only the hero card floats on a dark/blurred backdrop. */
+  &__picker--stage {
+    place-items: center;
+    padding: clamp(10px, 3vw, 26px);
+  }
+
+  &__picker-sheet--bare {
+    width: auto;
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    gap: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    animation: none;
+  }
+
+  /* Tiny, secondary role label floating above the card — not a panel header. */
+  &__stage-role {
+    position: absolute;
+    top: max(14px, env(safe-area-inset-top, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(8, 14, 22, 0.5);
+    backdrop-filter: blur(4px);
+    color: rgba(248, 250, 252, 0.62);
+    font-size: 0.62rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    pointer-events: none;
+
+    em { color: var(--wc-green); font-style: normal; }
+  }
+
+  /* Close stays accessible but is a small ghost icon, never a panel control. */
+  &__stage-close {
+    position: absolute;
+    top: max(12px, env(safe-area-inset-top, 0px));
+    right: max(12px, env(safe-area-inset-right, 0px));
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(248, 250, 252, 0.7);
+    background: rgba(8, 14, 22, 0.45);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &:hover { background: rgba(20, 30, 42, 0.72); color: #fff; }
+  }
+
+  &__picker-sheet--bare &__picker-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: none;
+    gap: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  &__stage-card {
+    position: relative;
+    width: min(88vw, 300px);
+    max-width: 100%;
+    margin-inline: auto;
+
+    .worldcup-draft__feature-wrap { width: 100%; }
+    .worldcup-draft__feature { padding: 12px; gap: 5px; }
+    .worldcup-draft__feature-stat { width: 66px; height: 74px; padding: 7px 6px 12px; }
+    .worldcup-draft__feature-rating { font-size: 2.05rem; }
+    .worldcup-draft__feature-meta { gap: 6px; margin-top: -6px; }
+    .worldcup-draft__feature-positions,
+    .worldcup-draft__feature-style-tag { padding: 6px 10px; font-size: 0.76rem; border-radius: 9px; }
+    .worldcup-draft__feature-name span { font-size: clamp(1.05rem, 2.1vw, 1.35rem); line-height: 0.82; }
+    .worldcup-draft__feature-name b {
+      font-size: clamp(2rem, 4.1vw, 2.85rem);
+      line-height: 0.82;
+      letter-spacing: -0.04em;
+      overflow-wrap: anywhere;
+    }
+    .worldcup-draft__feature-origin { font-size: 0.82rem; }
+    .worldcup-draft__feature-club { font-size: 0.68rem; padding: 2px 8px; }
+    .worldcup-draft__card-footer { gap: 5px; }
+    .worldcup-draft__feature-chem { padding: 0; border: 0; border-radius: 0; background: transparent; }
+    .worldcup-draft__card-select { min-height: 38px; padding: 0 12px; font-size: 0.82rem; border-radius: 12px; }
+    .worldcup-draft__card-progress { gap: 8px; min-height: 10px; }
+  }
+
+  /* Near-invisible edge hotspots: large tap targets so swiping/tapping the sides
+     still pages the deck, but the card stays the visual star. On touch they are
+     fully transparent; on a hover-capable device a faint chevron fades in. */
+  &__picker-arrow--ghost {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 4;
+    width: 26%;
+    height: 100%;
+    min-width: 44px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: rgba(255, 255, 255, 0);
+
+    &:disabled { opacity: 1; cursor: default; }
+
+    svg {
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+      transition: opacity 0.18s ease;
+    }
+
+    &[data-draft-prev] { left: -7%; justify-content: flex-start; }
+    &[data-draft-next] { right: -7%; justify-content: flex-end; }
+
+    @media (hover: hover) {
+      transition: color 0.18s ease;
+      &:hover { color: rgba(255, 255, 255, 0.5); }
+    }
+  }
+
+  /* Footer that lives INSIDE the hero card: compact chemistry hint, the integrated
+     select pill, and a tiny progress notch. Replaces the old external UI row. */
+  &__card-footer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+  }
+
+  &__card-chem {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 22px;
+  }
+
+  &__card-select {
+    width: 100%;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 14px;
+    color: #ffffff;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 38%),
+      linear-gradient(180deg, #2bd86d, #0b873e);
+    font-weight: 950;
+    font-size: 0.96rem;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    touch-action: manipulation;
+    box-shadow: 0 10px 24px rgba(56, 211, 159, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transition: transform 0.14s ease, box-shadow 0.14s ease;
+
+    &:hover { transform: translateY(-1px); }
+    &:active { transform: translateY(0); }
+    &:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+  }
+
+  &__card-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 14px;
+  }
+
+  /* ---------- Ready state ---------- */
+  &__ready {
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    padding: 24px;
+
+    h2 { margin: 2px 0; font-size: 1.7rem; font-style: italic; text-transform: uppercase; font-weight: 900; }
+    p { margin: 0; max-width: 320px; color: rgba(248, 250, 252, 0.72); line-height: 1.45; }
+  }
+
+  &__ready-action {
+    width: min(280px, 100%);
+    margin-top: 12px;
+  }
+
+  &__ready-badge {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    color: #04110b;
+    background: linear-gradient(180deg, #4ce3ad, var(--wc-green));
+    box-shadow: 0 0 0 8px rgba(56, 211, 159, 0.16), 0 14px 30px rgba(56, 211, 159, 0.3);
+  }
+
+  /* ---------- Summary ---------- */
+  &__summary {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  &__summary-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    h2 { margin: 0; font-size: 2.2rem; line-height: 1; font-weight: 900; }
+    h2 span { font-size: 1.1rem; color: rgba(248, 250, 252, 0.55); }
+  }
+
+  &__metric {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 9px 11px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &__metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span { color: rgba(248, 250, 252, 0.7); font-weight: 800; font-size: 0.84rem; }
+    strong { font-size: 1.2rem; font-weight: 900; }
+  }
+
+  &__metric-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.09);
+    overflow: hidden;
+
+    i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2fc996, #4ce3ad);
+      transition: width 0.3s ease;
+    }
+  }
+
+  &__metric.is-accent {
+    border: 1px solid rgba(56, 211, 159, 0.3);
+    background: rgba(56, 211, 159, 0.08);
+    .worldcup-draft__metric-bar i { background: linear-gradient(90deg, #4ce3ad, #fbbf24); }
+  }
+
+  /* ---------- Chemistry breakdown ---------- */
+  &__chem-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 11px;
+    border-radius: 9px;
+    border: 1px solid var(--wc-line);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  &__chem-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(248, 250, 252, 0.74);
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+    svg { color: var(--wc-green); flex-shrink: 0; }
+    b { margin-left: auto; color: var(--wc-ink); font-size: 0.86rem; }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-style: normal;
+    font-size: 0.68rem;
+    font-weight: 900;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+
+    i { font-style: normal; font-size: 0.85rem; }
+
+    &--country {
+      border-color: rgba(56, 211, 159, 0.45);
+      color: #d6ffee;
+      background: rgba(56, 211, 159, 0.12);
+    }
+    &--style {
+      border-color: color-mix(in srgb, var(--style-c) 55%, transparent);
+      color: var(--style-c);
+      background: color-mix(in srgb, var(--style-c) 14%, transparent);
+    }
+  }
+
+  &__links-empty {
+    margin: 0;
+    color: rgba(248, 250, 252, 0.5);
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  &__summary .worldcup-draft__primary { margin-top: auto; }
+
+  /* ---------- Result ---------- */
+  /* ---------- Progressive tournament viewer ---------- */
+  &__tournament {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    padding-bottom: 8px;
+  }
+
+  &__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  &__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 52px;
+    padding: 8px 4px;
+    border-radius: 12px;
+    border: 1px solid var(--wc-line);
+    background: rgba(255, 255, 255, 0.035);
+    text-align: center;
+    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+
+    &.is-done {
+      &.result-w { border-color: rgba(56, 211, 159, 0.4); background: rgba(56, 211, 159, 0.08); }
+      &.result-d { border-color: rgba(251, 191, 36, 0.4); background: rgba(251, 191, 36, 0.08); }
+      &.result-l { border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.08); }
+    }
+    &.is-now {
+      border-color: rgba(56, 211, 159, 0.85);
+      background: rgba(56, 211, 159, 0.16);
+      box-shadow: 0 0 0 1px rgba(56, 211, 159, 0.5), 0 10px 22px rgba(56, 211, 159, 0.16);
+    }
+    &.is-locked { opacity: 0.42; }
+  }
+
+  &__step-tag {
+    font-size: 0.66rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(248, 250, 252, 0.66);
+    .is-now & { color: var(--wc-green); }
+  }
+
+  &__step-score {
+    font-size: 0.96rem;
+    font-weight: 900;
+    .result-w & { color: #b9ffe4; }
+    .result-d & { color: #ffe9b0; }
+    .result-l & { color: #ffc8c8; }
+  }
+
+  &__step-mark {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    color: rgba(248, 250, 252, 0.55);
+    .is-now & {
+      color: #04110b;
+      background: linear-gradient(180deg, #4ce3ad, var(--wc-green));
+    }
+  }
+
+  &__tournament-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 12px;
+    align-items: start;
+  }
+
+  &__match-pitch {
+    position: relative;
+    padding: 12px;
+    display: grid;
+    gap: 12px;
+  }
+
+  /* ---------- Broadcast scoreboard banner ---------- */
+  &__scoreboard {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--wc-line);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+      rgba(4, 9, 16, 0.72);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 36px rgba(0, 0, 0, 0.36);
+
+    &.is-revealed.result-w { border-color: rgba(56, 211, 159, 0.3); }
+    &.is-revealed.result-l { border-color: rgba(248, 113, 113, 0.28); }
+  }
+
+  &__score-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__score-code {
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--wc-ink);
+  }
+
+  &__score-name {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: rgba(248, 250, 252, 0.62);
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__score-rating {
+    font-style: normal;
+    font-size: 0.68rem;
+    font-weight: 900;
+    margin-top: 2px;
+    padding: 1px 9px;
+    border-radius: 999px;
+    color: #04110b;
+    background: linear-gradient(180deg, #ffe48a, #f5c33b);
+  }
+
+  &__score-core {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 120px;
+  }
+
+  &__score-pill {
+    font-style: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--wc-line);
+    color: rgba(248, 250, 252, 0.78);
+    background: rgba(255, 255, 255, 0.05);
+
+    &::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    &.is-upcoming::before { background: rgba(248, 250, 252, 0.5); }
+    &.result-w { color: #04110b; background: var(--wc-green); border-color: transparent; }
+    &.result-d { color: #1a1303; background: var(--wc-amber); border-color: transparent; }
+    &.result-l { color: #fff; background: var(--wc-red); border-color: transparent; }
+  }
+
+  &__score-line {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1;
+    i { font-style: normal; color: rgba(248, 250, 252, 0.4); margin: 0 8px; }
+    .result-w & { color: #d6ffee; }
+    .result-l & { color: #fecaca; }
+  }
+
+  &__score-vs {
+    font-size: 1.6rem;
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(248, 250, 252, 0.7);
+  }
+
+  &__score-sub {
+    font-style: normal;
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: rgba(248, 250, 252, 0.6);
+  }
+
+  &__pitch-wrap--static {
+    padding: 10px;
+    .worldcup-draft__pitch { height: min(50vh, 440px); }
+    .worldcup-draft__slot { cursor: default; }
+  }
+
+  &__match {
+    padding: 14px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+
+  &__match-head {
+    display: grid;
+    gap: 4px;
+  }
+
+  &__match-stage {
+    margin: 2px 0 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 900;
+  }
+
+  &__match-opp {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--wc-line);
+    background: rgba(255, 255, 255, 0.04);
+
+    &-flag { font-size: 2rem; line-height: 1; }
+    &-id { min-width: 0; }
+    &-id strong { display: block; font-size: 1.05rem; font-weight: 900; }
+    &-id small { color: rgba(248, 250, 252, 0.6); font-size: 0.76rem; }
+  }
+
+  &__match-box-team {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--wc-line);
+  }
+
+  &__match-box-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 6px;
+
+    span { font-size: 0.78rem; color: rgba(248, 250, 252, 0.66); }
+    b { color: var(--wc-ink); font-weight: 900; }
+    .is-accent b { color: var(--wc-green); }
+  }
+
+  &__match-cta {
+    display: grid;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  /* ---------- Staged match detail (stacked analysis rail) ---------- */
+  &__sim {
+    display: grid;
+    gap: 10px;
+    animation: wc-sim-rise 0.32s ease both;
+  }
+
+  /* Every analysis card in the rail shares the same dark rounded panel. */
+  &__sim-block {
+    display: grid;
+    gap: 8px;
+    padding: 11px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--wc-line);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  /* ---------- Último evento ---------- */
+  &__last-event-row {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__last-event-min {
+    font-size: 0.92rem;
+    font-weight: 900;
+    color: var(--wc-green);
+  }
+
+  &__last-event-icon { font-size: 1.1rem; line-height: 1; }
+
+  &__last-event-id {
+    min-width: 0;
+    strong { display: block; font-size: 0.96rem; font-weight: 900; }
+    small {
+      display: block;
+      color: rgba(248, 250, 252, 0.6);
+      font-size: 0.76rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  /* ---------- Estadísticas en vivo (split bars) ---------- */
+  &__statlist {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__statrow {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px 10px;
+    row-gap: 5px;
+  }
+
+  &__statrow-home,
+  &__statrow-away {
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: var(--wc-ink);
+  }
+  &__statrow-home { color: var(--wc-green); }
+  &__statrow-away { color: #8fc7f5; text-align: right; }
+
+  &__statrow-label {
+    text-align: center;
+    font-size: 0.66rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(248, 250, 252, 0.6);
+  }
+
+  &__statrow-track {
+    grid-column: 1 / -1;
+    display: flex;
+    height: 5px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &__statrow-fill {
+    height: 100%;
+    &--home { background: linear-gradient(90deg, var(--wc-green), rgba(56, 211, 159, 0.6)); }
+    &--away { background: linear-gradient(90deg, rgba(143, 199, 245, 0.55), #8fc7f5); }
+  }
+
+  /* ---------- Jugador del partido ---------- */
+  &__mvp-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__mvp-rating {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #04110b;
+    background: linear-gradient(180deg, #c7d2dd, #97a6b6);
+
+    &.tier-legendary { background: linear-gradient(180deg, #ffe9a0, #f6b817); }
+    &.tier-elite { background: linear-gradient(180deg, #ffe48a, #f5c33b); }
+    &.tier-great { background: linear-gradient(180deg, #5ce8b2, #2fc996); }
+    &.tier-good { background: linear-gradient(180deg, #7fd0f0, #4aa6d6); color: #051620; }
+  }
+
+  &__mvp-id {
+    min-width: 0;
+    strong { display: block; font-size: 0.96rem; font-weight: 900; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    small { color: rgba(248, 250, 252, 0.6); font-size: 0.75rem; }
+  }
+
+  &__mvp-mark {
+    font-style: normal;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #04110b;
+    padding: 4px 10px;
+    border-radius: 9px;
+    background: linear-gradient(180deg, #4ce3ad, var(--wc-green));
+  }
+
+  /* ---------- Claves del partido ---------- */
+  &__keys-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 7px;
+
+    li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 6px;
+      align-items: start;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      color: rgba(248, 250, 252, 0.82);
+      svg { color: var(--wc-green); margin-top: 2px; }
+    }
+  }
+
+  &__sim-influence {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  &__sim-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--wc-line);
+    background: rgba(255, 255, 255, 0.04);
+    min-width: 0;
+
+    span {
+      font-size: 0.68rem;
+      color: rgba(248, 250, 252, 0.62);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    b { font-size: 1.2rem; font-weight: 900; color: var(--wc-ink); }
+    &.is-accent b { color: var(--wc-green); }
+    &--opp b { color: var(--wc-amber); }
+  }
+
+  &__sim-momentum {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__sim-momentum-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+
+    .mini-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(248, 250, 252, 0.7);
+    }
+  }
+
+  &__sim-dominance {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    white-space: nowrap;
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: rgba(248, 250, 252, 0.78);
+
+    i {
+      font-style: normal;
+      color: rgba(248, 250, 252, 0.48);
+    }
+  }
+
+  &__mom-chart {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 1px;
+    height: 72px;
+    padding: 0 8px;
+    border-radius: 10px;
+    border: 1px solid var(--wc-line);
+    background:
+      linear-gradient(180deg, rgba(56, 211, 159, 0.06), rgba(56, 211, 159, 0) 48%, rgba(248, 113, 113, 0) 52%, rgba(248, 113, 113, 0.06));
+    overflow: hidden;
+  }
+
+  &__mom-zone {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%;
+    pointer-events: none;
+    &--home { top: 0; }
+    &--away { bottom: 0; }
+  }
+
+  &__mom-bucket {
+    position: relative;
+    flex: 1 1 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    z-index: 1;
+  }
+
+  // Bars are anchored to the central baseline (bottom/top: 50%) so the whole
+  // strip reads as a balanced silhouette rising and falling around one axis —
+  // the same shape the other simulation modes use. Slim left/right insets give
+  // each bucket air so the columns stay fine instead of bulky blocks.
+  &__mom-bar {
+    position: absolute;
+    left: 22%;
+    right: 22%;
+    min-height: 2px;
+
+    &--up {
+      bottom: 50%;
+      border-radius: 2px 2px 0 0;
+      background: linear-gradient(180deg, var(--wc-green), rgba(56, 211, 159, 0.45));
+    }
+    &--down {
+      top: 50%;
+      border-radius: 0 0 2px 2px;
+      background: linear-gradient(0deg, var(--wc-red), rgba(248, 113, 113, 0.45));
+    }
+  }
+
+  &__mom-baseline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.28);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &__mom-halftime {
+    position: absolute;
+    top: 6%;
+    bottom: 6%;
+    left: 50%;
+    width: 0;
+    border-left: 1px dashed rgba(255, 255, 255, 0.32);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &__mom-marker {
+    position: absolute;
+    transform: translate(-50%, calc(-50% + var(--stack, 0) * -11px));
+    display: grid;
+    place-items: center;
+    width: 15px;
+    height: 15px;
+    line-height: 1;
+    z-index: 3;
+
+    &--home { top: 22%; }
+    &--away { top: 78%; }
+  }
+
+  // Goal marker reuses the app's shared net-ball icon (same asset the other
+  // simulation modes use) so the strip stays engine-branded, not an emoji.
+  &__mom-goal {
+    display: block;
+    width: 13px;
+    height: 13px;
+    background: url('/assets/icons/goal-net-ball.svg') center / contain no-repeat;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+  }
+
+  &__mom-card {
+    display: block;
+    width: 8px;
+    height: 12px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+    &--yellow { background: var(--wc-amber); }
+    &--red { background: var(--wc-red); }
+  }
+
+  &__mom-axis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.64rem;
+    font-weight: 700;
+    color: rgba(248, 250, 252, 0.5);
+  }
+
+  &__sim-events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 4px;
+    max-height: 170px;
+    overflow-y: auto;
+  }
+
+  &__sim-event {
+    display: grid;
+    grid-template-columns: 40px 22px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid rgba(255, 255, 255, 0.12);
+
+    &.is-home { border-left-color: rgba(56, 211, 159, 0.7); }
+    &.is-away { border-left-color: rgba(248, 113, 113, 0.7); }
+    &.is-goal {
+      background: rgba(56, 211, 159, 0.08);
+      .worldcup-draft__sim-event-text { font-weight: 800; }
+    }
+    &.is-goal.is-away { background: rgba(248, 113, 113, 0.08); }
+  }
+
+  &__sim-event-min {
+    font-size: 0.78rem;
+    font-weight: 900;
+    color: var(--wc-ink);
+  }
+  &__sim-event-icon { font-size: 0.92rem; line-height: 1; text-align: center; }
+  &__sim-event-text {
+    font-size: 0.82rem;
+    color: rgba(248, 250, 252, 0.82);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__timeline {
+    list-style: none;
+    margin: 0;
+    padding: 14px;
+    display: grid;
+    gap: 8px;
+
+    > li { min-width: 0; }
+  }
+
+  &__timeline-now,
+  &__timeline-locked {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 9px 12px;
+    border-left: 4px solid rgba(255, 255, 255, 0.16);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  &__timeline-now { border-left-color: var(--wc-green); }
+  &__timeline-locked { opacity: 0.55; }
+
+  &__result-pill--live { background: var(--wc-green); }
+  &__result-pill--locked { background: rgba(255, 255, 255, 0.14); color: rgba(248, 250, 252, 0.7); }
+
+  &__fixture-score--locked { color: rgba(248, 250, 252, 0.3); }
+
+  &__result {
+    min-height: calc(100dvh - 92px);
+    display: grid;
+    grid-template-columns: 380px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+
+  &__result-head {
+    padding: 24px;
+    text-align: center;
+
+    &.is-champion {
+      border-color: rgba(245, 195, 59, 0.4);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(245, 195, 59, 0.16), transparent 60%),
+        var(--wc-panel);
+    }
+
+    h2 {
+      margin: 10px 0 16px;
+      font-size: 2.1rem;
+      line-height: 0.98;
+      text-transform: uppercase;
+      font-style: italic;
+      font-weight: 900;
+    }
+  }
+
+  &__result-badge {
+    display: grid;
+    place-items: center;
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    color: #04110b;
+    background: linear-gradient(180deg, #ffe48a, #f5c33b);
+    box-shadow: 0 0 0 8px rgba(245, 195, 59, 0.16), 0 14px 30px rgba(245, 195, 59, 0.3);
+  }
+
+  &__result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+
+    div {
+      padding: 10px 6px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    b { display: block; font-size: 1.25rem; font-weight: 900; }
+    span { color: rgba(248, 250, 252, 0.6); font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+  }
+
+  /* ---------- Separate live-match mobile tab ---------- */
+  &__live {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 430px);
+    margin: 0 auto;
+    display: grid;
+    gap: 10px;
+    padding-bottom: 16px;
+  }
+
+  &__live-top {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__live-menu {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--wc-line);
+    border-radius: 12px;
+    color: var(--wc-ink);
+    background: rgba(255, 255, 255, 0.055);
+  }
+
+  &__live-title {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    span {
+      font-size: 0.55rem;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      color: rgba(248, 250, 252, 0.48);
+    }
+    strong {
+      font-size: 1rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--wc-green);
+      text-shadow: 0 0 18px rgba(56, 211, 159, 0.34);
+    }
+  }
+
+  &__live-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--wc-line);
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(248, 250, 252, 0.78);
+    font-size: 0.72rem;
+    font-weight: 900;
+  }
+
+  &__live-scorecard {
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--wc-line);
+    background: linear-gradient(180deg, rgba(22, 32, 45, 0.94), rgba(8, 13, 24, 0.96));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 42px rgba(0,0,0,0.36);
+  }
+
+  &__live-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: #04110b;
+      background: linear-gradient(180deg, #59ecb4, var(--wc-green));
+      font-size: 0.62rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      &.is-final { background: linear-gradient(180deg, #ffe48a, #f5c33b); }
+    }
+    small { color: rgba(248, 250, 252, 0.58); font-weight: 800; }
+  }
+
+  &__live-scoreline {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    div { display: grid; gap: 3px; min-width: 0; }
+    b { color: var(--wc-ink); font-weight: 1000; }
+    span { color: rgba(248, 250, 252, 0.62); font-size: 0.72rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    strong {
+      min-width: 92px;
+      padding: 10px 16px;
+      border-radius: 13px;
+      background: rgba(0, 0, 0, 0.34);
+      color: #fff;
+      font-size: 2.1rem;
+      line-height: 1;
+      font-weight: 1000;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+    i { font-style: normal; color: rgba(248,250,252,0.38); margin: 0 7px; }
+  }
+
+  &__live-actions {
+    display: grid;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  &__penalties {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(245, 195, 59, 0.28);
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(245, 195, 59, 0.14), transparent 58%),
+      linear-gradient(180deg, rgba(19, 27, 39, 0.96), rgba(7, 11, 20, 0.98));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 42px rgba(0,0,0,0.34);
+    animation: wc-sim-rise 0.28s ease both;
+  }
+
+  &__pen-head {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    text-align: center;
+
+    h3 {
+      margin: 0;
+      color: #ffe48a;
+      font-size: 1.08rem;
+      line-height: 1;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    p {
+      max-width: 34ch;
+      margin: 0;
+      color: rgba(248, 250, 252, 0.62);
+      font-size: 0.76rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+  }
+
+  &__pen-scoreboard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: stretch;
+    gap: 8px;
+
+    > em {
+      align-self: center;
+      color: rgba(248, 250, 252, 0.42);
+      font-style: normal;
+      font-size: 0.68rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  &__pen-team {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--wc-line);
+    background: rgba(255, 255, 255, 0.045);
+
+    span {
+      color: rgba(248, 250, 252, 0.58);
+      font-size: 0.68rem;
+      font-weight: 1000;
+    }
+
+    strong {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: rgba(248, 250, 252, 0.88);
+      font-size: 0.76rem;
+      font-weight: 900;
+    }
+
+    b {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      color: #04110b;
+      background: linear-gradient(180deg, #e7eef7, #9facbc);
+      font-size: 1.18rem;
+      font-weight: 1000;
+      font-variant-numeric: tabular-nums;
+    }
+
+    &.is-winner {
+      border-color: rgba(56, 211, 159, 0.46);
+      background: rgba(56, 211, 159, 0.1);
+
+      b { background: linear-gradient(180deg, #59ecb4, var(--wc-green)); }
+    }
+  }
+
+  &__pen-grid {
+    display: grid;
+    gap: 5px;
+    min-width: 0;
+  }
+
+  &__pen-grid-head,
+  &__pen-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
+    align-items: center;
+    gap: 7px;
+  }
+
+  &__pen-grid-head {
+    color: rgba(248, 250, 252, 0.52);
+    font-size: 0.64rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+
+    span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__pen-row {
+    > strong {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin: 0 auto;
+      border-radius: 9px;
+      color: rgba(248, 250, 252, 0.72);
+      background: rgba(255, 255, 255, 0.055);
+      font-size: 0.74rem;
+      font-weight: 1000;
+    }
+  }
+
+  &__pen-shot {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    align-items: center;
+    gap: 7px;
+    min-height: 34px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.035);
+    color: rgba(248, 250, 252, 0.52);
+
+    i {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+    }
+
+    b {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    &.is-goal {
+      color: #d6ffee;
+      border-color: rgba(56, 211, 159, 0.35);
+      background: rgba(56, 211, 159, 0.09);
+      i { background: linear-gradient(180deg, #59ecb4, var(--wc-green)); box-shadow: 0 0 14px rgba(56, 211, 159, 0.36); }
+    }
+
+    &.is-saved {
+      color: #ffe9a0;
+      border-color: rgba(245, 195, 59, 0.32);
+      background: rgba(245, 195, 59, 0.08);
+      i { background: linear-gradient(180deg, #ffe48a, #f5c33b); }
+    }
+
+    &.is-miss {
+      color: #fecaca;
+      border-color: rgba(248, 113, 113, 0.3);
+      background: rgba(248, 113, 113, 0.08);
+      i { background: linear-gradient(180deg, #ff9d9d, var(--wc-red)); }
+    }
+
+    &.is-current {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 10px 22px rgba(0, 0, 0, 0.22);
+      animation: wc-pen-pop 0.28s ease both;
+    }
+  }
+
+  &__pen-footer {
+    display: grid;
+    place-items: center;
+    min-height: 30px;
+    text-align: center;
+
+    span,
+    strong {
+      color: rgba(248, 250, 252, 0.78);
+      font-size: 0.78rem;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    strong { color: #d6ffee; }
+  }
+
+  @keyframes wc-pen-pop {
+    from { opacity: 0.2; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  &__fixtures {
+    display: grid;
+    gap: 14px;
+    padding: 14px;
+    .worldcup-draft__kicker { margin-bottom: 2px; }
+  }
+
+  &__fixtures-block {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__fixtures-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__group-tag {
+    font-style: normal;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.05);
+
+    &.is-pass { border-color: rgba(56, 211, 159, 0.5); color: #d6ffee; background: rgba(56, 211, 159, 0.12); }
+    &.is-out { border-color: rgba(248, 113, 113, 0.5); color: #fecaca; background: rgba(127, 29, 29, 0.28); }
+  }
+
+  &__fixture {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 9px 12px;
+    border-left: 4px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.045);
+
+    &.result-w { border-left-color: var(--wc-green); }
+    &.result-d { border-left-color: var(--wc-amber); }
+    &.result-l { border-left-color: var(--wc-red); }
+  }
+
+  &__result-pill {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 900;
+    color: #04110b;
+
+    .result-w & { background: var(--wc-green); }
+    .result-d & { background: var(--wc-amber); }
+    .result-l & { background: var(--wc-red); }
+  }
+
+  &__fixture-main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    strong, small {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    strong { font-size: 0.94rem; font-weight: 800; }
+    strong span { color: rgba(248, 250, 252, 0.5); font-weight: 700; }
+    small { color: rgba(248, 250, 252, 0.62); font-size: 0.74rem; }
+  }
+
+  &__fixture-score {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    i { font-style: normal; color: rgba(248, 250, 252, 0.4); }
+  }
+
+  &__actions {
+    display: grid;
+    gap: 10px;
+  }
+}
+
+@keyframes wc-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(56, 211, 159, 0.18), 0 8px 18px rgba(0, 0, 0, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(56, 211, 159, 0.3), 0 8px 18px rgba(0, 0, 0, 0.4); }
+}
+
+@keyframes wc-card-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes wc-card-glow {
+  0%, 100% { box-shadow: 0 0 0 2px var(--tier-a), 0 0 16px var(--tier-glow), 0 16px 30px rgba(0, 0, 0, 0.45); }
+  50% { box-shadow: 0 0 0 2px var(--tier-a), 0 0 28px var(--tier-glow), 0 16px 30px rgba(0, 0, 0, 0.45); }
+}
+
+@keyframes wc-picker-pop {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes wc-card-flip {
+  from { opacity: 0; filter: saturate(0.8) brightness(0.82); }
+  62% { opacity: 1; filter: saturate(1.08) brightness(1.08); }
+  to { opacity: 1; filter: saturate(1) brightness(1); }
+}
+
+@keyframes wc-card-sweep {
+  from { transform: translateX(0) rotate(18deg); opacity: 0; }
+  24% { opacity: 1; }
+  to { transform: translateX(360%) rotate(18deg); opacity: 0; }
+}
+
+@keyframes wc-legend-shake {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(255, 233, 160, 0.5), 0 0 28px rgba(246, 184, 23, 0.52), 0 34px 74px rgba(6, 2, 18, 0.68); }
+  50% { box-shadow: 0 0 0 1px rgba(255, 233, 160, 0.75), 0 0 42px rgba(246, 184, 23, 0.72), 0 34px 74px rgba(6, 2, 18, 0.68); }
+}
+
+@keyframes wc-spark {
+  0%, 100% { opacity: 0; transform: scale(0.35); }
+  45% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wc-loop-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 195, 59, 0); }
+  50% { box-shadow: 0 0 12px 0 rgba(245, 195, 59, 0.45); }
+}
+
+@keyframes wc-sim-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Respect reduced-motion: keep cards fully legible, drop the aggressive motion. */
+@media (prefers-reduced-motion: reduce) {
+  .worldcup-draft {
+    &__card,
+    &__card.is-selected { animation: none; }
+    &__card { transition: border-color 0.18s ease, box-shadow 0.18s ease; }
+    &__card:hover { transform: none; }
+    &__card-shine { display: none; }
+    &__slot.is-compatible .worldcup-draft__slot-badge { animation: none; }
+    &__feature.tier-legendary { animation: wc-card-flip 0.48s cubic-bezier(0.2, 1, 0.2, 1) both; }
+    &__feature-spark { animation: none; opacity: 0.85; }
+    &__picker-loop.is-on { animation: none; }
+    &__sim { animation: none; }
+  }
+}
+
+/* ---------- Tablet / mobile ---------- */
+@media (max-width: 980px) {
+  .worldcup-draft {
+    padding: 10px;
+
+    &__topbar {
+      height: auto;
+      grid-template-columns: auto 1fr auto;
+      gap: 8px;
+    }
+
+    &__topbar h1 { font-size: clamp(1.4rem, 6vw, 2rem); }
+    &__title { text-align: center; }
+
+    &__setup,
+    &__draft,
+    &__result {
+      height: auto;
+      min-height: 0;
+      grid-template-columns: 1fr;
+    }
+
+    &__hero-panel { min-height: 300px; padding: 20px; }
+
+    &__draft { display: flex; flex-direction: column; gap: 12px; }
+
+    &__tournament-main { grid-template-columns: 1fr; }
+
+    &__pitch { width: 100%; height: auto; max-width: 440px; }
+
+    &__pick-panel { grid-template-rows: auto auto auto; }
+    &__cards { overflow: visible; max-height: none; }
+
+    &__picker-stage {
+      grid-template-columns: 42px minmax(0, 1fr) 42px;
+      gap: 8px;
+    }
+    &__picker-arrow {
+      width: 42px;
+      height: 62px;
+      border-radius: 14px;
+    }
+    &__feature-wrap { width: min(86vw, 340px); }
+    &__feature { border-radius: 28px; }
+    &__feature-rating { font-size: 2.65rem; }
+    &__picker-deck { gap: 7px; }
+    &__deck-card { min-height: 64px; padding: 6px 4px; }
+    &__picker-actions { grid-template-columns: 1fr; }
+
+    &__result { grid-template-columns: 1fr; }
+  }
+}
+
+@media (max-width: 520px) {
+  .worldcup-draft {
+    &__segmented,
+    &__segmented--wrap { grid-template-columns: 1fr 1fr; }
+
+    &__topbar h1 { font-size: 1.5rem; }
+
+    &__live {
+      position: fixed;
+      inset: 0;
+      width: auto;
+      max-width: none;
+      height: 100dvh;
+      margin: 0;
+      padding: max(12px, env(safe-area-inset-top)) 14px max(14px, env(safe-area-inset-bottom));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background: radial-gradient(circle at 50% -12%, rgba(56, 211, 159, 0.16), transparent 34%), linear-gradient(180deg, #070b12 0%, #050812 100%);
+    }
+
+    &__live-top {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      margin: -2px -2px 2px;
+      padding: 2px;
+      border-radius: 0 0 14px 14px;
+      background: linear-gradient(180deg, rgba(7, 11, 18, 0.98), rgba(7, 11, 18, 0.72));
+      backdrop-filter: blur(10px);
+    }
+
+    &__live .worldcup-draft__sim-influence,
+    &__live .worldcup-draft__mvp,
+    &__live .worldcup-draft__keys {
+      display: none;
+    }
+
+    &__live .worldcup-draft__sim-block {
+      padding: 10px;
+      border-radius: 14px;
+    }
+
+    &__live .worldcup-draft__sim { gap: 8px; }
+
+    &__live .worldcup-draft__mom-chart { height: 68px; }
+    &__live .worldcup-draft__sim-events { max-height: 210px; }
+
+    /* Figma phone reference: the Mundial match screen should fit like a compact
+       app screen, not a full-page tactical board. Keep the draft pitch large,
+       but compress the read-only tournament pitch and live rail. */
+    &__tournament { gap: 8px; }
+    &__steps { gap: 4px; }
+    &__step { min-height: 42px; padding: 6px 3px; border-radius: 9px; }
+    &__step-tag { font-size: 0.58rem; }
+    &__step-score { font-size: 0.78rem; }
+    &__step-mark { width: 18px; height: 18px; }
+
+    &__scoreboard {
+      padding: 10px 10px;
+      gap: 6px;
+      border-radius: 14px;
+    }
+    &__score-code { font-size: 1.2rem; }
+    &__score-name { font-size: 0.62rem; }
+    &__score-rating { font-size: 0.6rem; padding: 1px 7px; }
+    &__score-core { min-width: 74px; gap: 3px; }
+    &__score-line { font-size: 1.85rem; }
+    &__score-vs { font-size: 1.15rem; }
+    &__score-sub { font-size: 0.54rem; }
+    &__score-pill { font-size: 0.52rem; padding: 3px 7px; }
+
+    &__tournament-main { gap: 8px; }
+    &__match-pitch { padding: 4px; }
+    &__pitch-wrap--static {
+      padding: 7px;
+      border-radius: 14px;
+      .worldcup-draft__pitch {
+        height: clamp(300px, 78vw, 348px);
+        max-width: 100%;
+      }
+    }
+    &__pitch-wrap--static .worldcup-draft__pitch-tag {
+      padding: 7px 12px;
+      font-size: 0.82rem;
+      border-radius: 15px;
+    }
+    &__pitch-wrap--static .worldcup-draft__slot {
+      width: 52px;
+      transform: translate(-50%, -50%);
+    }
+    &__pitch-wrap--static .worldcup-draft__slot-badge {
+      width: 34px;
+      height: 34px;
+      font-size: 0.8rem;
+    }
+    &__pitch-wrap--static .worldcup-draft__slot-name {
+      max-width: 64px;
+      font-size: 0.52rem;
+      padding: 2px 6px;
+    }
+
+    &__match { padding: 0; gap: 8px; }
+    &__match-head { display: none; }
+    &__match-opp,
+    &__match-box-team,
+    &__sim-block { border-radius: 12px; padding: 10px; }
+    &__match-stage { font-size: 1rem; }
+
+    &__sim { gap: 8px; }
+    &__sim-influence { grid-template-columns: 1fr 1fr; gap: 7px; }
+    &__sim-metric { padding: 8px; }
+    &__sim-metric b { font-size: 1.05rem; }
+    &__mom-chart { height: 64px; }
+    &__sim-events { max-height: 156px; }
+
+    &__slot {
+      width: 70px;
+      &-badge { width: 42px; height: 42px; font-size: 0.95rem; }
+      &-name { max-width: 78px; font-size: 0.66rem; }
+      &-hint { font-size: 0.58rem; }
+    }
+
+    &__cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+    &__card { min-height: 138px; padding: 10px; }
+    &__card-name { font-size: 0.9rem; }
+
+    &__picker { padding: 8px; place-items: end center; }
+    /* Select-mode stage stays centred and chrome-free on phones. */
+    &__picker--stage { place-items: center; padding: 12px; }
+    &__stage-card { width: min(90vw, 340px); }
+    &__picker-sheet {
+      width: 100%;
+      max-height: 94dvh;
+      border-radius: 22px 22px 16px 16px;
+      padding: 14px;
+      gap: 12px;
+    }
+    &__picker-head h2 { font-size: 1.28rem; }
+    &__picker-stage { grid-template-columns: 30px minmax(0, 1fr) 30px; gap: 6px; }
+    &__picker-arrow { width: 30px; height: 54px; border-radius: 12px; }
+    &__feature-wrap { width: min(88vw, 326px); }
+    &__feature { padding: 16px; }
+    &__feature-name {
+      width: 100%;
+      span { font-size: clamp(1.25rem, 5.8vw, 1.7rem); }
+      b {
+        max-width: 100%;
+        font-size: clamp(2.15rem, 9.7vw, 3rem);
+        letter-spacing: -0.035em;
+        overflow-wrap: anywhere;
+      }
+    }
+    &__feature-pos { font-size: 0.94rem; padding: 0; }
+    &__picker-deck { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    &__deck-card {
+      min-height: 58px;
+      border-radius: 11px;
+      b { font-size: 0.92rem; }
+      span { font-size: 0.58rem; }
+    }
+
+    &__result-stats b { font-size: 1.05rem; }
+
+    &__steps { gap: 4px; }
+    &__step { padding: 6px 2px; }
+    &__step-tag { font-size: 0.58rem; }
+    &__step-score { font-size: 0.82rem; }
+    &__scoreboard { padding: 10px; gap: 6px; }
+    &__score-core { min-width: 72px; }
+    &__score-line { font-size: 1.8rem; }
+    &__score-name { font-size: 0.72rem; }
+    &__pitch-wrap--static .worldcup-draft__pitch {
+      width: auto;
+      height: min(52vh, 430px);
+    }
+    &__pitch-wrap--static .worldcup-draft__slot {
+      width: 58px;
+      &-badge { width: 34px; height: 34px; font-size: 0.82rem; }
+      &-name { max-width: 66px; font-size: 0.56rem; padding-inline: 5px; }
+    }
+    &__match-stage { font-size: 1.25rem; }
+  }
+}
+
+/* ---------- Road to Mundial Legend ---------- */
+.worldcup-draft {
+  &__mode-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  &__mode-grid button {
+    min-height: 112px;
+    border: 1px solid var(--wc-line);
+    border-radius: 18px;
+    padding: 14px;
+    color: var(--wc-ink);
+    text-align: left;
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+  }
+
+  &__mode-grid button.is-active {
+    border-color: rgba(56, 211, 159, 0.72);
+    background: linear-gradient(135deg, rgba(56, 211, 159, 0.2), rgba(15, 23, 42, 0.92));
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(56, 211, 159, 0.2);
+  }
+
+  &__mode-grid strong,
+  &__mode-grid span {
+    display: block;
+  }
+
+  &__mode-grid strong {
+    margin-bottom: 8px;
+    font-size: 0.96rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__mode-grid span {
+    color: rgba(226, 232, 240, 0.76);
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  &__legend-upgrade,
+  &__legend-gauntlet,
+  &__legend-champion {
+    display: grid;
+    gap: 16px;
+    padding-bottom: 34px;
+  }
+
+  &__legend-head {
+    border: 1px solid var(--wc-line);
+    border-radius: 24px;
+    padding: 18px;
+    background: linear-gradient(145deg, rgba(9, 15, 25, 0.92), rgba(8, 42, 31, 0.84));
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  &__legend-head h2 {
+    margin: 4px 0 8px;
+    font-size: clamp(1.45rem, 4vw, 2.2rem);
+  }
+
+  &__legend-head p {
+    margin: 0;
+    color: rgba(226, 232, 240, 0.78);
+    line-height: 1.45;
+  }
+
+  &__legend-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  &__legend-pills span,
+  &__legend-opponent {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 7px 10px;
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(226, 232, 240, 0.86);
+  }
+
+  &__legend-choices {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  &__legend-choice {
+    min-width: 0;
+    border: 1px solid rgba(56, 211, 159, 0.28);
+    border-radius: 18px;
+    padding: 14px;
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(20, 83, 45, 0.72));
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.24);
+  }
+
+  &__legend-choice-rating,
+  &__legend-choice-pos,
+  &__legend-choice strong,
+  &__legend-choice em,
+  &__legend-choice small {
+    display: block;
+  }
+
+  &__legend-choice-rating {
+    float: left;
+    margin-right: 10px;
+    color: var(--wc-amber);
+    font-size: 2rem;
+    font-weight: 1000;
+    line-height: 1;
+  }
+
+  &__legend-choice-pos {
+    width: max-content;
+    border-radius: 999px;
+    padding: 4px 8px;
+    color: #06130e;
+    background: var(--wc-green);
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+
+  &__legend-choice strong {
+    clear: both;
+    margin-top: 12px;
+    font-size: 1rem;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__legend-choice em,
+  &__legend-choice small {
+    margin-top: 6px;
+    color: rgba(226, 232, 240, 0.76);
+    font-size: 0.78rem;
+    font-style: normal;
+    line-height: 1.25;
+  }
+
+  &__legend-empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 16px;
+    padding: 12px;
+    color: rgba(254, 243, 199, 0.9);
+    background: rgba(120, 53, 15, 0.22);
+  }
+
+  &__legend-opponents {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 8px;
+    max-height: 360px;
+    overflow: auto;
+  }
+
+  &__legend-opponent {
+    display: grid;
+    grid-template-columns: 52px 1fr auto;
+    align-items: center;
+    border-radius: 14px;
+  }
+
+  &__legend-opponent span,
+  &__legend-opponent em {
+    color: var(--wc-green);
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  @media (max-width: 720px) {
+    &__mode-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__legend-choices {
+      grid-template-columns: 1fr;
+    }
+
+    &__mode-grid button {
+      min-height: 92px;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Palette, Shirt } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const KIT_STYLES = [
   { id: 'solid', name: 'Liso' },
@@ -60,6 +60,7 @@ function KitPreview({ kit, size = 100 }) {
 export { KitPreview };
 
 export default function KitEditor({ value, onChange }) {
+  const { t } = useTranslation();
   const [kit, setKit] = useState(value || { style: 'solid', primary: '#1a237e', secondary: '#ffd740' });
 
   const update = (key, val) => {
@@ -69,39 +70,21 @@ export default function KitEditor({ value, onChange }) {
   };
 
   return (
-    <div className="kit-editor">
-      <div className="kit-editor__hero">
-        <div className="kit-editor__hero-copy">
-          <span className="kit-editor__eyebrow">First kit direction</span>
-          <h4>Diseña una camiseta con identidad</h4>
-          <p>Da forma a la primera equipación con una vista más editorial, una selección visual de patrones y una paleta más cuidada.</p>
-          <div className="kit-editor__specs">
-            <span><Palette size={14} /> {kit.primary}</span>
-            <span><Palette size={14} /> {kit.secondary}</span>
-            <span><Shirt size={14} /> {KIT_STYLES.find(style => style.id === kit.style)?.name}</span>
-          </div>
+    <div className="kit-editor" data-glory-step="kit">
+      <aside className="kit-editor__preview" data-audit="kit-preview">
+        <KitPreview kit={kit} size={150} />
+        <div className="kit-editor__swatches">
+          <span style={{ background: kit.primary }} />
+          <span style={{ background: kit.secondary }} />
         </div>
-
-        <div className="kit-editor__preview-stage">
-          <div className="kit-editor__preview-frame">
-            <div className="kit-editor__preview-topline">Vista de partido</div>
-            <div className="kit-editor__preview-shell">
-              <KitPreview kit={kit} size={176} />
-            </div>
-            <div className="kit-editor__preview-palette">
-              <span style={{ background: kit.primary }} />
-              <span style={{ background: kit.secondary }} />
-            </div>
-          </div>
+        <div className="kit-editor__caption">
+          <span>{t('glory.kit.styles.' + kit.style)}</span>
         </div>
-      </div>
+      </aside>
 
-      <div className="kit-editor__grid">
-        <section className="kit-editor__panel kit-editor__panel--styles">
-          <div className="kit-editor__panel-head">
-            <label className="kit-editor__label">Estilo</label>
-            <span className="kit-editor__hint">Patrón principal de la camiseta</span>
-          </div>
+      <div className="kit-editor__controls">
+        <section className="kit-editor__panel">
+          <label className="kit-editor__label">{t('glory.kit.style')}</label>
           <div className="kit-editor__styles">
             {KIT_STYLES.map(s => (
               <button
@@ -111,56 +94,45 @@ export default function KitEditor({ value, onChange }) {
                 onClick={() => update('style', s.id)}
               >
                 <span className="kit-editor__style-preview">
-                  <KitPreview kit={{ ...kit, style: s.id }} size={52} />
+                  <KitPreview kit={{ ...kit, style: s.id }} size={44} />
                 </span>
-                <span className="kit-editor__style-name">{s.name}</span>
+                <span className="kit-editor__style-name">{t('glory.kit.styles.' + s.id)}</span>
               </button>
             ))}
           </div>
         </section>
 
-        <section className="kit-editor__panel kit-editor__panel--palette">
-          <div className="kit-editor__panel-head">
-            <label className="kit-editor__label">Colores</label>
-            <span className="kit-editor__hint">Paleta base y contraste</span>
+        <section className="kit-editor__panel">
+          <label className="kit-editor__label">{t('glory.kit.primaryColor')}</label>
+          <div className="kit-editor__colors">
+            {COLORS.map(c => (
+              <button
+                type="button"
+                key={`p_${c}`}
+                className={`kit-editor__color-btn ${kit.primary === c ? 'active' : ''}`}
+                style={{ '--swatch': c }}
+                onClick={() => update('primary', c)}
+                aria-label={t('glory.kit.primaryAria', { color: c })}
+              >
+                <span />
+              </button>
+            ))}
           </div>
 
-          <div className="kit-editor__palette-tool">
-            <div className="kit-editor__palette-group">
-              <span className="kit-editor__mini-label">Principal</span>
-              <div className="kit-editor__colors">
-                {COLORS.map(c => (
-                  <button
-                    type="button"
-                    key={`p_${c}`}
-                    className={`kit-editor__color-btn ${kit.primary === c ? 'active' : ''}`}
-                    style={{ '--swatch': c }}
-                    onClick={() => update('primary', c)}
-                    aria-label={`Color principal ${c}`}
-                  >
-                    <span />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="kit-editor__palette-group">
-              <span className="kit-editor__mini-label">Secundario</span>
-              <div className="kit-editor__colors">
-                {COLORS.map(c => (
-                  <button
-                    type="button"
-                    key={`s_${c}`}
-                    className={`kit-editor__color-btn ${kit.secondary === c ? 'active' : ''}`}
-                    style={{ '--swatch': c }}
-                    onClick={() => update('secondary', c)}
-                    aria-label={`Color secundario ${c}`}
-                  >
-                    <span />
-                  </button>
-                ))}
-              </div>
-            </div>
+          <label className="kit-editor__label">{t('glory.kit.secondaryColor')}</label>
+          <div className="kit-editor__colors">
+            {COLORS.map(c => (
+              <button
+                type="button"
+                key={`s_${c}`}
+                className={`kit-editor__color-btn ${kit.secondary === c ? 'active' : ''}`}
+                style={{ '--swatch': c }}
+                onClick={() => update('secondary', c)}
+                aria-label={t('glory.kit.secondaryAria', { color: c })}
+              >
+                <span />
+              </button>
+            ))}
           </div>
         </section>
       </div>

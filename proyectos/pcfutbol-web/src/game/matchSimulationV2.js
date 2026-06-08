@@ -7,6 +7,11 @@
 
 import { FORMATIONS, TACTICS, calculateTeamStrength, getTacticalMatchupBonus } from './gameShared';
 
+// Marcador de build para verificación en producción de los ajustes de disciplina/lesiones
+// (reparto de tarjetas por posición, rojas combinadas plausibles, lesiones realistas y
+// sanción por quinta amarilla). No cambiar sin actualizar la auditoría asociada.
+export const DISCIPLINE_INJURY_MARKER = 'discipline-ratios-gk-suspension-20260602';
+
 // ============================================================
 // CONFIGURACIÓN DE REALISMO
 // ============================================================
@@ -833,7 +838,36 @@ function buildMatchFlow(homeStrength, awayStrength, importance, homeTactic = 'ba
   };
 }
 
-function enforceResultShape(homeGoals, awayGoals, result, expectedHome, expectedAway) {
+/**
+ * Probabilidad de que un empate termine 0-0. El fútbol real produce porterías
+ * imbatidas por ambos lados cuando el xG combinado es bajo, el partido es tenso
+ * (final/crucial), el clima frena el juego, o dos defensas se anulan. En cambio,
+ * un duelo desigual o de mucho xG rara vez acaba sin goles: el favorito suele
+ * romper el cero. Se usa SOLO cuando el resultado ya se decidió como empate, así
+ * que no altera victorias ni la media goleadora global de forma apreciable.
+ */
+function goallessDrawChance(expectedHome, expectedAway, rawHome, rawAway, drawContext = {}) {
+  const combined = expectedHome + expectedAway;
+  // xG combinado bajo → más probable que el cero no se rompa.
+  let p = clamp(0.50 - (combined - 1.0) * 0.14, 0.08, 0.66);
+  // El flujo simulado es evidencia fuerte: un partido que fluye sin goles tiende
+  // a quedar 0-0; uno con muchos goles forzado a empate casi nunca acaba 0-0.
+  const rawTotal = rawHome + rawAway;
+  if (rawTotal === 0) p += 0.22;
+  else p -= Math.min(0.26, rawTotal * 0.05);
+  // Contextos tensos o de bajo tempo crían empates sin goles.
+  if (drawContext.importance === 'final') p += 0.06;
+  else if (drawContext.importance === 'crucial') p += 0.03;
+  if (drawContext.weather === 'extreme') p += 0.07;
+  else if (drawContext.weather === 'rain') p += 0.035;
+  // Duelos desiguales: el favorito casi siempre marca, así que el 0-0 es mucho
+  // más raro cuando hay un claro favorito (elite vs débil, partido abierto).
+  const absDiff = Math.abs(drawContext.totalDiff || 0);
+  if (absDiff > 8) p -= clamp((absDiff - 8) * 0.03, 0, 0.35);
+  return clamp(p, 0.015, 0.66);
+}
+
+function enforceResultShape(homeGoals, awayGoals, result, expectedHome, expectedAway, drawContext = {}) {
   let homeScore = clamp(homeGoals, 0, 4);
   let awayScore = clamp(awayGoals, 0, 4);
 
@@ -847,11 +881,17 @@ function enforceResultShape(homeGoals, awayGoals, result, expectedHome, expected
     awayScore = Math.max(awayScore, plausibleWinner);
     homeScore = Math.min(homeScore, awayScore - 1);
     if (awayScore <= homeScore) awayScore = Math.min(4, homeScore + 1);
-  } else if (result === 0 && homeScore !== awayScore) {
-    const expectedDraw = (expectedHome + expectedAway) / 2;
-    const drawGoals = clamp(Math.round((homeScore + awayScore + expectedDraw) / 3), 0, 3);
-    homeScore = drawGoals;
-    awayScore = drawGoals;
+  } else if (result === 0) {
+    // Empate: o bien acaba 0-0 (cero sin romper) o se nivela a un empate con goles.
+    if (Math.random() < goallessDrawChance(expectedHome, expectedAway, homeScore, awayScore, drawContext)) {
+      homeScore = 0;
+      awayScore = 0;
+    } else {
+      const expectedDraw = (expectedHome + expectedAway) / 2;
+      const drawGoals = clamp(Math.round((homeScore + awayScore + expectedDraw) / 3), 1, 3);
+      homeScore = drawGoals;
+      awayScore = drawGoals;
+    }
   }
 
   if (homeScore + awayScore >= 6) {
@@ -995,7 +1035,12 @@ function simulateGoals(result, homeStrength, awayStrength, importance, homeTacti
   const awayFinish = finishingMultiplier(awayStrength, homeStrength);
   const expectedHomeGoals = clamp(flow.phaseXg.home * homeFinish, 0.08, 4.4);
   const expectedAwayGoals = clamp(flow.phaseXg.away * awayFinish, 0.06, 4.1);
-  const { homeScore, awayScore } = enforceResultShape(flow.rawGoals.home, flow.rawGoals.away, result, expectedHomeGoals, expectedAwayGoals);
+  const { homeScore, awayScore } = enforceResultShape(flow.rawGoals.home, flow.rawGoals.away, result, expectedHomeGoals, expectedAwayGoals, {
+    importance,
+    weather: context.weather,
+    isDerby: context.isDerby,
+    totalDiff: context.totalDiff
+  });
   const phases = attachFinalPhaseGoals(flow.phases, homeScore, awayScore);
 
   return {
@@ -1192,7 +1237,11 @@ function normalizeDisciplinaryTimeline(events) {
 
     if (event.type === 'yellow_card' && key) {
       if (yellowed.has(key)) {
-        normalized.push(event);
+        normalized.push({
+          ...event,
+          isSecondYellow: true,
+          countsForAccumulation: false
+        });
         normalized.push({
           type: 'red_card',
           team: event.team,
@@ -1689,8 +1738,10 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
 
   applyDueSubstitutionWindows({ windows: substitutionWindows, nextMinute: 90, homeState, awayState, liveScore, events: substitutionEvents, homeStrength, awayStrength });
   
-  // Añadir tarjetas (2-4 amarillas, 0-1 rojas)
-  const yellowCount = 2 + Math.floor(Math.random() * 3);
+  // Añadir tarjetas. Base 3-5 intentos de amarilla (algunos se descartan por
+  // conflicto con eventos posteriores), lo que deja ~3.5-5 amarillas por partido
+  // entre los dos equipos con árbitro neutral, en línea con un rango futbolero lógico.
+  const yellowCount = 3 + Math.floor(Math.random() * 3);
   const strictness = referee === 'strict' ? 1.5 : referee === 'lenient' ? 0.6 : 1;
   const playersWithYellow = new Set(); // Track players who already have a yellow (by team-name key)
   const sentOff = new Set(); // Players sent off can't get more cards
@@ -1703,7 +1754,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const minute = randomMinuteBetween(1, 88);
     if (!minute) continue;
     const lineupAtMinute = getLineupAtMinute(isHome ? homeState.initialLineup : awayState.initialLineup, substitutionEvents, teamLabel, minute);
-    const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: lineupAtMinute });
+    const player = selectCardRecipient(team, teamLabel, { sentOff, lineup: lineupAtMinute, cardType: 'yellow' });
     const playerKey = getPlayerKey(teamLabel, player);
     const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
     
@@ -1722,7 +1773,9 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
         type: 'yellow_card',
         team: teamLabel,
         minute: secondMinute,
-        player
+        player,
+        isSecondYellow: true,
+        countsForAccumulation: false
       });
       events.push({
         type: 'red_card',
@@ -1745,14 +1798,15 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     }
   }
   
-  // Rojas directas: ~8% chance per team (~3/temporada, realista)
+  // Rojas directas: ~5% por equipo (~2/temporada). Sumadas a las dobles amarillas
+  // dan un total combinado plausible (~1 roja cada 5-6 partidos entre ambos equipos).
   [homeTeam, awayTeam].forEach((team, idx) => {
     const teamLabel = idx === 0 ? 'home' : 'away';
-    if (Math.random() < 0.08 * strictness) {
+    if (Math.random() < 0.05 * strictness) {
       const minute = randomMinuteBetween(25, 84);
       if (!minute) return;
       const lineupAtMinute = getLineupAtMinute(teamLabel === 'home' ? homeState.initialLineup : awayState.initialLineup, substitutionEvents, teamLabel, minute);
-      const player = selectRandomPlayer(team, teamLabel, { sentOff, lineup: lineupAtMinute });
+      const player = selectCardRecipient(team, teamLabel, { sentOff, lineup: lineupAtMinute, cardType: 'red' });
       const playerKey = getPlayerKey(teamLabel, player);
       if (!sentOff.has(playerKey)) {
         const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, player);
@@ -1788,7 +1842,15 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
       if (players.length > 0) {
         const availablePlayers = players.filter(p => !sentOff.has(getPlayerKey(teamLabel, p)));
         if (availablePlayers.length === 0) return;
-        const injuredPlayer = availablePlayers[Math.floor(Math.random() * availablePlayers.length)];
+        // El portero puede lesionarse pero no debe dominar: pesa ~1/3 que un de campo.
+        const injuryWeights = availablePlayers.map(p => getCardRoleGroup(p) === 'goalkeeper' ? 0.35 : 1);
+        const injuryWeightTotal = injuryWeights.reduce((sum, w) => sum + w, 0);
+        let injuryDraw = Math.random() * injuryWeightTotal;
+        let injuredPlayer = availablePlayers[availablePlayers.length - 1];
+        for (let pick = 0; pick < availablePlayers.length; pick++) {
+          injuryDraw -= injuryWeights[pick];
+          if (injuryDraw <= 0) { injuredPlayer = availablePlayers[pick]; break; }
+        }
         const lastRequiredEvent = getLatestRequiredEventMinute(events, teamLabel, injuredPlayer);
         if (lastRequiredEvent > minute) return;
         const severityRoll = Math.random();
@@ -1978,7 +2040,62 @@ function selectAssister(team, lineup, scorer, goalType = 'normal') {
   return { name: candidates[0].name, position: candidates[0].position };
 }
 
-function selectRandomPlayer(team, teamLabel = 'team', options = {}) {
+// ============================================================
+// REPARTO DE TARJETAS POR POSICIÓN
+// ============================================================
+// El portero apenas ve tarjetas (alguna por perder tiempo), los centrales y
+// mediocentros defensivos son los más amonestados, los medios un punto medio y
+// los atacantes algo menos. Para la roja directa el portero es aún más raro.
+const CARD_PRONENESS = {
+  yellow: {
+    goalkeeper: 0.12,
+    centreBack: 1.55,
+    fullback: 1.30,
+    holdingMid: 1.60,
+    centralMid: 1.10,
+    wideMid: 0.95,
+    attackingMid: 0.85,
+    winger: 0.70,
+    forward: 0.80
+  },
+  red: {
+    goalkeeper: 0.06,
+    centreBack: 1.70,
+    fullback: 1.25,
+    holdingMid: 1.45,
+    centralMid: 1.00,
+    wideMid: 0.80,
+    attackingMid: 0.60,
+    winger: 0.55,
+    forward: 0.70
+  }
+};
+
+function getCardRoleGroup(player) {
+  const playingPos = getPrimaryPosition(player);
+  const naturalPos = getNaturalPosition(player);
+  if (['GK', 'POR'].includes(naturalPos) || ['GK', 'POR'].includes(playingPos)) return 'goalkeeper';
+  const pos = ['SLOT', ''].includes(playingPos) ? naturalPos : playingPos;
+  if (pos === 'CB') return 'centreBack';
+  if (['RB', 'LB', 'RWB', 'LWB'].includes(pos)) return 'fullback';
+  if (['CDM', 'DM'].includes(pos)) return 'holdingMid';
+  if (pos === 'CM') return 'centralMid';
+  if (['RM', 'LM'].includes(pos)) return 'wideMid';
+  if (pos === 'CAM') return 'attackingMid';
+  if (['RW', 'LW'].includes(pos)) return 'winger';
+  if (['ST', 'CF'].includes(pos)) return 'forward';
+  // Posiciones desconocidas: tratar como mediocentro (punto medio razonable)
+  return 'centralMid';
+}
+
+/**
+ * Selecciona quién recibe una tarjeta ponderando por posición.
+ * El portero es posible pero muy raro; central/lateral/pivote son los más
+ * propensos. Excluye expulsados, lesionados y sancionados, igual que el
+ * selector uniforme anterior, y usa el 11 sobre el campo en ese minuto.
+ */
+function selectCardRecipient(team, teamLabel = 'team', options = {}) {
+  const cardType = options.cardType === 'red' ? 'red' : 'yellow';
   const sourcePlayers = options.lineup?.length ? options.lineup : team?.players;
   if (!sourcePlayers || sourcePlayers.length === 0) return { name: 'Unknown' };
   const available = sourcePlayers.filter(p =>
@@ -1987,23 +2104,18 @@ function selectRandomPlayer(team, teamLabel = 'team', options = {}) {
     !options.sentOff?.has(getPlayerKey(teamLabel, p))
   );
   if (available.length === 0) return { name: 'Unknown' };
-  const pool = available;
-  // Prefer starters (first 11 or starter flag) — 85% chance starter, 15% sub
-  const starters = pool.filter(p => p.starter || p.isStarter);
-  const subs = pool.filter(p => !p.starter && !p.isStarter);
-  // If we have lineup info, weight towards starters
-  if (starters.length >= 7) {
-    const pickFromStarters = Math.random() < 0.85 || subs.length === 0;
-    const src = pickFromStarters ? starters : subs;
-    return { name: src[Math.floor(Math.random() * src.length)].name };
+
+  const table = CARD_PRONENESS[cardType];
+  const weights = available.map(p => Math.max(0.01, table[getCardRoleGroup(p)] ?? 1));
+  const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+  if (totalWeight <= 0) return { name: available[0].name };
+
+  let rand = Math.random() * totalWeight;
+  for (let i = 0; i < available.length; i++) {
+    rand -= weights[i];
+    if (rand <= 0) return { name: available[i].name };
   }
-  // Fallback: use first 11 by index as starters
-  const first11 = pool.slice(0, Math.min(11, pool.length));
-  const bench = pool.slice(11);
-  if (bench.length > 0 && Math.random() > 0.85) {
-    return { name: bench[Math.floor(Math.random() * bench.length)].name };
-  }
-  return { name: first11[Math.floor(Math.random() * first11.length)].name };
+  return { name: available[available.length - 1].name };
 }
 
 /**
@@ -2021,6 +2133,32 @@ function tacticalPace(tacticData) {
   return clamp(((tacticData.attack || 1) * 0.72) + ((tacticData.possession || 1) * 0.18) + ((tacticData.defense || 1) * 0.10), 0.72, 1.28);
 }
 
+function shotVolumeNoise() {
+  const r = Math.random();
+  if (r < 0.10) return -2;
+  if (r < 0.28) return -1;
+  if (r < 0.70) return 0;
+  if (r < 0.90) return 1;
+  return 2;
+}
+
+function buildShotsOnTarget(shots, goals, xg, qualityEdge, tacticData, opponentTacticData) {
+  const accuracy = clamp(
+    0.255
+      + qualityEdge * 0.035
+      + ((tacticData.attack || 1) - 1) * 0.026
+      + ((tacticData.possession || 1) - 1) * 0.018
+      - ((opponentTacticData.defense || 1) - 1) * 0.028,
+    0.20,
+    0.39
+  );
+  const expected = shots * accuracy + Math.min(1.2, xg * 0.34) + shotVolumeNoise();
+  const normalCeiling = Math.max(goals, Math.min(shots, Math.ceil(shots * 0.55)));
+  const rareCeiling = Math.max(normalCeiling, Math.min(shots, Math.ceil(shots * 0.68)));
+  const ceiling = Math.random() < 0.06 ? rareCeiling : normalCeiling;
+  return clamp(Math.round(expected), goals, ceiling);
+}
+
 function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic = 'balanced', awayTactic = 'balanced', context = {}) {
   const homeTacticData = TACTICS[homeTactic] || TACTICS.balanced;
   const awayTacticData = TACTICS[awayTactic] || TACTICS.balanced;
@@ -2029,10 +2167,13 @@ function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, r
   const homeDefense = homeStrength.strength?.defense || homeStrength.rating || 70;
   const awayDefense = awayStrength.strength?.defense || awayStrength.rating || 70;
   const midDiff = (homeStrength.strength?.midfield || 70) - (awayStrength.strength?.midfield || 70);
-  const possessionTacticDiff = ((homeTacticData.possession || 1) - (awayTacticData.possession || 1)) * 20;
+  const possessionTacticDiff = ((homeTacticData.possession || 1) - (awayTacticData.possession || 1)) * 18;
   const derbyNoise = context.isDerby ? (Math.random() * 6 - 3) : 0;
-  let homePossession = 50 + midDiff / 4 + possessionTacticDiff + (result === 1 ? 2 : result === -1 ? -2 : 0) + derbyNoise;
-  homePossession = clamp(homePossession, 25, 75);
+  const homeVenueLean = 1.6;
+  const scoreStateLean = result === 1 ? -1.2 : result === -1 ? 1.2 : 0;
+  const possessionNoise = (Math.random() * 5 - 2.5) + derbyNoise;
+  let homePossession = 50 + midDiff / 4.8 + possessionTacticDiff + homeVenueLean + scoreStateLean + possessionNoise;
+  homePossession = clamp(homePossession, 35, 65);
 
   const weatherPace = context.weather === 'extreme' ? 0.82 : context.weather === 'rain' ? 0.92 : 1;
   const importancePace = context.importance === 'final' ? 0.88 : context.importance === 'crucial' ? 0.95 : 1;
@@ -2044,10 +2185,16 @@ function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, r
   const homeResultPressure = result === -1 ? 1.10 : result === 1 ? 0.96 : 1;
   const awayResultPressure = result === 1 ? 1.10 : result === -1 ? 0.96 : 1;
 
-  let homeShots = Math.round((7.2 + homeTerritory * 8.4 + homeQualityEdge * 3.2 + homeScore * 1.25) * tacticalPace(homeTacticData) * homeResultPressure * totalPace + Math.random() * 2.8);
-  let awayShots = Math.round((6.3 + awayTerritory * 8.0 + awayQualityEdge * 3.0 + awayScore * 1.25) * tacticalPace(awayTacticData) * awayResultPressure * totalPace + Math.random() * 2.6);
-  homeShots = Math.max(homeScore + 2, clamp(homeShots, homeScore, 27));
-  awayShots = Math.max(awayScore + 2, clamp(awayShots, awayScore, 25));
+  const homeFlowXg = context.goalModel?.phaseXg?.home ?? context.goalModel?.expectedGoals?.home ?? 1.2;
+  const awayFlowXg = context.goalModel?.phaseXg?.away ?? context.goalModel?.expectedGoals?.away ?? 1.1;
+  const homeVolumeBase = 6.0 + homeTerritory * 6.4 + homeQualityEdge * 2.0 + homeFlowXg * 1.25 + homeScore * 0.55;
+  const awayVolumeBase = 5.6 + awayTerritory * 6.1 + awayQualityEdge * 1.9 + awayFlowXg * 1.20 + awayScore * 0.55;
+  let homeShots = Math.round(homeVolumeBase * tacticalPace(homeTacticData) * homeResultPressure * totalPace + shotVolumeNoise() + Math.random() * 1.7);
+  let awayShots = Math.round(awayVolumeBase * tacticalPace(awayTacticData) * awayResultPressure * totalPace + shotVolumeNoise() + Math.random() * 1.6);
+  const homeMinShots = Math.max(homeScore, homeScore + (homeScore <= 1 ? 2 : 1));
+  const awayMinShots = Math.max(awayScore, awayScore + (awayScore <= 1 ? 2 : 1));
+  homeShots = clamp(homeShots, homeMinShots, homeTactic === 'attacking' || homeTactic === 'highPress' ? 23 : 21);
+  awayShots = clamp(awayShots, awayMinShots, awayTactic === 'attacking' || awayTactic === 'highPress' ? 22 : 20);
 
   const homeShotQuality = clamp(0.064 + homeQualityEdge * 0.017 + ((homeTacticData.attack || 1) - 1) * 0.020 - ((awayTacticData.defense || 1) - 1) * 0.016, 0.045, 0.118);
   const awayShotQuality = clamp(0.061 + awayQualityEdge * 0.017 + ((awayTacticData.attack || 1) - 1) * 0.020 - ((homeTacticData.defense || 1) - 1) * 0.016, 0.043, 0.114);
@@ -2071,8 +2218,8 @@ function generateChanceModel(homeStrength, awayStrength, homeScore, awayScore, r
   const homeXg = clamp(blendedHomeXg, Math.max(0.12, homeScore * 0.38), 4.8);
   const awayXg = clamp(blendedAwayXg, Math.max(0.10, awayScore * 0.38), 4.5);
 
-  const homeShotsOnTarget = clamp(Math.round(homeShots * clamp(0.31 + homeQualityEdge * 0.05, 0.24, 0.47) + homeScore * 0.5), homeScore, homeShots);
-  const awayShotsOnTarget = clamp(Math.round(awayShots * clamp(0.30 + awayQualityEdge * 0.05, 0.23, 0.46) + awayScore * 0.5), awayScore, awayShots);
+  const homeShotsOnTarget = buildShotsOnTarget(homeShots, homeScore, homeXg, homeQualityEdge, homeTacticData, awayTacticData);
+  const awayShotsOnTarget = buildShotsOnTarget(awayShots, awayScore, awayXg, awayQualityEdge, awayTacticData, homeTacticData);
   const homeBigChances = clamp(Math.round(homeXg / 0.52 + (homeScore > homeXg + 0.75 ? 1 : 0)), homeScore > 0 ? 1 : 0, Math.max(1, Math.floor(homeShots / 3)));
   const awayBigChances = clamp(Math.round(awayXg / 0.52 + (awayScore > awayXg + 0.75 ? 1 : 0)), awayScore > 0 ? 1 : 0, Math.max(1, Math.floor(awayShots / 3)));
   const phaseBreakdown = aggregateXgBreakdown(context.goalModel?.phaseFlow || []);
@@ -2234,5 +2381,4 @@ function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, re
 // ============================================================
 
 export default simulateMatchV2;
-
 

@@ -47,7 +47,7 @@ import {
   getMaxServiceLevel
 } from '../../game/stadiumEconomy';
 import { getFacilityCostMultiplier, getBaseTicketPrice, getBaseSeasonTicketPrice, getTicketPriceRange } from '../../game/leagueTiers';
-import { Building2, Mic, Briefcase, Trophy, Ticket, Coins, BarChart3, Megaphone, Users, Sprout, Check, AlertTriangle, XCircle, Lock, Wrench, Tag } from 'lucide-react';
+import { Building2, Mic, Briefcase, Trophy, Ticket, Coins, BarChart3, Megaphone, Users, Sprout, Check, AlertTriangle, XCircle, Lock, Wrench, Tag, Utensils, ShoppingBag, Car, CalendarDays, Crown, Eye } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import { formatCompactMoney } from '../../utils/money';
 import './Stadium.scss';
@@ -573,6 +573,13 @@ export default function Stadium() {
     events: 'stadium.serviceEvents',
     vip: 'stadium.serviceVip'
   };
+  const SERVICE_ICONS = {
+    catering: <Utensils size={22} />,
+    merchandise: <ShoppingBag size={22} />,
+    parking: <Car size={22} />,
+    events: <CalendarDays size={22} />,
+    vip: <Crown size={22} />
+  };
   
   const handleUpgradeService = (serviceKey) => {
     const currentLv = services[serviceKey] || 0;
@@ -594,20 +601,19 @@ export default function Stadium() {
 
   return (
     <div className="stadium-simple fade-in-up">
-      {/* Visor 3D del estadio — skip on mobile to avoid WebGL crashes */}
-      {!isMobile && (
-        <div className="stadium-simple__3d-viewer">
-          <Stadium3DErrorBoundary>
-            <Suspense fallback={<div className="stadium-3d-loading">{t('stadium.loadingStadium')}</div>}>
-              <Stadium3D 
-                level={level} 
-                naming={naming} 
-                grassCondition={grassCondition} 
-              />
-            </Suspense>
-          </Stadium3DErrorBoundary>
-        </div>
-      )}
+      {/* Visor 3D del estadio — visible también en móvil; el canvas limita DPR para mantenerlo estable. */}
+      <div className="stadium-simple__3d-viewer">
+        <Stadium3DErrorBoundary>
+          <Suspense fallback={<div className="stadium-3d-loading">{t('stadium.loadingStadium')}</div>}>
+            <Stadium3D
+              level={level}
+              naming={naming}
+              grassCondition={grassCondition}
+              services={services}
+            />
+          </Suspense>
+        </Stadium3DErrorBoundary>
+      </div>
       
       {/* Header */}
       <div className="stadium-simple__header">
@@ -926,58 +932,100 @@ export default function Stadium() {
                   ? t('stadium.servicePerWeek', { amount: formatMoney(currentRate) })
                   : t('stadium.servicePerMatch', { amount: formatMoney(currentRate) });
               
+              const isBuilt = currentLv > 0;
+              const nextLabel = nextRate == null ? null : (
+                config.type === 'perSpectator'
+                  ? `€${nextRate}/${t('stadium.spectatorShort', 'espec.')}`
+                  : config.type === 'perWeek'
+                    ? `${formatMoney(nextRate)}/${t('common.week', 'sem')}`
+                    : `${formatMoney(nextRate)}/${t('stadium.matchShort', 'partido')}`
+              );
+
               return (
-                <div key={key} className={`service-card service-card--${key}${locked ? ' service-card--locked' : ''}`}>
-                  <div className="service-card__icon">{config.icon}</div>
-                  <div className="service-card__info">
-                    <span className="service-card__name">{t(SERVICE_NAMES[key])}</span>
+                <div
+                  key={key}
+                  className={`service-card service-card--${key}${locked ? ' service-card--locked' : ''}${isBuilt ? ' service-card--built' : ''}`}
+                >
+                  {/* Header: icon + name + status badge */}
+                  <div className="service-card__head">
+                    <span className="service-card__icon">{SERVICE_ICONS[key]}</span>
+                    <div className="service-card__titles">
+                      <span className="service-card__name">{t(SERVICE_NAMES[key])}</span>
+                      {locked ? (
+                        <span className="service-card__badge service-card__badge--locked">
+                          <Lock size={11} /> {t('stadium.serviceLocked', 'Bloqueado')}
+                        </span>
+                      ) : isBuilt ? (
+                        <span className="service-card__badge service-card__badge--built">
+                          <Check size={11} /> {t('stadium.serviceLevel', { level: currentLv })}
+                        </span>
+                      ) : (
+                        <span className="service-card__badge service-card__badge--available">
+                          {t('stadium.serviceNotBuilt')}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Body */}
+                  <div className="service-card__body">
                     {locked ? (
-                      <span className="service-card__locked">
-                        🔒 {t('stadium.serviceRequires', { stadium: unlockStadiumName })}
-                      </span>
+                      <p className="service-card__requirement">
+                        <Lock size={12} /> {t('stadium.serviceRequires', { stadium: unlockStadiumName })}
+                      </p>
                     ) : (
                       <>
-                        <span className="service-card__level">
-                          {currentLv > 0 
-                            ? t('stadium.serviceLevel', { level: currentLv })
-                            : t('stadium.serviceNotBuilt')}
-                        </span>
-                        {currentLv > 0 && (
-                          <span className="service-card__rate">{rateLabel}</span>
+                        {isBuilt && (
+                          <div className="service-card__metric">
+                            <span className="service-card__metric-label">{t('stadium.serviceIncome')}</span>
+                            <span className="service-card__metric-value">{rateLabel}</span>
+                          </div>
                         )}
-                        {hasNext && nextRate && (
-                          <span className="service-card__next">
-                            {config.type === 'perSpectator'
-                              ? `→ €${nextRate}/${t('stadium.spectatorShort', 'spec')}`
-                              : config.type === 'perWeek'
-                                ? `→ ${formatMoney(nextRate)}/${t('common.week', 'sem')}`
-                                : `→ ${formatMoney(nextRate)}/${t('stadium.matchShort', 'match')}`}
+                        {hasNext && nextLabel && (
+                          <div className="service-card__metric service-card__metric--next">
+                            <span className="service-card__metric-label">
+                              {isBuilt ? t('stadium.serviceUpgrade') : t('stadium.serviceBuild')} → {t('stadium.serviceLevel', { level: nextLv })}
+                            </span>
+                            <span className="service-card__metric-value">{nextLabel}</span>
+                          </div>
+                        )}
+                        <div className="service-card__level-dots">
+                          {Array.from({ length: config.levels.length - 1 }, (_, i) => i + 1).map(lv => (
+                            <span key={lv} className={`dot ${lv <= currentLv ? 'filled' : ''} ${lv > maxLv ? 'locked' : ''}`} />
+                          ))}
+                        </div>
+                        {isBuilt && (
+                          <span className="service-card__visible">
+                            <Eye size={11} /> {t('stadium.serviceVisible3D', 'Visible en el campus 3D')}
                           </span>
                         )}
                       </>
                     )}
                   </div>
-                  {!locked && (
-                    <div className="service-card__level-dots">
-                      {Array.from({ length: config.levels.length - 1 }, (_, i) => i + 1).map(lv => (
-                        <span key={lv} className={`dot ${lv <= currentLv ? 'filled' : ''} ${lv > maxLv ? 'locked' : ''}`} />
-                      ))}
-                    </div>
-                  )}
-                  {locked ? null : hasNext ? (
-                    <button 
-                      className="service-card__btn"
-                      onClick={() => handleUpgradeService(key)}
-                      disabled={!canAfford}
-                    >
-                      {currentLv === 0 ? t('stadium.serviceBuild') : t('stadium.serviceUpgrade')}
-                      <span className="cost">{formatMoney(nextCost)}</span>
-                    </button>
-                  ) : isMaxForStadium && canUnlockMore ? (
-                    <span className="service-card__max">{t('stadium.serviceUpgradeStadium', 'Mejora estadio para +niveles')}</span>
-                  ) : (
-                    <span className="service-card__max">MAX</span>
-                  )}
+
+                  {/* Footer action */}
+                  <div className="service-card__foot">
+                    {locked ? (
+                      <span className="service-card__max service-card__max--locked">
+                        {t('stadium.serviceRequires', { stadium: unlockStadiumName })}
+                      </span>
+                    ) : hasNext ? (
+                      <button
+                        className="service-card__btn"
+                        onClick={() => handleUpgradeService(key)}
+                        disabled={!canAfford}
+                      >
+                        <span className="service-card__btn-label">
+                          {currentLv === 0 ? t('stadium.serviceBuild') : t('stadium.serviceUpgrade')}
+                        </span>
+                        <span className="cost">{formatMoney(nextCost)}</span>
+                      </button>
+                    ) : isMaxForStadium && canUnlockMore ? (
+                      <span className="service-card__max">{t('stadium.serviceUpgradeStadium', 'Mejora estadio para +niveles')}</span>
+                    ) : (
+                      <span className="service-card__max service-card__max--full">★ MAX</span>
+                    )}
+                  </div>
                 </div>
               );
             })}

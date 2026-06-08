@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { X, RotateCcw, Trophy, Frown, Minus, ChevronRight, Zap, Check, ArrowRight } from 'lucide-react';
 import { simulateMatchV2 } from '../../game/matchSimulationV2';
@@ -6,6 +7,7 @@ import { sortTable } from '../../game/leagueEngine';
 import './ReplayMatch.scss';
 
 export default function ReplayMatchModal({ onClose }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [phase, setPhase] = useState('select'); // select | countdown | simulating | reveal | result
   const [selectedMatch, setSelectedMatch] = useState(null);
@@ -18,7 +20,7 @@ export default function ReplayMatchModal({ onClose }) {
   const [countdown, setCountdown] = useState(3);
 
   const teamId = state.teamId;
-  const teamName = state.team?.name || 'Tu equipo';
+  const teamName = state.team?.name || t('glory.replay.yourTeam');
   const fixtures = state.fixtures || [];
 
   // All played matches
@@ -171,8 +173,8 @@ export default function ReplayMatchModal({ onClose }) {
             <div className="replay2__top-info">
               <RotateCcw size={18} className="replay2__top-icon" />
               <div>
-                <h2>Segunda Oportunidad</h2>
-                <p>Elige un partido para rejugarlo</p>
+                <h2>{t('glory.replay.title')}</h2>
+                <p>{t('glory.replay.subtitle')}</p>
               </div>
             </div>
             <button className="replay2__close" onClick={onClose}><X size={18} /></button>
@@ -181,7 +183,7 @@ export default function ReplayMatchModal({ onClose }) {
           <div className="replay2__list">
             {playedMatches.length === 0 ? (
               <div className="replay2__empty">
-                <p>No has jugado ningún partido aún.</p>
+                <p>{t('glory.replay.empty')}</p>
               </div>
             ) : (
               playedMatches.map(match => (
@@ -304,7 +306,7 @@ export default function ReplayMatchModal({ onClose }) {
           </div>
 
           <h2 className="replay2__result-title">
-            {isWin ? '¡Victoria!' : isDraw ? 'Empate' : 'Derrota'}
+            {isWin ? t('glory.replay.win') : isDraw ? t('glory.replay.draw') : t('glory.replay.loss')}
           </h2>
 
           <div className="replay2__result-score">
@@ -317,23 +319,23 @@ export default function ReplayMatchModal({ onClose }) {
           {/* Comparison */}
           <div className="replay2__result-compare">
             <div className="replay2__result-old">
-              <span className="replay2__result-label">Antes</span>
+              <span className="replay2__result-label">{t('glory.replay.before')}</span>
               <span className="replay2__result-val">{selectedMatch.playerGoals} - {selectedMatch.rivalGoals}</span>
             </div>
             <ArrowRight size={16} className="replay2__result-arrow" />
             <div className={`replay2__result-new ${isBetter ? 'better' : isWorse ? 'worse' : 'same'}`}>
-              <span className="replay2__result-label">Ahora</span>
+              <span className="replay2__result-label">{t('glory.replay.now')}</span>
               <span className="replay2__result-val">{newResult.playerGoals} - {newResult.rivalGoals}</span>
             </div>
           </div>
 
           <p className="replay2__result-hint">
-            {isBetter ? '¡El destino te ha sonreído!' : isWorse ? 'El destino no estuvo de tu lado...' : 'El resultado no ha cambiado.'}
+            {isBetter ? t('glory.replay.better') : isWorse ? t('glory.replay.worse') : t('glory.replay.same')}
           </p>
 
           <div className="replay2__result-actions">
             <button className="replay2__btn replay2__btn--accept" onClick={handleConfirmReplay}>
-              <Check size={16} /> Aplicar resultado
+              <Check size={16} /> {t('glory.replay.apply')}
             </button>
             <button className="replay2__btn replay2__btn--discard" onClick={() => {
               // Still consume the replay use even if discarding
@@ -345,7 +347,7 @@ export default function ReplayMatchModal({ onClose }) {
               });
               onClose();
             }}>
-              Mantener original
+              {t('glory.replay.keep')}
             </button>
           </div>
         </div>

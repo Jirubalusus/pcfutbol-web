@@ -82,7 +82,8 @@ export async function hasActiveContrarreloj(userId) {
       season: save.contrarrelojData?.seasonsPlayed || 1,
       week: save.currentWeek || 1,
       money: save.money || 0,
-      trophies: save.contrarrelojData?.trophies?.length || 0
+      trophies: save.contrarrelojData?.trophies?.length || 0,
+      databaseSeasonId: save.databaseSeasonId || 'current'
     }
   };
 }

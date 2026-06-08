@@ -3,7 +3,8 @@
 // Board confidence, prestige, objectives, offers
 // ============================================================
 
-import { LEAGUE_CONFIG } from './multiLeagueEngine';
+import { LEAGUE_CONFIG, isAperturaClausura } from './multiLeagueEngine';
+import { initializeLeague } from './leagueEngine';
 import { getLeagueTier } from './leagueTiers';
 
 // Countries with their flags and available leagues
@@ -36,22 +37,46 @@ const TOP_LEAGUES = new Set(['laliga', 'premierLeague', 'serieA', 'bundesliga', 
 const MID_LEAGUES = new Set(['eredivisie', 'primeiraLiga', 'belgianPro', 'superLig', 'brasileiraoA', 'argentinaPrimera', 'ligaMX']);
 
 /**
- * Generate initial team offers from ALL leagues — 20 weak teams, no country filter
+ * Minimum players a team needs to be fielded (and therefore to be a playable offer).
+ * Matches the match-engine convention (a lineup needs 11 players).
  */
-export function generateInitialOffers(country, prestige, allLeagueGetters) {
+export const MIN_PLAYABLE_SQUAD = 11;
+
+/**
+ * Generate initial team offers from ALL leagues — 20 weak teams, no country filter.
+ *
+ * options:
+ *   - strictLeagueGetters: only iterate the league ids present in `allLeagueGetters`
+ *     (never fall back to static LEAGUE_CONFIG getters). Required for historical/active
+ *     season universes so we never offer a league that is absent from the selected
+ *     season and therefore cannot be prepared on "INICIAR CARRERA".
+ *   - minPlayersPerTeam: drop teams that do not carry enough player data to be playable.
+ */
+export function generateInitialOffers(country, prestige, allLeagueGetters, options = {}) {
+  const { strictLeagueGetters = false, minPlayersPerTeam = 0 } = options;
+  const getters = allLeagueGetters || {};
   const allTeamsWithMeta = [];
-  
-  for (const [leagueId, config] of Object.entries(LEAGUE_CONFIG)) {
-    if (config.isGroupLeague) continue;
-    const getter = allLeagueGetters[leagueId] || config.getTeams;
+
+  const leagueIds = strictLeagueGetters ? Object.keys(getters) : Object.keys(LEAGUE_CONFIG);
+
+  for (const leagueId of leagueIds) {
+    const config = LEAGUE_CONFIG[leagueId];
+    if (config?.isGroupLeague) continue;
+    const getter = getters[leagueId] || (strictLeagueGetters ? null : config?.getTeams);
     if (!getter) continue;
-    
+
     try {
       const teams = getter();
       if (!teams?.length) continue;
       for (const team of teams) {
+        if (!isPlayableOfferTeam(team, minPlayersPerTeam)) continue;
         const avgOvr = getAvgOverall(team);
-        allTeamsWithMeta.push({ team, leagueId, leagueName: config.name, avgOvr });
+        allTeamsWithMeta.push({
+          team,
+          leagueId,
+          leagueName: config?.name || team.historicalLeagueName || leagueId,
+          avgOvr,
+        });
       }
     } catch { /* skip */ }
   }
@@ -75,6 +100,16 @@ export function generateInitialOffers(country, prestige, allLeagueGetters) {
 }
 
 /**
+ * A team can only be offered if it has an id and enough player data to be fielded.
+ * minPlayersPerTeam <= 0 disables the squad-size check (legacy behaviour).
+ */
+function isPlayableOfferTeam(team, minPlayersPerTeam = 0) {
+  if (!team?.id) return false;
+  if (minPlayersPerTeam > 0 && (team.players?.length || 0) < minPlayersPerTeam) return false;
+  return true;
+}
+
+/**
  * Get average overall of a team
  */
 function getAvgOverall(team) {
@@ -88,12 +123,88 @@ function getAvgOverall(team) {
  * applied to the save; static getters are only used to hydrate metadata/players.
  */
 export function buildCareerLeagueGetters(state = {}, baseGetters = {}) {
-  const staticTeamsById = new Map();
+  const bestTeamsById = new Map();
+  const teamsByLeagueId = new Map();
+  const teamPriorityById = new Map();
+
+  const rosterSize = (team) => Array.isArray(team?.players) ? team.players.length : 0;
+  const teamLeagueIds = (team, fallbackLeagueId = null) => ([
+    team?.leagueId,
+    team?.league,
+    team?.historicalLeagueId,
+    fallbackLeagueId,
+  ].filter(Boolean));
+
+  const rememberTeam = (team, fallbackLeagueId = null, priority = 0) => {
+    const id = team?.id || team?.teamId;
+    if (!id) return;
+    const normalized = { ...team, id };
+    const existing = bestTeamsById.get(id);
+    const existingPriority = teamPriorityById.get(id) ?? -1;
+    if (
+      !existing
+      || priority > existingPriority
+      || (priority === existingPriority && rosterSize(normalized) > rosterSize(existing))
+      || (priority === existingPriority && rosterSize(normalized) === rosterSize(existing) && !existing.name && normalized.name)
+    ) {
+      bestTeamsById.set(id, normalized);
+      teamPriorityById.set(id, priority);
+    } else if (existing && rosterSize(existing) >= rosterSize(normalized)) {
+      bestTeamsById.set(id, { ...normalized, ...existing, players: existing.players || normalized.players || [] });
+    } else if (existing && rosterSize(normalized) > rosterSize(existing)) {
+      // Lower-priority sources (static/current bundle) may still carry the only
+      // usable roster for a saved table stub. Preserve live/dynamic identity but
+      // hydrate players so offers and transfer browsing never regress to 0 squads.
+      bestTeamsById.set(id, {
+        ...normalized,
+        ...existing,
+        players: normalized.players || existing.players || [],
+        budget: existing.budget || normalized.budget,
+        reputation: existing.reputation || normalized.reputation,
+        overall: existing.overall || normalized.overall,
+      });
+    }
+
+    for (const leagueId of teamLeagueIds(normalized, fallbackLeagueId)) {
+      if (!teamsByLeagueId.has(leagueId)) teamsByLeagueId.set(leagueId, new Map());
+      const leagueMap = teamsByLeagueId.get(leagueId);
+      const current = leagueMap.get(id);
+      const best = bestTeamsById.get(id) || normalized;
+      if (!current || rosterSize(best) >= rosterSize(current)) leagueMap.set(id, best);
+    }
+  };
+
+  (state.leagueTeams || []).forEach(team => rememberTeam(team, null, 4));
+  if (state.team) rememberTeam({ ...state.team, id: state.teamId || state.team.id }, state.playerLeagueId || state.leagueId, 5);
+
+  for (const [leagueId, leagueData] of Object.entries(state.otherLeagues || {})) {
+    (leagueData?.table || []).forEach(entry => {
+      if (entry?.players?.length) {
+        rememberTeam({
+          ...entry,
+          id: entry.teamId || entry.id,
+          name: entry.teamName || entry.name,
+          leagueId,
+        }, leagueId, 3);
+      }
+    });
+    for (const group of Object.values(leagueData?.groups || {})) {
+      (group?.table || group || []).forEach(entry => {
+        if (entry?.players?.length) {
+          rememberTeam({
+            ...entry,
+            id: entry.teamId || entry.id,
+            name: entry.teamName || entry.name,
+            leagueId,
+          }, leagueId, 3);
+        }
+      });
+    }
+  }
+
   for (const getter of Object.values(baseGetters || {})) {
     try {
-      (getter?.() || []).forEach(team => {
-        if (team?.id && !staticTeamsById.has(team.id)) staticTeamsById.set(team.id, team);
-      });
+      (getter?.() || []).forEach(team => rememberTeam(team, null, 1));
     } catch { /* skip broken static getter */ }
   }
 
@@ -109,26 +220,35 @@ export function buildCareerLeagueGetters(state = {}, baseGetters = {}) {
   const leagueIds = new Set([
     ...Object.keys(baseGetters || {}),
     state.playerLeagueId,
-    ...Object.keys(state.otherLeagues || {})
+    ...Object.keys(state.otherLeagues || {}),
+    ...(state.leagueTeams || []).flatMap(team => teamLeagueIds(team))
   ].filter(Boolean));
 
   const careerGetters = {};
   for (const leagueId of leagueIds) {
     careerGetters[leagueId] = () => {
       const table = getCareerTable(leagueId);
-      if (!table) return baseGetters?.[leagueId]?.() || [];
+      if (!table) {
+        const liveTeams = Array.from(teamsByLeagueId.get(leagueId)?.values?.() || []);
+        if (liveTeams.length > 0) return liveTeams;
+        return baseGetters?.[leagueId]?.() || [];
+      }
 
       return table.map(entry => {
         const teamId = entry.teamId || entry.id;
-        const base = staticTeamsById.get(teamId) || {};
+        const base = bestTeamsById.get(teamId) || {};
+        const entryPlayers = Array.isArray(entry.players) ? entry.players : [];
+        const basePlayers = Array.isArray(base.players) ? base.players : [];
+        const players = basePlayers.length >= entryPlayers.length ? basePlayers : entryPlayers;
         return {
           ...base,
+          ...entry,
           id: teamId,
           name: entry.teamName || base.name || teamId,
           shortName: entry.shortName || base.shortName || (entry.teamName || teamId)?.substring?.(0, 3)?.toUpperCase?.() || teamId,
           reputation: base.reputation || entry.reputation || 2,
           overall: base.overall || entry.overall || 65,
-          players: base.players || entry.players || [],
+          players,
           budget: base.budget || entry.budget,
           leagueId,
         };
@@ -136,6 +256,116 @@ export function buildCareerLeagueGetters(state = {}, baseGetters = {}) {
     };
   }
   return careerGetters;
+}
+
+/**
+ * Build the league a ProManager manager is switching INTO after accepting an offer.
+ *
+ * The offered team is chosen from the *pre-rollover* career universe, while
+ * `selectedLeagueData` is the *post-rollover* table produced by the season engine.
+ * Promotion/relegation can move the offered club out of that table entirely, which
+ * previously left the manager with a team that had no classification row and no
+ * fixtures. This helper guarantees:
+ *   - the offered team is present in the team list exactly once,
+ *   - the regenerated table marks exactly that team as isPlayer,
+ *   - the regenerated fixtures contain the offered team's matches.
+ *
+ * @param {object}   params
+ * @param {object}   params.selectedLeagueData  Rolled-over league data ({ table, fixtures, ... }) or null.
+ * @param {object}   params.team                The offered team (must have an id).
+ * @param {string}   params.leagueId            Target league id.
+ * @param {object}   [params.careerGetters]     Map of leagueId -> () => team[] used to hydrate rows with squads.
+ * @param {Function} [params.fallbackGetter]    () => team[] used only when the rollover produced no table at all.
+ * @returns {object|null} `{ ...selectedLeagueData, table, fixtures }` or null when a
+ *          valid (>= 2 team) league cannot be built.
+ */
+export function buildSwitchedProManagerLeague({
+  selectedLeagueData,
+  team,
+  leagueId,
+  careerGetters = {},
+  fallbackGetter = null,
+}) {
+  if (!team?.id || !leagueId) return null;
+
+  // Hydration pool: full team objects (with squads) keyed by id, sourced from the
+  // pre-rollover career universe plus the offered team itself.
+  const hydrationPool = new Map();
+  for (const getter of Object.values(careerGetters || {})) {
+    try {
+      for (const tt of (getter() || [])) {
+        const id = tt?.id || tt?.teamId;
+        if (id && !hydrationPool.has(id)) hydrationPool.set(id, tt);
+      }
+    } catch { /* skip broken getter */ }
+  }
+  hydrationPool.set(team.id, { ...(hydrationPool.get(team.id) || {}), ...team });
+
+  const hydrateRow = (row) => {
+    const id = row.teamId || row.id;
+    const base = hydrationPool.get(id) || {};
+    const basePlayers = Array.isArray(base.players) ? base.players : [];
+    const rowPlayers = Array.isArray(row.players) ? row.players : [];
+    return {
+      ...base,
+      ...row,
+      id,
+      name: row.teamName || base.name || row.name || id,
+      players: basePlayers.length >= rowPlayers.length ? basePlayers : rowPlayers,
+      leagueId,
+    };
+  };
+
+  // Seed from the rolled-over table; if absent, fall back to the static/career getter.
+  let baseRows = Array.isArray(selectedLeagueData?.table) ? selectedLeagueData.table : [];
+  if (baseRows.length === 0 && typeof fallbackGetter === 'function') {
+    let fallbackTeams = [];
+    try { fallbackTeams = fallbackGetter() || []; } catch { /* skip */ }
+    baseRows = fallbackTeams.map(tt => ({ teamId: tt.id || tt.teamId, teamName: tt.name, players: tt.players }));
+  }
+
+  // Guarantee the offered team appears exactly once. If the rollover dropped it,
+  // replace one AI slot so the league size stays stable.
+  let teamObjs = baseRows.map(hydrateRow).filter(tt => tt.id !== team.id);
+  const offeredTeamWasInTable = teamObjs.length < baseRows.length;
+  const offeredTeamObj = { ...(hydrationPool.get(team.id) || {}), ...team, id: team.id, leagueId };
+  if (!offeredTeamWasInTable && teamObjs.length > 0) {
+    teamObjs[teamObjs.length - 1] = offeredTeamObj;
+  } else {
+    teamObjs.push(offeredTeamObj);
+  }
+
+  if (teamObjs.length < 2) return null;
+
+  const { table, fixtures } = initializeLeague(teamObjs, team.id);
+  return {
+    ...(selectedLeagueData || {}),
+    table,
+    fixtures,
+    ...(isAperturaClausura(leagueId)
+      ? { accumulatedTable: table.map(r => ({ ...r })), aperturaTable: null, currentTournament: 'apertura' }
+      : {})
+  };
+}
+
+export function getProManagerEligibleLeagueIds(state = {}) {
+  const ids = new Set();
+  const add = (value) => { if (value) ids.add(value); };
+  add(state.playerLeagueId || state.leagueId);
+  Object.keys(state.otherLeagues || {}).forEach(add);
+  (state.leagueTeams || []).forEach(team => {
+    add(team?.leagueId);
+    add(team?.league);
+    add(team?.historicalLeagueId);
+  });
+  (state.leagueTable || []).forEach(row => add(row?.leagueId || row?.league || row?.historicalLeagueId));
+  for (const leagueData of Object.values(state.otherLeagues || {})) {
+    (leagueData?.table || []).forEach(row => add(row?.leagueId || row?.league || row?.historicalLeagueId));
+    for (const group of Object.values(leagueData?.groups || {})) {
+      (group?.table || group || []).forEach(row => add(row?.leagueId || row?.league || row?.historicalLeagueId));
+    }
+  }
+  return Array.from(ids);
 }
 
 /**
@@ -313,9 +543,15 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
   const effectivePrestige = Math.max(0, Math.min(100, prestige + performanceBoost * 7));
   const minOffers = wasFired ? (options.minOffers || 5) : (performanceBoost >= 5 ? 4 : performanceBoost >= 3 ? 3 : 0);
   const maxOffers = wasFired ? (options.maxOffers || 6) : (options.maxOffers || (performanceBoost >= 5 ? 5 : performanceBoost >= 3 ? 4 : 3));
+  // Restrict offers to leagues that actually exist in the active save (player league +
+  // other leagues persisted on the career). Without this, a historical career could
+  // surface leagues that only live in the static LEAGUE_CONFIG and cannot be prepared
+  // after a year rollover. Undefined => legacy behaviour (consider every league).
+  const eligibleLeagueIds = options.eligibleLeagueIds ? new Set(options.eligibleLeagueIds) : null;
   const candidates = [];
 
   for (const [leagueId, config] of Object.entries(LEAGUE_CONFIG)) {
+    if (eligibleLeagueIds && !eligibleLeagueIds.has(leagueId)) continue;
     if (!config.getTeams && !allLeagueGetters[leagueId]) continue;
     if (config.isGroupLeague) continue; // Skip group leagues for simplicity
     
@@ -344,6 +580,7 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
 
       for (const team of teams) {
         if (!team || team.id === currentTeamId) continue;
+        if (!isPlayableOfferTeam(team, MIN_PLAYABLE_SQUAD)) continue;
         const avgOvr = getAvgOverall(team);
         candidates.push({ team, leagueId, config, avgOvr, tier, underCap: avgOvr <= maxOvr });
       }

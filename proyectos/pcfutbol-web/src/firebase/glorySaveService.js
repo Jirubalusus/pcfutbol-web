@@ -106,6 +106,7 @@ export async function hasActiveGlory(userId) {
       division: save.gloryData?.division || 'segundaRFEF',
       week: save.currentWeek || 1,
       cards: (save.gloryData?.pickedCards || []).length,
+      databaseSeasonId: save.databaseSeasonId || 'current',
     }
   };
 }

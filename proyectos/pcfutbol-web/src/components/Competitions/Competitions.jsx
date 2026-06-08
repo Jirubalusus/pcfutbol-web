@@ -17,7 +17,11 @@ export default function Competitions() {
   const { state } = useGame();
 
   const isRanked = state.gameMode === 'ranked';
-  const hasCup = !!state.cupCompetition;
+  const cupRounds = useMemo(
+    () => Array.isArray(state.cupCompetition?.rounds) ? state.cupCompetition.rounds : [],
+    [state.cupCompetition?.rounds]
+  );
+  const hasCup = cupRounds.length > 0;
   const hasEuropean = !!state.europeanCompetitions?.initialized;
   const hasSA = !!state.saCompetitions?.initialized;
   const isInSALeague = isSouthAmericanLeague(state.playerLeagueId);
@@ -37,8 +41,8 @@ export default function Competitions() {
 
     (state.leagueTable || []).forEach((team) => ids.add(team.teamId));
 
-    (state.cupCompetition?.rounds || []).forEach((round) => {
-      (round.matches || []).forEach((match) => {
+    cupRounds.forEach((round) => {
+      (Array.isArray(round?.matches) ? round.matches : []).forEach((match) => {
         if (match.homeTeam?.teamId) ids.add(match.homeTeam.teamId);
         if (match.awayTeam?.teamId) ids.add(match.awayTeam.teamId);
       });
@@ -51,7 +55,7 @@ export default function Competitions() {
     });
 
     return Array.from(ids);
-  }, [state.leagueTable, state.cupCompetition, state.europeanCompetitions, state.saCompetitions, isInSALeague]);
+  }, [state.leagueTable, cupRounds, state.europeanCompetitions, state.saCompetitions, isInSALeague]);
 
   usePreloadTeamCrests(competitionTeamIds, { limit: 96 });
 

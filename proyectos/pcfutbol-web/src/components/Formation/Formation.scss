@@ -163,6 +163,9 @@
 }
 
 .pcf-table {
+  max-width: 100%;
+  overflow-x: hidden;
+
   .table-header {
     display: grid;
     grid-template-columns: 35px minmax(0, 1fr) 55px 50px 40px 54px;
@@ -187,9 +190,15 @@
   }
 
   .table-body {
+    min-width: 0;
+    max-width: 100%;
+
     &--scroll {
       max-height: 200px;
       overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      touch-action: pan-y;
       scrollbar-width: thin;
       scrollbar-color: var(--color-glass-border) transparent;
 
@@ -203,6 +212,10 @@
     display: grid;
     grid-template-columns: 35px minmax(0, 1fr) 55px 50px 40px 54px;
     gap: 4px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     padding: 0.4rem 0.75rem;
     cursor: pointer;
     transition: background 0.15s;
@@ -249,19 +262,25 @@
 
       &:hover { background: rgba(255, 214, 10, 0.14) !important; }
 
+      // Full match: strong, saturated green with clear left accent + inset glow
       &.swap-perfect {
-        background: rgba(48, 209, 88, 0.12) !important;
-        &:hover { background: rgba(48, 209, 88, 0.2) !important; }
+        background: rgba(48, 209, 88, 0.28) !important;
+        box-shadow: inset 3px 0 0 0 #30d158, inset 0 0 0 1px rgba(48, 209, 88, 0.35) !important;
+        &:hover { background: rgba(48, 209, 88, 0.38) !important; }
       }
 
+      // Good semi-match: moderate teal-green, clearly softer than perfect
       &.swap-good {
-        background: rgba(39, 174, 96, 0.1) !important;
-        &:hover { background: rgba(39, 174, 96, 0.18) !important; }
+        background: rgba(26, 160, 130, 0.16) !important;
+        box-shadow: inset 3px 0 0 0 rgba(26, 160, 130, 0.7) !important;
+        &:hover { background: rgba(26, 160, 130, 0.24) !important; }
       }
 
+      // Decent semi-match: amber/olive, distinct from any green
       &.swap-decent {
-        background: rgba(255, 214, 10, 0.08) !important;
-        &:hover { background: rgba(255, 214, 10, 0.14) !important; }
+        background: rgba(212, 160, 23, 0.14) !important;
+        box-shadow: inset 3px 0 0 0 rgba(212, 160, 23, 0.7) !important;
+        &:hover { background: rgba(212, 160, 23, 0.22) !important; }
       }
     }
 
@@ -286,6 +305,7 @@
 
     // Columns
     span {
+      min-width: 0;
       font-size: 0.75rem;
       color: var(--color-text-primary);
       display: flex;
@@ -308,14 +328,15 @@
       }
 
       &.col-status {
-        width: 60px;
-        min-width: 60px;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
         text-align: right;
         font-size: 0.65rem;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: 2px;
+        gap: 6px;
         padding-right: 4px;
 
         .status-icon {
@@ -344,9 +365,9 @@
         &.high { color: #7dff7d; }
         &.low { color: #ff7d7d; }
 
-        &.fit-perfect { color: #4afa7f !important; text-shadow: 0 0 6px rgba(74, 250, 127, 0.5); }
-        &.fit-good { color: #27ae60 !important; }
-        &.fit-decent { color: var(--color-warning) !important; }
+        &.fit-perfect { color: #3dff6e !important; font-weight: 900; text-shadow: 0 0 8px rgba(61, 255, 110, 0.7); }
+        &.fit-good { color: #2fc7a3 !important; }
+        &.fit-decent { color: #e0b020 !important; }
         &.fit-poor { color: #ff9f0a !important; }
         &.fit-terrible { color: var(--color-danger) !important; }
 
@@ -441,6 +462,7 @@
           }
 
           &.has-multiple::after {
+            display: none;
             right: auto;
             left: 50%;
             max-width: 180px;
@@ -899,21 +921,21 @@
     &:hover { background: rgba(255,255,255,0.03); }
 
     &.fit-perfect {
-      background: rgba(48, 209, 88, 0.1);
-      border-left: 2px solid var(--color-success);
-      &:hover { background: rgba(48, 209, 88, 0.18); }
+      background: rgba(48, 209, 88, 0.22);
+      border-left: 4px solid #30d158;
+      &:hover { background: rgba(48, 209, 88, 0.3); }
     }
 
     &.fit-good {
-      background: rgba(39, 174, 96, 0.08);
-      border-left: 2px solid #27ae60;
-      &:hover { background: rgba(39, 174, 96, 0.15); }
+      background: rgba(26, 160, 130, 0.14);
+      border-left: 3px solid #1aa082;
+      &:hover { background: rgba(26, 160, 130, 0.22); }
     }
 
     &.fit-decent {
-      background: rgba(255, 214, 10, 0.06);
-      border-left: 2px solid var(--color-warning);
-      &:hover { background: rgba(255, 214, 10, 0.12); }
+      background: rgba(212, 160, 23, 0.12);
+      border-left: 3px solid #d4a017;
+      &:hover { background: rgba(212, 160, 23, 0.2); }
     }
 
     &.in-lineup { opacity: 0.4; }
@@ -1850,7 +1872,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: 3px;
   font-weight: bold;
   line-height: 1;
   -webkit-text-size-adjust: none;
@@ -1860,6 +1881,60 @@
 
   &.form-good { transform: rotate(45deg); }
   &.form-low { transform: rotate(-45deg); }
+}
+
+// Tooltip emergente reutilizable para los iconos de estado y la flecha de forma
+// (mismo estilo que el tooltip de posiciones .col-pos.has-multiple). El atributo
+// `title` queda como respaldo nativo; este pseudo-elemento da el aspecto cuidado.
+.has-tooltip {
+  position: relative;
+  cursor: help;
+  outline: none;
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+    z-index: 30;
+    width: max-content;
+    max-width: 240px;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 6px;
+    background: rgba(18, 20, 26, 0.96);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+    color: var(--color-text-primary);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-align: left;
+    text-transform: none;
+    white-space: normal;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    &::after { max-width: 180px; }
+  }
+}
+
+// Envoltorio sin rotación para la flecha de forma (la flecha interior sí gira).
+.form-arrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
 }
 
 .form-excellent { color: #00a8ff !important; }

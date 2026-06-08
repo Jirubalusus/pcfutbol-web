@@ -60,7 +60,7 @@
     "saveProgress": "Fortschritt in der Cloud speichern",
     "saveCurrentProgress": "Aktuellen Fortschritt speichern",
     "reachChampions": "Champions League von unten erreichen",
-    "guestNotice": "Melden Sie sich an, um Ihren Fortschritt in der Cloud zu speichern",
+    "guestNotice": "Du kannst PC Gaffer ohne Konto testen. Logge dich ein, wenn du deinen Fortschritt in der Cloud speichern möchtest.",
     "tribute": "Das schöne Spiel, von dir geleitet",
     "contrarrelojActive": "Zeitrennen Aktiv",
     "newGame": "Neues Spiel",
@@ -76,7 +76,36 @@
     "tabSolo": "Einzelspieler",
     "tabMulti": "Mehrspieler",
     "comingSoon": "Demnächst...",
-    "moreModesComingSoon": "Weitere Modi folgen..."
+    "moreModesComingSoon": "Weitere Modi folgen...",
+    "playNow": "Jetzt spielen",
+    "playNowSubtitle": "Teste eine Karriere ohne Anmeldung",
+    "loginCreateAccount": "Einloggen / Konto erstellen",
+    "lockedLoginRequired": "Zum Freischalten einloggen",
+    "cardPlay": "Modus spielen",
+    "cardUnlock": "Einloggen",
+    "chipSolo": "1 Spieler",
+    "chipLongTerm": "Langfristig",
+    "chipRanking": "Rangliste",
+    "chipSpeed": "Schnell",
+    "chipPromotions": "Aufstiege",
+    "chipJobOffers": "Jobangebote",
+    "chipSoon": "Demnächst",
+    "databaseGlobal": "Globale Datenbank",
+    "databaseHint": "Gilt für alle neuen Spiele.",
+    "changeSeason": "Saison wechseln",
+    "applySeason": "Saison anwenden",
+    "spinHint": "Ziehe oder drehe, um durch die Zeit zu reisen",
+    "changeDatabaseAria": "Globale Datenbank wechseln",
+    "dbCurrent": "Aktuelle Saison",
+    "dbHistorical": "Historische Saison",
+    "dbCurrentShort": "Aktuell",
+    "dbHistoricalShort": "Historisch",
+    "changeDatabaseTitle": "Datenbank wechseln",
+    "changeDatabaseWarning": "Deine aktuellen Spielstände werden gelöscht, weil Teams, Spieler, Spielpläne und Wettbewerbe zu einer anderen Datenbank gehören.",
+    "changeDatabaseConfirmWarning": "Wenn du die Saison wechselst, verlierst du deine aktuellen Spielstände. Bist du sicher?",
+    "changing": "Wechseln…",
+    "changeAndDelete": "Jahr wechseln und Spielstände löschen",
+    "changeSeasonAndDelete": "Saison wechseln und Spielstände löschen"
   },
   "cup": {
     "noCupActive": "Kein Pokal aktiv diese Saison",
@@ -660,7 +689,68 @@
     "defense": "Verteidigung",
     "yourFormation": "Deine Formation",
     "yourTactic": "Deine Taktik",
-    "statistics": "Statistiken"
+    "statistics": "Statistiken",
+    "cup": "Pokal",
+    "round": "Runde",
+    "europe": "Europa",
+    "matchweek": "Spieltag {{week}}",
+    "weekLabel": "Woche {{week}}",
+    "friendly": "Freundschaftsspiel {{n}}/5",
+    "homeTag": "HEIM",
+    "awayTag": "AUSWÄRTS",
+    "subOut": "Raus",
+    "subIn": "Rein",
+    "assistShort": "Vorlage",
+    "weeksAbbr": "{{weeks}} Wo.",
+    "stageFinishing": "Schlussphase",
+    "stageFirstHalf": "Erste Halbzeit",
+    "stageSecondHalf": "Zweite Halbzeit",
+    "live": "Live",
+    "lastEvent": "Letztes Ereignis",
+    "eventGoal": "Tor",
+    "matchStarting": "Das Spiel beginnt",
+    "waitingFirstAction": "Warte auf die erste wichtige Aktion.",
+    "dominance": "Dominanz",
+    "momentum": "Momentum",
+    "topRated": "Beste Spieler",
+    "onTarget": "Aufs Tor",
+    "substitutions": "Wechsel",
+    "noSubstitutions": "Keine Wechsel",
+    "bigChances": "Großchancen",
+    "saves": "Paraden",
+    "stadium": "Stadion",
+    "totalFouls": "Fouls gesamt: {{count}}",
+    "chronology": "Chronologie",
+    "noGoals": "Keine Tore",
+    "matchKeys": "Schlüsselszenen",
+    "capacity": "Kapazität",
+    "revenue": "Einnahmen",
+    "motm": "Spieler des Spiels",
+    "goalSingular": "Tor",
+    "goalPlural": "Tore",
+    "assistSingular": "Vorlage",
+    "assistPlural": "Vorlagen",
+    "rating": "Bewertung",
+    "extraTime": "Verlängerung",
+    "penaltiesShort": "Elf.",
+    "tacticHighPress": "Hohes Pressing",
+    "rouletteBetPrepared": "Roulette-Wette vorbereitet",
+    "rouletteSlotChosen": "Gewähltes Feld",
+    "rouletteFundsLocked": "{{amount}} für dieses Spiel gesperrt. Der Büro-Button wird nach dem Ende wieder aktiv.",
+    "rouletteOutcomeHint": "Sieg: {{win}} · Remis: {{draw}} · Niederlage: {{lose}}",
+    "rouletteBubbleActive": "Finanzblase aktiv: Gewonnene Wetten zahlen x2.",
+    "rouletteInvestigation": "Steuerprüfung: Vorsicht vor einer weiteren Niederlage.",
+    "needStarters": "Du brauchst 11 Starter (du hast {{count}})",
+    "syntheticPlayer": "Spieler {{number}}",
+    "noMatchThisWeek": "Kein Spiel diese Woche",
+    "resultWin": "Sieg!",
+    "resultLoss": "Niederlage",
+    "resultDraw": "Unentschieden",
+    "playMatch": "Spiel spielen",
+    "noEvents": "Keine besonderen Ereignisse",
+    "nextMatch": "Nächstes Spiel",
+    "homeGame": "Heimspiel",
+    "awayGame": "Auswärtsspiel"
   },
   "leagueTable": {
     "title": "Tabelle",
@@ -693,6 +783,8 @@
     "apertura": "Apertura",
     "clausura": "Clausura",
     "acumulada": "Kumuliert",
+    "apclContinentalNote": "🏆 Libertadores und Sudamericana werden über die kumulierte Tabelle entschieden — Plätze {{lib}}: Libertadores · {{sud}}: Sudamericana.",
+    "apclContinentalNoteNoSud": "🏆 Libertadores wird über die kumulierte Tabelle entschieden — Plätze {{lib}}.",
     "inProgress": "im Gange",
     "searchLeague": "Liga suchen...",
     "yourLeague": "Ihre Liga",
@@ -1118,7 +1210,53 @@
     "countrySummary_other": "{{leagues}} Ligen · {{clubs}} Vereine",
     "clubsCount_one": "{{count}} Verein",
     "clubsCount_other": "{{count}} Vereine",
-    "leaguesLabel": "Verfügbare Ligen"
+    "leaguesLabel": "Verfügbare Ligen",
+    "activeDatabase": "Aktive Datenbank",
+    "historicalMeta": "{{teams}} Teams · {{players}} Spieler · {{leagues}} Ligen",
+    "currentMeta": "{{countries}} Länder · Live-Basis 2025/26",
+    "historicalBaseCopy": "Historische Momentaufnahme: Kader und Werte des gewählten Jahres. Danach entwickelt sich die Simulation frei.",
+    "currentBaseCopy": "Aktuelle Spielbasis mit aktiven Teams, Wappen und Wettbewerben.",
+    "historicalBadge": "Historisch {{season}}",
+    "currentBadge": "Aktuell",
+    "changeDatabaseHint": "Ändere Jahr/Datenbank im Hauptmenü, damit alle Modi dieselbe Saison nutzen.",
+    "loadingHistorical": "Vollständige historische Saison wird geladen...",
+    "preseasonPlanning": "Vorbereitungsplanung",
+    "preseasonSubtitle": "Wähle eine 5-Spiele-Tour passend zum sportlichen und medialen Niveau deines Clubs.",
+    "club": "Club",
+    "tourDiffHigh": "Hoch",
+    "tourDiffMedium": "Mittel",
+    "tourDiffControlled": "Kontrolliert",
+    "ovrRivals": "Gegner-OVR",
+    "tourDifficultyLabel": "Schwierigkeit",
+    "mediaTierLabel": "Medien",
+    "home": "Heim",
+    "away": "Auswärts",
+    "skipPreseason": "Vorbereitung überspringen",
+    "preseasonTours": {
+      "regional": {
+        "identity": "Wettbewerbsbasis",
+        "name": "Einspieltour",
+        "description": "Gegner nah am Clubniveau, mit sanfter Steigerung vor dem Präsentationsspiel."
+      },
+      "balanced": {
+        "identity": "Premium-Vorbereitung",
+        "name": "Kontinentalrunde",
+        "description": "Ein ausgewogener Plan, um Abläufe gegen ähnlich starke Teams zu testen."
+      },
+      "prestige": {
+        "identity": "Maximale Einnahmen",
+        "name": "Prestigetour",
+        "description": "Fünf Termine mit großer Wirkung, Abschluss zuhause gegen den attraktivsten Gegner."
+      }
+    },
+    "mediaTier": {
+      "eliteWorld": "Weltelite",
+      "continental": "kontinental",
+      "topTier": "Spitzenklasse",
+      "competitive": "kompetitiv",
+      "strongRegional": "stark regional",
+      "development": "Entwicklung"
+    }
   },
   "contrarreloj": {
     "title": "Zeitrennen-Modus",
@@ -1640,7 +1778,29 @@
     "playGamesError": "Error connecting to Google Play Games",
     "playGamesDesc": "Sign in with your Google Play Games account to save your progress and compete in rankings.",
     "connecting": "Connecting...",
-    "loginPlayGames": "Sign in with Google Play Games"
+    "loginPlayGames": "Sign in with Google Play Games",
+    "intent": {
+      "generic": {
+        "title": "Fortschritt speichern und synchronisieren",
+        "subtitle": "Logge dich ein oder erstelle ein Konto, um deine Spielstände zu schützen."
+      },
+      "save-progress": {
+        "title": "Einloggen, um dieses Spiel zu speichern",
+        "subtitle": "Dein Testspiel liegt auf diesem Gerät. Melde dich an, um es in der Cloud zu speichern."
+      },
+      "rankings": {
+        "title": "Einloggen, um anzutreten",
+        "subtitle": "Ranglisten und Herausforderungen benötigen ein Konto, um Duplikate zu vermeiden und Ergebnisse zu speichern."
+      },
+      "edition-mode": {
+        "title": "Einloggen, um Editionen zu verwalten",
+        "subtitle": "Editor und Datenpakete werden mit deinem Konto verknüpft, damit deine Daten sicher bleiben."
+      },
+      "cloud-load": {
+        "title": "Einloggen, um Spielstände zu laden",
+        "subtitle": "Greife auf deine Cloud-Spielstände zu und spiele auf jedem Gerät weiter."
+      }
+    }
   },
   "europe": {
     "title": "Europüische Wettbewerbe",
@@ -2105,5 +2265,9 @@
   "simulation": {
     "yourResults": "Deine Ergebnisse",
     "goals": "Tore"
+  },
+  "trial": {
+    "bannerText": "Testmodus: Dieses Spiel wird nicht in der Cloud gespeichert.",
+    "bannerCta": "Fortschritt speichern"
   }
 }

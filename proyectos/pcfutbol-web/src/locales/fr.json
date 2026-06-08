@@ -60,7 +60,7 @@
     "saveProgress": "Sauvegardez votre progression dans le cloud",
     "saveCurrentProgress": "Sauvegarder votre progression actuelle",
     "reachChampions": "Atteignez la Champions League depuis le bas",
-    "guestNotice": "Connectez-vous pour sauvegarder votre progression dans le cloud",
+    "guestNotice": "Tu peux essayer PC Gaffer sans compte. Connecte-toi quand tu veux sauvegarder ta progression dans le cloud.",
     "tribute": "Le beau jeu, dirig· par vous",
     "contrarrelojActive": "Course Contre la Montre Active",
     "newGame": "Nouvelle Partie",
@@ -76,7 +76,36 @@
     "tabSolo": "Solo",
     "tabMulti": "Multijoueur",
     "comingSoon": "Prochainement...",
-    "moreModesComingSoon": "Plus de modes bientôt..."
+    "moreModesComingSoon": "Plus de modes bientôt...",
+    "playNow": "Jouer maintenant",
+    "playNowSubtitle": "Essaie une carrière sans connexion",
+    "loginCreateAccount": "Connexion / Créer un compte",
+    "lockedLoginRequired": "Connecte-toi pour déverrouiller",
+    "cardPlay": "Jouer",
+    "cardUnlock": "Connexion",
+    "chipSolo": "1 joueur",
+    "chipLongTerm": "Long terme",
+    "chipRanking": "Classement",
+    "chipSpeed": "Rapide",
+    "chipPromotions": "Promotions",
+    "chipJobOffers": "Offres",
+    "chipSoon": "Bientôt",
+    "databaseGlobal": "Base de données globale",
+    "databaseHint": "S'applique à toutes les nouvelles parties.",
+    "changeSeason": "Changer de saison",
+    "applySeason": "Appliquer la saison",
+    "spinHint": "Fais glisser ou tourne pour voyager dans le temps",
+    "changeDatabaseAria": "Changer la base de données globale",
+    "dbCurrent": "Saison actuelle",
+    "dbHistorical": "Saison historique",
+    "dbCurrentShort": "Actuelle",
+    "dbHistoricalShort": "Historique",
+    "changeDatabaseTitle": "Changer de base de données",
+    "changeDatabaseWarning": "Tes parties sauvegardées actuelles seront supprimées car les équipes, joueurs, calendriers et compétitions appartiennent à une autre base de données.",
+    "changeDatabaseConfirmWarning": "Si tu changes de saison, tu perdras tes parties sauvegardées actuelles. Es-tu sûr ?",
+    "changing": "Changement…",
+    "changeAndDelete": "Changer l'année et supprimer les parties",
+    "changeSeasonAndDelete": "Changer de saison et supprimer les parties"
   },
   "cup": {
     "noCupActive": "Pas de coupe active cette saison",
@@ -661,7 +690,67 @@
     "defense": "Défense",
     "yourFormation": "Ta formation",
     "yourTactic": "Ta tactique",
-    "statistics": "Statistiques"
+    "statistics": "Statistiques",
+    "cup": "Coupe",
+    "round": "Tour",
+    "europe": "Europe",
+    "matchweek": "Journée {{week}}",
+    "weekLabel": "Semaine {{week}}",
+    "friendly": "Amical {{n}}/5",
+    "homeTag": "DOMICILE",
+    "awayTag": "EXTÉRIEUR",
+    "subOut": "Sort",
+    "subIn": "Entre",
+    "assistShort": "p.d.",
+    "weeksAbbr": "{{weeks}} sem.",
+    "stageFinishing": "Fin de match",
+    "stageFirstHalf": "Première mi-temps",
+    "stageSecondHalf": "Deuxième mi-temps",
+    "live": "En direct",
+    "lastEvent": "Dernier événement",
+    "eventGoal": "But",
+    "matchStarting": "Le match démarre",
+    "waitingFirstAction": "En attente de la première action importante.",
+    "dominance": "Domination",
+    "momentum": "Momentum",
+    "topRated": "Meilleurs joueurs",
+    "onTarget": "Cadrés",
+    "substitutions": "Remplacements",
+    "noSubstitutions": "Aucun remplacement",
+    "bigChances": "Grosses occasions",
+    "saves": "Arrêts",
+    "stadium": "Stade",
+    "totalFouls": "Total fautes : {{count}}",
+    "chronology": "Chronologie",
+    "noGoals": "Aucun but",
+    "matchKeys": "Clés du match",
+    "capacity": "Capacité",
+    "revenue": "Recette",
+    "motm": "Joueur du match",
+    "goalSingular": "but",
+    "goalPlural": "buts",
+    "assistSingular": "passe décisive",
+    "assistPlural": "passes décisives",
+    "rating": "Note",
+    "extraTime": "prolongation",
+    "penaltiesShort": "t.a.b.",
+    "tacticHighPress": "Pressing haut",
+    "rouletteBetPrepared": "Pari roulette préparé",
+    "rouletteSlotChosen": "Case choisie",
+    "rouletteFundsLocked": "{{amount}} bloqués pour ce match. Le bouton du bureau sera réactivé à la fin.",
+    "rouletteOutcomeHint": "Gagner : {{win}} · Nul : {{draw}} · Perdre : {{lose}}",
+    "rouletteBubbleActive": "Bulle financière active : les paris gagnés paient x2.",
+    "rouletteInvestigation": "Contrôle fiscal : attention à ne pas reperdre.",
+    "needStarters": "Il faut 11 titulaires (tu en as {{count}})",
+    "syntheticPlayer": "Joueur {{number}}",
+    "resultWin": "Victoire !",
+    "resultLoss": "Défaite",
+    "resultDraw": "Nul",
+    "playMatch": "Jouer le match",
+    "noEvents": "Aucun incident notable",
+    "nextMatch": "Prochain match",
+    "homeGame": "Match à domicile",
+    "awayGame": "Match à l'extérieur"
   },
   "leagueTable": {
     "title": "Classement",
@@ -694,6 +783,8 @@
     "apertura": "Apertura",
     "clausura": "Clausura",
     "acumulada": "Cumulé",
+    "apclContinentalNote": "🏆 La Libertadores et la Sudamericana se décident au classement Cumulé — places {{lib}} : Libertadores · {{sud}} : Sudamericana.",
+    "apclContinentalNoteNoSud": "🏆 La Libertadores se décide au classement Cumulé — places {{lib}}.",
     "inProgress": "en cours",
     "searchLeague": "Rechercher ligue...",
     "yourLeague": "Votre ligue",
@@ -1119,7 +1210,53 @@
     "countrySummary_other": "{{leagues}} ligues · {{clubs}} clubs",
     "clubsCount_one": "{{count}} club",
     "clubsCount_other": "{{count}} clubs",
-    "leaguesLabel": "Ligues disponibles"
+    "leaguesLabel": "Ligues disponibles",
+    "activeDatabase": "Base de données active",
+    "historicalMeta": "{{teams}} équipes · {{players}} joueurs · {{leagues}} ligues",
+    "currentMeta": "{{countries}} pays · base vivante 2025/26",
+    "historicalBaseCopy": "Instantané historique initial : effectifs et notes de l’année choisie. La simulation évolue ensuite librement.",
+    "currentBaseCopy": "Base actuelle du jeu avec équipes, écussons et compétitions en vigueur.",
+    "historicalBadge": "Historique {{season}}",
+    "currentBadge": "Actuelle",
+    "changeDatabaseHint": "Change l’année/base depuis le menu principal pour que tous les modes utilisent la même saison.",
+    "loadingHistorical": "Chargement de la saison historique complète...",
+    "preseasonPlanning": "Planification de pré-saison",
+    "preseasonSubtitle": "Choisis une tournée de 5 matchs adaptée au niveau compétitif et médiatique de ton club.",
+    "club": "Club",
+    "tourDiffHigh": "Haute",
+    "tourDiffMedium": "Moyenne",
+    "tourDiffControlled": "Contrôlée",
+    "ovrRivals": "OVR rivaux",
+    "tourDifficultyLabel": "difficulté",
+    "mediaTierLabel": "médias",
+    "home": "Domicile",
+    "away": "Extérieur",
+    "skipPreseason": "Passer la pré-saison",
+    "preseasonTours": {
+      "regional": {
+        "identity": "Base compétitive",
+        "name": "Tournée de rodage",
+        "description": "Des adversaires proches du niveau du club, avec une progression douce avant le match de présentation."
+      },
+      "balanced": {
+        "identity": "Préparation premium",
+        "name": "Circuit continental",
+        "description": "Un calendrier équilibré pour tester les automatismes contre des équipes de niveau similaire."
+      },
+      "prestige": {
+        "identity": "Recette maximale",
+        "name": "Tournée de prestige",
+        "description": "Cinq rendez-vous à fort impact, avec une clôture à domicile contre le rival le plus attractif."
+      }
+    },
+    "mediaTier": {
+      "eliteWorld": "élite mondiale",
+      "continental": "continental",
+      "topTier": "premier plan",
+      "competitive": "compétitif",
+      "strongRegional": "régional fort",
+      "development": "développement"
+    }
   },
   "contrarreloj": {
     "title": "Mode Course Contre la Montre",
@@ -1641,7 +1778,29 @@
     "playGamesError": "Error connecting to Google Play Games",
     "playGamesDesc": "Sign in with your Google Play Games account to save your progress and compete in rankings.",
     "connecting": "Connecting...",
-    "loginPlayGames": "Sign in with Google Play Games"
+    "loginPlayGames": "Sign in with Google Play Games",
+    "intent": {
+      "generic": {
+        "title": "Sauvegarde et synchronise ta progression",
+        "subtitle": "Connecte-toi ou crée un compte pour protéger tes parties."
+      },
+      "save-progress": {
+        "title": "Connecte-toi pour sauvegarder cette partie",
+        "subtitle": "Ta partie d’essai est sur cet appareil. Connecte-toi pour la sauvegarder dans le cloud."
+      },
+      "rankings": {
+        "title": "Connecte-toi pour concourir",
+        "subtitle": "Les classements et défis nécessitent un compte pour éviter les doublons et enregistrer les résultats."
+      },
+      "edition-mode": {
+        "title": "Connecte-toi pour gérer les éditions",
+        "subtitle": "L’éditeur et les packs sont liés à ton compte pour garder tes données en sécurité."
+      },
+      "cloud-load": {
+        "title": "Connecte-toi pour charger tes parties",
+        "subtitle": "Accède à tes sauvegardes cloud et continue depuis n’importe quel appareil."
+      }
+    }
   },
   "europe": {
     "title": "Compétitions Européennes",
@@ -2106,5 +2265,9 @@
   "simulation": {
     "yourResults": "Vos résultats",
     "goals": "Buts"
+  },
+  "trial": {
+    "bannerText": "Mode essai : cette partie n’est pas sauvegardée dans le cloud.",
+    "bannerCta": "Sauvegarder"
   }
 }

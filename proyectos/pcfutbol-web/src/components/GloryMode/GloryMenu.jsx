@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
@@ -16,12 +17,30 @@ import LoadingIndicator from '../common/LoadingIndicator';
 import GloryCollection from './GloryCollection';
 import { getUnlockedCards } from '../../game/gloryUnlocks';
 import { getGlorySave, deleteGlorySave } from '../../firebase/glorySaveService';
+import { getLocalGloryInfo, loadLocalGlory, deleteLocalGlory } from '../../game/localGlorySave';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { GLORY_CARDS } from '../../game/gloryEngine';
 import './GloryMode.scss';
 
+function cloudSaveMillis(saveData) {
+  const ts = saveData?.lastSaved;
+  if (ts && typeof ts.toMillis === 'function') return ts.toMillis();
+  if (ts && typeof ts.seconds === 'number') return ts.seconds * 1000;
+  if (typeof ts === 'number') return ts;
+  return 0;
+}
+
+function shouldPreferLocalGloryBackup(local, saveData) {
+  if (!local?.state) return false;
+  if (local.sync?.pending) return true;
+  const localMs = local.savedAt || 0;
+  const cloudMs = cloudSaveMillis(saveData);
+  return localMs > 0 && localMs > cloudMs;
+}
+
 export default function GloryMenu() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { state, dispatch } = useGame();
   const [view, setView] = useState('menu');
@@ -59,20 +78,33 @@ export default function GloryMenu() {
             division: state.gloryData?.division || 'segundaRFEF',
           });
         } else {
-          const save = await getGlorySave(user.uid);
-          if (save) {
+          const [cloudSave, local] = await Promise.all([
+            getGlorySave(user.uid).catch(() => null),
+            Promise.resolve(loadLocalGlory({ uid: user.uid })),
+          ]);
+          if (local?.state && (!cloudSave || shouldPreferLocalGloryBackup(local, cloudSave))) {
             setHasSave(true);
             setSaveInfo({
-              season: save.gloryData?.season || 1,
-              division: save.gloryData?.division || 'segundaRFEF',
+              season: local.state.gloryData?.season || local.summary?.season || 1,
+              division: local.state.gloryData?.division || local.summary?.division || 'segundaRFEF',
             });
+          } else if (cloudSave) {
+            setHasSave(true);
+            setSaveInfo({
+              season: cloudSave.gloryData?.season || 1,
+              division: cloudSave.gloryData?.division || 'segundaRFEF',
+            });
+          } else {
+            setHasSave(false);
+            setSaveInfo(null);
           }
         }
       } catch (e) {
         console.warn('Error loading glory data:', e);
         setUnlockedCards(getUnlockedCards([]));
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
     init();
   }, [user?.uid, isGloryInMemory, state.gloryData?.division, state.gloryData?.season]);
@@ -85,26 +117,39 @@ export default function GloryMenu() {
     if (!user?.uid) return;
     setLoadingAction(true);
     try {
-      const saveData = await getGlorySave(user.uid);
-      if (saveData) {
+      let loaded = false;
+      const [saveData, local] = await Promise.all([
+        getGlorySave(user.uid).catch(() => null),
+        Promise.resolve(loadLocalGlory({ uid: user.uid })),
+      ]);
+      if (local?.state && (!saveData || shouldPreferLocalGloryBackup(local, saveData))) {
+        dispatch({ type: 'LOAD_SAVE', payload: { ...local.state, _gloryUserId: user.uid, gameMode: 'glory', rankedMatchId: null } });
+        loaded = true;
+      } else if (saveData) {
         dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _gloryUserId: user.uid, gameMode: 'glory', rankedMatchId: null } });
-        const dn = getAuth().currentUser?.displayName;
-        if (dn) dispatch({ type: 'SET_MANAGER_NAME', payload: dn });
-        dispatch({ type: 'SET_SCREEN', payload: 'office' });
+        loaded = true;
       }
+      if (!loaded) return;
+      const dn = getAuth().currentUser?.displayName;
+      if (dn) dispatch({ type: 'SET_MANAGER_NAME', payload: dn });
+      dispatch({ type: 'SET_SCREEN', payload: 'office' });
     } catch (err) {
       console.error('Error loading Glory save:', err);
+    } finally {
+      setLoadingAction(false);
     }
-    setLoadingAction(false);
   };
 
   const handleNew = async () => {
     if (user?.uid) {
       try { await deleteGlorySave(user.uid); } catch { /* skip */ }
+      deleteLocalGlory({ uid: user.uid });
     }
     if (isGloryInMemory) {
       dispatch({ type: 'RESET_GAME' });
     }
+    setHasSave(false);
+    setSaveInfo(null);
     dispatch({ type: 'SET_SCREEN', payload: 'glory_setup' });
   };
 
@@ -122,15 +167,11 @@ export default function GloryMenu() {
     );
   }
 
-  const divNames = {
-    segundaRFEF: 'Segunda RFEF',
-    primeraRFEF: 'Primera RFEF',
-    segunda: 'Segunda Division',
-    laliga: 'La Liga',
-  };
   const totalCards = GLORY_CARDS.length;
   const collectionProgress = Math.round((unlockedCards.length / totalCards) * 100);
-  const saveDivision = saveInfo ? (divNames[saveInfo.division] || saveInfo.division) : 'Segunda RFEF';
+  const saveDivision = saveInfo
+    ? t(`glory.divisions.${saveInfo.division}`, { defaultValue: saveInfo.division })
+    : t('glory.divisions.segundaRFEF');
   const lockedCards = Math.max(0, totalCards - unlockedCards.length);
 
   return (
@@ -141,13 +182,13 @@ export default function GloryMenu() {
       </div>
 
       <header className="glory-menu__topbar">
-        <button className="glory-menu__back" onClick={handleBack} aria-label="Volver">
+        <button className="glory-menu__back" onClick={handleBack} aria-label={t('glory.common.back')}>
           <ArrowLeft size={18} />
-          <span>Volver</span>
+          <span>{t('glory.common.back')}</span>
         </button>
         <div className="glory-menu__topline">
-          <span>Modo legado</span>
-          <strong>Club propio</strong>
+          <span>{t('glory.menu.legacyMode')}</span>
+          <strong>{t('glory.menu.ownClub')}</strong>
         </div>
       </header>
 
@@ -161,36 +202,36 @@ export default function GloryMenu() {
             <section className="glory-menu__hero">
               <div className="glory-menu__hero-kicker">
                 <Mountain size={16} />
-                <span>Camino a la Gloria</span>
+                <span>{t('glory.menu.kicker')}</span>
               </div>
-              <h1>Crea tu club y conquista Europa.</h1>
-              <p>Un modo compacto: diseña tu identidad, sobrevive a cada temporada y escala desde barro hasta Champions.</p>
+              <h1>{t('glory.menu.heroTitle')}</h1>
+              <p>{t('glory.menu.heroDesc')}</p>
 
-              <div className="glory-menu__hero-stats" aria-label="Resumen del modo">
+              <div className="glory-menu__hero-stats" aria-label={t('glory.menu.summaryAria')}>
                 <div>
                   <strong>4</strong>
-                  <span>Ascensos</span>
+                  <span>{t('glory.menu.promotions')}</span>
                 </div>
                 <div>
                   <strong>{totalCards}</strong>
-                  <span>Cartas únicas</span>
+                  <span>{t('glory.menu.uniqueCards')}</span>
                 </div>
                 <div>
                   <strong>UCL</strong>
-                  <span>Meta final</span>
+                  <span>{t('glory.menu.finalGoal')}</span>
                 </div>
               </div>
             </section>
 
-            <aside className="glory-menu__panel" aria-label="Acciones de Camino a la Gloria">
+            <aside className="glory-menu__panel" aria-label={t('glory.menu.actionsAria')}>
               {hasSave ? (
                 <div className="glory-menu__save-card">
                   <div className="glory-menu__save-icon">
                     <Crown size={22} />
                   </div>
                   <div>
-                    <span className="glory-menu__eyebrow">Partida activa</span>
-                    <h2>Temporada {saveInfo?.season || 1}</h2>
+                    <span className="glory-menu__eyebrow">{t('glory.menu.activeSave')}</span>
+                    <h2>{t('glory.common.season')} {saveInfo?.season || 1}</h2>
                     <p>{saveDivision}</p>
                   </div>
                 </div>
@@ -200,9 +241,9 @@ export default function GloryMenu() {
                     <Shield size={22} />
                   </div>
                   <div>
-                    <span className="glory-menu__eyebrow">Nuevo proyecto</span>
-                    <h2>Sin partida activa</h2>
-                    <p>Crea escudo, equipacion y debuta.</p>
+                    <span className="glory-menu__eyebrow">{t('glory.menu.newProject')}</span>
+                    <h2>{t('glory.menu.noActiveSave')}</h2>
+                    <p>{t('glory.menu.newProjectDesc')}</p>
                   </div>
                 </div>
               )}
@@ -216,8 +257,8 @@ export default function GloryMenu() {
                   >
                     <span className="glory-menu__btn-icon"><Play size={18} /></span>
                     <span>
-                      Continuar Camino
-                      <small>T{saveInfo?.season || 1} - {saveDivision}</small>
+                      {t('glory.menu.continueRoad')}
+                      <small>S{saveInfo?.season || 1} - {saveDivision}</small>
                     </span>
                     <ChevronRight size={18} />
                   </button>
@@ -228,45 +269,45 @@ export default function GloryMenu() {
                   disabled={loadingAction}
                 >
                   <span className="glory-menu__btn-icon"><Mountain size={18} /></span>
-                  <span>{hasSave ? 'Nuevo Camino' : 'Iniciar Camino'}</span>
+                  <span>{hasSave ? t('glory.menu.newRoad') : t('glory.menu.startRoad')}</span>
                   <ChevronRight size={18} />
                 </button>
               </div>
 
               <div className="glory-menu__panel-note">
                 <Trophy size={16} />
-                <span>Las cartas desbloqueadas hacen cada nuevo intento más interesante.</span>
+                <span>{t('glory.menu.panelNote')}</span>
               </div>
             </aside>
 
-            <section className="glory-menu__collection-showcase" aria-label="Coleccion de cartas">
+            <section className="glory-menu__collection-showcase" aria-label={t('glory.menu.collectionAria')}>
               <div className="glory-menu__collection-copy">
-                <span className="glory-menu__eyebrow">Vitrina permanente</span>
-                <h2>{unlockedCards.length}/{totalCards} cartas desbloqueadas</h2>
-                <p>Las cartas conseguidas quedan guardadas y cambian tus futuras temporadas.</p>
+                <span className="glory-menu__eyebrow">{t('glory.menu.showcaseEyebrow')}</span>
+                <h2>{t('glory.menu.cardsUnlocked', { unlocked: unlockedCards.length, total: totalCards })}</h2>
+                <p>{t('glory.menu.showcaseDesc')}</p>
               </div>
               <div className="glory-menu__collection-meter">
                 <div className="glory-menu__collection-ring" style={{ '--progress': `${collectionProgress}%` }}>
                   <strong>{collectionProgress}%</strong>
-                  <span>completo</span>
+                  <span>{t('glory.menu.complete')}</span>
                 </div>
                 <div className="glory-menu__collection-stats">
-                  <span><Unlock size={15} /> {unlockedCards.length} desbloqueadas</span>
-                  <span><Shield size={15} /> {lockedCards} pendientes</span>
-                  <span><Trophy size={15} /> 3 rarezas</span>
+                  <span><Unlock size={15} /> {t('glory.menu.unlockedCount', { count: unlockedCards.length })}</span>
+                  <span><Shield size={15} /> {t('glory.menu.pendingCount', { count: lockedCards })}</span>
+                  <span><Trophy size={15} /> {t('glory.menu.raritiesCount')}</span>
                 </div>
               </div>
               <button className="glory-menu__collection-cta" onClick={() => setView('collection')}>
-                Ver vitrina <ChevronRight size={18} />
+                {t('glory.menu.viewShowcase')} <ChevronRight size={18} />
               </button>
             </section>
 
-            <section className="glory-menu__roadmap" aria-label="Camino de ascenso">
-              <span>Segunda RFEF</span>
+            <section className="glory-menu__roadmap" aria-label={t('glory.menu.roadmapAria')}>
+              <span>{t('glory.divisions.segundaRFEF')}</span>
               <ChevronRight size={16} />
-              <span>Primera RFEF</span>
+              <span>{t('glory.divisions.primeraRFEF')}</span>
               <ChevronRight size={16} />
-              <span>Segunda</span>
+              <span>{t('glory.divisions.segunda')}</span>
               <ChevronRight size={16} />
               <strong>Champions</strong>
             </section>

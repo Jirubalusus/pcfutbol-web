@@ -11,6 +11,8 @@ import { simulateMatch } from './leagueEngine';
 import {
   COMPETITIONS,
   EUROPEAN_MATCHDAY_WEEKS,
+  getCompetitionConfigForSeason,
+  getEuropeanCompetitionIdsForSeason,
   getEuropeanPhaseForWeek,
   calculatePrizeMoney
 } from './europeanCompetitions';
@@ -20,16 +22,25 @@ import {
 // ============================================================
 
 /**
- * Initialize all European competitions for the season.
+ * Initialize European competitions for the season.
  * Takes qualified teams, runs Swiss draws, sets up state.
  * 
  * @param {Object} qualifiedTeams - { championsLeague: [], europaLeague: [], conferenceleague: [] }
+ * @param {Object} options
  * @returns {Object} europeanState - Full state for all 3 competitions
  */
-export function initializeEuropeanCompetitions(qualifiedTeams) {
+export function initializeEuropeanCompetitions(qualifiedTeams, options = {}) {
+  const {
+    seasonId = null,
+    historical = false,
+    competitionIds = null
+  } = options;
   const competitions = {};
+  const activeCompetitionIds = competitionIds || getEuropeanCompetitionIdsForSeason(seasonId, { historical });
 
-  for (const [compId, compConfig] of Object.entries(COMPETITIONS)) {
+  for (const compId of activeCompetitionIds) {
+    const compConfig = getCompetitionConfigForSeason(compId, seasonId, { historical }) || COMPETITIONS[compId];
+    if (!compConfig) continue;
     const teams = qualifiedTeams[compId] || [];
 
     if (teams.length !== compConfig.teamsCount) {
@@ -84,6 +95,9 @@ export function initializeEuropeanCompetitions(qualifiedTeams) {
   return {
     competitions,
     initialized: true,
+    activeCompetitionIds,
+    seasonId,
+    historicalEra: Boolean(historical),
     season: null // Will be set by the game context
   };
 }

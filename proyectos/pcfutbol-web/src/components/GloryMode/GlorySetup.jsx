@@ -1,51 +1,124 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
-import { ArrowLeft, ArrowRight, Trophy, Shirt, Shield, PenLine, MapPin, ChevronRight, Sparkles } from 'lucide-react';
-import BadgeEditor, { BadgePreview } from './BadgeEditor';
-import KitEditor, { KitPreview } from './KitEditor';
+import { ArrowLeft, ArrowRight, Trophy, Shield, PenLine, MapPin, ChevronRight, Sparkles } from 'lucide-react';
+import PageLoader from '../common/PageLoader';
+import BadgeEditor, { BadgePreview, DEFAULT_BADGE } from './BadgeEditor';
 import { getGlorySquad } from '../../data/fictionalPlayers';
-import { getSegundaRfefGroups } from '../../data/teamsFirestore';
 import { initializeLeague } from '../../game/leagueEngine';
-import { initializeOtherLeagues, LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
+import { loadActiveSeasonUniverse, getAllTeamsFromUniverse, initializeOtherLeaguesFromUniverse, buildLeagueGettersFromUniverse } from '../../data/activeSeasonUniverse';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
-import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
-import { initializeSACompetitions } from '../../game/southAmericanSeason';
+import { buildGloryHistoricalFlags, gloryStartsInHistoricalPrimeraRfef } from '../../game/gloryHistoricalRules';
 import './GloryMode.scss';
 
-const STEPS = ['info', 'badge', 'kit', 'confirm'];
+const STEPS = ['info', 'badge', 'confirm'];
 const STEP_META = {
-  info: { icon: PenLine, eyebrow: 'Fundación', title: 'Crea tu club', desc: 'Dale nombre a tu proyecto. Empezarás en Segunda RFEF con jugadores desconocidos y un sueño.' },
-  badge: { icon: Shield, eyebrow: 'Identidad visual', title: 'Diseña tu escudo', desc: 'La identidad visual de tu club empieza aquí.' },
-  kit: { icon: Shirt, eyebrow: 'Primera equipación', title: 'Equipación', desc: 'Los colores que te representarán en el camino a la gloria.' },
-  confirm: { icon: Trophy, eyebrow: 'Confirmación', title: 'Tu club está listo', desc: 'Revisa la identidad del proyecto antes de arrancar la partida.' },
+  info: { icon: PenLine, eyebrowKey: 'glory.setup.infoEyebrow', titleKey: 'glory.setup.infoTitle', descKey: 'glory.setup.infoDesc' },
+  badge: { icon: Shield, eyebrowKey: 'glory.setup.badgeEyebrow', titleKey: 'glory.setup.badgeTitle', descKey: 'glory.setup.badgeDesc' },
+  confirm: { icon: Trophy, eyebrowKey: 'glory.setup.confirmEyebrow', titleKey: 'glory.setup.confirmTitle', descKey: 'glory.setup.confirmDesc' },
 };
 
+function getSpanishLowerDivisionEntries(activeSeasonUniverse) {
+  return (activeSeasonUniverse?.entries || [])
+    .filter(entry => ['segundaRFEF', 'primeraRFEF'].includes(entry.id) && entry.teams?.length)
+    .sort((a, b) => {
+      const rank = { segundaRFEF: 0, primeraRFEF: 1 };
+      return (rank[a.id] ?? 9) - (rank[b.id] ?? 9);
+    });
+}
+
+function getGlorySetupDivisionMeta(activeSeasonUniverse, t) {
+  const spanishLowerDivisionEntries = getSpanishLowerDivisionEntries(activeSeasonUniverse);
+  const targetLeagueId = spanishLowerDivisionEntries[0]?.id || 'segundaRFEF';
+  const historicalNoSegundaRfef = gloryStartsInHistoricalPrimeraRfef(activeSeasonUniverse, targetLeagueId);
+  if (historicalNoSegundaRfef) {
+    return {
+      targetLeagueId,
+      historicalNoSegundaRfef: true,
+      label: t('glory.setup.primeraLabel'),
+      shortLabel: t('glory.setup.primeraShort'),
+      tag: t('glory.setup.primeraTag'),
+      desc: t('glory.setup.primeraDesc'),
+      confirmValue: t('glory.setup.primeraConfirm'),
+      note: t('glory.setup.primeraNote')
+    };
+  }
+  return {
+    targetLeagueId,
+    historicalNoSegundaRfef: false,
+    label: 'Segunda RFEF',
+    shortLabel: 'Segunda RFEF',
+    tag: t('glory.setup.segundaTag'),
+    desc: t('glory.setup.infoDesc'),
+    confirmValue: t('glory.setup.segundaConfirm'),
+    note: null
+  };
+}
+
+// Equipación derivada automáticamente del escudo (sin paso de UI). Se conserva
+// `kit` en gloryData por compatibilidad con partidas y vistas existentes.
+function deriveKitFromBadge(badge) {
+  const b = badge || {};
+  return {
+    style: 'solid',
+    primary: b.color1 || '#1a237e',
+    secondary: b.color2 || b.accentColor || '#ffd740',
+  };
+}
+
 export default function GlorySetup() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const { user } = useAuth();
-  const { t } = useTranslation();
   const [step, setStep] = useState(0);
   const [teamName, setTeamName] = useState('');
   const [stadiumName, setStadiumName] = useState('');
-  const [badge, setBadge] = useState({ shape: 'shield', color1: '#1a237e', color2: '#ffd740', icon: 'star' });
-  const [kit, setKit] = useState({ style: 'solid', primary: '#1a237e', secondary: '#ffd740' });
+  const [badge, setBadge] = useState(DEFAULT_BADGE);
+  const [starting, setStarting] = useState(false);
+  const [setupError, setSetupError] = useState(null);
+  const [activeSeasonUniverseMeta, setActiveSeasonUniverseMeta] = useState(null);
 
   const activeStep = STEPS[step];
-  const activeMeta = STEP_META[activeStep];
+  const divisionMeta = useMemo(() => getGlorySetupDivisionMeta(activeSeasonUniverseMeta, t), [activeSeasonUniverseMeta, t]);
+  const activeStepMeta = STEP_META[activeStep];
+  const activeMeta = {
+    icon: activeStepMeta.icon,
+    eyebrow: t(activeStepMeta.eyebrowKey),
+    title: t(activeStepMeta.titleKey),
+    desc: activeStep === 'info' ? divisionMeta.desc : t(activeStepMeta.descKey),
+  };
   const ActiveIcon = activeMeta.icon;
+
+  useEffect(() => {
+    let cancelled = false;
+    loadActiveSeasonUniverse()
+      .then(universe => {
+        if (!cancelled) setActiveSeasonUniverseMeta(universe);
+      })
+      .catch(error => {
+        console.warn('[GlorySetup] No se pudo leer la temporada activa para el texto inicial:', error);
+      });
+    return () => { cancelled = true; };
+  }, []);
 
   const canProceed = () => {
     if (step === 0) return teamName.trim().length >= 2;
     return true;
   };
 
-  const handleStart = () => {
-    const name = teamName.trim() || 'FC Gloria';
-    const stadium = stadiumName.trim() || 'Estadio Municipal';
+  const handleStart = async () => {
+    if (starting) return;
+    setStarting(true);
+    setSetupError(null);
+
+    try {
+      const name = teamName.trim() || 'FC Gloria';
+      const stadium = stadiumName.trim() || 'Estadio Municipal';
+      const activeSeasonUniverse = activeSeasonUniverseMeta || await loadActiveSeasonUniverse();
 
     const gloryPlayers = getGlorySquad();
     const gloryTeam = {
@@ -58,18 +131,20 @@ export default function GlorySetup() {
       players: gloryPlayers,
     };
 
-    const groups = getSegundaRfefGroups();
-    const groupKeys = Object.keys(groups).filter(k => groups[k].teams && groups[k].teams.length > 0);
+    const spanishLowerDivisionEntries = getSpanishLowerDivisionEntries(activeSeasonUniverse);
 
-    if (groupKeys.length === 0) {
-      console.error('[GlorySetup] No teams loaded in Segunda RFEF groups');
-      return;
+    if (spanishLowerDivisionEntries.length === 0) {
+      throw new Error('No lower-division teams are loaded for the active season');
     }
 
-    const randomGroupKey = groupKeys[Math.floor(Math.random() * groupKeys.length)];
-    const groupTeams = [...groups[randomGroupKey].teams];
+    const targetLeagueId = spanishLowerDivisionEntries[0].id;
+    const gloryHistoricalFlags = buildGloryHistoricalFlags(activeSeasonUniverse, targetLeagueId);
+    const leagueEntries = spanishLowerDivisionEntries.filter(entry => entry.id === targetLeagueId);
+    const selectedEntry = leagueEntries[Math.floor(Math.random() * leagueEntries.length)];
+    const randomGroupKey = selectedEntry.groupId || selectedEntry.sourceLeagueId || targetLeagueId;
+    const groupTeams = [...selectedEntry.teams];
     const replaceIndex = Math.floor(Math.random() * groupTeams.length);
-    groupTeams[replaceIndex] = gloryTeam;
+    groupTeams[replaceIndex] = { ...gloryTeam, leagueId: targetLeagueId };
     const leagueData = initializeLeague(groupTeams, 'glory_team');
 
     dispatch({
@@ -77,7 +152,7 @@ export default function GlorySetup() {
       payload: {
         teamId: 'glory_team',
         team: gloryTeam,
-        leagueId: 'segundaRFEF',
+        leagueId: targetLeagueId,
         group: randomGroupKey,
         gameMode: 'glory',
         managerName: state.managerName || 'Manager',
@@ -86,13 +161,21 @@ export default function GlorySetup() {
         stadiumLevel: 0,
         preseasonPhase: false,
         preseasonMatches: [],
+        databaseSeasonId: activeSeasonUniverse.databaseSeasonId,
+        careerStartSeason: activeSeasonUniverse.startYear,
+        historicalDatabase: activeSeasonUniverse.historical,
+        historicalDatabaseLabel: activeSeasonUniverse.label,
         gloryData: {
           badge,
-          kit,
+          kit: deriveKitFromBadge(badge),
           teamName: name,
           stadiumName: stadium,
+          ...gloryHistoricalFlags,
+          startDivision: gloryHistoricalFlags.startDivision,
+          historicalNoSegundaRfef: gloryHistoricalFlags.historicalNoSegundaRfef,
+          noRelegationFrom: gloryHistoricalFlags.noRelegationFrom,
           season: 1,
-          division: 'segundaRFEF',
+          division: targetLeagueId,
           pickedCards: [],
           perks: {},
           trophies: [],
@@ -103,36 +186,24 @@ export default function GlorySetup() {
     });
 
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
-    dispatch({ type: 'SET_PLAYER_LEAGUE', payload: 'segundaRFEF' });
+    dispatch({ type: 'SET_PLAYER_LEAGUE', payload: targetLeagueId });
     dispatch({ type: 'SET_PLAYER_GROUP', payload: randomGroupKey });
 
-    const otherLeagues = initializeOtherLeagues('segundaRFEF', randomGroupKey);
+    const otherLeagues = initializeOtherLeaguesFromUniverse(activeSeasonUniverse, targetLeagueId, randomGroupKey);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
 
-    const allLeagueTeamsWithData = [];
-    Object.entries(LEAGUE_CONFIG).forEach(([leagueId, config]) => {
-      if (config.isGroupLeague) {
-        const groupsFn = config.getGroups;
-        if (groupsFn) {
-          const groups = groupsFn();
-          Object.values(groups).forEach(teams => {
-            (teams || []).forEach(t => {
-              allLeagueTeamsWithData.push({ ...t, leagueId, players: t.players || [], budget: t.budget || 20000000 });
-            });
-          });
-        }
-      } else {
-        const teams = config.getTeams();
-        (teams || []).forEach(t => {
-          allLeagueTeamsWithData.push({ ...t, leagueId, players: t.players || [], budget: t.budget || (t.reputation > 4 ? 100000000 : t.reputation > 3 ? 50000000 : 20000000) });
-        });
-      }
-    });
+    const allLeagueTeamsWithData = getAllTeamsFromUniverse(activeSeasonUniverse).map(t => ({
+      ...t,
+      leagueId: t.leagueId || targetLeagueId,
+      players: t.players || [],
+      budget: t.budget || (t.reputation > 4 ? 100000000 : t.reputation > 3 ? 50000000 : 20000000)
+    }));
+    allLeagueTeamsWithData.push({ ...gloryTeam, leagueId: targetLeagueId, players: gloryPlayers, budget: 200000 });
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
 
     let cupRounds = 0;
     try {
-      const cupData = getCupTeams('segundaRFEF', gloryTeam, {}, leagueData.table);
+      const cupData = getCupTeams(targetLeagueId, gloryTeam, {}, leagueData.table);
       if (cupData?.teams?.length >= 4) {
         const bracket = generateCupBracket(cupData.teams, 'glory_team');
         if (bracket) {
@@ -144,16 +215,23 @@ export default function GlorySetup() {
 
     try {
       const allTeamsMap = {};
+      const activeLeagueGetters = buildLeagueGettersFromUniverse(activeSeasonUniverse);
       for (const lid of Object.keys(LEAGUE_SLOTS)) {
-        const teams = LEAGUE_CONFIG[lid]?.getTeams?.();
+        const teams = activeLeagueGetters[lid]?.() || LEAGUE_CONFIG[lid]?.getTeams?.();
         (teams || []).forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
       }
       const bootstrapStandings = ensureEuropeanLeagueStandings(
         {},
-        (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+        (lid) => activeLeagueGetters[lid]?.() || LEAGUE_CONFIG[lid]?.getTeams?.()
       );
       const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-      dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: initializeEuropeanCompetitions(qualifiedTeams) });
+      dispatch({
+        type: 'INIT_EUROPEAN_COMPETITIONS',
+        payload: initializeEuropeanCompetitions(qualifiedTeams, {
+          seasonId: activeSeasonUniverse.databaseSeasonId,
+          historical: activeSeasonUniverse.historical
+        })
+      });
     } catch (e) {
       console.error('Glory Euro comps init error:', e);
     }
@@ -173,88 +251,97 @@ export default function GlorySetup() {
     if (user?.uid) {
       dispatch({ type: 'SET_GLORY_USER_ID', payload: user.uid });
     }
+    } catch (error) {
+      console.error('[GlorySetup] No se pudo preparar Camino a la Gloria:', error);
+      setSetupError(t('glory.setup.error'));
+      setStarting(false);
+    }
   };
 
   const renderStep = () => {
     switch (activeStep) {
       case 'info':
         return (
-          <div className="glory-setup__step-body glory-setup__step-body--info">
-            <div className="glory-setup__intro-card">
-              <div className="glory-setup__intro-copy">
-                <span className="glory-setup__section-tag">Proyecto deportivo</span>
-                <h4>Todo gran club empieza con una historia y una casa.</h4>
-                <p>Define la base de tu identidad antes de pasar al escudo y la equipación.</p>
-              </div>
-              <div className="glory-setup__intro-points">
-                <span><Sparkles size={14} /> Segunda RFEF</span>
-                <span><Sparkles size={14} /> Plantilla ficticia</span>
-                <span><Sparkles size={14} /> Objetivo máximo</span>
-              </div>
+          <div className="glory-setup__info">
+            <div className="glory-setup__identity-preview">
+              <BadgePreview badge={badge} size={130} />
+              <div className="glory-setup__identity-name">{teamName.trim() || t('glory.setup.defaultClub')}</div>
+              <span className="glory-setup__identity-tag">{divisionMeta.tag}</span>
+              <span className="glory-setup__identity-stadium">
+                <MapPin size={13} /> {stadiumName.trim() || t('glory.setup.defaultStadium')}
+              </span>
             </div>
 
-            <div className="glory-setup__field-grid">
+            <div className="glory-setup__info-form">
               <div className="glory-setup__field">
-                <label>Nombre del club</label>
-                <input type="text" value={teamName} onChange={e => setTeamName(e.target.value)} placeholder="FC Gloria" maxLength={30} autoFocus />
+                <label>{t('glory.setup.clubName')}</label>
+                <input type="text" value={teamName} onChange={e => setTeamName(e.target.value)} placeholder={t('glory.setup.defaultClub')} maxLength={30} autoFocus />
               </div>
 
               <div className="glory-setup__field">
-                <label>Nombre del estadio</label>
-                <input type="text" value={stadiumName} onChange={e => setStadiumName(e.target.value)} placeholder="Estadio Municipal" maxLength={30} />
+                <label>{t('glory.setup.stadiumName')}</label>
+                <input type="text" value={stadiumName} onChange={e => setStadiumName(e.target.value)} placeholder={t('glory.setup.defaultStadium')} maxLength={30} />
               </div>
+
+              <div className="glory-setup__info-points">
+                <span><Sparkles size={14} /> {t('glory.setup.fictionalSquad')}</span>
+                <span><Sparkles size={14} /> {t('glory.setup.objectiveChampions')}</span>
+              </div>
+              {divisionMeta.historicalNoSegundaRfef && (
+                <div className="glory-setup__historical-note" data-audit="glory-historical-no-segunda-rfef">
+                  {divisionMeta.note}
+                </div>
+              )}
             </div>
           </div>
         );
 
       case 'badge':
-        return <BadgeEditor value={badge} onChange={setBadge} />;
-
-      case 'kit':
-        return <KitEditor value={kit} onChange={setKit} />;
+        return <BadgeEditor value={badge} onChange={setBadge} teamName={teamName} />;
 
       case 'confirm':
         return (
-          <div className="glory-setup__step-body glory-setup__confirm fade-in-up">
+          <div className="glory-setup__confirm fade-in-up">
             <div className="glory-setup__confirm-header">
-              <div className="glory-setup__confirm-identity">
-                <div className="glory-setup__confirm-badge-wrap">
-                  <BadgePreview badge={badge} size={84} />
-                </div>
-                <div className="glory-setup__confirm-info">
-                  <span className="glory-setup__section-tag">Resumen del club</span>
-                  <h3>{teamName || 'FC Gloria'}</h3>
-                  <span className="glory-setup__confirm-stadium">
-                    <MapPin size={14} /> {stadiumName || 'Estadio Municipal'}
-                  </span>
-                  <span className="glory-setup__confirm-division">Segunda RFEF</span>
-                </div>
+              <div className="glory-setup__confirm-badge-wrap">
+                <BadgePreview badge={badge} size={108} />
               </div>
-              <div className="glory-setup__confirm-kit-wrap">
-                <KitPreview kit={kit} size={72} />
+              <div className="glory-setup__confirm-info">
+                <span className="glory-setup__section-tag">{t('glory.setup.summaryTag')}</span>
+                <h3>{teamName || t('glory.setup.defaultClub')}</h3>
+                <span className="glory-setup__confirm-stadium">
+                  <MapPin size={14} /> {stadiumName || t('glory.setup.defaultStadium')}
+                </span>
+                <span className="glory-setup__confirm-division">{divisionMeta.shortLabel}</span>
               </div>
             </div>
 
             <div className="glory-setup__confirm-details">
-              <div className="glory-setup__confirm-item"><span className="label">División</span><span className="value">Segunda RFEF (4ª categoría)</span></div>
-              <div className="glory-setup__confirm-item"><span className="label">Plantilla</span><span className="value">20 jugadores</span></div>
-              <div className="glory-setup__confirm-item"><span className="label">Presupuesto</span><span className="value">200.000 €</span></div>
-              <div className="glory-setup__confirm-item"><span className="label">Estadio</span><span className="value">3.000 localidades</span></div>
-              <div className="glory-setup__confirm-item"><span className="label">Objetivo</span><span className="value glory-setup__confirm-goal"><Trophy size={14} /> Ganar la Champions League</span></div>
+              <div className="glory-setup__confirm-item"><span className="label">{t('glory.setup.confirmDivisionLabel')}</span><span className="value">{divisionMeta.confirmValue}</span></div>
+              <div className="glory-setup__confirm-item"><span className="label">{t('glory.setup.confirmSquadLabel')}</span><span className="value">{t('glory.setup.confirmSquadValue')}</span></div>
+              <div className="glory-setup__confirm-item"><span className="label">{t('glory.setup.confirmBudgetLabel')}</span><span className="value">200.000 €</span></div>
+              <div className="glory-setup__confirm-item"><span className="label">{t('glory.setup.confirmStadiumLabel')}</span><span className="value">{t('glory.setup.confirmStadiumValue')}</span></div>
+              <div className="glory-setup__confirm-item"><span className="label">{t('glory.setup.confirmObjectiveLabel')}</span><span className="value glory-setup__confirm-goal"><Trophy size={14} /> {t('glory.setup.confirmObjectiveValue')}</span></div>
             </div>
-
-            <button className="glory-setup__start-btn" onClick={handleStart}>
-              <Trophy size={18} /> Comenzar el Camino
-              <ChevronRight size={18} />
-            </button>
+            {divisionMeta.historicalNoSegundaRfef && (
+              <div className="glory-setup__historical-note glory-setup__historical-note--confirm">
+                {t('glory.setup.historicalNoteConfirm')}
+              </div>
+            )}
           </div>
         );
     }
   };
 
+  if (starting) {
+    return <PageLoader label={t('glory.setup.preparing')} />;
+  }
+
+  const isConfirm = activeStep === 'confirm';
+
   return (
-    <div className="glory-setup unified-screen">
-      <div className="glory-setup__header">
+    <div className="glory-setup" data-audit="glory-setup" data-glory-step={activeStep}>
+      <header className="glory-setup__header">
         <button className="btn-back" onClick={() => {
           if (step > 0) setStep(step - 1);
           else dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
@@ -262,45 +349,47 @@ export default function GlorySetup() {
           <ArrowLeft size={18} />
         </button>
         <div className="glory-setup__title">
-          <h2>Camino a la Gloria</h2>
-          <span className="glory-setup__subtitle">Paso {step + 1} de {STEPS.length}</span>
+          <h2>{t('glory.setup.title')}</h2>
+          <span className="glory-setup__subtitle">{t('glory.setup.stepProgress', { current: step + 1, total: STEPS.length, title: activeMeta.title })}</span>
         </div>
-      </div>
-
-      <div className="glory-setup__progress-shell">
-        <div className="glory-setup__progress">
+        <nav className="glory-setup__progress" aria-label={t('glory.setup.progressAria')}>
           {STEPS.map((stepId, i) => (
             <div key={stepId} className={`glory-setup__progress-step ${i <= step ? 'active' : ''} ${i === step ? 'current' : ''}`}>
               <div className={`glory-setup__progress-dot ${i <= step ? 'active' : ''} ${i === step ? 'current' : ''}`} />
-              <span>{STEP_META[stepId].title}</span>
+              <span>{t(STEP_META[stepId].titleKey)}</span>
             </div>
           ))}
-        </div>
-      </div>
+        </nav>
+      </header>
 
-      <div className="glory-setup__content">
+      <main className="glory-setup__content" data-glory-scroll-root>
         <div className={`glory-setup__step glory-setup__step--${activeStep}`}>
-          <div className="glory-setup__step-chrome">
-            <div className="glory-setup__step-icon">
-              <ActiveIcon size={28} />
-            </div>
-            <div className="glory-setup__step-headline">
-              <span className="glory-setup__section-tag">{activeMeta.eyebrow}</span>
-              <h3 className="glory-setup__step-title">{activeMeta.title}</h3>
-              <p className="glory-setup__step-desc">{activeMeta.desc}</p>
-            </div>
+          <div className="glory-setup__step-head">
+            <span className="glory-setup__eyebrow"><ActiveIcon size={14} /> {activeMeta.eyebrow}</span>
+            <h3>{activeMeta.title}</h3>
+            <p>{activeMeta.desc}</p>
           </div>
           {renderStep()}
         </div>
-      </div>
+      </main>
 
-      {step < STEPS.length - 1 && (
-        <div className="glory-setup__nav">
-          <button className="glory-setup__next-btn" onClick={() => setStep(step + 1)} disabled={!canProceed()}>
-            Siguiente <ArrowRight size={16} />
-          </button>
+      <footer className="glory-setup__nav">
+        {setupError && (
+          <p className="glory-setup__error" role="alert">{setupError}</p>
+        )}
+        <div className="glory-setup__nav-inner">
+          {isConfirm ? (
+            <button className="glory-setup__start-btn" onClick={handleStart} disabled={starting}>
+              <Trophy size={18} /> {starting ? t('glory.setup.preparingBtn') : t('glory.setup.startBtn')}
+              <ChevronRight size={18} />
+            </button>
+          ) : (
+            <button className="glory-setup__next-btn" onClick={() => setStep(step + 1)} disabled={!canProceed()}>
+              {t('glory.setup.nextBtn')} <ArrowRight size={16} />
+            </button>
+          )}
         </div>
-      )}
+      </footer>
     </div>
   );
 }

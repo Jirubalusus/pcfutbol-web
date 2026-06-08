@@ -1,0 +1,31 @@
+{
+  "generator": "ChatGPT Image 2.0 / gpt-image-2-high via Hermes image_generate",
+  "generatedAt": "2026-06-04",
+  "assets": {
+    "freeCareer": {
+      "path": "/images/mode-cards/free-career.png",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_191119_3d3dd064.png",
+      "prompt": "Premium dark football management mobile game mode card artwork for PC Gaffer: Free Career mode. A determined football manager/player seen from behind walking out of a dark stadium tunnel into floodlights, teal/green neon rim light, black kit with subtle geometric texture and the word GAFFER on the back but no other text, cinematic sports-management mood, high contrast, dark edges for UI text readability, realistic but game-promo style, no logos, no real club crest, no watermark, no UI frame, no buttons, no extra text, vertical portrait composition."
+    },
+    "timeTrial": {
+      "path": "/images/mode-cards/time-trial.png",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_191208_780686f6.png",
+      "prompt": "Premium dark football management mobile game mode card artwork for PC Gaffer: Time Trial mode. A footballer/gaffer in black kit seen from behind, yellow/gold neon stopwatch HUD circles and speed lines around him, dramatic stadium lights, competitive intense mood, dark background with space on left/bottom for UI copy, realistic cinematic sports game promo, no real club crest, no watermark, no UI frame, no buttons, no readable text except maybe subtle GAFFER on jersey, vertical portrait composition."
+    },
+    "proManager": {
+      "path": "/images/mode-cards/pro-manager.png",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_191256_79be639d.png",
+      "prompt": "Premium dark football management mobile game mode card artwork for PC Gaffer: Pro Manager job offers mode. A suited football manager in a dim executive office overlooking a stadium at night, contract papers and glowing tactical board silhouettes, blue/cyan neon highlights, professional sober sports-management vibe, dark edges for UI text, realistic cinematic promo, no club crests, no watermark, no UI frame, no buttons, no readable text, vertical portrait composition."
+    },
+    "roadToGlory": {
+      "path": "/images/mode-cards/road-to-glory.png",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_191354_7993e12d.png",
+      "prompt": "Premium dark football management mobile game mode card artwork for PC Gaffer: Road to Glory promotions mode. A small humble football club rising toward a huge illuminated stadium, underdog manager/player silhouette holding a scarf, emerald and amber neon glow, dramatic night rain and floodlights, inspiring promotion journey mood, dark lower area for UI copy, realistic cinematic sports-management promo, no real club crests, no watermark, no UI frame, no buttons, no readable text, vertical portrait composition."
+    },
+    "worldCup": {
+      "path": "/images/mode-cards/world-cup.png",
+      "source": "/home/jiru/.hermes/cache/images/openai_codex_gpt-image-2-high_20260604_191444_c1f38217.png",
+      "prompt": "Premium dark football management mobile game mode card artwork for PC Gaffer: World Cup tournament mode, locked/coming soon. Global football tournament atmosphere, trophy silhouette and stadium lights, navy and silver glow with subtle world map grid, one player silhouette from behind, dark cinematic style, reserved for a disabled locked card, no country flags, no real crests, no watermark, no UI frame, no buttons, no readable text, vertical portrait composition."
+    }
+  }
+}

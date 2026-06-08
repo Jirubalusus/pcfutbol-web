@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { Award, Trophy, ChevronDown, ChevronUp, Shield, AlertTriangle } from 'lucide-react';
-import { getCupRoundName } from '../../game/cupSystem';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import { usePreloadTeamCrests } from '../TeamCrest/teamCrestCache';
 import './Cup.scss';
@@ -12,20 +11,24 @@ export default function Cup() {
   const { state } = useGame();
   const bracket = state.cupCompetition;
   const [expandedRound, setExpandedRound] = useState(null);
-  const cupTeamIds = React.useMemo(() => {
+  const rounds = useMemo(
+    () => Array.isArray(bracket?.rounds) ? bracket.rounds : [],
+    [bracket?.rounds]
+  );
+  const cupTeamIds = useMemo(() => {
     const ids = new Set();
-    (bracket?.rounds || []).forEach((round) => {
-      (round.matches || []).forEach((match) => {
+    rounds.forEach((round) => {
+      (Array.isArray(round?.matches) ? round.matches : []).forEach((match) => {
         if (match.homeTeam?.teamId) ids.add(match.homeTeam.teamId);
         if (match.awayTeam?.teamId) ids.add(match.awayTeam.teamId);
       });
     });
     return Array.from(ids);
-  }, [bracket?.rounds]);
+  }, [rounds]);
 
   usePreloadTeamCrests(cupTeamIds, { limit: 96 });
 
-  if (!bracket) {
+  if (!bracket || rounds.length === 0) {
     return (
       <div className="cup">
         <div className="cup__empty">
@@ -36,14 +39,15 @@ export default function Cup() {
     );
   }
 
-  const { config, rounds, currentRound, playerTeamId, playerEliminated, winner } = bracket;
-  const totalRounds = rounds.length;
+  const { config, currentRound, playerTeamId, playerEliminated, winner } = bracket;
+  const safeCurrentRound = Math.min(Math.max(Number.isInteger(currentRound) ? currentRound : 0, 0), rounds.length - 1);
 
   // Encontrar en qué ronda fue eliminado el jugador
   let eliminationRound = null;
   if (playerEliminated) {
     for (let r = 0; r < rounds.length; r++) {
-      const match = rounds[r].matches.find(m =>
+      const matches = Array.isArray(rounds[r]?.matches) ? rounds[r].matches : [];
+      const match = matches.find(m =>
         (m.homeTeam?.teamId === playerTeamId || m.awayTeam?.teamId === playerTeamId) &&
         m.played && m.winnerId !== playerTeamId && !m.bye
       );
@@ -101,7 +105,7 @@ export default function Cup() {
         {!playerEliminated && !winner && (
           <div className="cup__status cup__status--active">
             <Award size={16} />
-            <span>{t('cup.inCompetition')} — {rounds[currentRound]?.name || t('cup.nextRound')}</span>
+            <span>{t('cup.inCompetition')} — {rounds[safeCurrentRound]?.name || t('cup.nextRound')}</span>
           </div>
         )}
       </div>
@@ -109,10 +113,11 @@ export default function Cup() {
       {/* Bracket - Rondas */}
       <div className="cup__bracket">
         {rounds.map((round, roundIdx) => {
-          const isCurrentRound = roundIdx === currentRound && !winner;
-          const isFutureRound = roundIdx > currentRound && !winner;
-          const hasMatches = round.matches.some(m => m.homeTeam || m.awayTeam);
-          const allPlayed = round.matches.every(m => m.played || m.bye);
+          const matches = Array.isArray(round?.matches) ? round.matches : [];
+          const isCurrentRound = roundIdx === safeCurrentRound && !winner;
+          const isFutureRound = roundIdx > safeCurrentRound && !winner;
+          const hasMatches = matches.some(m => m.homeTeam || m.awayTeam);
+          const allPlayed = matches.length > 0 && matches.every(m => m.played || m.bye);
           const isExpanded = expandedRound === roundIdx;
 
           // En mobile: rondas son colapsables
@@ -120,20 +125,20 @@ export default function Cup() {
           const showMatches = isExpanded || (isCurrentRound && expandedRound === null);
 
           return (
-            <div 
-              key={roundIdx} 
+            <div
+              key={roundIdx}
               className={`cup__round ${isCurrentRound ? 'cup__round--current' : ''} ${allPlayed ? 'cup__round--played' : ''} ${isFutureRound ? 'cup__round--future' : ''}`}
             >
-              <button 
+              <button
                 className="cup__round-header"
                 onClick={() => toggleRound(roundIdx)}
               >
                 <div className="cup__round-info">
-                  <span className="cup__round-name">{round.name}</span>
+                  <span className="cup__round-name">{round?.name || `${t('cup.round')} ${roundIdx + 1}`}</span>
                   <span className="cup__round-count">
-                    {round.matches.filter(m => !m.bye).length} {t('cup.matches')}
-                    {round.matches.filter(m => m.bye).length > 0 && 
-                      ` · ${round.matches.filter(m => m.bye).length} ${t('cup.exempt')}`}
+                    {matches.filter(m => !m.bye).length} {t('cup.matches')}
+                    {matches.filter(m => m.bye).length > 0 &&
+                      ` · ${matches.filter(m => m.bye).length} ${t('cup.exempt')}`}
                   </span>
                 </div>
                 {isCurrentRound && <span className="cup__round-badge">{t('cup.current')}</span>}
@@ -142,7 +147,7 @@ export default function Cup() {
 
               {showMatches && hasMatches && (
                 <div className="cup__matches">
-                  {round.matches.map((match, matchIdx) => {
+                  {matches.map((match, matchIdx) => {
                     if (match.bye) {
                       return (
                         <div key={matchIdx} className={`cup__match cup__match--bye ${isPlayerTeam(match.homeTeam) ? 'cup__match--player' : ''}`}>
@@ -223,9 +228,13 @@ export default function Cup() {
           <div className="cup__winner-info">
             <span className="cup__winner-label">{t('cup.champion')}</span>
             <span className="cup__winner-name">
-              {rounds[rounds.length - 1]?.matches[0]?.homeTeam?.teamId === winner
-                ? rounds[rounds.length - 1]?.matches[0]?.homeTeam?.teamName
-                : rounds[rounds.length - 1]?.matches[0]?.awayTeam?.teamName || '???'}
+              {(() => {
+                const finalMatches = Array.isArray(rounds[rounds.length - 1]?.matches) ? rounds[rounds.length - 1].matches : [];
+                const finalMatch = finalMatches[0];
+                return finalMatch?.homeTeam?.teamId === winner
+                  ? finalMatch?.homeTeam?.teamName
+                  : finalMatch?.awayTeam?.teamName || '???';
+              })()}
             </span>
           </div>
         </div>

@@ -5,9 +5,17 @@ import { useAuth } from '../../context/AuthContext';
 import { isNative } from '../../services/platformAuth';
 import './Auth.scss';
 
-export default function Auth({ onBack }) {
+export default function Auth({ onBack, intent = 'generic' }) {
   const { t } = useTranslation();
   const [mode, setMode] = useState('login'); // login, register, reset, verify
+
+  // Contextual reason the user reached this screen. Drives a short headline so
+  // login feels purposeful ("log in to save your progress") instead of a wall.
+  const intentKey = ['save-progress', 'rankings', 'edition-mode', 'cloud-load'].includes(intent)
+    ? intent
+    : 'generic';
+  const intentTitle = t(`auth.intent.${intentKey}.title`);
+  const intentSubtitle = t(`auth.intent.${intentKey}.subtitle`);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -231,6 +239,13 @@ export default function Auth({ onBack }) {
             {mode === 'reset' && t('auth.resetPassword')}
           </h2>
         </div>
+
+        {mode !== 'reset' && (
+          <div className="auth__intent">
+            <p className="auth__intent-title">{intentTitle}</p>
+            <p className="auth__intent-subtitle">{intentSubtitle}</p>
+          </div>
+        )}
 
         {mode !== 'reset' && (
           <>

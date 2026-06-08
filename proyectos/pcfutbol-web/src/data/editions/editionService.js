@@ -11,6 +11,21 @@ const EDITIONS_COLLECTION = 'editions';
 const PENDING_COLLECTION = 'editions_pending'; // Packs pending review
 const ACTIVE_EDITION_KEY = 'pcgaffer_active_edition';
 
+/**
+ * Default edition pack applied to brand-new browsers/users that have never
+ * chosen an edition. This is the approved public pack "Competición 2025/2026".
+ * Bootstrapping this default must NOT delete saves (see EditionMode for the
+ * manual apply/remove flow that does delete saves intentionally).
+ */
+export const DEFAULT_ACTIVE_EDITION_ID = 'real_names_2025_26';
+
+/**
+ * Persistent sentinel written when a user explicitly removes the active edition.
+ * It is stored (rather than clearing the key) so the default does NOT re-apply
+ * on the next reload — an explicit "no edition" choice must be respected.
+ */
+export const DISABLED_EDITION_VALUE = '__disabled__';
+
 // ============================================================
 // PUBLIC EDITIONS (approved)
 // ============================================================
@@ -149,17 +164,33 @@ export function setActiveEdition(editionId) {
   if (editionId) {
     localStorage.setItem(ACTIVE_EDITION_KEY, editionId);
   } else {
-    localStorage.removeItem(ACTIVE_EDITION_KEY);
+    // A falsy id means "disable" — persist the sentinel so the default does
+    // not silently re-apply on the next reload (same semantics as remove).
+    localStorage.setItem(ACTIVE_EDITION_KEY, DISABLED_EDITION_VALUE);
   }
   clearEditionCache();
 }
 
 export function getActiveEditionId() {
-  return localStorage.getItem(ACTIVE_EDITION_KEY);
+  try {
+    // No localStorage (e.g. Node audits / SSR) → behave as if the default is active.
+    if (typeof localStorage === 'undefined') return DEFAULT_ACTIVE_EDITION_ID;
+    const stored = localStorage.getItem(ACTIVE_EDITION_KEY);
+    // Brand-new browser/user with no preference → default pack is active.
+    if (stored === null || stored === undefined) return DEFAULT_ACTIVE_EDITION_ID;
+    // Explicitly removed by the user → respect "no edition" until they re-apply.
+    if (stored === DISABLED_EDITION_VALUE) return null;
+    return stored;
+  } catch {
+    // Storage unavailable (private mode, etc.) → fall back to the default pack.
+    return DEFAULT_ACTIVE_EDITION_ID;
+  }
 }
 
 export function clearActiveEdition() {
-  localStorage.removeItem(ACTIVE_EDITION_KEY);
+  // Persist an explicit disabled sentinel instead of removing the key, so the
+  // default edition does NOT re-enable itself on the next data load.
+  localStorage.setItem(ACTIVE_EDITION_KEY, DISABLED_EDITION_VALUE);
   clearEditionCache();
 }
 

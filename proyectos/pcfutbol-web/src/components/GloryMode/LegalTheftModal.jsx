@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { X, BadgeDollarSign, Search, Check, ChevronRight, Star } from 'lucide-react';
 import { translatePosition } from '../../game/positionNames';
@@ -12,6 +13,7 @@ import './GloryMode.scss';
  * Browse any player from rival teams, sign at 50% market value. 1 per transfer window.
  */
 export default function LegalTheftModal({ onClose }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [search, setSearch] = useState('');
   const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -58,7 +60,7 @@ export default function LegalTheftModal({ onClose }) {
     const halfPrice = Math.round(selectedPlayer.marketValue * 0.5);
     
     if (halfPrice > state.money) {
-      import('sileo').then(({ sileo }) => sileo.warning({ title: 'No tienes suficiente presupuesto' }));
+      import('sileo').then(({ sileo }) => sileo.warning({ title: t('glory.theft.noBudget') }));
       return;
     }
 
@@ -112,11 +114,17 @@ export default function LegalTheftModal({ onClose }) {
           <div className="theft-modal__done-icon">
             <Check size={48} />
           </div>
-          <h2>¡Robo completado!</h2>
-          <p><strong>{selectedPlayer.name}</strong> se une a tu plantilla por {formatTransferPrice(Math.round(selectedPlayer.marketValue * 0.5))}</p>
-          <p className="theft-modal__done-note">Valor de mercado: {formatTransferPrice(selectedPlayer.marketValue)}</p>
+          <h2>{t('glory.theft.done')}</h2>
+          <p>
+            <Trans
+              i18nKey="glory.theft.joined"
+              values={{ name: selectedPlayer.name, price: formatTransferPrice(Math.round(selectedPlayer.marketValue * 0.5)) }}
+              components={[<strong key="0" />]}
+            />
+          </p>
+          <p className="theft-modal__done-note">{t('glory.theft.doneNote', { value: formatTransferPrice(selectedPlayer.marketValue) })}</p>
           <button className="theft-modal__btn theft-modal__btn--primary" onClick={onClose}>
-            Cerrar
+            {t('glory.theft.close')}
           </button>
         </div>
       </div>
@@ -131,7 +139,7 @@ export default function LegalTheftModal({ onClose }) {
       <div className="theft-modal__overlay" onClick={() => setPhase('browse')}>
         <div className="theft-modal theft-modal--confirm" onClick={e => e.stopPropagation()}>
           <div className="theft-modal__header">
-            <h2><BadgeDollarSign size={20} /> Confirmar Robo</h2>
+            <h2><BadgeDollarSign size={20} /> {t('glory.theft.confirmTitle')}</h2>
             <button className="theft-modal__close" onClick={() => setPhase('browse')}><X size={18} /></button>
           </div>
 
@@ -144,26 +152,26 @@ export default function LegalTheftModal({ onClose }) {
             </div>
             {state.gloryData?.perks?.futureScout && selectedPlayer.potential && (
               <div className="theft-modal__player-potential">
-                <Star size={12} /> POT {selectedPlayer.potential}
+                <Star size={12} /> {t('glory.theft.potential')} {selectedPlayer.potential}
               </div>
             )}
           </div>
 
           <div className="theft-modal__price-compare">
             <div className="theft-modal__price-item theft-modal__price-item--old">
-              <span className="label">Valor de mercado</span>
+              <span className="label">{t('glory.theft.marketValue')}</span>
               <span className="price">{formatTransferPrice(selectedPlayer.marketValue)}</span>
             </div>
             <ChevronRight size={16} />
             <div className="theft-modal__price-item theft-modal__price-item--new">
-              <span className="label">Tu precio (50%)</span>
+              <span className="label">{t('glory.theft.yourPrice')}</span>
               <span className="price">{formatTransferPrice(halfPrice)}</span>
             </div>
           </div>
 
           <div className="theft-modal__budget">
-            <span>Tu presupuesto: <strong>{formatTransferPrice(state.money)}</strong></span>
-            {canAfford && <span className="theft-modal__budget-after">Después: {formatTransferPrice(state.money - halfPrice)}</span>}
+            <span>{t('glory.theft.yourBudget')} <strong>{formatTransferPrice(state.money)}</strong></span>
+            {canAfford && <span className="theft-modal__budget-after">{t('glory.theft.after')} {formatTransferPrice(state.money - halfPrice)}</span>}
           </div>
 
           <div className="theft-modal__actions">
@@ -172,10 +180,10 @@ export default function LegalTheftModal({ onClose }) {
               onClick={handleSteal}
               disabled={!canAfford}
             >
-              {canAfford ? '¡Fichar por la mitad!' : 'Presupuesto insuficiente'}
+              {canAfford ? t('glory.theft.signHalf') : t('glory.theft.insufficient')}
             </button>
             <button className="theft-modal__btn theft-modal__btn--secondary" onClick={() => setPhase('browse')}>
-              Volver
+              {t('glory.theft.back')}
             </button>
           </div>
         </div>
@@ -188,19 +196,17 @@ export default function LegalTheftModal({ onClose }) {
     <div className="theft-modal__overlay" onClick={onClose}>
       <div className="theft-modal" onClick={e => e.stopPropagation()}>
         <div className="theft-modal__header">
-          <h2><BadgeDollarSign size={20} /> Robo Legal</h2>
+          <h2><BadgeDollarSign size={20} /> {t('glory.theft.title')}</h2>
           <button className="theft-modal__close" onClick={onClose}><X size={18} /></button>
         </div>
 
-        <p className="theft-modal__desc">
-          Elige un jugador de cualquier equipo rival. Lo ficharás al 50% de su valor de mercado.
-        </p>
+        <p className="theft-modal__desc">{t('glory.theft.desc')}</p>
 
         <div className="theft-modal__search">
           <Search size={16} />
           <input
             type="text"
-            placeholder="Buscar jugador..."
+            placeholder={t('glory.theft.search')}
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
@@ -213,7 +219,7 @@ export default function LegalTheftModal({ onClose }) {
               className={`theft-modal__filter ${posFilter === pos ? 'active' : ''}`}
               onClick={() => setPosFilter(pos)}
             >
-              {pos === 'all' ? 'Todos' : pos}
+              {pos === 'all' ? t('glory.theft.all') : pos}
             </button>
           ))}
         </div>
@@ -229,7 +235,7 @@ export default function LegalTheftModal({ onClose }) {
               <div className="theft-modal__item-info">
                 <span className="theft-modal__item-name">{player.name}</span>
                 <span className="theft-modal__item-meta">
-                  {translatePosition(player.position)} · {player.age} años · {player.teamName}
+                  {translatePosition(player.position)} · {player.age} {t('glory.theft.years')} · {player.teamName}
                 </span>
               </div>
               <div className="theft-modal__item-price">
@@ -240,7 +246,7 @@ export default function LegalTheftModal({ onClose }) {
             </button>
           ))}
           {filtered.length === 0 && (
-            <div className="theft-modal__empty">No se encontraron jugadores</div>
+            <div className="theft-modal__empty">{t('glory.theft.empty')}</div>
           )}
         </div>
       </div>

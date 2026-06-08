@@ -1,95 +1,94 @@
+const { setGlobalOptions } = require("firebase-functions/v2");
 const { onSchedule } = require("firebase-functions/v2/scheduler");
 const { initializeApp } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
 const { logger } = require("firebase-functions");
 
+setGlobalOptions({
+  region: "europe-west1",
+  timeoutSeconds: 120,
+  memory: "256MiB",
+  maxInstances: 1,
+});
+
 initializeApp();
 const db = getFirestore();
 
-const BATCH_SIZE = 500;
+const BATCH_SIZE = 450;
+const MAX_DELETES_PER_RUN = 2000;
 const SIX_MONTHS_MS = 6 * 30 * 24 * 60 * 60 * 1000;
+const SAVE_COLLECTIONS = [
+  "saves",
+  "career_saves",
+  "contrarreloj_saves",
+  "glory_saves",
+  "promanager_saves",
+];
 
-/**
- * Delete documents in batches.
- */
-async function deleteDocs(docRefs) {
+async function deleteSnapshotDocs(snapshot) {
+  if (snapshot.empty) return 0;
+
   let deleted = 0;
-  for (let i = 0; i < docRefs.length; i += BATCH_SIZE) {
+  for (let i = 0; i < snapshot.docs.length; i += BATCH_SIZE) {
     const batch = db.batch();
-    const chunk = docRefs.slice(i, i + BATCH_SIZE);
-    chunk.forEach((ref) => batch.delete(ref));
+    const chunk = snapshot.docs.slice(i, i + BATCH_SIZE);
+    chunk.forEach((doc) => batch.delete(doc.ref));
     await batch.commit();
     deleted += chunk.length;
   }
   return deleted;
 }
 
-/**
- * Get set of all existing user IDs.
- */
-async function getExistingUserIds() {
-  const usersSnap = await db.collection("users").select().get();
-  const ids = new Set();
-  usersSnap.forEach((doc) => ids.add(doc.id));
-  return ids;
+async function deleteOldDocsByField(collectionName, fieldName, cutoff, remainingBudget) {
+  if (remainingBudget <= 0) return 0;
+
+  const limit = Math.min(BATCH_SIZE, remainingBudget);
+  const snapshot = await db
+    .collection(collectionName)
+    .where(fieldName, "<", cutoff)
+    .orderBy(fieldName)
+    .limit(limit)
+    .get();
+
+  return deleteSnapshotDocs(snapshot);
 }
 
-/**
- * Find orphaned docs (userId not in users collection) and inactive docs (older than 6 months).
- */
-async function findDocsToDelete(collectionName, userIds) {
-  const snapshot = await db.collection(collectionName).get();
-  const orphaned = [];
-  const inactive = [];
-  const cutoff = Date.now() - SIX_MONTHS_MS;
+async function cleanupCollection(collectionName, cutoff, remainingBudget) {
+  const stats = { lastSaved: 0, updatedAt: 0 };
 
-  snapshot.forEach((doc) => {
-    const data = doc.data();
+  stats.lastSaved = await deleteOldDocsByField(collectionName, "lastSaved", cutoff, remainingBudget);
+  remainingBudget -= stats.lastSaved;
 
-    // Check orphaned
-    if (data.userId && !userIds.has(data.userId)) {
-      orphaned.push(doc.ref);
-      return; // Don't double-count
-    }
-
-    // Check inactive
-    const timestamp = data.lastSaved || data.updatedAt;
-    if (timestamp) {
-      const ts = timestamp.toMillis ? timestamp.toMillis() : new Date(timestamp).getTime();
-      if (ts < cutoff) {
-        inactive.push(doc.ref);
-      }
-    }
-  });
-
-  return { orphaned, inactive };
+  stats.updatedAt = await deleteOldDocsByField(collectionName, "updatedAt", cutoff, remainingBudget);
+  return stats;
 }
 
 /**
  * Scheduled cleanup - runs every Sunday at 03:00 UTC.
+ *
+ * This intentionally avoids full scans of users and save collections. It only
+ * deletes stale save docs found through single-field timestamp queries, capped
+ * per execution so the job stays predictable as player volume grows.
  */
 exports.cleanupOrphanedData = onSchedule("every sunday 03:00", async () => {
-  logger.info("Starting cleanup of orphaned and inactive data...");
+  logger.info("Starting inactive save cleanup...");
 
-  const userIds = await getExistingUserIds();
-  logger.info(`Found ${userIds.size} existing users.`);
+  const cutoff = new Date(Date.now() - SIX_MONTHS_MS);
+  const stats = {};
+  let remainingBudget = MAX_DELETES_PER_RUN;
 
-  const stats = {
-    saves: { orphaned: 0, inactive: 0 },
-    promanager_saves: { orphaned: 0, inactive: 0 },
-  };
-
-  for (const collection of ["saves", "promanager_saves"]) {
-    const { orphaned, inactive } = await findDocsToDelete(collection, userIds);
-
-    if (orphaned.length > 0) {
-      stats[collection].orphaned = await deleteDocs(orphaned);
+  for (const collectionName of SAVE_COLLECTIONS) {
+    if (remainingBudget <= 0) {
+      stats[collectionName] = { skipped: "delete budget exhausted" };
+      continue;
     }
-    if (inactive.length > 0) {
-      stats[collection].inactive = await deleteDocs(inactive);
-    }
+
+    const collectionStats = await cleanupCollection(collectionName, cutoff, remainingBudget);
+    const deleted = collectionStats.lastSaved + collectionStats.updatedAt;
+    remainingBudget -= deleted;
+    stats[collectionName] = collectionStats;
   }
 
-  logger.info("Cleanup complete.", { stats });
-  return stats;
+  logger.info("Inactive save cleanup complete.", { stats, remainingBudget });
+  return { stats, remainingBudget };
 });

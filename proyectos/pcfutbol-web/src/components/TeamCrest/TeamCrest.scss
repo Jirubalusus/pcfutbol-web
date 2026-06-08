@@ -1,16 +1,29 @@
 .team-crest {
   display: inline-block;
   vertical-align: middle;
-  flex-shrink: 0;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  max-width: none;
+  max-height: none;
   overflow: hidden;
   border-radius: 10px;
 
-  &--official {
+  // Real/historical crests are usually rectangular transparent PNG/SVG assets.
+  // Keep their natural aspect ratio inside the requested square slot instead of
+  // stretching them to the element's width/height. This fixes distorted crests
+  // in league tables, calendars, setup cards, transfers and headers.
+  &--official,
+  &--historical {
     display: block;
     object-fit: contain;
     object-position: center;
-    overflow: hidden;
-    border-radius: inherit;
+    overflow: visible;
+    border-radius: 0;
     background: transparent;
+  }
+
+  &--generated {
+    display: inline-block;
+    overflow: hidden;
   }
 }

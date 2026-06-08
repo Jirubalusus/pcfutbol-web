@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { GLORY_CARDS } from '../../game/gloryEngine';
 import { MILESTONES, STARTER_CARDS } from '../../game/gloryUnlocks';
 import {
@@ -18,10 +19,11 @@ const ICON_MAP = {
   UserPlus,
 };
 
-const TIER_LABELS = { S: 'LEGENDARIA', A: 'EPICA', B: 'RARA' };
+const TIER_LABEL_KEYS = { S: 'glory.cards.tierLegendary', A: 'glory.cards.tierEpic', B: 'glory.cards.tierRare' };
 const TIER_CLASSES = { S: 'legendary', A: 'epic', B: 'rare' };
 
 export default function GloryCollection({ unlockedCards = [], completedMilestones = [], onBack }) {
+  const { t } = useTranslation();
   const [selectedCard, setSelectedCard] = useState(null);
 
   const tierOrder = { S: 0, A: 1, B: 2 };
@@ -43,26 +45,26 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
   return (
     <div className="glory-collection unified-screen">
       <div className="glory-collection__header">
-        <button className="glory-collection__back" onClick={onBack} aria-label="Volver">
+        <button className="glory-collection__back" onClick={onBack} aria-label={t('glory.common.back')}>
           <ArrowLeft size={18} />
         </button>
         <div className="glory-collection__headline">
-          <span className="glory-collection__eyebrow">Vitrina permanente</span>
-          <h2 className="glory-collection__title">Coleccion de cartas</h2>
-          <p className="glory-collection__subtitle">{totalUnlocked}/{sortedCards.length} desbloqueadas</p>
+          <span className="glory-collection__eyebrow">{t('glory.collection.eyebrow')}</span>
+          <h2 className="glory-collection__title">{t('glory.collection.title')}</h2>
+          <p className="glory-collection__subtitle">{t('glory.collection.unlockedOf', { unlocked: totalUnlocked, total: sortedCards.length })}</p>
         </div>
       </div>
 
       <section className="glory-collection__hero">
         <div>
-          <span className="glory-collection__eyebrow">Progreso</span>
-          <h3>{progress}% completo</h3>
-          <p>Abre cada carta para ver su rareza y condicion de desbloqueo.</p>
+          <span className="glory-collection__eyebrow">{t('glory.collection.progress')}</span>
+          <h3>{t('glory.collection.percentComplete', { percent: progress })}</h3>
+          <p>{t('glory.collection.openHint')}</p>
         </div>
         <div className="glory-collection__hero-stats">
-          <span><Star size={16} /> {sortedCards.filter(c => c.tier === 'S' && isUnlocked(c.id)).length} legendarias</span>
-          <span><CheckCircle size={16} /> {totalUnlocked} activas</span>
-          <span><Lock size={16} /> {sortedCards.length - totalUnlocked} ocultas</span>
+          <span><Star size={16} /> {t('glory.collection.legendaryCount', { count: sortedCards.filter(c => c.tier === 'S' && isUnlocked(c.id)).length })}</span>
+          <span><CheckCircle size={16} /> {t('glory.collection.activeCount', { count: totalUnlocked })}</span>
+          <span><Lock size={16} /> {t('glory.collection.hiddenCount', { count: sortedCards.length - totalUnlocked })}</span>
         </div>
       </section>
 
@@ -82,7 +84,7 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
               <div className="glory-collection__cell-icon" style={unlocked ? { color: card.color } : undefined}>
                 {renderCardIcon(card, unlocked)}
               </div>
-              <span className="glory-collection__cell-name">{unlocked ? card.name : '???'}</span>
+              <span className="glory-collection__cell-name">{unlocked ? t(`glory.cardData.${card.id}.name`, { defaultValue: card.name }) : '???'}</span>
             </button>
           );
         })}
@@ -91,7 +93,7 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
       {selectedCard && (
         <div className="glory-collection__modal-overlay" onClick={() => setSelectedCard(null)}>
           <div className="glory-collection__modal" onClick={e => e.stopPropagation()}>
-            <button className="glory-collection__modal-close" onClick={() => setSelectedCard(null)} aria-label="Cerrar">
+            <button className="glory-collection__modal-close" onClick={() => setSelectedCard(null)} aria-label={t('glory.common.close')}>
               <X size={18} />
             </button>
 
@@ -101,15 +103,15 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
                   {renderCardIcon(selectedCard, true)}
                 </div>
                 <span className={`glory-collection__modal-tier glory-collection__modal-tier--${TIER_CLASSES[selectedCard.tier]}`}>
-                  {TIER_LABELS[selectedCard.tier]}
+                  {t(TIER_LABEL_KEYS[selectedCard.tier])}
                 </span>
-                <h3 className="glory-collection__modal-name">{selectedCard.name}</h3>
-                <p className="glory-collection__modal-desc">{selectedCard.description}</p>
+                <h3 className="glory-collection__modal-name">{t(`glory.cardData.${selectedCard.id}.name`, { defaultValue: selectedCard.name })}</h3>
+                <p className="glory-collection__modal-desc">{t(`glory.cardData.${selectedCard.id}.description`, { defaultValue: selectedCard.description })}</p>
                 {isStarter(selectedCard.id) ? (
-                  <span className="glory-collection__modal-starter">Desbloqueada de inicio</span>
+                  <span className="glory-collection__modal-starter">{t('glory.collection.starterUnlocked')}</span>
                 ) : (
                   <span className="glory-collection__modal-unlocked">
-                    <CheckCircle size={14} /> Desbloqueada
+                    <CheckCircle size={14} /> {t('glory.collection.unlocked')}
                   </span>
                 )}
               </>
@@ -119,18 +121,18 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
                   <Lock size={36} />
                 </div>
                 <span className={`glory-collection__modal-tier glory-collection__modal-tier--${TIER_CLASSES[selectedCard.tier]}`}>
-                  {TIER_LABELS[selectedCard.tier]}
+                  {t(TIER_LABEL_KEYS[selectedCard.tier])}
                 </span>
                 <h3 className="glory-collection__modal-name">???</h3>
                 {(() => {
                   const milestone = getMilestone(selectedCard.id);
-                  if (!milestone) return <p className="glory-collection__modal-desc">Mejora secreta</p>;
+                  if (!milestone) return <p className="glory-collection__modal-desc">{t('glory.collection.secretUpgrade')}</p>;
                   return (
                     <div className="glory-collection__modal-milestone">
                       <Trophy size={16} />
                       <div>
-                        <span className="glory-collection__modal-milestone-name">{milestone.name}</span>
-                        <span className="glory-collection__modal-milestone-req">{milestone.description}</span>
+                        <span className="glory-collection__modal-milestone-name">{t(`glory.milestones.${milestone.id}.name`, { defaultValue: milestone.name })}</span>
+                        <span className="glory-collection__modal-milestone-req">{t(`glory.milestones.${milestone.id}.description`, { defaultValue: milestone.description })}</span>
                       </div>
                     </div>
                   );

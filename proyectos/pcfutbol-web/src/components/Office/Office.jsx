@@ -16,6 +16,7 @@ import {
 } from '../../data/teamsFirestore';
 import { simulateWeekMatches, simulateMatch, updateTable } from '../../game/leagueEngine';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
+import { buildSwitchedProManagerLeague } from '../../game/proManagerEngine';
 import { calculateMatchAttendance, calculateServicesIncome, STADIUM_SERVICES } from '../../game/stadiumEconomy';
 
 // Combine all teams for lookup - usando getters para obtener data actualizada
@@ -50,6 +51,8 @@ const getAllTeams = () => {
   }
   return result;
 };
+
+const looksLikeTeamId = (value) => typeof value === 'string' && /^[a-z0-9][a-z0-9_-]*$/i.test(value);
 import Sidebar from '../Sidebar/Sidebar';
 import MobileNav from '../MobileNav/MobileNav';
 import Plantilla from '../Plantilla/Plantilla';
@@ -108,7 +111,7 @@ import LoadingIndicator from '../common/LoadingIndicator';
 import { formatCompactMoney } from '../../utils/money';
 import './Office.scss';
 
-export default function Office() {
+export default function Office({ trialBanner = null }) {
   const { t } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
   const { maybeShowInterstitial } = useAds(state.premium);
@@ -130,6 +133,8 @@ export default function Office() {
   const [dismissedBoardWarningKey, setDismissedBoardWarningKey] = useState(null);
   const snapshotRef = useRef(null); // stores pre-simulation snapshot
   const stateRef = useRef(state); // keeps fresh state for async callbacks (#7, #9-10)
+  const currentRosterRepairRef = useRef(null);
+  const proManagerLeagueRepairRef = useRef(null);
   stateRef.current = state;
   
   // Tutorial system
@@ -168,14 +173,96 @@ export default function Office() {
     }
   }, [boardConfidenceValue]);
   
-  // Memoize getAllTeams to avoid recalculating on every render
-  const allTeamsMemo = useMemo(() => getAllTeams(), [state.leagueTeams]);
+  // Memoize the team catalogue used by match simulation.
+  // Historical seasons use Transfermarkt IDs (tm-team-XXXX) that are not present in
+  // the static modern getters. If we only use getAllTeams(), the batch simulator
+  // cannot resolve the opponent and leaves the player's fixture unplayed while the
+  // rest of the league advances. Merge current leagueTeams/team/table stubs so the
+  // selected historical team always plays its fixtures.
+  const allTeamsMemo = useMemo(() => {
+    const byId = new Map();
+    const addTeam = (team) => {
+      if (!team?.id) return;
+      const existing = byId.get(team.id);
+      if (!existing) {
+        byId.set(team.id, { ...team });
+        return;
+      }
+      const existingPlayers = Array.isArray(existing.players) ? existing.players : [];
+      const incomingPlayers = Array.isArray(team.players) ? team.players : [];
+      const players = incomingPlayers.length > existingPlayers.length ? incomingPlayers : existingPlayers;
+      byId.set(team.id, {
+        ...existing,
+        ...team,
+        players,
+        budget: team.budget || existing.budget,
+        reputation: team.reputation || existing.reputation,
+        overall: team.overall || existing.overall,
+      });
+    };
+
+    getAllTeams().forEach(addTeam);
+    (state.leagueTeams || []).forEach(addTeam);
+    if (state.team) addTeam({ ...state.team, id: state.teamId || state.team.id });
+    (state.leagueTable || []).forEach(entry => {
+      if (!entry?.teamId || byId.has(entry.teamId)) return;
+      addTeam({
+        id: entry.teamId,
+        name: entry.teamName || entry.teamId,
+        shortName: entry.shortName || entry.teamName || entry.teamId,
+        reputation: entry.reputation || 50,
+        players: []
+      });
+    });
+
+    return Array.from(byId.values());
+  }, [state.leagueTeams, state.leagueTable, state.team, state.teamId]);
   const [rankedSubmitted, setRankedSubmitted] = useState(false);
   
-  // Regenerate leagueTeams if missing (e.g. loaded from save without them)
+  // Regenerate/hydrate current-DB leagueTeams if missing or saved as table stubs.
   useEffect(() => {
-    if (state.gameStarted && (!state.leagueTeams || state.leagueTeams.length === 0)) {
-      const teams = getAllTeams();
+    if (state.gameStarted && !state.historicalDatabase) {
+      const leagueTeams = state.leagueTeams || [];
+      const shortRosterCount = leagueTeams.filter(team => (team.players || []).length < 11).length;
+      const needsRepair = leagueTeams.length === 0 || shortRosterCount > 0;
+      if (!needsRepair) {
+        currentRosterRepairRef.current = null;
+        return;
+      }
+
+      const repairKey = `${state.gameMode || 'career'}:${state.teamId || ''}:${leagueTeams.length}:${shortRosterCount}`;
+      if (currentRosterRepairRef.current === repairKey) return;
+      currentRosterRepairRef.current = repairKey;
+
+      let teams = getAllTeams();
+      if (leagueTeams.length > 0) {
+        const staticById = new Map(teams.map(team => [team.id, team]));
+        const seen = new Set();
+        teams = leagueTeams.map(team => {
+          const id = team.id || team.teamId;
+          seen.add(id);
+          if ((team.players || []).length >= 11) return team;
+          const base = staticById.get(id);
+          if (!base) return team;
+          return {
+            ...base,
+            ...team,
+            id,
+            name: team.name || team.teamName || base.name,
+            players: (base.players || []).length >= 11 ? base.players : (team.players || []),
+            leagueId: team.leagueId || team.league || base.leagueId || base.league,
+          };
+        });
+        for (const staticTeam of staticById.values()) {
+          if (!seen.has(staticTeam.id)) teams.push(staticTeam);
+        }
+      }
+
+      if (state.team && (state.team.players || []).length >= 11) {
+        teams = teams.filter(team => team.id !== state.teamId && team.id !== state.team.id);
+        teams.push({ ...state.team, id: state.teamId || state.team.id, leagueId: state.playerLeagueId || state.team.leagueId || state.team.league });
+      }
+
       // Glory mode: ensure glory_team is in the pool (it's not in Firestore)
       // Also inject group rivals from leagueTable so transfers work
       if (state.gameMode === 'glory') {
@@ -201,7 +288,73 @@ export default function Office() {
       }
       dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: teams });
     }
-  }, [state.gameStarted, state.leagueTeams]);
+  }, [state.gameStarted, state.historicalDatabase, state.gameMode, state.teamId, state.team, state.playerLeagueId, state.leagueTeams]);
+
+  // Safety net for saves already affected by the Pro Manager switch bug:
+  // if the manager's current club is missing from the table or has no league
+  // fixtures at the start of a new job, rebuild that league around the selected club.
+  useEffect(() => {
+    if (!state.gameStarted || state.gameMode !== 'promanager' || !state.teamId || !state.team) return;
+    const leagueId = state.playerLeagueId || state.leagueId || state.team.leagueId || state.team.league;
+    if (!leagueId || (state.currentWeek || 1) > 2) return;
+
+    const table = state.leagueTable || [];
+    const fixtures = state.fixtures || [];
+    const hasTableRow = table.some(row => (row.teamId || row.id) === state.teamId);
+    const teamFixtures = fixtures.filter(f => f.homeTeam === state.teamId || f.awayTeam === state.teamId);
+    if (hasTableRow && teamFixtures.length > 0) {
+      proManagerLeagueRepairRef.current = null;
+      return;
+    }
+
+    const repairKey = `${leagueId}:${state.teamId}:${table.length}:${fixtures.length}:${hasTableRow}:${teamFixtures.length}`;
+    if (proManagerLeagueRepairRef.current === repairKey) return;
+    proManagerLeagueRepairRef.current = repairKey;
+
+    const allTeams = getAllTeams();
+    const currentTeam = { ...state.team, id: state.teamId, leagueId };
+    const careerTeams = [
+      currentTeam,
+      ...(state.leagueTeams || []),
+      ...allTeams,
+    ];
+    const careerGetters = {
+      [leagueId]: () => careerTeams
+        .filter(team => (team.id || team.teamId) && (
+          (team.id || team.teamId) === state.teamId
+          || team.leagueId === leagueId
+          || team.league === leagueId
+        ))
+        .map(team => ({ ...team, id: team.id || team.teamId, leagueId: team.leagueId || team.league || leagueId }))
+    };
+
+    const repaired = buildSwitchedProManagerLeague({
+      selectedLeagueData: { table, fixtures },
+      team: currentTeam,
+      leagueId,
+      careerGetters,
+      fallbackGetter: () => careerGetters[leagueId](),
+    });
+    if (!repaired?.table?.some(row => row.teamId === state.teamId)) return;
+    if (!(repaired.fixtures || []).some(f => f.homeTeam === state.teamId || f.awayTeam === state.teamId)) return;
+
+    const mergedTeamsById = new Map(careerTeams.map(team => [team.id || team.teamId, { ...team, id: team.id || team.teamId }]));
+    dispatch({ type: 'SET_LEAGUE_TABLE', payload: repaired.table });
+    dispatch({ type: 'SET_FIXTURES', payload: repaired.fixtures });
+    dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
+    dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: Array.from(mergedTeamsById.values()) });
+  }, [
+    state.gameStarted,
+    state.gameMode,
+    state.teamId,
+    state.team,
+    state.playerLeagueId,
+    state.leagueId,
+    state.currentWeek,
+    state.leagueTable,
+    state.fixtures,
+    state.leagueTeams,
+  ]);
   
   const handleRankedSubmit = async () => {
     if (!state.rankedMatchId || rankedSubmitted || !user?.uid) return;
@@ -1046,7 +1199,7 @@ export default function Office() {
           // 2. Process yellow cards
           const _gpn = (p) => typeof p === 'object' ? (p?.name || 'Unknown') : (p || 'Unknown');
           const playerYellowCards = (result.events || []).filter(
-            e => e.type === 'yellow_card' && e.team === playerTeamSide
+            e => e.type === 'yellow_card' && e.team === playerTeamSide && e.countsForAccumulation !== false && !e.isSecondYellow
           );
           if (playerYellowCards.length > 0) {
             dispatch({
@@ -1364,6 +1517,36 @@ export default function Office() {
       );
     }
 
+    const getLeagueRow = (teamId) => (state.leagueTable || []).find(t => t.teamId === teamId);
+    const getCatalogTeam = (teamId) => allTeamsMemo.find(t => t.id === teamId || t.teamId === teamId);
+    const resolveMatchTeam = (side) => {
+      if (!nextMatch) return {};
+
+      const rawId = nextMatch[`${side}Team`];
+      const rawName = nextMatch[`${side}TeamName`];
+      const teamId = nextMatch.isPreseason
+        ? (looksLikeTeamId(rawId) ? rawId : undefined)
+        : rawId;
+      const isPlayerTeam = teamId && teamId === state.teamId;
+      const row = teamId ? getLeagueRow(teamId) : null;
+      const catalogTeam = teamId ? getCatalogTeam(teamId) : null;
+      const team = isPlayerTeam ? state.team : catalogTeam;
+      const teamName = nextMatch.isPreseason
+        ? (rawName || row?.teamName || team?.name || team?.teamName || rawId)
+        : ((isPlayerTeam ? state.team?.name : row?.teamName) || team?.name || team?.teamName || rawId);
+
+      return {
+        team,
+        teamId,
+        teamName,
+        crestTeamId: isPlayerTeam ? state.teamId : (row?.crestTeamId || team?.crestTeamId || teamId),
+        crestLookupKeys: row?.crestLookupKeys || team?.crestLookupKeys || team?.identity?.crestLookupKeys || [],
+        crestSeed: team?.crestSeed || team?.identity?.crestSeed || teamName || rawId
+      };
+    };
+    const nextMatchHomeTeam = resolveMatchTeam('home');
+    const nextMatchAwayTeam = resolveMatchTeam('away');
+
     const confidenceColor = state.managerConfidence > 60 ? '#2ecc71' : state.managerConfidence > 40 ? '#f39c12' : state.managerConfidence > 25 ? '#e67e22' : '#e74c3c';
     
     return (
@@ -1479,7 +1662,7 @@ export default function Office() {
           <div className="office__grid-left">
             {/* ── Next Match Card ── */}
             {nextMatch && (
-              <div className="office__next-match">
+              <div className="office__next-match" data-audit="office-next-match">
                 <div className="office__glass-header">
                   <CalendarDays size={16} />
                   <span>{t('office.nextMatch')}</span>
@@ -1490,21 +1673,31 @@ export default function Office() {
                   </span>
                   <div className="office__match-preview">
                     <div className="team home">
-                      <span className="name">
-                        {nextMatch.isPreseason 
-                          ? (nextMatch.homeTeamName || nextMatch.homeTeam)
-                          : (nextMatch.homeTeam === state.teamId ? state.team.name : 
-                            state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName)}
+                      <span className="name">{nextMatchHomeTeam.teamName}</span>
+                      <span className="crest" data-audit="next-match-home-crest">
+                        <TeamCrest
+                          team={nextMatchHomeTeam.team}
+                          teamId={nextMatchHomeTeam.crestTeamId}
+                          teamName={nextMatchHomeTeam.teamName}
+                          lookupKeys={nextMatchHomeTeam.crestLookupKeys}
+                          seed={nextMatchHomeTeam.crestSeed}
+                          size={38}
+                        />
                       </span>
                     </div>
                     <div className="vs-pill">{t('office.vs')}</div>
                     <div className="team away">
-                      <span className="name">
-                        {nextMatch.isPreseason
-                          ? (nextMatch.awayTeamName || nextMatch.awayTeam)
-                          : (nextMatch.awayTeam === state.teamId ? state.team.name : 
-                            state.leagueTable.find(t => t.teamId === nextMatch.awayTeam)?.teamName)}
+                      <span className="crest" data-audit="next-match-away-crest">
+                        <TeamCrest
+                          team={nextMatchAwayTeam.team}
+                          teamId={nextMatchAwayTeam.crestTeamId}
+                          teamName={nextMatchAwayTeam.teamName}
+                          lookupKeys={nextMatchAwayTeam.crestLookupKeys}
+                          seed={nextMatchAwayTeam.crestSeed}
+                          size={38}
+                        />
                       </span>
+                      <span className="name">{nextMatchAwayTeam.teamName}</span>
                     </div>
                   </div>
                 </div>
@@ -1774,7 +1967,7 @@ export default function Office() {
       <main className="office__main">
         <header className="office__header">
           <div className="office__team-info">
-            <h1><TeamCrest teamId={state.teamId} size={36} /> {state.team?.name}</h1>
+            <h1><TeamCrest team={state.team} teamId={state.teamId} size={36} /> {state.team?.name}</h1>
             <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>
           
@@ -1916,6 +2109,7 @@ export default function Office() {
         )}
         
         <div className="office__content">
+          {trialBanner}
           {renderContent()}
         </div>
       </main>

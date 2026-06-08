@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { Trophy, TrendingUp, ArrowUp, ChevronRight, Star } from 'lucide-react';
@@ -17,6 +18,7 @@ import './GloryMode.scss';
  * Flow: Summary → Random Event → Card Selection → Next Season
  */
 export default function GlorySeasonEnd({ leaguePosition, onComplete }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const { user } = useAuth();
   const gloryData = state.gloryData || {};
@@ -200,15 +202,15 @@ export default function GlorySeasonEnd({ leaguePosition, onComplete }) {
         )}
 
         <h2 className="glory-season-end__title">
-          {phase === 'done' ? 'Preparado para la siguiente temporada' : `Fin de Temporada ${gloryData.season || 1}`}
+          {phase === 'done' ? t('glory.seasonEnd.readyNext') : t('glory.seasonEnd.seasonEndTitle', { season: gloryData.season || 1 })}
         </h2>
 
         <div className="glory-season-end__division">
-          <span>{currentDiv.name}</span>
+          <span>{t(`glory.divisions.${currentDiv.id}`)}</span>
           {promoted && nextDiv && (
             <>
               <ArrowUp size={16} className="glory-season-end__arrow" />
-              <span className="glory-season-end__promoted">{nextDiv.name}</span>
+              <span className="glory-season-end__promoted">{t(`glory.divisions.${nextDiv.id}`)}</span>
             </>
           )}
         </div>
@@ -216,7 +218,7 @@ export default function GlorySeasonEnd({ leaguePosition, onComplete }) {
         <div className="glory-season-end__position">
           <span className="glory-season-end__pos-number">{leaguePosition}º</span>
           <span className="glory-season-end__pos-label">
-            {promoted ? 'Ascenso directo' : 'Posición final'}
+            {promoted ? t('glory.seasonEnd.directPromotion') : t('glory.seasonEnd.finalPosition')}
           </span>
         </div>
 
@@ -224,11 +226,11 @@ export default function GlorySeasonEnd({ leaguePosition, onComplete }) {
           <div className="glory-season-end__stats">
             <div className="glory-season-end__stat">
               <Trophy size={14} />
-              <span>Temporada {gloryData.season || 1}</span>
+              <span>{t('glory.seasonEnd.seasonStat', { season: gloryData.season || 1 })}</span>
             </div>
             <div className="glory-season-end__stat">
               <Star size={14} />
-              <span>{(gloryData.pickedCards || []).length} cartas recogidas</span>
+              <span>{t('glory.seasonEnd.cardsCollected', { count: (gloryData.pickedCards || []).length })}</span>
             </div>
           </div>
         )}
@@ -248,10 +250,10 @@ export default function GlorySeasonEnd({ leaguePosition, onComplete }) {
             }
           }}
         >
-          {phase === 'summary' && 'Continuar'}
+          {phase === 'summary' && t('glory.seasonEnd.continue')}
           {phase === 'done' && (
             <>
-              {nextDiv ? `Empezar en ${nextDiv.name}` : 'Siguiente temporada'}
+              {nextDiv ? t('glory.seasonEnd.startIn', { division: t(`glory.divisions.${nextDiv.id}`) }) : t('glory.seasonEnd.nextSeason')}
               <ChevronRight size={18} />
             </>
           )}

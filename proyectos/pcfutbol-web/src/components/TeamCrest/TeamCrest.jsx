@@ -90,16 +90,110 @@ function PatternFill({ pattern, primary, secondary }) {
   }
 }
 
-export default function TeamCrest({ teamId, size = 40, className = '', priority = false }) {
+const AMBIGUOUS_COMPACT_CREST_ALIASES = new Set([
+  // "Real Racing Club" (Santander) and "Racing Club" (Avellaneda) both collapse
+  // to "racing" if generic words are stripped. Exact names/ids are safe; the
+  // compact alias is not.
+  'racing'
+]);
+
+function teamNameAliases(value) {
+  const normalized = normalizeTeamAssetKey(value);
+  if (!normalized) return [];
+  const compact = normalized
+    .replace(/\b(real|rcd|rc|cd|cf|ca|sd|ud|fc|club|de|del|la|el)\b/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_+|_+$/g, '');
+  const aliases = [normalized];
+  if (compact && !AMBIGUOUS_COMPACT_CREST_ALIASES.has(compact)) aliases.push(compact);
+  return Array.from(new Set(aliases.filter(Boolean)));
+}
+
+let historicalCrestManifestPromise = null;
+let historicalCrestAliasIndex = null;
+
+function getHistoricalCrestCandidate(keys) {
+  const tmKey = keys.find((key) => /^tm-team-\d+$/.test(String(key)));
+  if (tmKey) return `/historical-db/crests/${tmKey}.png`;
+  const numericTmKey = keys.find((key) => /^\d+$/.test(String(key)));
+  if (numericTmKey) return `/historical-db/crests/tm-team-${numericTmKey}.png`;
+  return null;
+}
+
+function buildHistoricalCrestAliasKeys(value) {
+  const aliases = teamNameAliases(value);
+  const normalized = normalizeTeamAssetKey(value);
+  return Array.from(new Set([normalized, ...aliases].filter(Boolean)));
+}
+
+async function getHistoricalCrestAliasIndex() {
+  if (historicalCrestAliasIndex) return historicalCrestAliasIndex;
+  if (!historicalCrestManifestPromise) {
+    historicalCrestManifestPromise = fetch('/historical-db/crests/manifest.json', { cache: 'force-cache' })
+      .then((response) => (response.ok ? response.json() : null))
+      .catch(() => null);
+  }
+
+  const manifest = await historicalCrestManifestPromise;
+  const index = new Map();
+  for (const crest of Object.values(manifest?.crests || {})) {
+    if (crest?.status !== 'ready' || !crest.publicPath) continue;
+    const values = [
+      crest.id,
+      crest.transfermarktId,
+      ...(Array.isArray(crest.names) ? crest.names : []),
+      ...(Array.isArray(crest.slugs) ? crest.slugs : [])
+    ];
+    for (const value of values) {
+      for (const key of buildHistoricalCrestAliasKeys(value)) {
+        if (!index.has(key)) index.set(key, crest.publicPath);
+      }
+    }
+  }
+  historicalCrestAliasIndex = index;
+  return historicalCrestAliasIndex;
+}
+
+async function getHistoricalCrestFromManifest(keys) {
+  const index = await getHistoricalCrestAliasIndex();
+  for (const key of keys) {
+    for (const alias of buildHistoricalCrestAliasKeys(key)) {
+      const publicPath = index.get(alias);
+      if (publicPath) return publicPath;
+    }
+  }
+  return null;
+}
+
+export default function TeamCrest({ team = null, teamId, teamName = '', teamSlug = '', lookupKeys = [], seed = '', size = 40, className = '', priority = false }) {
   const editionId = getActiveEditionId();
-  const normalizedTeamKey = normalizeTeamAssetKey(teamId);
+  const resolvedTeamId = teamId || team?.id || team?.teamId;
+  const resolvedTeamName = teamName || team?.displayName || team?.publicName || team?.name || team?.teamName || '';
+  const resolvedTeamSlug = teamSlug || team?.slug || '';
+  const resolvedLookupKeys = lookupKeys?.length ? lookupKeys : (team?.crestLookupKeys || team?.identity?.crestLookupKeys || []);
+  const resolvedSeed = seed || team?.crestSeed || team?.identity?.crestSeed || '';
+  const identityKeys = useMemo(() => Array.from(new Set([
+    resolvedTeamId,
+    resolvedTeamName,
+    resolvedTeamSlug,
+    ...(Array.isArray(resolvedLookupKeys) ? resolvedLookupKeys : []),
+    normalizeTeamAssetKey(resolvedTeamId),
+    normalizeTeamAssetKey(resolvedTeamName),
+    normalizeTeamAssetKey(resolvedTeamSlug),
+    ...teamNameAliases(resolvedTeamId),
+    ...teamNameAliases(resolvedTeamName),
+    ...teamNameAliases(resolvedTeamSlug)
+  ].filter(Boolean))), [resolvedTeamId, resolvedTeamName, resolvedTeamSlug, resolvedLookupKeys]);
+  const normalizedTeamKey = normalizeTeamAssetKey(identityKeys[0] || resolvedTeamId);
   const [officialCrestUrl, setOfficialCrestUrl] = useState(() => {
-    const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
-    return getOfficialCrestUrlFromAsset(cachedAsset);
+    const cachedAsset = identityKeys.map((key) => getCachedEditionTeamAsset(editionId, key)).find(Boolean);
+    const cachedUrl = getOfficialCrestUrlFromAsset(cachedAsset);
+    return isCrestImageReady(cachedUrl) ? cachedUrl : null;
   });
+  const [historicalCrestUrl, setHistoricalCrestUrl] = useState(null);
 
   const { primary, secondary, pattern } = useMemo(() => {
-    const colors = teamColors[teamId];
+    const colors = teamColors[resolvedTeamId];
     if (colors) {
       return {
         primary: colors.primary,
@@ -107,13 +201,13 @@ export default function TeamCrest({ teamId, size = 40, className = '', priority 
         pattern: colors.pattern || 'solid',
       };
     }
-    const h = hashCode(teamId || 'unknown');
+    const h = hashCode(resolvedSeed || resolvedTeamId || resolvedTeamName || 'unknown');
     return {
       primary: FALLBACK_COLORS[h % FALLBACK_COLORS.length],
       secondary: '#fff',
       pattern: PATTERNS[h % PATTERNS.length],
     };
-  }, [teamId]);
+  }, [resolvedTeamId, resolvedTeamName, resolvedSeed]);
 
   useEffect(() => {
     let cancelled = false;
@@ -124,26 +218,23 @@ export default function TeamCrest({ teamId, size = 40, className = '', priority 
         return;
       }
 
-      const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
-      const cachedUrl = getOfficialCrestUrlFromAsset(cachedAsset);
-      setOfficialCrestUrl(cachedUrl || null);
+      for (const key of identityKeys) {
+        const nextUrl = await getEditionCrestUrl(editionId, key);
+        if (!nextUrl) continue;
 
-      const nextUrl = await getEditionCrestUrl(editionId, teamId);
-      if (!nextUrl) {
-        if (!cancelled) setOfficialCrestUrl(null);
-        return;
+        if (isCrestImageReady(nextUrl)) {
+          if (!cancelled) setOfficialCrestUrl(nextUrl);
+          return;
+        }
+
+        const loaded = await preloadCrestImage(nextUrl);
+        if (loaded) {
+          if (!cancelled) setOfficialCrestUrl(nextUrl);
+          return;
+        }
       }
 
-      if (isCrestImageReady(nextUrl)) {
-        if (!cancelled) setOfficialCrestUrl(nextUrl);
-        return;
-      }
-
-      const loaded = await preloadCrestImage(nextUrl);
-
-      if (!cancelled && loaded) {
-        setOfficialCrestUrl(nextUrl);
-      }
+      if (!cancelled) setOfficialCrestUrl(null);
     }
 
     loadOfficialCrest();
@@ -151,24 +242,65 @@ export default function TeamCrest({ teamId, size = 40, className = '', priority 
     return () => {
       cancelled = true;
     };
-  }, [editionId, normalizedTeamKey, teamId]);
+  }, [editionId, normalizedTeamKey, resolvedTeamId, identityKeys]);
 
-  if (officialCrestUrl) {
+  useEffect(() => {
+    let cancelled = false;
+    const candidate = getHistoricalCrestCandidate(identityKeys);
+
+    async function loadHistoricalCrest() {
+      if (candidate) {
+        if (isCrestImageReady(candidate)) {
+          setHistoricalCrestUrl(candidate);
+          return;
+        }
+        const loaded = await preloadCrestImage(candidate);
+        if (loaded) {
+          if (!cancelled) setHistoricalCrestUrl(candidate);
+          return;
+        }
+      }
+
+      const manifestCandidate = await getHistoricalCrestFromManifest(identityKeys);
+      if (!manifestCandidate) {
+        if (!cancelled) setHistoricalCrestUrl(null);
+        return;
+      }
+      if (isCrestImageReady(manifestCandidate)) {
+        if (!cancelled) setHistoricalCrestUrl(manifestCandidate);
+        return;
+      }
+      const loadedFromManifest = await preloadCrestImage(manifestCandidate);
+      if (!cancelled) setHistoricalCrestUrl(loadedFromManifest ? manifestCandidate : null);
+    }
+
+    loadHistoricalCrest();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [identityKeys]);
+
+  if (officialCrestUrl || historicalCrestUrl) {
     return (
       <img
-        src={officialCrestUrl}
-        alt={teamId}
+        src={officialCrestUrl || historicalCrestUrl}
+        alt={resolvedTeamName || resolvedTeamId}
         width={size}
         height={size}
-        className={`team-crest team-crest--official ${className}`.trim()}
+        className={`team-crest ${officialCrestUrl ? 'team-crest--official' : 'team-crest--historical'} ${className}`.trim()}
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         fetchPriority={priority ? 'high' : 'auto'}
+        onError={() => {
+          if (officialCrestUrl) setOfficialCrestUrl(null);
+          if (historicalCrestUrl) setHistoricalCrestUrl(null);
+        }}
       />
     );
   }
 
-  const safeTeamId = (teamId || 'unknown').replace(/[^a-zA-Z0-9-]/g, '_');
+  const safeTeamId = (resolvedTeamId || resolvedTeamName || 'unknown').replace(/[^a-zA-Z0-9-]/g, '_');
   const clipId = `shield-clip-${safeTeamId}`;
   const gradientId = `shield-grad-${safeTeamId}`;
 
@@ -178,7 +310,7 @@ export default function TeamCrest({ teamId, size = 40, className = '', priority 
       width={size}
       height={size}
       className={`team-crest team-crest--generated ${className}`.trim()}
-      aria-label={teamId}
+      aria-label={resolvedTeamName || resolvedTeamId}
       role="img"
       preserveAspectRatio="xMidYMid meet"
     >

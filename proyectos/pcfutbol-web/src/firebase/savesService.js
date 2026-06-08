@@ -76,7 +76,8 @@ export async function saveGameToSlot(userId, slotIndex, gameState) {
       season: gameState.currentSeason || 1,
       week: gameState.currentWeek || 1,
       money: gameState.money || 0,
-      position: getLeaguePosition(gameState)
+      position: getLeaguePosition(gameState),
+      databaseSeasonId: gameState.databaseSeasonId || 'current'
     }
   };
   
@@ -133,6 +134,14 @@ export async function loadGameFromSlot(userId, slotIndex) {
 export async function deleteSaveSlot(userId, slotIndex) {
   const saveId = getSaveId(userId, slotIndex);
   await deleteDoc(doc(db, 'saves', saveId));
+}
+
+export async function deleteAllSaveSlots(userId) {
+  const deletions = [];
+  for (let i = 0; i < MAX_SLOTS; i++) {
+    deletions.push(deleteSaveSlot(userId, i));
+  }
+  await Promise.allSettled(deletions);
 }
 
 // Helper to get league position from state

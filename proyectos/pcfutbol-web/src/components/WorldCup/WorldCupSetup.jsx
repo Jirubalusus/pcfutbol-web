@@ -76,7 +76,7 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
     let cancelled = false;
     let animateTimer = null;
 
-    fetch('/data/national-teams.json')
+    fetch(`${import.meta.env.BASE_URL}data/national-teams.json`)
       .then(r => r.json())
       .then(data => {
         if (cancelled) return;

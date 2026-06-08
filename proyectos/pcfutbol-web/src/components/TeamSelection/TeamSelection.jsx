@@ -58,12 +58,18 @@ import {
   getSouthAfricaPSLTeams
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
-import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
-import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
+import { isSouthAmericanLeague, buildSouthAmericanQualifiedTeams, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
+import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map as MapIcon, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
 import CountryFlag from './CountryFlag';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import { getAvailableHistoricalSeasons, loadHistoricalSeason } from '../../data/historicalDatabaseService';
+import { getStoredActiveDatabaseId } from '../../data/activeDatabaseService';
+import { normalizeLeagueId, getTeamsInLeague, getTeamsInExactLeague } from '../../data/leagueRegistry';
+import { buildEuropeanFallbackTeamGetter, buildHistoricalUniverseFromDataset, initializeOtherLeaguesFromUniverse, toGameLeagueId } from '../../data/activeSeasonUniverse';
+import { buildHistoricalChampionsLeagueTeams, hasHistoricalChampionsParticipants } from '../../data/historicalChampionsParticipants';
+import { buildHistoricalEuropaLeagueTeams, hasHistoricalEuropaParticipants } from '../../data/historicalEuropaParticipants';
 import './TeamSelection.scss';
 import './WorldMap.scss';
 
@@ -131,29 +137,31 @@ async function loadSeasonSetupModules() {
       import('../../game/europeanCompetitions'),
       import('../../game/europeanSeason'),
       import('../../game/southAmericanSeason'),
-      import('../../game/cupSystem'),
-      import('../../game/multiLeagueEngine')
+      import('../../game/multiLeagueEngine'),
+      import('../../game/cupBootstrap')
     ]).then(([
       leagueEngine,
       objectivesEngine,
       europeanCompetitions,
       europeanSeason,
       southAmericanSeason,
-      cupSystem,
-      multiLeagueEngine
+      multiLeagueEngine,
+      cupBootstrap
     ]) => ({
       initializeLeague: leagueEngine.initializeLeague,
       generateSeasonObjectives: objectivesEngine.generateSeasonObjectives,
       qualifyTeamsForEurope: europeanCompetitions.qualifyTeamsForEurope,
+      ensureEuropeanLeagueStandings: europeanCompetitions.ensureEuropeanLeagueStandings,
       LEAGUE_SLOTS: europeanCompetitions.LEAGUE_SLOTS,
-      buildSeasonCalendar: europeanCompetitions.buildSeasonCalendar,
-      remapFixturesForEuropean: europeanCompetitions.remapFixturesForEuropean,
+      CHAMPIONS_LEAGUE: europeanCompetitions.CHAMPIONS_LEAGUE,
+      EUROPA_LEAGUE: europeanCompetitions.EUROPA_LEAGUE,
+      getCompetitionConfigForSeason: europeanCompetitions.getCompetitionConfigForSeason,
+      getEuropeanCompetitionIdsForSeason: europeanCompetitions.getEuropeanCompetitionIdsForSeason,
       initializeEuropeanCompetitions: europeanSeason.initializeEuropeanCompetitions,
       initializeSACompetitions: southAmericanSeason.initializeSACompetitions,
-      getCupTeams: cupSystem.getCupTeams,
-      generateCupBracket: cupSystem.generateCupBracket,
       initializeOtherLeagues: multiLeagueEngine.initializeOtherLeagues,
       LEAGUE_CONFIG: multiLeagueEngine.LEAGUE_CONFIG,
+      buildDomesticCupBootstrap: cupBootstrap.buildDomesticCupBootstrap,
     }));
   }
   return seasonSetupModulesPromise;
@@ -308,21 +316,81 @@ const LEAGUE_NAMES = {
 const LEAGUES_WITH_GROUPS = ['primeraRFEF', 'segundaRFEF'];
 
 // Generar lista de temporadas disponibles (2025-26 → 2004-05)
-const AVAILABLE_SEASONS = Array.from({ length: 22 }, (_, i) => {
-  const startYear = 2025 - i;
-  return {
-    id: `${startYear}-${String(startYear + 1).slice(2)}`,
-    label: `${startYear}/${String(startYear + 1).slice(2)}`,
-    startYear
-  };
-});
+const CURRENT_SEASON_OPTION = {
+  id: 'current',
+  label: 'Actual 2025/26',
+  startYear: 2025,
+  historical: false,
+};
+
+const HISTORICAL_LEAGUE_FALLBACK_NAMES = {
+  laliga: 'LaLiga',
+  laliga2: 'LaLiga 2',
+  segunda: 'LaLiga Hypermotion',
+  primeraRfefG1: 'Primera Federación G1',
+  primeraRfefG2: 'Primera Federación G2',
+  segundaRfefG1: 'Segunda Federación G1',
+  segundaRfefG2: 'Segunda Federación G2',
+  segundaRfefG3: 'Segunda Federación G3',
+  segundaRfefG4: 'Segunda Federación G4',
+  segundaRfefG5: 'Segunda Federación G5',
+  premierLeague: 'Premier League',
+  premier: 'Premier League',
+  championship: 'Championship',
+  serieA: 'Serie A',
+  seriea: 'Serie A',
+  serieB: 'Serie B',
+  bundesliga: 'Bundesliga',
+  bundesliga2: '2. Bundesliga',
+  ligue1: 'Ligue 1',
+  ligue2: 'Ligue 2',
+  ligaMx: 'Liga MX',
+  jleague: 'J1 League',
+};
+
+const HISTORICAL_COUNTRY_CODE_BY_ID = {
+  spain: 'ES', england: 'GB', italy: 'IT', germany: 'DE', france: 'FR',
+  netherlands: 'NL', portugal: 'PT', belgium: 'BE', turkey: 'TR', scotland: 'SC',
+  switzerland: 'CH', austria: 'AT', greece: 'GR', denmark: 'DK', croatia: 'HR',
+  czech: 'CZ', argentina: 'AR', brazil: 'BR', colombia: 'CO', chile: 'CL',
+  uruguay: 'UY', ecuador: 'EC', paraguay: 'PY', peru: 'PE', bolivia: 'BO',
+  venezuela: 'VE', usa: 'US', saudiArabia: 'SA', mexico: 'MX', japan: 'JP',
+};
+
+const HISTORICAL_COUNTRY_BY_CODE = Object.entries(HISTORICAL_COUNTRY_CODE_BY_ID)
+  .reduce((acc, [countryId, code]) => ({ ...acc, [code]: countryId }), {});
+
+const HISTORICAL_LEAGUE_ID_BY_CURRENT_ID = {
+  segunda: 'laliga2',
+  premierLeague: 'premier',
+  serieA: 'seriea',
+  jLeague: 'jleague',
+  ligaMX: 'ligaMx',
+};
+
+function toHistoricalLeagueId(leagueId) {
+  return normalizeLeagueId(HISTORICAL_LEAGUE_ID_BY_CURRENT_ID[leagueId] || leagueId);
+}
+
+function formatSeasonRange(season) {
+  return season?.label || season?.id || 'Actual';
+}
+
+function formatNumber(value) {
+  return Number(value || 0).toLocaleString('es-ES');
+}
 
 export default function TeamSelection() {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const { user, isAuthenticated } = useAuth();
   const [step, setStep] = useState(1);
-  const [selectedSeason, setSelectedSeason] = useState(AVAILABLE_SEASONS[0]); // Default: 2025-26
+  const [availableSeasons, setAvailableSeasons] = useState([CURRENT_SEASON_OPTION]);
+  const [selectedSeason, setSelectedSeason] = useState(() => ({ ...CURRENT_SEASON_OPTION, id: getStoredActiveDatabaseId() }));
+  const [historicalDataset, setHistoricalDataset] = useState(null);
+  const [historicalLoading, setHistoricalLoading] = useState(false);
+  const [historicalError, setHistoricalError] = useState(null);
+  const [historicalIndexWarning, setHistoricalIndexWarning] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedLeague, setSelectedLeague] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
@@ -338,6 +406,18 @@ export default function TeamSelection() {
     return window.innerWidth <= 900;
   });
   const [mobileTeamsView, setMobileTeamsView] = useState('list');
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
+
+    document.body.classList.toggle('preseason-modal-open', showPreseason);
+    document.documentElement.classList.toggle('preseason-modal-open', showPreseason);
+
+    return () => {
+      document.body.classList.remove('preseason-modal-open');
+      document.documentElement.classList.remove('preseason-modal-open');
+    };
+  }, [showPreseason]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
@@ -366,9 +446,116 @@ export default function TeamSelection() {
       }
     };
   }, []);
+
+
+  useEffect(() => {
+    let cancelled = false;
+    getAvailableHistoricalSeasons()
+      .then((seasons) => {
+        if (cancelled) return;
+        const historicalOptions = (seasons || []).map((season) => ({
+          ...season,
+          label: season.label || season.id,
+          historical: true,
+        }));
+        const options = [CURRENT_SEASON_OPTION, ...historicalOptions];
+        setAvailableSeasons(options);
+        const activeId = getStoredActiveDatabaseId();
+        const activeOption = options.find((season) => season.id === activeId) || CURRENT_SEASON_OPTION;
+        setSelectedSeason(activeOption);
+        if (!historicalOptions.length) {
+          setHistoricalIndexWarning(t('teamSelection.historicalIndexEmpty'));
+        }
+      })
+      .catch((error) => {
+        console.warn('No se pudo cargar el índice histórico:', error);
+        if (!cancelled) setHistoricalIndexWarning(t('teamSelection.historicalIndexError'));
+      });
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    setSelectedCountry(null);
+    setSelectedLeague(null);
+    setSelectedGroup(null);
+    setSelectedTeam(null);
+    setSearchTerm('');
+    setStep(1);
+
+    if (!selectedSeason?.historical) {
+      setHistoricalDataset(null);
+      setHistoricalLoading(false);
+      setHistoricalError(null);
+      return () => { cancelled = true; };
+    }
+
+    setHistoricalLoading(true);
+    setHistoricalError(null);
+    loadHistoricalSeason(selectedSeason.id)
+      .then((dataset) => {
+        if (cancelled) return;
+        setHistoricalDataset(dataset);
+      })
+      .catch((error) => {
+        console.error('Error cargando temporada histórica:', error);
+        if (!cancelled) {
+          setHistoricalDataset(null);
+          setHistoricalError(t('teamSelection.historicalLoadError', { season: selectedSeason.label }));
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setHistoricalLoading(false);
+      });
+
+    return () => { cancelled = true; };
+  }, [selectedSeason]);
   
   // Determinar si la liga seleccionada tiene grupos
-  const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
+  const isHistoricalSeason = Boolean(selectedSeason?.historical);
+  const hasGroups = selectedLeague && !isHistoricalSeason && LEAGUES_WITH_GROUPS.includes(selectedLeague);
+
+  const getTeamsForSelectedDatabase = (leagueId) => {
+    if (isHistoricalSeason) {
+      return getTeamsInExactLeague(historicalDataset?.teams || [], leagueId);
+    }
+    return getLeagueTeams(leagueId);
+  };
+
+  const getCountriesForSelectedDatabase = () => {
+    if (!isHistoricalSeason) return COUNTRIES;
+    const historicalLeagues = historicalDataset?.leagues || [];
+    if (!historicalLeagues.length) return [];
+    const leaguesByCountry = historicalLeagues.reduce((acc, league) => {
+      const countryId = HISTORICAL_COUNTRY_BY_CODE[league.country];
+      if (!countryId) return acc;
+      if (!acc[countryId]) acc[countryId] = [];
+      acc[countryId].push(league.id);
+      return acc;
+    }, {});
+
+    return COUNTRIES
+      .map((country) => ({
+        ...country,
+        leagues: leaguesByCountry[country.id] || [],
+      }))
+      .filter((country) => country.leagues.length > 0);
+  };
+
+  const getHistoricalLeague = (leagueId) => historicalDataset?.leagues?.find((item) => item.id === leagueId);
+
+  const getHistoricalLeagueName = (leagueId) => {
+    const league = getHistoricalLeague(leagueId);
+    return league?.name || LEAGUE_NAMES[leagueId] || HISTORICAL_LEAGUE_FALLBACK_NAMES[leagueId] || leagueId;
+  };
+
+  const getLeagueTierForSelectedDatabase = (leagueId) => {
+    const historicalTier = isHistoricalSeason ? getHistoricalLeague(leagueId)?.tier : null;
+    return historicalTier || getLeagueTier(leagueId);
+  };
+
+  const selectableCountries = getCountriesForSelectedDatabase();
   
   // Calcular el número total de pasos (simplificado a 2)
   const totalSteps = 3;
@@ -383,7 +570,7 @@ export default function TeamSelection() {
       const groups = getLeagueGroups(selectedLeague);
       rawTeams = groups[selectedGroup]?.teams || [];
     } else if (!hasGroups) {
-      rawTeams = getLeagueTeams(selectedLeague);
+      rawTeams = getTeamsForSelectedDatabase(selectedLeague);
     }
     
     // Pre-calcular budget y reputation para equipos que no lo tengan
@@ -395,7 +582,7 @@ export default function TeamSelection() {
       4: { pct: 0.05, min: 300_000, max: 5_000_000 },
       5: { pct: 0.03, min: 100_000, max: 1_500_000 }
     };
-    const currentTier = getLeagueTier(selectedLeague);
+    const currentTier = getLeagueTierForSelectedDatabase(selectedLeague);
     const budgetConfig = tierBudgets[currentTier] || tierBudgets[1];
     
     rawTeams = rawTeams.map(t => ({ ...t })); // Clone to avoid mutating shared data
@@ -425,7 +612,7 @@ export default function TeamSelection() {
     });
     
     return rawTeams;
-  }, [selectedLeague, selectedGroup, hasGroups]);
+  }, [selectedLeague, selectedGroup, hasGroups, historicalDataset, isHistoricalSeason]);
 
   const filteredTeams = useMemo(() => {
     if (!searchTerm) return teams;
@@ -532,7 +719,7 @@ export default function TeamSelection() {
         4: { pct: 0.05, min: 300_000, max: 5_000_000 },
         5: { pct: 0.03, min: 100_000, max: 1_500_000 }
       };
-      const currentTier = getLeagueTier(selectedLeague);
+      const currentTier = getLeagueTierForSelectedDatabase(selectedLeague);
       const budgetConfig = tierBudgets[currentTier] || tierBudgets[1];
       
       if (!team.reputation) {
@@ -586,7 +773,7 @@ export default function TeamSelection() {
     if (!selectedTeam || !selectedLeague) return;
     
     const { generatePreseasonOptions } = await loadPreseasonModules();
-    const allTeams = getAllTeamsForPreseason();
+    const allTeams = isHistoricalSeason ? (historicalDataset?.teams || []) : getAllTeamsForPreseason();
     const options = generatePreseasonOptions(allTeams, selectedTeam, selectedLeague);
     setPreseasonOptions(options);
     setShowPreseason(true);
@@ -601,7 +788,7 @@ export default function TeamSelection() {
     if (hasGroups && selectedGroup) {
       leagueTeams = getLeagueGroups(selectedLeague)?.[selectedGroup]?.teams || [];
     } else {
-      leagueTeams = getLeagueTeams(selectedLeague);
+      leagueTeams = getTeamsForSelectedDatabase(selectedLeague);
     }
     
     const { initializeLeague } = await loadSeasonSetupModules();
@@ -619,19 +806,23 @@ export default function TeamSelection() {
       payload: { 
         teamId: selectedTeam.id, 
         team: { ...selectedTeam },
-        leagueId: selectedLeague,
+        leagueId: toHistoricalLeagueId(selectedLeague),
         group: selectedGroup,
         stadiumInfo,
         stadiumLevel,
         preseasonMatches: preseasonPlan.matches,
         preseasonPhase: preseasonPlan.matches.length > 0,
-        managerName
+        managerName,
+        databaseSeasonId: selectedSeason.id,
+        careerStartSeason: selectedSeason.startYear,
+        historicalDatabase: isHistoricalSeason,
+        historicalDatabaseLabel: selectedSeason.label
       } 
     });
     
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
     dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
-    dispatch({ type: 'SET_PLAYER_LEAGUE', payload: selectedLeague });
+    dispatch({ type: 'SET_PLAYER_LEAGUE', payload: toHistoricalLeagueId(selectedLeague) });
     
     // For group leagues, store the player's group ID
     if (hasGroups && selectedGroup) {
@@ -650,25 +841,30 @@ export default function TeamSelection() {
     const _t = t;
     const _isAuth = isAuthenticated;
     const _user = user;
+    const _historicalDataset = isHistoricalSeason ? historicalDataset : null;
+    const _historicalAllTeams = isHistoricalSeason ? (_historicalDataset?.teams || []) : null;
+    const _historicalLeagues = isHistoricalSeason ? (_historicalDataset?.leagues || []) : null;
     setTimeout(async () => {
       try {
-        await _deferredInit(dispatch, _selTeam, _selLeague, _selGroup, _hasGroups, _leagueData, _t, _isAuth, _user);
+        await _deferredInit(dispatch, _selTeam, _selLeague, _selGroup, _hasGroups, _leagueData, _t, _isAuth, _user, _historicalAllTeams, _historicalLeagues, _historicalDataset);
       } catch (e) { console.error('Deferred init error:', e); }
     }, 100);
   };
   
   // Heavy init that runs after the game screen is shown
-  async function _deferredInit(dispatch, selectedTeam, selectedLeague, selectedGroup, hasGroups, leagueData, t, isAuthenticated, user) {
+  async function _deferredInit(dispatch, selectedTeam, selectedLeague, selectedGroup, hasGroups, leagueData, t, isAuthenticated, user, historicalAllTeams = null, historicalLeagues = null, historicalDatasetForSeason = null) {
     const {
       generateSeasonObjectives,
       qualifyTeamsForEurope,
+      ensureEuropeanLeagueStandings,
       LEAGUE_SLOTS,
-      buildSeasonCalendar,
-      remapFixturesForEuropean,
       initializeEuropeanCompetitions,
       initializeSACompetitions,
-      getCupTeams,
-      generateCupBracket,
+      CHAMPIONS_LEAGUE,
+      EUROPA_LEAGUE,
+      getCompetitionConfigForSeason,
+      getEuropeanCompetitionIdsForSeason,
+      buildDomesticCupBootstrap,
       initializeOtherLeagues,
       LEAGUE_CONFIG,
     } = await loadSeasonSetupModules();
@@ -730,7 +926,25 @@ export default function TeamSelection() {
     ];
     
     const allLeagueTeamsWithData = [];
+    const historicalLeagueNameById = new Map((historicalLeagues || []).map(league => [league.id, league.name || league.id]));
+    if (historicalAllTeams?.length) {
+      historicalAllTeams.forEach((team) => {
+        const sourceLeagueId = team.leagueId || team.league || team.competitionId;
+        allLeagueTeamsWithData.push({
+          ...team,
+          id: team.id,
+          name: team.name,
+          players: team.players || [],
+          budget: team.budget || Math.max((team.marketValue || 0) * 2, 15_000_000),
+          leagueId: normalizeLeagueId(sourceLeagueId),
+          sourceLeagueId,
+          historicalLeagueId: sourceLeagueId,
+          historicalLeagueName: historicalLeagueNameById.get(sourceLeagueId) || sourceLeagueId
+        });
+      });
+    }
     for (const league of allLeagueIds) {
+      if (historicalAllTeams?.length) break;
       const teams = league.getter();
       for (const t of teams) {
         allLeagueTeamsWithData.push({
@@ -739,14 +953,25 @@ export default function TeamSelection() {
           name: t.name,
           players: t.players || [],
           budget: t.budget || (t.reputation > 4 ? 100_000_000 : t.reputation > 3 ? 50_000_000 : 20_000_000),
-          leagueId: league.id
+          leagueId: normalizeLeagueId(league.id)
         });
       }
     }
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
     
-    // Initialize other leagues (now runs deferred via setTimeout)
-    const otherLeagues = initializeOtherLeagues(selectedLeague, hasGroups ? selectedGroup : null);
+    // Initialize other leagues (now runs deferred via setTimeout). Historical games
+    // must use the selected season's rosters; the static initializer is 2025/26.
+    const activeHistoricalUniverse = historicalDatasetForSeason
+      ? buildHistoricalUniverseFromDataset(historicalDatasetForSeason, { id: selectedSeason.id, label: selectedSeason.label, startYear: selectedSeason.startYear })
+      : null;
+    const playerGameLeagueId = toGameLeagueId(selectedLeague);
+    const otherLeagues = activeHistoricalUniverse
+      ? initializeOtherLeaguesFromUniverse(
+          activeHistoricalUniverse,
+          playerGameLeagueId,
+          hasGroups ? selectedGroup : null
+        )
+      : initializeOtherLeagues(selectedLeague, hasGroups ? selectedGroup : null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
     
     // ============================================================
@@ -762,9 +987,10 @@ export default function TeamSelection() {
         
         for (const [leagueId, slots] of Object.entries(SA_LEAGUE_SLOTS)) {
           const config = LEAGUE_CONFIG[leagueId];
-          if (!config || !config.getTeams) continue;
-          
-          const leagueTeams = config.getTeams();
+          const historicalLeagueId = toHistoricalLeagueId(leagueId);
+          const leagueTeams = historicalAllTeams?.length
+            ? getTeamsInLeague(historicalAllTeams, historicalLeagueId)
+            : config?.getTeams?.();
           if (!leagueTeams || leagueTeams.length === 0) continue;
           
           const sorted = [...leagueTeams].sort((a, b) => 
@@ -785,36 +1011,17 @@ export default function TeamSelection() {
           });
         }
         
-        const qualifiedTeams = qualifyTeamsForSouthAmerica(bootstrapStandings, allTeamsMap);
-        
-        const usedTeamIds = new Set();
-        Object.values(qualifiedTeams).forEach(teams => 
-          teams.forEach(t => usedTeamIds.add(t.teamId))
-        );
-        
-        const allAvailableTeams = Object.values(allTeamsMap)
-          .filter(t => !usedTeamIds.has(t.id || t.teamId))
-          .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-        
-        for (const compId of ['copaLibertadores', 'copaSudamericana']) {
-          const needed = 32 - qualifiedTeams[compId].length;
-          if (needed > 0) {
-            const fillers = allAvailableTeams.splice(0, needed);
-            qualifiedTeams[compId].push(...fillers.map(t => ({
-              teamId: t.id || t.teamId,
-              teamName: t.name || t.teamName,
-              shortName: t.shortName || '',
-              league: t.league || 'unknown',
-              leaguePosition: 0,
-              reputation: t.reputation || 60,
-              overall: t.overall || 65,
-              players: t.players || [],
-              ...t
-            })));
-            fillers.forEach(t => usedTeamIds.add(t.id || t.teamId));
-          }
-        }
-        
+        // Centralised qualification: player qualifies by his real table
+        // position, no club appears in both cups, and short fields are topped
+        // up only from this season's own SA pool (historical clubs for a
+        // historical save — never 2025/26 fillers).
+        const qualifiedTeams = buildSouthAmericanQualifiedTeams({
+          leagueStandings: bootstrapStandings,
+          allTeamsMap,
+          fillerPool: Object.values(allTeamsMap),
+          playerLeagueId: selectedLeague
+        });
+
         const saState = initializeSACompetitions(qualifiedTeams);
         dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saState });
         
@@ -848,9 +1055,10 @@ export default function TeamSelection() {
         
         for (const [leagueId, slots] of Object.entries(LEAGUE_SLOTS)) {
           const config = LEAGUE_CONFIG[leagueId];
-          if (!config || !config.getTeams) continue;
-          
-          const leagueTeams = config.getTeams();
+          const historicalLeagueId = toHistoricalLeagueId(leagueId);
+          const leagueTeams = historicalAllTeams?.length
+            ? getTeamsInLeague(historicalAllTeams, historicalLeagueId)
+            : config?.getTeams?.();
           if (!leagueTeams || leagueTeams.length === 0) continue;
           
           const sorted = [...leagueTeams].sort((a, b) => 
@@ -871,18 +1079,108 @@ export default function TeamSelection() {
           });
         }
         
-        const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-        
-        const usedTeamIds = new Set();
-        Object.values(qualifiedTeams).forEach(teams => 
-          teams.forEach(t => usedTeamIds.add(t.teamId))
+        const fallbackGetter = buildEuropeanFallbackTeamGetter({
+          historicalDatabase: Boolean(historicalAllTeams?.length),
+          otherLeagues,
+          playerLeagueId: playerGameLeagueId,
+          leagueTable: leagueData.table,
+        }, {
+          allTeamsMap,
+          allowStaticFallback: !Boolean(historicalAllTeams?.length)
+        });
+        const historicalUsedIds = new Set();
+        Object.values(bootstrapStandings).forEach((table) => {
+          (table || []).forEach(row => historicalUsedIds.add(row.teamId || row.id));
+        });
+        const historicalFillerPool = (historicalAllTeams?.length ? historicalAllTeams : [])
+          .filter(t => {
+            const id = t?.id || t?.teamId;
+            return id && !historicalUsedIds.has(id);
+          })
+          .sort((a, b) => (b.reputation || b.overall || 70) - (a.reputation || a.overall || 70));
+        const historicalFillerGetter = (leagueId) => {
+          const slots = LEAGUE_SLOTS[leagueId];
+          const needed = (slots?.championsLeague || 0) + (slots?.europaLeague || 0) + (slots?.conferenceleague || 0);
+          const liveTeams = fallbackGetter(leagueId) || [];
+          if (!Boolean(historicalAllTeams?.length) || liveTeams.length >= needed) return liveTeams;
+
+          const picked = [...liveTeams];
+          picked.forEach(team => historicalUsedIds.add(team?.id || team?.teamId));
+          while (picked.length < needed && historicalFillerPool.length > 0) {
+            const team = historicalFillerPool.shift();
+            const id = team?.id || team?.teamId;
+            if (!id || historicalUsedIds.has(id)) continue;
+            historicalUsedIds.add(id);
+            allTeamsMap[id] = {
+              ...team,
+              id,
+              teamId: id,
+              name: team.name || team.teamName || id,
+              teamName: team.teamName || team.name || id,
+              shortName: team.shortName || '',
+              players: team.players || [],
+            };
+            picked.push(allTeamsMap[id]);
+          }
+          return picked.length >= needed ? picked : liveTeams;
+        };
+        const patchedStandings = ensureEuropeanLeagueStandings(
+          bootstrapStandings,
+          historicalFillerGetter
         );
-        
+        const qualifiedTeams = qualifyTeamsForEurope(patchedStandings, allTeamsMap);
+
+        // ── Historical first-bootstrap override: real Champions field ──
+        // On a historical career the Continental Champions Cup must field the
+        // ACTUAL clubs of that year (not the reputation/position proxy that
+        // qualifyTeamsForEurope produces). This only runs on the very first
+        // European bootstrap of a historical save; non-historical play and any
+        // later season rollover are left untouched. Clubs absent from the
+        // dataset (foreign leagues) become stable, correctly-named stubs.
+        const historicalSeasonId = isHistoricalSeason ? selectedSeason?.id : null;
+        const activeCompetitionIds = getEuropeanCompetitionIdsForSeason(historicalSeasonId, { historical: isHistoricalSeason });
+        if (historicalAllTeams?.length && hasHistoricalChampionsParticipants(historicalSeasonId)) {
+          const realChampions = buildHistoricalChampionsLeagueTeams(
+            historicalSeasonId,
+            historicalAllTeams,
+            { teamsCount: CHAMPIONS_LEAGUE?.teamsCount || 32, allTeamsMap, priorityTeamName: selectedTeam.name || selectedTeam.teamName }
+          );
+          if (realChampions.length) {
+            qualifiedTeams.championsLeague = realChampions;
+            // A real Champions club must not also sit in the Shield/Trophy
+            // fields; drop any duplicates so the fill loop below tops them back
+            // up to 32 from unused base/allTeamsMap teams.
+            const championIds = new Set(realChampions.map(t => t.teamId || t.id));
+            for (const compId of ['europaLeague', 'conferenceleague']) {
+              qualifiedTeams[compId] = qualifiedTeams[compId]
+                .filter(t => !championIds.has(t.teamId || t.id));
+            }
+          }
+        }
+
+        if (historicalAllTeams?.length && activeCompetitionIds.includes('europaLeague') && hasHistoricalEuropaParticipants(historicalSeasonId)) {
+          const realEuropa = buildHistoricalEuropaLeagueTeams(
+            historicalSeasonId,
+            historicalAllTeams,
+            { teamsCount: EUROPA_LEAGUE?.teamsCount || 32, allTeamsMap, priorityTeamName: selectedTeam.name || selectedTeam.teamName, priorityTeamId: selectedTeam.id }
+          );
+          if (realEuropa.length) {
+            const championIds = new Set((qualifiedTeams.championsLeague || []).map(t => t.teamId || t.id));
+            qualifiedTeams.europaLeague = realEuropa.filter(t => !championIds.has(t.teamId || t.id));
+          }
+        }
+
+        const usedTeamIds = new Set();
+        activeCompetitionIds.forEach(compId => {
+          (qualifiedTeams[compId] || []).forEach(t => usedTeamIds.add(t.teamId || t.id));
+        });
+
         const allAvailableTeams = Object.values(allTeamsMap)
           .filter(t => !usedTeamIds.has(t.id || t.teamId))
           .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-        
-        for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
+
+        for (const compId of activeCompetitionIds) {
+          qualifiedTeams[compId] = qualifiedTeams[compId] || [];
           const needed = 32 - qualifiedTeams[compId].length;
           if (needed > 0) {
             const fillers = allAvailableTeams.splice(0, needed);
@@ -900,26 +1198,30 @@ export default function TeamSelection() {
             fillers.forEach(t => usedTeamIds.add(t.id || t.teamId));
           }
         }
+
+        for (const compId of Object.keys(qualifiedTeams)) {
+          if (!activeCompetitionIds.includes(compId)) delete qualifiedTeams[compId];
+        }
         
-        const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
+        const europeanState = initializeEuropeanCompetitions(qualifiedTeams, {
+          seasonId: historicalSeasonId,
+          historical: isHistoricalSeason,
+          competitionIds: activeCompetitionIds
+        });
         dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
         
-        const playerQualComp = ['championsLeague', 'europaLeague', 'conferenceleague']
-          .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === selectedTeam.id));
+        const playerQualComp = activeCompetitionIds
+          .find(c => (qualifiedTeams[c] || []).some(t => (t.teamId || t.id) === selectedTeam.id));
         
         if (playerQualComp) {
-          const compNames = {
-            championsLeague: 'Continental Champions Cup',
-            europaLeague: 'Continental Shield',
-            conferenceleague: 'Continental Trophy'
-          };
+          const compName = getCompetitionConfigForSeason(playerQualComp, historicalSeasonId, { historical: isHistoricalSeason })?.name || playerQualComp;
           dispatch({
             type: 'ADD_MESSAGE',
             payload: {
               id: Date.now() + 50,
               type: 'european',
               titleKey: 'gameMessages.continentalCompetition',
-              contentKey: 'gameMessages.teamPlaysContinental', contentParams: { comp: compNames[playerQualComp] },
+              contentKey: 'gameMessages.teamPlaysContinental', contentParams: { comp: compName },
               date: `${t('common.week')} 1`
             }
           });
@@ -932,20 +1234,32 @@ export default function TeamSelection() {
     // ============================================================
     // CUP COMPETITION — Initialize domestic cup (first season too!)
     // ============================================================
-    let cupBracket = null;
-    let cupRounds = 0;
+    let cupBootstrap = null;
     try {
-      const cupData = getCupTeams(selectedLeague, selectedTeam, otherLeagues, leagueData.table);
-      if (cupData && cupData.teams.length >= 2) {
-        cupBracket = generateCupBracket(cupData.teams, selectedTeam.id);
-        if (cupBracket) {
-          cupRounds = cupBracket.rounds.length;
-        }
-      }
+      // historical-initial-cup-bootstrap-2026-06-01
+      const hasEuropean = !isPlayerInSA && (
+        !isHistoricalSeason || getEuropeanCompetitionIdsForSeason(selectedSeason?.id, { historical: true }).length > 0
+      );
+      cupBootstrap = buildDomesticCupBootstrap({
+        playerLeagueId: playerGameLeagueId,
+        playerTeam: selectedTeam,
+        leagueTable: leagueData.table,
+        otherLeagues,
+        fixtures: leagueData.fixtures,
+        historical: Boolean(activeHistoricalUniverse),
+        historicalTeams: historicalAllTeams || [],
+        universeEntries: activeHistoricalUniverse?.entries || [],
+        allowStaticFallback: !activeHistoricalUniverse,
+        hasEuropean,
+        seasonId: selectedSeason?.id,
+        shouldRemapFixtures: true,
+        includeCalendarWithoutCup: true,
+      });
     } catch (err) {
       console.warn('Error initializing cup competition:', err);
     }
 
+    const cupBracket = cupBootstrap?.cupCompetition || null;
     if (cupBracket) {
       dispatch({ type: 'INIT_CUP_COMPETITION', payload: cupBracket });
     }
@@ -954,16 +1268,10 @@ export default function TeamSelection() {
     // SEASON CALENDAR — Build and remap fixtures for European/Cup weeks
     // ============================================================
     try {
-      const hasEuropean = true; // European comps were just initialized above
-      const totalLeagueMDs = leagueData.fixtures.length > 0
-        ? Math.max(...leagueData.fixtures.map(f => f.week))
-        : 38;
-      const europeanCalendar = buildSeasonCalendar(totalLeagueMDs, { hasEuropean, cupRounds });
-      const remappedFixtures = remapFixturesForEuropean(leagueData.fixtures, europeanCalendar.leagueWeekMap);
-      
-      // Update fixtures with remapped weeks
-      dispatch({ type: 'SET_FIXTURES', payload: remappedFixtures });
-      dispatch({ type: 'SET_EUROPEAN_CALENDAR', payload: europeanCalendar });
+      if (cupBootstrap?.europeanCalendar) {
+        dispatch({ type: 'SET_FIXTURES', payload: cupBootstrap.remappedFixtures || leagueData.fixtures });
+        dispatch({ type: 'SET_EUROPEAN_CALENDAR', payload: cupBootstrap.europeanCalendar });
+      }
     } catch (err) {
       console.error('Error building season calendar:', err);
     }
@@ -1030,7 +1338,10 @@ export default function TeamSelection() {
         money: selectedTeam.budget,
         leagueTable: leagueData.table,
         fixtures: leagueData.fixtures,
-        seasonObjectives: objectives
+        seasonObjectives: objectives,
+        databaseSeasonId: selectedSeason.id,
+        careerStartSeason: selectedSeason.startYear,
+        historicalDatabase: isHistoricalSeason
       };
       
       try {
@@ -1079,17 +1390,45 @@ export default function TeamSelection() {
   };
   
   const currentContent = getCurrentStepContent();
+  // While a historical season is selected but its full dataset has not finished
+  // loading, the country list resolves to [] and the continent rows render empty.
+  // Show a shape-preserving skeleton instead of those hollow rows.
+  const historicalSkeleton = isHistoricalSeason && (historicalLoading || !historicalDataset);
   const showMobileTeamTabs = currentContent === 'teams' && isMobileTeamLayout;
   const teamsPanelClasses = `teams-panel${showMobileTeamTabs && mobileTeamsView === 'details' ? ' teams-panel--hidden-mobile' : ''}`;
   const detailsPanelClasses = `details-panel${showMobileTeamTabs ? ' details-panel--mobile-tab' : ''}${showMobileTeamTabs && mobileTeamsView !== 'details' ? ' details-panel--hidden-mobile' : ''}`;
   const selectedCountryName = selectedCountry?.nameKey ? t(selectedCountry.nameKey) : selectedCountry?.name;
   const selectedCountryLeagueCount = selectedCountry?.leagues.length || 0;
-  const selectedCountryClubCount = selectedCountry?.leagues.reduce((total, leagueId) => total + getLeagueTeams(leagueId).length, 0) || 0;
+  const selectedCountryClubCount = selectedCountry?.leagues.reduce((total, leagueId) => total + getTeamsForSelectedDatabase(leagueId).length, 0) || 0;
+  const historicalOptions = availableSeasons.filter((season) => season.historical);
+  const selectedSeasonCounts = isHistoricalSeason
+    ? (historicalDataset?.manifest?.counts || selectedSeason?.counts || {})
+    : null;
+  const selectedSeasonMeta = isHistoricalSeason
+    ? t('teamSelection.historicalMeta', {
+        teams: formatNumber(selectedSeasonCounts?.teams),
+        players: formatNumber(selectedSeasonCounts?.players),
+        leagues: formatNumber(selectedSeasonCounts?.leagues),
+      })
+    : t('teamSelection.currentMeta', { countries: COUNTRIES.length });
+  const currentSeasonCopy = isHistoricalSeason
+    ? t('teamSelection.historicalBaseCopy')
+    : t('teamSelection.currentBaseCopy');
+  const mediaTierKeys = {
+    'elite mundial': 'eliteWorld',
+    continental: 'continental',
+    'primera linea': 'topTier',
+    competitivo: 'competitive',
+    'regional fuerte': 'strongRegional',
+    desarrollo: 'development'
+  };
+  const getPreseasonTourText = (option, field) => t(`teamSelection.preseasonTours.${option.id}.${field}`);
+  const getMediaTierText = (mediaTier) => t(`teamSelection.mediaTier.${mediaTierKeys[mediaTier] || 'development'}`);
 
   const renderCountryRow = (country) => {
     const countryName = country.nameKey ? t(country.nameKey) : country.id;
     const leagueCount = country.leagues.length;
-    const clubCount = country.leagues.reduce((total, leagueId) => total + getLeagueTeams(leagueId).length, 0);
+    const clubCount = country.leagues.reduce((total, leagueId) => total + getTeamsForSelectedDatabase(leagueId).length, 0);
 
     return (
       <button
@@ -1120,12 +1459,53 @@ export default function TeamSelection() {
     );
   };
 
+  // Shape-preserving skeleton for the country selector while a historical
+  // dataset is still loading. Mirrors the real title card + continent sections
+  // so the layout does not shift when the data arrives. No focusable elements.
+  const renderCountrySkeleton = () => {
+    const skeletonContinents = [
+      { key: 'eu', label: `🌍 ${t('teamSelection.continentEurope')}`, count: 7 },
+      { key: 'sa', label: `🌎 ${t('teamSelection.continentSouthAmerica')}`, count: 5 },
+      { key: 'row', label: `🌏 ${t('teamSelection.continentRestOfWorld')}`, count: 4 },
+    ];
+
+    return (
+      <div className="map-selection__skeleton" role="status" aria-busy="true" aria-live="polite">
+        <div className="map-selection__title map-selection__title--skeleton">
+          <MapIcon size={20} /> {t('teamSelection.mobileSelectCountry')}
+          <span className="map-selection__skeleton-spinner" aria-hidden="true" />
+        </div>
+        <span className="sr-only">{t('teamSelection.loadingHistorical')}</span>
+        <div className="map-selection__countries" aria-hidden="true">
+          {skeletonContinents.map((continent) => (
+            <React.Fragment key={continent.key}>
+              <div className="map-selection__continent-header">{continent.label}</div>
+              {Array.from({ length: continent.count }).map((_, index) => (
+                <div
+                  key={`${continent.key}-${index}`}
+                  className="map-selection__country-card map-selection__country-card--skeleton"
+                >
+                  <span className="ts-skel ts-skel--flag" />
+                  <span className="map-selection__country-copy">
+                    <span className="ts-skel ts-skel--line ts-skel--name" />
+                    <span className="ts-skel ts-skel--line ts-skel--meta" />
+                  </span>
+                  <span className="ts-skel ts-skel--badge" />
+                </div>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   const renderDivisionCard = (leagueId) => {
-    const leagueTeams = getLeagueTeams(leagueId);
+    const leagueTeams = getTeamsForSelectedDatabase(leagueId);
     const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
     const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
     const numGroups = groups ? Object.keys(groups).length : 0;
-    const leagueTier = getLeagueTier(leagueId);
+    const leagueTier = getLeagueTierForSelectedDatabase(leagueId);
 
     return (
       <button
@@ -1136,7 +1516,7 @@ export default function TeamSelection() {
       >
         <span className="map-selection__division-index">{String(leagueTier).padStart(2, '0')}</span>
         <div className="map-selection__division-copy">
-          <div className="map-selection__division-name">{LEAGUE_NAMES[leagueId]}</div>
+          <div className="map-selection__division-name">{getHistoricalLeagueName(leagueId)}</div>
           <div className="map-selection__division-info">
             {leagueTeams.length > 0
               ? hasGroupsForLeague
@@ -1195,29 +1575,66 @@ export default function TeamSelection() {
         </div>
       </div>
 
+      <div className={`historical-season-bar ${isHistoricalSeason ? 'historical-season-bar--active' : ''}`}>
+        <div className="historical-season-bar__copy">
+          <Calendar size={18} />
+          <div>
+            <strong>{t('teamSelection.activeDatabase')}</strong>
+            <span>{currentSeasonCopy}</span>
+          </div>
+        </div>
+
+        <div className="historical-season-bar__controls">
+          <div className="historical-season-bar__meta">
+            <span className="historical-season-bar__badge">
+              {isHistoricalSeason
+                ? t('teamSelection.historicalBadge', { season: formatSeasonRange(selectedSeason) })
+                : t('teamSelection.currentBadge')}
+            </span>
+            <span>{selectedSeasonMeta}</span>
+          </div>
+          <div className="historical-season-bar__notice">
+            {t('teamSelection.changeDatabaseHint')}
+          </div>
+        </div>
+
+        {(historicalLoading || historicalError || historicalIndexWarning) && (
+          <div className={`historical-season-bar__notice ${historicalError ? 'historical-season-bar__notice--error' : ''}`}>
+            {historicalLoading && t('teamSelection.loadingHistorical')}
+            {historicalError && historicalError}
+            {!historicalLoading && !historicalError && historicalIndexWarning}
+          </div>
+        )}
+      </div>
       {/* CONTENIDO */}
       <div className="pcf-ts-content">
         {/* PAÍSES - Mapa interactivo */}
         {currentContent === 'countries' && (
-          <div className={`map-selection ${selectedCountry ? 'map-selection--country-selected' : ''}`}>
+          <div className={`map-selection ${selectedCountry ? 'map-selection--country-selected' : ''} ${historicalSkeleton ? 'map-selection--historical-loading' : ''}`.trim()}>
             {/* Row con mapa y panel */}
             <div className="map-selection__row">
               {/* Globo unificado con todos los países */}
               <div className="map-selection__map">
-                <WorldMap
-                  countries={COUNTRIES}
-                  selectedCountry={selectedCountry?.id}
-                  hoveredCountry={hoveredCountryId}
-                  onCountryClick={(countryId) => {
-                    if (!countryId) {
-                      setSelectedCountry(null);
-                      setHoveredCountryId(null);
-                      return;
-                    }
-                    const country = COUNTRIES.find(c => c.id === countryId);
-                    if (country) handleSelectCountry(country);
-                  }}
-                />
+                {historicalSkeleton ? (
+                  <div className="map-selection__map-skeleton" aria-hidden="true">
+                    <span className="map-selection__map-skeleton-globe" />
+                  </div>
+                ) : (
+                  <WorldMap
+                    countries={selectableCountries}
+                    selectedCountry={selectedCountry?.id}
+                    hoveredCountry={hoveredCountryId}
+                    onCountryClick={(countryId) => {
+                      if (!countryId) {
+                        setSelectedCountry(null);
+                        setHoveredCountryId(null);
+                        return;
+                      }
+                      const country = selectableCountries.find(c => c.id === countryId);
+                      if (country) handleSelectCountry(country);
+                    }}
+                  />
+                )}
               </div>
               
               {/* Panel de ligas del país seleccionado */}
@@ -1261,11 +1678,11 @@ export default function TeamSelection() {
                   </div>
                   <div className="map-selection__divisions">
                     {selectedCountry.leagues.map(leagueId => {
-                      const leagueTeams = getLeagueTeams(leagueId);
+                      const leagueTeams = getTeamsForSelectedDatabase(leagueId);
                       const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
                       const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
                       const numGroups = groups ? Object.keys(groups).length : 0;
-                      const leagueTier = getLeagueTier(leagueId);
+                      const leagueTier = getLeagueTierForSelectedDatabase(leagueId);
                       
                       return (
                         <button
@@ -1276,7 +1693,7 @@ export default function TeamSelection() {
                         >
                           <span className="map-selection__division-index">{String(leagueTier).padStart(2, '0')}</span>
                           <div className="map-selection__division-copy">
-                            <div className="map-selection__division-name">{LEAGUE_NAMES[leagueId]}</div>
+                            <div className="map-selection__division-name">{getHistoricalLeagueName(leagueId)}</div>
                             <div className="map-selection__division-info">
                               {leagueTeams.length > 0 
                                 ? hasGroupsForLeague 
@@ -1294,18 +1711,20 @@ export default function TeamSelection() {
                     })}
                   </div>
                 </div>
+              ) : historicalSkeleton ? (
+                renderCountrySkeleton()
               ) : (
                 <>
                   <div className="map-selection__title">
-                    <Map size={20} /> {t('teamSelection.mobileSelectCountry')}
+                    <MapIcon size={20} /> {t('teamSelection.mobileSelectCountry')}
                   </div>
                   <div className="map-selection__countries">
                     <div className="map-selection__continent-header">🌍 {t('teamSelection.continentEurope')}</div>
-                    {EUROPEAN_COUNTRIES.map(renderCountryRow)}
+                    {selectableCountries.filter(country => EUROPEAN_COUNTRIES.some(base => base.id === country.id)).map(renderCountryRow)}
                     <div className="map-selection__continent-header">🌎 {t('teamSelection.continentSouthAmerica')}</div>
-                    {SOUTH_AMERICAN_COUNTRIES.map(renderCountryRow)}
+                    {selectableCountries.filter(country => SOUTH_AMERICAN_COUNTRIES.some(base => base.id === country.id)).map(renderCountryRow)}
                     <div className="map-selection__continent-header">🌏 {t('teamSelection.continentRestOfWorld')}</div>
-                    {REST_OF_WORLD_COUNTRIES.map(renderCountryRow)}
+                    {selectableCountries.filter(country => REST_OF_WORLD_COUNTRIES.some(base => base.id === country.id)).map(renderCountryRow)}
                   </div>
                 </>
               )}
@@ -1428,7 +1847,7 @@ export default function TeamSelection() {
             <div className={teamsPanelClasses}>
               <div className="panel-header">
                 <span className="league-name">
-                  <span className={`league-country-flag ${selectedCountry?.flagVariant === 'code' ? 'league-country-flag--code' : ''}`.trim()}>{selectedCountry?.flag}</span> {LEAGUE_NAMES[selectedLeague]}
+                  <span className={`league-country-flag ${selectedCountry?.flagVariant === 'code' ? 'league-country-flag--code' : ''}`.trim()}>{selectedCountry?.flag}</span> {getHistoricalLeagueName(selectedLeague)}
                   {selectedGroup && ` - ${getLeagueGroups(selectedLeague)?.[selectedGroup]?.name}`}
                 </span>
                 <span className="team-count">{t('teamSelection.teamsCount', { count: teams.length })}</span>
@@ -1461,7 +1880,7 @@ export default function TeamSelection() {
                       onClick={() => handleSelectTeam(team)}
                     >
                       <span className="team-num">{idx + 1}</span>
-                      <TeamCrest teamId={team.id} size={28} />
+                      <TeamCrest teamId={team.id} teamName={team.name} teamSlug={team.slug} lookupKeys={team.crestLookupKeys} seed={team.crestSeed} size={28} />
                       <div className="team-info">
                         <span className="name">{team.name}</span>
                         <span className="city">{team.city}</span>
@@ -1489,7 +1908,7 @@ export default function TeamSelection() {
                     }}
                   >
                     <div className="badge-large">
-                      <TeamCrest teamId={selectedTeam.id} size={64} />
+                      <TeamCrest teamId={selectedTeam.id} teamName={selectedTeam.name} teamSlug={selectedTeam.slug} lookupKeys={selectedTeam.crestLookupKeys} seed={selectedTeam.crestSeed} size={64} />
                     </div>
                     <div className="team-title">
                       <h2>{selectedTeam.name}</h2>
@@ -1577,15 +1996,15 @@ export default function TeamSelection() {
             <div className="preseason-page__hero">
               <div className="preseason-page__eyebrow">
                 <Calendar size={18} />
-                <span>Planificacion de pretemporada</span>
+                <span>{t('teamSelection.preseasonPlanning')}</span>
               </div>
               <div className="preseason-page__title-row">
                 <div>
                   <h1>{t('teamSelection.preseasonTitle', { team: selectedTeam?.name })}</h1>
-                  <p>Elige una gira de 5 partidos ajustada al nivel competitivo y mediatico de tu club.</p>
+                  <p>{t('teamSelection.preseasonSubtitle')}</p>
                 </div>
                 <div className="preseason-page__team-card">
-                  <span>Club</span>
+                  <span>{t('teamSelection.club')}</span>
                   <strong>{selectedTeam?.name}</strong>
                   <small>{selectedTeam?.reputation || '--'} REP</small>
                 </div>
@@ -1594,7 +2013,11 @@ export default function TeamSelection() {
             
             <div className="preseason-options">
               {preseasonOptions.map(option => {
-                const difficultyLabel = option.difficulty === 'high' ? 'Alta' : option.difficulty === 'medium' ? 'Media' : 'Controlada';
+                const difficultyLabel = option.difficulty === 'high'
+                  ? t('teamSelection.tourDiffHigh')
+                  : option.difficulty === 'medium'
+                    ? t('teamSelection.tourDiffMedium')
+                    : t('teamSelection.tourDiffControlled');
                 return (
                   <div 
                     key={option.id}
@@ -1604,16 +2027,16 @@ export default function TeamSelection() {
                     <div className="card-header">
                       <div className="tour-icon"><FootballIcon size={22} /></div>
                       <div>
-                        <span className="tour-kicker">{option.identity}</span>
-                        <h3>{option.name}</h3>
+                        <span className="tour-kicker">{getPreseasonTourText(option, 'identity')}</span>
+                        <h3>{getPreseasonTourText(option, 'name')}</h3>
                       </div>
                     </div>
-                    <p className="card-description">{option.description}</p>
+                    <p className="card-description">{getPreseasonTourText(option, 'description')}</p>
 
                     <div className="tour-metrics">
-                      <span><strong>{option.expectedOvrRange}</strong> OVR rivales</span>
-                      <span><strong>{difficultyLabel}</strong> dificultad</span>
-                      <span><strong>{option.mediaTier}</strong> media</span>
+                      <span><strong>{option.expectedOvrRange}</strong> {t('teamSelection.ovrRivals')}</span>
+                      <span><strong>{difficultyLabel}</strong> {t('teamSelection.tourDifficultyLabel')}</span>
+                      <span><strong>{getMediaTierText(option.mediaTier)}</strong> {t('teamSelection.mediaTierLabel')}</span>
                     </div>
                     
                     <div className="matches-preview">
@@ -1622,7 +2045,7 @@ export default function TeamSelection() {
                           <li key={idx}>
                             <span className="match-location">
                               {match.isHome ? <Home size={14} /> : <Plane size={14} />}
-                              {match.isHome ? 'Casa' : 'Fuera'}
+                              {match.isHome ? t('teamSelection.home') : t('teamSelection.away')}
                             </span>
                             <span className="opponent-name">{match.opponent?.name || 'TBD'}</span>
                             <span className={`opponent-ovr difficulty--${match.difficulty}`}>{match.opponentLevel || match.opponent?.reputation || '??'} OVR</span>
@@ -1654,7 +2077,7 @@ export default function TeamSelection() {
                 className="btn-skip"
                 onClick={() => handleStartGame(true)}
               >
-                Saltar pretemporada
+                {t('teamSelection.skipPreseason')}
               </button>
               <button 
                 className="btn-confirm"

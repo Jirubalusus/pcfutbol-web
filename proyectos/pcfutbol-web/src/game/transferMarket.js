@@ -217,6 +217,114 @@ export const HIDDEN_GEM_TYPES = {
 };
 
 // ============================================================
+// REALISMO DE OFERTAS ENTRANTES
+// ============================================================
+// Las ofertas IA deben sentirse como mercado real: nivel y presupuesto del
+// comprador acordes al jugador, más peso local para equipos españoles modestos
+// y sin operaciones directas entre rivalidades obvias.
+
+const DIRECT_RIVAL_GROUPS = [
+  ['real madrid', 'barcelona'],
+  ['real betis', 'betis', 'sevilla'],
+  ['atletico madrid', 'atlético madrid', 'real madrid'],
+  ['athletic club', 'athletic bilbao', 'real sociedad'],
+  ['valencia', 'levante'],
+  ['espanyol', 'barcelona']
+];
+
+const SECOND_TIER_LEAGUE_HINTS = ['segunda', 'serieb', 'serie b', 'championship', 'ligue2', 'ligue 2', 'bundesliga2', '2bundesliga', '2. bundesliga'];
+
+function normalizeMarketText(value = '') {
+  return String(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function getTeamName(team) {
+  return normalizeMarketText(team?.name || team?.shortName || team?.id || '');
+}
+
+function getLeagueText(team) {
+  return normalizeMarketText(`${team?.leagueId || ''} ${team?.league || ''} ${team?.competition || ''} ${team?.country || ''}`);
+}
+
+function getLeagueCountry(team) {
+  const text = getLeagueText(team);
+  if (/spain|espana|laliga|segunda|rfef/.test(text)) return 'spain';
+  if (/italy|italia|serie a|serie b|serieb/.test(text)) return 'italy';
+  if (/england|inglaterra|premier|championship/.test(text)) return 'england';
+  if (/france|francia|ligue/.test(text)) return 'france';
+  if (/germany|alemania|bundesliga/.test(text)) return 'germany';
+  if (/portugal|primeira/.test(text)) return 'portugal';
+  if (/netherlands|paises bajos|eredivisie/.test(text)) return 'netherlands';
+  if (/argentina/.test(text)) return 'argentina';
+  if (/brazil|brasil/.test(text)) return 'brazil';
+  return text || 'unknown';
+}
+
+function isSecondTierTeam(team) {
+  const text = getLeagueText(team);
+  const level = Number(team?.leagueLevel || team?.divisionLevel || team?.tierLevel || 0);
+  return level >= 2 || SECOND_TIER_LEAGUE_HINTS.some(hint => text.includes(normalizeMarketText(hint)));
+}
+
+function areDirectRivals(teamA, teamB) {
+  const a = getTeamName(teamA);
+  const b = getTeamName(teamB);
+  if (!a || !b) return false;
+  return DIRECT_RIVAL_GROUPS.some(group => {
+    const normalizedGroup = group.map(normalizeMarketText);
+    return normalizedGroup.some(alias => a === alias || a.includes(alias))
+      && normalizedGroup.some(alias => b === alias || b.includes(alias))
+      && a !== b;
+  });
+}
+
+function getTeamBudget(team) {
+  return Number(team?.transferBudget ?? team?.budget ?? team?.money ?? 0);
+}
+
+function getApproxTeamRating(team, fallback = 68) {
+  const players = Array.isArray(team?.players) ? team.players : [];
+  if (players.length) {
+    return Math.round(players.reduce((sum, p) => sum + Number(p?.overall || fallback), 0) / players.length);
+  }
+  if (Number.isFinite(Number(team?.overall))) return Number(team.overall);
+  if (Number.isFinite(Number(team?.rating))) return Number(team.rating);
+  if (Number.isFinite(Number(team?.reputation))) return Math.round(Number(team.reputation));
+  return fallback;
+}
+
+function getPrestigeScore(team, fallback = 68) {
+  return Math.max(getApproxTeamRating(team, fallback), Number(team?.reputation || 0) || fallback);
+}
+
+function getDomesticBias(sellingTeam) {
+  const country = getLeagueCountry(sellingTeam);
+  const modestSpanish = country === 'spain'
+    && (isSecondTierTeam(sellingTeam) || getPrestigeScore(sellingTeam, 68) <= 76);
+  return modestSpanish ? 0.58 : 0.35;
+}
+
+function weightedShuffle(items) {
+  const pool = [...items];
+  const result = [];
+  while (pool.length) {
+    const total = pool.reduce((sum, item) => sum + Math.max(0.01, item.weight || 0.01), 0);
+    let pick = Math.random() * total;
+    const index = pool.findIndex(item => {
+      pick -= Math.max(0.01, item.weight || 0.01);
+      return pick <= 0;
+    });
+    result.push(pool.splice(index >= 0 ? index : pool.length - 1, 1)[0]);
+  }
+  return result;
+}
+
+// ============================================================
 // CLASE PRINCIPAL: TransferMarket
 // ============================================================
 
@@ -600,7 +708,7 @@ export class TransferMarket {
       
       if (Math.random() < offerChance) {
         // Seleccionar equipo interesado
-        const interestedTeams = this.findInterestedTeams(player, allTeams);
+        const interestedTeams = this.findInterestedTeams(player, allTeams, playerTeam);
         
         for (const team of interestedTeams.slice(0, 2)) { // Max 2 ofertas por jugador
           const offer = this.generateAIOffer(player, playerTeam, team);
@@ -620,7 +728,7 @@ export class TransferMarket {
    * Calcular probabilidad de recibir oferta
    */
   calculateOfferChance(player, team) {
-    let chance = 0.05; // Base 5%
+    let chance = 0.07; // Base 7% — un poco más de actividad sin romper la lógica
 
     // Factor overall
     if (player.overall >= 85) chance += 0.25;
@@ -663,15 +771,19 @@ export class TransferMarket {
   /**
    * Encontrar equipos interesados en un jugador
    */
-  findInterestedTeams(player, allTeams) {
+  findInterestedTeams(player, allTeams, sellingTeam = null) {
+    const context = sellingTeam || this.getPlayerTeam() || {};
+    const playerValue = this.calculateMarketValue(player);
     const validTeams = allTeams.filter(team => {
+      if (!this.isPlausibleBuyerForPlayer(team, player, context, playerValue)) return false;
+
       // Puede permitirse el salario
-      const annualWage = player.salary * 52 * 1.2; // Asumen que pedirá más
-      if ((team.wageBudget || team.budget * 0.5) < annualWage) return false;
+      const annualWage = (player.salary || 10000) * 52 * 1.2; // Asumen que pedirá más
+      if ((team.wageBudget || getTeamBudget(team) * 0.5) < annualWage) return false;
 
       // Puede permitirse el traspaso (aproximado)
-      const estimatedFee = this.calculateMarketValue(player) * 0.8;
-      if (team.budget < estimatedFee) return false;
+      const estimatedFee = playerValue * 0.8;
+      if (getTeamBudget(team) < estimatedFee) return false;
 
       // Necesita esa posición o es muy bueno
       const hasNeed = this.teamNeedsPosition(team, player.position);
@@ -680,21 +792,76 @@ export class TransferMarket {
       return hasNeed || isExceptional;
     });
 
-    // Ordenar por probabilidad de interés
-    return validTeams
-      .map(team => ({
-        team,
-        interest: this.calculateTeamInterest(team, player)
-      }))
-      .filter(t => t.interest > 0.3)
-      .sort((a, b) => b.interest - a.interest)
+    const domesticBias = getDomesticBias(context);
+    const sellerCountry = getLeagueCountry(context);
+
+    // Ordenar por una selección ponderada: variación, pero con mercado lógico.
+    return weightedShuffle(validTeams
+      .map(team => {
+        const interest = this.calculateTeamInterest(team, player, context, playerValue);
+        const domestic = sellerCountry !== 'unknown' && getLeagueCountry(team) === sellerCountry;
+        const domesticWeight = domestic ? (domesticBias > 0.5 ? 0.68 : 1 + domesticBias * 0.15) : 1;
+        const prestigeFit = 1 / (1 + Math.abs(getPrestigeScore(team, 68) - player.overall) / 20);
+        return {
+          team,
+          interest,
+          weight: interest * domesticWeight * (0.65 + prestigeFit)
+        };
+      })
+      .filter(t => t.interest > 0.28))
       .map(t => t.team);
+  }
+
+  /**
+   * Filtro duro de coherencia: evita ofertas imposibles por nivel, presupuesto
+   * o rivalidad directa, sin impedir todos los movimientos raros pero creíbles.
+   */
+  isPlausibleBuyerForPlayer(team, player, sellingTeam = {}, marketValue = null) {
+    if (!team || !player) return false;
+    if (sellingTeam?.id && team.id === sellingTeam.id) return false;
+    if (areDirectRivals(team, sellingTeam)) return false;
+
+    const value = marketValue ?? this.calculateMarketValue(player);
+    const budget = getTeamBudget(team);
+    if (budget > 0 && budget < value * 0.75) return false;
+
+    const buyerPrestige = getPrestigeScore(team, 68);
+    const buyerAvg = this.getTeamAverageOverall(team);
+    const buyerLevel = Math.max(buyerPrestige, buyerAvg);
+    const playerOverall = Number(player.overall || 70);
+
+    // Estrellas mundiales no reciben ofertas de segundas divisiones ni clubes de nivel bajo.
+    if (playerOverall >= 88) {
+      if (isSecondTierTeam(team)) return false;
+      if (buyerLevel < playerOverall - 8) return false;
+      if (budget > 0 && budget < value) return false;
+      return true;
+    }
+
+    if (playerOverall >= 82 && buyerLevel < playerOverall - 12) return false;
+    if (playerOverall >= 75 && buyerLevel < playerOverall - 16) return false;
+    if (playerOverall < 75 && buyerLevel < playerOverall - 20) return false;
+
+    // Un club enorme no suele pujar por jugadores claramente fuera de su nivel.
+    if (buyerLevel >= 88 && playerOverall < 82) return false;
+    if (buyerLevel >= 84 && playerOverall < buyerLevel - 18) return false;
+
+    return true;
+  }
+
+  getTeamAverageOverall(team) {
+    const directPlayers = Array.isArray(team?.players) ? team.players : [];
+    if (directPlayers.length) return getApproxTeamRating(team, 68);
+    const ids = Array.isArray(team?.playerIds) ? team.playerIds : [];
+    const players = ids.map(id => this.getPlayer(id)).filter(Boolean);
+    if (!players.length) return getApproxTeamRating(team, 68);
+    return Math.round(players.reduce((sum, p) => sum + Number(p.overall || 68), 0) / players.length);
   }
 
   /**
    * Calcular interés de un equipo en un jugador
    */
-  calculateTeamInterest(team, player) {
+  calculateTeamInterest(team, player, sellingTeam = null, marketValue = null) {
     let interest = 0.5;
 
     // Necesidad posicional
@@ -709,12 +876,16 @@ export class TransferMarket {
     }
 
     // Reputación del equipo vs calidad del jugador
-    const repDiff = (team.reputation || 70) - player.overall;
+    const repDiff = getPrestigeScore(team, 70) - player.overall;
     if (repDiff > 5) interest -= 0.15; // Equipo grande, jugador pequeño
     if (repDiff < -5) interest += 0.1; // Jugador estrella para el equipo
 
+    if (sellingTeam && getLeagueCountry(team) === getLeagueCountry(sellingTeam)) {
+      interest += getDomesticBias(sellingTeam) * 0.02;
+    }
+
     // Presupuesto disponible
-    const budgetRatio = team.budget / this.calculateMarketValue(player);
+    const budgetRatio = getTeamBudget(team) / (marketValue || this.calculateMarketValue(player));
     if (budgetRatio > 3) interest += 0.1;
     if (budgetRatio < 1) interest -= 0.3;
 

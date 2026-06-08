@@ -78,6 +78,121 @@ export const COMPETITIONS = {
   conferenceleague: CONFERENCE_LEAGUE
 };
 
+export const DEFAULT_EUROPEAN_COMPETITION_IDS = ['championsLeague', 'europaLeague', 'conferenceleague'];
+
+export function seasonIdFromStartYear(startYear) {
+  const year = Number(startYear);
+  if (!Number.isFinite(year)) return null;
+  return `${year}-${String((year + 1) % 100).padStart(2, '0')}`;
+}
+
+export function parseEuropeanSeasonStartYear(seasonIdOrYear) {
+  if (seasonIdOrYear == null || seasonIdOrYear === 'current') return null;
+  if (typeof seasonIdOrYear === 'number') return Number.isFinite(seasonIdOrYear) ? seasonIdOrYear : null;
+  const text = String(seasonIdOrYear).trim();
+  const match = text.match(/^(\d{4})(?:[-/]\d{2,4})?$/);
+  if (!match) return null;
+  return Number(match[1]);
+}
+
+export function getEuropeanCompetitionIdsForSeason(seasonId, { historical = false } = {}) {
+  if (!historical) return [...DEFAULT_EUROPEAN_COMPETITION_IDS];
+  const startYear = parseEuropeanSeasonStartYear(seasonId);
+  if (startYear == null || startYear >= 2021) return [...DEFAULT_EUROPEAN_COMPETITION_IDS];
+  return ['championsLeague', 'europaLeague'];
+}
+
+export function getPersistedEuropeanCompetitionIds(europeanCompetitions) {
+  if (!europeanCompetitions) return null;
+  const persisted = Array.isArray(europeanCompetitions.activeCompetitionIds) && europeanCompetitions.activeCompetitionIds.length
+    ? europeanCompetitions.activeCompetitionIds
+    : (europeanCompetitions.competitions && typeof europeanCompetitions.competitions === 'object'
+      ? Object.keys(europeanCompetitions.competitions)
+      : null);
+  if (!Array.isArray(persisted) || persisted.length === 0) return null;
+  const persistedSet = new Set(persisted);
+  return DEFAULT_EUROPEAN_COMPETITION_IDS.filter((compId) => persistedSet.has(compId));
+}
+
+/**
+ * Whether a given European competition existed in a given season.
+ * For non-historical / current play every competition is active.
+ * For historical saves the Conference League (in-game "Continental Trophy")
+ * only exists from 2021-22 onward.
+ */
+export function isCompetitionActiveForSeason(compId, seasonId, { historical = false } = {}) {
+  return getEuropeanCompetitionIdsForSeason(seasonId, { historical }).includes(compId);
+}
+
+/**
+ * Derive the European historical-era context for the *currently playing*
+ * season from the persisted game state. This is the single source of truth
+ * used by the league table, season outcome and Europe screens so that the
+ * set of active competitions cannot drift between them.
+ *
+ * Only historical-database saves apply era rules; current/non-historical
+ * play always exposes all three competitions.
+ *
+ * `databaseSeasonId` is pinned to the career's start dataset (e.g. '2008-09')
+ * and never advances, so the live season is derived from
+ * `careerStartSeason + (currentSeason - 1)` and only falls back to
+ * `databaseSeasonId` when the start year is unavailable.
+ *
+ * @param {Object} state - game state
+ * @returns {{ historical: boolean, seasonId: string|null, startYear: number|null, activeCompetitionIds: string[] }}
+ */
+export function getEuropeanEraContextFromState(state) {
+  const historical = Boolean(state?.historicalDatabase);
+  const persistedActiveCompetitionIds = getPersistedEuropeanCompetitionIds(state?.europeanCompetitions);
+  if (!historical) {
+    return {
+      historical: false,
+      seasonId: null,
+      startYear: null,
+      activeCompetitionIds: persistedActiveCompetitionIds || [...DEFAULT_EUROPEAN_COMPETITION_IDS]
+    };
+  }
+
+  let startYear = null;
+  const rawStart = Number(state?.careerStartSeason);
+  if (Number.isFinite(rawStart)) {
+    const offset = Math.max(0, (Number(state?.currentSeason) || 1) - 1);
+    startYear = rawStart + offset;
+  } else {
+    startYear = parseEuropeanSeasonStartYear(state?.databaseSeasonId);
+  }
+
+  const seasonId = startYear != null
+    ? seasonIdFromStartYear(startYear)
+    : (state?.databaseSeasonId ?? null);
+  const seasonActiveCompetitionIds = getEuropeanCompetitionIdsForSeason(seasonId, { historical: true });
+  const activeCompetitionIds = persistedActiveCompetitionIds
+    ? seasonActiveCompetitionIds.filter((compId) => persistedActiveCompetitionIds.includes(compId))
+    : seasonActiveCompetitionIds;
+  return { historical: true, seasonId, startYear, activeCompetitionIds };
+}
+
+export function getCompetitionConfigForSeason(compId, seasonId, { historical = false } = {}) {
+  const base = COMPETITIONS[compId];
+  if (!base) return null;
+  if (!historical) return base;
+
+  const startYear = parseEuropeanSeasonStartYear(seasonId);
+  if (compId === 'championsLeague') {
+    return { ...base, name: 'Champions League', shortName: 'Champions' };
+  }
+  if (compId === 'europaLeague') {
+    if (startYear != null && startYear <= 2008) {
+      return { ...base, name: 'UEFA Cup', shortName: 'UEFA' };
+    }
+    return { ...base, name: 'Europa League', shortName: 'Europa League' };
+  }
+  if (compId === 'conferenceleague' && startYear != null && startYear >= 2021) {
+    return { ...base, name: 'Conference League', shortName: 'Conference' };
+  }
+  return base;
+}
+
 // ============================================================
 // LEAGUE SLOTS — How many teams each European top-flight league
 // sends per continental competition.
@@ -133,21 +248,40 @@ export const EUROPEAN_LEAGUE_IDS = new Set(Object.keys(LEAGUE_SLOTS));
  * European competition in a given league. Derived directly from LEAGUE_SLOTS
  * so UI badges, season outcome and actual qualification cannot diverge.
  *
+ * When `options` carries a historical season context in which the
+ * Conference League did not yet exist (pre 2021-22), the `conference`
+ * range is empty so no league row is coloured/legended for a competition
+ * that should not exist. Called with no options it keeps the full
+ * three-competition behaviour (current play and module-load defaults).
+ *
  * @param {string} leagueId
+ * @param {{ seasonId?: string|number|null, historical?: boolean, activeCompetitionIds?: string[] }} [options]
  * @returns {{ champions: number[], europaLeague: number[], conference: number[] } | null}
  */
-export function getEuropeanPositionsForLeague(leagueId) {
+export function getEuropeanPositionsForLeague(leagueId, options = {}) {
   const slots = LEAGUE_SLOTS[leagueId];
   if (!slots) return null;
   const cl = slots.championsLeague || 0;
   const el = slots.europaLeague || 0;
-  const ecl = slots.conferenceleague || 0;
+  const ecl = isConferenceActiveForOptions(options) ? (slots.conferenceleague || 0) : 0;
   const range = (start, count) => Array.from({ length: count }, (_, i) => start + i);
   return {
     champions: range(1, cl),
     europaLeague: range(cl + 1, el),
     conference: range(cl + el + 1, ecl)
   };
+}
+
+/**
+ * Resolve whether the Conference League is active for a positions/slots
+ * lookup. Accepts either an explicit `activeCompetitionIds` list or a
+ * `{ seasonId, historical }` pair. With no signal at all it defaults to
+ * active so current play and module-load callers are unaffected.
+ */
+function isConferenceActiveForOptions({ seasonId = null, historical = false, activeCompetitionIds = null } = {}) {
+  if (Array.isArray(activeCompetitionIds)) return activeCompetitionIds.includes('conferenceleague');
+  if (!historical) return true;
+  return isCompetitionActiveForSeason('conferenceleague', seasonId, { historical: true });
 }
 
 /**
@@ -574,6 +708,71 @@ export function calculatePrizeMoney(competition, teamResults) {
   }
 
   return total;
+}
+
+// ============================================================
+// PRIZE → SPENDABLE CASH ALLOCATION (game balance)
+// ============================================================
+// The nominal prize figures above are realistic-ish gross continental
+// revenue. They are still tracked in full per team (prizesMoney) so prize
+// tables, season summaries and messages can quote the headline number.
+//
+// But crediting the FULL gross prize straight into the playable transfer
+// balance breaks career progression for small clubs: a single Champions
+// participation fee (15M) dwarfs a typical Segunda/promoted-side budget
+// (3M–15M), so one European run would instantly make an underdog richer
+// than half of LaLiga and trivialise the climb.
+//
+// In reality the board only frees a SHARE of continental revenue into the
+// spendable transfer kitty — the rest is swallowed by the operating cost of
+// the campaign (wage/appearance bonuses, travel, infrastructure, debt) and
+// by directors keeping a buffer. Elite clubs run their European campaigns at
+// near break-even against those costs and reputationally need to reinvest in
+// the squad, so almost all of the prize reaches the transfer balance. Smaller
+// clubs bank a larger fraction against operating costs, so less reaches it.
+//
+// We model that as a deterministic, monotonic, bounded multiplier on the cash
+// CREDITED to `money`, keyed off club reputation (a stable proxy for club
+// size; budget swings as you spend, reputation does not).
+
+// Reputation anchors for the cashflow share. At/below LOW_REP a club only
+// frees MIN_SHARE of continental cash; at/above HIGH_REP it frees the full
+// MAX_SHARE. Linear in between — no cliffs.
+const PRIZE_CASHFLOW_LOW_REP = 60;   // small/promoted side
+const PRIZE_CASHFLOW_HIGH_REP = 85;  // established elite
+const PRIZE_CASHFLOW_MIN_SHARE = 0.4; // underdog floor — Europe still rewards
+const PRIZE_CASHFLOW_MAX_SHARE = 1.0; // elite ceiling — never above full payout
+
+/**
+ * Board/operational allocation: what fraction of a continental prize a club of
+ * the given profile actually releases into spendable transfer cash.
+ *
+ * Deterministic, monotonic in reputation, bounded in
+ * [PRIZE_CASHFLOW_MIN_SHARE, PRIZE_CASHFLOW_MAX_SHARE]. Big clubs are never
+ * punished below full payout; small clubs are softened, not starved.
+ *
+ * @param {{ reputation?: number }} team - the player's club (state.team)
+ * @returns {number} multiplier in [MIN_SHARE, MAX_SHARE]
+ */
+export function getEuropeanPrizeCashflowMultiplier(team = {}) {
+  const rep = Number.isFinite(team?.reputation) ? team.reputation : 70;
+  if (rep <= PRIZE_CASHFLOW_LOW_REP) return PRIZE_CASHFLOW_MIN_SHARE;
+  if (rep >= PRIZE_CASHFLOW_HIGH_REP) return PRIZE_CASHFLOW_MAX_SHARE;
+  const t = (rep - PRIZE_CASHFLOW_LOW_REP) / (PRIZE_CASHFLOW_HIGH_REP - PRIZE_CASHFLOW_LOW_REP);
+  return PRIZE_CASHFLOW_MIN_SHARE + t * (PRIZE_CASHFLOW_MAX_SHARE - PRIZE_CASHFLOW_MIN_SHARE);
+}
+
+/**
+ * Convert a gross continental prize delta into the spendable cash a club of the
+ * given profile actually banks. Rounded to whole euros so balances stay clean.
+ *
+ * @param {number} grossPrize - nominal prize delta (from prizesMoney tracking)
+ * @param {{ reputation?: number }} team - the player's club
+ * @returns {number} spendable cash to add to `money`
+ */
+export function applyEuropeanPrizeCashflow(grossPrize, team) {
+  if (!grossPrize || grossPrize <= 0) return 0;
+  return Math.round(grossPrize * getEuropeanPrizeCashflowMultiplier(team));
 }
 
 /**

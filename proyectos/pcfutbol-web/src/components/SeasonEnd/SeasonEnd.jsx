@@ -35,18 +35,31 @@ import {
   getEuropeanBonus,
   EUROPEAN_SPOTS
 } from '../../game/seasonManager';
-import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, buildEuropeanCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
+import {
+  qualifyTeamsForEurope,
+  LEAGUE_SLOTS,
+  buildSeasonCalendar,
+  buildEuropeanCalendar,
+  remapFixturesForEuropean,
+  ensureEuropeanLeagueStandings,
+  getCompetitionConfigForSeason,
+  getEuropeanCompetitionIdsForSeason,
+  getEuropeanEraContextFromState,
+  seasonIdFromStartYear
+} from '../../game/europeanCompetitions';
 import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
 import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal, simulateOtherLeaguesWeek, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { getLeagueTier } from '../../game/leagueTiers';
-import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
+import { isSouthAmericanLeague, buildSouthAmericanQualifiedTeams, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { initializeLeague, simulateMatch } from '../../game/leagueEngine';
-import { processSeasonEnd, GLORY_DIVISIONS } from '../../game/gloryEngine';
+import { processSeasonEnd, GLORY_DIVISIONS, calculateGlorySeasonFinancials } from '../../game/gloryEngine';
+import { shouldSuppressGloryHistoricalRelegation } from '../../game/gloryHistoricalRules';
 import { getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefGroups, getPrimeraRfefGroups, getSegundaRfefTeams } from '../../data/teamsFirestore';
 import { initializeNewSeasonWithPromotions, getLeagueName, getLeagueTable, completeRemainingLeagues } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
+import { buildEuropeanFallbackTeamGetter } from '../../data/activeSeasonUniverse';
 import {
   generatePlayoffBracket,
   simulatePlayoffMatch,
@@ -69,6 +82,10 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const playerLeagueId = state.playerLeagueId || 'laliga';
+  const suppressHistoricalRelegation = shouldSuppressGloryHistoricalRelegation(state, playerLeagueId);
+  const euroEra = useMemo(() => getEuropeanEraContextFromState(state), [
+    state.historicalDatabase, state.databaseSeasonId, state.careerStartSeason, state.currentSeason
+  ]);
   
   // Determinar si hay playoffs pendientes
   const segundaTable = useMemo(() => {
@@ -186,8 +203,19 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     const resultTable = isAperturaClausura(playerLeagueId) && state.aperturaTable
       ? computeAccumulatedTable(state.aperturaTable, state.leagueTable)
       : state.leagueTable;
-    return getSeasonResult(resultTable, state.teamId, playerLeagueId);
-  }, [state.leagueTable, state.aperturaTable, state.teamId, playerLeagueId]);
+    return getSeasonResult(resultTable, state.teamId, playerLeagueId, {
+      ...euroEra,
+      suppressRelegation: suppressHistoricalRelegation
+    });
+  }, [state.leagueTable, state.aperturaTable, state.teamId, playerLeagueId, suppressHistoricalRelegation, euroEra]);
+
+  const administrativePermanence = useMemo(() => {
+    if (!suppressHistoricalRelegation) return false;
+    const resultTable = isAperturaClausura(playerLeagueId) && state.aperturaTable
+      ? computeAccumulatedTable(state.aperturaTable, state.leagueTable)
+      : state.leagueTable;
+    return getSeasonResult(resultTable, state.teamId, playerLeagueId, euroEra).relegation;
+  }, [state.leagueTable, state.aperturaTable, state.teamId, playerLeagueId, suppressHistoricalRelegation, euroEra]);
   
   // Calcular recompensas de objetivos
   const objectiveRewards = useMemo(() => {
@@ -427,7 +455,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       }
     }
 
-    const promotionSeasonData = initializeNewSeasonWithPromotions(completedState, state.teamId, null, {});
+    const promotionSeasonData = initializeNewSeasonWithPromotions(completedState, state.teamId, null, {
+      disablePrimeraRFEFToSegundaRFEFRelegation: suppressHistoricalRelegation
+    });
     let leagueTeams;
     let newLeagueId = nextDiv.id;
     let newGroupId = null;
@@ -584,9 +614,17 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       }
     }
 
-    // Money bonus by position
-    const moneyBonus = promoted ? (nextDiv.budget || 100000) : (playerPos <= 5 ? 50000 : 20000);
-    
+    // Glory yearly economy — centralised & bounded (see gloryEngine.js).
+    // net = league-finish income + one-time promotion grant - operating cost.
+    // This is the SINGLE promotion grant: processSeasonEnd no longer also adds
+    // nextDiv.budget, so there is no double-counting. Sheikh/card budget effects
+    // stay separate (already applied above via budgetDiff -> UPDATE_MONEY).
+    const { net: moneyBonus } = calculateGlorySeasonFinancials({
+      divisionId: gloryData.division || 'segundaRFEF',
+      position: playerPos,
+      promoted,
+    });
+
     dispatch({
       type: 'START_NEW_SEASON',
       payload: {
@@ -660,7 +698,16 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
       );
       const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-      dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: initializeEuropeanCompetitions(qualifiedTeams) });
+      const nextHistoricalSeasonId = state.historicalDatabase
+        ? seasonIdFromStartYear((Number(state.careerStartSeason) || 2025) + (Number(state.currentSeason) || 1))
+        : null;
+      dispatch({
+        type: 'INIT_EUROPEAN_COMPETITIONS',
+        payload: initializeEuropeanCompetitions(qualifiedTeams, {
+          seasonId: nextHistoricalSeasonId,
+          historical: state.historicalDatabase
+        })
+      });
     } catch (e) {
       console.error('Glory Euro comps init failed:', e);
     }
@@ -977,6 +1024,16 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         leagueStandings[finalPlayerLeague] = finalPlayerTable;
       }
       
+      // Apertura/Clausura champions earn a guaranteed Libertadores berth. Collect
+      // each A/C league's two champions so qualification pulls them to the front
+      // of the accumulated order (remaining berths still come from the table).
+      const aperturaClausuraChampions = {};
+      const playerAPCLFinal = completedState.aperturaClausuraFinal || state.aperturaClausuraFinal;
+      if (isAperturaClausura(finalPlayerLeague) && playerAPCLFinal) {
+        const champs = [playerAPCLFinal.aperturaChampion, playerAPCLFinal.clausuraChampion].filter(Boolean);
+        if (champs.length > 0) aperturaClausuraChampions[finalPlayerLeague] = champs;
+      }
+
       const otherLeagues = completedState.otherLeagues || state.otherLeagues || {};
       for (const [leagueId, leagueData] of Object.entries(otherLeagues)) {
         if (leagueId === finalPlayerLeague) continue;
@@ -986,6 +1043,11 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         if (standings?.length > 0) {
           leagueStandings[leagueId] = standings;
         }
+        const finalResult = leagueData?.finalResult;
+        if (isAperturaClausura(leagueId) && finalResult) {
+          const champs = [finalResult.aperturaChampion, finalResult.clausuraChampion].filter(Boolean);
+          if (champs.length > 0) aperturaClausuraChampions[leagueId] = champs;
+        }
       }
 
       allTeams.forEach(t => {
@@ -994,39 +1056,25 @@ export default function SeasonEnd({ allTeams, onComplete }) {
 
       if (isInSALeague) {
         // ── SOUTH AMERICAN COMPETITIONS ──
-        const qualifiedTeams = qualifyTeamsForSouthAmerica(leagueStandings, allTeamsMap);
-        
-        const totalQualified = qualifiedTeams.copaLibertadores.length + 
+        // Next-season draw is built from the FINAL standings that just ended
+        // (leagueStandings, assembled above from completedState), so the player
+        // qualifies by his real finish — never a new-season reset/reputation
+        // order. Short fields are topped up only with SA clubs from the same
+        // (historical or live) universe.
+        const saFillerPool = allTeams
+          .filter(t => isSouthAmericanLeague(t.league || t.leagueId || ''));
+        const qualifiedTeams = buildSouthAmericanQualifiedTeams({
+          leagueStandings,
+          allTeamsMap,
+          fillerPool: saFillerPool,
+          playerLeagueId: finalPlayerLeague,
+          aperturaClausuraChampions
+        });
+
+        const totalQualified = qualifiedTeams.copaLibertadores.length +
                                qualifiedTeams.copaSudamericana.length;
 
         if (totalQualified >= 8) {
-          const usedTeamIds = new Set();
-          Object.values(qualifiedTeams).forEach(teams => 
-            teams.forEach(t => usedTeamIds.add(t.teamId))
-          );
-
-          const remainingTeams = allTeams
-            .filter(t => !usedTeamIds.has(t.id || t.teamId) && isSouthAmericanLeague(t.league || t.leagueId || ''))
-            .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-
-          for (const compId of ['copaLibertadores', 'copaSudamericana']) {
-            const needed = 32 - qualifiedTeams[compId].length;
-            if (needed > 0) {
-              const fillers = remainingTeams.splice(0, needed);
-              qualifiedTeams[compId].push(...fillers.map(t => ({
-                teamId: t.id || t.teamId,
-                teamName: t.name || t.teamName,
-                shortName: t.shortName || '',
-                league: t.league || 'unknown',
-                leaguePosition: 0,
-                reputation: t.reputation || 60,
-                overall: t.overall || 65,
-                players: t.players || [],
-                ...t
-              })));
-            }
-          }
-
           const saState = initializeSACompetitions(qualifiedTeams);
           dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saState });
 
@@ -1053,26 +1101,89 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         // newly added European league) with reputation-ordered real teams
         // from LEAGUE_CONFIG so qualifyTeamsForEurope can always produce
         // 32 teams per competition with real clubs.
+        // Build the missing-league fallback from the LIVE/historical career
+        // state (player table + otherLeagues) before any static current-era
+        // pool. For historical saves this stops the next-season Champions/Europe
+        // draw from being reseeded with 2025/26 clubs and keeps it reactive to
+        // the final tables of the season that was actually played. Leagues with
+        // no live data at all are skipped in historical saves rather than being
+        // contaminated with current-era clubs.
+        const fallbackGetter = buildEuropeanFallbackTeamGetter(completedState, {
+          fallbackState: state,
+          allTeamsMap,
+          allowStaticFallback: !state.historicalDatabase
+        });
+
+        // Historical datasets do not always include every UEFA slot league
+        // configured in LEAGUE_SLOTS. Never fill those gaps with current-era
+        // static clubs; instead use spare clubs from the active historical
+        // universe so the continental draw remains historical and still reaches
+        // the 32-team competition sizes expected by the engine.
+        const historicalUsedIds = new Set();
+        Object.values(leagueStandings).forEach((table) => {
+          (table || []).forEach(row => historicalUsedIds.add(row.teamId || row.id));
+        });
+        const historicalFillerPool = (state.historicalDatabase ? (allTeams || []) : [])
+          .filter(t => {
+            const id = t?.id || t?.teamId;
+            return id && !historicalUsedIds.has(id);
+          })
+          .sort((a, b) => (b.reputation || b.overall || 70) - (a.reputation || a.overall || 70));
+        const historicalFillerGetter = (leagueId) => {
+          const liveTeams = fallbackGetter(leagueId);
+          if (liveTeams?.length) return liveTeams;
+          if (!state.historicalDatabase) return liveTeams;
+          const slots = LEAGUE_SLOTS[leagueId];
+          const needed = (slots?.championsLeague || 0) + (slots?.europaLeague || 0) + (slots?.conferenceleague || 0);
+          if (!needed) return liveTeams;
+          const picked = [];
+          while (picked.length < needed && historicalFillerPool.length > 0) {
+            const team = historicalFillerPool.shift();
+            const id = team?.id || team?.teamId;
+            if (!id || historicalUsedIds.has(id)) continue;
+            historicalUsedIds.add(id);
+            picked.push({
+              teamId: id,
+              teamName: team.name || team.teamName || id,
+              shortName: team.shortName || '',
+              reputation: team.reputation || 70,
+              overall: team.overall || team.reputation || 70,
+              leaguePosition: picked.length + 1,
+            });
+          }
+          return picked.length >= needed ? picked : liveTeams;
+        };
         const patchedStandings = ensureEuropeanLeagueStandings(
           leagueStandings,
-          (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+          historicalFillerGetter
         );
         const qualifiedTeams = qualifyTeamsForEurope(patchedStandings, allTeamsMap);
-        const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
+        const nextHistoricalSeasonId = state.historicalDatabase
+          ? seasonIdFromStartYear((Number(state.careerStartSeason) || 2025) + (Number(state.currentSeason) || 1))
+          : null;
+        const activeCompetitionIds = getEuropeanCompetitionIdsForSeason(nextHistoricalSeasonId, { historical: state.historicalDatabase });
+        for (const compId of Object.keys(qualifiedTeams)) {
+          if (!activeCompetitionIds.includes(compId)) delete qualifiedTeams[compId];
+        }
+        const europeanState = initializeEuropeanCompetitions(qualifiedTeams, {
+          seasonId: nextHistoricalSeasonId,
+          historical: state.historicalDatabase,
+          competitionIds: activeCompetitionIds
+        });
         dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
 
-        const playerQualComp = ['championsLeague', 'europaLeague', 'conferenceleague']
-          .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
+        const playerQualComp = activeCompetitionIds
+          .find(c => (qualifiedTeams[c] || []).some(t => (t.teamId || t.id) === state.teamId));
 
         if (playerQualComp) {
-          const compNames = { championsLeague: 'Continental Champions Cup', europaLeague: 'Continental Shield', conferenceleague: 'Continental Trophy' };
+          const compName = getCompetitionConfigForSeason(playerQualComp, nextHistoricalSeasonId, { historical: state.historicalDatabase })?.name || playerQualComp;
           dispatch({
             type: 'ADD_MESSAGE',
             payload: {
               id: Date.now() + 100,
               type: 'european',
               title: t('seasonEnd.msgEuropeanComp'),
-              content: t('seasonEnd.msgTeamPlaysContinental', { comp: compNames[playerQualComp] }),
+              content: t('seasonEnd.msgTeamPlaysContinental', { comp: compName }),
               date: t('seasonEnd.startOfSeasonDate', { season: state.currentSeason + 1 })
             }
           });
@@ -1270,7 +1381,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   <span>Tu posición</span>
                   <strong>{playerPosition > 0 ? `${playerPosition}º` : 'Playoff'}</strong>
                 </div>
-                {playerLeagueId === 'primeraRFEF' && (
+                {playerLeagueId === 'primeraRFEF' && !suppressHistoricalRelegation && (
                   <div className="rfef-kpi rfef-kpi--drop">
                     <span>Zona descenso</span>
                     <strong>Últimos {relegationEntries.length || 5}</strong>
@@ -1848,6 +1959,16 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               </div>
             </div>
           )}
+
+          {administrativePermanence && (
+            <div className="administrative-permanence" data-audit="glory-administrative-permanence">
+              <Building2 size={24} />
+              <div>
+                <h3>Permanencia administrativa</h3>
+                <p>Esta temporada histórica no tiene Segunda Federación, así que no hay descensos desde Primera Federación.</p>
+              </div>
+            </div>
+          )}
           
           {/* Objetivos */}
           <div className="objectives-summary">
@@ -1939,7 +2060,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   
   // Fase 2: Selección de pretemporada
   return (
-    <div className="season-end">
+    <div className="season-end season-end--preseason">
       <div className="season-end__modal season-end__modal--preseason preseason-page">
         <div className="preseason-page__hero">
           <div className="preseason-page__eyebrow">

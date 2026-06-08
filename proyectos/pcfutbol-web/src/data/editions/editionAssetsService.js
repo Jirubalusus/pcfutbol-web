@@ -34,7 +34,13 @@ import { db, storage } from '../../firebase/config';
 
 const TEAM_ASSETS_SUBCOLLECTION = 'team_assets';
 const EDITION_ASSET_STORAGE_PREFIX = 'pcgaffer_edition_assets_';
-const EDITION_ASSET_STORAGE_VERSION = 1;
+const EDITION_ASSET_STORAGE_VERSION = 2;
+const AMBIGUOUS_COMPACT_ASSET_ALIASES = new Set([
+  // "Real Racing Club" (Santander) and "Racing Club" (Avellaneda) both collapse
+  // to "racing" if generic words are stripped. Keep exact aliases only so the
+  // Spanish club never receives the Avellaneda crest, or vice versa.
+  'racing'
+]);
 
 // The public/importable JSON pack historically used a different id than the
 // Firestore edition document that contains the official crest subcollection.
@@ -135,14 +141,31 @@ function hydrateCacheFromAssets(sourceEditionId, targetEditionId) {
   return true;
 }
 
+function buildNameAliases(value) {
+  const normalized = normalizeTeamAssetKey(value);
+  if (!normalized) return [];
+  const compact = normalized
+    .replace(/\b(real|rcd|rc|cd|cf|ca|sd|ud|fc|club|de|del|la|el)\b/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_+|_+$/g, '');
+  const aliases = [normalized];
+  if (compact && !AMBIGUOUS_COMPACT_ASSET_ALIASES.has(compact)) aliases.push(compact);
+  return Array.from(new Set(aliases.filter(Boolean)));
+}
+
 function buildAssetAliases(asset) {
   return Array.from(new Set([
     asset?.id,
     asset?.teamKey,
     asset?.teamId,
+    asset?.teamName,
     normalizeTeamAssetKey(asset?.id),
     normalizeTeamAssetKey(asset?.teamKey),
-    normalizeTeamAssetKey(asset?.teamId)
+    normalizeTeamAssetKey(asset?.teamId),
+    normalizeTeamAssetKey(asset?.teamName),
+    ...buildNameAliases(asset?.id),
+    ...buildNameAliases(asset?.teamKey),
+    ...buildNameAliases(asset?.teamName)
   ].filter(Boolean)));
 }
 
@@ -230,7 +253,8 @@ function getCachedAssetInternal(editionId, teamKeyOrId) {
 
     const candidateKeys = Array.from(new Set([
       String(teamKeyOrId || ''),
-      normalizeTeamAssetKey(teamKeyOrId)
+      normalizeTeamAssetKey(teamKeyOrId),
+      ...buildNameAliases(teamKeyOrId)
     ].filter(Boolean)));
 
     for (const candidateKey of candidateKeys) {
@@ -341,14 +365,19 @@ export async function getEditionTeamAsset(editionId, teamKeyOrId) {
   if (!editionId || !teamKeyOrId) return null;
 
   const cached = getCachedAssetInternal(editionId, teamKeyOrId);
-  if (cached) return { ...cached };
+  if (cached) {
+    const hydrated = await resolveAssetDownloadUrl(cached);
+    cacheEditionAsset(editionId, hydrated);
+    return { ...hydrated };
+  }
 
   const teamKey = normalizeTeamAssetKey(teamKeyOrId);
 
   try {
     const candidateKeys = Array.from(new Set([
       String(teamKeyOrId || ''),
-      teamKey
+      teamKey,
+      ...buildNameAliases(teamKeyOrId)
     ].filter(Boolean)));
 
     for (const lookupEditionId of getEditionAssetLookupIds(editionId)) {

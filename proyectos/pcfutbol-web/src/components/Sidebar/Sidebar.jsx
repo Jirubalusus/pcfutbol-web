@@ -92,7 +92,7 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
         
         <div className="sidebar__team">
           <div className="sidebar__team-badge">
-            <TeamCrest teamId={state.teamId} size={64} />
+            <TeamCrest team={state.team} teamId={state.teamId} size={64} />
           </div>
           <span className="sidebar__team-name">{state.team?.name}</span>
         </div>
@@ -103,6 +103,7 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
             return (
               <button
                 key={item.id}
+                data-tab={item.id}
                 className={`sidebar__item ${activeTab === item.id ? 'active' : ''}`}
                 onClick={() => onTabChange(item.id)}
               >

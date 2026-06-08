@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
@@ -11,7 +11,7 @@ import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { generatePreseasonOptions } from '../../game/seasonManager';
 import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
-import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
+import { isSouthAmericanLeague, buildSouthAmericanQualifiedTeams, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import {
@@ -31,6 +31,9 @@ import {
 import { Timer, ArrowLeft, RefreshCw, Zap, Users, DollarSign, Star, ChevronRight, Trophy, AlertTriangle } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import PageLoader from '../common/PageLoader';
+import { loadActiveSeasonUniverse, getAllTeamsFromUniverse, initializeOtherLeaguesFromUniverse, buildLeagueGettersFromUniverse } from '../../data/activeSeasonUniverse';
+import { getPlayerMarketValue, prepareContrarrelojTeam } from '../../game/contrarrelojEconomy';
 import './ContrarrelojSetup.scss';
 
 // Liga → getter (names pulled from LEAGUE_CONFIG to match renamed leagues)
@@ -94,7 +97,7 @@ function formatMoney(amount) {
 }
 
 function getSquadValue(team) {
-  return (team?.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
+  return (team?.players || []).reduce((sum, p) => sum + getPlayerMarketValue(p), 0);
 }
 
 const COUNTRY_LEAGUE_LABELS = {
@@ -130,38 +133,6 @@ function getCountryLeagueLabel(country) {
   return COUNTRY_LEAGUE_LABELS[country] || (country ? `Liga de ${country}` : '');
 }
 
-function ensureBudgetAndReputation(team, leagueId) {
-  const tierBudgets = {
-    1: { pct: 0.12, min: 15_000_000, max: 500_000_000 },
-    2: { pct: 0.10, min: 5_000_000, max: 120_000_000 },
-    3: { pct: 0.07, min: 1_500_000, max: 30_000_000 },
-    4: { pct: 0.05, min: 300_000, max: 5_000_000 },
-    5: { pct: 0.03, min: 100_000, max: 1_500_000 }
-  };
-  const currentTier = getLeagueTier(leagueId);
-  const budgetConfig = tierBudgets[currentTier] || tierBudgets[3];
-
-  const avgOverall = team.players?.length
-    ? team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length : 70;
-  const totalValue = (team.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
-
-  if (!team.reputation || team.reputation < 1 || team.reputation > 5) {
-    if (avgOverall >= 82) team.reputation = 5;
-    else if (avgOverall >= 78) team.reputation = 4;
-    else if (avgOverall >= 73) team.reputation = 3;
-    else if (avgOverall >= 68) team.reputation = 2;
-    else team.reputation = 1;
-  }
-
-  if (!team.budget) {
-    const baseBudget = Math.max(totalValue * budgetConfig.pct, budgetConfig.min);
-    const repMultiplier = [0.5, 0.7, 1.0, 1.5, 2.5][team.reputation - 1] || 1.0;
-    team.budget = Math.round(Math.min(baseBudget * repMultiplier, budgetConfig.max));
-  }
-
-  return team;
-}
-
 export default function ContrarrelojSetup() {
   const { t } = useTranslation();
   const { dispatch } = useGame();
@@ -170,69 +141,83 @@ export default function ContrarrelojSetup() {
   const [selectedLeagueId, setSelectedLeagueId] = useState(null);
   const [starting, setStarting] = useState(false);
   const [rerollKey, setRerollKey] = useState(0);
+  const [seasonUniverse, setSeasonUniverse] = useState(null);
+  const [candidates, setCandidates] = useState([]);
+  const [loadingCandidates, setLoadingCandidates] = useState(true);
+  const [setupError, setSetupError] = useState(null);
 
-  // Generate 5 random low-reputation teams from all leagues
-  const candidates = useMemo(() => {
-    // rerollKey is intentionally read here so the memo regenerates the random list.
-    void rerollKey;
-    // South American league IDs
-    const saLeagues = new Set([
-      'argentinaPrimera', 'brasileiraoA', 'colombiaPrimera', 'chilePrimera',
-      'uruguayPrimera', 'ecuadorLigaPro', 'paraguayPrimera', 'peruLiga1',
-      'boliviaPrimera', 'venezuelaPrimera'
-    ]);
-    const europePool = [];
-    const saPool = [];
+  useEffect(() => {
+    let cancelled = false;
 
-    // Solo Europa y Sudamérica — las ligas de "Resto del Mundo" no participan en contrarreloj
-    const REST_OF_WORLD = new Set(['mls', 'saudiPro', 'ligaMX', 'jLeague']);
+    const buildCandidates = async () => {
+      setLoadingCandidates(true);
+      setSetupError(null);
+      const universe = await loadActiveSeasonUniverse();
+      if (cancelled) return;
 
-    for (const league of ALL_LEAGUES) {
-      if (EXCLUDED_LEAGUES.includes(league.id)) continue;
-      if (REST_OF_WORLD.has(league.id)) continue;
-      try {
-        const teams = league.getter();
-        if (!teams || teams.length === 0) continue;
+      const saLeagues = new Set([
+        'argentinaPrimera', 'brasileiraoA', 'colombiaPrimera', 'chilePrimera',
+        'uruguayPrimera', 'ecuadorLigaPro', 'paraguayPrimera', 'peruLiga1',
+        'boliviaPrimera', 'venezuelaPrimera'
+      ]);
+      const europePool = [];
+      const saPool = [];
+      const REST_OF_WORLD = new Set(['mls', 'saudiPro', 'ligaMX', 'jLeague']);
+
+      for (const league of universe.entries || []) {
+        if (EXCLUDED_LEAGUES.includes(league.id)) continue;
+        if (REST_OF_WORLD.has(league.id)) continue;
+        const teams = league.teams || [];
+        if (!teams.length) continue;
         for (const team of teams) {
-          // Excluir filiales españoles (no pueden ascender a la misma liga que su primer equipo)
           if (team.name && /\sB$/i.test(team.name.trim())) continue;
-          const t = { ...team };
-          ensureBudgetAndReputation(t, league.id);
-          const tier = getLeagueTier(league.id);
+          const t = prepareContrarrelojTeam({ ...team }, league.id);
+          const tier = league.tier || getLeagueTier(league.id);
           if (t.reputation <= 2 || tier >= 3) {
             const entry = {
               team: t,
               leagueId: league.id,
+              groupId: league.groupId || null,
+              leagueTeams: teams,
               leagueName: league.name,
               leagueCountry: league.country,
               leagueRegionLabel: getCountryLeagueLabel(league.country),
-              tier
+              tier,
+              databaseSeasonId: universe.databaseSeasonId,
             };
             if (saLeagues.has(league.id)) saPool.push(entry);
             else europePool.push(entry);
           }
         }
-      } catch { /* skip */ }
-    }
+      }
 
-    // Shuffle each pool
-    const shuffle = arr => arr.sort(() => Math.random() - 0.5);
-    shuffle(europePool);
-    shuffle(saPool);
+      const shuffle = arr => arr.sort(() => Math.random() - 0.5);
+      shuffle(europePool);
+      shuffle(saPool);
+      const picked = [];
+      if (europePool.length > 0) picked.push(europePool.shift());
+      if (saPool.length > 0) picked.push(saPool.shift());
+      const remaining = shuffle([...europePool, ...saPool]);
+      while (picked.length < 5 && remaining.length > 0) picked.push(remaining.shift());
 
-    // Guarantee at least 1 Europe + 1 South America, fill rest randomly
-    const picked = [];
-    if (europePool.length > 0) picked.push(europePool.shift());
-    if (saPool.length > 0) picked.push(saPool.shift());
+      setSeasonUniverse(universe);
+      setCandidates(shuffle(picked));
+      setSelectedTeam(null);
+      setSelectedLeagueId(null);
+      setLoadingCandidates(false);
+    };
 
-    // Combine remaining pools and fill up to 5
-    const remaining = shuffle([...europePool, ...saPool]);
-    while (picked.length < 5 && remaining.length > 0) {
-      picked.push(remaining.shift());
-    }
+    buildCandidates().catch(error => {
+      console.error('No se pudieron generar equipos de Contrarreloj para la temporada activa:', error);
+      if (!cancelled) {
+        setSeasonUniverse(null);
+        setCandidates([]);
+        setSetupError('No se pudieron cargar los equipos de la temporada seleccionada.');
+        setLoadingCandidates(false);
+      }
+    });
 
-    // Shuffle final order so SA/EU aren't always first
-    return shuffle(picked);
+    return () => { cancelled = true; };
   }, [rerollKey]);
 
   const handleReroll = () => {
@@ -269,48 +254,31 @@ export default function ContrarrelojSetup() {
     setStarting(true);
 
     const leagueId = startLeagueId;
-    const team = startTeam;
+    let team = startTeam;
+    const activeSeasonUniverse = seasonUniverse || await loadActiveSeasonUniverse();
 
-    // Get league teams for this league
-    const leagueEntry = ALL_LEAGUES.find(l => l.id === leagueId);
-    if (!leagueEntry) return;
-    
-    // Handle group leagues (Segunda RFEF, Primera RFEF): find the team's group
-    const GROUP_LEAGUES = {
-      segundaRFEF: getSegundaRfefGroups,
-      primeraRFEF: getPrimeraRfefGroups
-    };
-    
-    let leagueTeams;
-    let playerGroupId = null;
-    
-    if (GROUP_LEAGUES[leagueId]) {
-      const groups = GROUP_LEAGUES[leagueId]();
-      // Find which group this team belongs to
-      for (const [groupId, groupData] of Object.entries(groups)) {
-        const groupTeams = groupData?.teams || groupData || [];
-        if (groupTeams.some(t => t.id === team.id)) {
-          leagueTeams = groupTeams;
-          playerGroupId = groupId;
-          break;
-        }
-      }
-      // Fallback: if team not found in any group, use all teams (shouldn't happen)
-      if (!leagueTeams) leagueTeams = leagueEntry.getter();
-    } else {
-      leagueTeams = leagueEntry.getter();
+    const activeStartCandidate = candidates.find(c => c.team.id === team.id && c.leagueId === leagueId) || activeCandidate;
+    const leagueTeams = activeStartCandidate?.leagueTeams?.length
+      ? activeStartCandidate.leagueTeams
+      : [];
+    const playerGroupId = activeStartCandidate?.groupId || null;
+    if (!leagueTeams.length) {
+      setStarting(false);
+      setSetupError('No se pudo preparar la liga del equipo elegido.');
+      return;
     }
     
     const leagueData = initializeLeague(leagueTeams, team.id);
+    const totalCalendarWeeks = (leagueData.fixtures || []).length > 0
+      ? Math.max(...leagueData.fixtures.map(f => f.week || 0))
+      : 38;
 
     const stadiumInfo = getStadiumInfo(team.id, team.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
+    team = prepareContrarrelojTeam(team, leagueId, { stadiumLevel, totalCalendarWeeks });
 
     // Generate preseason (pick first option automatically)
-    const allTeamsFlat = [];
-    for (const l of ALL_LEAGUES) {
-      try { allTeamsFlat.push(...l.getter()); } catch { /* skip */ }
-    }
+    const allTeamsFlat = getAllTeamsFromUniverse(activeSeasonUniverse);
     const preseasonOptions = generatePreseasonOptions(allTeamsFlat, team, leagueId);
     const preseason = preseasonOptions[0];
 
@@ -327,11 +295,16 @@ export default function ContrarrelojSetup() {
         group: playerGroupId,
         stadiumInfo,
         stadiumLevel,
+        totalCalendarWeeks,
         preseasonMatches: preseason?.matches || [],
         preseasonPhase: true,
         gameMode: 'contrarreloj',
         _contrarrelojUserId: user?.isGuest ? null : (user?.uid || null),
-        managerName
+        managerName,
+        databaseSeasonId: activeSeasonUniverse.databaseSeasonId,
+        careerStartSeason: activeSeasonUniverse.startYear,
+        historicalDatabase: activeSeasonUniverse.historical,
+        historicalDatabaseLabel: activeSeasonUniverse.label
       }
     });
 
@@ -345,23 +318,19 @@ export default function ContrarrelojSetup() {
     }
 
     // Load ALL league teams for the global transfer engine
-    const allLeagueTeamsWithData = [];
-    for (const league of ALL_LEAGUES) {
-      try {
-        const teams = league.getter();
-        for (const t of teams) {
-          allLeagueTeamsWithData.push({
-            ...t, id: t.id, name: t.name, players: t.players || [],
-            budget: t.budget || (t.reputation > 4 ? 100_000_000 : t.reputation > 3 ? 50_000_000 : 20_000_000),
-            leagueId: league.id
-          });
-        }
-      } catch { /* skip */ }
-    }
+    const allLeagueTeamsWithData = allTeamsFlat.map(t => ({
+      ...t,
+      id: t.id,
+      name: t.name,
+      players: t.players || [],
+      budget: t.budget || (t.reputation > 4 ? 100_000_000 : t.reputation > 3 ? 50_000_000 : 20_000_000),
+      leagueId: t.leagueId || leagueId,
+    }));
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
 
-    const otherLeagues = initializeOtherLeagues(leagueId, playerGroupId);
+    const otherLeagues = initializeOtherLeaguesFromUniverse(activeSeasonUniverse, leagueId, playerGroupId);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
+    const activeLeagueGetters = buildLeagueGettersFromUniverse(activeSeasonUniverse);
 
     // Bootstrap continental competitions
     const isPlayerInSA = isSouthAmericanLeague(leagueId);
@@ -373,7 +342,7 @@ export default function ContrarrelojSetup() {
         for (const lid of Object.keys(SA_LEAGUE_SLOTS)) {
           const config = LEAGUE_CONFIG[lid];
           if (!config?.getTeams) continue;
-          const lt = config.getTeams();
+          const lt = activeLeagueGetters[lid]?.() || config.getTeams?.();
           if (!lt?.length) continue;
           const sorted = [...lt].sort((a, b) => (b.reputation || 70) - (a.reputation || 70));
           bootstrapStandings[lid] = sorted.map((t, idx) => ({
@@ -383,38 +352,33 @@ export default function ContrarrelojSetup() {
           }));
           lt.forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
         }
-        const qualifiedTeams = qualifyTeamsForSouthAmerica(bootstrapStandings, allTeamsMap);
-        const usedTeamIds = new Set();
-        Object.values(qualifiedTeams).forEach(teams => teams.forEach(t => usedTeamIds.add(t.teamId)));
-        const available = Object.values(allTeamsMap).filter(t => !usedTeamIds.has(t.id || t.teamId)).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-        for (const compId of ['copaLibertadores', 'copaSudamericana']) {
-          const needed = 32 - qualifiedTeams[compId].length;
-          if (needed > 0) {
-            const fillers = available.splice(0, needed);
-            qualifiedTeams[compId].push(...fillers.map(t => ({
-              teamId: t.id || t.teamId, teamName: t.name || t.teamName,
-              shortName: t.shortName || '', league: t.league || 'unknown',
-              leaguePosition: 0, reputation: t.reputation || 60,
-              overall: t.overall || 65, players: t.players || [], ...t
-            })));
-            fillers.forEach(t => usedTeamIds.add(t.id || t.teamId));
-          }
-        }
+        const qualifiedTeams = buildSouthAmericanQualifiedTeams({
+          leagueStandings: bootstrapStandings,
+          allTeamsMap,
+          fillerPool: Object.values(allTeamsMap),
+          playerLeagueId: leagueId
+        });
         dispatch({ type: 'INIT_SA_COMPETITIONS', payload: initializeSACompetitions(qualifiedTeams) });
       } catch (err) { console.error('Error bootstrapping SA comps:', err); }
     } else {
       try {
         const allTeamsMap = {};
         for (const lid of Object.keys(LEAGUE_SLOTS)) {
-          const lt = LEAGUE_CONFIG[lid]?.getTeams?.();
+          const lt = activeLeagueGetters[lid]?.() || LEAGUE_CONFIG[lid]?.getTeams?.();
           (lt || []).forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
         }
         const bootstrapStandings = ensureEuropeanLeagueStandings(
           {},
-          (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+          (lid) => activeLeagueGetters[lid]?.() || LEAGUE_CONFIG[lid]?.getTeams?.()
         );
         const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-        dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: initializeEuropeanCompetitions(qualifiedTeams) });
+        dispatch({
+          type: 'INIT_EUROPEAN_COMPETITIONS',
+          payload: initializeEuropeanCompetitions(qualifiedTeams, {
+            seasonId: activeSeasonUniverse.databaseSeasonId,
+            historical: activeSeasonUniverse.historical
+          })
+        });
       } catch (err) {
         console.error('Error bootstrapping European comps:', err);
       }
@@ -459,6 +423,14 @@ export default function ContrarrelojSetup() {
       }
     });
   };
+
+  if (starting) {
+    return <PageLoader label="Preparando partida de Contrarreloj" />;
+  }
+
+  if (loadingCandidates) {
+    return <PageLoader label="Cargando equipos de Contrarreloj" />;
+  }
 
   return (
     <div className="contrarreloj-setup unified-screen">
@@ -543,10 +515,17 @@ export default function ContrarrelojSetup() {
           <section className="contrarreloj-setup__teams">
             <div className="teams-header">
               <h2>{t('contrarrelojSetup.chooseChallenge')}</h2>
-              <button className="btn-reroll" onClick={handleReroll}>
-                <RefreshCw size={16} /> {t('contrarrelojSetup.newTeams')}
+              <button className="btn-reroll" onClick={handleReroll} disabled={loadingCandidates}>
+                <RefreshCw size={16} /> {loadingCandidates ? 'Cargando…' : t('contrarrelojSetup.newTeams')}
               </button>
             </div>
+
+            {setupError && (
+              <div className="contrarreloj-setup__load-error" role="alert">
+                {setupError}
+                <button type="button" onClick={handleReroll}>Reintentar</button>
+              </div>
+            )}
 
             <div className="teams-grid" role="list">
               {candidates.map((c, idx) => {

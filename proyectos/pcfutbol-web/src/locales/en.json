@@ -60,13 +60,14 @@
     "saveProgress": "Save your progress in the cloud",
     "saveCurrentProgress": "Save your current progress",
     "reachChampions": "Reach Champions League from the bottom",
-    "guestNotice": "Log in to save your progress in the cloud",
+    "guestNotice": "You can try PC Gaffer without an account. Log in when you want to save your progress in the cloud.",
     "tribute": "The beautiful game, managed by you",
-    "supportUs": "Support the project",
+    "supportUs": "Support the creator",
+    "feedbackContact": "Feedback and suggestions: jirubalusus@gmail.com",
     "contrarrelojActive": "Race Against Time Active",
     "newGame": "New Game",
     "deleteWarning": "?? Starting a new game will delete current progress",
-    "playButton": "Play",
+    "playButton": "Free Career",
     "loginButton": "Log In",
     "saveCurrentGame": "Save Game",
     "recordsButton": "Records",
@@ -77,7 +78,44 @@
     "tabSolo": "Single Player",
     "tabMulti": "Multiplayer",
     "comingSoon": "Coming soon...",
-    "moreModesComingSoon": "More modes coming soon..."
+    "moreModesComingSoon": "More modes coming soon...",
+    "careerActive": "Free Career in progress",
+    "databaseGlobal": "Global database",
+    "databaseHint": "Applies to all new games.",
+    "changeSeason": "Change season",
+    "applySeason": "Apply season",
+    "spinHint": "Drag or spin to travel through time",
+    "changeDatabaseAria": "Change global database",
+    "dbCurrent": "Current season",
+    "dbHistorical": "Historical season",
+    "dbCurrentShort": "Current",
+    "dbHistoricalShort": "Historical",
+    "glory": "Road to Glory",
+    "gloryDesc": "Roguelike with cards",
+    "worldCup": "World Cup Mode",
+    "soon": "Coming soon",
+    "gloryActive": "Game in progress",
+    "matchday": "Matchday",
+    "ballAlt": "ball",
+    "changeDatabaseTitle": "Change database",
+    "changeDatabaseWarning": "Your current saves will be deleted because teams, players, fixtures and competitions belong to a different database.",
+    "changeDatabaseConfirmWarning": "If you change season, your current saved games will be lost. Are you sure?",
+    "changing": "Switching…",
+    "changeAndDelete": "Switch year and delete saves",
+    "changeSeasonAndDelete": "Change season and delete saves",
+    "playNow": "Play now",
+    "playNowSubtitle": "Try a Career without logging in",
+    "loginCreateAccount": "Log in / Create account",
+    "lockedLoginRequired": "Log in to unlock",
+    "cardPlay": "Play mode",
+    "cardUnlock": "Log in",
+    "chipSolo": "1 player",
+    "chipLongTerm": "Long term",
+    "chipRanking": "Ranking",
+    "chipSpeed": "Fast run",
+    "chipPromotions": "Promotions",
+    "chipJobOffers": "Job offers",
+    "chipSoon": "Coming soon"
   },
   "cup": {
     "noCupActive": "No active cup this season",
@@ -148,7 +186,8 @@
     "welcomeName": "Welcome, {{name}}",
     "form_W": "W",
     "form_D": "D",
-    "form_L": "L"
+    "form_L": "L",
+    "titles": "Titles"
   },
   "formation": {
     "title": "Formation",
@@ -638,7 +677,7 @@
     "attendance": "Attendance",
     "possession": "Possession",
     "shots": "Shots",
-    "shotsOnTarget": "Shots on Target",
+    "shotsOnTarget": "Shots on target",
     "corners": "Corners",
     "fouls": "Fouls",
     "offsides": "Offsides",
@@ -665,9 +704,67 @@
     "yourFormation": "Your formation",
     "yourTactic": "Your tactic",
     "statistics": "Statistics",
+    "cup": "Cup",
+    "round": "Round",
+    "europe": "Europe",
+    "matchweek": "Matchday {{week}}",
+    "weekLabel": "Week {{week}}",
+    "friendly": "Friendly {{n}}/5",
+    "homeTag": "HOME",
+    "awayTag": "AWAY",
+    "subOut": "Off",
+    "subIn": "On",
+    "assistShort": "asst.",
+    "weeksAbbr": "{{weeks}} wks",
+    "stageFinishing": "Finishing",
+    "stageFirstHalf": "First half",
+    "stageSecondHalf": "Second half",
+    "live": "Live",
+    "lastEvent": "Last event",
+    "eventGoal": "Goal",
+    "matchStarting": "The match is kicking off",
+    "waitingFirstAction": "Waiting for the first important action.",
+    "dominance": "Dominance",
+    "momentum": "Momentum",
+    "topRated": "Top rated players",
+    "onTarget": "On target",
+    "substitutions": "Substitutions",
+    "noSubstitutions": "No substitutions",
+    "bigChances": "Big chances",
+    "saves": "Saves",
+    "stadium": "Stadium",
+    "totalFouls": "Total fouls: {{count}}",
+    "chronology": "Chronology",
+    "matchMomentum": "Match momentum",
+    "noGoals": "No goals",
+    "matchKeys": "Match keys",
+    "capacity": "Capacity",
+    "revenue": "Revenue",
+    "motm": "Player of the match",
+    "goalSingular": "goal",
+    "goalPlural": "goals",
+    "assistSingular": "assist",
+    "assistPlural": "assists",
+    "rating": "Rating",
+    "extraTime": "extra time",
+    "penaltiesShort": "pens",
+    "tacticHighPress": "High press",
+    "rouletteBetPrepared": "Roulette bet prepared",
+    "rouletteSlotChosen": "Chosen slot",
+    "rouletteFundsLocked": "{{amount}} locked for this match. The office button will reactivate when it ends.",
+    "rouletteOutcomeHint": "Win: {{win}} · Draw: {{draw}} · Lose: {{lose}}",
+    "rouletteBubbleActive": "Financial bubble active: won bets pay x2.",
+    "rouletteInvestigation": "Tax investigation: be careful not to lose again.",
+    "needStarters": "You need 11 starters (you have {{count}})",
+    "syntheticPlayer": "Player {{number}}",
     "resultWin": "Victory!",
     "resultLoss": "Defeat",
-    "resultDraw": "Draw"
+    "resultDraw": "Draw",
+    "playMatch": "Play match",
+    "noEvents": "No notable incidents",
+    "nextMatch": "Next match",
+    "homeGame": "Home game",
+    "awayGame": "Away game"
   },
   "leagueTable": {
     "title": "League Table",
@@ -700,6 +797,13 @@
     "apertura": "Apertura",
     "clausura": "Clausura",
     "acumulada": "Accumulated",
+    "apclContinentalNote": "🏆 Libertadores and Sudamericana are decided by the Accumulated table — positions {{lib}}: Libertadores · {{sud}}: Sudamericana.",
+    "apclContinentalNoteNoSud": "🏆 Libertadores is decided by the Accumulated table — positions {{lib}}.",
+    "apclChampionNote": "🏆 The Apertura champion and the Clausura champion qualify for the Libertadores. Remaining spots are decided by the Accumulated table — positions {{lib}}: Libertadores · {{sud}}: Sudamericana.",
+    "apclChampionNoteNoRemainingLib": "🏆 The Apertura champion and the Clausura champion qualify for the Libertadores. Sudamericana spots are decided by the Accumulated table — positions {{sud}}.",
+    "apclChampionNoteNoSud": "🏆 The Apertura champion and the Clausura champion qualify for the Libertadores. Remaining spots are decided by the Accumulated table — positions {{lib}}.",
+    "apclChampionLegend": "Champion → Libertadores",
+    "apclLeaderLegend": "Leader → Libertadores (provisional)",
     "inProgress": "in progress",
     "searchLeague": "Search league...",
     "yourLeague": "Your league",
@@ -980,7 +1084,9 @@
     "spectatorShort": "spec",
     "matchShort": "match",
     "serviceRequires": "Requires {{stadium}} stadium",
-    "serviceUpgradeStadium": "Upgrade stadium for +levels"
+    "serviceUpgradeStadium": "Upgrade stadium for +levels",
+    "serviceLocked": "Locked",
+    "serviceVisible3D": "Visible in the 3D campus"
   },
   "training": {
     "title": "Training Intensity",
@@ -1176,7 +1282,53 @@
     "countrySummary_other": "{{leagues}} leagues · {{clubs}} clubs",
     "clubsCount_one": "{{count}} club",
     "clubsCount_other": "{{count}} clubs",
-    "leaguesLabel": "Available leagues"
+    "leaguesLabel": "Available leagues",
+    "activeDatabase": "Active database",
+    "historicalMeta": "{{teams}} teams · {{players}} players · {{leagues}} leagues",
+    "currentMeta": "{{countries}} countries · live 2025/26 base",
+    "historicalBaseCopy": "Initial historical snapshot: squads and ratings from the selected year. The simulation evolves freely afterwards.",
+    "currentBaseCopy": "Current game base with active teams, crests and competitions.",
+    "historicalBadge": "Historical {{season}}",
+    "currentBadge": "Current",
+    "changeDatabaseHint": "Change the year/database from the main menu so every mode uses the same season.",
+    "loadingHistorical": "Loading full historical season...",
+    "preseasonPlanning": "Pre-season planning",
+    "preseasonSubtitle": "Choose a 5-match tour tuned to your club’s competitive and media level.",
+    "club": "Club",
+    "tourDiffHigh": "High",
+    "tourDiffMedium": "Medium",
+    "tourDiffControlled": "Controlled",
+    "ovrRivals": "rival OVR",
+    "tourDifficultyLabel": "difficulty",
+    "mediaTierLabel": "media",
+    "home": "Home",
+    "away": "Away",
+    "skipPreseason": "Skip pre-season",
+    "preseasonTours": {
+      "regional": {
+        "identity": "Competitive base",
+        "name": "Warm-up tour",
+        "description": "Opponents close to your club level, with a gentle progression before the presentation match."
+      },
+      "balanced": {
+        "identity": "Premium prep",
+        "name": "Continental circuit",
+        "description": "A balanced schedule to test automatisms against teams of similar average strength."
+      },
+      "prestige": {
+        "identity": "Maximum gate",
+        "name": "Prestige tour",
+        "description": "Five high-impact dates, closing at home against the most attractive rival."
+      }
+    },
+    "mediaTier": {
+      "eliteWorld": "world elite",
+      "continental": "continental",
+      "topTier": "top tier",
+      "competitive": "competitive",
+      "strongRegional": "strong regional",
+      "development": "development"
+    }
   },
   "contrarreloj": {
     "title": "Race Against Time Mode",
@@ -1455,7 +1607,12 @@
     "noMessages": "You have no messages",
     "backToMessages": "Back to messages",
     "deleteMessage": "Delete message",
-    "total": "messages"
+    "total": "messages",
+    "goToTransfers": "View transfers",
+    "goToCompetitions": "View competition",
+    "goToFormation": "View squad",
+    "goToSquad": "View squad",
+    "goToFacilities": "View facilities"
   },
   "renewals": {
     "title": "Contract Renewals",
@@ -1701,7 +1858,29 @@
     "playGamesError": "Error connecting to Google Play Games",
     "playGamesDesc": "Sign in with your Google Play Games account to save your progress and compete in rankings.",
     "connecting": "Connecting...",
-    "loginPlayGames": "Sign in with Google Play Games"
+    "loginPlayGames": "Sign in with Google Play Games",
+    "intent": {
+      "generic": {
+        "title": "Save and sync your progress",
+        "subtitle": "Log in or create an account to protect your saves."
+      },
+      "save-progress": {
+        "title": "Log in to save this game",
+        "subtitle": "Your trial game is on this device. Sign in to save it in the cloud."
+      },
+      "rankings": {
+        "title": "Log in to compete",
+        "subtitle": "Rankings and challenges need an account to prevent duplicates and save results."
+      },
+      "edition-mode": {
+        "title": "Log in to manage editions",
+        "subtitle": "The editor and data packs are linked to your account to keep your data safe."
+      },
+      "cloud-load": {
+        "title": "Log in to load saves",
+        "subtitle": "Access your cloud saves and continue from any device."
+      }
+    }
   },
   "europe": {
     "title": "European Competitions",
@@ -2084,7 +2263,14 @@
     "rivalTeam": "Rival team",
     "superCup": "Super Cup",
     "victory": "Victory",
-    "you": "You"
+    "you": "You",
+    "finalStandings": "Final standings",
+    "playerStats": "Player stats",
+    "topScorers": "Top scorers",
+    "topAssists": "Assists",
+    "topYellows": "Yellow cards",
+    "competitions": "Competitions",
+    "leagueLabel": "League"
   },
   "leagues": {
     "laliga": "Iberian League",
@@ -2166,7 +2352,24 @@
   },
   "simulation": {
     "yourResults": "Your results",
-    "goals": "Goals"
+    "goals": "Goals",
+    "summary": "Matchday summary",
+    "summaryRange": "Matchdays {{from}} - {{to}} summary",
+    "yourMatch": "Your match",
+    "leagueResults": "League results",
+    "cupResults": "Cup",
+    "europeanResults": "European competition",
+    "injuries": "Injuries",
+    "recovered": "Recovered",
+    "missedMatchday": "(missed matchday {{week}})",
+    "missesNextMatch": "(misses next match)",
+    "cards": "Cards",
+    "standing": "Standings",
+    "continue": "Continue",
+    "weeksOut": "{{weeks}} wks out",
+    "positionUp": "Up {{pos}} places",
+    "positionDown": "Down {{pos}} places",
+    "positionSame": "Position held"
   },
   "tutorial": {
     "formationTitle": "Formation",
@@ -2199,5 +2402,675 @@
     "transfersSearch": "Search players by name, position or value.",
     "matchdayQuick": "The match plays out in real time. Injuries and cards are applied automatically.",
     "leagueTableQuick": "Your team is highlighted. Colors indicate promotion, relegation and European zones."
+  },
+  "glory": {
+    "common": {
+      "back": "Back",
+      "close": "Close",
+      "season": "Season",
+      "matchday": "Matchday",
+      "squad": "Squad",
+      "budget": "Budget",
+      "crest": "Crest",
+      "stadium": "Stadium",
+      "continue": "Continue",
+      "next": "Next"
+    },
+    "divisions": {
+      "segundaRFEF": "Segunda RFEF",
+      "primeraRFEF": "Primera RFEF",
+      "segunda": "Segunda División",
+      "laliga": "La Liga"
+    },
+    "menu": {
+      "legacyMode": "Legacy mode",
+      "ownClub": "Your own club",
+      "kicker": "Road to Glory",
+      "heroTitle": "Create your club and conquer Europe.",
+      "heroDesc": "A compact mode: design your identity, survive each season and climb from the mud all the way to the Champions League.",
+      "summaryAria": "Mode summary",
+      "promotions": "Promotions",
+      "uniqueCards": "Unique cards",
+      "finalGoal": "Final goal",
+      "actionsAria": "Road to Glory actions",
+      "activeSave": "Active save",
+      "newProject": "New project",
+      "noActiveSave": "No active save",
+      "newProjectDesc": "Design your crest, kit and make your debut.",
+      "continueRoad": "Continue Road",
+      "newRoad": "New Road",
+      "startRoad": "Start Road",
+      "panelNote": "Unlocked cards make every new run more interesting.",
+      "showcaseEyebrow": "Permanent showcase",
+      "cardsUnlocked": "{{unlocked}}/{{total}} cards unlocked",
+      "collectionAria": "Card collection",
+      "showcaseDesc": "Cards you earn are saved for good and reshape your future seasons.",
+      "complete": "complete",
+      "unlockedCount": "{{count}} unlocked",
+      "pendingCount": "{{count}} pending",
+      "raritiesCount": "3 rarities",
+      "viewShowcase": "View showcase",
+      "roadmapAria": "Promotion path"
+    },
+    "setup": {
+      "preparing": "Preparing Road to Glory",
+      "title": "Road to Glory",
+      "stepProgress": "Step {{current}} of {{total}} · {{title}}",
+      "progressAria": "Progress",
+      "infoEyebrow": "Foundation",
+      "infoTitle": "Create your club",
+      "infoDesc": "A name, a home and a dream. You start in Segunda RFEF.",
+      "badgeEyebrow": "Crest",
+      "badgeTitle": "Design your crest",
+      "badgeDesc": "Shape, pattern, colours and symbol. The preview updates instantly.",
+      "confirmEyebrow": "Confirmation",
+      "confirmTitle": "Your club is ready",
+      "confirmDesc": "Review your identity before you kick off.",
+      "primeraLabel": "Primera Federación",
+      "primeraShort": "Primera RFEF",
+      "primeraTag": "Primera RFEF · 3rd tier",
+      "primeraDesc": "A name, a home and a dream. You start in Primera Federación because this historical season has no Segunda RFEF.",
+      "primeraConfirm": "Primera Federación / Primera RFEF (3rd tier)",
+      "primeraNote": "This historical season has no Segunda RFEF: you start in Primera Federación and there is no relegation to a tier that does not exist.",
+      "segundaTag": "Segunda RFEF · 4th tier",
+      "segundaConfirm": "Segunda RFEF (4th tier)",
+      "clubName": "Club name",
+      "stadiumName": "Stadium name",
+      "defaultClub": "FC Gloria",
+      "defaultStadium": "Municipal Stadium",
+      "fictionalSquad": "Fictional squad",
+      "objectiveChampions": "Goal: the Champions League",
+      "historicalNoteConfirm": "No lower tier in this historical database: there will be no relegation from Primera Federación.",
+      "summaryTag": "Club summary",
+      "confirmDivisionLabel": "Division",
+      "confirmSquadLabel": "Squad",
+      "confirmSquadValue": "20 players",
+      "confirmBudgetLabel": "Budget",
+      "confirmStadiumLabel": "Stadium",
+      "confirmStadiumValue": "3,000 seats",
+      "confirmObjectiveLabel": "Goal",
+      "confirmObjectiveValue": "Win the Champions League",
+      "startBtn": "Start the Road",
+      "preparingBtn": "Preparing…",
+      "nextBtn": "Next",
+      "error": "Couldn't set up Road to Glory with the selected season."
+    },
+    "collection": {
+      "eyebrow": "Permanent showcase",
+      "title": "Card collection",
+      "unlockedOf": "{{unlocked}}/{{total}} unlocked",
+      "progress": "Progress",
+      "percentComplete": "{{percent}}% complete",
+      "openHint": "Open each card to see its rarity and unlock condition.",
+      "legendaryCount": "{{count}} legendary",
+      "activeCount": "{{count}} active",
+      "hiddenCount": "{{count}} hidden",
+      "starterUnlocked": "Unlocked from the start",
+      "unlocked": "Unlocked",
+      "secretUpgrade": "Secret upgrade"
+    },
+    "cards": {
+      "tierLegendary": "LEGENDARY",
+      "tierEpic": "EPIC",
+      "tierRare": "RARE",
+      "seasonEndTitle": "End of Season {{season}}",
+      "seasonEndSubtitle": "Choose a permanent upgrade for your club",
+      "confirmChoice": "Confirm choice"
+    },
+    "reveal": {
+      "next": "Next",
+      "continue": "Continue"
+    },
+    "seasonEnd": {
+      "readyNext": "Ready for next season",
+      "seasonEndTitle": "End of Season {{season}}",
+      "directPromotion": "Direct promotion",
+      "finalPosition": "Final position",
+      "seasonStat": "Season {{season}}",
+      "cardsCollected": "{{count}} cards collected",
+      "continue": "Continue",
+      "startIn": "Start in {{division}}",
+      "nextSeason": "Next season"
+    },
+    "perks": {
+      "title": "Road to Glory",
+      "promotions": "Promotions",
+      "cards": "Cards",
+      "season": "Season",
+      "hiddenBonuses": "Hidden bonuses",
+      "hiddenCombo": "Hidden combo",
+      "comboLocked": "Collect {{min}} compatible cards to reveal this bonus.",
+      "activeCombos": "Active: {{combos}}",
+      "usableUpgrades": "Usable upgrades",
+      "tapToUse": "Tap to use",
+      "permanentUpgrades": "Permanent upgrades",
+      "wildCardPlayers": "Players brought in by Wild Card",
+      "emptyTitle": "No upgrades yet",
+      "emptyDesc": "Finish a season to pick your first upgrade card.",
+      "history": "History",
+      "promotionBadge": "Promotion"
+    },
+    "perkStatus": {
+      "applied": "Applied",
+      "active": "Active",
+      "used": "Used",
+      "expired": "Expired",
+      "usedThisWindow": "Used this window",
+      "oneUse": "1 use available",
+      "clone": "Your best player was cloned when you picked this card",
+      "sheikhActive": "Budget x10 active · tax audit pending",
+      "sheikhActiveStatus": "{{count}} season(s) left",
+      "sheikhExpired": "The sheikh left: debt, dented morale and a reduced budget",
+      "scoutStatus": "{{count}} mark available",
+      "scoutDesc": "Real potential + a yearly Hidden Gem",
+      "fountainDesc": "All your players got 3 years younger",
+      "cursedDesc": "+20% home performance, -15% for visitors at your ground",
+      "penaltyDesc": "Penalties guaranteed · +10% in tight games and favourable shootouts",
+      "drMiraclesDesc": "Injuries last 1 week max · serious recoveries can grant +1 OVR",
+      "localLegendDesc": "Your best academy player gains +3 OVR each season",
+      "theftReload": "Recharges next transfer window",
+      "theftDesc": "Sign any player at 50%",
+      "tacticalDesc": "2-3-5 and 3-1-3-3 formations unlocked",
+      "wallTrait": "Unbeatable trait",
+      "wallTraitDesc": "Elite keeper: extra home bonus",
+      "wallDesc": "Your first-choice keeper got +15 OVR",
+      "maxSpeedDesc": "Forwards +10 pace, -5 defence",
+      "fameDesc": "Sponsors x{{mult}} · new wages +10%",
+      "goldenDesc": "A 70+ OVR academy player appears each season",
+      "wildDesc": "You get a random player each season",
+      "blackUsed": "You already picked your legend",
+      "blackDesc": "Pick a retired legend",
+      "betPending": "Until next match",
+      "betPendingDesc": "{{percent}}% · €{{amount}} already staked",
+      "betAvailable": "Roulette available",
+      "betDesc": "Bet 10%, 25%, 50% or all-in before each match",
+      "achillesDesc": "Injure a rival before a match",
+      "swapUsed": "You already used your swap",
+      "swapDesc": "Swap a player for a rival's",
+      "secretDesc": "Cheap, long signings, but with a low release clause",
+      "goalBonusDesc": "+€50,000 per goal · Earned: €{{earned}}",
+      "gladiatorDesc": "Your players are immune to red cards",
+      "replaysLeft": "{{count}} use(s) left",
+      "replayDesc": "Replay a lost match",
+      "exhausted": "Used up",
+      "exhaustedDesc": "Recharges next season",
+      "diplomatUsed": "Single use",
+      "diplomatDesc": "Renew a player's contract by +3 years",
+      "starAvailable": "Roulette available",
+      "starAvailableDesc": "Pick one of 3 stars after promotion",
+      "starDone": "Signing done",
+      "starDoneDesc": "{{name}} arrived via {{route}}",
+      "starWaiting": "Waiting for promotion",
+      "starWaitingDesc": "Activates on promotion"
+    },
+    "diplomat": {
+      "title": "Diplomat",
+      "desc": "Pick a player to extend their contract by +3 years",
+      "success": "<0>{{name}}</0> renewed — now on {{years}}-year contract",
+      "renew": "Renew +3 years"
+    },
+    "starSigning": {
+      "title": "Star Signing Roulette",
+      "desc": "Pick a promotion route. A star joins and the worst player in your squad leaves.",
+      "success": "<0>{{name}}</0> has joined your club.",
+      "out": "Out: {{name}}",
+      "noRoulette": "No roulette available right now. It activates on promotion.",
+      "sign": "Sign this star"
+    },
+    "bet": {
+      "title": "Bet Roulette",
+      "desc": "Place your bet before the match. Once confirmed it is locked until you play your next match.",
+      "safeGreen": "Safe green",
+      "boldGold": "Bold gold",
+      "strongRed": "Strong red",
+      "allIn": "All-in",
+      "rules": "Win pays out · Draw loses half · Loss loses all"
+    },
+    "theft": {
+      "title": "Legal Theft",
+      "confirmTitle": "Confirm Theft",
+      "desc": "Pick a player from any rival team. You will sign them at 50% of their market value.",
+      "search": "Search player...",
+      "all": "All",
+      "marketValue": "Market value",
+      "yourPrice": "Your price (50%)",
+      "yourBudget": "Your budget:",
+      "after": "After:",
+      "signHalf": "Sign at half price!",
+      "insufficient": "Insufficient budget",
+      "back": "Back",
+      "done": "Theft complete!",
+      "joined": "<0>{{name}}</0> joins your squad for {{price}}",
+      "doneNote": "Market value: {{value}}",
+      "close": "Close",
+      "noBudget": "You do not have enough budget",
+      "empty": "No players found",
+      "potential": "POT",
+      "years": "years"
+    },
+    "blackMarket": {
+      "title": "Black Market",
+      "desc": "5 retired legends available. Pick one before time runs out.",
+      "timeUp": "Time up",
+      "noPick": "You did not pick any player.",
+      "signed": "Signed from the black market",
+      "close": "Close",
+      "years": "years"
+    },
+    "forcedSwap": {
+      "selectMineTitle": "Pick your player to swap",
+      "selectMineDesc": "Pick one of your players. Then you will choose a rival of similar rating (±3 OVR).",
+      "selectTheirsTitle": "Pick a rival (±3 OVR of {{ovr}})",
+      "confirmTitle": "Confirm swap",
+      "out": "OUT",
+      "in": "IN",
+      "confirm": "Confirm swap",
+      "done": "Swap complete",
+      "toRival": "{{player}} → {{team}}",
+      "toYou": "{{player}} → your team",
+      "search": "Search...",
+      "noSimilar": "No players of similar rating",
+      "close": "Close",
+      "years": "years"
+    },
+    "replay": {
+      "title": "Second Chance",
+      "subtitle": "Pick a match to replay",
+      "empty": "You have not played any match yet.",
+      "win": "Victory!",
+      "draw": "Draw",
+      "loss": "Defeat",
+      "before": "Before",
+      "now": "Now",
+      "better": "Fate smiled on you!",
+      "worse": "Fate was not on your side...",
+      "same": "The result did not change.",
+      "apply": "Apply result",
+      "keep": "Keep original",
+      "yourTeam": "Your team"
+    },
+    "event": {
+      "mystery_investor": {
+        "title": "Mystery Investor",
+        "desc": "An unknown businessman offers €500,000... but wants your best player in return.",
+        "optA": "Take the money",
+        "optB": "Decline"
+      },
+      "federation_probe": {
+        "title": "Federation Probe",
+        "desc": "The federation is investigating irregularities at your club. You must act.",
+        "optA": "Pay a €200,000 fine",
+        "optB": "Take a -3 point penalty"
+      },
+      "youth_loan": {
+        "title": "Ambitious Youngster",
+        "desc": "Your best youngster wants a loan to grow. If you let them go, they return with +5 OVR.",
+        "optA": "Let them go",
+        "optB": "Keep them"
+      },
+      "naming_rights": {
+        "title": "Naming Rights",
+        "desc": "\"Patatas Lozano\" offers €150,000/year to put its name on your stadium.",
+        "optA": "Accept (Estadio Patatas Lozano)",
+        "optB": "Keep the name"
+      },
+      "rival_collapse": {
+        "title": "Rival in Crisis",
+        "desc": "A direct rival is in financial trouble. Their star is available at half price.",
+        "optA": "Sign the player (half price)",
+        "optB": "Stay out of it"
+      },
+      "stadium_fire": {
+        "title": "Stadium Fire",
+        "desc": "A fire damages a stand. You lose capacity or pay for repairs.",
+        "optA": "Repair (€300,000)",
+        "optB": "Play with the stand closed (-2000 capacity)"
+      }
+    },
+    "archetypes": {
+      "veteran": {
+        "label": "Star veteran",
+        "risk": "Retires soon, immediate impact"
+      },
+      "prospect": {
+        "label": "Young prospect",
+        "risk": "Lower rating now, huge potential"
+      },
+      "media": {
+        "label": "Pricey media star",
+        "risk": "Boosts fame, but wages are huge"
+      }
+    },
+    "cardData": {
+      "perfect_clone": {
+        "name": "Perfect Clone",
+        "desc": "Duplicate your best player. Two versions of the same star in your squad."
+      },
+      "ghost_sheikh": {
+        "name": "Ghost Sheikh",
+        "desc": "Budget x10 for 2 seasons. When he vanishes he leaves debt, a morale drop and a temporary premium lockout."
+      },
+      "future_scout": {
+        "name": "Future Scout",
+        "desc": "See real potential and mark 1 Hidden Gem per season: +5 potential and an easier wage."
+      },
+      "fountain_of_youth": {
+        "name": "Fountain of Youth",
+        "desc": "All your players get 3 years younger. Permanent."
+      },
+      "cursed_stadium": {
+        "name": "Cursed Stadium",
+        "desc": "It always rains at home. Your team +20% performance, rival -15%. Permanent."
+      },
+      "penalty_master": {
+        "name": "Penalty Master",
+        "desc": "You never miss penalties. You win level shootouts and get +10% to score in tight games."
+      },
+      "dr_miracles": {
+        "name": "Dr. Miracle",
+        "desc": "Injuries last 1 week max. Heal a serious injury and the player returns with +1 OVR and a relapse risk."
+      },
+      "local_legend": {
+        "name": "Local Legend",
+        "desc": "Your best academy player gains +3 OVR per season instead of +1."
+      },
+      "legal_theft": {
+        "name": "Legal Theft",
+        "desc": "Each window you can sign 1 player from any team at 50% of their value."
+      },
+      "tactical_wildcard": {
+        "name": "Tactical Wildcard",
+        "desc": "Unlocks secret formations (2-3-5, 3-1-3-3) with unique bonuses."
+      },
+      "the_wall": {
+        "name": "The Wall",
+        "desc": "Keeper +15 OVR. If already elite, gains the Unbeatable trait and more home clean sheets."
+      },
+      "max_speed": {
+        "name": "Max Speed",
+        "desc": "All forwards +10 pace, but -5 defence. Unstoppable on the counter."
+      },
+      "diplomat": {
+        "name": "Diplomat",
+        "desc": "Pick a player and extend their contract by +3 years. Single use."
+      },
+      "fame": {
+        "name": "Fame",
+        "desc": "Sponsors x2 and more players agree to join, but new contracts ask for +10% wages."
+      },
+      "golden_academy": {
+        "name": "Golden Academy",
+        "desc": "Each season a 70+ OVR academy player appears. Pure talent."
+      },
+      "second_chance": {
+        "name": "Second Chance",
+        "desc": "If you lose a match, you can replay it once per season."
+      },
+      "wild_card": {
+        "name": "Wild Card",
+        "desc": "At the start of each window you get a random player. Could be a star or a flop."
+      },
+      "black_market": {
+        "name": "Black Market",
+        "desc": "Access a secret list of 5 retired legends (85-95 OVR). You have 30 seconds to pick one. Free."
+      },
+      "double_or_nothing": {
+        "name": "Double or Nothing",
+        "desc": "Before each match you bet 10%, 25% or 50%. Win: double. Draw: get half back. Lose: lose it all."
+      },
+      "achilles_heel": {
+        "name": "Achilles' Heel",
+        "desc": "Before a match, you can injure an opposing player so they cannot play."
+      },
+      "forced_swap": {
+        "name": "Forced Swap",
+        "desc": "One time only: swap one of your players for a rival of similar rating. No money."
+      },
+      "secret_clause": {
+        "name": "Secret Clause",
+        "desc": "Signings: +2 years and -30% wages, but with a low clause that may tempt big clubs."
+      },
+      "goal_bonus": {
+        "name": "Money Rain",
+        "desc": "Every goal you score gives you a €50,000 bonus. Thrashings are very profitable."
+      },
+      "gladiator": {
+        "name": "Gladiator",
+        "desc": "Your players never get red cards. Total immunity."
+      },
+      "star_signing": {
+        "name": "Star Signing",
+        "desc": "Promotion roulette: pick a star veteran, a young prospect or a pricey media star. The worst player in your squad leaves."
+      }
+    },
+    "combos": {
+      "fortaleza_maldita": {
+        "name": "Cursed Fortress",
+        "bonus": "Stronghold: at home +10 extra morale, fewer injuries and more clean sheets."
+      },
+      "cantera_infinita": {
+        "name": "Infinite Academy",
+        "bonus": "Every 3 seasons The Wonder Kid appears, a 75-85 OVR academy player with 95 potential."
+      },
+      "club_casino": {
+        "name": "Casino Club",
+        "bonus": "Chained winning bets inflate the bubble; losing two in a row triggers a tax probe."
+      },
+      "ataque_suicida": {
+        "name": "Suicide Attack",
+        "bonus": "More profitable thrashings: +€25,000 extra per goal if you play attacking, but exposed defence."
+      },
+      "mercado_criminal": {
+        "name": "Criminal Market",
+        "bonus": "Contact network: cheaper special deals, with a risk of sanction if you overdo it."
+      },
+      "proyecto_frankenstein": {
+        "name": "Frankenstein Project",
+        "bonus": "Young clones can come out with a mutant personality: more potential or higher wages."
+      }
+    },
+    "milestones": {
+      "survivor": {
+        "name": "Survivor",
+        "desc": "Finish 1 season without being sacked"
+      },
+      "academy": {
+        "name": "Academy",
+        "desc": "Win 3 matches in a row"
+      },
+      "local_fame": {
+        "name": "Local Fame",
+        "desc": "Earn your first promotion"
+      },
+      "home_fortress": {
+        "name": "Unbeaten at Home",
+        "desc": "Win 5 home matches in a row"
+      },
+      "scorer": {
+        "name": "Goal Machine",
+        "desc": "Score 30+ goals in a season"
+      },
+      "wall": {
+        "name": "Defensive Wall",
+        "desc": "Keep 5 clean sheets in a season"
+      },
+      "negotiator": {
+        "name": "Negotiator",
+        "desc": "Sign 3 players in a single window"
+      },
+      "strategist": {
+        "name": "Strategist",
+        "desc": "Win a match by 3+ goals"
+      },
+      "veteran": {
+        "name": "Veteran",
+        "desc": "Reach season 3"
+      },
+      "youth": {
+        "name": "Youth System",
+        "desc": "Have 3+ U21 players in your squad"
+      },
+      "climber": {
+        "name": "Climber",
+        "desc": "Earn promotion twice"
+      },
+      "unbeaten": {
+        "name": "Unbeaten",
+        "desc": "Go 10 matches without losing"
+      },
+      "chosen_one": {
+        "name": "The Chosen One",
+        "desc": "Reach Segunda División"
+      },
+      "tycoon": {
+        "name": "Tycoon",
+        "desc": "Build up a €2M budget"
+      },
+      "mad_scientist": {
+        "name": "Mad Scientist",
+        "desc": "Have a player with 85+ OVR"
+      },
+      "champion": {
+        "name": "Champion",
+        "desc": "Win the league"
+      },
+      "underdog": {
+        "name": "Underdog",
+        "desc": "Beat a team 10+ OVR stronger"
+      },
+      "mercenary": {
+        "name": "Mercenary",
+        "desc": "Sell a player for €500K+"
+      },
+      "legend": {
+        "name": "Legend",
+        "desc": "Reach La Liga"
+      },
+      "primera": {
+        "name": "Primera",
+        "desc": "Get promoted to Primera División"
+      }
+    },
+    "badge": {
+      "shapes": {
+        "shield": "Shield",
+        "pointed": "Gothic",
+        "classic": "Classic",
+        "circle": "Roundel",
+        "oval": "Oval",
+        "diamond": "Diamond",
+        "hexagon": "Hexagon",
+        "pentagon": "Pentagon",
+        "triangle": "Triangle",
+        "banner": "Banner",
+        "castle": "Battlement",
+        "rounded": "Modern",
+        "badge": "Plate"
+      },
+      "patterns": {
+        "gradient": "Gradient",
+        "solid": "Solid",
+        "split": "Diagonal",
+        "halves": "Halves",
+        "vertical": "V stripes",
+        "horizontal": "H stripes",
+        "quarters": "Quarters",
+        "sash": "Sash",
+        "chevron": "Chevron",
+        "band": "Centre band",
+        "ring": "Ring"
+      },
+      "icons": {
+        "star": "Star",
+        "crown": "Crown",
+        "trophy": "Trophy",
+        "shield": "Defence",
+        "sword": "Sword",
+        "swords": "Swords",
+        "flame": "Fire",
+        "zap": "Lightning",
+        "mountain": "Peak",
+        "anchor": "Anchor",
+        "bird": "Bird",
+        "pawprint": "Beast",
+        "cat": "Feline",
+        "fish": "Fish",
+        "sun": "Sun",
+        "moon": "Moon",
+        "compass": "Compass",
+        "castle": "Castle",
+        "landmark": "Monument",
+        "waves": "Waves",
+        "droplets": "Drops",
+        "trees": "Forest",
+        "leaf": "Leaf",
+        "wind": "Wind",
+        "snowflake": "Snow",
+        "target": "Target",
+        "crosshair": "Dot",
+        "flag": "Flag",
+        "medal": "Medal",
+        "award": "Award",
+        "gem": "Gem",
+        "heart": "Heart",
+        "rocket": "Rocket",
+        "feather": "Feather",
+        "skull": "Skull",
+        "bone": "Bone",
+        "hammer": "Hammer",
+        "axe": "Axe",
+        "bell": "Bell",
+        "key": "Key",
+        "atom": "Atom",
+        "hexagon": "Core",
+        "sparkles": "Sparkle",
+        "ship": "Ship",
+        "volleyball": "Ball",
+        "globe": "Globe"
+      },
+      "trims": {
+        "none": "None",
+        "thin": "Thin",
+        "med": "Medium",
+        "bold": "Bold"
+      },
+      "tabs": {
+        "shape": "Shape",
+        "pattern": "Pattern",
+        "color": "Colours",
+        "symbol": "Symbol"
+      },
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "border": "Border / trim",
+      "symbol": "Symbol",
+      "borderLabel": "Border",
+      "primaryTitle": "Primary",
+      "secondaryTitle": "Secondary",
+      "borderWidth": "Border width",
+      "symbolSize": "Symbol size",
+      "initials": "Initials",
+      "custom": "{{label}} custom"
+    },
+    "kit": {
+      "styles": {
+        "solid": "Solid",
+        "stripes_v": "V stripes",
+        "stripes_h": "H stripes",
+        "half": "Half",
+        "sleeves": "Sleeves",
+        "diagonal": "Diagonal",
+        "chest_band": "Band"
+      },
+      "style": "Style",
+      "primaryColor": "Primary colour",
+      "secondaryColor": "Secondary colour",
+      "primaryAria": "Primary colour {{color}}",
+      "secondaryAria": "Secondary colour {{color}}"
+    }
+  },
+  "trial": {
+    "bannerText": "Trial mode: this game is not saved in the cloud.",
+    "bannerCta": "Save progress"
   }
 }

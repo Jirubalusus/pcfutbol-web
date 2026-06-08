@@ -1035,6 +1035,145 @@ $pcf-text: #8a9aaa;
   }
 }
 
+// ── Historical loading skeleton ──────────────────────────────────
+// Mirrors the country selector shape (title card + continent rows) so the
+// panel keeps the same footprint while the historical dataset streams in.
+.map-selection__skeleton {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.map-selection--historical-loading {
+  @media (max-width: 768px) {
+    .map-selection__row {
+      grid-template-rows: 1fr;
+    }
+
+    .map-selection__map {
+      display: none;
+      padding: 0;
+      min-height: 0;
+    }
+  }
+}
+
+.map-selection__title--skeleton {
+  color: rgba(244, 255, 248, 0.55);
+
+  .map-selection__skeleton-spinner {
+    margin-left: auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba($pcf-green, 0.25);
+    border-top-color: rgba($pcf-green, 0.85);
+    animation: tsSkeletonSpin 0.85s linear infinite;
+    flex-shrink: 0;
+  }
+}
+
+.map-selection__country-card--skeleton {
+  cursor: default;
+  pointer-events: none;
+
+  &::before {
+    opacity: 0.22;
+  }
+}
+
+// Shimmering placeholder blocks shared by the skeleton cards.
+.ts-skel {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba($pcf-green, 0.14) 45%,
+      rgba($pcf-gold, 0.1) 55%,
+      transparent 100%
+    );
+    animation: tsSkeletonShimmer 1.4s ease-in-out infinite;
+  }
+}
+
+.ts-skel--flag {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.ts-skel--badge {
+  width: 30px;
+  height: 22px;
+  justify-self: end;
+}
+
+.ts-skel--line {
+  height: 11px;
+}
+
+.ts-skel--name {
+  width: 62%;
+  margin-bottom: 7px;
+}
+
+.ts-skel--meta {
+  width: 86%;
+  height: 9px;
+  opacity: 0.7;
+}
+
+// Desktop map side: a calm pulsing globe placeholder instead of an empty globe.
+.map-selection__map-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+}
+
+.map-selection__map-skeleton-globe {
+  width: min(58%, 340px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 32%, rgba($pcf-green, 0.18) 0%, transparent 58%),
+    radial-gradient(circle at 64% 70%, rgba($pcf-gold, 0.1) 0%, transparent 55%),
+    rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba($pcf-green, 0.18);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+  animation: placeholderPulse 3s ease-in-out infinite;
+}
+
+@keyframes tsSkeletonShimmer {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(100%); }
+}
+
+@keyframes tsSkeletonSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-skel::after,
+  .map-selection__skeleton-spinner,
+  .map-selection__map-skeleton-globe {
+    animation: none;
+  }
+}
+
 // Country list in right panel (desktop + mobile)
 .map-selection__countries {
   flex: 1;
@@ -2021,9 +2160,23 @@ $pcf-text: #8a9aaa;
 }
 
 // Modal de Pretemporada
+html.preseason-modal-open,
+body.preseason-modal-open {
+  overflow: hidden !important;
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body.preseason-modal-open {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+}
+
 .preseason-modal-overlay {
   position: fixed;
   inset: 0;
+  height: 100dvh;
   background:
     radial-gradient(circle at 18% 12%, rgba(52, 211, 153, 0.18), transparent 30%),
     radial-gradient(circle at 88% 16%, rgba(59, 130, 246, 0.16), transparent 34%),
@@ -2033,12 +2186,15 @@ $pcf-text: #8a9aaa;
   justify-content: stretch;
   z-index: 2000;
   padding: 0;
+  overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 
   @media (max-width: 768px) {
     padding: 10px;
     align-items: flex-start;
-    padding-top: 20px;
+    padding-top: max(10px, env(safe-area-inset-top));
   }
 }
 
@@ -2050,19 +2206,17 @@ $pcf-text: #8a9aaa;
   width: 100%;
   border: 0;
   max-height: none;
-  overflow-y: auto;
+  overflow: visible;
 
   @media (max-width: 768px) {
     padding: 12px;
     border-radius: 14px;
-    max-height: 85vh;
-    max-width: calc(100vw - 16px);
-    overflow-x: hidden;
+    max-width: calc(100vw - 20px);
   }
 }
 
 .preseason-page {
-  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--color-text-primary);
 
   &__hero {
@@ -2564,3 +2718,218 @@ $pcf-text: #8a9aaa;
 }
 
 // Continent selector removed — unified globe shows all countries
+
+// ============================================================
+// HISTORICAL DATABASE SELECTOR
+// ============================================================
+.historical-season-bar {
+  margin: 0.55rem clamp(0.75rem, 2vw, 1.25rem) 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba($pcf-gold, 0.28);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(200, 168, 78, 0.13), rgba(0, 230, 118, 0.06) 62%, rgba(0, 0, 0, 0.18));
+  color: $pcf-white;
+  display: grid;
+  grid-template-columns: minmax(230px, 1.05fr) minmax(320px, 1fr);
+  align-items: center;
+  gap: 0.7rem 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+
+  &--active {
+    border-color: rgba($pcf-green, 0.36);
+    box-shadow: 0 12px 30px rgba(0, 230, 118, 0.08), 0 10px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  &__copy {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 0;
+
+    svg {
+      color: $pcf-gold;
+      flex: 0 0 auto;
+    }
+
+    strong,
+    span {
+      display: block;
+    }
+
+    strong {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: $pcf-gold;
+    }
+
+    span {
+      color: $pcf-text;
+      font-size: 0.78rem;
+      line-height: 1.25;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  &__select-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: $pcf-text;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+
+    select {
+      width: min(360px, 38vw);
+      border: 1px solid rgba($pcf-green, 0.35);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.48);
+      color: $pcf-white;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.65;
+        cursor: wait;
+      }
+
+      &:focus {
+        border-color: $pcf-gold;
+        box-shadow: 0 0 0 2px rgba($pcf-gold, 0.16);
+      }
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    color: $pcf-green-light;
+    font-size: 0.78rem;
+    min-width: 205px;
+    white-space: nowrap;
+  }
+
+  &__badge {
+    color: #08110d;
+    background: linear-gradient(135deg, $pcf-green, $pcf-gold);
+    border-radius: 999px;
+    padding: 0.24rem 0.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.64rem;
+  }
+
+  &__quick-list {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.35rem;
+    overflow-x: auto;
+    padding: 0.05rem 0 0.1rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba($pcf-green, 0.45) transparent;
+  }
+
+  &__notice {
+    grid-column: 1 / -1;
+    color: $pcf-green-light;
+    border: 1px solid rgba($pcf-green, 0.25);
+    background: rgba(0, 0, 0, 0.25);
+    font-size: 0.78rem;
+    padding: 0.35rem 0.55rem;
+    border-radius: 999px;
+    width: fit-content;
+
+    &--error {
+      color: $pcf-red-light;
+      border-color: rgba($pcf-red, 0.25);
+    }
+  }
+
+  @media (max-width: 1080px) {
+    grid-template-columns: 1fr;
+
+    &__controls {
+      justify-content: space-between;
+    }
+
+    &__select-wrap select {
+      width: min(420px, 62vw);
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin: 0.45rem 0.65rem 0;
+    align-items: stretch;
+
+    &__controls,
+    &__select-wrap,
+    &__meta {
+      width: 100%;
+      align-items: stretch;
+    }
+
+    &__controls {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &__select-wrap {
+      justify-content: space-between;
+
+      select {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+      }
+    }
+
+    &__meta {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      min-width: 0;
+      white-space: normal;
+    }
+  }
+}
+
+.historical-season-chip {
+  flex: 0 0 auto;
+  border: 1px solid rgba($pcf-green, 0.22);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  color: $pcf-text;
+  min-height: 34px;
+  padding: 0.38rem 0.62rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+
+  &:hover:not(:disabled),
+  &.active {
+    border-color: rgba($pcf-green, 0.7);
+    color: $pcf-green-light;
+    background: rgba($pcf-green, 0.12);
+    box-shadow: 0 0 0 1px rgba($pcf-green, 0.12) inset;
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: wait;
+  }
+}

@@ -12,6 +12,111 @@ const LOAN_DURATION_WEEKS = 38; // Temporada completa
 const PURCHASE_OPTION_MULTIPLIER_MIN = 0.8;
 const PURCHASE_OPTION_MULTIPLIER_MAX = 1.3;
 
+const DIRECT_RIVAL_GROUPS = [
+  ['real madrid', 'barcelona'],
+  ['real betis', 'betis', 'sevilla'],
+  ['atletico madrid', 'atlético madrid', 'real madrid'],
+  ['athletic club', 'athletic bilbao', 'real sociedad'],
+  ['valencia', 'levante'],
+  ['espanyol', 'barcelona']
+];
+
+const SECOND_TIER_LEAGUE_HINTS = ['segunda', 'serieb', 'serie b', 'championship', 'ligue2', 'ligue 2', 'bundesliga2', '2bundesliga', '2. bundesliga'];
+
+function normalizeMarketText(value = '') {
+  return String(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function getLeagueText(team) {
+  return normalizeMarketText(`${team?.leagueId || ''} ${team?.league || ''} ${team?.competition || ''} ${team?.country || ''}`);
+}
+
+function getLeagueCountry(team) {
+  const text = getLeagueText(team);
+  if (/spain|espana|laliga|segunda|rfef/.test(text)) return 'spain';
+  if (/italy|italia|serie a|serie b|serieb/.test(text)) return 'italy';
+  if (/england|inglaterra|premier|championship/.test(text)) return 'england';
+  if (/france|francia|ligue/.test(text)) return 'france';
+  if (/germany|alemania|bundesliga/.test(text)) return 'germany';
+  if (/portugal|primeira/.test(text)) return 'portugal';
+  if (/netherlands|paises bajos|eredivisie/.test(text)) return 'netherlands';
+  return text || 'unknown';
+}
+
+function isSecondTierTeam(team) {
+  const text = getLeagueText(team);
+  const level = Number(team?.leagueLevel || team?.divisionLevel || team?.tierLevel || 0);
+  return level >= 2 || SECOND_TIER_LEAGUE_HINTS.some(hint => text.includes(normalizeMarketText(hint)));
+}
+
+function areDirectRivals(teamA, teamB) {
+  const a = normalizeMarketText(teamA?.name || teamA?.shortName || teamA?.id || '');
+  const b = normalizeMarketText(teamB?.name || teamB?.shortName || teamB?.id || '');
+  if (!a || !b) return false;
+  return DIRECT_RIVAL_GROUPS.some(group => {
+    const aliases = group.map(normalizeMarketText);
+    return aliases.some(alias => a === alias || a.includes(alias))
+      && aliases.some(alias => b === alias || b.includes(alias))
+      && a !== b;
+  });
+}
+
+function getTeamBudget(team) {
+  return Number(team?.transferBudget ?? team?.budget ?? team?.money ?? 0);
+}
+
+function getPrestigeScore(team, fallback = 68) {
+  const players = Array.isArray(team?.players) ? team.players : [];
+  const avg = players.length ? avgOverall(players) : Number(team?.overall || team?.rating || fallback);
+  return Math.max(Number(team?.reputation || 0) || fallback, avg || fallback);
+}
+
+function getDomesticBias(team) {
+  const modestSpanish = getLeagueCountry(team) === 'spain'
+    && (isSecondTierTeam(team) || getPrestigeScore(team, 68) <= 76);
+  return modestSpanish ? 0.58 : 0.35;
+}
+
+function weightedPick(items) {
+  const total = items.reduce((sum, item) => sum + Math.max(0.01, item.weight || 0.01), 0);
+  let pick = Math.random() * total;
+  return items.find(item => {
+    pick -= Math.max(0.01, item.weight || 0.01);
+    return pick <= 0;
+  }) || items[items.length - 1];
+}
+
+function isPlausibleLoanRequester(requestingTeam, player, ownerTeam, marketValue) {
+  if (!requestingTeam || !player || !ownerTeam) return false;
+  if (requestingTeam.id === ownerTeam.id) return false;
+  if (areDirectRivals(requestingTeam, ownerTeam)) return false;
+
+  const budget = getTeamBudget(requestingTeam);
+  const annualWage = Number(player.salary || 50000) * 52;
+  if (budget > 0 && budget < Math.max(500000, annualWage * 0.25)) return false;
+
+  const playerOverall = Number(player.overall || 70);
+  const requesterLevel = getPrestigeScore(requestingTeam, 68);
+
+  // Cesiones de estrellas absolutas son raras y solo para clubes de primer nivel.
+  if (playerOverall >= 84) {
+    if (isSecondTierTeam(requestingTeam)) return false;
+    if (requesterLevel < playerOverall - 10) return false;
+    if (budget > 0 && budget < marketValue * 0.25) return false;
+  }
+
+  // Jóvenes/suplentes pueden bajar un escalón, pero no dos mundos deportivos.
+  if (playerOverall >= 76 && requesterLevel < playerOverall - 16) return false;
+  if (playerOverall < 76 && requesterLevel < playerOverall - 22) return false;
+
+  return true;
+}
+
 // ============================================================
 // CÁLCULOS DE CESIÓN
 // ============================================================
@@ -197,23 +302,38 @@ export function generateLoanOffers(playerTeam, allTeams, teamId) {
     ? Array.from(allTeams.values()) 
     : Array.isArray(allTeams) ? allTeams : [];
   
-  // Buscar equipo interesado
-  const interestedTeams = teamsArray.filter(t => {
-    if (t.id === teamId) return false;
-    const teamAvg = avgOverall(t.players || []);
-    // El jugador debe encajar en el equipo (no demasiado bueno ni malo)
-    return targetPlayer.overall >= teamAvg - 5 && targetPlayer.overall <= teamAvg + 10
-      && (t.budget || 0) >= 1_000_000;
-  });
+  const marketValue = calculateMarketValue(targetPlayer, playerTeam.leagueId || '');
+  const sellerCountry = getLeagueCountry(playerTeam);
+  const domesticBias = getDomesticBias(playerTeam);
+
+  // Buscar equipo interesado con filtros de coherencia: nivel, presupuesto,
+  // mercado doméstico para modestos españoles y veto de rivalidades.
+  const interestedTeams = teamsArray
+    .filter(t => {
+      if (!isPlausibleLoanRequester(t, targetPlayer, playerTeam, marketValue)) return false;
+      const teamAvg = avgOverall(t.players || []);
+      const fallbackLevel = getPrestigeScore(t, 68);
+      const effectiveAvg = teamAvg || fallbackLevel;
+      // El jugador debe encajar en el equipo (no demasiado bueno ni malo)
+      return targetPlayer.overall >= effectiveAvg - 7 && targetPlayer.overall <= effectiveAvg + 12
+        && getTeamBudget(t) >= 1_000_000;
+    })
+    .map(team => {
+      const domestic = sellerCountry !== 'unknown' && getLeagueCountry(team) === sellerCountry;
+      const levelFit = 1 / (1 + Math.abs(getPrestigeScore(team, 68) - targetPlayer.overall) / 18);
+      return {
+        team,
+        weight: (domestic ? (domesticBias > 0.5 ? 0.68 : 1 + domesticBias * 0.15) : 1) * (0.75 + levelFit)
+      };
+    });
   
   if (interestedTeams.length === 0) return offers;
   
-  const requestingTeam = interestedTeams[Math.floor(Math.random() * interestedTeams.length)];
+  const requestingTeam = weightedPick(interestedTeams).team;
   const requestingProfile = getTeamProfileByName(requestingTeam.name);
   
   const loanFee = calculateLoanFee(targetPlayer, playerTeam.leagueId || '');
   const salaryShare = calculateLoanSalaryShare(targetPlayer, requestingProfile);
-  const marketValue = calculateMarketValue(targetPlayer, playerTeam.leagueId || '');
   
   // Opción de compra (60% de las ofertas entrantes la incluyen)
   const hasPurchaseOption = Math.random() < 0.60;

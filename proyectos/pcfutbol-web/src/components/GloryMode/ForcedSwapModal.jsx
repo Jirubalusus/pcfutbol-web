@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { X, ArrowLeftRight, Search, Check, ChevronRight } from 'lucide-react';
 import { translatePosition } from '../../game/positionNames';
@@ -10,6 +11,7 @@ import './GloryMode.scss';
  * Forced Swap Modal — Exchange one of your players for a rival player of similar OVR
  */
 export default function ForcedSwapModal({ onClose }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const gloryData = state.gloryData || {};
   const [phase, setPhase] = useState('selectMine'); // selectMine → selectTheirs → confirm → done
@@ -94,13 +96,13 @@ export default function ForcedSwapModal({ onClose }) {
         <div className="theft-modal theft-modal--done" onClick={e => e.stopPropagation()} style={{ maxWidth: 480 }}>
           <div style={{ padding: 32, textAlign: 'center' }}>
             <Check size={48} style={{ color: '#66bb6a', marginBottom: 12 }} />
-            <p style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>Intercambio completado</p>
+            <p style={{ fontSize: 16, fontWeight: 700, color: '#fff' }}>{t('glory.forcedSwap.done')}</p>
             <p style={{ color: 'rgba(255,255,255,0.5)', marginTop: 8 }}>
-              {myPlayer?.name} → {theirPlayer?.teamName}<br />
-              {theirPlayer?.name} → Tu equipo
+              {t('glory.forcedSwap.toRival', { player: myPlayer?.name, team: theirPlayer?.teamName })}<br />
+              {t('glory.forcedSwap.toYou', { player: theirPlayer?.name })}
             </p>
             <button className="theft-modal__btn theft-modal__btn--primary" onClick={onClose} style={{ marginTop: 16 }}>
-              Cerrar
+              {t('glory.forcedSwap.close')}
             </button>
           </div>
         </div>
@@ -113,25 +115,25 @@ export default function ForcedSwapModal({ onClose }) {
       <div className="theft-modal__overlay" onClick={() => setPhase('selectTheirs')}>
         <div className="theft-modal theft-modal--confirm" onClick={e => e.stopPropagation()} style={{ maxWidth: 480 }}>
           <div className="theft-modal__header">
-            <h2><ArrowLeftRight size={20} /> Confirmar intercambio</h2>
+            <h2><ArrowLeftRight size={20} /> {t('glory.forcedSwap.confirmTitle')}</h2>
             <button className="theft-modal__close" onClick={() => setPhase('selectTheirs')}><X size={18} /></button>
           </div>
           <div style={{ padding: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
               <div style={{ flex: 1, textAlign: 'center', padding: 12, background: 'rgba(239,83,80,0.1)', borderRadius: 10 }}>
-                <p style={{ fontSize: 11, color: '#ef5350', fontWeight: 600, marginBottom: 4 }}>SALE</p>
+                <p style={{ fontSize: 11, color: '#ef5350', fontWeight: 600, marginBottom: 4 }}>{t('glory.forcedSwap.out')}</p>
                 <p style={{ fontWeight: 700, color: '#fff' }}>{myPlayer?.name}</p>
                 <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{myPlayer?.position} · {myPlayer?.overall} OVR</p>
               </div>
               <ArrowLeftRight size={20} style={{ color: 'rgba(255,255,255,0.4)' }} />
               <div style={{ flex: 1, textAlign: 'center', padding: 12, background: 'rgba(102,187,106,0.1)', borderRadius: 10 }}>
-                <p style={{ fontSize: 11, color: '#66bb6a', fontWeight: 600, marginBottom: 4 }}>ENTRA</p>
+                <p style={{ fontSize: 11, color: '#66bb6a', fontWeight: 600, marginBottom: 4 }}>{t('glory.forcedSwap.in')}</p>
                 <p style={{ fontWeight: 700, color: '#fff' }}>{theirPlayer?.name}</p>
                 <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{theirPlayer?.position} · {theirPlayer?.overall} OVR</p>
               </div>
             </div>
             <button className="theft-modal__btn theft-modal__btn--primary" onClick={handleSwap} style={{ width: '100%' }}>
-              Confirmar intercambio
+              {t('glory.forcedSwap.confirm')}
             </button>
           </div>
         </div>
@@ -145,12 +147,12 @@ export default function ForcedSwapModal({ onClose }) {
       <div className="theft-modal__overlay" onClick={onClose}>
         <div className="theft-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 520 }}>
           <div className="theft-modal__header">
-            <h2><ArrowLeftRight size={20} /> Elige rival (±3 OVR de {myPlayer?.overall})</h2>
+            <h2><ArrowLeftRight size={20} /> {t('glory.forcedSwap.selectTheirsTitle', { ovr: myPlayer?.overall })}</h2>
             <button className="theft-modal__close" onClick={() => setPhase('selectMine')}><X size={18} /></button>
           </div>
           <div className="theft-modal__search">
             <Search size={16} />
-            <input type="text" placeholder="Buscar..." value={search} onChange={e => setSearch(e.target.value)} />
+            <input type="text" placeholder={t('glory.forcedSwap.search')} value={search} onChange={e => setSearch(e.target.value)} />
           </div>
           <div className="theft-modal__list">
             {filteredRivals.map((player, i) => (
@@ -158,12 +160,12 @@ export default function ForcedSwapModal({ onClose }) {
                 <span className="theft-modal__item-ovr">{player.overall}</span>
                 <div className="theft-modal__item-info">
                   <span className="theft-modal__item-name">{player.name}</span>
-                  <span className="theft-modal__item-meta">{translatePosition(player.position)} · {player.age} años · {player.teamName}</span>
+                  <span className="theft-modal__item-meta">{translatePosition(player.position)} · {player.age} {t('glory.forcedSwap.years')} · {player.teamName}</span>
                 </div>
                 <ChevronRight size={14} />
               </button>
             ))}
-            {filteredRivals.length === 0 && <div className="theft-modal__empty">No hay jugadores de media similar</div>}
+            {filteredRivals.length === 0 && <div className="theft-modal__empty">{t('glory.forcedSwap.noSimilar')}</div>}
           </div>
         </div>
       </div>
@@ -175,17 +177,17 @@ export default function ForcedSwapModal({ onClose }) {
     <div className="theft-modal__overlay" onClick={onClose}>
       <div className="theft-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 520 }}>
         <div className="theft-modal__header">
-          <h2><ArrowLeftRight size={20} /> Elige tu jugador para intercambiar</h2>
+          <h2><ArrowLeftRight size={20} /> {t('glory.forcedSwap.selectMineTitle')}</h2>
           <button className="theft-modal__close" onClick={onClose}><X size={18} /></button>
         </div>
-        <p className="theft-modal__desc">Elige uno de tus jugadores. Luego elegirás un rival de media similar (±3 OVR).</p>
+        <p className="theft-modal__desc">{t('glory.forcedSwap.selectMineDesc')}</p>
         <div className="theft-modal__list">
           {myPlayers.map((player, i) => (
             <button key={i} className="theft-modal__item" onClick={() => { setMyPlayer(player); setPhase('selectTheirs'); setSearch(''); }}>
               <span className="theft-modal__item-ovr">{player.overall}</span>
               <div className="theft-modal__item-info">
                 <span className="theft-modal__item-name">{player.name}</span>
-                <span className="theft-modal__item-meta">{translatePosition(player.position)} · {player.age} años</span>
+                <span className="theft-modal__item-meta">{translatePosition(player.position)} · {player.age} {t('glory.forcedSwap.years')}</span>
               </div>
               <ChevronRight size={14} />
             </button>

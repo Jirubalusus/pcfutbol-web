@@ -54,8 +54,12 @@ export default function Calendar() {
   }, [state.europeanCalendar, state.fixtures]);
 
   const totalWeeks = calendar.totalWeeks;
+  const cupRounds = useMemo(
+    () => Array.isArray(state.cupCompetition?.rounds) ? state.cupCompetition.rounds : [],
+    [state.cupCompetition?.rounds]
+  );
   const hasEuropean = !!state.europeanCompetitions?.initialized || !!state.saCompetitions?.initialized || (calendar.allEuropeanWeeks?.length > 0);
-  const hasCup = !!state.cupCompetition || (calendar.cupWeeks?.length > 0);
+  const hasCup = cupRounds.length > 0;
 
   const calendarTeamIds = useMemo(() => {
     const ids = new Set();
@@ -65,8 +69,8 @@ export default function Calendar() {
       if (fixture.awayTeam) ids.add(fixture.awayTeam);
     });
 
-    (state.cupCompetition?.rounds || []).forEach((round) => {
-      (round.matches || []).forEach((match) => {
+    cupRounds.forEach((round) => {
+      (Array.isArray(round?.matches) ? round.matches : []).forEach((match) => {
         if (match.homeTeam?.teamId) ids.add(match.homeTeam.teamId);
         if (match.awayTeam?.teamId) ids.add(match.awayTeam.teamId);
       });
@@ -78,7 +82,7 @@ export default function Calendar() {
     });
 
     return Array.from(ids);
-  }, [state.fixtures, state.cupCompetition, state.europeanCompetitions, state.saCompetitions, isInSALeague]);
+  }, [state.fixtures, cupRounds, state.europeanCompetitions, state.saCompetitions, isInSALeague]);
 
   usePreloadTeamCrests(calendarTeamIds, { limit: 120 });
 
@@ -159,9 +163,11 @@ export default function Calendar() {
       if (cupSet.has(w) && hasCup) {
         const cupNum = (cupWeeks || []).indexOf(w) + 1;
         const roundIdx = getCupRoundForWeek(w, calendar);
-        const roundName = (roundIdx !== null && state.cupCompetition.rounds?.[roundIdx]?.name) || t('calendar.round', { num: cupNum });
+        const round = roundIdx !== null ? cupRounds[roundIdx] : null;
+        const roundMatches = Array.isArray(round?.matches) ? round.matches : [];
+        const roundName = round?.name || t('calendar.round', { num: cupNum });
         const cupRoundPlayed = roundIdx !== null &&
-          state.cupCompetition.rounds?.[roundIdx]?.matches?.some(m => m.played);
+          roundMatches.some(m => m.played);
         let shortLabel = roundName;
         if (shortLabel.length > 4) shortLabel = `R${cupNum}`;
 
@@ -174,7 +180,7 @@ export default function Calendar() {
     }
 
     return entries;
-  }, [calendar, state.cupCompetition, state.fixtures, totalWeeks, hasEuropean, hasCup, playerEuropean, playerSA, isInSALeague, state.currentWeek]);
+  }, [calendar, cupRounds, state.fixtures, totalWeeks, hasEuropean, hasCup, playerEuropean, playerSA, isInSALeague, state.currentWeek, t]);
 
   // ── Selected entry index ──
   const [selectedIdx, setSelectedIdx] = useState(() => {
@@ -198,11 +204,27 @@ export default function Calendar() {
   const selectedEntry = weekEntries[safeIdx];
   const selectedWeek = selectedEntry?.week || state.currentWeek || 1;
 
-  // Auto-scroll carousel to selected button
+  // Auto-scroll carousel to selected button.
+  // NOTE: We deliberately avoid `Element.scrollIntoView({ inline: 'center' })` here.
+  // scrollIntoView scrolls EVERY scrollable ancestor (including overflow:hidden/clip
+  // containers and the document/viewport) to bring the chip into view. Inside the
+  // desktop office shell (fixed sidebar + transformed screen-transition wrapper) that
+  // shifted the whole app horizontally and cropped the sidebar/menu off-screen.
+  // Instead we scroll ONLY the carousel's own horizontal scroll area, so no ancestor,
+  // body or viewport can ever move.
   useEffect(() => {
-    if (!carouselRef.current) return;
-    const btn = carouselRef.current.children[safeIdx];
-    if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    const btn = carousel.children[safeIdx];
+    if (!btn) return;
+    // Center the selected chip within the carousel using rect math (robust regardless
+    // of offsetParent), then clamp to the carousel's own scroll range.
+    const carouselRect = carousel.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+    const delta = (btnRect.left - carouselRect.left) - (carousel.clientWidth - btn.clientWidth) / 2;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    const left = Math.max(0, Math.min(carousel.scrollLeft + delta, maxScroll));
+    carousel.scrollTo({ left, behavior: 'smooth' });
   }, [safeIdx]);
 
   // ── League fixtures ──
@@ -334,14 +356,15 @@ export default function Calendar() {
   // ── ALL Cup fixtures ──
   const allCupFixtures = useMemo(() => {
     if (selectedEntry?.type !== 'cup') return [];
-    if (!state.cupCompetition) return [];
+    if (!hasCup) return [];
 
     const roundIdx = selectedEntry.roundIdx;
     if (roundIdx === null || roundIdx === undefined) return [];
-    const round = state.cupCompetition.rounds?.[roundIdx];
+    const round = cupRounds[roundIdx];
     if (!round) return [];
 
-    return round.matches.map(m => ({
+    const matches = Array.isArray(round.matches) ? round.matches : [];
+    return matches.map(m => ({
       homeTeam: m.homeTeam, awayTeam: m.awayTeam,
       homeName: m.homeTeam?.teamName || '—',
       awayName: m.awayTeam?.teamName || '—',
@@ -349,7 +372,7 @@ export default function Calendar() {
       winnerId: m.winnerId, bye: m.bye, penalties: m.penalties,
       isPlayer: m.homeTeam?.teamId === state.teamId || m.awayTeam?.teamId === state.teamId
     }));
-  }, [selectedEntry?.type, selectedEntry?.roundIdx, state.cupCompetition, state.teamId]);
+  }, [selectedEntry?.type, selectedEntry?.roundIdx, cupRounds, hasCup, state.teamId]);
 
   // ── Helper functions ──
   const getTeamName = (teamId) => {
@@ -423,7 +446,7 @@ export default function Calendar() {
     <div key={key} className={`fixture-card ${homeIsPlayer || awayIsPlayer ? 'is-player' : ''} ${played ? 'played' : ''} ${extraClass || ''}`}>
       <div className={`team home ${homeIsPlayer ? 'is-you' : ''}`}>
         <span className="team-name">{homeName}</span>
-        {homeTeamId && <TeamCrest teamId={homeTeamId} size={22} />}
+        {homeTeamId && <TeamCrest teamId={homeTeamId} teamName={homeName} size={22} />}
       </div>
       <div className="match-center">
         {played ? (
@@ -438,7 +461,7 @@ export default function Calendar() {
         )}
       </div>
       <div className={`team away ${awayIsPlayer ? 'is-you' : ''}`}>
-        {awayTeamId && <TeamCrest teamId={awayTeamId} size={22} />}
+        {awayTeamId && <TeamCrest teamId={awayTeamId} teamName={awayName} size={22} />}
         <span className="team-name">{awayName}</span>
       </div>
       <div className="match-status">

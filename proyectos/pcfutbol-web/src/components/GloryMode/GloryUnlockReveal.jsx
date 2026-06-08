@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { GLORY_CARDS } from '../../game/gloryEngine';
 import { MILESTONES } from '../../game/gloryUnlocks';
 import {
@@ -17,7 +18,7 @@ const ICON_MAP = {
   Skull, Coins, Crosshair, ArrowLeftRight, FileText, Banknote, Swords,
 };
 
-const TIER_LABELS = { S: 'LEGENDARIA', A: 'ÉPICA', B: 'RARA' };
+const TIER_LABEL_KEYS = { S: 'glory.cards.tierLegendary', A: 'glory.cards.tierEpic', B: 'glory.cards.tierRare' };
 const TIER_CLASSES = { S: 'legendary', A: 'epic', B: 'rare' };
 
 /**
@@ -25,6 +26,7 @@ const TIER_CLASSES = { S: 'legendary', A: 'epic', B: 'rare' };
  * Shows one card at a time. When multiple are unlocked, chains them.
  */
 export default function GloryUnlockReveal({ milestoneIds = [], onDone }) {
+  const { t } = useTranslation();
   const [currentIdx, setCurrentIdx] = useState(0);
   const [phase, setPhase] = useState('lock'); // lock → unlock → card → idle
 
@@ -74,7 +76,7 @@ export default function GloryUnlockReveal({ milestoneIds = [], onDone }) {
       {/* Card reveal */}
       <div className={`glory-reveal__card ${phase === 'card' || phase === 'idle' ? 'visible' : 'hidden'}`}>
         <div className="glory-reveal__milestone-tag">
-          <Trophy size={14} /> {milestone.name}
+          <Trophy size={14} /> {t(`glory.milestones.${milestone.id}.name`)}
         </div>
 
         <div className={`glory-reveal__card-frame glory-reveal__card-frame--${TIER_CLASSES[card.tier]}`}>
@@ -84,15 +86,15 @@ export default function GloryUnlockReveal({ milestoneIds = [], onDone }) {
         </div>
 
         <span className={`glory-reveal__tier glory-reveal__tier--${TIER_CLASSES[card.tier]}`}>
-          {TIER_LABELS[card.tier]}
+          {t(TIER_LABEL_KEYS[card.tier])}
         </span>
 
-        <h2 className="glory-reveal__name">{card.name}</h2>
-        <p className="glory-reveal__desc">{card.description}</p>
+        <h2 className="glory-reveal__name">{t(`glory.cardData.${card.id}.name`, { defaultValue: card.name })}</h2>
+        <p className="glory-reveal__desc">{t(`glory.cardData.${card.id}.description`, { defaultValue: card.description })}</p>
 
         {phase === 'idle' && (
           <button className="glory-reveal__continue" onClick={(e) => { e.stopPropagation(); handleNext(); }}>
-            {currentIdx < milestoneIds.length - 1 ? 'Siguiente' : 'Continuar'}
+            {currentIdx < milestoneIds.length - 1 ? t('glory.reveal.next') : t('glory.reveal.continue')}
           </button>
         )}
 

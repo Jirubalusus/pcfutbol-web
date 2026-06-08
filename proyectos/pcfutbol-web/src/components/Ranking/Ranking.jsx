@@ -4,6 +4,7 @@ import { loadRanking as fetchRanking, clearRanking as clearFirebaseRanking } fro
 import { Trophy, ArrowLeft, Timer, Medal, Trash2, Calendar } from 'lucide-react';
 import LoadingIndicator from '../common/LoadingIndicator';
 import { useTranslation } from 'react-i18next';
+import { trackEvent } from '../../firebase/analytics';
 import './Ranking.scss';
 
 export default function Ranking() {
@@ -11,8 +12,12 @@ export default function Ranking() {
   const { t } = useTranslation();
   const [ranking, setRanking] = useState([]);
   const [loading, setLoading] = useState(true);
+  const showClearRanking = import.meta.env.DEV
+    && typeof window !== 'undefined'
+    && window.localStorage?.getItem('PC_GAFFER_ALLOW_RANKING_CLEAR') === 'true';
 
   useEffect(() => {
+    trackEvent('rankings_view', { ranking_type: 'contrarreloj' });
     loadData();
   }, []);
 
@@ -65,7 +70,7 @@ export default function Ranking() {
               <p>{t('ranking.subtitle')}</p>
             </div>
           </div>
-          {ranking.length > 0 && (
+          {showClearRanking && ranking.length > 0 && (
             <button className="btn-clear" onClick={handleClear}>
               <Trash2 size={14} /> {t('ranking.clear')}
             </button>

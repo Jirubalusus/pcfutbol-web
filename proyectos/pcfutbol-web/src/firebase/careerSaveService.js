@@ -49,7 +49,7 @@ export async function getCareerSave(userId) {
 export async function hasActiveCareer(userId) {
   const save = await getCareerSave(userId);
   if (!save) return { hasActive: false, summary: null };
-  return { hasActive: true, summary: { teamName: save.team?.name || 'Equipo desconocido', teamId: save.teamId, season: save.currentSeason || 1, week: save.currentWeek || 1, money: save.money || 0 } };
+  return { hasActive: true, summary: { teamName: save.team?.name || 'Equipo desconocido', teamId: save.teamId, season: save.currentSeason || 1, week: save.currentWeek || 1, money: save.money || 0, databaseSeasonId: save.databaseSeasonId || 'current' } };
 }
 
 function stripUndefined(obj) {
@@ -63,8 +63,8 @@ function stripUndefined(obj) {
 function stripReconstructibleFields(inputData) {
   // Work on a shallow copy to avoid mutating the original
   const data = { ...inputData };
-  // Remove fully reconstructible competition structures
-  delete data.europeanCompetitions;
+  // Keep the active European competition state so a refresh/cloud reload can
+  // restore the competition tab instead of rebuilding it from scratch.
   delete data.saCompetitions;
   delete data.cupCompetition;
   // Remove market data (regenerated each week)

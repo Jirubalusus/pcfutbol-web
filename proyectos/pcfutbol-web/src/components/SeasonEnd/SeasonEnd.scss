@@ -230,6 +230,32 @@
   }
 }
 
+.administrative-permanence {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  margin-bottom: 24px;
+
+  svg {
+    color: #60a5fa;
+  }
+
+  h3 {
+    color: #93c5fd;
+    margin: 0 0 4px;
+  }
+
+  p {
+    color: #aaa;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
 // Objectives Summary
 .objectives-summary {
   margin-bottom: 24px;
@@ -881,6 +907,212 @@
 
   .btn-continue {
     min-height: 50px;
+  }
+}
+
+@media (max-width: 640px) {
+  .season-end--preseason {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .season-end__modal--preseason.preseason-page {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 100dvh;
+    max-height: none;
+    padding: max(10px, env(safe-area-inset-top)) 10px calc(188px + env(safe-area-inset-bottom));
+    border-radius: 0;
+    overflow-x: hidden;
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .preseason-page__hero {
+      width: 100%;
+      margin: 0 auto 12px;
+      padding: 16px 14px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .preseason-page__eyebrow {
+      margin-bottom: 12px;
+      font-size: 0.7rem;
+    }
+
+    .preseason-page__title-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+
+      h1 {
+        font-size: clamp(1.65rem, 8vw, 2.35rem);
+        line-height: 1;
+        text-wrap: balance;
+      }
+
+      p {
+        margin-top: 8px;
+        font-size: 0.88rem;
+        line-height: 1.38;
+      }
+    }
+
+    .preseason-page__team-card {
+      width: 100%;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 8px;
+
+      strong {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.05rem;
+      }
+    }
+
+    .preseason-options {
+      grid-template-columns: minmax(0, 1fr);
+      width: 100%;
+      max-width: 100%;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .preseason-card {
+      width: 100%;
+      min-height: 0;
+      padding: 14px 12px;
+      border-radius: 8px;
+    }
+
+    .card-header {
+      gap: 10px;
+      margin-bottom: 10px;
+
+      h3 {
+        font-size: 1.08rem;
+        line-height: 1.15;
+      }
+    }
+
+    .tour-icon {
+      width: 38px;
+      height: 38px;
+    }
+
+    .card-description {
+      min-height: 0;
+      margin: 0 0 10px;
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .tour-metrics {
+      gap: 6px;
+      margin: 0 0 10px;
+
+      span {
+        flex-wrap: wrap;
+        gap: 4px 8px;
+        padding: 8px;
+        font-size: 0.76rem;
+      }
+    }
+
+    .matches-preview {
+      margin-top: 0;
+
+      ul li {
+        display: grid;
+        grid-template-columns: minmax(54px, auto) minmax(0, 1fr) auto;
+        gap: 6px 8px;
+        padding: 8px 0;
+        font-size: 0.78rem;
+      }
+
+      .match-location {
+        min-width: 0;
+        gap: 4px;
+        font-size: 0.68rem;
+        white-space: nowrap;
+      }
+
+      .opponent-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .opponent-ovr {
+        padding: 3px 6px;
+        font-size: 0.68rem;
+        white-space: nowrap;
+      }
+
+      .presentation-badge {
+        grid-column: 2 / -1;
+        width: fit-content;
+        max-width: 100%;
+        padding: 2px 6px;
+        font-size: 0.66rem;
+      }
+    }
+
+    .preseason-actions {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+      background: linear-gradient(to top, rgba(7, 11, 18, 0.98) 78%, rgba(7, 11, 18, 0));
+      backdrop-filter: blur(10px);
+      z-index: 5;
+
+      .btn-back,
+      .btn-skip,
+      .btn-confirm {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        justify-content: center;
+        padding: 11px 14px;
+        border-radius: 8px;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .btn-confirm {
+        order: 1;
+      }
+
+      .btn-skip {
+        order: 2;
+      }
+
+      .btn-back {
+        order: 3;
+      }
+    }
   }
 }
 

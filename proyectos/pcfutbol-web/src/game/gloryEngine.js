@@ -18,6 +18,98 @@ export const GLORY_DIVISIONS = [
 
 export const POSITIONS = ['GK', 'CB', 'LB', 'RB', 'CDM', 'CM', 'CAM', 'LM', 'RM', 'LW', 'RW', 'ST'];
 
+// ============================================================
+// GLORY SEASON ECONOMY ("Camino a la Gloria")
+// ============================================================
+// Camino a la Gloria has to stay tense for a tiny club: a promotion should feel
+// like a reward, but ending/promoting season after season must NOT make a small
+// side rich on its own. These helpers centralise the yearly cash math so it can
+// be tuned in one place and locked with tests (audit:glory-small-team-economy).
+//
+// Notes on why we don't reuse raw economy:
+//   - Fictional Glory salaries are stored ~35k–41k "per week"; multiplying by 52
+//     would bankrupt the 200k start instantly, so we DO NOT use salary*52. We use
+//     a deliberately scaled, tier-based operating cost instead.
+//   - The old promotion grant added `nextDiv.budget` (500k / 2M / 10M) TWICE
+//     (once in processSeasonEnd, once as START_NEW_SEASON moneyChange), which is
+//     why small clubs ballooned. Grants below replace that single-counted.
+
+const GLORY_DIVISION_ORDER = ['segundaRFEF', 'primeraRFEF', 'segunda', 'laliga'];
+
+// League-finish baseline income for a NON-promotion season (prize money, modest
+// sponsors), by the division you competed in. Multiplied by a position factor.
+const GLORY_FINISH_MONEY = {
+  segundaRFEF: 120000,
+  primeraRFEF: 250000,
+  segunda: 800000,
+  laliga: 3500000,
+};
+
+// Season running cost (wages + operations) by the division you competed in.
+// Tier-scaled and bounded — see note above on why this is not salary*52.
+const GLORY_OPERATING_COST = {
+  segundaRFEF: 80000,
+  primeraRFEF: 180000,
+  segunda: 500000,
+  laliga: 2200000,
+};
+
+// One-time promotion grant, keyed by the DESTINATION division you ascend into.
+// Tuned so the NET season change lands in the agreed bands (see audit test).
+const GLORY_PROMOTION_GRANT = {
+  primeraRFEF: 250000,
+  segunda: 650000,
+  laliga: 2500000,
+};
+
+/**
+ * Per-season operating/wage cost for the division just played. Bounded, tier-based.
+ */
+export function getGloryOperatingCost(divisionId) {
+  return GLORY_OPERATING_COST[divisionId] ?? GLORY_OPERATING_COST.segundaRFEF;
+}
+
+/**
+ * League-finish income for a season, scaled by final league position.
+ * Better finishes earn more; nobody earns the headline figure mid-table.
+ */
+export function getGloryFinishMoney(divisionId, position = 10) {
+  const base = GLORY_FINISH_MONEY[divisionId] ?? GLORY_FINISH_MONEY.segundaRFEF;
+  let factor;
+  if (position <= 5) factor = 1.0;
+  else if (position <= 10) factor = 0.85;
+  else factor = 0.72;
+  return Math.round(base * factor);
+}
+
+/**
+ * One-time promotion grant for ascending OUT of `divisionId`. 0 if not promoted
+ * or already in the top division.
+ */
+export function getGlorySeasonGrant(divisionId, promoted) {
+  if (!promoted) return 0;
+  const idx = GLORY_DIVISION_ORDER.indexOf(divisionId);
+  if (idx < 0 || idx >= GLORY_DIVISION_ORDER.length - 1) return 0;
+  const nextDivisionId = GLORY_DIVISION_ORDER[idx + 1];
+  return GLORY_PROMOTION_GRANT[nextDivisionId] ?? 0;
+}
+
+/**
+ * Centralised Glory yearly economy. Given the division just played, the final
+ * league position and whether you were promoted, returns the NET cash change to
+ * apply at season rollover (BEFORE player transfers / card events) plus its parts.
+ *
+ * net = finishMoney + promotionGrant - operatingCost
+ */
+export function calculateGlorySeasonFinancials({ divisionId, position = 10, promoted = false } = {}) {
+  const safeDivision = GLORY_DIVISION_ORDER.includes(divisionId) ? divisionId : 'segundaRFEF';
+  const finishMoney = getGloryFinishMoney(safeDivision, position);
+  const operatingCost = getGloryOperatingCost(safeDivision);
+  const grant = getGlorySeasonGrant(safeDivision, promoted);
+  const net = finishMoney + grant - operatingCost;
+  return { finishMoney, operatingCost, grant, net };
+}
+
 const FIRST_NAMES = [
   'Adrián', 'Marcos', 'Pablo', 'Hugo', 'Álvaro', 'Diego', 'Sergio', 'Carlos', 'Álex', 'Rubén',
   'Javi', 'Dani', 'Iker', 'Raúl', 'Óscar', 'Lucas', 'Mario', 'David', 'Pedro', 'Antonio',
@@ -778,7 +870,11 @@ export function processSeasonEnd(gloryState, leaguePosition) {
     const nextDiv = GLORY_DIVISIONS[divIndex + 1];
     division = nextDiv.id;
     divisionTier = nextDiv.tier;
-    budget += nextDiv.budget;
+    // NOTE: the promotion cash grant is applied ONCE by the caller via
+    // calculateGlorySeasonFinancials() -> START_NEW_SEASON moneyChange. We do
+    // NOT add nextDiv.budget here anymore — doing so double-counted the grant
+    // (this mutation is synced to state.money via budgetDiff in SeasonEnd) and
+    // made small clubs balloon. Only stadium upgrade carries over on promotion.
     stadiumCapacity = Math.max(stadiumCapacity, nextDiv.stadiumCap);
   } else if (promoted && divIndex === GLORY_DIVISIONS.length - 1) {
     trophies.push({ type: 'league', season: gloryState.season, division: gloryState.division });

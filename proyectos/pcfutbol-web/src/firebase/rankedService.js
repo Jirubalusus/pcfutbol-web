@@ -6,6 +6,9 @@ import {
   getDocs, increment, arrayUnion, Timestamp, runTransaction
 } from 'firebase/firestore';
 import { getTierByLP, getTotalLP, calculateLPChange, DEFAULT_PLAYER_DATA, LP_PER_DIVISION, TIERS, calculateMatchPoints } from '../components/Ranked/tierUtils';
+import { getCached, setCached, TTL } from './readCache';
+
+const isPermissionError = (err) => err?.code === 'permission-denied' || /insufficient permissions/i.test(err?.message || '');
 
 // Strip undefined values from object (Firestore rejects undefined)
 function stripUndefined(obj) {
@@ -22,6 +25,13 @@ function stripUndefined(obj) {
 const QUEUE_COL = 'ranked_queue';
 const MATCHES_COL = 'ranked_matches';
 const PLAYERS_COL = 'ranked_players';
+
+// Aggregate leaderboard — one doc read replaces a 100-doc ordered query.
+const AGG_COL = 'leaderboard_aggregates';
+const AGG_RANKED_DOC = 'ranked_top';
+const AGG_MAX_ENTRIES = 100;
+const LB_CACHE_KEY = 'ranking:ranked_top';
+const LB_CACHE_TTL = TTL.FIVE_MIN;
 
 // ============================================================
 // LEAGUE DEFINITIONS — Real teams from the game
@@ -951,20 +961,66 @@ export async function claimDisconnectWin(matchId, uid) {
 }
 
 // ── Leaderboard ──
+// Keep only the fields the leaderboard UI renders, so the aggregate doc
+// stays small and free of large per-player payloads.
+function sanitizeLeaderboardEntry(p) {
+  if (!p) return null;
+  return {
+    id: p.id,
+    displayName: p.displayName || 'Jugador',
+    totalLP: p.totalLP || 0,
+    wins: p.wins || 0,
+    losses: p.losses || 0,
+    draws: p.draws || 0,
+  };
+}
+
+function sortLeaderboard(entries) {
+  return [...entries].sort((a, b) => (b.totalLP || 0) - (a.totalLP || 0));
+}
+
+/**
+ * Global ranked leaderboard. Reads ONE aggregate doc (cached 5 min) and
+ * falls back to the legacy ordered ranked_players query when the aggregate
+ * is missing/unreadable. Ranks are assigned client-side after sorting.
+ */
 export async function getLeaderboard(limitCount = 100) {
+  // Cached aggregate fast path.
+  const cached = getCached(LB_CACHE_KEY);
+  if (cached) return cached.slice(0, limitCount).map((p, i) => ({ ...p, rank: i + 1 }));
+
+  try {
+    const snap = await getDoc(doc(db, AGG_COL, AGG_RANKED_DOC));
+    if (snap.exists()) {
+      const data = snap.data() || {};
+      const entries = sortLeaderboard((data.entries || []).map(sanitizeLeaderboardEntry).filter(Boolean));
+      setCached(LB_CACHE_KEY, entries, LB_CACHE_TTL);
+      return entries.slice(0, limitCount).map((p, i) => ({ ...p, rank: i + 1 }));
+    }
+  } catch (e) {
+    if (!isPermissionError(e)) console.warn('Ranked leaderboard aggregate read failed, falling back:', e?.message || e);
+  }
+
+  // Fallback: legacy ordered query.
   try {
     const q = query(
       collection(db, PLAYERS_COL),
       orderBy('totalLP', 'desc'),
-      limit(limitCount)
+      limit(Math.max(limitCount, AGG_MAX_ENTRIES))
     );
     const snap = await getDocs(q);
-    return snap.docs.map((d, i) => ({ id: d.id, rank: i + 1, ...d.data() }));
+    const entries = snap.docs.map(d => sanitizeLeaderboardEntry({ id: d.id, ...d.data() }));
+    setCached(LB_CACHE_KEY, entries, LB_CACHE_TTL);
+    return entries.slice(0, limitCount).map((p, i) => ({ ...p, rank: i + 1 }));
   } catch (e) {
     console.error('Error loading leaderboard:', e);
     return [];
   }
 }
+
+// Aggregate docs are read-only from the browser for security/cost hygiene.
+// A trusted Admin SDK job can rebuild leaderboard_aggregates/ranked_top;
+// until then getLeaderboard() falls back to the legacy ordered query.
 
 // ── Match History ──
 export async function getMatchHistory(uid, limitCount = 20) {

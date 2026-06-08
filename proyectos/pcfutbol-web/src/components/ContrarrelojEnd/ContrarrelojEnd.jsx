@@ -50,8 +50,10 @@ export default function ContrarrelojEnd() {
 
   // Save winning result to shared Firebase ranking
   useEffect(() => {
-    if (won && !saved && contrarreloj) {
+    const rankingUserId = user && !user.isGuest && !user.isPlayGames ? user.uid : null;
+    if (won && !saved && contrarreloj && rankingUserId) {
       const entry = {
+        userId: rankingUserId,
         playerName: state.managerName || 'Gaffer',
         teamName: state.team?.name || contrarreloj.startTeam?.name || t('common.unknown'),
         leagueName: contrarreloj.startLeague || '',
@@ -75,7 +77,7 @@ export default function ContrarrelojEnd() {
         });
       });
     }
-  }, [won, saved, contrarreloj, state.team, user]);
+  }, [won, saved, contrarreloj, state.managerName, state.team, user, totalWins, totalDraws, totalLosses, totalMatches, bestPlayer, difficultyBonus, weightedScore, t]);
 
   useEffect(() => {
     const timer = setTimeout(() => setAnimateIn(true), 100);

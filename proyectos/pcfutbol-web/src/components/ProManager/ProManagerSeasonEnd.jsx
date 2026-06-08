@@ -5,18 +5,19 @@ import { useAuth } from '../../context/AuthContext';
 import {
   evaluateSeason, updatePrestige, generateSeasonEndOffers, calculateOfferMomentum,
   getSeasonEndConfidence, getBoardObjective, buildCareerLeagueGetters,
-  shouldEndProManagerCareerAfterDismissal
+  shouldEndProManagerCareerAfterDismissal, getProManagerEligibleLeagueIds,
+  buildSwitchedProManagerLeague
 } from '../../game/proManagerEngine';
-import { LEAGUE_CONFIG, initializeNewSeasonWithPromotions, completeRemainingLeagues } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG, initializeNewSeasonWithPromotions, completeRemainingLeagues, isAperturaClausura, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { generatePreseasonOptions, getSeasonResult } from '../../game/seasonManager';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
-import { qualifyTeamsForEurope, buildSeasonCalendar, remapFixturesForEuropean, LEAGUE_SLOTS, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
+import { qualifyTeamsForEurope, buildSeasonCalendar, remapFixturesForEuropean, LEAGUE_SLOTS, ensureEuropeanLeagueStandings, getEuropeanEraContextFromState, seasonIdFromStartYear } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
-import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
+import { isSouthAmericanLeague, buildSouthAmericanQualifiedTeams, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import {
   getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams,
@@ -65,32 +66,44 @@ function formatMoney(amount) {
 /**
  * Shared helper: initialize continental competitions for next season
  */
-function _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state, allTeamsFlat, t) {
+function _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state, allTeamsFlat, t, completedState = null) {
   const isInSA = isSouthAmericanLeague(newPlayerLeagueId);
+  const nextHistoricalSeasonId = state?.historicalDatabase
+    ? seasonIdFromStartYear((Number(state.careerStartSeason) || 2025) + (Number(state.currentSeason) || 1))
+    : null;
   try {
     const leagueStandings = {};
     const allTeamsMap = {};
-    const playerTable = newSeasonData.playerLeague?.table || [];
-    if (playerTable.length > 0) leagueStandings[newPlayerLeagueId] = playerTable;
 
-    const otherLeagues = newSeasonData.otherLeagues || {};
+    // Prefer the FINAL standings of the season that just ended (completedState)
+    // so next-season continental qualification reflects who actually finished
+    // where — not the freshly reset/reputation-ordered new-season tables.
+    const finalPlayerLeagueId = completedState?.playerLeagueId || completedState?.leagueId || newPlayerLeagueId;
+    const finalPlayerTable = completedState
+      ? (isAperturaClausura(finalPlayerLeagueId) && completedState.aperturaTable
+          ? computeAccumulatedTable(completedState.aperturaTable, completedState.leagueTable || [])
+          : (completedState.leagueTable || []))
+      : (newSeasonData.playerLeague?.table || []);
+    if (finalPlayerTable.length > 0) leagueStandings[finalPlayerLeagueId] = finalPlayerTable;
+
+    const otherLeagues = completedState?.otherLeagues || newSeasonData.otherLeagues || {};
     for (const [lid, ld] of Object.entries(otherLeagues)) {
-      if (ld?.table?.length > 0 && lid !== newPlayerLeagueId) leagueStandings[lid] = ld.table;
+      if (lid === finalPlayerLeagueId) continue;
+      const standings = isAperturaClausura(lid) && ld?.accumulatedTable?.length > 0
+        ? ld.accumulatedTable
+        : ld?.table;
+      if (standings?.length > 0) leagueStandings[lid] = standings;
     }
     allTeamsFlat.forEach(tt => { allTeamsMap[tt.id || tt.teamId] = tt; });
 
     if (isInSA) {
-      const qualified = qualifyTeamsForSouthAmerica(leagueStandings, allTeamsMap);
-      const usedIds = new Set();
-      Object.values(qualified).forEach(teams => teams.forEach(tt => usedIds.add(tt.teamId)));
-      const remaining = allTeamsFlat.filter(tt => !usedIds.has(tt.id || tt.teamId) && isSouthAmericanLeague(tt.league || tt.leagueId || '')).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-      for (const compId of ['copaLibertadores', 'copaSudamericana']) {
-        const needed = 32 - qualified[compId].length;
-        if (needed > 0) {
-          const fillers = remaining.splice(0, needed);
-          qualified[compId].push(...fillers.map(tt => ({ teamId: tt.id || tt.teamId, teamName: tt.name || tt.teamName, shortName: tt.shortName || '', league: tt.league || 'unknown', leaguePosition: 0, reputation: tt.reputation || 60, overall: tt.overall || 65, players: tt.players || [], ...tt })));
-        }
-      }
+      const saFillerPool = allTeamsFlat.filter(tt => isSouthAmericanLeague(tt.league || tt.leagueId || ''));
+      const qualified = buildSouthAmericanQualifiedTeams({
+        leagueStandings,
+        allTeamsMap,
+        fillerPool: saFillerPool,
+        playerLeagueId: finalPlayerLeagueId
+      });
       const saState = initializeSACompetitions(qualified);
       if (saState) dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saState });
     } else {
@@ -102,7 +115,10 @@ function _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state
         (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
       );
       const qualified = qualifyTeamsForEurope(patched, allTeamsMap);
-      const euroState = initializeEuropeanCompetitions(qualified);
+      const euroState = initializeEuropeanCompetitions(qualified, {
+        seasonId: nextHistoricalSeasonId,
+        historical: state?.historicalDatabase
+      });
       if (euroState) dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: euroState });
     }
   } catch (e) {
@@ -137,12 +153,15 @@ export default function ProManagerSeasonEnd() {
 
   const careerLeagueGetters = useMemo(() => (
     buildCareerLeagueGetters(state, ALL_LEAGUE_GETTERS)
-  ), [state.playerLeagueId, state.leagueTable, state.otherLeagues]);
+  ), [state.playerLeagueId, state.leagueTable, state.otherLeagues, state.leagueTeams, state.team, state.teamId]);
 
   const careerSeason = pm?.seasonsManaged || state.currentSeason || 1;
+  const euroEra = useMemo(() => getEuropeanEraContextFromState(state), [
+    state.historicalDatabase, state.databaseSeasonId, state.careerStartSeason, state.currentSeason
+  ]);
   const seasonResult = useMemo(() => (
-    getSeasonResult(state.leagueTable || [], state.teamId, state.playerLeagueId || state.leagueId)
-  ), [state.leagueTable, state.teamId, state.playerLeagueId, state.leagueId]);
+    getSeasonResult(state.leagueTable || [], state.teamId, state.playerLeagueId || state.leagueId, euroEra)
+  ), [state.leagueTable, state.teamId, state.playerLeagueId, state.leagueId, euroEra]);
   const offerMomentum = useMemo(() => calculateOfferMomentum({
     seasonEvalResult: seasonEval.result,
     promoted: !!seasonResult?.promotion || !!lastStats?.promoted,
@@ -158,6 +177,13 @@ export default function ProManagerSeasonEnd() {
     .filter(Number.isFinite)
     .sort((a, b) => b - a)[0] || null;
 
+  // Only offer leagues that are actually part of the active save (player league + the
+  // other leagues persisted on the career). Stops historical careers from surfacing
+  // static-only leagues that cannot be prepared after a year rollover.
+  const eligibleLeagueIds = useMemo(() => {
+    return getProManagerEligibleLeagueIds(state);
+  }, [state.playerLeagueId, state.leagueId, state.otherLeagues, state.leagueTeams, state.leagueTable]);
+
   const offers = useMemo(() => {
     return generateSeasonEndOffers(
       newPrestige,
@@ -165,10 +191,10 @@ export default function ProManagerSeasonEnd() {
       state.teamId,
       careerLeagueGetters,
       isDismissal
-        ? { wasFired: true, minOffers: 5, maxOffers: 6 }
-        : { offerMomentum, performanceBoost: offerMomentum.score }
+        ? { wasFired: true, minOffers: 5, maxOffers: 6, eligibleLeagueIds }
+        : { offerMomentum, performanceBoost: offerMomentum.score, eligibleLeagueIds }
     );
-  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId, careerLeagueGetters, isDismissal, offerMomentum]);
+  }, [newPrestige, state.playerLeagueId, state.leagueId, state.teamId, careerLeagueGetters, isDismissal, offerMomentum, eligibleLeagueIds]);
 
   // Animate prestige change
   useEffect(() => {
@@ -286,8 +312,8 @@ export default function ProManagerSeasonEnd() {
       dispatch({ type: 'INIT_CUP_COMPETITION', payload: cupBracket });
     }
 
-    // Continental competitions
-    _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state, allTeamsFlat, t);
+    // Continental competitions — qualify from the FINAL standings just played.
+    _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state, allTeamsFlat, t, completedState);
 
     dispatch({ type: 'SET_SCREEN', payload: 'office' });
   };
@@ -314,15 +340,23 @@ export default function ProManagerSeasonEnd() {
     const selectedLeagueData = leagueId === previousPlayerLeagueId
       ? newSeasonData.playerLeague
       : newSeasonData.otherLeagues?.[leagueId];
-    if (!selectedLeagueData?.table?.length) return;
 
-    const leagueData = {
-      ...selectedLeagueData,
-      table: selectedLeagueData.table.map(entry => ({
-        ...entry,
-        isPlayer: (entry.teamId || entry.id) === team.id
-      }))
-    };
+    // Build the league the manager is switching into. This GUARANTEES the offered
+    // team is in the classification exactly once (marked isPlayer) and that the
+    // regenerated fixtures include its matches — even when the promotion/relegation
+    // rollover moved the club out of selectedLeagueData. Falls back to the static
+    // getter if the rollover produced no table for this league at all.
+    const leagueData = buildSwitchedProManagerLeague({
+      selectedLeagueData,
+      team,
+      leagueId,
+      careerGetters: careerLeagueGetters,
+      fallbackGetter: () => {
+        try { return ALL_LEAGUE_GETTERS[leagueId]?.() || LEAGUE_CONFIG[leagueId]?.getTeams?.() || []; }
+        catch { return []; }
+      },
+    });
+    if (!leagueData) return;
 
     const otherLeagues = { ...(newSeasonData.otherLeagues || {}) };
     if (leagueId !== previousPlayerLeagueId && newSeasonData.playerLeague) {
@@ -334,7 +368,18 @@ export default function ProManagerSeasonEnd() {
     delete otherLeagues[leagueId];
 
     const switchedCareerGetters = buildCareerLeagueGetters(
-      { ...state, playerLeagueId: leagueId, leagueTable: leagueData.table, otherLeagues },
+      {
+        ...state,
+        playerLeagueId: leagueId,
+        leagueTable: leagueData.table,
+        otherLeagues,
+        leagueTeams: [
+          ...(state.leagueTeams || []).filter(tt => (tt.id || tt.teamId) !== team.id),
+          { ...team, leagueId }
+        ],
+        team: { ...team, leagueId },
+        teamId: team.id,
+      },
       ALL_LEAGUE_GETTERS
     );
     const allTeamsFlat = Object.values(switchedCareerGetters).reduce((acc, getter) => {

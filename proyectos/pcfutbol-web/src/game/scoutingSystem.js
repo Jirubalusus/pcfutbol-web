@@ -6,41 +6,176 @@
 import { calculateMarketValue, TEAM_PROFILES } from './globalTransferEngine';
 import { getClubTier, calculateTransferDifficulty, PLAYER_PERSONALITIES, assignPersonality } from './transferNegotiation';
 import { posToEN } from './positionNames';
+import { getTeamsInLeague, normalizeLeagueId, getTeamLeagueId } from '../data/leagueRegistry';
 
 // ============================================================
 // CONFIGURACIÓN DEL OJEADOR
 // ============================================================
 
+// Niveles del ojeador 1-4 (Local / Regional / Nacional / Mundial).
+// El nivel se deriva del club (scoutLevel 1-4). El índice 0 se mantiene como
+// alias de nivel 1 para no romper llamadas antiguas (facilities zero-indexed).
 export const SCOUTING_LEVELS = {
-  0: {
-    name: 'Sin ojeador',
-    description: 'Sugerencias básicas sin filtrar',
-    accuracy: 0.2,
-    maxSuggestions: 10,
-    features: ['Jugadores aleatorios de la liga']
-  },
   1: {
-    name: 'Ojeador Amateur',
-    description: 'Filtra por posiciones que necesitas',
+    level: 1,
+    name: 'Ojeador Local',
+    stage: 'Local',
+    description: 'Busca jugadores en tu propia liga',
+    scopeLabel: 'Solo tu liga',
     accuracy: 0.5,
-    maxSuggestions: 15,
-    features: ['Filtra por posición', 'Identifica carencias']
+    maxSuggestions: 12,
+    features: ['Posición a buscar']
   },
   2: {
-    name: 'Ojeador Profesional',
-    description: 'Ajusta por presupuesto y nivel',
-    accuracy: 0.75,
-    maxSuggestions: 20,
-    features: ['Filtra por posición', 'Ajuste de presupuesto', 'Análisis de nivel']
+    level: 2,
+    name: 'Ojeador Regional',
+    stage: 'Regional',
+    description: 'Amplía con rango de edad y presupuesto',
+    scopeLabel: 'Liga + filiales',
+    accuracy: 0.7,
+    maxSuggestions: 16,
+    features: ['Posición', 'Rango de edad', 'Presupuesto y valor']
   },
   3: {
-    name: 'Ojeador Élite',
-    description: 'Sugerencias perfectas para tu equipo',
-    accuracy: 0.95,
+    level: 3,
+    name: 'Ojeador Nacional',
+    stage: 'Nacional',
+    description: 'Filtra por origen, media y atributos clave',
+    scopeLabel: 'Mercado global',
+    accuracy: 0.85,
     maxSuggestions: 20,
-    features: ['Análisis completo', 'Personalidad compatible', 'Potencial de mejora', 'Dificultad de fichaje']
+    features: ['Región de origen', 'Media mínima', 'Atributos clave']
+  },
+  4: {
+    level: 4,
+    name: 'Ojeador Mundial',
+    stage: 'Mundial',
+    description: 'Descubre potencial, joyas y perfil físico',
+    scopeLabel: 'Mercado global',
+    accuracy: 0.95,
+    maxSuggestions: 24,
+    features: ['Potencial y joyas', 'Perfil físico', 'Comparar con plantilla']
   }
 };
+// Alias defensivo: nivel 0 (facilities sin mejorar) se trata como nivel 1.
+SCOUTING_LEVELS[0] = SCOUTING_LEVELS[1];
+
+// ============================================================
+// FILTROS DEL OJEADOR (cada uno con su minLevel de desbloqueo)
+// ============================================================
+
+export const SCOUT_FILTERS = [
+  { key: 'position',  minLevel: 1 },
+  { key: 'age',       minLevel: 2 },
+  { key: 'budget',    minLevel: 2 },
+  { key: 'region',    minLevel: 3 },
+  { key: 'ovr',       minLevel: 3 },
+  { key: 'attrs',     minLevel: 3 },
+  { key: 'potential', minLevel: 4 },
+  { key: 'physique',  minLevel: 4 },
+  { key: 'compare',   minLevel: 4 }
+];
+
+export const SCOUT_CONTINENTS = ['Europa', 'Sudamérica', 'África', 'Norteamérica', 'Asia'];
+export const SCOUT_ATTRIBUTES = ['Velocidad', 'Regate', 'Pase', 'Tiro', 'Defensa', 'Físico'];
+
+/** ¿Está desbloqueado un filtro para el nivel actual? */
+export function isFilterUnlocked(level, minLevel) {
+  return (Number(level) || 1) >= (Number(minLevel) || 1);
+}
+
+/** Cuántas de las 9 opciones están activas en un nivel dado. */
+export function countActiveFilters(level) {
+  return SCOUT_FILTERS.filter(f => isFilterUnlocked(level, f.minLevel)).length;
+}
+
+// ============================================================
+// FALLBACKS DETERMINISTAS (potencial, pie, altura, región, atributos)
+// ============================================================
+// Los datos de jugador suelen traer solo name/position/age/overall/value.
+// Estos helpers sintetizan el resto de forma estable (sin Math.random) para
+// que la UI nunca rompa y los resultados sean reproducibles.
+
+function scoutHash(str) {
+  let h = 2166136261;
+  const s = String(str || '');
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function playerSeed(player) {
+  return scoutHash(`${player?.id ?? ''}:${player?.name ?? ''}:${player?.position ?? ''}`);
+}
+
+const LEAGUE_CONTINENT = {
+  Europa: new Set(['laliga','segunda','primeraRFEF','segundaRFEF','premierLeague','championship','serieA','serieB','bundesliga','bundesliga2','ligue1','ligue2','eredivisie','primeiraLiga','belgianPro','superLig','scottishPrem','swissSuperLeague','austrianBundesliga','greekSuperLeague','danishSuperliga','croatianLeague','czechLeague']),
+  'Sudamérica': new Set(['argentinaPrimera','brasileiraoA','colombiaPrimera','chilePrimera','uruguayPrimera','ecuadorLigaPro','paraguayPrimera','peruLiga1','boliviaPrimera','venezuelaPrimera']),
+  'Norteamérica': new Set(['mls','ligaMX']),
+  Asia: new Set(['saudiPro','jLeague'])
+};
+
+/** Región/continente de origen del jugador (deriva de la liga; si no, determinista). */
+export function deriveRegion(player) {
+  const lid = normalizeLeagueId(player?.leagueId || player?.league || player?.teamLeagueId || getTeamLeagueId(player || {}) || '');
+  if (lid) {
+    for (const [continent, set] of Object.entries(LEAGUE_CONTINENT)) {
+      if (set.has(lid)) return continent;
+    }
+  }
+  // Reparto determinista sesgado hacia Europa.
+  const buckets = ['Europa', 'Europa', 'Europa', 'Sudamérica', 'Sudamérica', 'África', 'Norteamérica', 'Asia'];
+  return buckets[playerSeed(player) % buckets.length];
+}
+
+/** Potencial del jugador (usa el real si existe; si no, lo estima por edad+overall). */
+export function derivePotential(player) {
+  if (Number.isFinite(player?.potential) && player.potential > 0) return player.potential;
+  const ovr = player?.overall || 65;
+  const age = player?.age || 25;
+  const seed = playerSeed(player);
+  let bump;
+  if (age <= 19) bump = 6 + (seed % 7);
+  else if (age <= 22) bump = 4 + (seed % 5);
+  else if (age <= 25) bump = 2 + (seed % 4);
+  else if (age <= 28) bump = (seed % 2);
+  else bump = 0;
+  return Math.min(99, ovr + bump);
+}
+
+/** Pie preferido (Diestro/Zurdo). ~25% zurdos, determinista. */
+export function derivePreferredFoot(player) {
+  const f = (player?.foot || player?.preferredFoot || '').toString().toLowerCase();
+  if (f.includes('left') || f.includes('zurd') || f === 'l') return 'Zurdo';
+  if (f.includes('right') || f.includes('diestr') || f === 'r') return 'Diestro';
+  return (playerSeed(player) % 4 === 0) ? 'Zurdo' : 'Diestro';
+}
+
+/** Altura en cm (real si existe; si no, por posición + varianza determinista). */
+export function deriveHeight(player) {
+  if (Number.isFinite(player?.height) && player.height > 120) return Math.round(player.height);
+  const pos = posToEN((player?.position || '').replace(/\d+$/, '').toUpperCase().trim());
+  let base = 178;
+  if (pos === 'GK' || pos === 'CB') base = 186;
+  else if (pos === 'ST' || pos === 'CF') base = 182;
+  else if (['LB','RB','LWB','RWB','LM','RM','LW','RW','CAM'].includes(pos)) base = 175;
+  const variance = (playerSeed(player) % 13) - 6; // -6..+6
+  return base + variance;
+}
+
+/** Valores 1-99 de los atributos clave, derivados del overall + varianza estable. */
+export function deriveAttributes(player) {
+  const ovr = player?.overall || 65;
+  const out = {};
+  SCOUT_ATTRIBUTES.forEach((attr, idx) => {
+    if (Number.isFinite(player?.attributes?.[attr])) { out[attr] = player.attributes[attr]; return; }
+    const seed = scoutHash(`${playerSeed(player)}:${idx}:${attr}`);
+    out[attr] = Math.max(20, Math.min(99, ovr + ((seed % 21) - 10)));
+  });
+  return out;
+}
 
 // ============================================================
 // ANÁLISIS DE NECESIDADES DEL EQUIPO
@@ -129,198 +264,172 @@ export function analyzeTeamNeeds(team, scoutingLevel = 0) {
 // GENERACIÓN DE SUGERENCIAS
 // ============================================================
 
+// Grupos de posiciones equivalentes para búsquedas útiles.
+const POSITION_GROUPS = {
+  'ST': ['ST', 'CF'], 'CF': ['CF', 'ST'], 'CB': ['CB'],
+  'RB': ['RB', 'RWB'], 'LB': ['LB', 'LWB'], 'RWB': ['RWB', 'RB'], 'LWB': ['LWB', 'LB'],
+  'CDM': ['CDM', 'CM'], 'CM': ['CM', 'CDM', 'CAM'], 'CAM': ['CAM', 'CM'],
+  'RM': ['RM', 'RW'], 'LM': ['LM', 'LW'], 'RW': ['RW', 'RM'], 'LW': ['LW', 'LM'],
+  'GK': ['GK']
+};
+
+/** Normaliza el objeto de criterios (acepta string heredado = posición). */
+export function normalizeCriteria(criteria) {
+  if (typeof criteria === 'string' || criteria == null) {
+    return { position: criteria || null };
+  }
+  return {
+    position: criteria.position || null,
+    ageMax: criteria.ageMax ?? null,
+    valueMax: criteria.valueMax ?? null,
+    regions: Array.isArray(criteria.regions) ? criteria.regions : [],
+    ovrMin: criteria.ovrMin ?? null,
+    attributes: Array.isArray(criteria.attributes) ? criteria.attributes : [],
+    revealPotential: !!criteria.revealPotential,
+    potentialMin: criteria.potentialMin ?? null,
+    preferredFoot: criteria.preferredFoot || 'Indiferente',
+    heightMin: criteria.heightMin ?? null,
+    compareWithStarter: !!criteria.compareWithStarter,
+    starter: criteria.starter || null
+  };
+}
+
 /**
- * Generar sugerencias de fichajes
+ * Generar sugerencias de fichajes.
+ * @param scoutLevel 1-4 (nivel del ojeador del club). Acepta 0 (=1) por compat.
+ * @param criteria objeto de criterios, o string de posición (compat heredado).
  */
-export function generateScoutingSuggestions(myTeam, allTeams, scoutingLevel = 0, budget = 0, positionFilter = null) {
-  const config = SCOUTING_LEVELS[scoutingLevel] || SCOUTING_LEVELS[0];
-  const { needs, teamAvgOvr } = analyzeTeamNeeds(myTeam, scoutingLevel);
-  const myTier = getClubTier(myTeam?.name || '');
+export function generateScoutingSuggestions(myTeam, allTeams, scoutLevel = 1, budget = 0, criteria = null) {
+  const level = Math.max(1, Math.min(4, Number(scoutLevel) || 1));
+  const config = SCOUTING_LEVELS[level] || SCOUTING_LEVELS[1];
+  const c = normalizeCriteria(criteria);
+  const { needs, teamAvgOvr } = analyzeTeamNeeds(myTeam, level);
   const myTeamId = myTeam?.id;
-  
-  // Recopilar todos los jugadores disponibles
+
+  // Sólo aplican los criterios cuyo filtro está desbloqueado en este nivel.
+  const filterLevel = {};
+  SCOUT_FILTERS.forEach(f => { filterLevel[f.key] = isFilterUnlocked(level, f.minLevel); });
+
+  // Recopilar todos los jugadores disponibles (excepto los míos)
   let allPlayers = [];
-  console.log(`[Ojeador] Equipos recibidos: ${(allTeams || []).length}, Mi equipo: ${myTeamId}`);
   (allTeams || []).forEach(team => {
     if (team.id === myTeamId) return;
-    
     (team.players || []).forEach(player => {
-      // Asignar personalidad si no tiene
-      if (!player.personality) {
-        player.personality = assignPersonality(player);
-      }
-      
+      if (!player.personality) player.personality = assignPersonality(player);
       allPlayers.push({
         ...player,
         teamId: team.id,
         teamName: team.name,
+        teamLeagueId: team.leagueId || player.leagueId || null,
         teamTier: getClubTier(team.name)
       });
     });
   });
-  
-  // Aplicar filtros según nivel de ojeador
-  let suggestions = [];
-  
-  // Si hay filtro de posición manual, aplicar primero
-  if (positionFilter) {
-    // Agrupar posiciones similares para búsquedas más útiles
-    const POSITION_GROUPS = {
-      'ST': ['ST', 'CF'],       // Delanteros centro
-      'CF': ['CF', 'ST'],       // Segunda punta
-      'CB': ['CB'],
-      'RB': ['RB', 'RWB'],
-      'LB': ['LB', 'LWB'],
-      'RWB': ['RWB', 'RB'],
-      'LWB': ['LWB', 'LB'],
-      'CDM': ['CDM', 'CM'],
-      'CM': ['CM', 'CDM', 'CAM'],
-      'CAM': ['CAM', 'CM'],
-      'RM': ['RM', 'RW'],
-      'LM': ['LM', 'LW'],
-      'RW': ['RW', 'RM'],
-      'LW': ['LW', 'LM'],
-      'GK': ['GK'],
-    };
-    const validPositions = new Set(POSITION_GROUPS[positionFilter] || [positionFilter]);
-    allPlayers = allPlayers.filter(p => {
+
+  const neededPositions = new Set();
+  needs.forEach(n => n.positions.forEach(p => neededPositions.add(p)));
+
+  // ---- Aplicar criterios (sólo los desbloqueados) ----
+  let filtered = allPlayers.filter(p => {
+    // Posición (Nv.1)
+    if (filterLevel.position && c.position) {
+      const valid = new Set(POSITION_GROUPS[c.position] || [c.position]);
       const rawPos = (p.position || '').replace(/\d+$/, '').toUpperCase().trim();
-      const playerPos = posToEN(rawPos);
-      return validPositions.has(playerPos);
-    });
-  }
-  
-  if (scoutingLevel === 0) {
-    // Nivel 0: Random
-    allPlayers = allPlayers.sort(() => Math.random() - 0.5);
-    suggestions = allPlayers.slice(0, config.maxSuggestions);
-  } else {
-    // Nivel 1+: Filtrar por necesidades
-    const neededPositions = new Set();
-    needs.forEach(n => n.positions.forEach(p => neededPositions.add(p)));
-    
-    // Filtrar jugadores
-    let filtered = allPlayers.filter(p => {
-      const pPos = posToEN(p.position);
-      // Si ya hay filtro manual, no filtrar por necesidades
-      if (!positionFilter && neededPositions.size > 0 && !neededPositions.has(pPos)) {
-        // Permitir algunos jugadores de otras posiciones (20%)
-        if (Math.random() > 0.2) return false;
-      }
-      
-      // Nivel 2+: Ajuste de presupuesto
-      if (scoutingLevel >= 2) {
-        const value = calculateMarketValue(p);
-        if (value > budget * 0.7) return false; // Max 70% del presupuesto
-      }
-      
-      // Nivel 2+: Nivel apropiado
-      if (scoutingLevel >= 2) {
-        const minOvr = teamAvgOvr - 8;
-        const maxOvr = teamAvgOvr + 12;
-        if (p.overall < minOvr || p.overall > maxOvr) return false;
-      }
-      
-      // Nivel 3: Dificultad razonable
-      if (scoutingLevel >= 3) {
-        const difficulty = calculateTransferDifficulty(
-          p,
-          { name: p.teamName },
-          { name: myTeam?.name || '' }
-        );
-        if (difficulty.percentage < 15) return false; // Muy difícil, no sugerir
-      }
-      
-      return true;
-    });
-    
-    // Nivel 3: Ordenar por idoneidad
-    if (scoutingLevel >= 3) {
-      filtered = filtered.map(p => {
-        let score = 0;
-        
-        // Puntos por posición necesaria
-        const matchingNeed = needs.find(n => n.positions.includes(p.position));
-        if (matchingNeed) {
-          if (matchingNeed.priority === 'critical') score += 30;
-          else if (matchingNeed.priority === 'high') score += 20;
-          else if (matchingNeed.priority === 'medium') score += 10;
-          else score += 5;
-        }
-        
-        // Puntos por nivel apropiado
-        const ovrDiff = Math.abs(p.overall - teamAvgOvr);
-        if (ovrDiff <= 3) score += 15;
-        else if (ovrDiff <= 5) score += 10;
-        else if (ovrDiff <= 8) score += 5;
-        
-        // Puntos por edad (preferir jóvenes con potencial)
-        if (p.age <= 23) score += 15;
-        else if (p.age <= 26) score += 10;
-        else if (p.age <= 29) score += 5;
-        
-        // Puntos por precio asequible
-        const value = calculateMarketValue(p);
-        const budgetRatio = value / budget;
-        if (budgetRatio <= 0.2) score += 10;
-        else if (budgetRatio <= 0.4) score += 5;
-        
-        // Puntos por personalidad compatible (aventurero, mercenario = más fácil)
-        if (p.personality === 'adventurous') score += 10;
-        else if (p.personality === 'mercenary') score += 8;
-        else if (p.personality === 'professional') score += 5;
-        
-        // Penalización por dificultad
-        const difficulty = calculateTransferDifficulty(
-          p,
-          { name: p.teamName },
-          { name: myTeam?.name || '' }
-        );
-        if (difficulty.tierDiff > 0) {
-          score -= difficulty.tierDiff * 5;
-        }
-        
-        return { ...p, scoutScore: score };
-      });
-      
-      filtered.sort((a, b) => b.scoutScore - a.scoutScore);
-    } else {
-      // Niveles 1-2: Ordenar por overall y algo de random
-      filtered.sort((a, b) => {
-        const ovrDiff = b.overall - a.overall;
-        if (Math.abs(ovrDiff) > 3) return ovrDiff;
-        return Math.random() - 0.5;
-      });
+      if (!valid.has(posToEN(rawPos))) return false;
     }
-    
-    suggestions = filtered.slice(0, config.maxSuggestions);
-  }
-  
-  // Añadir metadatos a cada sugerencia
-  suggestions = suggestions.map(p => {
+    // Rango de edad (Nv.2)
+    if (filterLevel.age && c.ageMax && p.age > c.ageMax) return false;
+    // Presupuesto / valor máximo (Nv.2)
+    if (filterLevel.budget && c.valueMax) {
+      const value = calculateMarketValue(p);
+      if (value > c.valueMax) return false;
+    }
+    // Región de origen (Nv.3)
+    if (filterLevel.region && c.regions.length > 0) {
+      if (!c.regions.includes(deriveRegion(p))) return false;
+    }
+    // Media mínima OVR (Nv.3)
+    if (filterLevel.ovr && c.ovrMin && p.overall < c.ovrMin) return false;
+    // Potencial mínimo (Nv.4) — sólo si el manager activa "Revelar potencial"
+    if (filterLevel.potential && c.revealPotential && c.potentialMin) {
+      if (derivePotential(p) < c.potentialMin) return false;
+    }
+    // Perfil físico: pie + altura (Nv.4)
+    if (filterLevel.physique) {
+      if (c.preferredFoot && c.preferredFoot !== 'Indiferente' && derivePreferredFoot(p) !== c.preferredFoot) return false;
+      if (c.heightMin && deriveHeight(p) < c.heightMin) return false;
+    }
+    // Comparar con titular (Nv.4): mantener sólo recambios comparables/mejores
+    if (filterLevel.compare && c.compareWithStarter && c.starter) {
+      const valid = new Set(POSITION_GROUPS[posToEN(c.starter.position)] || [posToEN(c.starter.position)]);
+      if (!valid.has(posToEN(p.position))) return false;
+      if (p.overall < (c.starter.overall || 0) - 3) return false;
+    }
+    return true;
+  });
+
+  // ---- Puntuar idoneidad (determinista) ----
+  filtered = filtered.map(p => {
+    let score = 0;
+    // Posición necesaria
+    const matchingNeed = needs.find(n => n.positions.includes(posToEN(p.position)));
+    if (matchingNeed) {
+      score += { critical: 30, high: 20, medium: 10, low: 5 }[matchingNeed.priority] || 0;
+    }
+    // Nivel apropiado
+    const ovrDiff = Math.abs(p.overall - teamAvgOvr);
+    score += ovrDiff <= 3 ? 15 : ovrDiff <= 5 ? 10 : ovrDiff <= 8 ? 5 : 0;
+    // Juventud
+    score += p.age <= 23 ? 15 : p.age <= 26 ? 10 : p.age <= 29 ? 5 : 0;
+    // Atributos clave seleccionados (Nv.3)
+    let attrScore = null;
+    if (filterLevel.attrs && c.attributes.length > 0) {
+      const attrs = deriveAttributes(p);
+      attrScore = Math.round(c.attributes.reduce((s, a) => s + (attrs[a] || 0), 0) / c.attributes.length);
+      score += Math.round((attrScore - 60) / 2);
+    }
+    // Potencial (Nv.4)
+    const potential = derivePotential(p);
+    if (filterLevel.potential && c.revealPotential) {
+      score += Math.max(0, potential - p.overall);
+    }
+    // Comparar con titular (Nv.4)
+    let vsStarter = null;
+    if (filterLevel.compare && c.compareWithStarter && c.starter) {
+      vsStarter = p.overall - (c.starter.overall || 0);
+      score += vsStarter * 2;
+    }
+    return { ...p, scoutScore: score, attrScore, potentialEst: potential, vsStarter };
+  });
+
+  filtered.sort((a, b) => (b.scoutScore - a.scoutScore) || (b.overall - a.overall));
+
+  let suggestions = filtered.slice(0, config.maxSuggestions).map(p => {
     const value = calculateMarketValue(p);
-    const difficulty = calculateTransferDifficulty(
-      p,
-      { name: p.teamName },
-      { name: myTeam?.name || '' }
-    );
-    const matchingNeed = needs.find(n => n.positions.includes(p.position));
-    
+    const difficulty = calculateTransferDifficulty(p, { name: p.teamName }, { name: myTeam?.name || '' });
+    const matchingNeed = needs.find(n => n.positions.includes(posToEN(p.position)));
     return {
       ...p,
       marketValue: value,
       difficulty,
+      region: deriveRegion(p),
+      foot: derivePreferredFoot(p),
+      height: deriveHeight(p),
+      potential: p.potentialEst,
       matchesNeed: !!matchingNeed,
       needPriority: matchingNeed?.priority || null,
-      recommendation: generateRecommendation(p, matchingNeed, difficulty, scoutingLevel)
+      recommendation: generateRecommendation(p, matchingNeed, difficulty, level)
     };
   });
-  
+
   return {
     suggestions,
     needs,
     teamAvgOvr,
-    scoutingLevel,
+    scoutLevel: level,
+    scoutingLevel: level,
+    scopeLabel: config.scopeLabel,
+    activeFilters: countActiveFilters(level),
     config
   };
 }
@@ -428,7 +537,7 @@ export const AVAILABLE_LEAGUES = [
 export function getTeamsByLeague(allTeams, leagueId) {
   let teams = allTeams || [];
   if (leagueId) {
-    teams = teams.filter(t => t.leagueId === leagueId);
+    teams = getTeamsInLeague(teams, leagueId);
   }
   return teams.map(team => ({
     ...team,
@@ -442,6 +551,17 @@ export function getTeamsByLeague(allTeams, leagueId) {
 
 export default {
   SCOUTING_LEVELS,
+  SCOUT_FILTERS,
+  SCOUT_CONTINENTS,
+  SCOUT_ATTRIBUTES,
+  isFilterUnlocked,
+  countActiveFilters,
+  normalizeCriteria,
+  deriveRegion,
+  derivePotential,
+  derivePreferredFoot,
+  deriveHeight,
+  deriveAttributes,
   analyzeTeamNeeds,
   generateScoutingSuggestions,
   AVAILABLE_LEAGUES,

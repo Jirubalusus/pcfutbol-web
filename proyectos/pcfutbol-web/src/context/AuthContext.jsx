@@ -14,6 +14,7 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { PlatformAuth, isAndroid } from '../services/platformAuth';
 import { syncLanguageFromFirebase } from '../i18n';
+import { trackEvent } from '../firebase/analytics';
 
 const AuthContext = createContext();
 
@@ -23,6 +24,17 @@ export function AuthProvider({ children }) {
   const [error, setError] = useState(null);
   const [needsNickname, setNeedsNickname] = useState(false);
   const [displayName, setDisplayNameState] = useState(null);
+  // Trial mode: a no-login local session so a first-time visitor can play Carrera
+  // without an account. It intentionally does NOT create a Firebase user or a
+  // synthetic UID — `user` stays null and `isAuthenticated` stays false. Cloud
+  // save/load, rankings, editions and competitive modes remain login-only.
+  const [isTrial, setIsTrial] = useState(false);
+  const startTrial = () => {
+    setIsTrial(true);
+    // Non-personal: marks the start of a no-login trial session for the funnel.
+    trackEvent('trial_start', { auth_state: 'trial' });
+  };
+  const endTrial = () => setIsTrial(false);
 
   // Check if user has a displayName in Firestore
   const checkNickname = async (uid) => {
@@ -63,6 +75,8 @@ export function AuthProvider({ children }) {
       setUser(firebaseUser);
       setLoading(false);
       if (firebaseUser) {
+        // A real login supersedes any local trial session.
+        setIsTrial(false);
         // Cargar idioma guardado en Firebase
         await syncLanguageFromFirebase();
         // Check nickname
@@ -82,6 +96,8 @@ export function AuthProvider({ children }) {
     setError(null);
     try {
       const user = await loginWithEmail(email, password);
+      // Coarse provider only — no email/name/uid.
+      trackEvent('login_success', { provider: 'password' });
       return user;
     } catch (err) {
       setError(getErrorMessage(err.code));
@@ -93,6 +109,7 @@ export function AuthProvider({ children }) {
     setError(null);
     try {
       const user = await loginWithGoogle();
+      trackEvent('login_success', { provider: 'google' });
       return user;
     } catch (err) {
       console.error('Google login error:', err);
@@ -117,6 +134,7 @@ export function AuthProvider({ children }) {
         playerId: player.playerId
       };
       setUser(playGamesUser);
+      trackEvent('login_success', { provider: 'playgames' });
       return playGamesUser;
     } catch (err) {
       setError(err.message || 'Error al conectar con Google Play Games');
@@ -128,6 +146,7 @@ export function AuthProvider({ children }) {
     setError(null);
     try {
       const user = await registerWithEmail(email, password, displayName);
+      trackEvent('register_success', { provider: 'password' });
       return user;
     } catch (err) {
       console.error('Register error:', err);
@@ -138,6 +157,8 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     setError(null);
+    trackEvent('logout', {});
+    setIsTrial(false);
     // Usuarios sin sesión Firebase real: limpiar estado local
     if (user?.isGuest || user?.isPlayGames) {
       setUser(null);
@@ -204,6 +225,9 @@ export function AuthProvider({ children }) {
     isEmailVerified: user?.emailVerified || false,
     isGuest: user?.isGuest || false,
     isPlayGames: user?.isPlayGames || false,
+    isTrial,
+    startTrial,
+    endTrial,
     needsNickname,
     displayName,
     setNickname,
@@ -211,7 +235,6 @@ export function AuthProvider({ children }) {
     login,
     loginGoogle,
     loginPlayGames,
-    loginAsGuest,
     register,
     logout,
     sendPasswordReset,
@@ -220,8 +243,11 @@ export function AuthProvider({ children }) {
     clearError
   };
 
+  // DEV-only QA hook. `loginAsGuest` is intentionally NOT part of the production
+  // context value or any production UI — it is only reachable through this
+  // import.meta.env.DEV guarded window handle.
   if (import.meta.env.DEV && typeof window !== 'undefined') {
-    window.__pcfAuth = value;
+    window.__pcfAuth = { ...value, loginAsGuest };
   }
 
   return (
